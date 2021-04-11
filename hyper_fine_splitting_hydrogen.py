@@ -85,4 +85,4 @@ fig.update_layout(title=
                   'Radius Search, Calculation, and Measurement Comparison',
                   xaxis_title='Radius of Electron (Atomic Units)', yaxis_title='Predicted Lamb Shift (MHz)')
 
-fig.write_html('search.html')
+fig.write_html('radius_search.html')
