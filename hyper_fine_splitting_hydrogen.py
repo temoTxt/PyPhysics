@@ -17,9 +17,9 @@ a = 4 * (1 + delta_ratio)
 # 8.001142962723126
 b = -4
 
-delta_0 = -(8 + 24 * delta_ratio)
+delta_0 = 16 - 24 *(1 + delta_ratio)
 # -32.00685777633876
-delta_1 = 116 + (72 * delta_ratio) - 108 * (delta_ratio ** 2)
+delta_1 = -272 - (576 * delta_ratio) - 432 * (delta_ratio ** 2)
 # 79.9588445240119
 eulers_constant = 2 ** (-1 / 3) * (delta_1 + (delta_1 ** 2 - 4 * delta_0 ** 3) ** (1 / 2)) ** (1 / 3)
 # 6.085965147441353
