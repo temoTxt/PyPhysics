@@ -14,8 +14,8 @@ Legend: ⬜ not started · 🟨 in progress · ✅ complete · ⚠ blocked
 
 | Paper | File | Verified / Total | Status | Notes |
 |---|---|---:|---|---|
-| Two Mathematically Equivalent Versions of Maxwell's Equations | [Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md](Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md) | 0 / 24 | 🟨 | Pilot. Derivations drafted for eqs (1)–(11); Mathematica checks pending license |
-| Dual Relativistic Quantum Mechanics I | — | 0 / ? | ⬜ | Co-authored by repo owner; highest-priority physics paper |
+| Two Mathematically Equivalent Versions of Maxwell's Equations | [Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md](Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md) | 23 / 24 | ✅ + 🔴 | Eqs (1)–(23) verified; **Eq (24) typos identified** (missing `c` in `eℏΣ·B` denominator + missing `V²/(2mc²)` term) |
+| Dual Relativistic Quantum Mechanics I | [Dual_Relativistic_Quantum_Mechanics_I.md](Dual_Relativistic_Quantum_Mechanics_I.md) | ~28 / ~30 | ✅ + 🔴 | Eqs (I.1)–(III.22) verified; **Eq (III.22) g-factor claim fails** — paper's $r_e = 0.499857150068631\,r_0$ does not reproduce experimental $g_e = -2.00231930436256$ (formula gives $-2.0005714$ instead). Required $r_e \approx 0.4994205\,r_0$. |
 | FOUNDATIONS FOR QED I: MATHEMATICAL | — | 0 / ? | ⬜ | |
 | FoundationsII-Classical | — | 0 / ? | ⬜ | |
 | The Classical Electron Problem | — | 0 / ? | ⬜ | |
