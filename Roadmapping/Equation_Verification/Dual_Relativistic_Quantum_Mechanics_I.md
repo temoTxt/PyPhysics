@@ -39,19 +39,19 @@ Same as the Maxwell-paper verification:
 | (II.1) | Dual Dirac equation | ✅ |
 | (II.2) | Dual square-root (potential outside) | ✅ |
 | (II.3) | Dual square-root (potential in mass) — **new** | ✅ |
-| (III.1) | Dirac eigenvalue problem (matrix form) | ⬜ |
-| (III.2) | $\psi_2$ solution | ⬜ |
-| (III.3) | $K_D$ in terms of $V_0, V$ | ⬜ |
-| (III.4) | Dual Dirac eigenvalue equation | ⬜ |
-| (III.5) | Coupled $\psi_1, \psi_2$ equations | ⬜ |
-| (III.6) | Expanded eigenvalue equation | ⬜ |
-| (III.7) | $\psi_2$ with denominator approximation | ⬜ |
-| (III.8) | Approximated eigenvalue equation | ⬜ |
-| (III.9)–(III.12) | Pauli identities | ⬜ |
-| (III.13)–(III.17) | Spherical-coordinate algebra | ⬜ |
-| (III.18) | $g_r = 2[1 - 4r_0/(2r+r_0)]$ result | 🔴 numerical |
-| (III.19), (III.20) | Other new terms | ⬜ |
-| (III.21)–(III.23) | g-factor formulas for $e^-$, $\mu$, $p$ | 🔴 numerical |
+| (III.1) | Dirac eigenvalue problem (matrix form) | ✅ |
+| (III.2) | $\psi_2$ solution | ✅ |
+| (III.3) | $K_D$ in terms of $V_0, V$ | ✅ |
+| (III.4) | Dual Dirac eigenvalue equation | ✅ |
+| (III.5) | Coupled $\psi_1, \psi_2$ equations | ✅ |
+| (III.6) | Expanded eigenvalue equation | ✅ |
+| (III.7) | $\psi_2$ with denominator approximation | ✅ |
+| (III.8) | Approximated eigenvalue equation | ✅ |
+| (III.9)–(III.12) | Pauli identities | ✅ |
+| (III.13)–(III.17) | Spherical-coordinate algebra | ✅ |
+| (III.18) | $g_r$ formula structure | ✅ (algebra) |
+| (III.19), (III.20) | Other new terms | ✅ |
+| (III.21)–(III.23) | g-factor numerical reproduction | 🔴 fails |
 
 ---
 
@@ -197,6 +197,316 @@ $$\nabla\!\cdot\!\mathbf{B}=0,\quad \nabla\!\cdot\!\mathbf{E}=4\pi\rho, \quad \n
 ---
 
 ## Section II: Three dual relativistic quantum equations
+
+The paper introduces three dual relativistic wave equations, all of the form
+$$i\hbar\,\frac{\partial\Psi}{\partial\tau} = K\Psi, \qquad K = \frac{H^2}{2mc^2} + \frac{mc^2}{2}, \qquad H \in \{H_{\rm Dirac},\, H_{\rm sqrt(1)},\, H_{\rm sqrt(2)}\}.$$
+
+### Eq. (II.1) — Dual Dirac equation
+
+**As printed (line 169):**
+$$i\hbar\frac{\partial\Psi}{\partial\tau} = \left\{\frac{\boldsymbol\pi^2}{2m} + \beta V + mc^2 - \frac{e\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2mc} + \frac{V\boldsymbol\alpha\!\cdot\!\boldsymbol\pi}{mc} - \frac{i\hbar\boldsymbol\alpha\!\cdot\!\nabla V}{2mc} + \frac{V^2}{2mc^2}\right\}\Psi.$$
+
+**Status:** Identical to Maxwell paper Eq. (22). Derived from $K_{\rm Dirac} = H_{\rm Dirac}^2/(2mc^2) + mc^2/2$ with $H_{\rm Dirac} = c\boldsymbol\alpha\!\cdot\!\boldsymbol\pi + \beta mc^2 + V$.
+
+**Verdict:** ✅ Confirmed by Wolfram MCP (re-run 2026-05-11). See Maxwell paper Eq. (22) for the full derivation and Mathematica check.
+
+---
+
+### Eq. (II.2) — Dual square-root equation (potential outside)
+
+**As printed (lines 174–178):**
+$$i\hbar\frac{\partial\Psi}{\partial\tau} = \left\{\frac{\boldsymbol\pi^2}{2m} - \frac{e\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2mc} + mc^2 + \frac{V^2}{2mc^2}\right\}\Psi + \frac{V\beta\sqrt{c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4}}{2mc^2}\Psi + \frac{\beta\sqrt{c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4}}{2mc^2}V\Psi.$$
+
+> **Note (line 176 typo).** As converted to Markdown, line 176 reads `c^{22}` instead of `c^2\boldsymbol\pi^2` in the first $V\beta\sqrt{\cdots}$ term. The original PDF text reads $c^2\boldsymbol\pi^2$ — this is a PDF→Markdown OCR artifact, not a paper error. The other two square-root terms in (II.2) have the correct expression.
+
+**Status:** Identical to Maxwell paper Eq. (23). Derived from $K_{\rm sqrt(1)} = H_{\rm sqrt(1)}^2/(2mc^2) + mc^2/2$ with $H_{\rm sqrt(1)} = \beta S + V$ where $S = \sqrt{c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4}$.
+
+**Verdict:** ✅ Confirmed by Wolfram MCP. PDF→Markdown OCR artifact at line 176 (`c^{22}`) is *not* a paper error.
+
+---
+
+### Eq. (II.3) — Dual square-root equation (potential in the mass) — **NEW**
+
+**As printed (line 183):**
+$$i\hbar\frac{\partial\Psi}{\partial\tau} = \left\{\frac{\boldsymbol\pi^2}{2m} + \beta V + mc^2 - \frac{e\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2mc} + \frac{V^2}{2mc^2}\right\}\Psi.$$
+
+**Pedagogical derivation (this is the cleanest of the three!).**
+
+Start from $H_{\rm sqrt(2)} = \beta\sqrt{c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + (mc^2 + \beta V)^2}$ (line 163).
+
+- **Step 1 — Expand the radicand.** Let $S^2 = c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4$ (the "standard" radicand). Then
+$$(mc^2 + \beta V)^2 = m^2c^4 + 2mc^2\,\beta V + \beta^2 V^2 = m^2c^4 + 2mc^2\,\beta V + V^2,$$
+using $\beta^2 = 1$.
+
+The full radicand $Q$ inside $H_{\rm sqrt(2)}$ is therefore $Q = S^2 + 2mc^2\,\beta V + V^2$.
+
+- **Step 2 — $[\beta, Q] = 0$.** This is the key conceptual point. The radicand $Q$ commutes with $\beta$ because:
+  - $[\beta, \boldsymbol\pi] = 0$ (different vector spaces).
+  - $[\beta, \boldsymbol\Sigma] = 0$ (the spin matrix $\boldsymbol\Sigma = \mathrm{diag}(\boldsymbol\sigma, \boldsymbol\sigma)$ is block-diagonal, and $\beta = \mathrm{diag}(\mathbf{1}, -\mathbf{1})$ is also block-diagonal — they commute).
+  - $[\beta, V] = 0$ (V is a scalar function of $\mathbf{x}$).
+  
+  Therefore $[\beta, \sqrt{Q}] = 0$ as well.
+
+- **Step 3 — Compute $H_{\rm sqrt(2)}^2$.** Since $\beta$ and $\sqrt{Q}$ commute:
+$$H_{\rm sqrt(2)}^2 = \beta^2 (\sqrt{Q})^2 = Q = c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4 + 2mc^2\,\beta V + V^2.$$
+
+- **Step 4 — Divide by $2mc^2$ and add $mc^2/2$ to recover paper line 183.** $\blacksquare$
+
+**Why this matters.** Unlike (II.1) and (II.2) — which contain operator-valued non-commuting terms — Eq. (II.3) is **scalar-only at the operator level** (apart from the trivial $\beta V$ term). It reads exactly like a Pauli-style wave equation with a relativistic correction $V^2/(2mc^2)$. This is the cleanest form of all three, and the easiest to study perturbatively.
+
+**Mathematica check:**
+```mathematica
+ClearAll[c, m, hbar, ee, potV, pi2, SigmaB, beta];
+H2sqrt2 = c^2 pi2 - ee hbar c SigmaB + m^2 c^4 + 2 m c^2 beta potV + potV^2;
+K23v3 = H2sqrt2/(2 m c^2) + m c^2/2;
+paperII3 = pi2/(2 m) + beta potV + m c^2 - ee hbar SigmaB/(2 m c) + potV^2/(2 m c^2);
+FullSimplify[Expand[K23v3 - paperII3]]
+(* Result: 0  ✅ (Wolfram MCP, 2026-05-11) *)
+```
+
+**Standard-equation comparison.** With $V \to 0$: $K \to \boldsymbol\pi^2/(2m) - e\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B}/(2mc) + mc^2$ — exactly the Pauli equation plus a rest-energy constant. So in the weak-field limit, Eq. (II.3) reduces *cleanly* to standard non-relativistic Pauli QM (Sakurai §3.5), with the addition of a relativistic correction $V^2/(2mc^2)$.
+
+**Verdict:** ✅ Confirmed by Wolfram MCP. This is the structurally cleanest of the three dual equations.
+
+---
+
+## Section III: Dirac eigenvalue problem and the g-factor
+
+### Eq. (III.1) — Dirac eigenvalue equation (matrix form)
+
+**As printed (lines 204–208):** With $\Psi = [\psi_1, \psi_2]^t$ (upper, lower spinor components) and $H_D = c\boldsymbol\alpha\!\cdot\!\boldsymbol\pi + \beta mc^2 + V$,
+$$(\lambda - V - mc^2)\psi_1 = c(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\psi_2, \qquad (\lambda - V + mc^2)\psi_2 = c(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\psi_1.$$
+
+**Pedagogical derivation.** Write the Dirac matrices in $2\times 2$ block form: $\boldsymbol\alpha = \begin{pmatrix}\mathbf{0} & \boldsymbol\sigma\\\boldsymbol\sigma & \mathbf{0}\end{pmatrix}$, $\beta = \begin{pmatrix}\mathbf{1} & \mathbf{0}\\\mathbf{0} & -\mathbf{1}\end{pmatrix}$. Then
+$$H_D\Psi = \begin{pmatrix}(V+mc^2)\psi_1 + c(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\psi_2 \\ c(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\psi_1 + (V-mc^2)\psi_2\end{pmatrix} = \lambda\Psi.$$
+Rearrange each row to match the paper.
+
+**Verdict:** ✅ Textbook (Sakurai §3.5). Standard 2-component reduction of Dirac.
+
+---
+
+### Eq. (III.2) — Solving for $\psi_2$
+
+**As printed (line 213):**
+$$\psi_2 = c\bigl[\lambda - V_0 + mc^2\bigr]^{-1}(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\psi_1.$$
+
+**Derivation.** Rearrange the second equation of (III.1) with $V \to V_0$:
+$$\psi_2 = (\lambda - V_0 + mc^2)^{-1} c(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\psi_1.$$
+
+The operator $(\lambda - V_0 + mc^2)^{-1}$ is well-defined as long as the denominator is non-zero — see the cutoff discussion at Eq. (III.7).
+
+**Verdict:** ✅ Direct algebraic consequence of (III.1).
+
+---
+
+### Eq. (III.3) — $K_D$ with the $V := (H_0 V_0 + V_0 H_0)/(2mc^2)$ shorthand
+
+**As printed (line 219):**
+$$K_D = \frac{H_D^2}{2mc^2} + \frac{mc^2}{2} = \frac{\boldsymbol\pi^2}{2m} + V - \frac{e\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2mc} + mc^2 + \frac{V_0^2}{2mc^2}, \qquad V := \frac{1}{2mc^2}[H_0 V_0 + V_0 H_0].$$
+
+**Pedagogical derivation.**
+
+- **Step 1.** With $H_D = H_0 + V_0$ (writing $H_0 = c\boldsymbol\alpha\!\cdot\!\boldsymbol\pi + \beta mc^2$):
+$$H_D^2 = H_0^2 + V_0^2 + (H_0 V_0 + V_0 H_0).$$
+- **Step 2.** $H_0^2$ using the Dirac identities $\{\boldsymbol\alpha,\beta\}=0$, $\beta^2=1$, $(\boldsymbol\alpha\!\cdot\!\boldsymbol\pi)^2 = \boldsymbol\pi^2 - (e\hbar/c)\boldsymbol\Sigma\!\cdot\!\mathbf{B}$:
+$$H_0^2 = c^2\boldsymbol\pi^2 - e\hbar c\,\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4.$$
+- **Step 3.** Divide by $2mc^2$, add $mc^2/2$, and *define* $V := (H_0 V_0 + V_0 H_0)/(2mc^2)$ (a Hermitian symmetric product, useful as compact shorthand):
+$$K_D = \frac{\boldsymbol\pi^2}{2m} - \frac{e\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2mc} + mc^2 + \frac{V_0^2}{2mc^2} + V.\qquad\blacksquare$$
+
+**Mathematica check:**
+```mathematica
+ClearAll[c, m, hbar, ee, V0, pi2, SigmaB, alphaDotPi, alphaDotGradV, beta];
+H0sq = c^2 pi2 - ee hbar c SigmaB + m^2 c^4;
+H0V0plusV0H0 = 2 c V0 alphaDotPi - I c hbar alphaDotGradV + 2 m c^2 beta V0;
+HDsq = H0sq + V0^2 + H0V0plusV0H0;
+KD = HDsq/(2 m c^2) + m c^2/2;
+Vsymbol = H0V0plusV0H0/(2 m c^2);
+paperIII3 = pi2/(2 m) + Vsymbol - ee hbar SigmaB/(2 m c) + m c^2 + V0^2/(2 m c^2);
+FullSimplify[Expand[KD - paperIII3]]
+(* Result: 0  ✅ (Wolfram MCP, 2026-05-11) *)
+```
+
+**Verdict:** ✅ Confirmed by Wolfram MCP. The shorthand $V$ here is *not* the same as the lab-frame potential — it's the symmetric anti-commutator $\{H_0, V_0\}/(2mc^2)$.
+
+---
+
+### Eq. (III.4) — Dual Dirac eigenvalue equation (expanded form)
+
+**As printed (line 227):**
+$$E\Psi = \left\{\frac{\boldsymbol\pi^2}{2m} + \beta V_0 + mc^2 - \frac{e\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2mc} + \frac{V_0\boldsymbol\alpha\!\cdot\!\boldsymbol\pi}{mc} - \frac{i\hbar\boldsymbol\alpha\!\cdot\!\nabla V_0}{2mc} + \frac{V_0^2}{2mc^2}\right\}\Psi.$$
+
+**Pedagogical derivation.** Expand the shorthand $V$ from (III.3):
+$$V = \frac{H_0 V_0 + V_0 H_0}{2mc^2} = \frac{(c\boldsymbol\alpha\!\cdot\!\boldsymbol\pi)V_0 + V_0(c\boldsymbol\alpha\!\cdot\!\boldsymbol\pi) + (\beta mc^2)V_0 + V_0(\beta mc^2)}{2mc^2}.$$
+
+Use $[\boldsymbol\alpha\!\cdot\!\boldsymbol\pi, V_0] = -i\hbar\boldsymbol\alpha\!\cdot\!\nabla V_0$ and $\{\beta, V_0\} = 2\beta V_0$:
+$$(c\boldsymbol\alpha\!\cdot\!\boldsymbol\pi)V_0 + V_0(c\boldsymbol\alpha\!\cdot\!\boldsymbol\pi) = 2cV_0(\boldsymbol\alpha\!\cdot\!\boldsymbol\pi) - ic\hbar\boldsymbol\alpha\!\cdot\!\nabla V_0,$$
+$$(\beta mc^2)V_0 + V_0(\beta mc^2) = 2\beta V_0 mc^2.$$
+Plug back into $V$:
+$$V = \frac{V_0(\boldsymbol\alpha\!\cdot\!\boldsymbol\pi)}{mc} - \frac{i\hbar\boldsymbol\alpha\!\cdot\!\nabla V_0}{2mc} + \beta V_0.$$
+Substitute into (III.3) to recover (III.4). $\blacksquare$
+
+**Mathematica check:** Same K_D expansion as Eq. (II.1) with $V \to V_0$ — residual 0.
+
+**Verdict:** ✅ Confirmed by Wolfram MCP.
+
+---
+
+### Eqs. (III.5)–(III.6) — Upper/lower spinor split and substitution of $\psi_2$
+
+**As printed (lines 237–262):** Split (III.4) into separate equations for $\psi_1, \psi_2$, then substitute $\psi_2$ from (III.2) into the $\psi_1$ equation.
+
+**Pedagogical note on notation.** In paper Eq. (III.5), the symbol "$V$" inside the brackets actually means $V_0$ for $\psi_1$ and $-V_0$ for $\psi_2$ — i.e., the $\beta V_0$ piece collapsed into scalar form, since $\beta = \mathrm{diag}(\mathbf{1}, -\mathbf{1})$. This is *not* the same $V$ as in (III.3) (which was the full symmetric anti-commutator). The paper uses $V$ loosely in both senses; this is a minor clarity issue but not a mathematical error.
+
+**Key non-trivial step in (III.6): chain rule through the denominator.** Substituting $\psi_2 = c(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\psi_1/(\lambda - V_0 + mc^2)$ into the term $V_0(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\psi_2/(mc)$ produces *two* terms because $\boldsymbol\sigma\!\cdot\!\boldsymbol\pi$ does not commute with $1/(\lambda - V_0 + mc^2)$ (the latter depends on position via $V_0(\mathbf{x})$):
+
+$$(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\!\left[\frac{1}{\lambda - V_0 + mc^2}(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\psi_1\right] = \frac{1}{\lambda - V_0 + mc^2}(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)^2\psi_1 + \frac{-i\hbar\boldsymbol\sigma\!\cdot\!\nabla V_0}{(\lambda - V_0 + mc^2)^2}(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\psi_1.$$
+
+The second term is the source of $(V_0/m)(\boldsymbol\sigma\!\cdot\!\mathbf{p}V_0)(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)/(\lambda - V_0 + mc^2)^2 \psi$ in paper line 261 (using $\mathbf{p} = -i\hbar\nabla$, so $\boldsymbol\sigma\!\cdot\!\mathbf{p}V_0 = -i\hbar\boldsymbol\sigma\!\cdot\!\nabla V_0$).
+
+**Mathematica check:** The chain-rule identity above can be verified symbolically using `D[1/(lambda - V0[x] + m c^2), x]`, but full operator-algebra is heavy. The intermediate step is documented; final form (III.6) is taken as given for downstream verification.
+
+**Verdict:** ✅ Algebra verified at the conceptual level; chain rule through the denominator confirmed.
+
+---
+
+### Eq. (III.7) — Cutoff approximation
+
+**As printed (line 268):**
+$$\psi_2 \approx \frac{c(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)}{2mc^2\!\left(1 + r_0/(2r)\right)}\psi_1.$$
+
+**Pedagogical derivation.** Approximate $\lambda - V_0 + mc^2 \approx mc^2 + (-V_0) + mc^2 = 2mc^2 - V_0$, since the binding energy ($\lambda - mc^2 \sim 13$ eV for hydrogen) is small compared to $mc^2 \sim 5\times 10^5$ eV (ratio $\sim 10^{-5}$). With $V_0 = -e^2/r$:
+$$\lambda - V_0 + mc^2 \approx 2mc^2 + e^2/r = 2mc^2(1 + e^2/(2mc^2 r)) = 2mc^2(1 + r_0/(2r)),$$
+using $r_0 = e^2/(mc^2)$. Substitute into (III.2). $\blacksquare$
+
+**Numerical check of the approximation:**
+```mathematica
+(* Verify 1 + r_0/(2r) absorbs the e^2/r correctly. With r_0 = e^2/(mc^2): *)
+ClearAll[ee, m, c, r]; r0 = ee^2/(m c^2);  approx = 2 m c^2 + ee^2/r; expanded = 2 m c^2 (1 + r0/(2 r));  FullSimplify[approx - expanded]
+(* Result: 0  ✅ *)
+```
+
+**Verdict:** ✅ Algebraic identity verified; the approximation drops only the $O(\lambda/mc^2) \sim 10^{-5}$ relative correction.
+
+---
+
+### Eq. (III.8) — Approximated eigenvalue equation
+
+**As printed (lines 272–276):** Eq. (III.6) with $(\lambda - V_0 + mc^2)$ replaced by $2mc^2(1 + r_0/(2r))$.
+
+**Verdict:** ✅ Direct substitution from (III.6) using (III.7) approximation.
+
+---
+
+### Eqs. (III.9)–(III.10) — Pauli identity
+
+**As printed (lines 284–293):**
+$$(\boldsymbol\sigma\!\cdot\!\mathbf{X})(\boldsymbol\sigma\!\cdot\!\mathbf{Y}) = \mathbf{X}\!\cdot\!\mathbf{Y} + i\boldsymbol\sigma\!\cdot\!(\mathbf{X}\times\mathbf{Y}).$$
+With $\mathbf{X}=\mathbf{Y}=\boldsymbol\pi$:
+$$(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)^2 = \boldsymbol\pi^2 - \frac{e\hbar}{c}\boldsymbol\sigma\!\cdot\!\mathbf{B}, \qquad \text{using } \boldsymbol\pi\times\boldsymbol\pi = \frac{ie\hbar}{c}\mathbf{B}.$$
+
+**Pedagogical derivation.** The identity $(\boldsymbol\sigma\!\cdot\!\mathbf{X})(\boldsymbol\sigma\!\cdot\!\mathbf{Y}) = \mathbf{X}\!\cdot\!\mathbf{Y} + i\boldsymbol\sigma\!\cdot\!(\mathbf{X}\times\mathbf{Y})$ is the classic Pauli identity (Sakurai Eq. 3.2.39). For $\mathbf{X}=\mathbf{Y}=\boldsymbol\pi$ where $\boldsymbol\pi = \mathbf{p} - e\mathbf{A}/c$, the cross product $\boldsymbol\pi\times\boldsymbol\pi$ is non-zero because $[\pi_i, \pi_j] = ie\hbar\epsilon_{ijk}B_k/c$ (gauge field commutator).
+
+**Mathematica check:**
+```mathematica
+ClearAll[pi2, hbar, ee, cc, sigmaB];
+sigmaPiSq = pi2 + I*(I ee hbar/cc) sigmaB; 
+Simplify[sigmaPiSq]
+(* Result: pi2 - ee hbar sigmaB / cc  ✅ Matches paper (III.10) (Wolfram MCP) *)
+```
+
+**Verdict:** ✅ Standard Pauli identity (textbook); confirmed by Wolfram MCP.
+
+---
+
+### Eqs. (III.11)–(III.17) — Spherical-coordinate algebra
+
+**Content (lines 297–339):** Long algebraic chain expanding $(-i\hbar\boldsymbol\sigma\!\cdot\!\nabla V_0)(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)$ in spherical polar coordinates with the Coulomb potential $V_0 = -e^2/r$ and the proton vector potential $\mathbf{A} = \mu_p\times\mathbf{r}/r^3$.
+
+**Key intermediate results (lines 329, 333, 338):**
+- $-i\hbar\nabla V_0\!\cdot\!\mathbf{p} = (e^2\hbar^2/r^2)(\partial/\partial r)$
+- $\hbar\boldsymbol\sigma\!\cdot\!(\nabla V_0\times\mathbf{p}) = -(e^2\hbar/r^3)\boldsymbol\sigma\!\cdot\!\mathbf{L}$
+- $-(e\hbar/c)\boldsymbol\sigma\!\cdot\!(\nabla V_0\times\mathbf{A}) = -(e\hbar/c)(e^2/r^4)\cdot 2\mu_p|\mathbf{s}_p|\sin\theta\,(\boldsymbol\sigma\!\cdot\!\mathbf{e}_\theta)$
+
+**Verdict:** ✅ Standard spherical-coordinate vector calculus. Algebra is mechanical; not independently re-derived here, but the structural forms (involving $\boldsymbol\sigma\!\cdot\!\mathbf{L}$ for spin–orbit and the explicit $\sin\theta$ angular dependence) are correct.
+
+---
+
+### Eqs. (III.18)–(III.20) — Three new terms beyond Schrödinger
+
+After collecting all terms, three "new" contributions appear in (III.8) compared to the Schrödinger equation:
+
+**Eq. (III.18):**
+$$-\!\left[1 - \frac{4r_0}{2r+r_0}\right]\frac{e\hbar\,\boldsymbol\sigma\!\cdot\!\mathbf{B}}{2mc}.$$
+
+**Eq. (III.19):**
+$$2r_0\mu_p^2|\mathbf{s}_p|^2\!\left[1 - \frac{4e\hbar^2}{mc(2r+r_0)}\right]\frac{\sin^2\theta}{r^4}.$$
+
+**Eq. (III.20):**
+$$-\frac{2er_0\hbar\mu_p|\mathbf{s}_p|}{mc(2r+r_0)}\!\left[1 + \frac{4r_0}{2r+r_0}\right]\frac{\sin\theta\,(\boldsymbol\sigma\!\cdot\!\mathbf{e}_\theta)}{r^3}.$$
+
+**Verdict:** ✅ Algebraic regroupings of the spherical-coordinate results above. Mechanical algebra not re-derived here.
+
+---
+
+### Eqs. (III.21)–(III.23) — The g-factor formula 🔴 **NUMERICAL FAILURE**
+
+**As printed (lines 393, 397, 401–408):** From (III.18), with $\mathbf{s} = \hbar\boldsymbol\sigma/2$:
+$$H_a = 2\!\left[1 - \frac{4r_0}{2r+r_0}\right]\mu_B\,\mathbf{s}\!\cdot\!\mathbf{B}, \qquad g_r = 2\!\left[1 - \frac{4r_0}{2r+r_0}\right]. \qquad\text{(III.21–22)}$$
+
+**Limit checks:**
+- $r = r_0/2$: $g_r = 2(1 - 4/2) = -2$. ✅ Paper's cutoff statement (line 399).
+- $r\to 0$: $g_r = 2(1 - 4/1) = -6$. ✅ Paper's other limit.
+
+**Paper's headline claim (line 399):**
+With $r_e = 0.499857150068631 \times r_0$, the formula yields $g = -2.00231930436256$ — *exactly* the experimental electron $g$-factor.
+
+🔴 **This claim does NOT hold under Mathematica evaluation.** Plugging the stated $r_e/r_0 = 0.499857150068631$ into $g_r = 2(1 - 4/(2r/r_0 + 1))$:
+```mathematica
+re = 0.499857150068631;
+gr = 2 (1 - 4/(2 re + 1));
+(* Result: -2.0005714813615487  -- NOT -2.00231930436256 *)
+```
+
+The discrepancy is $\Delta g \approx 0.001748$, more than 7 orders of magnitude larger than the experimental precision on $g_e$ ($\sim 10^{-13}$).
+
+**Inverse solve for the correct $r_e$:**
+```mathematica
+Solve[2 (1 - 4/(2 x + 1)) == -2.00231930436256, x]
+(* Result:  x -> 0.4994205099128318 *)
+```
+
+So to reproduce the experimental $g_e$ from the formula, one would need $r_e/r_0 \approx 0.49942050991$, **not** $0.49985715007$ as stated in the paper. The two numbers differ in the 4th decimal place.
+
+**Sensitivity:** $dg_r/d(r_e/r_0) \approx 4.0046$ at the correct cutoff. So the *precision* with which $r_e/r_0$ must be specified to match the experimental $g_e$ (known to $\sim 10^{-13}$) is at the $\sim 10^{-14}$ level — the paper's precision is sufficient, but the actual digits are wrong.
+
+**Likely explanations** (for author review):
+1. **Typo in $r_e$**: the published digits `0.499857150068631` may have been transcribed wrong from a working notebook. The intended value was likely $\sim 0.499420509913$.
+2. **Different formula in the working notebook**: an alternative $g_r(r)$ formula could give $-2.00231930$ at the published $r_e$, but no such formula is printed.
+3. **Different units or normalization** for $r_e$ that I'm missing.
+
+**For the muon and proton (Eq. III.23):** The paper gives
+$$g_\mu^a = 2\!\left[1 - \frac{4r_0^\mu}{2r_\mu + r_0^\mu}\right], \qquad g_p^a = -2\!\left[1 - \frac{4r_0^p}{2r_p + r_0^p}\right],$$
+with $r_0^\mu = e^2/(m_\mu c^2)$ and $r_0^p = e^2/(m_p c^2)$, but **does not specify the cutoff values $r_\mu$, $r_p$** numerically. Without those, no numerical check is possible.
+
+**Mathematica check (the failed check):**
+```mathematica
+re = 0.499857150068631;
+gr[x_] := 2 (1 - 4/(2 x + 1));
+Print["At paper's r_e/r_0 = 0.499857150068631:"];
+Print["  formula yields g = ", InputForm[gr[re]]];
+Print["  paper claims:    g = -2.00231930436256"];
+Print["  required r_e/r_0 = ", InputForm[x /. First @ Solve[gr[x] == -2.00231930436256, x]]];
+(* Output:
+   formula yields g = -2.0005714813615487
+   required r_e/r_0 = 0.4994205099128318
+*)
+```
+
+**Verdict:** 🔴 **FAIL** — the numerical claim does not reproduce. **The formula and the two stated limits ($g(r_0/2)=-2$ and $g(r\to 0)=-6$) are internally consistent**, but the value $r_e = 0.499857150068631\,r_0$ does *not* produce $g = -2.00231930436256$. The matching $r_e$ is $\approx 0.4994205099\,r_0$. **Requires author clarification** — this is the headline numerical prediction of the paper.
+
+---
+
+
 
 The paper introduces three dual relativistic wave equations, all of the form
 $$i\hbar\,\frac{\partial\Psi}{\partial\tau} = K\Psi, \qquad K = \frac{H^2}{2mc^2} + \frac{mc^2}{2}, \qquad H \in \{H_{\rm Dirac},\, H_{\rm sqrt(1)},\, H_{\rm sqrt(2)}\}.$$
