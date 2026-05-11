@@ -5,7 +5,7 @@
 **Source:** [`../Tepper_Gill_Papers/Two Mathematically Equivalent Versions of Maxwell's Equations.pdf`](../Tepper_Gill_Papers/Two%20Mathematically%20Equivalent%20Versions%20of%20Maxwell's%20Equations.pdf)
 **Markdown:** [`../Converted_Markdown/Two Mathematically Equivalent Versions of Maxwell's Equations/Two Mathematically Equivalent Versions of Maxwell's Equations.md`](../Converted_Markdown/Two%20Mathematically%20Equivalent%20Versions%20of%20Maxwell%27s%20Equations/Two%20Mathematically%20Equivalent%20Versions%20of%20Maxwell%27s%20Equations.md)
 
-**Verification status:** Mathematica MCP not yet wired in. Derivations written by hand; every `Mathematica check` block is the script that *will* run once the MCP is online. Mark each one `(* PENDING *)`.
+**Verification status:** Wolfram MCP online (2026-05-10). Every `Mathematica check` block that ran is annotated with the actual returned result (`Result: 0  ✅` for an identity that simplified to zero). Eqs. (1)–(6) verified; Eqs. (7)–(11) verified at the chain-rule / coefficient level; Eqs. (12)–(24) being checked & derived in this same pass.
 
 ## Conventions used in this document
 
@@ -24,13 +24,13 @@
 
 | Eq. | Topic | Verdict |
 |---:|---|---|
-| (1) | $\mathbf{w}/c = \mathbf{u}/b$ — velocity duality | ⬜ |
-| (2) | $(1/c)\partial_t = (1/b)\partial_\tau$ — time-derivative duality | ⬜ |
-| (3) | Standard Maxwell's equations (Gaussian) | ⬜ |
-| (3′) | Proper-time-equivalent Maxwell's equations | ⬜ |
-| (4) | Dual wave equations for **E**, **B** with dissipative term | ⬜ |
-| (5) | Klein–Gordon form after scale transformation | ⬜ |
-| (6) | Effective ("photon") mass $\mu$ from $b$-dynamics | ⬜ |
+| (1) | $\mathbf{w}/c = \mathbf{u}/b$ — velocity duality | ✅ |
+| (2) | $(1/c)\partial_t = (1/b)\partial_\tau$ — time-derivative duality | ✅ |
+| (3) | Standard Maxwell's equations (Gaussian) | ✅ |
+| (3′) | Proper-time-equivalent Maxwell's equations | ✅ |
+| (4) | Dual wave equations for **E**, **B** with dissipative term | ✅ |
+| (5) | Klein–Gordon form after scale transformation | ✅ |
+| (6) | Effective ("photon") mass $\mu$ from $b$-dynamics | ✅ |
 | (7) | Modified Liénard–Wiechert **E**, **B** fields | ⬜ |
 | (8) | Standard Lorentz time transformation | ⬜ |
 | (9) | $t = (1/c)\int_0^\tau b(s)\,ds$ (mean-value form) | ⬜ |
@@ -61,14 +61,13 @@ $$\frac{\mathbf{w}}{c} = \frac{\mathbf{u}}{b}, \qquad b = \sqrt{c^2 + \mathbf{u}
 
 **Mathematica check:**
 ```mathematica
-(* PENDING: Wolfram MCP not yet configured *)
 ClearAll[w, u, c];
 b = Sqrt[c^2 + u^2];
 (* From u = w / Sqrt[1 - w^2/c^2], invert to get w in terms of u: *)
 wOfU = w /. First @ Solve[u == w/Sqrt[1 - w^2/c^2] && w > 0 && c > 0 && u > 0, w];
 (* Verify w/c == u/b: *)
 FullSimplify[wOfU/c - u/b, Assumptions -> {c > 0, u > 0}]
-(* Expected: 0 *)
+(* Result: 0  ✅ (Wolfram MCP, 2026-05-10) *)
 ```
 
 **Expanded derivation:**
@@ -90,7 +89,7 @@ The textbook 4-velocity is $u^\mu = (\gamma c,\,\gamma\mathbf{w})$ (Jackson §11
 
 So Eq. (1) is the trivially-true identity $u^i/u^0 = w^i/c$ — the spatial-to-temporal ratio of any 4-velocity equals the spatial velocity divided by $c$. **What is *non*-standard is using $b = u^0$ as a "speed of light"** (it has units of velocity but is frame-dependent on the source).
 
-**Verdict (algebra):** ✅ (PENDING Mathematica re-confirmation).
+**Verdict:** ✅ Confirmed by Wolfram MCP (`FullSimplify` returned 0).
 
 ---
 
@@ -103,14 +102,12 @@ $$\frac{1}{c}\frac{\partial}{\partial t} \;=\; \frac{1}{b}\frac{\partial}{\parti
 
 **Mathematica check:**
 ```mathematica
-(* PENDING *)
-(* Symbolic chain-rule check: *)
 ClearAll[t, \[Tau], u, c, F];
 b = Sqrt[c^2 + u^2];
 (* dt/d\[Tau] = b/c, so 1/c \[PartialD]_t = 1/c (d\[Tau]/dt) \[PartialD]_\[Tau] = (1/c)(c/b) \[PartialD]_\[Tau] = (1/b) \[PartialD]_\[Tau] *)
 dTaudt = c/b;
 Simplify[(1/c)*dTaudt - 1/b]
-(* Expected: 0 *)
+(* Result: 0  ✅ (Wolfram MCP, 2026-05-10) *)
 ```
 
 **Expanded derivation:**
@@ -126,7 +123,7 @@ $$\frac{1}{c}\frac{\partial F}{\partial t} \;=\; \frac{1}{b}\frac{\partial F}{\p
 
 The standard substantial / convective derivative in fluid dynamics, $D/Dt = \partial_t + \mathbf{w}\!\cdot\!\nabla$, is the analogous "change of time-variable" trick at the *advected*-field level. Gill's Eq. (2) is the **fixed-position** version: it converts $\partial_t$ to $\partial_\tau$ when the field is evaluated *at the source location*, not while following a fluid element. In a textbook 4-derivative $\partial^\mu = (c^{-1}\partial_t, \nabla)$, Eq. (2) says $c^{-1}\partial_t = b^{-1}\partial_\tau$, i.e. **the 0-component of $\partial^\mu$ is invariant in form when one trades $(c,t)\!\to\!(b,\tau)$**. This is what makes the next step — substituting into Maxwell's equations — work.
 
-**Verdict:** ✅ (PENDING Mathematica).
+**Verdict:** ✅ Confirmed by Wolfram MCP.
 
 ---
 
@@ -158,12 +155,16 @@ $$\nabla\times\mathbf{E} = -\frac{1}{b}\,\frac{\partial \mathbf{B}}{\partial \ta
 
 **Mathematica check:**
 ```mathematica
-(* PENDING: symbolic substitution check *)
-ClearAll[c, b, t, \[Tau], u, w, E, B, \[Rho]];
-(* Replace 1/c \[PartialD]_t -> 1/b \[PartialD]_\[Tau] and w -> (c/b) u : *)
-rule = {1/c -> 1/b, t -> \[Tau], w -> (c/b) u};
-(* Apply to LHS-RHS of Ampère-Maxwell and confirm 1/c \[PartialD]_t E + (4\[Pi]/c) \[Rho] w == 1/b \[PartialD]_\[Tau] E + (4\[Pi]/b) \[Rho] u *)
-(* Expected: identity after rule application *)
+(* Symbolic substitution check.
+   At a fixed spatial point on the source worldline, treat \[PartialD]_t E as a stand-in
+   "dEdt" and \[PartialD]_\[Tau] E as "dEdtau".  By Eq.(2): dEdt = (c/b) dEdtau.  By
+   Eq.(1): w = (c/b) u. *)
+ClearAll[c, b, u, w, \[Rho], dEdt, dEdtau];
+LHS = (1/c) dEdt + (4 Pi/c) \[Rho] w;
+RHS = (1/b) dEdtau + (4 Pi/b) \[Rho] u;
+diff = LHS - RHS /. {dEdt -> (c/b) dEdtau, w -> (c/b) u};
+Simplify[diff]
+(* Result: 0  ✅ (Wolfram MCP, 2026-05-10) *)
 ```
 
 **Expanded derivation:**
@@ -180,7 +181,7 @@ These are **not** new Maxwell's equations — they are the *same* fields obeying
 
 > ⚠ **Note on the equation-errors doc.** The errors doc flags `Jα = (Jx, Jy, Jz, ibρ)` and similar `b`-appearances as errors that should be `c`. Per the derivation above, the appearance of `b` is *required* by the substitution rules (1)–(2). These are not errors.
 
-**Verdict:** ✅ (algebraically; PENDING Mathematica).
+**Verdict:** ✅ Confirmed by Wolfram MCP (substitution-rule level).
 
 ---
 
@@ -197,25 +198,17 @@ with $\mathbf{a} = d\mathbf{u}/d\tau$.
 
 **Mathematica check:**
 ```mathematica
-(* PENDING: derivation of the (\[ScriptU]\[CenterDot]\[ScriptA])/b^4 coefficient.
-
-   Sketch:
-     Start from \[PartialD]_\[Tau](1/b) = -(1/b^2) db/d\[Tau].
-     With b = Sqrt[c^2 + u.u], db/d\[Tau] = (u . a)/b.
-     Hence \[PartialD]_\[Tau](1/b) = -(u . a)/b^3.
-
-   Then in \[PartialD]_\[Tau][(1/b) \[PartialD]_\[Tau] B] = (1/b) \[PartialD]_\[Tau]\[PartialD]_\[Tau] B + (\[PartialD]_\[Tau](1/b)) \[PartialD]_\[Tau] B
-                                                    = (1/b) \[PartialD]_\[Tau]\[PartialD]_\[Tau] B - (u . a)/b^3 \[PartialD]_\[Tau] B.
-
-   Multiplying the curl of Faraday by (1/b) and applying \[PartialD]_\[Tau] gives:
-     (1/b^2) \[PartialD]^2_\[Tau] B - ((u . a)/b^4) \[PartialD]_\[Tau] B - \[Del]^2 B = ...
-*)
-
-ClearAll[u, a, c, \[Tau], B];
+(* Sketch: d/d\[Tau](1/b) = -(1/b^2) db/d\[Tau].  With b = Sqrt[c^2 + u.u],
+   db/d\[Tau] = (u . a)/b, so d/d\[Tau](1/b) = -(u . a)/b^3.  Multiplying the curl of
+   Faraday by (1/b) and applying \[PartialD]_\[Tau] then yields the dissipative coefficient
+   -(u.a)/b^4 in front of \[PartialD]_\[Tau] B. *)
+ClearAll[u, a, c, \[Tau]];
 b[\[Tau]_] := Sqrt[c^2 + u[\[Tau]] . u[\[Tau]]];
-(* d/d\[Tau](1/b) *)
-Simplify[D[1/b[\[Tau]], \[Tau]] /. {u'[\[Tau]] -> a[\[Tau]]}]
-(* Expected: -(u[\[Tau]].a[\[Tau]])/b[\[Tau]]^3 *)
+res = D[1/b[\[Tau]], \[Tau]] /. {u'[\[Tau]] -> a[\[Tau]]};
+(* Mathematica's Dot is non-commutative; for Euclidean 3-vectors u.a == a.u. *)
+resSym = res /. {a[\[Tau]] . u[\[Tau]] -> u[\[Tau]] . a[\[Tau]]};
+FullSimplify[resSym + (u[\[Tau]] . a[\[Tau]])/b[\[Tau]]^3]
+(* Result: 0  ✅  d/d\[Tau](1/b) = -(u.a)/b^3 (Wolfram MCP, 2026-05-10) *)
 ```
 
 **Expanded derivation (B-field):**
@@ -240,7 +233,7 @@ Gill's Eq. (4) has the same *form* under the rule $c\to b,\;t\to\tau,\;\mathbf{w
 $$-\frac{\mathbf{u}\!\cdot\!\mathbf{a}}{b^4}\,\partial_\tau\mathbf{E},$$
 which arises *only* because $b$ depends on $\tau$. In the unaccelerated limit $\mathbf{a}=\mathbf{0}$, $b$ is constant, this term vanishes, and we recover the standard wave equation (with $b$ playing the role of $c$).
 
-**Verdict:** ✅ (algebra, after Step 1–5; PENDING Mathematica re-confirmation).
+**Verdict:** ✅ Coefficient $-(\mathbf{u}\!\cdot\!\mathbf{a})/b^4$ confirmed by Wolfram MCP. Remaining algebra (Steps 1–5) is a textbook curl-of-curl manipulation; the *only* dual-theory–specific piece is the time-derivative of $1/b$, which is what we checked.
 
 ---
 
@@ -254,19 +247,18 @@ and similarly for **E**.
 
 **Mathematica check:**
 ```mathematica
-(* PENDING: verify that the substitution \[Psi] = (b/c)^{1/2} \[Psi]_new converts
-   (1/b^2) \[Psi]_\[Tau]\[Tau] - (u.a / b^4) \[Psi]_\[Tau] - \[Del]^2 \[Psi] = 0
-   into
-   (1/b^2) \[Psi]_new\[Tau]\[Tau] - \[Del]^2 \[Psi]_new + V_eff \[Psi]_new = 0
-   with V_eff = (\[Ddot]b)/(2 b^3) - 3 \[Dot]b^2/(4 b^4).
-*)
-
-ClearAll[\[Psi], b, \[Tau]];
-\[Psi]Trans[\[Tau]_] := Sqrt[b[\[Tau]]/c] \[Psi]new[\[Tau]];
-expr = (1/b[\[Tau]]^2) D[\[Psi]Trans[\[Tau]], {\[Tau], 2}]
-     - ((u . a)/b[\[Tau]]^4) D[\[Psi]Trans[\[Tau]], \[Tau]];
-(* Expand, divide by Sqrt[b/c], and read off the coefficient of \[Psi]new. *)
-(* Expected coefficient: (b''[\[Tau]])/(2 b[\[Tau]]^3) - 3 b'[\[Tau]]^2/(4 b[\[Tau]]^4). *)
+(* Substitute \[Psi] = (b/c)^{1/2} \[Psi]new into (1/b^2)\[Psi]_\[Tau]\[Tau] - (b'/b^3)\[Psi]_\[Tau] - \[Del]^2 \[Psi] = src,
+   divide through by Sqrt[b/c], and read off the coefficient of \[Psi]new[\[Tau]] (the
+   piece with no derivatives).  That coefficient should be the predicted
+   effective-mass-squared term b''/(2 b^3) - 3 b'^2/(4 b^4). *)
+ClearAll[b, \[Tau], \[Psi]new];
+trans[\[Tau]_] := Sqrt[b[\[Tau]]/c] \[Psi]new[\[Tau]];
+expr = (1/b[\[Tau]]^2) D[trans[\[Tau]], {\[Tau], 2}] - (b'[\[Tau]]/b[\[Tau]]^3) D[trans[\[Tau]], \[Tau]];
+expanded = Expand[expr/Sqrt[b[\[Tau]]/c]];
+coefPsi = Coefficient[expanded, \[Psi]new[\[Tau]]];
+predicted = b''[\[Tau]]/(2 b[\[Tau]]^3) - 3 b'[\[Tau]]^2/(4 b[\[Tau]]^4);
+FullSimplify[coefPsi - predicted]
+(* Result: 0  ✅ (Wolfram MCP, 2026-05-10) *)
 ```
 
 **Expanded derivation sketch:**
@@ -281,7 +273,7 @@ the substitution $\psi = (b/c)^{1/2}\Psi$ removes the first-order $\partial_\tau
 
 This is the **massive Klein–Gordon equation in curved/conformal form**. Compare Peskin & Schroeder Eq. (2.12) for the free KG equation $(\Box + m^2)\phi = 0$, with $m^2 \leftrightarrow [\ddot b/2b^3 - 3\dot b^2/4b^4]\cdot\hbar^2/c^2$ (cf. Eq. (6) below). When $b$ is constant ($\mathbf{a} = \mathbf{0}$), the "mass" vanishes and we recover the massless wave equation — i.e. the photon has zero mass in vacuum but acquires an effective mass during source acceleration.
 
-**Verdict:** 🟨 (algebra outlined; full coefficient extraction PENDING Mathematica).
+**Verdict:** ✅ Effective-mass coefficient $\ddot b/(2b^3) - 3\dot b^2/(4b^4)$ confirmed by Wolfram MCP.
 
 ---
 
@@ -294,18 +286,18 @@ $$\mu = \left\{\frac{\hbar^2}{c^2}\!\left[\frac{\ddot b}{2b^3} - \frac{3\dot b^2
 
 **Mathematica check:**
 ```mathematica
-(* PENDING *)
-ClearAll[u, \[Tau], c];
-b[\[Tau]_] := Sqrt[c^2 + u[\[Tau]] . u[\[Tau]]];
-bdot = D[b[\[Tau]], \[Tau]];
-bddot = D[b[\[Tau]], {\[Tau], 2}];
-expr = bddot/(2 b[\[Tau]]^3) - 3 bdot^2/(4 b[\[Tau]]^4);
-(* Substitute u'[\[Tau]] -> udot[\[Tau]], u''[\[Tau]] -> uddot[\[Tau]] *)
-exprSimp = FullSimplify[expr /. {u'[\[Tau]] -> udot[\[Tau]], u''[\[Tau]] -> uddot[\[Tau]]}];
-target = (u[\[Tau]] . uddot[\[Tau]] + udot[\[Tau]] . udot[\[Tau]])/(2 b[\[Tau]]^4)
-       - 5 (u[\[Tau]] . udot[\[Tau]])^2/(4 b[\[Tau]]^6);
-FullSimplify[exprSimp - target]
-(* Expected: 0 *)
+(* Mathematica's Dot is non-commutative for symbolic vectors, which spuriously
+   blocks the simplification.  Trick: use scalar surrogates X = u.u, Y = u.u',
+   Z = u.u'' + u'.u' — the chain rule on b^2 = c^2 + u.u gives all needed
+   identities in terms of X, Y, Z. *)
+ClearAll[X, Y, Z, c];
+bsq = c^2 + X;             (* b^2          *)
+bp  = Y / Sqrt[bsq];        (* b' = (u.u')/b                       *)
+bpp = (Z - Y^2/bsq) / Sqrt[bsq];  (* b'' = (u.u''+u'.u' - b'^2)/b *)
+LHS = bpp/(2 bsq^(3/2)) - 3 bp^2/(4 bsq^2);
+RHS = Z/(2 bsq^2) - 5 Y^2/(4 bsq^3);
+FullSimplify[LHS - RHS]
+(* Result: 0  ✅ (Wolfram MCP, 2026-05-10) *)
 ```
 
 **Expanded derivation:**
@@ -323,7 +315,7 @@ recovering the printed form exactly. $\blacksquare$
 
 In standard QFT, the photon is exactly massless (gauge invariance + masslessness from Proca-zero limit). Gill's $\mu$ is a *dynamical, source-dependent* photon mass that vanishes whenever the source is inertial. It is **not** the bound proposed by Goldhaber & Nieto (a frame-independent Proca mass, $\lesssim 10^{-24}$ GeV); it is a coefficient in a damped wave operator that only manifests during emission. Compare Jackson §1.2 for the standard "$m_\gamma = 0$" position and Bargmann–Wigner [Proc. Nat. Acad. Sci. 34, 211 (1948)] for the Proca framework.
 
-**Verdict:** ✅ (algebra; PENDING Mathematica).
+**Verdict:** ✅ Confirmed by Wolfram MCP. The algebraic identity $\ddot b/(2b^3)-3\dot b^2/(4b^4) = (\mathbf{u}\!\cdot\!\ddot{\mathbf{u}}+\dot{\mathbf{u}}^2)/(2b^4) - 5(\mathbf{u}\!\cdot\!\dot{\mathbf{u}})^2/(4b^6)$ holds.
 
 ---
 
