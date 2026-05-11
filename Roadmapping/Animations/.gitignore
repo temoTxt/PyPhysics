@@ -1,0 +1,18 @@
+# uv-managed virtualenv
+.venv/
+
+# Manim render caches
+rendered/Tex/
+rendered/texts/
+rendered/images/
+rendered/videos/**/partial_movie_files/
+
+# 1080p renders -- too large for git; can be rebuilt with `uv run manim -qh ...`
+rendered/videos/**/1080p60/
+
+# Manim per-scene caches
+manim_scenes/__pycache__/
+
+# Local manim config
+.manim/
+manim.cfg
