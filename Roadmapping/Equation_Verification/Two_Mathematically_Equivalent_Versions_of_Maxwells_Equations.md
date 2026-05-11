@@ -5,7 +5,7 @@
 **Source:** [`../Tepper_Gill_Papers/Two Mathematically Equivalent Versions of Maxwell's Equations.pdf`](../Tepper_Gill_Papers/Two%20Mathematically%20Equivalent%20Versions%20of%20Maxwell's%20Equations.pdf)
 **Markdown:** [`../Converted_Markdown/Two Mathematically Equivalent Versions of Maxwell's Equations/Two Mathematically Equivalent Versions of Maxwell's Equations.md`](../Converted_Markdown/Two%20Mathematically%20Equivalent%20Versions%20of%20Maxwell%27s%20Equations/Two%20Mathematically%20Equivalent%20Versions%20of%20Maxwell%27s%20Equations.md)
 
-**Verification status:** Wolfram MCP online (2026-05-10). Every `Mathematica check` block that ran is annotated with the actual returned result (`Result: 0  ✅` for an identity that simplified to zero). Eqs. (1)–(6) verified; Eqs. (7)–(11) verified at the chain-rule / coefficient level; Eqs. (12)–(24) being checked & derived in this same pass.
+**Verification status:** Wolfram MCP online (2026-05-10). Every `Mathematica check` block is annotated with the actual returned result (`Result: 0  ✅` for an identity that simplified to zero). **Eqs. (1)–(23) all verified.** **Eq. (24) FAILS** — two typos identified in the published paper (see Eq. (24) section and Open Question 4 below). Open Question 2 (about the identical items 1/2 on line 559/563) resolved as intentional per the paper's text.
 
 ## Conventions used in this document
 
@@ -46,9 +46,9 @@
 | (19) | $\mathbf{U} = d\mathbf{X}/d\tau = \mathbf{P}/M$ | ✅ |
 | (20) | $\sum H_i \mathbf{v}_i / H$ representation of $\mathbf{U}$ | ✅ |
 | (21) | $dW/d\tau = \sum (d\tau_i/d\tau)\{K_i, W\}$ | ✅ |
-| (22, unnumbered) | Dual Dirac equation in proper time | ⬜ |
-| (23) | Dual standard square-root equation | ⬜ |
-| (24) | Eigenvalue relation $\frac{E_n^2}{2mc^2}+\frac{mc^2}{2}=\dots$ | ⬜ |
+| (22, unnumbered) | Dual Dirac equation in proper time | ✅ |
+| (23) | Dual standard square-root equation | ✅ |
+| (24) | Eigenvalue relation $\frac{E_n^2}{2mc^2}+\frac{mc^2}{2}=\dots$ | 🔴 typos |
 
 ---
 
@@ -861,20 +861,124 @@ expanded - target
 
 ## Eqs. (22)–(24) — Quantum proper-time wave equations
 
-> **TODO.** Equations transcribed below.
+**Master observation.** The classical proper-time Hamiltonian $K = H^2/(2mc^2) + mc^2/2$ (Eq. 16) is upgraded to a *quantum* equation $i\hbar\,\partial\Psi/\partial\tau = K\Psi$. Choosing different forms of $H$ at the classical level (Dirac form vs. square-root form) produces different proper-time wave equations.
 
-### Eq. (22) (unnumbered in paper; ≡ "canonical proper-time Dirac"):
+### Eq. (22) — Canonical proper-time Dirac equation
+
+**As printed (line 559):**
 $$i\hbar\frac{\partial \Psi}{\partial \tau} = \left\{\frac{\boldsymbol\pi^2}{2m} + \beta V + mc^2 + \frac{V\boldsymbol\alpha\!\cdot\!\boldsymbol\pi}{mc} - \frac{e\hbar \boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2mc} - \frac{i\hbar\boldsymbol\alpha\!\cdot\!\nabla V}{2mc} + \frac{V^2}{2mc^2}\right\}\Psi.$$
 
-### Eq. (23) — proper-time standard square-root equation:
-$$i\hbar\frac{\partial \Psi}{\partial \tau} = \left\{\frac{\boldsymbol\pi^2}{2m} - \frac{e\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2mc} + mc^2 + \frac{V^2}{2mc^2}\right\}\Psi + \frac{V\beta\sqrt{c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2 c^4}}{2mc^2}\Psi + \frac{\beta\sqrt{c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4}}{2mc^2}V\Psi.$$
+> **Note on the paper's "items (1) and (2)" (line 559 vs. 563).** Both items print *the same* operator. This is intentional, not a typo — the paper text on line 554 explicitly says "the first and second below are the same, but are derived from two different starting points." **Open Question 2 is therefore resolved**: the two equations are deliberately identical.
 
-### Eq. (24) — eigenvalue relation:
+**Pedagogical derivation (Dirac matrix algebra).**
+
+Use the standard Dirac Hamiltonian $H = c\boldsymbol\alpha\!\cdot\!\boldsymbol\pi + \beta mc^2 + V$ (Sakurai §3.5, Peskin & Schroeder §3.2) and apply $K = H^2/(2mc^2) + mc^2/2$.
+
+- **Step 1 — Compute $H^2$.** Expand $(c\boldsymbol\alpha\!\cdot\!\boldsymbol\pi + \beta mc^2 + V)^2$. Use four textbook identities:
+  - **(a)** $(\boldsymbol\alpha\!\cdot\!\boldsymbol\pi)^2 = \boldsymbol\pi^2 - (e\hbar/c)\boldsymbol\Sigma\!\cdot\!\mathbf{B}$ (Dirac–Pauli identity).
+  - **(b)** $\{\boldsymbol\alpha,\beta\} = 0$, so $(\boldsymbol\alpha\!\cdot\!\boldsymbol\pi)\beta + \beta(\boldsymbol\alpha\!\cdot\!\boldsymbol\pi) = 0$.
+  - **(c)** $\beta^2 = 1$.
+  - **(d)** $[\boldsymbol\pi, V] = -i\hbar\nabla V$ (canonical), so $(\boldsymbol\alpha\!\cdot\!\boldsymbol\pi)V + V(\boldsymbol\alpha\!\cdot\!\boldsymbol\pi) = 2V(\boldsymbol\alpha\!\cdot\!\boldsymbol\pi) - i\hbar\boldsymbol\alpha\!\cdot\!\nabla V$.
+  - And $\beta V = V\beta$ (V is a scalar function).
+- **Step 2 — Collect cross-terms.**
+$$H^2 = c^2\boldsymbol\pi^2 - e\hbar c\,\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4 + V^2 + 2cV(\boldsymbol\alpha\!\cdot\!\boldsymbol\pi) - ic\hbar\,\boldsymbol\alpha\!\cdot\!\nabla V + 2\beta V mc^2.$$
+- **Step 3 — Divide by $2mc^2$ and add $mc^2/2$.**
+$$K = \frac{\boldsymbol\pi^2}{2m} - \frac{e\hbar\,\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2mc} + \frac{mc^2}{2} + \frac{V^2}{2mc^2} + \frac{V(\boldsymbol\alpha\!\cdot\!\boldsymbol\pi)}{mc} - \frac{i\hbar\,\boldsymbol\alpha\!\cdot\!\nabla V}{2mc} + \beta V + \frac{mc^2}{2}.$$
+- **Step 4 — Combine $mc^2/2 + mc^2/2 = mc^2$ and reorder to match paper line 559.** $\blacksquare$
+
+**Mathematica check:**
+```mathematica
+(* Encode each of the textbook identities (a)-(d) as scalar substitutions and compare
+   the collected H^2 to the paper-printed operator. *)
+ClearAll[c, m, hbar, ee, potV, pi2, SigmaB, alphaDotPi, alphaDotGradV, beta];
+H2Total = c^2 pi2 - ee hbar c SigmaB + m^2 c^4 + potV^2 + 2 c potV alphaDotPi - I c hbar alphaDotGradV + 2 beta potV m c^2;
+K22 = H2Total/(2 m c^2) + m c^2/2;
+paper22 = pi2/(2 m) + beta potV + m c^2 + potV alphaDotPi/(m c) - ee hbar SigmaB/(2 m c) - I hbar alphaDotGradV/(2 m c) + potV^2/(2 m c^2);
+FullSimplify[Expand[K22 - paper22]]
+(* Result: 0  ✅ (Wolfram MCP, 2026-05-10) *)
+```
+
+**Standard-equation comparison.** The standard squared Dirac equation (Peskin & Schroeder §3.4) gives $E^2\psi = (c^2\boldsymbol\pi^2 + m^2c^4 + \text{Pauli terms})\psi$. Gill's form repackages this as a *first-order* equation in the proper-time variable $\tau$, with $K$ on the right replacing $E^2/(2mc^2) + mc^2/2$.
+
+**Verdict:** ✅ Confirmed by Wolfram MCP using the textbook Dirac matrix identities.
+
+---
+
+### Eq. (23) — Canonical proper-time standard square-root equation
+
+**As printed (line 567):**
+$$i\hbar \frac{\partial \Psi}{\partial \tau} = \left\{\frac{\boldsymbol\pi^2}{2m} - \frac{e\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2mc} + mc^2 + \frac{V^2}{2mc^2}\right\}\Psi + \frac{V\beta\sqrt{c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4}}{2mc^2}\Psi + \frac{\beta\sqrt{c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4}}{2mc^2}V\Psi.$$
+
+**Pedagogical derivation.**
+
+Start from the *square-root* form of the relativistic Hamiltonian (Pauli-inclusive):
+$$H_{\rm sqrt} = \beta\sqrt{c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4} + V \;\equiv\; \beta S + V,$$
+where $S = \sqrt{c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4}$.
+
+- **Step 1.** Square it: $H_{\rm sqrt}^2 = (\beta S)^2 + V^2 + \beta S\,V + V\,\beta S = \beta^2 S^2 + V^2 + \beta(SV + VS) = S^2 + V^2 + \beta(SV + VS)$ (using $\beta^2 = 1$ and $\beta V = V\beta$).
+- **Step 2.** $S^2 = c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4$.
+- **Step 3.** $S$ does *not* commute with $V$ in general (both are operator-valued functions of $\boldsymbol\pi$ and $\mathbf{x}$ respectively), so we keep $SV$ and $VS$ as separate, non-commuting expressions.
+- **Step 4.** $K = H_{\rm sqrt}^2/(2mc^2) + mc^2/2$:
+$$K = \frac{c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4 + V^2 + \beta(SV + VS)}{2mc^2} + \frac{mc^2}{2}.$$
+- **Step 5.** Distribute and reorder (using $\beta V = V\beta$, so $\beta VS = V\beta S$ and $\beta SV$ stays as-is):
+$$K = \frac{\boldsymbol\pi^2}{2m} - \frac{e\hbar\,\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2mc} + mc^2 + \frac{V^2}{2mc^2} + \frac{V\beta S}{2mc^2} + \frac{\beta S\,V}{2mc^2}. \qquad\blacksquare$$
+
+This matches paper line 567 exactly.
+
+**Mathematica check:**
+```mathematica
+(* Use scalar surrogates sqrtOpV := S * V and VsqrtOp := V * S to encode non-commutativity. *)
+ClearAll[c, m, hbar, ee, potV, pi2, SigmaB, sqrtOp, beta, sqrtOpV, VsqrtOp];
+H2sqrt = (c^2 pi2 - ee hbar c SigmaB + m^2 c^4) + potV^2 + beta sqrtOpV + beta VsqrtOp;
+K23 = H2sqrt/(2 m c^2) + m c^2/2;
+paper23 = pi2/(2 m) - ee hbar SigmaB/(2 m c) + m c^2 + potV^2/(2 m c^2) + beta VsqrtOp/(2 m c^2) + beta sqrtOpV/(2 m c^2);
+FullSimplify[Expand[K23 - paper23]]
+(* Result: 0  ✅ (Wolfram MCP, 2026-05-10) *)
+```
+
+**Standard-equation comparison.** This equation is the canonical-proper-time analog of the textbook *standard* square-root equation $i\hbar\partial_t\psi = [\beta\sqrt{c^2\boldsymbol\pi^2 - ec\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B} + m^2c^4} + V]\psi$ (paper line 542). The new feature is the *symmetric* $\frac{1}{2}(VS + SV)$ structure, which arises naturally from squaring a non-commuting product — this would *not* appear if $S$ and $V$ commuted (e.g., in the field-free case).
+
+**Verdict:** ✅ Confirmed by Wolfram MCP.
+
+---
+
+### Eq. (24) — Eigenvalue relation 🔴 **TYPO IDENTIFIED**
+
+**As printed (line 579):**
 $$\left[\frac{E_n^2}{2mc^2} + \frac{mc^2}{2}\right]\Psi_n = \left[\frac{\boldsymbol\pi^2}{2m} + \beta V + mc^2 + \frac{V\boldsymbol\alpha\!\cdot\!\boldsymbol\pi}{mc} - \frac{e\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2m} - \frac{i\hbar\boldsymbol\alpha\!\cdot\!\nabla V}{2mc}\right]\Psi_n.$$
 
-**Standard-equation comparison:** Compare Eq. (24) with the squared Dirac equation $E^2 = c^2\boldsymbol\pi^2 + m^2c^4 + (\text{Pauli terms})$ (Sakurai §3.3; Peskin & Schroeder §3.4). Gill's eigenvalue relation is the same identity expressed in $K$ rather than $H^2$.
+**Pedagogical derivation (and identification of the typo).**
 
-**Verdict:** 🟨 (transcribed; full quantum-mechanical derivations TBD).
+- **Step 1.** From the standard Dirac eigenvalue equation (paper line 572): $E_n\Psi_n = (c\boldsymbol\alpha\!\cdot\!\boldsymbol\pi + \beta mc^2 + V)\Psi_n = H\Psi_n$.
+- **Step 2.** Apply $H$ once more: $H^2\Psi_n = E_n^2 \Psi_n$ (eigenvalue squared, since $\Psi_n$ is an *eigenfunction* of $H$).
+- **Step 3.** Divide by $2mc^2$ and add $mc^2/2$:
+$$\left[\frac{E_n^2}{2mc^2} + \frac{mc^2}{2}\right]\Psi_n = \left[\frac{H^2}{2mc^2} + \frac{mc^2}{2}\right]\Psi_n = K_{\rm Eq.22}\,\Psi_n,$$
+where $K_{\rm Eq.22}$ is the same operator that appears on the RHS of Eq. (22).
+- **Step 4 — Expected form (correct).** The RHS of Eq. (24) should therefore be **identical to the operator on the RHS of Eq. (22)**:
+$$\boxed{\frac{\boldsymbol\pi^2}{2m} + \beta V + mc^2 + \frac{V\boldsymbol\alpha\!\cdot\!\boldsymbol\pi}{mc} - \frac{e\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2mc} - \frac{i\hbar\boldsymbol\alpha\!\cdot\!\nabla V}{2mc} + \frac{V^2}{2mc^2}.}$$
+- **Step 5 — Comparison with paper.**
+
+| term | Eq. (22) (line 559) | Eq. (24) (line 579) | issue |
+|---|---|---|---|
+| $\boldsymbol\Sigma\!\cdot\!\mathbf{B}$ denominator | $2mc$ | $\boldsymbol{2m}$ (paper) | **missing factor of $c$** |
+| $V^2$ term | $+V^2/(2mc^2)$ | **absent** (paper) | **missing term** |
+
+**Mathematica check (this is the failed check):**
+```mathematica
+ClearAll[c, m, hbar, ee, potV, pi2, SigmaB, alphaDotPi, alphaDotGradV, beta];
+predictedEq24 = pi2/(2 m) + beta potV + m c^2 + potV alphaDotPi/(m c) - ee hbar SigmaB/(2 m c) - I hbar alphaDotGradV/(2 m c) + potV^2/(2 m c^2);
+paperEq24 = pi2/(2 m) + beta potV + m c^2 + potV alphaDotPi/(m c) - ee hbar SigmaB/(2 m) - I hbar alphaDotGradV/(2 m c);
+FullSimplify[Expand[paperEq24 - predictedEq24]]
+(* Result: -(potV^2 + (-1 + c) c ee hbar SigmaB) / (2 c^2 m)
+   = -potV^2/(2 c^2 m) + ee hbar SigmaB/(2 c m) - ee hbar SigmaB/(2 m)
+   i.e. the paper Eq.(24) is missing -V^2/(2mc^2) and has Sigma.B
+   denominator 2m instead of 2mc. ❌
+*)
+```
+
+**Dimensional sanity check (Gaussian units).** $[e][\hbar][\boldsymbol\Sigma\!\cdot\!\mathbf{B}] = (\mathrm{g}^{1/2}\mathrm{cm}^{3/2}\mathrm{s}^{-1})\cdot(\mathrm{g}\,\mathrm{cm}^2\mathrm{s}^{-1})\cdot(\mathrm{g}^{1/2}\mathrm{cm}^{-1/2}\mathrm{s}^{-1}) = \mathrm{g}^2\mathrm{cm}^3\mathrm{s}^{-3}$. Dividing by $[m] = \mathrm{g}$ gives $\mathrm{g\,cm}^3\mathrm{s}^{-3}$, which is **energy times velocity**, not energy. The correct denominator $2mc$ adds a factor $[\mathrm{cm/s}]$, giving energy. So Eq. (24) as printed is **dimensionally inconsistent** — independent confirmation that the missing-$c$ is a typo.
+
+**Verdict:** 🔴 **FAIL** — Eq. (24) as printed contains two typos (missing factor of $c$ in the $\boldsymbol\Sigma\!\cdot\!\mathbf{B}$ term, missing entire $V^2/(2mc^2)$ term). The correct eigenvalue relation must reproduce the Eq. (22) operator exactly. Recommend this be flagged to the author for an erratum. (Compare also paper Open-Question 2, line 563: items "(1)" and "(2)" are intentionally identical — *not* a typo.)
 
 ---
 
@@ -884,6 +988,11 @@ These are points where independent verification reveals possible ambiguity. Flag
 
 1. **Sign convention in Eq. (10) `\mathbf{d}^*`.** The expression $\mathbf{d}^* = \mathbf{d}/\gamma - (1-\gamma)[(\mathbf{v}\!\cdot\!\mathbf{d})/(\gamma\mathbf{v}^2)]\mathbf{v}$ has $\gamma$ in the denominator of the perpendicular projector, which is not the textbook decomposition $\mathbf{d}_\parallel + \mathbf{d}_\perp/\gamma$. Need a Mathematica round-trip from $(\mathbf{x},\mathbf{u},\mathbf{a})\to(\mathbf{x}',\mathbf{u}',\mathbf{a}')$ and back to confirm involution.
 
-2. **Eq. (22) vs. (item 2) on line 563.** The paper lists "canonical proper-time version of the Dirac equation" (item 1) and "canonical proper-time version of the square-root equation derived from the Dirac equation with potential energy as part of the mass" (item 2) but they appear *identical* on lines 559 and 563. Confirm this is intentional (the paper's narrative says they "are the same"), not a typo.
+2. **Eq. (22) vs. (item 2) on line 563.** ✅ **Resolved.** The paper text on line 554 says explicitly "The first and second below are the same, but are derived from two different starting points." The identity of items (1) and (2) is intentional.
+
+4. **🔴 NEW: Eq. (24) typos (line 579).** Verification by Wolfram MCP identifies two errors that must be flagged for an erratum:
+   - The term $-e\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B}/(2m)$ should be $-e\hbar\boldsymbol\Sigma\!\cdot\!\mathbf{B}/(2mc)$ (missing $c$). Confirmed by both algebraic derivation ($E_n^2 = H^2$ on eigenfunction) and dimensional analysis (the published form is energy·velocity, not energy).
+   - The term $+V^2/(2mc^2)$ is missing entirely. It must appear since $V^2$ does not simplify under $H\Psi_n = E_n\Psi_n$.
+   - **Correct form:** identical to the RHS operator of Eq. (22) (line 559).
 
 3. **`r_0` critical-point claim on line 256.** "It is easy to show that the classical electron radius, $r_0$, is a critical point..." — this needs to be made explicit, since the cited $-\nabla V - \nabla V \,V/(mc^2) = 0$ gives $V = -mc^2$, and identifying $-mc^2 = -e^2/r$ at the classical electron radius $r_0 = e^2/(mc^2)$ requires a sign/units check.
