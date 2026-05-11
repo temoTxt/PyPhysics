@@ -22,10 +22,10 @@ Legend: ⬜ not started · 🟨 in progress · ✅ complete · ⚠ blocked
 | Analytic Representation of The Dirac Equation | [Analytic_Representation_of_The_Dirac_Equation.md](Analytic_Representation_of_The_Dirac_Equation.md) | core results ✅ | ✅ | Green's-function-based analytical separation of Dirac (Sec II); operator-algebra chain (Sec V) parallels DRQM I Sec III. No new findings. |
 | Analytic Representation of The Square-Root Operator | [Analytic_Representation_of_The_Square-Root_Operator.md](Analytic_Representation_of_The_Square-Root_Operator.md) | core integral identities ✅ | ✅ | Yosida + Schulman path-integral construction; Bessel-function identities (9b, 11, 18, 32, 44) all ✅ via Wolfram MCP. No new findings. |
 | Relativistic Transformations of Thermodynamics | [Relativistic_Transformations_of_Thermodynamics.md](Relativistic_Transformations_of_Thermodynamics.md) | core ✅ | ✅ | Nakamura RRT + dual-theory specializations (ROG, PE, Landsberg). 4-velocity normalization (Eq 69) and dual-K (Eq 50) verified; two probable OCR artifacts in Markdown noted (not paper errors). |
-| Mathematical Concepts in Physics | — | 0 / ? | ⬜ | |
-| On the physical and mathematical foundations of quantum physics via functional integrals | — | 0 / ? | ⬜ | |
-| Constructive Representation Theory for the Feynman Operator Calculus | — | 0 / ? | ⬜ | |
-| Foundations for Relativistic Quantum Theory I — Feynman's Operator Calculus and the Dyson Conjectures | — | 0 / ? | ⬜ | |
+| Mathematical Concepts in Physics | [Feynman_Operator_Calculus_Papers.md](Feynman_Operator_Calculus_Papers.md) | cross-ref ✅ | ✅ | Single-author Gill survey; near-complete overlap with QED I. |
+| On the physical and mathematical foundations of quantum physics via functional integrals | [Feynman_Operator_Calculus_Papers.md](Feynman_Operator_Calculus_Papers.md) | cross-ref ✅ | ✅ | Esposito + Gill; HK + Lebesgue on $\mathbb{R}^\infty$ + KS-space + Feynman OC. |
+| Constructive Representation Theory for the Feynman Operator Calculus | [Feynman_Operator_Calculus_Papers.md](Feynman_Operator_Calculus_Papers.md) | cross-ref ✅ | ✅ | Continuous tensor product Hilbert space, time-ordered "film/bubble" formalism. |
+| Foundations for Relativistic Quantum Theory I — Feynman's Operator Calculus and the Dyson Conjectures | [Feynman_Operator_Calculus_Papers.md](Feynman_Operator_Calculus_Papers.md) | cross-ref ✅ | ✅ | Original FOC paper; standard semigroup theory + von Neumann tensor products. |
 | A sufficiency class for global (in time) solutions to the 3D Navier-Stokes equations II | — | 0 / ? | ⬜ | Pure-math; verify only load-bearing results (see scope below) |
 | Global (in Time) Solutions to the 3D-Navier-Stokes Equations on R³ | — | 0 / ? | ⬜ | Pure-math |
 | Global solutions to the homogeneous and inhomogeneous Navier-Stokes equations | — | 0 / ? | ⬜ | Pure-math |
