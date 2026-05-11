@@ -20,7 +20,7 @@ Legend: ⬜ not started · 🟨 in progress · ✅ complete · ⚠ blocked
 | FoundationsII-Classical | — | 0 / ? | ⬜ | |
 | The Classical Electron Problem | [The_Classical_Electron_Problem.md](The_Classical_Electron_Problem.md) | novel content ✅ | ✅ + ⚠️ | Liénard-Wiechert full chain (3.36, 3.40, 3.41, 3.45-3.46) ✅; Sec 3.3 Larmor analog ✅; **Eq (4.16) sign typo** flagged |
 | Analytic Representation of The Dirac Equation | [Analytic_Representation_of_The_Dirac_Equation.md](Analytic_Representation_of_The_Dirac_Equation.md) | core results ✅ | ✅ | Green's-function-based analytical separation of Dirac (Sec II); operator-algebra chain (Sec V) parallels DRQM I Sec III. No new findings. |
-| Analytic Representation of The Square-Root Operator | — | 0 / ? | ⬜ | |
+| Analytic Representation of The Square-Root Operator | [Analytic_Representation_of_The_Square-Root_Operator.md](Analytic_Representation_of_The_Square-Root_Operator.md) | core integral identities ✅ | ✅ | Yosida + Schulman path-integral construction; Bessel-function identities (9b, 11, 18, 32, 44) all ✅ via Wolfram MCP. No new findings. |
 | Relativistic Transformations of Thermodynamics | — | 0 / ? | ⬜ | |
 | Mathematical Concepts in Physics | — | 0 / ? | ⬜ | |
 | On the physical and mathematical foundations of quantum physics via functional integrals | — | 0 / ? | ⬜ | |
