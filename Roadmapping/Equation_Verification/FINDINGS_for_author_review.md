@@ -86,6 +86,38 @@ Print["  required r_e/r_0 for g_e:  ", InputForm[x /. First @ Solve[gr[x] == -2.
 
 ---
 
+## Finding 3 — TCEP Eq. (4.16): sign typo in the group-velocity relation
+
+**Paper:** Gill, Zachary, Lindesay, *The Classical Electron Problem*, *Foundations of Physics* **31** (2001) 1299–1354.
+
+**Location:** Eq. (4.16), Section 4.0 (Proper-Time Doppler Effect and Aberration), line 661 in the Markdown conversion.
+
+**As printed:**
+$$v_g \;=\; v_g' \;{\color{red}-}\; v.$$
+
+**Issue:** From the paper's stated transformation rules in (4.14)–(4.15):
+$$\frac{d\omega'}{d\tau} = \gamma\!\left(\frac{d\omega}{d\tau} - v\frac{dk}{d\tau}\right), \qquad \frac{dk'}{d\tau} = \gamma\frac{dk}{d\tau},$$
+the definitions $v_g = (d\omega/d\tau)/(dk/d\tau)$ and $v_g' = (d\omega'/d\tau)/(dk'/d\tau)$ give
+$$v_g' = \frac{\gamma(d\omega/d\tau - v\,dk/d\tau)}{\gamma\,dk/d\tau} = v_g - v \;\;\Longleftrightarrow\;\; \boxed{v_g \;=\; v_g' \;+\; v.}$$
+
+**Internal consistency.** The paper's own commentary on the result (line 663) reads: *"if the group velocity of the source has the value $c$ in one frame, it will not have that value in the other frame and, indeed, may have a **larger** value."* For $v_g$ to be larger than $v_g'$ at $v > 0$, the correct sign is $+v$. The printed formula (with $-v$) would make $v_g$ smaller — contradicting the surrounding text.
+
+**Reproducible Mathematica check**:
+```mathematica
+ClearAll[domega, dk, vv, gam];
+domegap = gam (domega - vv dk);
+dkp = gam dk;
+vgp = FullSimplify[domegap/dkp];
+Print["v_g' = ", vgp]; 
+(* Output: v_g' = domega/dk - vv  =>  v_g - v_g' = +v, NOT -v *)
+```
+
+**Convention caveat.** If $v$ is defined as the velocity of $X$ relative to $X'$ (opposite of the standard convention used in the Lorentz transformations (4.3c–d), where $v$ is the velocity of $X'$ relative to $X$), the sign would flip. But the rest of Section 4 uses the standard convention, so this interpretation seems unlikely.
+
+**Recommended fix:** $v_g = v_g' + v$.
+
+---
+
 ## Reproducibility
 
 All checks here were run through the Wolfram MCP server (`mcp-remote@latest https://services.wolfram.com/api/mcp`) on 2026-05-10/11. Single-line Wolfram Language inputs reproduce verbatim; full per-equation context is in:

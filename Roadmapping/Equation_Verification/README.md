@@ -18,7 +18,7 @@ Legend: ⬜ not started · 🟨 in progress · ✅ complete · ⚠ blocked
 | Dual Relativistic Quantum Mechanics I | [Dual_Relativistic_Quantum_Mechanics_I.md](Dual_Relativistic_Quantum_Mechanics_I.md) | ~28 / ~30 | ✅ + 🔴 | Eqs (I.1)–(III.22) verified; **Eq (III.22) g-factor claim fails** — paper's $r_e = 0.499857150068631\,r_0$ does not reproduce experimental $g_e = -2.00231930436256$ (formula gives $-2.0005714$ instead). Required $r_e \approx 0.4994205\,r_0$. |
 | FOUNDATIONS FOR QED I: MATHEMATICAL | — | 0 / ? | ⬜ | |
 | FoundationsII-Classical | — | 0 / ? | ⬜ | |
-| The Classical Electron Problem | — | 0 / ? | ⬜ | |
+| The Classical Electron Problem | [The_Classical_Electron_Problem.md](The_Classical_Electron_Problem.md) | novel content ✅ | ✅ + ⚠️ | Liénard-Wiechert full chain (3.36, 3.40, 3.41, 3.45-3.46) ✅; Sec 3.3 Larmor analog ✅; **Eq (4.16) sign typo** flagged |
 | Analytic Representation of The Dirac Equation | — | 0 / ? | ⬜ | |
 | Analytic Representation of The Square-Root Operator | — | 0 / ? | ⬜ | |
 | Relativistic Transformations of Thermodynamics | — | 0 / ? | ⬜ | |
