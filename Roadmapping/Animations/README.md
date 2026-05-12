@@ -23,7 +23,17 @@ This sub-project is **isolated from the parent `pyphysics` project**: it has its
 | [`manim_scenes/drqm_eq18_g_factor_derivation.py`](manim_scenes/drqm_eq18_g_factor_derivation.py) | Walk from dual Dirac Hamiltonian $K_D$ to the g-factor formula $g_r = 2[1 - 4r_0/(2r+r_0)]$ | [DRQM I Sec III](../Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md#section-iii-dirac-eigenvalue-problem-and-the-g-factor) |
 | [`manim_scenes/drqm_eq22_g_factor_finding.py`](manim_scenes/drqm_eq22_g_factor_finding.py) | **Finding 2 visualization:** plot of $g_r$ vs $r_e/r_0$ showing the paper's $r_e$ misses the experimental $g_e$ by $\approx 0.00175$, while the corrected $r_e \approx 0.499420510\,r_0$ hits exactly | [Findings doc](../Equation_Verification/FINDINGS_for_author_review.md#finding-2--drqm-i-eq-iii22-published-r_e-does-not-reproduce-the-experimental-g_e) |
 
-**Phase 3–4** (future work, see [issue #5](https://github.com/temoTxt/PyPhysics/issues/5)): TCEP Liénard–Wiechert; cross-paper synthesis.
+**Phase 3 — TCEP Liénard–Wiechert**:
+
+| Scene file | Topic | Verification doc cross-ref |
+|---|---|---|
+| [`manim_scenes/tcep_eq45_lienard_wiechert.py`](manim_scenes/tcep_eq45_lienard_wiechert.py) | Retarded-time geometry (source worldline, field point, light-cone constraint) → the three-term $\mathbf{E}$-field structure: velocity field, acceleration field, and the **new** dissipative term $\propto (\mathbf{u}\!\cdot\!\mathbf{a})$ that's the source of radiation reaction | [TCEP Sec 3.2](../Equation_Verification/The_Classical_Electron_Problem.md#section-32--full-lienardwiechert-derivation) |
+
+**Phase 4 — cross-paper synthesis**:
+
+| Scene file | Topic | Verification doc cross-ref |
+|---|---|---|
+| [`manim_scenes/synthesis_tour.py`](manim_scenes/synthesis_tour.py) | Central identity $b = \sqrt{c^2+\mathbf{u}^2}$ → three pillars (Maxwell, DRQM I, TCEP) → three findings flagged for author review → reproducibility note | [Findings doc](../Equation_Verification/FINDINGS_for_author_review.md) + [`README.md`](../Equation_Verification/README.md) |
 
 ## Build / render
 
