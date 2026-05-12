@@ -16,7 +16,14 @@ This sub-project is **isolated from the parent `pyphysics` project**: it has its
 | [`manim_scenes/maxwell_eq05_06_photonmass.py`](manim_scenes/maxwell_eq05_06_photonmass.py) | Eqs. (5)–(6): Liouville substitution $\psi = (b/c)^{1/2}\Psi_{\rm new}$ and the effective photon mass $\mu$ | [Maxwell verification](../Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md#eq-6--effective-photon-mass) |
 | [`manim_scenes/maxwell_eq10_11_hyperboloid.py`](manim_scenes/maxwell_eq10_11_hyperboloid.py) | Eqs. (10)–(11): boost preserving the 4-velocity hyperboloid $b^2 - \mathbf{u}^2 = c^2$ | [Maxwell verification](../Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md#eq-10--proper-time-boosts-of-position-velocity-acceleration) |
 
-**Phase 2–4** (future work, see [issue #5](https://github.com/temoTxt/PyPhysics/issues/5)): DRQM I g-factor; TCEP Liénard–Wiechert; cross-paper synthesis.
+**Phase 2 — DRQM I g-factor**:
+
+| Scene file | Topic | Verification doc cross-ref |
+|---|---|---|
+| [`manim_scenes/drqm_eq18_g_factor_derivation.py`](manim_scenes/drqm_eq18_g_factor_derivation.py) | Walk from dual Dirac Hamiltonian $K_D$ to the g-factor formula $g_r = 2[1 - 4r_0/(2r+r_0)]$ | [DRQM I Sec III](../Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md#section-iii-dirac-eigenvalue-problem-and-the-g-factor) |
+| [`manim_scenes/drqm_eq22_g_factor_finding.py`](manim_scenes/drqm_eq22_g_factor_finding.py) | **Finding 2 visualization:** plot of $g_r$ vs $r_e/r_0$ showing the paper's $r_e$ misses the experimental $g_e$ by $\approx 0.00175$, while the corrected $r_e \approx 0.499420510\,r_0$ hits exactly | [Findings doc](../Equation_Verification/FINDINGS_for_author_review.md#finding-2--drqm-i-eq-iii22-published-r_e-does-not-reproduce-the-experimental-g_e) |
+
+**Phase 3–4** (future work, see [issue #5](https://github.com/temoTxt/PyPhysics/issues/5)): TCEP Liénard–Wiechert; cross-paper synthesis.
 
 ## Build / render
 
