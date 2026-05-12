@@ -5,6 +5,10 @@
 
 A multi-step plan to recreate the history of physics from 1800 to 1965 — through the birth of particle physics — comparing the **standard development** with **Tepper Gill's proper-time / dual-theory framework**. Five chronological chapters covering three parallel threads (electromagnetism, quantum mechanics, solid-state / superconductivity / transistors), each ending in 1965 at the cusp of the standard model and Moore's law.
 
+**Plus two forward-looking chapters** (`Forward/`) treating quantum computing and fusion as speculative *consequences* of the 1800–1965 arc — open-question roadmaps rather than equation extrapolations. Different epistemic status (`#speculative` rather than `#inferred`); different chapter template (landscape-mapping rather than narrative).
+
+**Each chapter ships in three forms**: a reference markdown document (the "chapter"), a Manim animated video for key derivations, and a **podcast-episode script** — a 2–3-voice dialogue walking through the same material conversationally. Same primary research, three audience-facing artifacts: reader, viewer, listener.
+
 ## Scoping decisions (already settled)
 
 | Question | Decision |
@@ -51,6 +55,22 @@ Roadmapping/
     ├── 04_quantum_mechanics_1925_1948.md
     ├── 05_QED_renormalization_solid_state_1948_1965.md
     ├── 06_synthesis_divergence_map.md
+    ├── Forward/                                 # NEW — speculative open-question roadmaps
+    │   ├── README.md                            # framing: speculative, not derivational
+    │   ├── 07_quantum_computing_open_questions.md
+    │   └── 08_fusion_open_questions.md
+    ├── Podcast/                                 # NEW — 2-3 voice dialogue scripts per chapter
+    │   ├── README.md                            # speaker personas, conventions
+    │   ├── _template_episode.md
+    │   ├── episode_01_early_electromagnetism.md
+    │   ├── episode_02_classical_synthesis.md
+    │   ├── episode_03_old_quantum_theory.md
+    │   ├── episode_04_quantum_mechanics.md
+    │   ├── episode_05_QED_renormalization_solid_state.md
+    │   ├── episode_06_synthesis_divergence_map.md
+    │   ├── episode_07_quantum_computing.md
+    │   ├── episode_08_fusion.md
+    │   └── audio/                               # TTS output; gitignored
     └── Bibliography/
         ├── README.md                            # cite-key conventions, YAML schema, tags
         ├── build_bibtex.py                      # YAML → bibliography.bib generator
@@ -105,14 +125,18 @@ gill_corpus_overlap: ["Two_Mathematically_Equivalent_Versions_of_Maxwells_Equati
 
 ### Tag taxonomy
 
-- **By framework claim type**: `#verified` (cross-ref to a verification doc), `#inferred` (extrapolation), `#gill-silent` (standard physics only).
+- **By framework claim type** (confidence tiers, strongest → weakest):
+  - `#verified` — cross-ref to a Wolfram-confirmed verification doc.
+  - `#inferred` — direct/mechanical extrapolation of a published Gill equation to a topic he didn't cover (e.g., Bohr levels with K replacing H).
+  - `#speculative` — beyond mechanical extrapolation; proposes where the proper-time framework *might* bear on an open question, without doing the derivation. Used heavily in the `Forward/` chapters.
+  - `#gill-silent` — no claim about proper-time relevance at all.
 - **By thread**: `#thread/electromagnetism`, `#thread/quantum`, `#thread/solid-state`.
 - **By era**: `#era/1800-1860`, `#era/1860-1900`, `#era/1900-1925`, `#era/1925-1948`, `#era/1948-1965`.
 - **By topic**: free-form, e.g. `#hyperfine-splitting`, `#renormalization`, `#superconductivity`.
 
-### Chapter template structure
+### Historical chapter template (Ch 1–6)
 
-Each chapter has these sections (full template in `_template_chapter.md`):
+Each historical chapter has these sections (full template in `_template_chapter.md`):
 1. **Overview** — 1-paragraph framing of the era.
 2. **Historical narrative** — standard physics, key experiments highlighted; wikilinks to primary sources inline.
 3. **Proper-time commentary** — section per thread (EM / QM / solid-state); each claim tagged `#verified`, `#inferred`, or `#gill-silent`.
@@ -120,7 +144,76 @@ Each chapter has these sections (full template in `_template_chapter.md`):
 5. **Primary sources cited** — wikilink list to `Bibliography/Primary/*.md`.
 6. **Retrospective reviews drawn on** — wikilink list to `Bibliography/Retrospective/*.md`.
 
-## Eight-PR execution plan
+### Forward chapter template (Ch 7–8) — *different epistemic status*
+
+The forward chapters map *open questions* rather than tell a derivational story. Template (`Forward/_template_forward_chapter.md`):
+1. **Overview** — what the field is and why it's a consequence of the 1800–1965 arc.
+2. **Historical roots** — wikilinks back into Ch 1–5 identifying the moments in the historical arc that seeded this field.
+3. **Current state (2026 perspective)** — brief landscape paragraph, *not* a literature review.
+4. **Major open questions** — numbered list; each with a one-sentence statement + current status.
+5. **Speculative proper-time implications** — for each open question, where the dual-theory framework *might* bear on it. **Every claim tagged `#speculative`**; explicit disclaimer "Gill has not published on this — extrapolated from `[[…]]`".
+6. **Experimental tests that could distinguish frameworks** — if any exist or are buildable.
+7. **Bibliography** — mostly retrospective reviews + modern literature (the field is ongoing); primary sources sparser than historical chapters.
+
+Animations are sparser: 0–1 per forward chapter. The natural format is a roadmap diagram (conceptual flowchart of open questions and their interrelationships) rather than a derivation walkthrough.
+
+## Podcast episodes — conventions
+
+Each chapter ships with a companion podcast-episode script in `Roadmapping/History/Podcast/`. The script is a markdown file with dialogue between 2–3 named speakers, plus stage directions ("`[pause]`", "`[cue: animation maxwell_eq04_dissipative.py]`", etc.). Same primary research as the chapter; same wikilinks to bibliography; conversational form.
+
+### Speaker personas (3 voices)
+
+A fixed cast across all episodes to keep the narrative coherent:
+
+- **The Historian** — pushes the chronological narrative forward, cites primary sources, supplies context. Reads as scholarly but accessible.
+- **The Physicist** — explains the equations and the proper-time framework; takes the reader through the algebra at chalk-talk pace. Slight enthusiasm for the dual-theory contrasts.
+- **The Experimentalist** — focuses on what was actually measured, what wasn't, what the apparatus looked like, and what the data ruled out. Skeptical voice; asks the others to defend their claims with evidence.
+
+The 3-voice format is the default; for episodes where the third voice would be padding (e.g., the speculative forward chapters where there's less experimental data), the Experimentalist may drop out and it becomes a 2-voice dialogue.
+
+### Episode structure
+
+Mirrors the chapter structure but in dialogue form:
+
+1. **Cold open** — Historian sets the scene with a famous figure or experiment of the era; Experimentalist hooks the listener with "and here's what was puzzling about that result".
+2. **Historical sweep** — Historian leads, others interject with questions and elaborations. Wikilinked primary sources read aloud as "as Maxwell put it in his 1865 paper…".
+3. **Physics deep dive** — Physicist takes the floor; works through one or two key derivations. Stage directions cue the corresponding Manim scenes for the produced audio version.
+4. **Proper-time interlude** — explicit "now let's contrast that with how Gill's framework would frame this" moment. Physicist leads; Experimentalist asks "but how would we tell the difference experimentally?"
+5. **Closing** — Historian closes with a forward pointer to the next era; Experimentalist drops a hook for unresolved questions.
+
+Target length: ~30–45 minutes spoken (≈ 5,000–7,000 words script per episode).
+
+### Episode YAML frontmatter
+
+```yaml
+---
+episode: 02
+title: "Classical Synthesis 1860-1900"
+era: "1860-1900"
+chapter: 02_classical_synthesis_1860_1900
+speakers: [Historian, Physicist, Experimentalist]
+target_runtime_min: 35
+animations_cued:
+  - hist_maxwell_synthesis
+  - hist_michelson_morley
+status: draft   # draft | reviewed | tts-rendered
+---
+```
+
+The `animations_cued` field lets a future agent (or the TTS pipeline) auto-build a video version of the podcast with the animations dropped in at the right cue points.
+
+### Production pipeline (deferred — Phase 9, optional)
+
+The committed artifact is **always the script** (markdown). Audio production is optional and lives in a separate Phase 9 PR if/when we want it:
+
+- TTS via a Python tool (candidates: `pyttsx3` offline; ElevenLabs / OpenAI / Anthropic TTS via API; coqui-tts for open-source neural). Decision deferred to Phase 9.
+- Per-speaker voice selection: each persona gets a distinct voice, set in `Roadmapping/History/Podcast/README.md`.
+- Output: `Podcast/audio/episode_NN_*.mp3`; gitignored, regenerable from the script.
+- Optional: a `build_episode_video.py` that composites the audio with the cued animations into a finished video.
+
+If we never produce audio, the scripts are still publishable as written dialogue — like a series of physics-themed radio plays.
+
+## Eleven-PR execution plan (10 required + 1 optional)
 
 ### PR A — Obsidian retrofit *(prep, small)*
 
@@ -148,26 +241,29 @@ Each chapter has these sections (full template in `_template_chapter.md`):
 
 ### PR C–G — Phases 1–5 (one chapter per PR)
 
-Each chapter PR follows the same **five-step** pattern:
+Each chapter PR follows the same **six-step** pattern:
 
 1. **Bibliography stubs** — YAML frontmatter only, for ~10–24 era sources.
 2. **PDF acquisition pass** — fetch what's freely available (Royal Society archive, Wikisource, arxiv, archive.org); update `Acquisition_Tracker.md`; commit only public-domain PDFs (allow-listed).
 3. **Conversion pass** — `uv run python Roadmapping/parse_papers.py --input Roadmapping/Historical_Papers/Primary --output Roadmapping/Historical_Converted_Markdown/Primary`. Commit converted markdown + images.
 4. **Narrative pass** — write the chapter. Inline wikilinks resolve to the now-filled bibliography notes; quote directly from the converted markdown where useful.
 5. **QA + retrospective summaries + animation** — eyeball converted equations for OCR errors and fix the load-bearing ones; fill in 2–3-paragraph summaries on retrospective notes; render any new Manim scenes.
+6. **Podcast-episode script** — write the dialogue version of the chapter for `Roadmapping/History/Podcast/episode_NN_*.md`. Reuses the same bibliography wikilinks and animation cross-references; converts the narrative into 2–3-voice dialogue (target ~30–45 min runtime). Audio production deferred to optional Phase 9.
 
-Per-chapter sizing:
+Per-chapter sizing (each PR includes chapter narrative + bibliography stubs + animation + podcast script):
 
-| PR | Phase | Chapter | New bib notes | New Manim scenes | Est. lines (excl. converted PDFs) |
-|---|---|---|---|---|---|
-| C | 1 | 1: 1800–1860 | ~13 | 1 | ~600 |
-| D | 2 | 2: 1860–1900 (load-bearing) | ~16 | 2 | ~1100 |
-| E | 3 | 3: 1900–1925 | ~20 | 2 | ~1000 |
-| F | 4 | 4: 1925–1948 | ~17 | 2 | ~1100 |
-| G | 5 | 5: 1948–1965 (headline) | ~24 | 2 | ~1300 |
-| H | 6 | 6: Synthesis + indexes | 0 | 1 (extends `synthesis_tour`) | ~500 |
+| PR | Phase | Chapter | New bib notes | New Manim scenes | Podcast script lines | Est. total lines (excl. converted PDFs) |
+|---|---|---|---|---|---|---|
+| C | 1 | 1: 1800–1860 | ~13 | 1 | ~600 | ~1,200 |
+| D | 2 | 2: 1860–1900 (load-bearing) | ~16 | 2 | ~900 | ~2,000 |
+| E | 3 | 3: 1900–1925 | ~20 | 2 | ~800 | ~1,800 |
+| F | 4 | 4: 1925–1948 | ~17 | 2 | ~900 | ~2,000 |
+| G | 5 | 5: 1948–1965 (headline) | ~24 | 2 | ~1,000 | ~2,300 |
+| H | 6 | 6: Synthesis + indexes | 0 | 1 (extends `synthesis_tour`) | ~600 | ~1,100 |
+| I | 7 | 7: Quantum computing open questions *(forward)* | ~15 (mostly retrospective + modern review) | 0–1 (optional roadmap diagram) | ~700 | ~1,500 |
+| J | 8 | 8: Fusion open questions *(forward)* | ~13 | 0–1 | ~700 | ~1,500 |
 
-**Totals:** ~95 bibliography notes, ~10 new Manim scenes, 6 chapters, ~5,600 lines of narrative + bibliography (PDFs and converted markdown not counted).
+**Totals (incl. forward chapters + podcast scripts):** ~123 bibliography notes, ~10–12 new Manim scenes, 8 podcast episodes (~6,200 lines of dialogue scripts), 8 reference chapters, ~13,400 total lines of narrative + bibliography + dialogue (PDFs and converted markdown not counted).
 
 ### PR H — Phase 6 synthesis
 
@@ -175,6 +271,65 @@ Per-chapter sizing:
 - Dataview query pages: `_index_by_year.md` (all bibliography by year), `_index_by_tag.md` (all by tag), `_index_inferred_claims.md` (every `#inferred` extrapolation across the project, for periodic review).
 - Extend `Roadmapping/Animations/manim_scenes/synthesis_tour.py` to span the full 165-year arc, or add `hist_full_synthesis.py` as a complement.
 - Optional: a small Python script that emits a citation-network graph PNG from the wikilinks (for embedding in the synthesis chapter).
+
+### PR I — Phase 7: Quantum Computing open questions *(forward, speculative)*
+
+`07_quantum_computing_open_questions.md` — open-question roadmap for QC as a consequence of the historical arc.
+
+**Historical roots** (back-links into Ch 1–5):
+- Bohr atom (Ch 3) → quantization of states (qubit prototype).
+- Heisenberg matrix mechanics (Ch 4) → linear algebra of QM (the lingua franca of QC).
+- Dirac equation (Ch 4) → spin-½ systems (natural qubit).
+- BCS Cooper pairs (Ch 5) → superconducting qubits.
+- Josephson junctions (Ch 5) → transmon qubits.
+- Lamb shift + cavity QED (Ch 5) → circuit QED.
+
+**Major open questions, with speculative proper-time bearing**:
+- **Decoherence channels**: does Gill's KS-Hilbert space + time-ordered operator calculus give a different account of decoherence than standard QFT? `#speculative` (extrapolated from `[[FOUNDATIONS_FOR_QED_I_MATHEMATICAL]]` Sec 3–4).
+- **Cavity QED coherence**: does the dynamical "effective photon mass" μ in dual EM affect coherence times in superconducting circuit QED? `#speculative` (extrapolated from `[[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]` Eq. 6).
+- **QED error-budget verification**: if Dyson's conjecture is dissolved in Gill's framework, does the QED error budget for high-precision QC verification experiments change? `#speculative`.
+- **g-factor measurements as QC tests**: could a high-precision superconducting qubit array be designed to distinguish standard QED from Gill's dual QED predictions (cf. `[[FINDINGS_for_author_review]]` Finding 2)? `#speculative` — most concrete experimental hook.
+- **Topological QC / anyons**: Gill is silent; flag `#gill-silent`.
+
+**Bibliography**: mostly modern QC reviews (Nielsen-Chuang, Preskill notes, surface-code papers) + a few foundational classics (Feynman 1982 "Simulating Physics with Computers", Deutsch 1985, Shor 1994, Kitaev 2003). Most sources via arxiv (open access).
+
+**Scenes**: optionally one — a roadmap diagram showing the open questions and their interrelationships, possibly extending `synthesis_tour.py`'s style.
+
+### PR J — Phase 8: Fusion open questions *(forward, speculative)*
+
+`08_fusion_open_questions.md` — open-question roadmap for fusion as a consequence of the historical arc.
+
+**Historical roots** (back-links into Ch 1–5):
+- Atomic theory + Rutherford nucleus (Ch 3) → atoms exist and have a nucleus.
+- Einstein E=mc² (Ch 3) → mass-energy equivalence → basis for fusion energy release.
+- Aston mass defect (Ch 3) → binding-energy curve.
+- Eddington stellar fusion conjecture (Ch 4) → stars powered by H→He fusion.
+- Bethe CNO cycle / pp-chain (Ch 4) → quantitative astrophysical fusion.
+- Teller-Ulam thermonuclear (Ch 5) → military fusion.
+- ZETA / Tokamak / Lawson criterion (Ch 5) → controlled fusion engineering.
+
+**Major open questions, with speculative proper-time bearing**:
+- **Relativistic plasma corrections**: in dense plasmas (e.g., inertial confinement at peak compression) where ions move at significant fractions of c, does the "collaborative speed" `b = √(c²+u²)` differ measurably from c in cross-section calculations? `#speculative`.
+- **Modified Lorentz force in plasma**: Gill's Maxwell paper Eq. (18) has a `V/(mcb)` correction term. For typical fusion plasma `V/(mc²) ~ 10⁻⁶` (eV vs MeV rest mass), so the correction is below current detection — quantify exactly how much below. `#speculative`.
+- **Coulomb barrier tunneling**: standard nuclear physics; firmly `#gill-silent`.
+- **Confinement criteria** (Lawson, triple product, ignition): mostly standard plasma physics; `#gill-silent`.
+
+The forward chapter is honest that fusion is largely `#gill-silent` — most of the interesting connection is *historical-arc context*, not proper-time-frames-the-prediction. The chapter's payoff is showing how nuclear physics emerged from the same 1800–1965 development as the dual-theory thread.
+
+**Bibliography**: Aston classics, Bethe 1939, Lawson 1957, ITER design docs, modern fusion reviews. Mix of pre-1929 PD (Aston), mid-century in-copyright (Bethe), and modern arxiv.
+
+**Scenes**: optionally one — binding-energy curve animated with the historical experimental data points overlaid, or a roadmap diagram.
+
+### PR K — Phase 9 *(optional)*: Podcast audio production
+
+Decoupled from chapter PRs. Tackles end-to-end audio production for the 8 episode scripts written in PRs C–J:
+
+- TTS-engine decision: `pyttsx3` offline / `coqui-tts` open-source neural / commercial API (ElevenLabs, OpenAI, Anthropic Skill). Per-speaker voice IDs codified in `Roadmapping/History/Podcast/README.md`.
+- `Roadmapping/History/Podcast/build_audio.py` — `uv run` script that parses an episode script (YAML frontmatter + dialogue), calls TTS per speaker line, concatenates with appropriate pauses, and emits `audio/episode_NN_*.mp3`.
+- Optional companion `build_episode_video.py` — composites the audio with the cued animations from `animations_cued:` into a finished video for YouTube-style publication.
+- All audio output gitignored (regenerable from the scripts).
+
+This is an "if we want it" PR — the scripts themselves are publishable as written dialogue without ever running TTS.
 
 ## Per-chapter scene proposals
 
@@ -186,6 +341,8 @@ Per-chapter sizing:
 | 4 | `hist_klein_gordon_vs_dual.py` — negative-probability problem and how the dual K dissolves it. `hist_positron_isodual.py` — Anderson + Santilli isodual reinterpretation. |
 | 5 | `hist_lamb_shift_contrast.py`. Reuses [`drqm_eq22_g_factor_finding.py`](../Animations/manim_scenes/drqm_eq22_g_factor_finding.py) as the chapter payoff. |
 | 6 | Extends [`synthesis_tour.py`](../Animations/manim_scenes/synthesis_tour.py). |
+| 7 *(forward)* | Optional `forward_qc_roadmap.py` — open-question roadmap diagram; flowchart-style rather than derivational. |
+| 8 *(forward)* | Optional `forward_fusion_binding_curve.py` — binding-energy curve with historical data overlay. |
 
 ## OCR-quality + copyright caveats
 
@@ -207,6 +364,8 @@ The 11 papers verified in PR #4 are the "anchor texts" for proper-time commentar
 | 3 | `[[FoundationsII-Classical]]`, `[[Analytic_Representation_of_The_Square-Root_Operator]]` |
 | 4 | `[[Dual_Relativistic_Quantum_Mechanics_I]]`, `[[Analytic_Representation_of_The_Dirac_Equation]]`, `[[FoundationsII-Classical]]` |
 | 5 | `[[Dual_Relativistic_Quantum_Mechanics_I]]`, `[[FOUNDATIONS_FOR_QED_I_MATHEMATICAL]]`, `[[Feynman_Operator_Calculus_Papers]]`, `[[Relativistic_Transformations_of_Thermodynamics]]`, `[[FINDINGS_for_author_review]]` |
+| 7 *(forward)* | `[[FOUNDATIONS_FOR_QED_I_MATHEMATICAL]]` (KS-Hilbert space, time-ordered operator calculus), `[[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]` (μ photon mass), `[[FINDINGS_for_author_review]]` (Finding 2 as QC test hook) |
+| 8 *(forward)* | `[[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]` (Eq. 18 modified Lorentz force; collaborative speed `b` in plasma) |
 
 ## Open items left for execution time
 
