@@ -1,0 +1,13 @@
+[project]
+name = "pyphysics-animations"
+version = "0.1.0"
+description = "Manim animations of equation derivations from the Gill physics corpus"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "manim>=0.19.0",
+    "numpy>=1.26",
+]
+
+# Intentionally NOT a workspace member of the parent pyphysics project.
+# Manim requires PyAV which lacks wheels for Python 3.14, so this sub-project
+# is pinned to 3.13 and managed independently.
