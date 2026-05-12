@@ -57,12 +57,7 @@ class TCEPLienardWiechert(Scene):
             """Source position x'(t).  Slightly curved trajectory."""
             return -2.0 + 0.6 * t + 0.15 * t**2
 
-        worldline_curve = axes.plot(
-            lambda t: t,  # y-axis is time t
-            x_range=[0, 3.5],
-            color=BLUE,
-        )
-        # Re-do: parametric since worldline is x(t), not t(x)
+        # Build worldline parametrically: time t runs along the y-axis, source position along x.
         worldline_pts = [axes.c2p(worldline(t), t) for t in np.linspace(0, 3.5, 50)]
         worldline_curve = VMobject(color=BLUE, stroke_width=4)
         worldline_curve.set_points_smoothly(worldline_pts)
@@ -89,15 +84,17 @@ class TCEPLienardWiechert(Scene):
         # Need P_t - tau' = P_x - worldline(tau').  Solve numerically.
         def light_cone_eq(tp):
             return (P_t - tp) - (P_x - worldline(tp))
-        # crude bisection
-        a, b = 0.0, 3.0
+        # Crude bisection.  Bracket variable names deliberately avoid `a` (acceleration)
+        # and `b` (collaborative speed of light), which are load-bearing physics symbols
+        # elsewhere in this codebase.
+        t_lo, t_hi = 0.0, 3.0
         for _ in range(40):
-            mid = 0.5 * (a + b)
+            mid = 0.5 * (t_lo + t_hi)
             if light_cone_eq(mid) > 0:
-                a = mid
+                t_lo = mid
             else:
-                b = mid
-        tau_prime = 0.5 * (a + b)
+                t_hi = mid
+        tau_prime = 0.5 * (t_lo + t_hi)
         x_prime = worldline(tau_prime)
 
         ret_pt = axes.c2p(x_prime, tau_prime)
