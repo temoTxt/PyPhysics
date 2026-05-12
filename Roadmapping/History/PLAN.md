@@ -228,18 +228,34 @@ If we never produce audio, the scripts are still publishable as written dialogue
 
 ### PR B — Phase 0 infrastructure
 
+**Documentation + skeleton:**
 - `Roadmapping/History/README.md` — methodology + Obsidian conventions + comparison template.
-- `Roadmapping/History/_template_chapter.md` — copyable scaffold.
+- `Roadmapping/History/_template_chapter.md` — copyable scaffold for historical chapters.
+- `Roadmapping/History/Forward/_template_forward_chapter.md` — copyable scaffold for forward chapters.
+- `Roadmapping/History/Podcast/_template_episode.md` — copyable scaffold for podcast episodes.
 - `Roadmapping/History/Bibliography/README.md` — cite-key conventions, YAML schema, tag taxonomy.
-- `Roadmapping/History/Bibliography/build_bibtex.py` — small `uv run python` script that reads YAML frontmatter from every `Bibliography/**/*.md` and emits `bibliography.bib`. Generated file gitignored.
-- Empty chapter files (`01_…md` through `06_…md`) with template + section headings.
-- **Refactor `Roadmapping/parse_papers.py`** to accept `--input` / `--output` / `--skip-existing` CLI args. Existing behavior preserved when called with defaults.
+- `Roadmapping/History/Podcast/README.md` — speaker personas + canonical cast + persona → voice mapping (voices empty until PR K).
+- Empty chapter files (`01_…md` through `06_…md`, `07_…md`, `08_…md`) with their respective templates + section headings.
+- Update root `CLAUDE.md` with paragraphs on Obsidian conventions, PDF-acquisition workflow, and tooling locations.
+
+**Tools (see "Required tools and scripts" section above):**
+- **Refactor** `Roadmapping/parse_papers.py` to accept `--input` / `--output` / `--skip-existing` CLI args; backwards-compatible.
+- **New**: `Roadmapping/History/Bibliography/build_bibtex.py`.
+- **New**: `Roadmapping/History/Bibliography/scaffold_bib_note.py`.
+- **New**: `Roadmapping/History/Bibliography/update_acquisition_tracker.py`.
+
+**Directory + tracker setup:**
 - Create `Roadmapping/Historical_Papers/Primary/` + `Retrospective/` + `Roadmapping/Historical_Converted_Markdown/Primary/` + `Retrospective/` (with `.gitkeep`).
-- Add `Roadmapping/Historical_Papers/Acquisition_Tracker.md` skeleton listing all ~95 cite-keys with `pdf_status: pending`.
+- Add `Roadmapping/Historical_Papers/Acquisition_Tracker.md` skeleton listing all ~123 cite-keys with `pdf_status: pending` (use `update_acquisition_tracker.py` to bootstrap).
 - Add `Historical_Papers/` to `.gitignore` with allow-list pattern for `*.pdf` matching public-domain entries (revisited per-chapter).
-- Update root `CLAUDE.md` with one paragraph on Obsidian conventions + PDF-acquisition workflow.
+
+**Dependencies:**
+- Add `pyyaml` to root `pyproject.toml` (for bibliography frontmatter parsing).
+- Add `requests` to root `pyproject.toml` (for `scaffold_bib_note.py --from-doi` Crossref lookup).
 
 ### PR C–G — Phases 1–5 (one chapter per PR)
+
+**PR C also introduces** four per-chapter helper tools (used by every subsequent chapter PR; see "Required tools and scripts" above): `_tools/fetch_pdf.py`, `_tools/validate_wikilinks.py`, `_tools/qa_converted_markdown.py`, `_tools/chapter_status.py`, plus `Podcast/lint_episode.py`. They land in PR C so PRs D–J can use them; their development is part of the PR C scope.
 
 Each chapter PR follows the same **six-step** pattern:
 
@@ -268,9 +284,8 @@ Per-chapter sizing (each PR includes chapter narrative + bibliography stubs + an
 ### PR H — Phase 6 synthesis
 
 - `06_synthesis_divergence_map.md` — closing chapter: where standard and proper-time agree, where they diverge sharply.
-- Dataview query pages: `_index_by_year.md` (all bibliography by year), `_index_by_tag.md` (all by tag), `_index_inferred_claims.md` (every `#inferred` extrapolation across the project, for periodic review).
+- **New tools** (see "Required tools and scripts"): `_tools/build_dataview_indexes.py` (generates `_index_by_year.md`, `_index_by_tag.md`, `_index_inferred_claims.md` covering every `#inferred` + `#speculative` claim across all chapters), and *optional* `_tools/citation_graph.py` (emits a static citation-network PNG for embedding in the chapter).
 - Extend `Roadmapping/Animations/manim_scenes/synthesis_tour.py` to span the full 165-year arc, or add `hist_full_synthesis.py` as a complement.
-- Optional: a small Python script that emits a citation-network graph PNG from the wikilinks (for embedding in the synthesis chapter).
 
 ### PR I — Phase 7: Quantum Computing open questions *(forward, speculative)*
 
@@ -324,12 +339,72 @@ The forward chapter is honest that fusion is largely `#gill-silent` — most of 
 
 Decoupled from chapter PRs. Tackles end-to-end audio production for the 8 episode scripts written in PRs C–J:
 
-- TTS-engine decision: `pyttsx3` offline / `coqui-tts` open-source neural / commercial API (ElevenLabs, OpenAI, Anthropic Skill). Per-speaker voice IDs codified in `Roadmapping/History/Podcast/README.md`.
-- `Roadmapping/History/Podcast/build_audio.py` — `uv run` script that parses an episode script (YAML frontmatter + dialogue), calls TTS per speaker line, concatenates with appropriate pauses, and emits `audio/episode_NN_*.mp3`.
-- Optional companion `build_episode_video.py` — composites the audio with the cued animations from `animations_cued:` into a finished video for YouTube-style publication.
-- All audio output gitignored (regenerable from the scripts).
+- **TTS-engine decision**: `pyttsx3` offline / `coqui-tts` open-source neural / commercial API (ElevenLabs, OpenAI). Per-speaker voice IDs codified in `Roadmapping/History/Podcast/README.md`. Decision deferred to the start of PR K based on quality/cost tradeoff at that time.
+- **New tools** (see "Required tools and scripts"): `Podcast/build_audio.py` (parses script → TTS per speaker → concatenated MP3 per episode) and optional companion `Podcast/build_episode_video.py` (composites audio with cued animations into MP4).
+- **TTS-backend dependencies** added to root `pyproject.toml` only in this PR (not earlier).
+- All audio + video output gitignored (regenerable from the scripts).
 
 This is an "if we want it" PR — the scripts themselves are publishable as written dialogue without ever running TTS.
+
+## Required tools and scripts
+
+The campaign needs a suite of supporting scripts. They land in the PR that first needs them (most in Phase 0); each is small (<300 lines) and follows the project convention `uv run python path/to/script.py …`. All Python paths assume the root project's 3.14 env unless explicitly noted.
+
+### Phase 0 essentials (block PR B)
+
+These must exist before any chapter PR can start.
+
+| Script | Path | Purpose | Lines |
+|---|---|---|---|
+| `parse_papers.py` *(refactor)* | `Roadmapping/parse_papers.py` | PDF → markdown via marker-pdf. Existing script; gains `--input` / `--output` / `--skip-existing` CLI args so it can serve both the Gill corpus and the new historical-papers tree. Backwards-compatible when called with no args. | ~30 line diff |
+| `build_bibtex.py` | `Roadmapping/History/Bibliography/build_bibtex.py` | Walks `Bibliography/**/*.md` YAML frontmatter; emits `Bibliography/bibliography.bib`. Output gitignored — YAML is canonical. YAML → BibTeX field mapping documented in the script's docstring. | ~150 |
+| `scaffold_bib_note.py` | `Roadmapping/History/Bibliography/scaffold_bib_note.py` | Given `--cite-key`, optional `--doi`, optional `--year/--author/--title`, emits a skeleton `Bibliography/Primary/<cite-key>.md` with valid YAML frontmatter. Optional `--from-doi` flag auto-fills metadata via the Crossref REST API. Speeds up "bibliography stubs" step in chapter PRs by ~10×. | ~200 |
+| `update_acquisition_tracker.py` | `Roadmapping/History/Bibliography/update_acquisition_tracker.py` | Reads all `Bibliography/**/*.md` frontmatter; regenerates the status table in `Historical_Papers/Acquisition_Tracker.md`. Idempotent. Run after any batch of new bib stubs. | ~120 |
+
+### Per-chapter helpers (introduced in chapter PRs)
+
+These land in the earliest chapter PR that needs them (typically PR C) and persist for the rest of the campaign.
+
+| Script | Path | Introduced in | Purpose | Lines |
+|---|---|---|---|---|
+| `fetch_pdf.py` | `Roadmapping/History/_tools/fetch_pdf.py` | PR C | Given `--cite-key` and `--url` (or `--doi` + Crossref lookup), downloads the PDF into `Historical_Papers/Primary/` or `Retrospective/`. Updates the bibliography note's `pdf_status` and `pdf_path` fields. Logs to `Acquisition_Tracker.md`. | ~250 |
+| `validate_wikilinks.py` | `Roadmapping/History/_tools/validate_wikilinks.py` | PR C | Walks every `.md` in `History/`, `Equation_Verification/`, `Animations/`. Checks each `[[wikilink]]` (including section-anchor forms `[[file#heading]]`) resolves to a real file/heading. Outputs a broken-link report; non-zero exit on failure. **Pre-commit hook candidate.** Crucial once the bibliography grows past ~30 notes. | ~180 |
+| `qa_converted_markdown.py` | `Roadmapping/History/_tools/qa_converted_markdown.py` | PR C | Scans `Historical_Converted_Markdown/**/*.md` for marker-pdf OCR failure patterns: lone `V` near equations (Vanadium artifact), exponent malformations like `c^{22}` adjacent to `\pi`, missing `\hbar` in known QM contexts, page-break artifacts, running-header bleed-through. **Flags only; doesn't auto-fix.** Output is a per-paper checklist for the chapter's QA step. | ~280 |
+| `chapter_status.py` | `Roadmapping/History/_tools/chapter_status.py` | PR C | Compact dashboard: reads all chapter files + bibliography YAML + Acquisition_Tracker; prints a per-chapter table (bib stubs filled / PDFs acquired / scenes rendered / podcast script status / wikilinks valid). Helps a future agent (or me, mid-campaign) know what's outstanding without spelunking. | ~200 |
+
+### Synthesis tools (PR H)
+
+| Script | Path | Purpose | Lines |
+|---|---|---|---|
+| `build_dataview_indexes.py` | `Roadmapping/History/_tools/build_dataview_indexes.py` | Generates static markdown index pages mimicking Dataview output for users without the plugin: `_index_by_year.md`, `_index_by_tag.md`, `_index_inferred_claims.md` (every `#inferred` + `#speculative` claim across all chapters with anchors). Idempotent; re-runs as new chapters land. | ~250 |
+| `citation_graph.py` | `Roadmapping/History/_tools/citation_graph.py` | *Optional.* Builds a directed graph of citations (chapter → bib note → verification doc → animation) and emits a PNG via graphviz for embedding in the synthesis chapter. Obsidian's built-in graph view already does this interactively; this is for the static publication. | ~180 |
+
+### Podcast tooling (PR I/J for the linter, PR K optional for audio)
+
+| Script | Path | Introduced in | Purpose | Lines |
+|---|---|---|---|---|
+| `lint_episode.py` | `Roadmapping/History/Podcast/lint_episode.py` | PR C *(first episode)* | Validates a podcast episode script: YAML schema, speakers ∈ canonical cast, every `animations_cued` resolves to a real Manim scene file, every wikilinked source exists, rough word-count → runtime cross-check (5,000–7,000 words ≈ 30–45 min). Run per episode in the chapter PR. | ~200 |
+| `build_audio.py` | `Roadmapping/History/Podcast/build_audio.py` | PR K *(optional, Phase 9)* | Parses episode markdown (YAML + dialogue lines like `Historian: …`); calls a TTS engine per speaker with persona → voice mapping from `Podcast/README.md`; concatenates with appropriate pauses; emits `Podcast/audio/episode_NN_*.mp3`. **Configurable TTS backend**: `pyttsx3` (offline), `coqui-tts` (open-source neural), or commercial API. | ~400 |
+| `build_episode_video.py` | `Roadmapping/History/Podcast/build_episode_video.py` | PR K *(optional)* | Composites the audio (from `build_audio.py`) with the cued animations (from `animations_cued:` frontmatter) into a finished video using ffmpeg. Output: `Podcast/video/episode_NN_*.mp4`. Only relevant if we want YouTube-ready episodes. | ~250 |
+
+### Nice-to-have / deferred
+
+These can wait until a concrete need arises:
+
+- **Manim scene template generator** — emits a new scene file from the canonical structure (docstring + render command + Scene subclass skeleton).
+- **Bidirectional cross-reference checker** — extends `validate_wikilinks.py` to flag asymmetric links (A wikilinks B but B doesn't wikilink A).
+- **PDF allow-list manager** — given the gitignore-by-default policy for `Historical_Papers/`, reads `Acquisition_Tracker.md` and ensures every `pdf_status: out_of_copyright_public` PDF is force-added while every `pdf_status: acquired` (in-copyright) PDF is *not* in the index.
+- **OCR-fixer for pre-1900 scans** — beyond flagging, attempt automated repair for known patterns in Maxwell-era scans.
+
+### Tooling-conventions checklist
+
+Every new script lands with:
+
+1. **Top-of-file docstring** — purpose + usage (`uv run python …`) + I/O contract.
+2. **`if __name__ == "__main__": main()`** entrypoint with `argparse` CLI.
+3. **No state writes outside the directory it's in** unless explicitly path-arg'd (e.g., bibliography scripts can write into `Bibliography/`, but `fetch_pdf.py` writes into `Historical_Papers/` only via the configured `--output-dir`).
+4. **`--dry-run`** flag on any script that writes / mutates state.
+5. **No new top-level dependencies** without explicit note in the PR. The root pyproject already has `arxiv`, `marker-pdf`, `torch`; bibliography tooling shouldn't need anything beyond `pyyaml` + `requests` (Crossref). TTS dependencies land only in the Phase 9 PR.
 
 ## Per-chapter scene proposals
 
@@ -372,4 +447,27 @@ The 11 papers verified in PR #4 are the "anchor texts" for proper-time commentar
 - Final per-chapter bibliography lists (specific cite-keys with paper titles) — drafted during the bibliography-stub step of each chapter PR.
 - Specific PDF source URLs for each cite-key — populated into `Acquisition_Tracker.md` as PDFs are sourced.
 - The exact YAML schema for the `gill_corpus_overlap` field — finalized in PR B once the Obsidian retrofit (PR A) sets the canonical filenames.
+- **TTS backend choice** for Phase 9 — deferred until PR K starts; depends on quality/cost tradeoff at that time.
 - Whether to LaTeX-typeset a final bound document (e.g. via pandoc) at the end — deferred; not in this plan.
+
+## Tool development summary
+
+For quick orientation, every script the campaign needs, by phase:
+
+| Phase | Tool | Status | New deps |
+|---|---|---|---|
+| 0 (PR B) | `parse_papers.py` *(CLI refactor)* | exists; refactor | none |
+| 0 (PR B) | `Bibliography/build_bibtex.py` | new | pyyaml |
+| 0 (PR B) | `Bibliography/scaffold_bib_note.py` | new | pyyaml, requests |
+| 0 (PR B) | `Bibliography/update_acquisition_tracker.py` | new | pyyaml |
+| 1 (PR C) | `_tools/fetch_pdf.py` | new | requests |
+| 1 (PR C) | `_tools/validate_wikilinks.py` | new | none |
+| 1 (PR C) | `_tools/qa_converted_markdown.py` | new | none |
+| 1 (PR C) | `_tools/chapter_status.py` | new | pyyaml |
+| 1 (PR C) | `Podcast/lint_episode.py` | new | pyyaml |
+| 6 (PR H) | `_tools/build_dataview_indexes.py` | new | pyyaml |
+| 6 (PR H) | `_tools/citation_graph.py` *(optional)* | new | graphviz, pygraphviz |
+| 9 (PR K, optional) | `Podcast/build_audio.py` | new | TTS-engine of choice |
+| 9 (PR K, optional) | `Podcast/build_episode_video.py` | new | ffmpeg-python |
+
+Total new tools: **12 essential + 2 optional**, ~2,700 lines of Python across the whole campaign. All single-file, single-purpose, `uv run python …` invocable. Net new root-level dependencies through PR J: **2** (`pyyaml`, `requests`); through PR K: **+TTS backend + ffmpeg-python**.
