@@ -5,9 +5,19 @@
 
 A multi-step plan to recreate the history of physics from 1800 to 1965 — through the birth of particle physics — comparing the **standard development** with **Tepper Gill's proper-time / dual-theory framework**. Five chronological chapters covering three parallel threads (electromagnetism, quantum mechanics, solid-state / superconductivity / transistors), each ending in 1965 at the cusp of the standard model and Moore's law.
 
-**Plus two forward-looking chapters** (`Forward/`) treating quantum computing and fusion as speculative *consequences* of the 1800–1965 arc — open-question roadmaps rather than equation extrapolations. Different epistemic status (`#speculative` rather than `#inferred`); different chapter template (landscape-mapping rather than narrative).
+**Plus three forward-looking chapters** (`Forward/`) treating quantum computing, fusion, and **Position-Navigation-Timing (PNT)** — GPS, Satellite Laser Ranging (SLR), Quantum Key Distribution (QKD) — as *consequences* of the 1800–1965 arc.
+
+The QC and fusion chapters are **open-question roadmaps** (tag-dominant `#speculative`) — what *might* the proper-time framework say about these fields where Gill hasn't published. The PNT chapter is **derivationally heavier** (tag-dominant `#inferred`) because the relevant proper-time content is in already-verified Gill papers (Maxwell Eqs 1–2, 9, 10–11; TCEP Eqs 4.5, 4.16); the chapter derives PNT basics from first principles, then walks GPS / SLR / QKD as applications, framing each through both standard SR+GR and Gill's framework.
 
 **Each chapter ships in three forms**: a reference markdown document (the "chapter"), a Manim animated video for key derivations, and a **podcast-episode script** — a 2–3-voice dialogue walking through the same material conversationally. Same primary research, three audience-facing artifacts: reader, viewer, listener.
+
+## Framing principle (load-bearing — applies to every chapter, scene, and episode)
+
+> **We are exploring differences in mathematical conventions and their consequences for the physical interpretation of established experiments. We are not inventing new physics.**
+
+Every chapter narrative, every Manim scene, every podcast episode must lead with — or in the closing of — an explicit version of this statement. The dual-theory framework reproduces all experimentally confirmed predictions of standard SR + QM + QED within current measurement precision; the contrast with standard physics is at the level of mathematical conventions (proper time as the natural variable, `b = √(c² + u²)` as the collaborative speed, positive-definite Hamiltonians via squaring) and the interpretive consequences that follow. Every concrete "Gill's framework would predict X" claim must be qualified with what experimental regime would (or would not) distinguish that prediction from the standard one. Findings flagged for author review (e.g., `[[FINDINGS_for_author_review]]`) are *internal-consistency* failures of the cited papers — algebra that doesn't reproduce — not "Gill is wrong about physics".
+
+This principle protects the project from being misread as a fringe-physics venture. The whole point is the *opposite*: an honest examination of how the same experimental record can be coherently re-expressed in a different mathematical idiom, with attention to where that idiom produces sharper or more natural derivations (e.g., dissolution of Klein-Gordon's negative-probability problem, radiation reaction without Lorentz-Dirac, GPS clock synchronization via Maxwell Eq. 9).
 
 ## Scoping decisions (already settled)
 
@@ -55,10 +65,11 @@ Roadmapping/
     ├── 04_quantum_mechanics_1925_1948.md
     ├── 05_QED_renormalization_solid_state_1948_1965.md
     ├── 06_synthesis_divergence_map.md
-    ├── Forward/                                 # NEW — speculative open-question roadmaps
-    │   ├── README.md                            # framing: speculative, not derivational
-    │   ├── 07_quantum_computing_open_questions.md
-    │   └── 08_fusion_open_questions.md
+    ├── Forward/                                 # NEW — forward-looking applications + speculative roadmaps
+    │   ├── README.md                            # framing per chapter (derivational vs speculative)
+    │   ├── 07_PNT_GPS_SLR_QKD.md                # derivational; tag-dominant #inferred
+    │   ├── 08_quantum_computing_open_questions.md
+    │   └── 09_fusion_open_questions.md          # both tag-dominant #speculative
     ├── Podcast/                                 # NEW — 2-3 voice dialogue scripts per chapter
     │   ├── README.md                            # speaker personas, conventions
     │   ├── _template_episode.md
@@ -68,8 +79,9 @@ Roadmapping/
     │   ├── episode_04_quantum_mechanics.md
     │   ├── episode_05_QED_renormalization_solid_state.md
     │   ├── episode_06_synthesis_divergence_map.md
-    │   ├── episode_07_quantum_computing.md
-    │   ├── episode_08_fusion.md
+    │   ├── episode_07_PNT_GPS_SLR_QKD.md
+    │   ├── episode_08_quantum_computing.md
+    │   ├── episode_09_fusion.md
     │   └── audio/                               # TTS output; gitignored
     └── Bibliography/
         ├── README.md                            # cite-key conventions, YAML schema, tags
@@ -137,17 +149,17 @@ gill_corpus_overlap: ["Two_Mathematically_Equivalent_Versions_of_Maxwells_Equati
 ### Historical chapter template (Ch 1–6)
 
 Each historical chapter has these sections (full template in `_template_chapter.md`):
-1. **Overview** — 1-paragraph framing of the era.
+1. **Overview** — 1-paragraph framing of the era. **Closes with the framing-principle disclaimer** (see "Framing principle" section above) — verbatim or in the author's words.
 2. **Historical narrative** — standard physics, key experiments highlighted; wikilinks to primary sources inline.
-3. **Proper-time commentary** — section per thread (EM / QM / solid-state); each claim tagged `#verified`, `#inferred`, or `#gill-silent`.
+3. **Proper-time commentary** — section per thread (EM / QM / solid-state); each claim tagged `#verified`, `#inferred`, or `#gill-silent`. **Every "Gill would predict X" claim is qualified by what experimental precision would distinguish it from the standard prediction.**
 4. **Key derivations worth animating** — list of which animations exist (cross-ref) or are proposed for this chapter.
 5. **Primary sources cited** — wikilink list to `Bibliography/Primary/*.md`.
 6. **Retrospective reviews drawn on** — wikilink list to `Bibliography/Retrospective/*.md`.
 
-### Forward chapter template (Ch 7–8) — *different epistemic status*
+### Forward chapter templates — two variants, *different epistemic status*
 
-The forward chapters map *open questions* rather than tell a derivational story. Template (`Forward/_template_forward_chapter.md`):
-1. **Overview** — what the field is and why it's a consequence of the 1800–1965 arc.
+**Variant A — open-question roadmap (Ch 8 QC, Ch 9 fusion).** Template (`Forward/_template_forward_open_questions.md`):
+1. **Overview** — what the field is and why it's a consequence of the 1800–1965 arc. **Closes with the framing-principle disclaimer.**
 2. **Historical roots** — wikilinks back into Ch 1–5 identifying the moments in the historical arc that seeded this field.
 3. **Current state (2026 perspective)** — brief landscape paragraph, *not* a literature review.
 4. **Major open questions** — numbered list; each with a one-sentence statement + current status.
@@ -155,7 +167,17 @@ The forward chapters map *open questions* rather than tell a derivational story.
 6. **Experimental tests that could distinguish frameworks** — if any exist or are buildable.
 7. **Bibliography** — mostly retrospective reviews + modern literature (the field is ongoing); primary sources sparser than historical chapters.
 
-Animations are sparser: 0–1 per forward chapter. The natural format is a roadmap diagram (conceptual flowchart of open questions and their interrelationships) rather than a derivation walkthrough.
+Animations are sparser: 0–1 per chapter. Natural format is a roadmap diagram (conceptual flowchart of open questions and their interrelationships) rather than a derivation walkthrough.
+
+**Variant B — derivational applications (Ch 7 PNT).** Template (`Forward/_template_forward_derivational.md`). Used when the field has *already-verified* Gill content directly bearing on it — derivations are concrete, not speculative. Sections:
+1. **Overview** — what the field is and why it's a consequence of the 1800–1965 arc. **Closes with the framing-principle disclaimer.**
+2. **Historical roots** — wikilinks back into Ch 1–5 (e.g., for PNT: time-keeping → atomic clocks; Einstein 1905 SR → time dilation; Einstein 1916 GR → gravitational time dilation; Doppler 1842; Sagnac 1913).
+3. **First-principles derivation of the field basics** — equations, step by step, both standard and Gill-framed. Closely mirrors historical-chapter style.
+4. **Applications walk-through** — each application gets its own subsection deriving the headline equations and showing where standard vs proper-time framings agree/diverge. For Ch 9 PNT: §A GPS, §B SLR, §C QKD.
+5. **What proper-time changes (and what it doesn't)** — concrete `#inferred` or `#verified` claims with numerical estimates. Most often the proper-time framework reproduces standard predictions at current precision; flagging *where* it would diverge sets up future experimental tests.
+6. **Bibliography** — mix of primary engineering sources (e.g., for PNT: Vessot 1980 Gravity Probe A, original GPS papers) and modern reviews (Ashby 2003 *Living Reviews in Relativity*).
+
+Animations richer than Variant A: 3–4 per chapter, closer to the historical-chapter Manim density.
 
 ## Podcast episodes — conventions
 
@@ -175,7 +197,7 @@ The 3-voice format is the default; for episodes where the third voice would be p
 
 Mirrors the chapter structure but in dialogue form:
 
-1. **Cold open** — Historian sets the scene with a famous figure or experiment of the era; Experimentalist hooks the listener with "and here's what was puzzling about that result".
+1. **Cold open + framing-principle disclaimer** — Historian sets the scene with a famous figure or experiment of the era; Experimentalist hooks the listener with "and here's what was puzzling about that result". **Then the Physicist (or whoever has the floor) delivers the framing-principle reminder** — "Quick reminder: we're exploring a different mathematical convention for known physics, not proposing new physics" — in their own voice, within the first ~60 seconds.
 2. **Historical sweep** — Historian leads, others interject with questions and elaborations. Wikilinked primary sources read aloud as "as Maxwell put it in his 1865 paper…".
 3. **Physics deep dive** — Physicist takes the floor; works through one or two key derivations. Stage directions cue the corresponding Manim scenes for the produced audio version.
 4. **Proper-time interlude** — explicit "now let's contrast that with how Gill's framework would frame this" moment. Physicist leads; Experimentalist asks "but how would we tell the difference experimentally?"
@@ -213,7 +235,7 @@ The committed artifact is **always the script** (markdown). Audio production is 
 
 If we never produce audio, the scripts are still publishable as written dialogue — like a series of physics-themed radio plays.
 
-## Eleven-PR execution plan (10 required + 1 optional)
+## Twelve-PR execution plan (11 required + 1 optional)
 
 ### PR A — Obsidian retrofit *(prep, small)*
 
@@ -234,7 +256,7 @@ If we never produce audio, the scripts are still publishable as written dialogue
 - `Roadmapping/History/Forward/_template_forward_chapter.md` — copyable scaffold for forward chapters.
 - `Roadmapping/History/Podcast/_template_episode.md` — copyable scaffold for podcast episodes.
 - `Roadmapping/History/Bibliography/README.md` — cite-key conventions, YAML schema, tag taxonomy.
-- `Roadmapping/History/Podcast/README.md` — speaker personas + canonical cast + persona → voice mapping (voices empty until PR K).
+- `Roadmapping/History/Podcast/README.md` — speaker personas + canonical cast + persona → voice mapping (voices empty until PR L).
 - Empty chapter files (`01_…md` through `06_…md`, `07_…md`, `08_…md`) with their respective templates + section headings.
 - Update root `CLAUDE.md` with paragraphs on Obsidian conventions, PDF-acquisition workflow, and tooling locations.
 
@@ -276,10 +298,11 @@ Per-chapter sizing (each PR includes chapter narrative + bibliography stubs + an
 | F | 4 | 4: 1925–1948 | ~17 | 2 | ~900 | ~2,000 |
 | G | 5 | 5: 1948–1965 (headline) | ~24 | 2 | ~1,000 | ~2,300 |
 | H | 6 | 6: Synthesis + indexes | 0 | 1 (extends `synthesis_tour`) | ~600 | ~1,100 |
-| I | 7 | 7: Quantum computing open questions *(forward)* | ~15 (mostly retrospective + modern review) | 0–1 (optional roadmap diagram) | ~700 | ~1,500 |
-| J | 8 | 8: Fusion open questions *(forward)* | ~13 | 0–1 | ~700 | ~1,500 |
+| I | 7 | 7: PNT — GPS / SLR / QKD *(forward, derivational)* | ~20 (incl. Le Verrier 1859, Einstein 1915 Mercury, Vessot 1980, Ashby 2003, BB84 1984) | ~5 (Mercury perihelion, GPS clocks, SLR, BB84, basics) | ~1,000 | ~2,400 |
+| J | 8 | 8: Quantum computing open questions *(forward, speculative)* | ~15 (mostly retrospective + modern review) | 0–1 (optional roadmap diagram) | ~700 | ~1,500 |
+| K | 9 | 9: Fusion open questions *(forward, speculative)* | ~13 | 0–1 | ~700 | ~1,500 |
 
-**Totals (incl. forward chapters + podcast scripts):** ~123 bibliography notes, ~10–12 new Manim scenes, 8 podcast episodes (~6,200 lines of dialogue scripts), 8 reference chapters, ~13,400 total lines of narrative + bibliography + dialogue (PDFs and converted markdown not counted).
+**Totals (incl. all three forward chapters + podcast scripts):** ~138 bibliography notes, ~15–17 new Manim scenes, 9 podcast episodes (~7,200 lines of dialogue scripts), 9 reference chapters, ~15,800 total lines of narrative + bibliography + dialogue (PDFs and converted markdown not counted).
 
 ### PR H — Phase 6 synthesis
 
@@ -287,9 +310,44 @@ Per-chapter sizing (each PR includes chapter narrative + bibliography stubs + an
 - **New tools** (see "Required tools and scripts"): `_tools/build_dataview_indexes.py` (generates `_index_by_year.md`, `_index_by_tag.md`, `_index_inferred_claims.md` covering every `#inferred` + `#speculative` claim across all chapters), and *optional* `_tools/citation_graph.py` (emits a static citation-network PNG for embedding in the chapter).
 - Extend `Roadmapping/Animations/manim_scenes/synthesis_tour.py` to span the full 165-year arc, or add `hist_full_synthesis.py` as a complement.
 
-### PR I — Phase 7: Quantum Computing open questions *(forward, speculative)*
+### PR I — Phase 7: Position-Navigation-Timing (PNT) — GPS, SLR, QKD *(forward, derivational)*
 
-`07_quantum_computing_open_questions.md` — open-question roadmap for QC as a consequence of the historical arc.
+`07_PNT_GPS_SLR_QKD.md` — derivational chapter walking PNT basics → three modern applications. Tag-dominant `#inferred` (not `#speculative`); the verified Gill papers directly bear on PNT through Maxwell Eqs (1–2, 9, 10–11) + TCEP Eqs (4.5, 4.16).
+
+**Historical roots** (back-links into Ch 1–5):
+- Doppler 1842 (Ch 1–2) → frequency shift from relative motion.
+- Le Verrier 1859 (Ch 2) → discovers 43″/century anomaly in Mercury's perihelion advance; Newtonian gravity + planetary perturbations cannot account for it.
+- Maxwell 1865 (Ch 2) → EM signal propagation; light as the metric of distance.
+- Einstein SR 1905 (Ch 3) → time dilation `v²/2c²`.
+- Sagnac 1913 (Ch 3) → rotation-induced fringe shift; baseline for rotating-frame corrections.
+- Einstein GR 1915–16 (Ch 4) → derives Mercury's 43″/century *exactly* from Schwarzschild metric — the **first experimental confirmation of GR**. Gravitational time dilation falls out of the same metric.
+- Essen-Parry cesium clock 1955 (Ch 5) → atomic time standard makes the GR clock effects observable.
+
+**Chapter sections**:
+
+**§A — PNT basics from first principles.** Derives distance-from-time-of-flight `d = c·τ`; required precision; clock standards; transmitter-position knowledge. Both standard SR + GR and Gill's framework introduced; **Maxwell Eq. (9) `t = (1/c) ∫b(s) ds` is the natural launching point** for the proper-time framing of clock synchronization across an observer–satellite pair.
+
+**§B — Mercury's perihelion precession — the precursor that motivates GPS's GR correction.** Walks through Einstein's 1915 derivation step by step at the grad-student level:
+1. Schwarzschild metric `ds² = (1 − 2GM/(c²r))c²dt² − (1 − 2GM/(c²r))⁻¹dr² − r²dΩ²`.
+2. Geodesic equation in the equatorial plane → effective radial potential with an extra `−GM L²/(c²r³)` term beyond Newton.
+3. Orbit integral → per-revolution perihelion advance `Δφ = 6πGM/(c²a(1−e²))`.
+4. Numerical plug-in for Mercury: 43″/century — exactly Le Verrier's residual.
+
+Frames the result as: **GR is not optional even for slow planetary motion** — at-rest clocks differing in gravitational potential accumulate different proper times. The same physics that produces Mercury's 43″/century produces the GPS satellite's +45 μs/day. `#gill-silent` from the proper-time side (Gill hasn't published on extending the dual theory to GR), but it's the *pedagogical bridge* that makes the GPS section make sense.
+
+**§C — GPS as the most precise everyday test of relativity.** Standard derivation: satellite-frame SR correction ≈ −7 μs/day; GR correction ≈ +45 μs/day; net +38 μs/day. *Without* both corrections, GPS position error grows ≈ 10 km/day. Gill-framed derivation: each clock has its own τ_i; the GPS-Time global τ is related via `H_i/mc²`. At satellite orbital velocities `u/c ≈ 1.3×10⁻⁵`, the collaborative speed `b = √(c²+u²) ≈ c(1 + 8.5×10⁻¹¹)` — so the velocity-correction prediction agrees with standard SR to better than current GPS precision. The GR piece inherits the `#gill-silent` framing from §B.
+
+**§D — Satellite Laser Ranging (SLR).** Round-trip time `2d/c` between ground station and a corner-cube retroreflector on a satellite (e.g., LAGEOS); millimeter-precision distance. Corrections: atmospheric refraction, Earth tides, Shapiro delay (a §B-related GR effect). Gill-framed: TCEP Eq. (4.16) group velocity `v_g = v_g' + v` predicts no detectable deviation at SLR precision (`b ≈ c` for sub-orbital optical photons in vacuum).
+
+**§E — Quantum Key Distribution (QKD).** BB84 protocol: Alice sends polarized photons in random basis (rectilinear/diagonal); Bob measures in random basis; classical sifting + privacy amplification. Security from no-cloning. Eavesdropper detection via QBER threshold. Gill-framed: QKD photons live in standard QM Hilbert space, so the protocol is the same. **Speculative `#speculative` hook**: extending to Gill's KS-Hilbert space (`[[FOUNDATIONS_FOR_QED_I_MATHEMATICAL]]` Sec 3) could redefine the no-cloning argument; effective photon mass μ (`[[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]` Eq. 6) is non-zero only during source acceleration so unaffected for fiber-based QKD; satellite-QKD (e.g., Micius 2017) gets brief mention.
+
+**Bibliography (~20 sources)**: Le Verrier 1859 *Comptes Rendus* "Théorie du mouvement de Mercure", Einstein 1915 *Sitz. König. Preuss. Akad. Wiss.* "Erklärung der Perihelbewegung des Merkur aus der allgemeinen Relativitätstheorie", Schwarzschild 1916, Hofmann-Wellenhof *GPS Theory and Practice*, Ashby 2003 *Living Reviews in Relativity* "Relativity in the Global Positioning System", Vessot et al. 1980 Gravity Probe A (`Phys. Rev. Lett.`), Parkinson et al. 1996 *Global Positioning System: Theory and Applications* Vols I–II, original GPS spec papers; Smith & Christodoulidis 1985 SLR; Bennett & Brassard 1984 BB84, Ekert 1991, Pirandola et al. 2020 *Advances in Quantum Cryptography*, Liao et al. 2018 Micius.
+
+**Scenes (~5)**: see per-chapter scene table.
+
+### PR J — Phase 8: Quantum Computing open questions *(forward, speculative)*
+
+`08_quantum_computing_open_questions.md` — open-question roadmap for QC as a consequence of the historical arc.
 
 **Historical roots** (back-links into Ch 1–5):
 - Bohr atom (Ch 3) → quantization of states (qubit prototype).
@@ -310,9 +368,9 @@ Per-chapter sizing (each PR includes chapter narrative + bibliography stubs + an
 
 **Scenes**: optionally one — a roadmap diagram showing the open questions and their interrelationships, possibly extending `synthesis_tour.py`'s style.
 
-### PR J — Phase 8: Fusion open questions *(forward, speculative)*
+### PR K — Phase 9: Fusion open questions *(forward, speculative)*
 
-`08_fusion_open_questions.md` — open-question roadmap for fusion as a consequence of the historical arc.
+`09_fusion_open_questions.md` — open-question roadmap for fusion as a consequence of the historical arc.
 
 **Historical roots** (back-links into Ch 1–5):
 - Atomic theory + Rutherford nucleus (Ch 3) → atoms exist and have a nucleus.
@@ -335,11 +393,11 @@ The forward chapter is honest that fusion is largely `#gill-silent` — most of 
 
 **Scenes**: optionally one — binding-energy curve animated with the historical experimental data points overlaid, or a roadmap diagram.
 
-### PR K — Phase 9 *(optional)*: Podcast audio production
+### PR L — Phase 10 *(optional)*: Podcast audio production
 
 Decoupled from chapter PRs. Tackles end-to-end audio production for the 8 episode scripts written in PRs C–J:
 
-- **TTS-engine decision**: `pyttsx3` offline / `coqui-tts` open-source neural / commercial API (ElevenLabs, OpenAI). Per-speaker voice IDs codified in `Roadmapping/History/Podcast/README.md`. Decision deferred to the start of PR K based on quality/cost tradeoff at that time.
+- **TTS-engine decision**: `pyttsx3` offline / `coqui-tts` open-source neural / commercial API (ElevenLabs, OpenAI). Per-speaker voice IDs codified in `Roadmapping/History/Podcast/README.md`. Decision deferred to the start of PR L based on quality/cost tradeoff at that time.
 - **New tools** (see "Required tools and scripts"): `Podcast/build_audio.py` (parses script → TTS per speaker → concatenated MP3 per episode) and optional companion `Podcast/build_episode_video.py` (composites audio with cued animations into MP4).
 - **TTS-backend dependencies** added to root `pyproject.toml` only in this PR (not earlier).
 - All audio + video output gitignored (regenerable from the scripts).
@@ -379,13 +437,13 @@ These land in the earliest chapter PR that needs them (typically PR C) and persi
 | `build_dataview_indexes.py` | `Roadmapping/History/_tools/build_dataview_indexes.py` | Generates static markdown index pages mimicking Dataview output for users without the plugin: `_index_by_year.md`, `_index_by_tag.md`, `_index_inferred_claims.md` (every `#inferred` + `#speculative` claim across all chapters with anchors). Idempotent; re-runs as new chapters land. | ~250 |
 | `citation_graph.py` | `Roadmapping/History/_tools/citation_graph.py` | *Optional.* Builds a directed graph of citations (chapter → bib note → verification doc → animation) and emits a PNG via graphviz for embedding in the synthesis chapter. Obsidian's built-in graph view already does this interactively; this is for the static publication. | ~180 |
 
-### Podcast tooling (PR I/J for the linter, PR K optional for audio)
+### Podcast tooling (PR C introduces the linter; PR L optional for audio)
 
 | Script | Path | Introduced in | Purpose | Lines |
 |---|---|---|---|---|
 | `lint_episode.py` | `Roadmapping/History/Podcast/lint_episode.py` | PR C *(first episode)* | Validates a podcast episode script: YAML schema, speakers ∈ canonical cast, every `animations_cued` resolves to a real Manim scene file, every wikilinked source exists, rough word-count → runtime cross-check (5,000–7,000 words ≈ 30–45 min). Run per episode in the chapter PR. | ~200 |
-| `build_audio.py` | `Roadmapping/History/Podcast/build_audio.py` | PR K *(optional, Phase 9)* | Parses episode markdown (YAML + dialogue lines like `Historian: …`); calls a TTS engine per speaker with persona → voice mapping from `Podcast/README.md`; concatenates with appropriate pauses; emits `Podcast/audio/episode_NN_*.mp3`. **Configurable TTS backend**: `pyttsx3` (offline), `coqui-tts` (open-source neural), or commercial API. | ~400 |
-| `build_episode_video.py` | `Roadmapping/History/Podcast/build_episode_video.py` | PR K *(optional)* | Composites the audio (from `build_audio.py`) with the cued animations (from `animations_cued:` frontmatter) into a finished video using ffmpeg. Output: `Podcast/video/episode_NN_*.mp4`. Only relevant if we want YouTube-ready episodes. | ~250 |
+| `build_audio.py` | `Roadmapping/History/Podcast/build_audio.py` | PR L *(optional, Phase 10)* | Parses episode markdown (YAML + dialogue lines like `Historian: …`); calls a TTS engine per speaker with persona → voice mapping from `Podcast/README.md`; concatenates with appropriate pauses; emits `Podcast/audio/episode_NN_*.mp3`. **Configurable TTS backend**: `pyttsx3` (offline), `coqui-tts` (open-source neural), or commercial API. | ~400 |
+| `build_episode_video.py` | `Roadmapping/History/Podcast/build_episode_video.py` | PR L *(optional)* | Composites the audio (from `build_audio.py`) with the cued animations (from `animations_cued:` frontmatter) into a finished video using ffmpeg. Output: `Podcast/video/episode_NN_*.mp4`. Only relevant if we want YouTube-ready episodes. | ~250 |
 
 ### Nice-to-have / deferred
 
@@ -416,8 +474,9 @@ Every new script lands with:
 | 4 | `hist_klein_gordon_vs_dual.py` — negative-probability problem and how the dual K dissolves it. `hist_positron_isodual.py` — Anderson + Santilli isodual reinterpretation. |
 | 5 | `hist_lamb_shift_contrast.py`. Reuses [`drqm_eq22_g_factor_finding.py`](../Animations/manim_scenes/drqm_eq22_g_factor_finding.py) as the chapter payoff. |
 | 6 | Extends [`synthesis_tour.py`](../Animations/manim_scenes/synthesis_tour.py). |
-| 7 *(forward)* | Optional `forward_qc_roadmap.py` — open-question roadmap diagram; flowchart-style rather than derivational. |
-| 8 *(forward)* | Optional `forward_fusion_binding_curve.py` — binding-energy curve with historical data overlay. |
+| 7 *(forward, derivational)* | `pnt_basics_time_of_flight.py` — distance = c·t; introduces atomic-clock precision. `pnt_mercury_perihelion.py` — animated orbit + Einstein 1915 derivation landing on 43″/century. `pnt_gps_relativity.py` — SR (−7 μs/day) + GR (+45 μs/day) clock corrections, framed via Maxwell Eq (9) `t = (1/c) ∫b ds`. `pnt_slr_geometry.py` — round-trip laser ranging + Sagnac. `pnt_qkd_bb84.py` — BB84 protocol + no-cloning. |
+| 8 *(forward)* | Optional `forward_qc_roadmap.py` — open-question roadmap diagram; flowchart-style rather than derivational. |
+| 9 *(forward)* | Optional `forward_fusion_binding_curve.py` — binding-energy curve with historical data overlay. |
 
 ## OCR-quality + copyright caveats
 
@@ -439,15 +498,16 @@ The 11 papers verified in PR #4 are the "anchor texts" for proper-time commentar
 | 3 | `[[FoundationsII-Classical]]`, `[[Analytic_Representation_of_The_Square-Root_Operator]]` |
 | 4 | `[[Dual_Relativistic_Quantum_Mechanics_I]]`, `[[Analytic_Representation_of_The_Dirac_Equation]]`, `[[FoundationsII-Classical]]` |
 | 5 | `[[Dual_Relativistic_Quantum_Mechanics_I]]`, `[[FOUNDATIONS_FOR_QED_I_MATHEMATICAL]]`, `[[Feynman_Operator_Calculus_Papers]]`, `[[Relativistic_Transformations_of_Thermodynamics]]`, `[[FINDINGS_for_author_review]]` |
-| 7 *(forward)* | `[[FOUNDATIONS_FOR_QED_I_MATHEMATICAL]]` (KS-Hilbert space, time-ordered operator calculus), `[[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]` (μ photon mass), `[[FINDINGS_for_author_review]]` (Finding 2 as QC test hook) |
-| 8 *(forward)* | `[[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]` (Eq. 18 modified Lorentz force; collaborative speed `b` in plasma) |
+| 7 *(forward, PNT)* | `[[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]` (Eqs. 1–2 velocity/time duality, Eq. 9 t-τ integral, Eqs. 10–11 boost), `[[The_Classical_Electron_Problem]]` (Eqs. 4.5 Doppler, 4.16 group velocity), `[[Dual_Relativistic_Quantum_Mechanics_I]]` (Eq. II.3 + KS-Hilbert space — QKD anchor) |
+| 8 *(forward, QC)* | `[[FOUNDATIONS_FOR_QED_I_MATHEMATICAL]]` (KS-Hilbert space, time-ordered operator calculus), `[[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]` (μ photon mass), `[[FINDINGS_for_author_review]]` (Finding 2 as QC test hook) |
+| 9 *(forward, fusion)* | `[[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]` (Eq. 18 modified Lorentz force; collaborative speed `b` in plasma) |
 
 ## Open items left for execution time
 
 - Final per-chapter bibliography lists (specific cite-keys with paper titles) — drafted during the bibliography-stub step of each chapter PR.
 - Specific PDF source URLs for each cite-key — populated into `Acquisition_Tracker.md` as PDFs are sourced.
 - The exact YAML schema for the `gill_corpus_overlap` field — finalized in PR B once the Obsidian retrofit (PR A) sets the canonical filenames.
-- **TTS backend choice** for Phase 9 — deferred until PR K starts; depends on quality/cost tradeoff at that time.
+- **TTS backend choice** for Phase 10 — deferred until PR L starts; depends on quality/cost tradeoff at that time.
 - Whether to LaTeX-typeset a final bound document (e.g. via pandoc) at the end — deferred; not in this plan.
 
 ## Tool development summary
@@ -467,7 +527,7 @@ For quick orientation, every script the campaign needs, by phase:
 | 1 (PR C) | `Podcast/lint_episode.py` | new | pyyaml |
 | 6 (PR H) | `_tools/build_dataview_indexes.py` | new | pyyaml |
 | 6 (PR H) | `_tools/citation_graph.py` *(optional)* | new | graphviz, pygraphviz |
-| 9 (PR K, optional) | `Podcast/build_audio.py` | new | TTS-engine of choice |
-| 9 (PR K, optional) | `Podcast/build_episode_video.py` | new | ffmpeg-python |
+| 10 (PR L, optional) | `Podcast/build_audio.py` | new | TTS-engine of choice |
+| 10 (PR L, optional) | `Podcast/build_episode_video.py` | new | ffmpeg-python |
 
-Total new tools: **12 essential + 2 optional**, ~2,700 lines of Python across the whole campaign. All single-file, single-purpose, `uv run python …` invocable. Net new root-level dependencies through PR J: **2** (`pyyaml`, `requests`); through PR K: **+TTS backend + ffmpeg-python**.
+Total new tools: **12 essential + 2 optional**, ~2,700 lines of Python across the whole campaign. All single-file, single-purpose, `uv run python …` invocable. Net new root-level dependencies through PR K: **2** (`pyyaml`, `requests`); through PR L: **+TTS backend + ffmpeg-python**.
