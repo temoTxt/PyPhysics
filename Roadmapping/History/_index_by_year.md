@@ -120,6 +120,10 @@
 |---:|---|---|---|---|
 | 1913 | [[sagnac1913_effect]] | L'éther lumineux démontré par l'effet du vent relatif d'éther dans un interféromètre en rotation uniforme | primary | pending |
 | 1916 | [[schwarzschild1916]] | Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie | primary | pending |
+| 1920 | [[aston1922_mass_defect]] | Isotopes and Atomic Weights | primary | pending |
+| 1920 | [[eddington1920_stellar_fusion]] | The Internal Constitution of the Stars (presidential address) | primary | pending |
+| 1939 | [[bethe1939_ppchain]] | Energy Production in Stars | primary | pending |
+| 1957 | [[lawson1957_criterion]] | Some Criteria for a Power Producing Thermonuclear Reactor | primary | pending |
 | 1973 | [[misner_thorne_wheeler1973]] | Gravitation | retrospective | pending |
 | 1980 | [[vessot1980_gravity_probe_a]] | Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser | primary | pending |
 | 1982 | [[feynman1982_simulating_physics]] | Simulating Physics with Computers | primary | pending |
@@ -134,8 +138,11 @@
 | 2000 | [[nielsen_chuang2000_quantum_computation]] | Quantum Computation and Quantum Information | retrospective | pending |
 | 2003 | [[ashby2003_gps_relativity]] | Relativity in the Global Positioning System | primary | pending |
 | 2003 | [[kitaev2003_topological]] | Fault-tolerant quantum computation by anyons | primary | pending |
+| 2004 | [[atzeni_meyertervehn2004_inertial]] | The Physics of Inertial Fusion | retrospective | pending |
+| 2011 | [[wesson2011_tokamaks]] | Tokamaks (4th ed.) | retrospective | pending |
 | 2017 | [[liao2018_micius_satellite]] | Satellite-to-Ground Quantum Key Distribution | primary | pending |
 | 2018 | [[preskill2018_nisq]] | Quantum Computing in the NISQ era and beyond | retrospective | pending |
 | 2019 | [[arute2019_quantum_supremacy]] | Quantum supremacy using a programmable superconducting processor | primary | pending |
 | 2019 | [[krantz2019_circuit_qed]] | A Quantum Engineer's Guide to Superconducting Qubits | retrospective | pending |
 | 2020 | [[pirandola2020_qkd_review]] | Advances in quantum cryptography | retrospective | pending |
+| 2024 | [[nif2022_ignition]] | Lawson criterion for ignition exceeded in an inertial fusion experiment | primary | pending |

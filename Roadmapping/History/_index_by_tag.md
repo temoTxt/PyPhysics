@@ -106,10 +106,14 @@
 - [[schweber1994_qed_and_men]] (1994) — QED and the Men Who Made It: Dyson, Feynman, Schwinger, and Tomonaga
 - [[tinkham1996_superconductivity]] (1996) — Introduction to Superconductivity (2nd ed.)
 
-### #era/forward — 21 entries
+### #era/forward — 28 entries
 
 - [[sagnac1913_effect]] (1913) — L'éther lumineux démontré par l'effet du vent relatif d'éther dans un interféromètre en rotation uniforme
 - [[schwarzschild1916]] (1916) — Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie
+- [[aston1922_mass_defect]] (1920) — Isotopes and Atomic Weights
+- [[eddington1920_stellar_fusion]] (1920) — The Internal Constitution of the Stars (presidential address)
+- [[bethe1939_ppchain]] (1939) — Energy Production in Stars
+- [[lawson1957_criterion]] (1957) — Some Criteria for a Power Producing Thermonuclear Reactor
 - [[misner_thorne_wheeler1973]] (1973) — Gravitation
 - [[vessot1980_gravity_probe_a]] (1980) — Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser
 - [[feynman1982_simulating_physics]] (1982) — Simulating Physics with Computers
@@ -124,11 +128,14 @@
 - [[nielsen_chuang2000_quantum_computation]] (2000) — Quantum Computation and Quantum Information
 - [[ashby2003_gps_relativity]] (2003) — Relativity in the Global Positioning System
 - [[kitaev2003_topological]] (2003) — Fault-tolerant quantum computation by anyons
+- [[atzeni_meyertervehn2004_inertial]] (2004) — The Physics of Inertial Fusion
+- [[wesson2011_tokamaks]] (2011) — Tokamaks (4th ed.)
 - [[liao2018_micius_satellite]] (2017) — Satellite-to-Ground Quantum Key Distribution
 - [[preskill2018_nisq]] (2018) — Quantum Computing in the NISQ era and beyond
 - [[arute2019_quantum_supremacy]] (2019) — Quantum supremacy using a programmable superconducting processor
 - [[krantz2019_circuit_qed]] (2019) — A Quantum Engineer's Guide to Superconducting Qubits
 - [[pirandola2020_qkd_review]] (2020) — Advances in quantum cryptography
+- [[nif2022_ignition]] (2024) — Lawson criterion for ignition exceeded in an inertial fusion experiment
 
 ## Tag namespace: thread
 
@@ -242,7 +249,7 @@
 
 ## Tag namespace: framework-claim
 
-### #gill-silent — 51 entries
+### #gill-silent — 56 entries
 
 - [[volta1800_electricity_contact]] (1800) — On the Electricity excited by the mere Contact of conducting Substances of different kinds
 - [[ampere1820_action_mutuelle]] (1820) — Mémoire présenté à l'Académie royale des Sciences, le 2 octobre 1820, où se trouve compris le résumé de ce qui avait été lu à la même Académie les 18 et 25 septembre 1820, sur les effets des courants électriques
@@ -268,6 +275,8 @@
 - [[einstein1916_grundlage]] (1916) — Die Grundlage der allgemeinen Relativitätstheorie
 - [[millikan1916_photoelectric_verification]] (1916) — A Direct Photoelectric Determination of Planck's 'h'
 - [[schwarzschild1916]] (1916) — Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie
+- [[aston1922_mass_defect]] (1920) — Isotopes and Atomic Weights
+- [[eddington1920_stellar_fusion]] (1920) — The Internal Constitution of the Stars (presidential address)
 - [[heisenberg1925_quantum_mechanics]] (1925) — Über quantentheoretische Umdeutung kinematischer und mechanischer Beziehungen
 - [[pauli1925_exclusion]] (1925) — Über den Zusammenhang des Abschlusses der Elektronengruppen im Atom mit der Komplexstruktur der Spektren
 - [[uhlenbeck_goudsmit1925_spin]] (1925) — Ersetzung der Hypothese vom unmechanischen Zwang durch eine Forderung bezüglich des inneren Verhaltens jedes einzelnen Elektrons
@@ -278,10 +287,12 @@
 - [[meissner_ochsenfeld1933_supraleiter]] (1933) — Ein neuer Effekt bei Eintritt der Supraleitfähigkeit
 - [[fermi1934_beta_decay]] (1934) — Versuch einer Theorie der β-Strahlen. I
 - [[yukawa1935_meson]] (1935) — On the Interaction of Elementary Particles. I
+- [[bethe1939_ppchain]] (1939) — Energy Production in Stars
 - [[bardeen_brattain1948_transistor]] (1948) — The Transistor, A Semi-Conductor Triode
 - [[cooper1956_pairs]] (1956) — Bound Electron Pairs in a Degenerate Fermi Gas
 - [[lee_yang1956_parity_question]] (1956) — Question of Parity Conservation in Weak Interactions
 - [[bcs1957_superconductivity]] (1957) — Theory of Superconductivity
+- [[lawson1957_criterion]] (1957) — Some Criteria for a Power Producing Thermonuclear Reactor
 - [[wu1957_parity]] (1957) — Experimental Test of Parity Conservation in Beta Decay
 - [[josephson1962_tunneling]] (1962) — Possible New Effects in Superconductive Tunnelling
 - [[vessot1980_gravity_probe_a]] (1980) — Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser
@@ -295,6 +306,7 @@
 - [[parkinson1996_gps_theory]] (1996) — Global Positioning System: Theory and Applications, Vol. I
 - [[ashby2003_gps_relativity]] (2003) — Relativity in the Global Positioning System
 - [[kitaev2003_topological]] (2003) — Fault-tolerant quantum computation by anyons
+- [[nif2022_ignition]] (2024) — Lawson criterion for ignition exceeded in an inertial fusion experiment
 
 ### #inferred — 23 entries
 
@@ -375,6 +387,11 @@
 
 - [[verrier1859_mercury]] (1859) — Lettre de M. Le Verrier à M. Faye sur la théorie de Mercure et sur le mouvement du périhélie de cette planète
 
+### astrophysics — 2 entries
+
+- [[eddington1920_stellar_fusion]] (1920) — The Internal Constitution of the Stars (presidential address)
+- [[bethe1939_ppchain]] (1939) — Energy Production in Stars
+
 ### atomic-clock — 2 entries
 
 - [[vessot1980_gravity_probe_a]] (1980) — Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser
@@ -405,6 +422,10 @@
 
 - [[fermi1934_beta_decay]] (1934) — Versuch einer Theorie der β-Strahlen. I
 
+### binding-energy — 1 entries
+
+- [[aston1922_mass_defect]] (1920) — Isotopes and Atomic Weights
+
 ### biography — 3 entries
 
 - [[williams1965_faraday_biography]] (1965) — Michael Faraday: A Biography
@@ -434,6 +455,10 @@
 ### classic-history — 1 entries
 
 - [[whittaker1910_aether_electricity]] (1910) — A History of the Theories of Aether and Electricity, from the Age of Descartes to the Close of the Nineteenth Century
+
+### cno-cycle — 1 entries
+
+- [[bethe1939_ppchain]] (1939) — Energy Production in Stars
 
 ### complexity — 1 entries
 
@@ -574,7 +599,7 @@
 
 - [[sommerfeld1916_atombau]] (1916) — Zur Quantentheorie der Spektrallinien
 
-### foundational — 55 entries
+### foundational — 60 entries
 
 - [[volta1800_electricity_contact]] (1800) — On the Electricity excited by the mere Contact of conducting Substances of different kinds
 - [[ampere1820_action_mutuelle]] (1820) — Mémoire présenté à l'Académie royale des Sciences, le 2 octobre 1820, où se trouve compris le résumé de ce qui avait été lu à la même Académie les 18 et 25 septembre 1820, sur les effets des courants électriques
@@ -600,6 +625,8 @@
 - [[einstein1915_perihelion]] (1915) — Erklärung der Perihelbewegung des Merkur aus der allgemeinen Relativitätstheorie
 - [[einstein1916_grundlage]] (1916) — Die Grundlage der allgemeinen Relativitätstheorie
 - [[schwarzschild1916]] (1916) — Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie
+- [[aston1922_mass_defect]] (1920) — Isotopes and Atomic Weights
+- [[eddington1920_stellar_fusion]] (1920) — The Internal Constitution of the Stars (presidential address)
 - [[compton1923_xray_scattering]] (1923) — A Quantum Theory of the Scattering of X-rays by Light Elements
 - [[de_broglie1924_thesis]] (1924) — Recherches sur la théorie des quanta
 - [[heisenberg1925_quantum_mechanics]] (1925) — Über quantentheoretische Umdeutung kinematischer und mechanischer Beziehungen
@@ -615,6 +642,7 @@
 - [[chadwick1932_neutron]] (1932) — Possible Existence of a Neutron
 - [[fermi1934_beta_decay]] (1934) — Versuch einer Theorie der β-Strahlen. I
 - [[yukawa1935_meson]] (1935) — On the Interaction of Elementary Particles. I
+- [[bethe1939_ppchain]] (1939) — Energy Production in Stars
 - [[tomonaga1946_qed]] (1946) — On a Relativistically Invariant Formulation of the Quantum Theory of Wave Fields
 - [[lamb_retherford1947_microwave]] (1947) — Fine Structure of the Hydrogen Atom by a Microwave Method
 - [[bardeen_brattain1948_transistor]] (1948) — The Transistor, A Semi-Conductor Triode
@@ -625,16 +653,25 @@
 - [[cooper1956_pairs]] (1956) — Bound Electron Pairs in a Degenerate Fermi Gas
 - [[lee_yang1956_parity_question]] (1956) — Question of Parity Conservation in Weak Interactions
 - [[bcs1957_superconductivity]] (1957) — Theory of Superconductivity
+- [[lawson1957_criterion]] (1957) — Some Criteria for a Power Producing Thermonuclear Reactor
 - [[wu1957_parity]] (1957) — Experimental Test of Parity Conservation in Beta Decay
 - [[feynman1982_simulating_physics]] (1982) — Simulating Physics with Computers
 - [[bennett_brassard1984_bb84]] (1984) — Quantum cryptography: Public key distribution and coin tossing
 - [[deutsch1985_quantum_turing]] (1985) — Quantum theory, the Church–Turing principle and the universal quantum computer
 - [[shor1994_factoring]] (1994) — Algorithms for quantum computation: discrete logarithms and factoring
 - [[ashby2003_gps_relativity]] (2003) — Relativity in the Global Positioning System
+- [[nif2022_ignition]] (2024) — Lawson criterion for ignition exceeded in an inertial fusion experiment
 
 ### foundations — 1 entries
 
 - [[von_neumann1932_grundlagen]] (1932) — Mathematische Grundlagen der Quantenmechanik
+
+### fusion — 4 entries
+
+- [[lawson1957_criterion]] (1957) — Some Criteria for a Power Producing Thermonuclear Reactor
+- [[atzeni_meyertervehn2004_inertial]] (2004) — The Physics of Inertial Fusion
+- [[wesson2011_tokamaks]] (2011) — Tokamaks (4th ed.)
+- [[nif2022_ignition]] (2024) — Lawson criterion for ignition exceeded in an inertial fusion experiment
 
 ### general-relativity — 7 entries
 
@@ -679,6 +716,15 @@
 - [[darrigol2000_electrodynamics_ampere_einstein]] (2000) — Electrodynamics from Ampère to Einstein
 - [[mehra_rechenberg_qm_history]] (2001) — The Historical Development of Quantum Theory (6 volumes)
 
+### ignition — 1 entries
+
+- [[nif2022_ignition]] (2024) — Lawson criterion for ignition exceeded in an inertial fusion experiment
+
+### inertial-confinement — 2 entries
+
+- [[atzeni_meyertervehn2004_inertial]] (2004) — The Physics of Inertial Fusion
+- [[nif2022_ignition]] (2024) — Lawson criterion for ignition exceeded in an inertial fusion experiment
+
 ### josephson-effect — 1 entries
 
 - [[josephson1962_tunneling]] (1962) — Possible New Effects in Superconductive Tunnelling
@@ -695,6 +741,10 @@
 
 - [[bethe1947_lamb_shift_calc]] (1947) — The Electromagnetic Shift of Energy Levels
 - [[lamb_retherford1947_microwave]] (1947) — Fine Structure of the Hydrogen Atom by a Microwave Method
+
+### lawson-criterion — 1 entries
+
+- [[lawson1957_criterion]] (1957) — Some Criteria for a Power Producing Thermonuclear Reactor
 
 ### length-contraction — 1 entries
 
@@ -719,6 +769,10 @@
 ### mass-energy — 1 entries
 
 - [[einstein1905_emc2]] (1905) — Ist die Trägheit eines Körpers von seinem Energieinhalt abhängig?
+
+### mass-spectrometry — 1 entries
+
+- [[aston1922_mass_defect]] (1920) — Isotopes and Atomic Weights
 
 ### mathematical-quantum-mechanics — 1 entries
 
@@ -779,13 +833,18 @@
 
 - [[chadwick1932_neutron]] (1932) — Possible Existence of a Neutron
 
+### nif — 1 entries
+
+- [[nif2022_ignition]] (2024) — Lawson criterion for ignition exceeded in an inertial fusion experiment
+
 ### nisq — 1 entries
 
 - [[preskill2018_nisq]] (2018) — Quantum Computing in the NISQ era and beyond
 
-### nuclear — 3 entries
+### nuclear — 4 entries
 
 - [[rutherford1911_alpha_scattering]] (1911) — The Scattering of α and β Particles by Matter and the Structure of the Atom
+- [[aston1922_mass_defect]] (1920) — Isotopes and Atomic Weights
 - [[chadwick1932_neutron]] (1932) — Possible Existence of a Neutron
 - [[fermi1934_beta_decay]] (1934) — Versuch einer Theorie der β-Strahlen. I
 
@@ -826,6 +885,10 @@
 
 - [[kuhn1978_blackbody]] (1978) — Black-Body Theory and the Quantum Discontinuity, 1894-1912
 
+### plasma-physics — 1 entries
+
+- [[wesson2011_tokamaks]] (2011) — Tokamaks (4th ed.)
+
 ### pnt — 2 entries
 
 - [[smith_christodoulidis1985_slr]] (1985) — Lunar laser ranging and the dynamics of the Earth-Moon system
@@ -834,6 +897,10 @@
 ### positron — 1 entries
 
 - [[anderson1932_positron]] (1932) — The Positive Electron
+
+### pp-chain — 1 entries
+
+- [[bethe1939_ppchain]] (1939) — Energy Production in Stars
 
 ### qed — 9 entries
 
@@ -1004,6 +1071,11 @@
 
 - [[einstein1905_brownian]] (1905) — Über die von der molekularkinetischen Theorie der Wärme geforderte Bewegung von in ruhenden Flüssigkeiten suspendierten Teilchen
 
+### stellar-fusion — 2 entries
+
+- [[eddington1920_stellar_fusion]] (1920) — The Internal Constitution of the Stars (presidential address)
+- [[bethe1939_ppchain]] (1939) — Energy Production in Stars
+
 ### superconducting-qubit — 2 entries
 
 - [[arute2019_quantum_supremacy]] (2019) — Quantum supremacy using a programmable superconducting processor
@@ -1021,7 +1093,7 @@
 
 - [[kirchhoff1857_bewegung_elektrizitat]] (1857) — Über die Bewegung der Elektrizität in Drähten
 
-### textbook — 10 entries
+### textbook — 12 entries
 
 - [[maxwell1873_treatise]] (1873) — A Treatise on Electricity and Magnetism
 - [[dirac1958_principles]] (1958) — The Principles of Quantum Mechanics (4th ed.)
@@ -1033,10 +1105,16 @@
 - [[tinkham1996_superconductivity]] (1996) — Introduction to Superconductivity (2nd ed.)
 - [[jackson1998_classical_electrodynamics]] (1998) — Classical Electrodynamics
 - [[nielsen_chuang2000_quantum_computation]] (2000) — Quantum Computation and Quantum Information
+- [[atzeni_meyertervehn2004_inertial]] (2004) — The Physics of Inertial Fusion
+- [[wesson2011_tokamaks]] (2011) — Tokamaks (4th ed.)
 
 ### thermodynamics — 1 entries
 
 - [[helmholtz1847_erhaltung_kraft]] (1847) — Über die Erhaltung der Kraft
+
+### tokamak — 1 entries
+
+- [[wesson2011_tokamaks]] (2011) — Tokamaks (4th ed.)
 
 ### topological-quantum-computing — 1 entries
 
