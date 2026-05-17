@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 108 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 108 pending · 🔴 0 unavailable
+**Summary**: 115 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 115 pending · 🔴 0 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -102,6 +102,10 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[tinkham1996_superconductivity]] | 1996 | 1948-1965 | retrospective | ⚪ pending | — |
 | [[sagnac1913_effect]] | 1913 | forward | primary | ⚪ pending | — |
 | [[schwarzschild1916]] | 1916 | forward | primary | ⚪ pending | — |
+| [[aston1922_mass_defect]] | 1920 | forward | primary | ⚪ pending | — |
+| [[eddington1920_stellar_fusion]] | 1920 | forward | primary | ⚪ pending | — |
+| [[bethe1939_ppchain]] | 1939 | forward | primary | ⚪ pending | — |
+| [[lawson1957_criterion]] | 1957 | forward | primary | ⚪ pending | — |
 | [[misner_thorne_wheeler1973]] | 1973 | forward | retrospective | ⚪ pending | — |
 | [[vessot1980_gravity_probe_a]] | 1980 | forward | primary | ⚪ pending | — |
 | [[feynman1982_simulating_physics]] | 1982 | forward | primary | ⚪ pending | — |
@@ -116,9 +120,12 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[nielsen_chuang2000_quantum_computation]] | 2000 | forward | retrospective | ⚪ pending | — |
 | [[ashby2003_gps_relativity]] | 2003 | forward | primary | ⚪ pending | — |
 | [[kitaev2003_topological]] | 2003 | forward | primary | ⚪ pending | — |
+| [[atzeni_meyertervehn2004_inertial]] | 2004 | forward | retrospective | ⚪ pending | — |
+| [[wesson2011_tokamaks]] | 2011 | forward | retrospective | ⚪ pending | — |
 | [[liao2018_micius_satellite]] | 2017 | forward | primary | ⚪ pending | — |
 | [[preskill2018_nisq]] | 2018 | forward | retrospective | ⚪ pending | — |
 | [[arute2019_quantum_supremacy]] | 2019 | forward | primary | ⚪ pending | — |
 | [[krantz2019_circuit_qed]] | 2019 | forward | retrospective | ⚪ pending | — |
 | [[pirandola2020_qkd_review]] | 2020 | forward | retrospective | ⚪ pending | — |
+| [[nif2022_ignition]] | 2024 | forward | primary | ⚪ pending | — |
 <!-- AUTO-TABLE-END -->
