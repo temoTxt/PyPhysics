@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 50 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 50 pending · 🔴 0 unavailable
+**Summary**: 68 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 68 pending · 🔴 0 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -63,4 +63,22 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[heilbron1969_bohr_atom]] | 1969 | 1900-1925 | retrospective | ⚪ pending | — |
 | [[kuhn1978_blackbody]] | 1978 | 1900-1925 | retrospective | ⚪ pending | — |
 | [[pais1982_subtle_is_the_lord]] | 1982 | 1900-1925 | retrospective | ⚪ pending | — |
+| [[heisenberg1925_quantum_mechanics]] | 1925 | 1925-1948 | primary | ⚪ pending | — |
+| [[pauli1925_exclusion]] | 1925 | 1925-1948 | primary | ⚪ pending | — |
+| [[uhlenbeck_goudsmit1925_spin]] | 1925 | 1925-1948 | primary | ⚪ pending | — |
+| [[born1926_statistical_interpretation]] | 1926 | 1925-1948 | primary | ⚪ pending | — |
+| [[klein_gordon1926]] | 1926 | 1925-1948 | primary | ⚪ pending | — |
+| [[schrodinger1926_quantisierung]] | 1926 | 1925-1948 | primary | ⚪ pending | — |
+| [[heisenberg1927_uncertainty]] | 1927 | 1925-1948 | primary | ⚪ pending | — |
+| [[bloch1928_kristall]] | 1928 | 1925-1948 | primary | ⚪ pending | — |
+| [[dirac1928_electron]] | 1928 | 1925-1948 | primary | ⚪ pending | — |
+| [[anderson1932_positron]] | 1932 | 1925-1948 | primary | ⚪ pending | — |
+| [[chadwick1932_neutron]] | 1932 | 1925-1948 | primary | ⚪ pending | — |
+| [[von_neumann1932_grundlagen]] | 1932 | 1925-1948 | retrospective | ⚪ pending | — |
+| [[meissner_ochsenfeld1933_supraleiter]] | 1933 | 1925-1948 | primary | ⚪ pending | — |
+| [[fermi1934_beta_decay]] | 1934 | 1925-1948 | primary | ⚪ pending | — |
+| [[dirac1958_principles]] | 1958 | 1925-1948 | retrospective | ⚪ pending | — |
+| [[peskin_schroeder1995_qft]] | 1995 | 1925-1948 | retrospective | ⚪ pending | — |
+| [[weinberg1995_qft_vol1]] | 1995 | 1925-1948 | retrospective | ⚪ pending | — |
+| [[mehra_rechenberg_qm_history]] | 2001 | 1925-1948 | retrospective | ⚪ pending | — |
 <!-- AUTO-TABLE-END -->
