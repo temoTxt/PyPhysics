@@ -124,7 +124,7 @@ $$K_D = \frac{H_D^2}{2mc^2} + \frac{mc^2}{2} = \frac{\boldsymbol\pi^2}{2m} + V -
 
 **Dimensional check:** $[e\boldsymbol\Sigma\!\cdot\!\mathbf{B}/(mc)]$ has dimensions of charge·magnetic-field / momentum = (force/velocity) / momentum = 1/time, **not** energy. The required $\hbar$ provides the missing action·time = energy·time, restoring energy dimensions.
 
-**Status:** ⚠️ Likely OCR artifact (the $\hbar$ symbol is one of the most commonly misread characters in scientific PDFs). The verified form is in [DRQM I Eq. (III.3)](./Dual_Relativistic_Quantum_Mechanics_I.md#eq-iii3--k_d-with-the-v--h_0-v_0--v_0-h_02mc2-shorthand) and AR-Dirac.
+**Status:** ⚠️ Likely OCR artifact (the $\hbar$ symbol is one of the most commonly misread characters in scientific PDFs). The verified form is in [[Dual_Relativistic_Quantum_Mechanics_I#Eq. (III.3) — $K_D$ with the $V := (H_0 V_0 + V_0 H_0)/(2mc^2)$ shorthand|DRQM I Eq. (III.3)]] and AR-Dirac.
 
 ### Eqs. (63)–(82) — Three thermodynamic proposals within dual theory
 

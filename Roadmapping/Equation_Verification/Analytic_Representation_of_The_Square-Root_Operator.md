@@ -186,7 +186,7 @@ The piecewise-defined $\mathbf{Z}[\mu\sqrt{c^2t^2 - r^2}]$ (with Hankel function
 
 This section discusses the Pryce observation that the many-particle relativistic center-of-mass is not the spatial part of a 4-vector, motivating the "potential as part of the mass" form of the Dirac Hamiltonian (which appears as Eq. II.3 in DRQM I and lines 530–544 in the Maxwell paper). Cross-references the Bakamjian–Thomas approach.
 
-**Verdict:** ⬜ Conceptual/historical context; no equations to verify independently. Cross-referenced to **DRQM I Eq. (II.3)** ([already verified](./Dual_Relativistic_Quantum_Mechanics_I.md#eq-ii3--dual-square-root-equation-potential-in-the-mass--new)).
+**Verdict:** ⬜ Conceptual/historical context; no equations to verify independently. Cross-referenced to **DRQM I Eq. (II.3)** (already verified — [[Dual_Relativistic_Quantum_Mechanics_I#Eq. (II.3) — Dual square-root equation (potential in the mass) — **NEW**]]).
 
 ---
 

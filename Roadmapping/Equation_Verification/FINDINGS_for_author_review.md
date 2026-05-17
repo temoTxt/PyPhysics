@@ -122,7 +122,7 @@ Print["v_g' = ", vgp];
 
 All checks here were run through the Wolfram MCP server (`mcp-remote@latest https://services.wolfram.com/api/mcp`) on 2026-05-10/11. Single-line Wolfram Language inputs reproduce verbatim; full per-equation context is in:
 
-- [`Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md`](./Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md) — section "Eq. (24)" details.
-- [`Dual_Relativistic_Quantum_Mechanics_I.md`](./Dual_Relativistic_Quantum_Mechanics_I.md) — section "Eqs. (III.21)–(III.23)" details.
+- [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] — section "Eq. (24)" details.
+- [[Dual_Relativistic_Quantum_Mechanics_I]] — section "Eqs. (III.21)–(III.23)" details.
 
 If either finding turns out to be a misinterpretation of the paper's notation/conventions on the verifier's side, an erratum at the per-finding level rather than a wholesale rework would be the smallest fix.
