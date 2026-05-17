@@ -24,8 +24,8 @@ This principle protects the project from being misread as a fringe-physics ventu
 | Question | Decision |
 |---|---|
 | Primary output format | Markdown chapters + companion Manim scenes (mirrors verification campaign #3 + animations campaign #5). |
-| What when Gill has no published paper covering a topic | Extrapolate cautiously; mark every extrapolation `#inferred`. |
-| Solid-state / transistor track | Include with speculative proper-time commentary, also flagged `#inferred`. |
+| What when Gill has no published paper covering a topic | Extrapolate cautiously; tag mechanical extrapolations `#inferred`, looser ones `#speculative` (full taxonomy below). |
+| Solid-state / transistor track | Include with proper-time commentary tagged `#speculative` (loose extrapolation) or `#gill-silent` where Gill's framework doesn't directly apply. |
 | Existing verification + animations docs | Retroactively converted to Obsidian wikilinks in a small preparatory PR (PR A below). |
 | BibTeX bridge | Built in Phase 0 (PR B), so chapters can cite via wikilinks from day one. |
 | PDF storage | `Historical_Papers/` gitignored by default. Allow-list small public-domain PDFs via `git add -f`. In-copyright PDFs are never committed; only the converted markdown is, under fair-use academic quotation. |
@@ -173,7 +173,7 @@ Animations are sparser: 0–1 per chapter. Natural format is a roadmap diagram (
 1. **Overview** — what the field is and why it's a consequence of the 1800–1965 arc. **Closes with the framing-principle disclaimer.**
 2. **Historical roots** — wikilinks back into Ch 1–5 (e.g., for PNT: time-keeping → atomic clocks; Einstein 1905 SR → time dilation; Einstein 1916 GR → gravitational time dilation; Doppler 1842; Sagnac 1913).
 3. **First-principles derivation of the field basics** — equations, step by step, both standard and Gill-framed. Closely mirrors historical-chapter style.
-4. **Applications walk-through** — each application gets its own subsection deriving the headline equations and showing where standard vs proper-time framings agree/diverge. For Ch 9 PNT: §A GPS, §B SLR, §C QKD.
+4. **Applications walk-through** — each application gets its own subsection deriving the headline equations and showing where standard vs proper-time framings agree/diverge. For Ch 7 PNT: §A basics → §B Mercury perihelion → §C GPS → §D SLR → §E QKD.
 5. **What proper-time changes (and what it doesn't)** — concrete `#inferred` or `#verified` claims with numerical estimates. Most often the proper-time framework reproduces standard predictions at current precision; flagging *where* it would diverge sets up future experimental tests.
 6. **Bibliography** — mix of primary engineering sources (e.g., for PNT: Vessot 1980 Gravity Probe A, original GPS papers) and modern reviews (Ashby 2003 *Living Reviews in Relativity*).
 
@@ -224,11 +224,11 @@ status: draft   # draft | reviewed | tts-rendered
 
 The `animations_cued` field lets a future agent (or the TTS pipeline) auto-build a video version of the podcast with the animations dropped in at the right cue points.
 
-### Production pipeline (deferred — Phase 9, optional)
+### Production pipeline (deferred — Phase 10 / PR L, optional)
 
-The committed artifact is **always the script** (markdown). Audio production is optional and lives in a separate Phase 9 PR if/when we want it:
+The committed artifact is **always the script** (markdown). Audio production is optional and lives in a separate Phase 10 PR (PR L) if/when we want it:
 
-- TTS via a Python tool (candidates: `pyttsx3` offline; ElevenLabs / OpenAI / Anthropic TTS via API; coqui-tts for open-source neural). Decision deferred to Phase 9.
+- TTS via a Python tool (candidates: `pyttsx3` offline; ElevenLabs / OpenAI / Anthropic TTS via API; coqui-tts for open-source neural). Decision deferred to PR L.
 - Per-speaker voice selection: each persona gets a distinct voice, set in `Roadmapping/History/Podcast/README.md`.
 - Output: `Podcast/audio/episode_NN_*.mp3`; gitignored, regenerable from the script.
 - Optional: a `build_episode_video.py` that composites the audio with the cued animations into a finished video.
@@ -286,7 +286,7 @@ Each chapter PR follows the same **six-step** pattern:
 3. **Conversion pass** — `uv run python Roadmapping/parse_papers.py --input Roadmapping/Historical_Papers/Primary --output Roadmapping/Historical_Converted_Markdown/Primary`. Commit converted markdown + images.
 4. **Narrative pass** — write the chapter. Inline wikilinks resolve to the now-filled bibliography notes; quote directly from the converted markdown where useful.
 5. **QA + retrospective summaries + animation** — eyeball converted equations for OCR errors and fix the load-bearing ones; fill in 2–3-paragraph summaries on retrospective notes; render any new Manim scenes.
-6. **Podcast-episode script** — write the dialogue version of the chapter for `Roadmapping/History/Podcast/episode_NN_*.md`. Reuses the same bibliography wikilinks and animation cross-references; converts the narrative into 2–3-voice dialogue (target ~30–45 min runtime). Audio production deferred to optional Phase 9.
+6. **Podcast-episode script** — write the dialogue version of the chapter for `Roadmapping/History/Podcast/episode_NN_*.md`. Reuses the same bibliography wikilinks and animation cross-references; converts the narrative into 2–3-voice dialogue (target ~30–45 min runtime). Audio production deferred to optional Phase 10 (PR L).
 
 Per-chapter sizing (each PR includes chapter narrative + bibliography stubs + animation + podcast script):
 
@@ -395,7 +395,7 @@ The forward chapter is honest that fusion is largely `#gill-silent` — most of 
 
 ### PR L — Phase 10 *(optional)*: Podcast audio production
 
-Decoupled from chapter PRs. Tackles end-to-end audio production for the 8 episode scripts written in PRs C–J:
+Decoupled from chapter PRs. Tackles end-to-end audio production for the 9 episode scripts written in PRs C–K:
 
 - **TTS-engine decision**: `pyttsx3` offline / `coqui-tts` open-source neural / commercial API (ElevenLabs, OpenAI). Per-speaker voice IDs codified in `Roadmapping/History/Podcast/README.md`. Decision deferred to the start of PR L based on quality/cost tradeoff at that time.
 - **New tools** (see "Required tools and scripts"): `Podcast/build_audio.py` (parses script → TTS per speaker → concatenated MP3 per episode) and optional companion `Podcast/build_episode_video.py` (composites audio with cued animations into MP4).
@@ -462,7 +462,7 @@ Every new script lands with:
 2. **`if __name__ == "__main__": main()`** entrypoint with `argparse` CLI.
 3. **No state writes outside the directory it's in** unless explicitly path-arg'd (e.g., bibliography scripts can write into `Bibliography/`, but `fetch_pdf.py` writes into `Historical_Papers/` only via the configured `--output-dir`).
 4. **`--dry-run`** flag on any script that writes / mutates state.
-5. **No new top-level dependencies** without explicit note in the PR. The root pyproject already has `arxiv`, `marker-pdf`, `torch`; bibliography tooling shouldn't need anything beyond `pyyaml` + `requests` (Crossref). TTS dependencies land only in the Phase 9 PR.
+5. **No new top-level dependencies** without explicit note in the PR. The root pyproject already has `arxiv`, `marker-pdf`, `torch`; bibliography tooling shouldn't need anything beyond `pyyaml` + `requests` (Crossref). TTS dependencies land only in the Phase 10 PR (PR L).
 
 ## Per-chapter scene proposals
 
