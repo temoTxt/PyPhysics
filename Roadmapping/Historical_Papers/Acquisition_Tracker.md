@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 100 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 100 pending · 🔴 0 unavailable
+**Summary**: 108 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 108 pending · 🔴 0 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -104,13 +104,21 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[schwarzschild1916]] | 1916 | forward | primary | ⚪ pending | — |
 | [[misner_thorne_wheeler1973]] | 1973 | forward | retrospective | ⚪ pending | — |
 | [[vessot1980_gravity_probe_a]] | 1980 | forward | primary | ⚪ pending | — |
+| [[feynman1982_simulating_physics]] | 1982 | forward | primary | ⚪ pending | — |
 | [[bennett_brassard1984_bb84]] | 1984 | forward | primary | ⚪ pending | — |
 | [[wald1984_gr]] | 1984 | forward | retrospective | ⚪ pending | — |
+| [[deutsch1985_quantum_turing]] | 1985 | forward | primary | ⚪ pending | — |
 | [[smith_christodoulidis1985_slr]] | 1985 | forward | primary | ⚪ pending | — |
 | [[ekert1991_qkd]] | 1991 | forward | primary | ⚪ pending | — |
+| [[shor1994_factoring]] | 1994 | forward | primary | ⚪ pending | — |
+| [[grover1996_search]] | 1996 | forward | primary | ⚪ pending | — |
 | [[parkinson1996_gps_theory]] | 1996 | forward | primary | ⚪ pending | — |
 | [[nielsen_chuang2000_quantum_computation]] | 2000 | forward | retrospective | ⚪ pending | — |
 | [[ashby2003_gps_relativity]] | 2003 | forward | primary | ⚪ pending | — |
+| [[kitaev2003_topological]] | 2003 | forward | primary | ⚪ pending | — |
 | [[liao2018_micius_satellite]] | 2017 | forward | primary | ⚪ pending | — |
+| [[preskill2018_nisq]] | 2018 | forward | retrospective | ⚪ pending | — |
+| [[arute2019_quantum_supremacy]] | 2019 | forward | primary | ⚪ pending | — |
+| [[krantz2019_circuit_qed]] | 2019 | forward | retrospective | ⚪ pending | — |
 | [[pirandola2020_qkd_review]] | 2020 | forward | retrospective | ⚪ pending | — |
 <!-- AUTO-TABLE-END -->
