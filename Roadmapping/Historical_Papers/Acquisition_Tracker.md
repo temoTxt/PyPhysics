@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 87 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 87 pending · 🔴 0 unavailable
+**Summary**: 100 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 100 pending · 🔴 0 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -100,4 +100,17 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[pais1986_inward_bound]] | 1986 | 1948-1965 | retrospective | ⚪ pending | — |
 | [[schweber1994_qed_and_men]] | 1994 | 1948-1965 | retrospective | ⚪ pending | — |
 | [[tinkham1996_superconductivity]] | 1996 | 1948-1965 | retrospective | ⚪ pending | — |
+| [[sagnac1913_effect]] | 1913 | forward | primary | ⚪ pending | — |
+| [[schwarzschild1916]] | 1916 | forward | primary | ⚪ pending | — |
+| [[misner_thorne_wheeler1973]] | 1973 | forward | retrospective | ⚪ pending | — |
+| [[vessot1980_gravity_probe_a]] | 1980 | forward | primary | ⚪ pending | — |
+| [[bennett_brassard1984_bb84]] | 1984 | forward | primary | ⚪ pending | — |
+| [[wald1984_gr]] | 1984 | forward | retrospective | ⚪ pending | — |
+| [[smith_christodoulidis1985_slr]] | 1985 | forward | primary | ⚪ pending | — |
+| [[ekert1991_qkd]] | 1991 | forward | primary | ⚪ pending | — |
+| [[parkinson1996_gps_theory]] | 1996 | forward | primary | ⚪ pending | — |
+| [[nielsen_chuang2000_quantum_computation]] | 2000 | forward | retrospective | ⚪ pending | — |
+| [[ashby2003_gps_relativity]] | 2003 | forward | primary | ⚪ pending | — |
+| [[liao2018_micius_satellite]] | 2017 | forward | primary | ⚪ pending | — |
+| [[pirandola2020_qkd_review]] | 2020 | forward | retrospective | ⚪ pending | — |
 <!-- AUTO-TABLE-END -->
