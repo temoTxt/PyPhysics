@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 29 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 29 pending · 🔴 0 unavailable
+**Summary**: 50 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 50 pending · 🔴 0 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -42,4 +42,25 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[buchwald1985_maxwell_microphysics]] | 1985 | 1860-1900 | retrospective | ⚪ pending | — |
 | [[siegel1991_innovation_maxwell]] | 1991 | 1860-1900 | retrospective | ⚪ pending | — |
 | [[jackson1998_classical_electrodynamics]] | 1998 | 1860-1900 | retrospective | ⚪ pending | — |
+| [[verrier1859_mercury]] | 1859 | 1900-1925 | primary | ⚪ pending | — |
+| [[planck1900_blackbody]] | 1900 | 1900-1925 | primary | ⚪ pending | — |
+| [[einstein1905_brownian]] | 1905 | 1900-1925 | primary | ⚪ pending | — |
+| [[einstein1905_emc2]] | 1905 | 1900-1925 | primary | ⚪ pending | — |
+| [[einstein1905_photoelectric]] | 1905 | 1900-1925 | primary | ⚪ pending | — |
+| [[einstein1905_specrel]] | 1905 | 1900-1925 | primary | ⚪ pending | — |
+| [[minkowski1908_raum_zeit]] | 1908 | 1900-1925 | primary | ⚪ pending | — |
+| [[onnes1908_helium_liquefaction]] | 1908 | 1900-1925 | primary | ⚪ pending | — |
+| [[onnes1911_superconductivity]] | 1911 | 1900-1925 | primary | ⚪ pending | — |
+| [[rutherford1911_alpha_scattering]] | 1911 | 1900-1925 | primary | ⚪ pending | — |
+| [[bohr1913_atom_constitution]] | 1913 | 1900-1925 | primary | ⚪ pending | — |
+| [[einstein1915_perihelion]] | 1915 | 1900-1925 | primary | ⚪ pending | — |
+| [[einstein1916_grundlage]] | 1916 | 1900-1925 | primary | ⚪ pending | — |
+| [[millikan1916_photoelectric_verification]] | 1916 | 1900-1925 | primary | ⚪ pending | — |
+| [[sommerfeld1916_atombau]] | 1916 | 1900-1925 | primary | ⚪ pending | — |
+| [[compton1923_xray_scattering]] | 1923 | 1900-1925 | primary | ⚪ pending | — |
+| [[de_broglie1924_thesis]] | 1924 | 1900-1925 | primary | ⚪ pending | — |
+| [[jammer1966_conceptual_qm]] | 1966 | 1900-1925 | retrospective | ⚪ pending | — |
+| [[heilbron1969_bohr_atom]] | 1969 | 1900-1925 | retrospective | ⚪ pending | — |
+| [[kuhn1978_blackbody]] | 1978 | 1900-1925 | retrospective | ⚪ pending | — |
+| [[pais1982_subtle_is_the_lord]] | 1982 | 1900-1925 | retrospective | ⚪ pending | — |
 <!-- AUTO-TABLE-END -->
