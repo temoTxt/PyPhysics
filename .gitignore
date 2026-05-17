@@ -6,3 +6,21 @@
 .obsidian/workspace-mobile.json
 .obsidian/cache/
 .obsidian/plugins/
+
+# Historical_Papers — two-tier PDF policy.
+# Default: ignore everything under Historical_Papers/. Public-domain PDFs are
+# allow-listed back in per chapter via `git add -f` (see Bibliography/README.md +
+# Historical_Papers/Acquisition_Tracker.md for the policy). The `.gitkeep` and
+# `Acquisition_Tracker.md` files are committed via explicit !-rules below.
+Roadmapping/Historical_Papers/**/*.pdf
+Roadmapping/Historical_Papers/**/*.PDF
+!Roadmapping/Historical_Papers/Acquisition_Tracker.md
+!Roadmapping/Historical_Papers/**/.gitkeep
+
+# Bibliography — generated BibTeX is regenerable from YAML.
+Roadmapping/History/Bibliography/bibliography.bib
+
+# Podcast — audio is regenerable from scripts (Phase 10 / PR L only).
+Roadmapping/History/Podcast/audio/*.mp3
+Roadmapping/History/Podcast/audio/*.wav
+Roadmapping/History/Podcast/video/
