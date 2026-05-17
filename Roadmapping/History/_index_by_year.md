@@ -113,3 +113,21 @@
 | 1986 | [[pais1986_inward_bound]] | Inward Bound: Of Matter and Forces in the Physical World | retrospective | pending |
 | 1994 | [[schweber1994_qed_and_men]] | QED and the Men Who Made It: Dyson, Feynman, Schwinger, and Tomonaga | retrospective | pending |
 | 1996 | [[tinkham1996_superconductivity]] | Introduction to Superconductivity (2nd ed.) | retrospective | pending |
+
+## Era: forward
+
+| Year | Cite-key | Title | Type | PDF status |
+|---:|---|---|---|---|
+| 1913 | [[sagnac1913_effect]] | L'éther lumineux démontré par l'effet du vent relatif d'éther dans un interféromètre en rotation uniforme | primary | pending |
+| 1916 | [[schwarzschild1916]] | Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie | primary | pending |
+| 1973 | [[misner_thorne_wheeler1973]] | Gravitation | retrospective | pending |
+| 1980 | [[vessot1980_gravity_probe_a]] | Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser | primary | pending |
+| 1984 | [[bennett_brassard1984_bb84]] | Quantum cryptography: Public key distribution and coin tossing | primary | pending |
+| 1984 | [[wald1984_gr]] | General Relativity | retrospective | pending |
+| 1985 | [[smith_christodoulidis1985_slr]] | Lunar laser ranging and the dynamics of the Earth-Moon system | primary | pending |
+| 1991 | [[ekert1991_qkd]] | Quantum cryptography based on Bell's theorem | primary | pending |
+| 1996 | [[parkinson1996_gps_theory]] | Global Positioning System: Theory and Applications, Vol. I | primary | pending |
+| 2000 | [[nielsen_chuang2000_quantum_computation]] | Quantum Computation and Quantum Information | retrospective | pending |
+| 2003 | [[ashby2003_gps_relativity]] | Relativity in the Global Positioning System | primary | pending |
+| 2017 | [[liao2018_micius_satellite]] | Satellite-to-Ground Quantum Key Distribution | primary | pending |
+| 2020 | [[pirandola2020_qkd_review]] | Advances in quantum cryptography | retrospective | pending |

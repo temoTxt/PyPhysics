@@ -106,9 +106,25 @@
 - [[schweber1994_qed_and_men]] (1994) — QED and the Men Who Made It: Dyson, Feynman, Schwinger, and Tomonaga
 - [[tinkham1996_superconductivity]] (1996) — Introduction to Superconductivity (2nd ed.)
 
+### #era/forward — 13 entries
+
+- [[sagnac1913_effect]] (1913) — L'éther lumineux démontré par l'effet du vent relatif d'éther dans un interféromètre en rotation uniforme
+- [[schwarzschild1916]] (1916) — Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie
+- [[misner_thorne_wheeler1973]] (1973) — Gravitation
+- [[vessot1980_gravity_probe_a]] (1980) — Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser
+- [[bennett_brassard1984_bb84]] (1984) — Quantum cryptography: Public key distribution and coin tossing
+- [[wald1984_gr]] (1984) — General Relativity
+- [[smith_christodoulidis1985_slr]] (1985) — Lunar laser ranging and the dynamics of the Earth-Moon system
+- [[ekert1991_qkd]] (1991) — Quantum cryptography based on Bell's theorem
+- [[parkinson1996_gps_theory]] (1996) — Global Positioning System: Theory and Applications, Vol. I
+- [[nielsen_chuang2000_quantum_computation]] (2000) — Quantum Computation and Quantum Information
+- [[ashby2003_gps_relativity]] (2003) — Relativity in the Global Positioning System
+- [[liao2018_micius_satellite]] (2017) — Satellite-to-Ground Quantum Key Distribution
+- [[pirandola2020_qkd_review]] (2020) — Advances in quantum cryptography
+
 ## Tag namespace: thread
 
-### #thread/electromagnetism — 31 entries
+### #thread/electromagnetism — 32 entries
 
 - [[volta1800_electricity_contact]] (1800) — On the Electricity excited by the mere Contact of conducting Substances of different kinds
 - [[ampere1820_action_mutuelle]] (1820) — Mémoire présenté à l'Académie royale des Sciences, le 2 octobre 1820, où se trouve compris le résumé de ce qui avait été lu à la même Académie les 18 et 25 septembre 1820, sur les effets des courants électriques
@@ -135,6 +151,7 @@
 - [[einstein1905_specrel]] (1905) — Zur Elektrodynamik bewegter Körper
 - [[minkowski1908_raum_zeit]] (1908) — Raum und Zeit
 - [[whittaker1910_aether_electricity]] (1910) — A History of the Theories of Aether and Electricity, from the Age of Descartes to the Close of the Nineteenth Century
+- [[sagnac1913_effect]] (1913) — L'éther lumineux démontré par l'effet du vent relatif d'éther dans un interféromètre en rotation uniforme
 - [[einstein1916_grundlage]] (1916) — Die Grundlage der allgemeinen Relativitätstheorie
 - [[williams1965_faraday_biography]] (1965) — Michael Faraday: A Biography
 - [[buchwald1985_maxwell_microphysics]] (1985) — From Maxwell to Microphysics: Aspects of Electromagnetic Theory in the Last Quarter of the Nineteenth Century
@@ -142,7 +159,7 @@
 - [[jackson1998_classical_electrodynamics]] (1998) — Classical Electrodynamics
 - [[darrigol2000_electrodynamics_ampere_einstein]] (2000) — Electrodynamics from Ampère to Einstein
 
-### #thread/quantum — 42 entries
+### #thread/quantum — 47 entries
 
 - [[thomson1897_cathode_rays]] (1897) — Cathode Rays
 - [[planck1900_blackbody]] (1900) — Zur Theorie des Gesetzes der Energieverteilung im Normalspectrum
@@ -181,11 +198,16 @@
 - [[heilbron1969_bohr_atom]] (1969) — The Genesis of the Bohr Atom
 - [[kuhn1978_blackbody]] (1978) — Black-Body Theory and the Quantum Discontinuity, 1894-1912
 - [[dyson1979_disturbing_universe]] (1979) — Disturbing the Universe
+- [[bennett_brassard1984_bb84]] (1984) — Quantum cryptography: Public key distribution and coin tossing
 - [[pais1986_inward_bound]] (1986) — Inward Bound: Of Matter and Forces in the Physical World
+- [[ekert1991_qkd]] (1991) — Quantum cryptography based on Bell's theorem
 - [[schweber1994_qed_and_men]] (1994) — QED and the Men Who Made It: Dyson, Feynman, Schwinger, and Tomonaga
 - [[peskin_schroeder1995_qft]] (1995) — An Introduction to Quantum Field Theory
 - [[weinberg1995_qft_vol1]] (1995) — The Quantum Theory of Fields, Volume I: Foundations
+- [[nielsen_chuang2000_quantum_computation]] (2000) — Quantum Computation and Quantum Information
 - [[mehra_rechenberg_qm_history]] (2001) — The Historical Development of Quantum Theory (6 volumes)
+- [[liao2018_micius_satellite]] (2017) — Satellite-to-Ground Quantum Key Distribution
+- [[pirandola2020_qkd_review]] (2020) — Advances in quantum cryptography
 
 ### #thread/solid-state — 11 entries
 
@@ -203,7 +225,7 @@
 
 ## Tag namespace: framework-claim
 
-### #gill-silent — 39 entries
+### #gill-silent — 46 entries
 
 - [[volta1800_electricity_contact]] (1800) — On the Electricity excited by the mere Contact of conducting Substances of different kinds
 - [[ampere1820_action_mutuelle]] (1820) — Mémoire présenté à l'Académie royale des Sciences, le 2 octobre 1820, où se trouve compris le résumé de ce qui avait été lu à la même Académie les 18 et 25 septembre 1820, sur les effets des courants électriques
@@ -228,6 +250,7 @@
 - [[einstein1915_perihelion]] (1915) — Erklärung der Perihelbewegung des Merkur aus der allgemeinen Relativitätstheorie
 - [[einstein1916_grundlage]] (1916) — Die Grundlage der allgemeinen Relativitätstheorie
 - [[millikan1916_photoelectric_verification]] (1916) — A Direct Photoelectric Determination of Planck's 'h'
+- [[schwarzschild1916]] (1916) — Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie
 - [[heisenberg1925_quantum_mechanics]] (1925) — Über quantentheoretische Umdeutung kinematischer und mechanischer Beziehungen
 - [[pauli1925_exclusion]] (1925) — Über den Zusammenhang des Abschlusses der Elektronengruppen im Atom mit der Komplexstruktur der Spektren
 - [[uhlenbeck_goudsmit1925_spin]] (1925) — Ersetzung der Hypothese vom unmechanischen Zwang durch eine Forderung bezüglich des inneren Verhaltens jedes einzelnen Elektrons
@@ -244,8 +267,14 @@
 - [[bcs1957_superconductivity]] (1957) — Theory of Superconductivity
 - [[wu1957_parity]] (1957) — Experimental Test of Parity Conservation in Beta Decay
 - [[josephson1962_tunneling]] (1962) — Possible New Effects in Superconductive Tunnelling
+- [[vessot1980_gravity_probe_a]] (1980) — Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser
+- [[bennett_brassard1984_bb84]] (1984) — Quantum cryptography: Public key distribution and coin tossing
+- [[smith_christodoulidis1985_slr]] (1985) — Lunar laser ranging and the dynamics of the Earth-Moon system
+- [[ekert1991_qkd]] (1991) — Quantum cryptography based on Bell's theorem
+- [[parkinson1996_gps_theory]] (1996) — Global Positioning System: Theory and Applications, Vol. I
+- [[ashby2003_gps_relativity]] (2003) — Relativity in the Global Positioning System
 
-### #inferred — 22 entries
+### #inferred — 23 entries
 
 - [[faraday1832_experimental_researches_i]] (1832) — Experimental Researches in Electricity. First Series
 - [[maxwell1855_lines_of_force]] (1855) — On Faraday's Lines of Force
@@ -258,6 +287,7 @@
 - [[einstein1905_specrel]] (1905) — Zur Elektrodynamik bewegter Körper
 - [[minkowski1908_raum_zeit]] (1908) — Raum und Zeit
 - [[bohr1913_atom_constitution]] (1913) — On the Constitution of Atoms and Molecules
+- [[sagnac1913_effect]] (1913) — L'éther lumineux démontré par l'effet du vent relatif d'éther dans un interféromètre en rotation uniforme
 - [[sommerfeld1916_atombau]] (1916) — Zur Quantentheorie der Spektrallinien
 - [[compton1923_xray_scattering]] (1923) — A Quantum Theory of the Scattering of X-rays by Light Elements
 - [[de_broglie1924_thesis]] (1924) — Recherches sur la théorie des quanta
@@ -269,6 +299,10 @@
 - [[schwinger1948_qed]] (1948) — On Quantum Electrodynamics and the Magnetic Moment of the Electron
 - [[dyson1949_equivalence]] (1949) — The Radiation Theories of Tomonaga, Schwinger, and Feynman
 - [[feynman1949_diagrams]] (1949) — Space-Time Approach to Quantum Electrodynamics
+
+### #speculative — 1 entries
+
+- [[liao2018_micius_satellite]] (2017) — Satellite-to-Ground Quantum Key Distribution
 
 ### #verified — 6 entries
 
@@ -309,6 +343,11 @@
 
 - [[verrier1859_mercury]] (1859) — Lettre de M. Le Verrier à M. Faye sur la théorie de Mercure et sur le mouvement du périhélie de cette planète
 
+### atomic-clock — 2 entries
+
+- [[vessot1980_gravity_probe_a]] (1980) — Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser
+- [[ashby2003_gps_relativity]] (2003) — Relativity in the Global Positioning System
+
 ### atomic-structure — 2 entries
 
 - [[rutherford1911_alpha_scattering]] (1911) — The Scattering of α and β Particles by Matter and the Structure of the Atom
@@ -321,6 +360,14 @@
 ### band-theory — 1 entries
 
 - [[bloch1928_kristall]] (1928) — Über die Quantenmechanik der Elektronen in Kristallgittern
+
+### bb84 — 1 entries
+
+- [[bennett_brassard1984_bb84]] (1984) — Quantum cryptography: Public key distribution and coin tossing
+
+### bell-inequality — 1 entries
+
+- [[ekert1991_qkd]] (1991) — Quantum cryptography based on Bell's theorem
 
 ### beta-decay — 1 entries
 
@@ -455,6 +502,10 @@
 
 - [[lenz1834_richtung_strome]] (1834) — Über die Bestimmung der Richtung der durch elektrodynamische Vertheilung erregten galvanischen Ströme
 
+### engineering — 1 entries
+
+- [[parkinson1996_gps_theory]] (1996) — Global Positioning System: Theory and Applications, Vol. I
+
 ### exclusion-principle — 1 entries
 
 - [[pauli1925_exclusion]] (1925) — Über den Zusammenhang des Abschlusses der Elektronengruppen im Atom mit der Komplexstruktur der Spektren
@@ -479,7 +530,7 @@
 
 - [[sommerfeld1916_atombau]] (1916) — Zur Quantentheorie der Spektrallinien
 
-### foundational — 49 entries
+### foundational — 52 entries
 
 - [[volta1800_electricity_contact]] (1800) — On the Electricity excited by the mere Contact of conducting Substances of different kinds
 - [[ampere1820_action_mutuelle]] (1820) — Mémoire présenté à l'Académie royale des Sciences, le 2 octobre 1820, où se trouve compris le résumé de ce qui avait été lu à la même Académie les 18 et 25 septembre 1820, sur les effets des courants électriques
@@ -504,6 +555,7 @@
 - [[bohr1913_atom_constitution]] (1913) — On the Constitution of Atoms and Molecules
 - [[einstein1915_perihelion]] (1915) — Erklärung der Perihelbewegung des Merkur aus der allgemeinen Relativitätstheorie
 - [[einstein1916_grundlage]] (1916) — Die Grundlage der allgemeinen Relativitätstheorie
+- [[schwarzschild1916]] (1916) — Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie
 - [[compton1923_xray_scattering]] (1923) — A Quantum Theory of the Scattering of X-rays by Light Elements
 - [[de_broglie1924_thesis]] (1924) — Recherches sur la théorie des quanta
 - [[heisenberg1925_quantum_mechanics]] (1925) — Über quantentheoretische Umdeutung kinematischer und mechanischer Beziehungen
@@ -530,19 +582,35 @@
 - [[lee_yang1956_parity_question]] (1956) — Question of Parity Conservation in Weak Interactions
 - [[bcs1957_superconductivity]] (1957) — Theory of Superconductivity
 - [[wu1957_parity]] (1957) — Experimental Test of Parity Conservation in Beta Decay
+- [[bennett_brassard1984_bb84]] (1984) — Quantum cryptography: Public key distribution and coin tossing
+- [[ashby2003_gps_relativity]] (2003) — Relativity in the Global Positioning System
 
 ### foundations — 1 entries
 
 - [[von_neumann1932_grundlagen]] (1932) — Mathematische Grundlagen der Quantenmechanik
 
-### general-relativity — 2 entries
+### general-relativity — 7 entries
 
 - [[einstein1915_perihelion]] (1915) — Erklärung der Perihelbewegung des Merkur aus der allgemeinen Relativitätstheorie
 - [[einstein1916_grundlage]] (1916) — Die Grundlage der allgemeinen Relativitätstheorie
+- [[schwarzschild1916]] (1916) — Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie
+- [[misner_thorne_wheeler1973]] (1973) — Gravitation
+- [[vessot1980_gravity_probe_a]] (1980) — Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser
+- [[wald1984_gr]] (1984) — General Relativity
+- [[ashby2003_gps_relativity]] (2003) — Relativity in the Global Positioning System
 
 ### geometric — 1 entries
 
 - [[minkowski1908_raum_zeit]] (1908) — Raum und Zeit
+
+### gps — 2 entries
+
+- [[parkinson1996_gps_theory]] (1996) — Global Positioning System: Theory and Applications, Vol. I
+- [[ashby2003_gps_relativity]] (2003) — Relativity in the Global Positioning System
+
+### gravity-probe-a — 1 entries
+
+- [[vessot1980_gravity_probe_a]] (1980) — Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser
 
 ### hall-effect — 1 entries
 
@@ -596,6 +664,10 @@
 ### lorentz-transformation — 1 entries
 
 - [[lorentz1892_electron_theory]] (1892) — La théorie électromagnétique de Maxwell et son application aux corps mouvants
+
+### lunar-laser-ranging — 1 entries
+
+- [[smith_christodoulidis1985_slr]] (1985) — Lunar laser ranging and the dynamics of the Earth-Moon system
 
 ### mass-energy — 1 entries
 
@@ -703,6 +775,11 @@
 
 - [[kuhn1978_blackbody]] (1978) — Black-Body Theory and the Quantum Discontinuity, 1894-1912
 
+### pnt — 2 entries
+
+- [[smith_christodoulidis1985_slr]] (1985) — Lunar laser ranging and the dynamics of the Earth-Moon system
+- [[parkinson1996_gps_theory]] (1996) — Global Positioning System: Theory and Applications, Vol. I
+
 ### positron — 1 entries
 
 - [[anderson1932_positron]] (1932) — The Positive Electron
@@ -719,7 +796,15 @@
 - [[dyson1979_disturbing_universe]] (1979) — Disturbing the Universe
 - [[schweber1994_qed_and_men]] (1994) — QED and the Men Who Made It: Dyson, Feynman, Schwinger, and Tomonaga
 
-### quantum — 26 entries
+### qkd — 5 entries
+
+- [[bennett_brassard1984_bb84]] (1984) — Quantum cryptography: Public key distribution and coin tossing
+- [[ekert1991_qkd]] (1991) — Quantum cryptography based on Bell's theorem
+- [[nielsen_chuang2000_quantum_computation]] (2000) — Quantum Computation and Quantum Information
+- [[liao2018_micius_satellite]] (2017) — Satellite-to-Ground Quantum Key Distribution
+- [[pirandola2020_qkd_review]] (2020) — Advances in quantum cryptography
+
+### quantum — 29 entries
 
 - [[planck1900_blackbody]] (1900) — Zur Theorie des Gesetzes der Energieverteilung im Normalspectrum
 - [[einstein1905_photoelectric]] (1905) — Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt
@@ -747,6 +832,13 @@
 - [[dyson1952_divergence]] (1952) — Divergence of Perturbation Theory in Quantum Electrodynamics
 - [[lee_yang1956_parity_question]] (1956) — Question of Parity Conservation in Weak Interactions
 - [[wu1957_parity]] (1957) — Experimental Test of Parity Conservation in Beta Decay
+- [[bennett_brassard1984_bb84]] (1984) — Quantum cryptography: Public key distribution and coin tossing
+- [[ekert1991_qkd]] (1991) — Quantum cryptography based on Bell's theorem
+- [[liao2018_micius_satellite]] (2017) — Satellite-to-Ground Quantum Key Distribution
+
+### quantum-computation — 1 entries
+
+- [[nielsen_chuang2000_quantum_computation]] (2000) — Quantum Computation and Quantum Information
 
 ### quantum-field-theory — 2 entries
 
@@ -772,6 +864,26 @@
 
 - [[lorenz1867_identity_light_electricity]] (1867) — On the Identity of the Vibrations of Light with Electrical Currents
 
+### review — 1 entries
+
+- [[pirandola2020_qkd_review]] (2020) — Advances in quantum cryptography
+
+### rotating-frames — 1 entries
+
+- [[sagnac1913_effect]] (1913) — L'éther lumineux démontré par l'effet du vent relatif d'éther dans un interféromètre en rotation uniforme
+
+### sagnac-effect — 1 entries
+
+- [[sagnac1913_effect]] (1913) — L'éther lumineux démontré par l'effet du vent relatif d'éther dans un interféromètre en rotation uniforme
+
+### satellite-quantum — 1 entries
+
+- [[liao2018_micius_satellite]] (2017) — Satellite-to-Ground Quantum Key Distribution
+
+### schwarzschild-metric — 1 entries
+
+- [[schwarzschild1916]] (1916) — Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie
+
 ### self-inductance — 1 entries
 
 - [[henry1832_currents_and_sparks]] (1832) — On the Production of Currents and Sparks of Electricity from Magnetism
@@ -779,6 +891,10 @@
 ### semiconductor — 1 entries
 
 - [[bardeen_brattain1948_transistor]] (1948) — The Transistor, A Semi-Conductor Triode
+
+### slr — 1 entries
+
+- [[smith_christodoulidis1985_slr]] (1985) — Lunar laser ranging and the dynamics of the Earth-Moon system
 
 ### solid-state — 10 entries
 
@@ -797,11 +913,12 @@
 
 - [[minkowski1908_raum_zeit]] (1908) — Raum und Zeit
 
-### special-relativity — 3 entries
+### special-relativity — 4 entries
 
 - [[einstein1905_emc2]] (1905) — Ist die Trägheit eines Körpers von seinem Energieinhalt abhängig?
 - [[einstein1905_specrel]] (1905) — Zur Elektrodynamik bewegter Körper
 - [[minkowski1908_raum_zeit]] (1908) — Raum und Zeit
+- [[sagnac1913_effect]] (1913) — L'éther lumineux démontré par l'effet du vent relatif d'éther dans un interféromètre en rotation uniforme
 
 ### speed-of-light — 2 entries
 
@@ -832,15 +949,18 @@
 
 - [[kirchhoff1857_bewegung_elektrizitat]] (1857) — Über die Bewegung der Elektrizität in Drähten
 
-### textbook — 7 entries
+### textbook — 10 entries
 
 - [[maxwell1873_treatise]] (1873) — A Treatise on Electricity and Magnetism
 - [[dirac1958_principles]] (1958) — The Principles of Quantum Mechanics (4th ed.)
+- [[misner_thorne_wheeler1973]] (1973) — Gravitation
 - [[ashcroft_mermin1976_solid_state]] (1976) — Solid State Physics
+- [[wald1984_gr]] (1984) — General Relativity
 - [[peskin_schroeder1995_qft]] (1995) — An Introduction to Quantum Field Theory
 - [[weinberg1995_qft_vol1]] (1995) — The Quantum Theory of Fields, Volume I: Foundations
 - [[tinkham1996_superconductivity]] (1996) — Introduction to Superconductivity (2nd ed.)
 - [[jackson1998_classical_electrodynamics]] (1998) — Classical Electrodynamics
+- [[nielsen_chuang2000_quantum_computation]] (2000) — Quantum Computation and Quantum Information
 
 ### thermodynamics — 1 entries
 
