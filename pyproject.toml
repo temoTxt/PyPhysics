@@ -7,6 +7,7 @@ requires-python = ">=3.14"
 dependencies = [
     "arxiv>=2.4.1",
     "marker-pdf[full]>=1.10.2",
+    "pyyaml>=6.0",
     "torch>=2.11.0",
     "torchaudio>=2.11.0",
     "torchvision>=0.26.0",

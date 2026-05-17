@@ -47,7 +47,7 @@ Roadmapping/
 ├── Tepper_Gill_Papers/                     # 22 PDFs from arxiv (gitignored if large; check)
 ├── Converted_Markdown/<paper>/<paper>.md   # marker-pdf output; line-numbers in these files
 │                                           # are cited by the verification docs
-├── Equation_Verification/                  # ⭐ THE HEART OF THE REPO
+├── Equation_Verification/                  # ⭐ THE HEART OF THE REPO (issue #3)
 │   ├── README.md                           # status table + per-equation template
 │   ├── FINDINGS_for_author_review.md       # ⚠ 3 substantive findings flagged for authors
 │   └── <paper>.md                          # one verification doc per physics paper
@@ -56,11 +56,55 @@ Roadmapping/
 │   ├── manim_scenes/<paper>_<eq>_<topic>.py
 │   └── rendered/videos/<scene>/480p15/     # 480p previews committed (~400-500 KB each)
 │                              /1080p60/    # gitignored (rebuild via -qh)
-└── Research Roadmap …, Equation_Errors_…, Experimental_Design_Plan_… (.md notes)
+├── Historical_Papers/{Primary,Retrospective}/        # PDFs for History campaign (issue #7)
+│                                                     # gitignored by default; public-domain
+│                                                     # files allow-listed via `git add -f`
+├── Historical_Converted_Markdown/{Primary,Retrospective}/   # marker-pdf output; committed
+└── History/                                # History-of-physics multi-chapter project (issue #7)
+    ├── README.md, PLAN.md                  # methodology + 12-PR roadmap
+    ├── _template_chapter.md                # historical-chapter scaffold
+    ├── 01_…md through 06_…md               # historical + synthesis chapters
+    ├── Forward/                            # forward-looking chapters (Ch 7-9)
+    │   ├── _template_forward_open_questions.md     # Variant A (speculative)
+    │   ├── _template_forward_derivational.md       # Variant B (derivational)
+    │   └── 07_…md, 08_…md, 09_…md
+    ├── Bibliography/                       # YAML-frontmatter cite cards
+    │   ├── README.md                       # cite-key + tag conventions
+    │   ├── {Primary,Retrospective}/<cite_key>.md
+    │   ├── build_bibtex.py                 # YAML → bibliography.bib (gitignored)
+    │   ├── scaffold_bib_note.py            # generate stub from --cite-key (+optional --from-doi)
+    │   └── update_acquisition_tracker.py   # regenerate Historical_Papers/Acquisition_Tracker.md
+    ├── Podcast/                            # 3-voice dialogue scripts per chapter
+    │   ├── README.md                       # persona cast (Historian/Physicist/Experimentalist)
+    │   └── episode_NN_*.md
+    └── _tools/                             # per-chapter helpers (added in PR C)
 
 Hydrogen_Visualizer/                        # standalone scratch script (plotly); not part of pipeline
 main.py                                     # placeholder ("Hello from pyphysics!")
 ```
+
+### Obsidian vault conventions
+
+The repo doubles as an **Obsidian vault** (`.obsidian/` is checked in; `workspace*.json`/`cache/` are ignored). Cross-references between verification docs, bibliography notes, and chapters use Obsidian wikilinks (`[[name]]`, optionally `[[name#anchor]]`) rather than relative URLs. Cite-keys follow `firstauthor + year + slug` snake-case (e.g., `[[maxwell1865_dynamical_theory]]`). Full convention spec: [`Roadmapping/History/Bibliography/README.md`](Roadmapping/History/Bibliography/README.md).
+
+### PDF acquisition + storage policy (History campaign)
+
+Two-tier policy keyed on each bibliography note's YAML `pdf_status`:
+- `out_of_copyright_public` — PDF committed to `Historical_Papers/<Primary|Retrospective>/` via `git add -f`.
+- `acquired` — in-copyright PDF kept local only; only the marker-pdf-converted markdown is committed (fair-use academic quotation), under `Historical_Converted_Markdown/`.
+- `pending` / `unavailable` — not yet sourced.
+
+`Historical_Papers/` is gitignored by default (see [.gitignore](.gitignore)); each public-domain PDF must be force-added. Run `uv run python Roadmapping/History/Bibliography/update_acquisition_tracker.py` after any batch of bib-note edits to refresh `Historical_Papers/Acquisition_Tracker.md`.
+
+### Tooling locations
+
+- **Root project tools** (Python 3.14): `Roadmapping/download_paper.py`, `Roadmapping/parse_papers.py` (now accepts `--input` / `--output` / `--skip-existing`).
+- **Bibliography tools**: `Roadmapping/History/Bibliography/{build_bibtex,scaffold_bib_note,update_acquisition_tracker}.py`.
+- **Per-chapter helpers** (added in PR C): `Roadmapping/History/_tools/{fetch_pdf,validate_wikilinks,qa_converted_markdown,chapter_status}.py`.
+- **Podcast tools** (introduced piecewise): `Roadmapping/History/Podcast/lint_episode.py` (PR C), optional `build_audio.py` / `build_episode_video.py` (PR L).
+- **Manim scenes** (Python 3.13 sub-project): `Roadmapping/Animations/manim_scenes/*.py`.
+
+All scripts follow `uv run python <path> [--dry-run] …` and ship with a top-of-file docstring + argparse. Don't add top-level dependencies without noting it in the PR.
 
 ## How equation verification works
 
