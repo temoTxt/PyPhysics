@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 13 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 13 pending · 🔴 0 unavailable
+**Summary**: 29 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 29 pending · 🔴 0 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -26,4 +26,20 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[whittaker1910_aether_electricity]] | 1910 | 1800-1860 | retrospective | ⚪ pending | — |
 | [[williams1965_faraday_biography]] | 1965 | 1800-1860 | retrospective | ⚪ pending | — |
 | [[darrigol2000_electrodynamics_ampere_einstein]] | 2000 | 1800-1860 | retrospective | ⚪ pending | — |
+| [[helmholtz1847_erhaltung_kraft]] | 1847 | 1860-1900 | primary | ⚪ pending | — |
+| [[maxwell1855_lines_of_force]] | 1855 | 1860-1900 | primary | ⚪ pending | — |
+| [[weber_kohlrausch1856_elektrodynamische]] | 1856 | 1860-1900 | primary | ⚪ pending | — |
+| [[maxwell1861_physical_lines]] | 1861 | 1860-1900 | primary | ⚪ pending | — |
+| [[maxwell1865_dynamical_theory]] | 1865 | 1860-1900 | primary | ⚪ pending | — |
+| [[lorenz1867_identity_light_electricity]] | 1867 | 1860-1900 | primary | ⚪ pending | — |
+| [[maxwell1873_treatise]] | 1873 | 1860-1900 | primary | ⚪ pending | — |
+| [[hall1879_effect]] | 1879 | 1860-1900 | primary | ⚪ pending | — |
+| [[michelson_morley1887_relative_motion]] | 1887 | 1860-1900 | primary | ⚪ pending | — |
+| [[hertz1888_funkenentladung]] | 1888 | 1860-1900 | primary | ⚪ pending | — |
+| [[fitzgerald1889_aether]] | 1889 | 1860-1900 | primary | ⚪ pending | — |
+| [[lorentz1892_electron_theory]] | 1892 | 1860-1900 | primary | ⚪ pending | — |
+| [[thomson1897_cathode_rays]] | 1897 | 1860-1900 | primary | ⚪ pending | — |
+| [[buchwald1985_maxwell_microphysics]] | 1985 | 1860-1900 | retrospective | ⚪ pending | — |
+| [[siegel1991_innovation_maxwell]] | 1991 | 1860-1900 | retrospective | ⚪ pending | — |
+| [[jackson1998_classical_electrodynamics]] | 1998 | 1860-1900 | retrospective | ⚪ pending | — |
 <!-- AUTO-TABLE-END -->
