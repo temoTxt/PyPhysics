@@ -100,7 +100,7 @@ $$\mathbf{X} = \frac{1}{H}\sum_{i=1}^n H_i\mathbf{x}_i + \frac{c^2(\mathbf{S}\ti
 
 **Content:** Re-derives the analytical separation of the Dirac equation (cross-references AR-Dirac), discusses why the Pauli approximation fails for s-states (cross-references DRQM I Sec III), and analyzes the relationship between the Dirac and square-root operators (cross-references AR-SqrtOp).
 
-**Verdict:** ✅ Same operator-algebra chain verified in [Analytic Representation of The Dirac Equation](./Analytic_Representation_of_The_Dirac_Equation.md) and [Dual Relativistic Quantum Mechanics I](./Dual_Relativistic_Quantum_Mechanics_I.md). No additional findings.
+**Verdict:** ✅ Same operator-algebra chain verified in [[Analytic_Representation_of_The_Dirac_Equation|Analytic Representation of The Dirac Equation]] and [[Dual_Relativistic_Quantum_Mechanics_I|Dual Relativistic Quantum Mechanics I]]. No additional findings.
 
 ---
 

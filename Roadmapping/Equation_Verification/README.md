@@ -94,7 +94,7 @@ Derivations are written for a **first-year physics graduate student**, not for t
 
 ## Known issues in existing equation-error catalog
 
-[`../Equation_Errors_Dual_Theory_of_Relativity_and_Quantum_Mechanics.md`](../Equation_Errors_Dual_Theory_of_Relativity_and_Quantum_Mechanics.md) flags several "errors" that are actually **intentional dual-theory modifications** — specifically the appearance of the collaborative speed `b` (or `b/c` factors) where standard Maxwell has `c`. Replacing `b → c` in those equations does not "correct" them; it un-does the dual formulation that is the entire subject of Gill & Zachary (2011). The verification campaign will explicitly classify these as ✅ (correct in the dual framework) rather than ❌.
+[[Equation_Errors_Dual_Theory_of_Relativity_and_Quantum_Mechanics]] flags several "errors" that are actually **intentional dual-theory modifications** — specifically the appearance of the collaborative speed `b` (or `b/c` factors) where standard Maxwell has `c`. Replacing `b → c` in those equations does not "correct" them; it un-does the dual formulation that is the entire subject of Gill & Zachary (2011). The verification campaign will explicitly classify these as ✅ (correct in the dual framework) rather than ❌.
 
 Likely affected entries to revisit:
 - Error 4 — "J' transformation (2.13)" : the `(b/c)ρv` factor is intentional.

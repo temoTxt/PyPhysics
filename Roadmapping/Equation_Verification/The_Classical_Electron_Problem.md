@@ -10,7 +10,7 @@
 ## Scope of this verification
 
 TCEP has ~560 numbered equations across 22 subsections. The bulk of Sections 2–3 (proper-time framework + Maxwell's equations) overlaps with the Maxwell paper. Novel content verified here:
-- **Section 3.2** — full Liénard–Wiechert derivation (the multi-page chain implied by [Maxwell Eq. (7)](./Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md#eq-7--modified-liénardwiechert-fields)).
+- **Section 3.2** — full Liénard–Wiechert derivation (the multi-page chain implied by [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations#Eq. (7) — Modified Liénard–Wiechert fields|Maxwell Eq. (7)]]).
 - **Section 3.3** — Radiated energy and the deviation from standard Larmor formula.
 - **Section 4** — Proper-time Doppler effect, aberration, and the *group-velocity headline claim*.
 - **Section 5** — Three alternative forms of $K$ (5.4, 5.6, 5.7); equivalence at appropriate limits.
@@ -118,7 +118,7 @@ FullSimplify[mineDs - paperDs]
 (* Result: 0  ✅ *)
 ```
 
-**Verdict for the kinematic chain:** ✅ All three pivotal identities (3.36), (3.40), (3.41) confirmed by Wolfram MCP. The downstream derivation of $\mathbf{E}$ (Eq. 3.45) and $\mathbf{B}$ (Eq. 3.46) follows by substitution + standard vector identities; final form **already verified** in [Maxwell Eq. (7)](./Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md).
+**Verdict for the kinematic chain:** ✅ All three pivotal identities (3.36), (3.40), (3.41) confirmed by Wolfram MCP. The downstream derivation of $\mathbf{E}$ (Eq. 3.45) and $\mathbf{B}$ (Eq. 3.46) follows by substitution + standard vector identities; final form **already verified** in [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations|Maxwell Eq. (7)]].
 
 ---
 
@@ -200,7 +200,7 @@ Result: $v_g' = v_g - v$, equivalently $v_g = v_g' + v$ — *opposite sign* from
 
 **Internal consistency check.** Paper line 663 commentary on (4.16) reads: "if the group velocity of the source has the value $c$ in one frame, it will not have that value in the other frame and, indeed, **may have a larger value**." For $v_g$ to be "larger" than $v_g'$ when $v > 0$, the correct sign is $v_g = v_g' + v$. This **matches the algebraic derivation**, not the printed (4.16).
 
-**Verdict:** ⚠️ **Sign typo in Eq. (4.16)** — the printed $v_g = v_g' - v$ should read $v_g = v_g' + v$. The text and the algebra both point to $+v$; the formula as printed contradicts the surrounding narration. Flagged as Finding 3 (see [`FINDINGS_for_author_review.md`](./FINDINGS_for_author_review.md)).
+**Verdict:** ⚠️ **Sign typo in Eq. (4.16)** — the printed $v_g = v_g' - v$ should read $v_g = v_g' + v$. The text and the algebra both point to $+v$; the formula as printed contradicts the surrounding narration. Flagged as Finding 3 (see [[FINDINGS_for_author_review]]).
 
 > *Convention caveat:* If the paper means $v$ as "velocity of $X$ relative to $X'$" (opposite of the standard convention used in Eqs. (4.3c–d), where $v$ is the velocity of $X'$ relative to $X$), then the sign would flip and (4.16) as printed would be self-consistent. But this would contradict the Lorentz-transformation conventions used immediately above (4.3c). Most likely a transcription error.
 

@@ -10,30 +10,30 @@ This sub-project is **isolated from the parent `pyphysics` project**: it has its
 
 | Scene file | Topic | Verification doc cross-ref |
 |---|---|---|
-| [`manim_scenes/maxwell_eq01_02_duality.py`](manim_scenes/maxwell_eq01_02_duality.py) | Eqs. (1)–(2): velocity duality $\mathbf{w}/c = \mathbf{u}/b$ and time-derivative duality | [Maxwell verification](../Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md#eq-1--velocity-duality) |
-| [`manim_scenes/maxwell_eq03_substitution.py`](manim_scenes/maxwell_eq03_substitution.py) | Eq. (3) → Eq. (3′): standard Maxwell → proper-time Maxwell | [Maxwell verification](../Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md#eq-3-%E2%80%94-proper-time-equivalent-maxwells-equations) |
-| [`manim_scenes/maxwell_eq04_dissipative.py`](manim_scenes/maxwell_eq04_dissipative.py) | Eq. (4): emergence of the dissipative term $-(\mathbf{u}\!\cdot\!\mathbf{a})/b^4 \cdot \partial_\tau\mathbf{E}$ via curl-of-curl | [Maxwell verification](../Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md#eq-4--dual-wave-equations-with-dissipative-term) |
-| [`manim_scenes/maxwell_eq05_06_photonmass.py`](manim_scenes/maxwell_eq05_06_photonmass.py) | Eqs. (5)–(6): Liouville substitution $\psi = (b/c)^{1/2}\Psi_{\rm new}$ and the effective photon mass $\mu$ | [Maxwell verification](../Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md#eq-6--effective-photon-mass) |
-| [`manim_scenes/maxwell_eq10_11_hyperboloid.py`](manim_scenes/maxwell_eq10_11_hyperboloid.py) | Eqs. (10)–(11): boost preserving the 4-velocity hyperboloid $b^2 - \mathbf{u}^2 = c^2$ | [Maxwell verification](../Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md#eq-10--proper-time-boosts-of-position-velocity-acceleration) |
+| [`manim_scenes/maxwell_eq01_02_duality.py`](manim_scenes/maxwell_eq01_02_duality.py) | Eqs. (1)–(2): velocity duality $\mathbf{w}/c = \mathbf{u}/b$ and time-derivative duality | [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations#Eq. (1) — Velocity duality\|Maxwell verification]] |
+| [`manim_scenes/maxwell_eq03_substitution.py`](manim_scenes/maxwell_eq03_substitution.py) | Eq. (3) → Eq. (3′): standard Maxwell → proper-time Maxwell | [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations#Eq. (3′) — Proper-time-equivalent Maxwell's equations\|Maxwell verification]] |
+| [`manim_scenes/maxwell_eq04_dissipative.py`](manim_scenes/maxwell_eq04_dissipative.py) | Eq. (4): emergence of the dissipative term $-(\mathbf{u}\!\cdot\!\mathbf{a})/b^4 \cdot \partial_\tau\mathbf{E}$ via curl-of-curl | [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations#Eq. (4) — Dual wave equations with dissipative term\|Maxwell verification]] |
+| [`manim_scenes/maxwell_eq05_06_photonmass.py`](manim_scenes/maxwell_eq05_06_photonmass.py) | Eqs. (5)–(6): Liouville substitution $\psi = (b/c)^{1/2}\Psi_{\rm new}$ and the effective photon mass $\mu$ | [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations#Eq. (6) — Effective photon mass\|Maxwell verification]] |
+| [`manim_scenes/maxwell_eq10_11_hyperboloid.py`](manim_scenes/maxwell_eq10_11_hyperboloid.py) | Eqs. (10)–(11): boost preserving the 4-velocity hyperboloid $b^2 - \mathbf{u}^2 = c^2$ | [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations#Eq. (10) — Proper-time boosts of position, velocity, acceleration\|Maxwell verification]] |
 
 **Phase 2 — DRQM I g-factor**:
 
 | Scene file | Topic | Verification doc cross-ref |
 |---|---|---|
-| [`manim_scenes/drqm_eq18_g_factor_derivation.py`](manim_scenes/drqm_eq18_g_factor_derivation.py) | Walk from dual Dirac Hamiltonian $K_D$ to the g-factor formula $g_r = 2[1 - 4r_0/(2r+r_0)]$ | [DRQM I Sec III](../Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md#section-iii-dirac-eigenvalue-problem-and-the-g-factor) |
-| [`manim_scenes/drqm_eq22_g_factor_finding.py`](manim_scenes/drqm_eq22_g_factor_finding.py) | **Finding 2 visualization:** plot of $g_r$ vs $r_e/r_0$ showing the paper's $r_e$ misses the experimental $g_e$ by $\approx 0.00175$, while the corrected $r_e \approx 0.499420510\,r_0$ hits exactly | [Findings doc](../Equation_Verification/FINDINGS_for_author_review.md#finding-2--drqm-i-eq-iii22-published-r_e-does-not-reproduce-the-experimental-g_e) |
+| [`manim_scenes/drqm_eq18_g_factor_derivation.py`](manim_scenes/drqm_eq18_g_factor_derivation.py) | Walk from dual Dirac Hamiltonian $K_D$ to the g-factor formula $g_r = 2[1 - 4r_0/(2r+r_0)]$ | [[Dual_Relativistic_Quantum_Mechanics_I#Section III: Dirac eigenvalue problem and the g-factor\|DRQM I Sec III]] |
+| [`manim_scenes/drqm_eq22_g_factor_finding.py`](manim_scenes/drqm_eq22_g_factor_finding.py) | **Finding 2 visualization:** plot of $g_r$ vs $r_e/r_0$ showing the paper's $r_e$ misses the experimental $g_e$ by $\approx 0.00175$, while the corrected $r_e \approx 0.499420510\,r_0$ hits exactly | [[FINDINGS_for_author_review#Finding 2 — DRQM I Eq. (III.22): published $r_e$ does not reproduce the experimental $g_e$\|Findings doc]] |
 
 **Phase 3 — TCEP Liénard–Wiechert**:
 
 | Scene file | Topic | Verification doc cross-ref |
 |---|---|---|
-| [`manim_scenes/tcep_eq45_lienard_wiechert.py`](manim_scenes/tcep_eq45_lienard_wiechert.py) | Retarded-time geometry (source worldline, field point, light-cone constraint) → the three-term $\mathbf{E}$-field structure: velocity field, acceleration field, and the **new** dissipative term $\propto (\mathbf{u}\!\cdot\!\mathbf{a})$ that's the source of radiation reaction | [TCEP Sec 3.2](../Equation_Verification/The_Classical_Electron_Problem.md#section-32--full-lienardwiechert-derivation) |
+| [`manim_scenes/tcep_eq45_lienard_wiechert.py`](manim_scenes/tcep_eq45_lienard_wiechert.py) | Retarded-time geometry (source worldline, field point, light-cone constraint) → the three-term $\mathbf{E}$-field structure: velocity field, acceleration field, and the **new** dissipative term $\propto (\mathbf{u}\!\cdot\!\mathbf{a})$ that's the source of radiation reaction | [[The_Classical_Electron_Problem#Section 3.2 — Full Liénard–Wiechert derivation\|TCEP Sec 3.2]] |
 
 **Phase 4 — cross-paper synthesis**:
 
 | Scene file | Topic | Verification doc cross-ref |
 |---|---|---|
-| [`manim_scenes/synthesis_tour.py`](manim_scenes/synthesis_tour.py) | Central identity $b = \sqrt{c^2+\mathbf{u}^2}$ → three pillars (Maxwell, DRQM I, TCEP) → three findings flagged for author review → reproducibility note | [Findings doc](../Equation_Verification/FINDINGS_for_author_review.md) + [`README.md`](../Equation_Verification/README.md) |
+| [`manim_scenes/synthesis_tour.py`](manim_scenes/synthesis_tour.py) | Central identity $b = \sqrt{c^2+\mathbf{u}^2}$ → three pillars (Maxwell, DRQM I, TCEP) → three findings flagged for author review → reproducibility note | [[FINDINGS_for_author_review\|Findings doc]] + [[Equation_Verification/README\|verification README]] |
 
 ## Build / render
 

@@ -96,7 +96,7 @@ This section runs the same operator-algebra reduction as **DRQM I Sec III.B–D*
 
 **As printed:** $(E - V - mc^2)\psi = c(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\varphi$, $(E - V + mc^2)\varphi = c(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\psi$.
 
-**Status:** Identical to **[DRQM I Eq. (III.1)](./Dual_Relativistic_Quantum_Mechanics_I.md)** with $\lambda \to E$, $V_0 \to V$. Standard.
+**Status:** Identical to **[[Dual_Relativistic_Quantum_Mechanics_I|DRQM I Eq. (III.1)]]** with $\lambda \to E$, $V_0 \to V$. Standard.
 
 ### Eqs. (18a, 18b) — Slater equations
 
@@ -126,7 +126,7 @@ $$(E - V - mc^2)\psi = \frac{\boldsymbol\pi^2 - (e\hbar/c)\boldsymbol\sigma\!\cd
 
 **As printed:** Replace $(E - V + mc^2)$ by $2mc^2(1 + r_0/r)$, with $r_0 = e^2/(E+mc^2) \approx e^2/(2mc^2)$ (= classical electron radius at $E \approx mc^2$).
 
-**Status:** Direct algebraic step. Note that this is the **same cutoff approximation** as [DRQM I Eq. (III.7)](./Dual_Relativistic_Quantum_Mechanics_I.md#eq-iii7--cutoff-approximation), which uses $r_0 = e^2/(mc^2)$ exactly. The two papers differ in the precise meaning of $r_0$ ($E$-dependent here, fixed in DRQM I), but the formal structure is identical.
+**Status:** Direct algebraic step. Note that this is the **same cutoff approximation** as [[Dual_Relativistic_Quantum_Mechanics_I#Eq. (III.7) — Cutoff approximation|DRQM I Eq. (III.7)]], which uses $r_0 = e^2/(mc^2)$ exactly. The two papers differ in the precise meaning of $r_0$ ($E$-dependent here, fixed in DRQM I), but the formal structure is identical.
 
 **Verdict:** ✅ Confirmed by direct algebra; equivalent to DRQM I (III.7) up to an $O(\lambda/mc^2)$ correction.
 

@@ -20,10 +20,10 @@ These four papers form a coherent body of work on the **mathematical machinery o
 The technical depth of these papers is in **operator-theoretic proofs** (semigroups, von Neumann algebras, $C_0$-contraction generators, dissipative operators) that are not feasible to independently re-derive in Wolfram. Where these papers contain *algebraic* identities or *cite* textbook results, those are verified below. Where they contain *novel deep operator theorems*, the proofs are cross-referenced to primary references (von Neumann, Trotter, Kato, Yosida, Henstock, Kurzweil, Kuelbs).
 
 **Already verified content** in our campaign that these papers re-state or build on:
-- Proper time + Minkowski Incompatible Theorem → see [`FOUNDATIONS_FOR_QED_I_MATHEMATICAL.md`](./FOUNDATIONS_FOR_QED_I_MATHEMATICAL.md) Sec 1.
-- KS-Hilbert space + HK integral + Example 3.3 → see [`FOUNDATIONS_FOR_QED_I_MATHEMATICAL.md`](./FOUNDATIONS_FOR_QED_I_MATHEMATICAL.md) Sec 3.
-- Bessel function identities (Eqs. 9b, 11, 18, 32, 44 of AR-SqrtOp) → see [`Analytic_Representation_of_The_Square-Root_Operator.md`](./Analytic_Representation_of_The_Square-Root_Operator.md).
-- Green's function for $[\partial_t + iB]$ → see [`Analytic_Representation_of_The_Dirac_Equation.md`](./Analytic_Representation_of_The_Dirac_Equation.md) Eq. 5.
+- Proper time + Minkowski Incompatible Theorem → see [[FOUNDATIONS_FOR_QED_I_MATHEMATICAL]] Sec 1.
+- KS-Hilbert space + HK integral + Example 3.3 → see [[FOUNDATIONS_FOR_QED_I_MATHEMATICAL]] Sec 3.
+- Bessel function identities (Eqs. 9b, 11, 18, 32, 44 of AR-SqrtOp) → see [[Analytic_Representation_of_The_Square-Root_Operator]].
+- Green's function for $[\partial_t + iB]$ → see [[Analytic_Representation_of_The_Dirac_Equation]] Eq. 5.
 
 ---
 
@@ -149,7 +149,7 @@ Applies the time-ordered operator calculus to derive Feynman-Dyson perturbation 
 - (i) Standard cited results from von Neumann, Yosida, Henstock, Kurzweil — verifiable from textbooks.
 - (ii) Original constructive theorems whose proofs are in the papers themselves and require operator-algebra apparatus beyond what Mathematica can verify directly.
 
-**No new findings beyond the three already documented in [`FINDINGS_for_author_review.md`](./FINDINGS_for_author_review.md).**
+**No new findings beyond the three already documented in [[FINDINGS_for_author_review]].**
 
 The mathematical content is rigorous; the proofs would benefit from independent peer review by an operator algebraist but no algebraic or numerical error surfaces from the algebra-level verification performed here. The **Minkowski Incompatible Theorem** (algebra verified in QED I) and **HK integrability Example 3.3** (algebra verified in QED I) are the only ground-level algebraic claims; both pass.
 

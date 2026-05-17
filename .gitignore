@@ -1,2 +1,8 @@
 .claude/
 .venv/
+
+# Obsidian vault — commit shared config, ignore per-user/per-machine state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+.obsidian/plugins/

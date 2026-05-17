@@ -61,7 +61,7 @@ Same as the Maxwell-paper verification:
 
 ## Section I: Recap of dual classical theory
 
-The bulk of Section I is a transcription of results already verified in [`Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md`](./Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md). Cross-references below.
+The bulk of Section I is a transcription of results already verified in [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]. Cross-references below.
 
 ### Eq. (I.1) — Proper-time definition
 
