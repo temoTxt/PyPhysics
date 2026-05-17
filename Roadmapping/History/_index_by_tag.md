@@ -106,20 +106,28 @@
 - [[schweber1994_qed_and_men]] (1994) — QED and the Men Who Made It: Dyson, Feynman, Schwinger, and Tomonaga
 - [[tinkham1996_superconductivity]] (1996) — Introduction to Superconductivity (2nd ed.)
 
-### #era/forward — 13 entries
+### #era/forward — 21 entries
 
 - [[sagnac1913_effect]] (1913) — L'éther lumineux démontré par l'effet du vent relatif d'éther dans un interféromètre en rotation uniforme
 - [[schwarzschild1916]] (1916) — Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie
 - [[misner_thorne_wheeler1973]] (1973) — Gravitation
 - [[vessot1980_gravity_probe_a]] (1980) — Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser
+- [[feynman1982_simulating_physics]] (1982) — Simulating Physics with Computers
 - [[bennett_brassard1984_bb84]] (1984) — Quantum cryptography: Public key distribution and coin tossing
 - [[wald1984_gr]] (1984) — General Relativity
+- [[deutsch1985_quantum_turing]] (1985) — Quantum theory, the Church–Turing principle and the universal quantum computer
 - [[smith_christodoulidis1985_slr]] (1985) — Lunar laser ranging and the dynamics of the Earth-Moon system
 - [[ekert1991_qkd]] (1991) — Quantum cryptography based on Bell's theorem
+- [[shor1994_factoring]] (1994) — Algorithms for quantum computation: discrete logarithms and factoring
+- [[grover1996_search]] (1996) — A fast quantum mechanical algorithm for database search
 - [[parkinson1996_gps_theory]] (1996) — Global Positioning System: Theory and Applications, Vol. I
 - [[nielsen_chuang2000_quantum_computation]] (2000) — Quantum Computation and Quantum Information
 - [[ashby2003_gps_relativity]] (2003) — Relativity in the Global Positioning System
+- [[kitaev2003_topological]] (2003) — Fault-tolerant quantum computation by anyons
 - [[liao2018_micius_satellite]] (2017) — Satellite-to-Ground Quantum Key Distribution
+- [[preskill2018_nisq]] (2018) — Quantum Computing in the NISQ era and beyond
+- [[arute2019_quantum_supremacy]] (2019) — Quantum supremacy using a programmable superconducting processor
+- [[krantz2019_circuit_qed]] (2019) — A Quantum Engineer's Guide to Superconducting Qubits
 - [[pirandola2020_qkd_review]] (2020) — Advances in quantum cryptography
 
 ## Tag namespace: thread
@@ -159,7 +167,7 @@
 - [[jackson1998_classical_electrodynamics]] (1998) — Classical Electrodynamics
 - [[darrigol2000_electrodynamics_ampere_einstein]] (2000) — Electrodynamics from Ampère to Einstein
 
-### #thread/quantum — 47 entries
+### #thread/quantum — 55 entries
 
 - [[thomson1897_cathode_rays]] (1897) — Cathode Rays
 - [[planck1900_blackbody]] (1900) — Zur Theorie des Gesetzes der Energieverteilung im Normalspectrum
@@ -198,18 +206,26 @@
 - [[heilbron1969_bohr_atom]] (1969) — The Genesis of the Bohr Atom
 - [[kuhn1978_blackbody]] (1978) — Black-Body Theory and the Quantum Discontinuity, 1894-1912
 - [[dyson1979_disturbing_universe]] (1979) — Disturbing the Universe
+- [[feynman1982_simulating_physics]] (1982) — Simulating Physics with Computers
 - [[bennett_brassard1984_bb84]] (1984) — Quantum cryptography: Public key distribution and coin tossing
+- [[deutsch1985_quantum_turing]] (1985) — Quantum theory, the Church–Turing principle and the universal quantum computer
 - [[pais1986_inward_bound]] (1986) — Inward Bound: Of Matter and Forces in the Physical World
 - [[ekert1991_qkd]] (1991) — Quantum cryptography based on Bell's theorem
 - [[schweber1994_qed_and_men]] (1994) — QED and the Men Who Made It: Dyson, Feynman, Schwinger, and Tomonaga
+- [[shor1994_factoring]] (1994) — Algorithms for quantum computation: discrete logarithms and factoring
 - [[peskin_schroeder1995_qft]] (1995) — An Introduction to Quantum Field Theory
 - [[weinberg1995_qft_vol1]] (1995) — The Quantum Theory of Fields, Volume I: Foundations
+- [[grover1996_search]] (1996) — A fast quantum mechanical algorithm for database search
 - [[nielsen_chuang2000_quantum_computation]] (2000) — Quantum Computation and Quantum Information
 - [[mehra_rechenberg_qm_history]] (2001) — The Historical Development of Quantum Theory (6 volumes)
+- [[kitaev2003_topological]] (2003) — Fault-tolerant quantum computation by anyons
 - [[liao2018_micius_satellite]] (2017) — Satellite-to-Ground Quantum Key Distribution
+- [[preskill2018_nisq]] (2018) — Quantum Computing in the NISQ era and beyond
+- [[arute2019_quantum_supremacy]] (2019) — Quantum supremacy using a programmable superconducting processor
+- [[krantz2019_circuit_qed]] (2019) — A Quantum Engineer's Guide to Superconducting Qubits
 - [[pirandola2020_qkd_review]] (2020) — Advances in quantum cryptography
 
-### #thread/solid-state — 11 entries
+### #thread/solid-state — 12 entries
 
 - [[hall1879_effect]] (1879) — On a New Action of the Magnet on Electric Currents
 - [[onnes1908_helium_liquefaction]] (1908) — The Liquefaction of Helium
@@ -222,10 +238,11 @@
 - [[josephson1962_tunneling]] (1962) — Possible New Effects in Superconductive Tunnelling
 - [[ashcroft_mermin1976_solid_state]] (1976) — Solid State Physics
 - [[tinkham1996_superconductivity]] (1996) — Introduction to Superconductivity (2nd ed.)
+- [[krantz2019_circuit_qed]] (2019) — A Quantum Engineer's Guide to Superconducting Qubits
 
 ## Tag namespace: framework-claim
 
-### #gill-silent — 46 entries
+### #gill-silent — 51 entries
 
 - [[volta1800_electricity_contact]] (1800) — On the Electricity excited by the mere Contact of conducting Substances of different kinds
 - [[ampere1820_action_mutuelle]] (1820) — Mémoire présenté à l'Académie royale des Sciences, le 2 octobre 1820, où se trouve compris le résumé de ce qui avait été lu à la même Académie les 18 et 25 septembre 1820, sur les effets des courants électriques
@@ -268,11 +285,16 @@
 - [[wu1957_parity]] (1957) — Experimental Test of Parity Conservation in Beta Decay
 - [[josephson1962_tunneling]] (1962) — Possible New Effects in Superconductive Tunnelling
 - [[vessot1980_gravity_probe_a]] (1980) — Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser
+- [[feynman1982_simulating_physics]] (1982) — Simulating Physics with Computers
 - [[bennett_brassard1984_bb84]] (1984) — Quantum cryptography: Public key distribution and coin tossing
+- [[deutsch1985_quantum_turing]] (1985) — Quantum theory, the Church–Turing principle and the universal quantum computer
 - [[smith_christodoulidis1985_slr]] (1985) — Lunar laser ranging and the dynamics of the Earth-Moon system
 - [[ekert1991_qkd]] (1991) — Quantum cryptography based on Bell's theorem
+- [[shor1994_factoring]] (1994) — Algorithms for quantum computation: discrete logarithms and factoring
+- [[grover1996_search]] (1996) — A fast quantum mechanical algorithm for database search
 - [[parkinson1996_gps_theory]] (1996) — Global Positioning System: Theory and Applications, Vol. I
 - [[ashby2003_gps_relativity]] (2003) — Relativity in the Global Positioning System
+- [[kitaev2003_topological]] (2003) — Fault-tolerant quantum computation by anyons
 
 ### #inferred — 23 entries
 
@@ -300,9 +322,10 @@
 - [[dyson1949_equivalence]] (1949) — The Radiation Theories of Tomonaga, Schwinger, and Feynman
 - [[feynman1949_diagrams]] (1949) — Space-Time Approach to Quantum Electrodynamics
 
-### #speculative — 1 entries
+### #speculative — 2 entries
 
 - [[liao2018_micius_satellite]] (2017) — Satellite-to-Ground Quantum Key Distribution
+- [[arute2019_quantum_supremacy]] (2019) — Quantum supremacy using a programmable superconducting processor
 
 ### #verified — 6 entries
 
@@ -327,6 +350,11 @@
 
 - [[michelson_morley1887_relative_motion]] (1887) — On the Relative Motion of the Earth and the Luminiferous Ether
 
+### algorithm — 2 entries
+
+- [[shor1994_factoring]] (1994) — Algorithms for quantum computation: discrete logarithms and factoring
+- [[grover1996_search]] (1996) — A fast quantum mechanical algorithm for database search
+
 ### ampere-law — 1 entries
 
 - [[ampere1820_action_mutuelle]] (1820) — Mémoire présenté à l'Académie royale des Sciences, le 2 octobre 1820, où se trouve compris le résumé de ce qui avait été lu à la même Académie les 18 et 25 septembre 1820, sur les effets des courants électriques
@@ -338,6 +366,10 @@
 ### antimatter — 1 entries
 
 - [[anderson1932_positron]] (1932) — The Positive Electron
+
+### anyons — 1 entries
+
+- [[kitaev2003_topological]] (2003) — Fault-tolerant quantum computation by anyons
 
 ### astronomy — 1 entries
 
@@ -395,9 +427,17 @@
 
 - [[einstein1905_brownian]] (1905) — Über die von der molekularkinetischen Theorie der Wärme geforderte Bewegung von in ruhenden Flüssigkeiten suspendierten Teilchen
 
+### circuit-qed — 1 entries
+
+- [[krantz2019_circuit_qed]] (2019) — A Quantum Engineer's Guide to Superconducting Qubits
+
 ### classic-history — 1 entries
 
 - [[whittaker1910_aether_electricity]] (1910) — A History of the Theories of Aether and Electricity, from the Age of Descartes to the Close of the Nineteenth Century
+
+### complexity — 1 entries
+
+- [[deutsch1985_quantum_turing]] (1985) — Quantum theory, the Church–Turing principle and the universal quantum computer
 
 ### compton-scattering — 1 entries
 
@@ -419,6 +459,10 @@
 ### cryogenics — 1 entries
 
 - [[onnes1908_helium_liquefaction]] (1908) — The Liquefaction of Helium
+
+### cryptography — 1 entries
+
+- [[shor1994_factoring]] (1994) — Algorithms for quantum computation: discrete logarithms and factoring
 
 ### dirac — 1 entries
 
@@ -530,7 +574,7 @@
 
 - [[sommerfeld1916_atombau]] (1916) — Zur Quantentheorie der Spektrallinien
 
-### foundational — 52 entries
+### foundational — 55 entries
 
 - [[volta1800_electricity_contact]] (1800) — On the Electricity excited by the mere Contact of conducting Substances of different kinds
 - [[ampere1820_action_mutuelle]] (1820) — Mémoire présenté à l'Académie royale des Sciences, le 2 octobre 1820, où se trouve compris le résumé de ce qui avait été lu à la même Académie les 18 et 25 septembre 1820, sur les effets des courants électriques
@@ -582,7 +626,10 @@
 - [[lee_yang1956_parity_question]] (1956) — Question of Parity Conservation in Weak Interactions
 - [[bcs1957_superconductivity]] (1957) — Theory of Superconductivity
 - [[wu1957_parity]] (1957) — Experimental Test of Parity Conservation in Beta Decay
+- [[feynman1982_simulating_physics]] (1982) — Simulating Physics with Computers
 - [[bennett_brassard1984_bb84]] (1984) — Quantum cryptography: Public key distribution and coin tossing
+- [[deutsch1985_quantum_turing]] (1985) — Quantum theory, the Church–Turing principle and the universal quantum computer
+- [[shor1994_factoring]] (1994) — Algorithms for quantum computation: discrete logarithms and factoring
 - [[ashby2003_gps_relativity]] (2003) — Relativity in the Global Positioning System
 
 ### foundations — 1 entries
@@ -732,6 +779,10 @@
 
 - [[chadwick1932_neutron]] (1932) — Possible Existence of a Neutron
 
+### nisq — 1 entries
+
+- [[preskill2018_nisq]] (2018) — Quantum Computing in the NISQ era and beyond
+
 ### nuclear — 3 entries
 
 - [[rutherford1911_alpha_scattering]] (1911) — The Scattering of α and β Particles by Matter and the Structure of the Atom
@@ -840,6 +891,16 @@
 
 - [[nielsen_chuang2000_quantum_computation]] (2000) — Quantum Computation and Quantum Information
 
+### quantum-computing — 7 entries
+
+- [[feynman1982_simulating_physics]] (1982) — Simulating Physics with Computers
+- [[deutsch1985_quantum_turing]] (1985) — Quantum theory, the Church–Turing principle and the universal quantum computer
+- [[shor1994_factoring]] (1994) — Algorithms for quantum computation: discrete logarithms and factoring
+- [[grover1996_search]] (1996) — A fast quantum mechanical algorithm for database search
+- [[kitaev2003_topological]] (2003) — Fault-tolerant quantum computation by anyons
+- [[preskill2018_nisq]] (2018) — Quantum Computing in the NISQ era and beyond
+- [[arute2019_quantum_supremacy]] (2019) — Quantum supremacy using a programmable superconducting processor
+
 ### quantum-field-theory — 2 entries
 
 - [[peskin_schroeder1995_qft]] (1995) — An Introduction to Quantum Field Theory
@@ -850,6 +911,10 @@
 - [[dirac1958_principles]] (1958) — The Principles of Quantum Mechanics (4th ed.)
 - [[jammer1966_conceptual_qm]] (1966) — The Conceptual Development of Quantum Mechanics
 - [[mehra_rechenberg_qm_history]] (2001) — The Historical Development of Quantum Theory (6 volumes)
+
+### quantum-supremacy — 1 entries
+
+- [[arute2019_quantum_supremacy]] (2019) — Quantum supremacy using a programmable superconducting processor
 
 ### relativistic-quantum — 2 entries
 
@@ -864,8 +929,10 @@
 
 - [[lorenz1867_identity_light_electricity]] (1867) — On the Identity of the Vibrations of Light with Electrical Currents
 
-### review — 1 entries
+### review — 3 entries
 
+- [[preskill2018_nisq]] (2018) — Quantum Computing in the NISQ era and beyond
+- [[krantz2019_circuit_qed]] (2019) — A Quantum Engineer's Guide to Superconducting Qubits
 - [[pirandola2020_qkd_review]] (2020) — Advances in quantum cryptography
 
 ### rotating-frames — 1 entries
@@ -937,6 +1004,11 @@
 
 - [[einstein1905_brownian]] (1905) — Über die von der molekularkinetischen Theorie der Wärme geforderte Bewegung von in ruhenden Flüssigkeiten suspendierten Teilchen
 
+### superconducting-qubit — 2 entries
+
+- [[arute2019_quantum_supremacy]] (2019) — Quantum supremacy using a programmable superconducting processor
+- [[krantz2019_circuit_qed]] (2019) — A Quantum Engineer's Guide to Superconducting Qubits
+
 ### superconductivity — 5 entries
 
 - [[onnes1911_superconductivity]] (1911) — Further Experiments with Liquid Helium. C. On the Change of Electric Resistance of Pure Metals at Very Low Temperatures
@@ -965,6 +1037,10 @@
 ### thermodynamics — 1 entries
 
 - [[helmholtz1847_erhaltung_kraft]] (1847) — Über die Erhaltung der Kraft
+
+### topological-quantum-computing — 1 entries
+
+- [[kitaev2003_topological]] (2003) — Fault-tolerant quantum computation by anyons
 
 ### transistor — 1 entries
 

@@ -86,9 +86,11 @@ def lint(episode: Path, md_index: set[str]) -> list[str]:
         if not scene.exists():
             errors.append(f"animations_cued references missing scene: {name}.py")
 
-    # 4. wikilinks
-    for raw in WIKILINK_RE.findall(body):
-        name = raw.split("#", 1)[0].strip()
+    # 4. wikilinks — strip fenced + inline code spans first
+    body_no_code = re.sub(r"```.*?```", "", body, flags=re.DOTALL)
+    body_no_code = re.sub(r"`[^`\n]+`", "", body_no_code)
+    for raw in WIKILINK_RE.findall(body_no_code):
+        name = raw.split("#", 1)[0].strip().split("/")[-1]
         if name not in md_index:
             errors.append(f"broken wikilink: [[{raw}]]")
 
