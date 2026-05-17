@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 68 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 68 pending · 🔴 0 unavailable
+**Summary**: 87 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 87 pending · 🔴 0 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -81,4 +81,23 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[peskin_schroeder1995_qft]] | 1995 | 1925-1948 | retrospective | ⚪ pending | — |
 | [[weinberg1995_qft_vol1]] | 1995 | 1925-1948 | retrospective | ⚪ pending | — |
 | [[mehra_rechenberg_qm_history]] | 2001 | 1925-1948 | retrospective | ⚪ pending | — |
+| [[yukawa1935_meson]] | 1935 | 1948-1965 | primary | ⚪ pending | — |
+| [[tomonaga1946_qed]] | 1946 | 1948-1965 | primary | ⚪ pending | — |
+| [[bethe1947_lamb_shift_calc]] | 1947 | 1948-1965 | primary | ⚪ pending | — |
+| [[lamb_retherford1947_microwave]] | 1947 | 1948-1965 | primary | ⚪ pending | — |
+| [[bardeen_brattain1948_transistor]] | 1948 | 1948-1965 | primary | ⚪ pending | — |
+| [[schwinger1948_qed]] | 1948 | 1948-1965 | primary | ⚪ pending | — |
+| [[dyson1949_equivalence]] | 1949 | 1948-1965 | primary | ⚪ pending | — |
+| [[feynman1949_diagrams]] | 1949 | 1948-1965 | primary | ⚪ pending | — |
+| [[dyson1952_divergence]] | 1952 | 1948-1965 | primary | ⚪ pending | — |
+| [[cooper1956_pairs]] | 1956 | 1948-1965 | primary | ⚪ pending | — |
+| [[lee_yang1956_parity_question]] | 1956 | 1948-1965 | primary | ⚪ pending | — |
+| [[bcs1957_superconductivity]] | 1957 | 1948-1965 | primary | ⚪ pending | — |
+| [[wu1957_parity]] | 1957 | 1948-1965 | primary | ⚪ pending | — |
+| [[josephson1962_tunneling]] | 1962 | 1948-1965 | primary | ⚪ pending | — |
+| [[ashcroft_mermin1976_solid_state]] | 1976 | 1948-1965 | retrospective | ⚪ pending | — |
+| [[dyson1979_disturbing_universe]] | 1979 | 1948-1965 | retrospective | ⚪ pending | — |
+| [[pais1986_inward_bound]] | 1986 | 1948-1965 | retrospective | ⚪ pending | — |
+| [[schweber1994_qed_and_men]] | 1994 | 1948-1965 | retrospective | ⚪ pending | — |
+| [[tinkham1996_superconductivity]] | 1996 | 1948-1965 | retrospective | ⚪ pending | — |
 <!-- AUTO-TABLE-END -->
