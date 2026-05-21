@@ -1,5 +1,7 @@
 .claude/
 .venv/
+__pycache__/
+*.pyc
 
 # Obsidian vault — commit shared config, ignore per-user/per-machine state
 .obsidian/workspace.json
