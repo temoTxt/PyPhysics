@@ -18,6 +18,7 @@ pdf_path: ""
 converted_md: ""
 pages_quoted: ""
 gill_corpus_overlap: ["FOUNDATIONS_FOR_QED_I_MATHEMATICAL"]
+human_reviewed: true
 chapters_citing: [03_old_quantum_theory_1900_1925, 04_quantum_mechanics_1925_1948]
 ---
 

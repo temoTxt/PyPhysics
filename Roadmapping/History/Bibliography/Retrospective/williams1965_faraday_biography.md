@@ -18,6 +18,7 @@ pdf_path: ""
 converted_md: ""
 pages_quoted: ""
 gill_corpus_overlap: []
+human_reviewed: true
 chapters_citing: [01_early_electromagnetism_1800_1860, 02_classical_synthesis_1860_1900]
 ---
 

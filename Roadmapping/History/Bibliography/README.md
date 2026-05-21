@@ -40,11 +40,16 @@ pdf_path: "../../Historical_Papers/Primary/maxwell1865_dynamical_theory.pdf"
 converted_md: "../../Historical_Converted_Markdown/Primary/maxwell1865_dynamical_theory/maxwell1865_dynamical_theory.md"
 pages_quoted: ""                             # populated only for books we excerpt under fair use
 gill_corpus_overlap: ["Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations"]
+human_reviewed: true                         # Crocco et al. (2026) expectation #7 — see below
 chapters_citing: []                          # filled by chapters that wikilink this note
 ---
 ```
 
 After the frontmatter, the body is freeform — typically a 2–3-paragraph summary written during the chapter's "QA + retrospectives" step, plus any notes the author wants to keep.
+
+### `human_reviewed` — Crocco et al. (2026) expectation #7
+
+Records whether a human has read the primary source the stub describes (not just had an AI summarise its abstract). New stubs default to `false` and flip to `true` only when the 2–3-paragraph body is hand-written from a reading of the source. See [`Roadmapping/Tooling/CROCCO_COMPLIANCE.md`](../../Tooling/CROCCO_COMPLIANCE.md) for the full set of compliance commitments. The audit tool [`audit_human_reviewed.py`](audit_human_reviewed.py) scans all stubs and reports / sets the field by heuristic word-count of the body.
 
 ## Tag taxonomy
 

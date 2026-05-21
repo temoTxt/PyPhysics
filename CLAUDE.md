@@ -106,6 +106,17 @@ Two-tier policy keyed on each bibliography note's YAML `pdf_status`:
 
 All scripts follow `uv run python <path> [--dry-run] …` and ship with a top-of-file docstring + argparse. Don't add top-level dependencies without noting it in the PR.
 
+## Crocco et al. (2026) AI-use compliance (load-bearing)
+
+The repo's AI usage is governed by [Crocco, Rasdi, Garavan (2026), *Responsible AI in Non-Empirical Research*](https://doi.org/10.1177/15344843261445531). Full mapping: [`Roadmapping/Tooling/CROCCO_COMPLIANCE.md`](Roadmapping/Tooling/CROCCO_COMPLIANCE.md). Short rules every Claude Code session should follow:
+
+1. **Pragmatic vs substantive.** Tag every AI use as one or the other. *Pragmatic* = grammar, formatting, translation, reference management, validator runs — doesn't shape what the manuscript argues. *Substantive* = generating themes, proposing frameworks, drafting prose that conveys core arguments. Substantive uses require fuller disclosure (the prompt + the model + a human-acceptance section in any synth report).
+2. **Never invent citations.** Every `cite_key` in any committed chapter must correspond to an existing file under `Roadmapping/History/Bibliography/{Primary,Retrospective}/`. If you reference a paper that isn't there yet, scaffold the bib stub first via `scaffold_bib_note.py`. AI-fabricated citations are the most common Crocco-flagged failure mode.
+3. **`human_reviewed` is binary and honest.** The YAML field flips to `true` only after a human has *read the primary source*. Don't infer "true" from a hand-written abstract; the body summary must reflect a reading, not an AI paraphrase.
+4. **Substantive prompts live in `Roadmapping/Tooling/_prompts/`.** When invoking AI in a substantive role (Phase 4 synth tools, future literature-review work), use a committed prompt from there — don't compose prompts inline in synth tools. The prompt-of-record must be version-controlled.
+5. **Synth reports leave a "human acceptance" section blank for the human.** When Claude produces a cluster, cross-ref suggestion, or claim-comparison report under `Roadmapping/Tooling/synth_reports/`, it includes that section as `<!-- TODO: human reviews and fills in -->`. The synth report does not commit chapter changes; only the human's subsequent PR does.
+6. **AI is never an author.** Use `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>` trailers only. Don't list Claude in `Author:` fields, PR `--author` flags, or chapter byline attributions.
+
 ## How equation verification works
 
 Each paper has a verification doc under `Roadmapping/Equation_Verification/` that follows the per-equation template (full template in `Roadmapping/Equation_Verification/README.md`):

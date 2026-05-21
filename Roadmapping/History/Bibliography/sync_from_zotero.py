@@ -210,6 +210,9 @@ def bib_to_yaml(entry: dict) -> dict:
         "converted_md": "",
         "pages_quoted": "",
         "gill_corpus_overlap": [],
+        # Crocco et al. (2026) reporting expectation #7: human-read-source flag.
+        # Zotero capture alone doesn't confirm a human read the source; defaults False.
+        "human_reviewed": False,
         "chapters_citing": [],
     }
 

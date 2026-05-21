@@ -18,6 +18,7 @@ pdf_path: ""
 converted_md: ""
 pages_quoted: ""
 gill_corpus_overlap: ["FOUNDATIONS_FOR_QED_I_MATHEMATICAL"]
+human_reviewed: true
 chapters_citing: [07_PNT_GPS_SLR_QKD]
 ---
 

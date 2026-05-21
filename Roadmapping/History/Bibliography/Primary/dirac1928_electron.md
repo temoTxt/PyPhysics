@@ -18,6 +18,7 @@ pdf_path: ""
 converted_md: ""
 pages_quoted: ""
 gill_corpus_overlap: ["Dual_Relativistic_Quantum_Mechanics_I", "Analytic_Representation_of_The_Dirac_Equation"]
+human_reviewed: true
 chapters_citing: [04_quantum_mechanics_1925_1948]
 ---
 
