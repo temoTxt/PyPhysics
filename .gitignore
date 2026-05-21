@@ -20,6 +20,14 @@ Roadmapping/Historical_Papers/**/*.PDF
 # Bibliography — generated BibTeX is regenerable from YAML.
 Roadmapping/History/Bibliography/bibliography.bib
 
+# Bibliography — Better-BibTeX-exported Zotero mirror (regeneratable from
+# the Zotero local library; not committed). The YAML stubs under
+# Bibliography/{Primary,Retrospective}/ remain canonical.
+Roadmapping/History/Bibliography/zotero.bib
+
+# Triage pipeline raw crawler outputs (Phase 3+; regeneratable).
+Roadmapping/Tooling/triage/_inbox/
+
 # Podcast — audio is regenerable from scripts (Phase 10 / PR L only).
 Roadmapping/History/Podcast/audio/*.mp3
 Roadmapping/History/Podcast/audio/*.wav
