@@ -18,6 +18,7 @@ pdf_path: ""
 converted_md: ""
 pages_quoted: ""
 gill_corpus_overlap: ["Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations"]
+human_reviewed: true
 chapters_citing: [03_old_quantum_theory_1900_1925]
 ---
 

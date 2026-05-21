@@ -18,6 +18,7 @@ pdf_path: ""
 converted_md: ""
 pages_quoted: ""
 gill_corpus_overlap: []
+human_reviewed: true
 chapters_citing: [05_QED_renormalization_solid_state_1948_1965, 08_quantum_computing_open_questions]
 ---
 

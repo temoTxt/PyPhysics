@@ -18,6 +18,7 @@ pdf_path: ""
 converted_md: ""
 pages_quoted: ""
 gill_corpus_overlap: ["FOUNDATIONS_FOR_QED_I_MATHEMATICAL", "Feynman_Operator_Calculus_Papers"]
+human_reviewed: true
 chapters_citing: [05_QED_renormalization_solid_state_1948_1965]
 ---
 

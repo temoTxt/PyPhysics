@@ -323,6 +323,30 @@ Trey skims, applies the useful suggestions as small commits, opens a PR for the 
 
 **Once a quarter.** Run `chapter_status.py` + `build_dataview_indexes.py` + `validate_wikilinks.py` to confirm the campaign-wide invariants. (These can also be cronned.)
 
+## 6.5 Crocco et al. (2026) compliance
+
+After this plan was written, Trey attached [Crocco, Rasdi, Garavan (2026), *Responsible AI in Non-Empirical Research*, *Human Resource Development Review*](https://doi.org/10.1177/15344843261445531) to issue #34. The article is the canonical normative statement on AI use in non-empirical scholarship (literature reviews, conceptual articles, theory work) — exactly the genre this repo produces. Crocco is the @olivercrocco we tagged in #9 and #34 as our review-the-pipeline human.
+
+Phase 3.5 (PR landing before Phase 4) wires the article's eight reporting expectations into the repo as **design commitments**:
+
+| # | Crocco expectation | Concrete commitment |
+|---|---|---|
+| 1 | Tool + role per phase | Per-phase AI use declared in this plan + `Co-Authored-By` trailers + synth-report `ai_use_class` tags |
+| 2 | Pragmatic vs substantive classification | `_prompts/*.md` frontmatter `ai_use_class:` field |
+| 3 | Verification of AI-generated content | DOI flow via Crossref; `human_reviewed` YAML field; `validate_wikilinks.py` |
+| 4 | How the argument was developed | Synth reports include mandatory "human acceptance" section |
+| 5 | Address bias | `crawl/BIASES.md` per-crawler skew documentation |
+| 6 | Commit substantive prompts | `_prompts/` directory with version-controlled prompt templates |
+| 7 | Confirm primary-source engagement | `human_reviewed: bool` in bib YAML; audit tool to set+report |
+| 8 | AI not as author | Trailer-only attribution; Trey is PR author of record |
+
+Full mapping + verification checklist: [`Roadmapping/Tooling/CROCCO_COMPLIANCE.md`](../../Roadmapping/Tooling/CROCCO_COMPLIANCE.md).
+
+Implementation impact on the Phase plan:
+- **Phase 3.5** lands the compliance scaffolding (this section's commitments) before any substantive AI use occurs.
+- **Phase 4** synth tools must emit synth reports following the schema in `_prompts/synth_*.md`'s "Outputs" section — including the human-acceptance blank.
+- **Phase 5** slash commands must reference prompts from `_prompts/` rather than constructing them inline, so the prompt-of-record is committable.
+
 ## 7. Out of scope (explicitly)
 
 - A web UI for the triage queue. Markdown + Obsidian is sufficient.

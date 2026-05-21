@@ -18,6 +18,7 @@ pdf_path: ""
 converted_md: ""
 pages_quoted: ""
 gill_corpus_overlap: []
+human_reviewed: false
 chapters_citing: [07_PNT_GPS_SLR_QKD]
 ---
 

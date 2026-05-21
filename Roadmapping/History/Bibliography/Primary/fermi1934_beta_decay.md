@@ -18,6 +18,7 @@ pdf_path: ""
 converted_md: ""
 pages_quoted: ""
 gill_corpus_overlap: []
+human_reviewed: true
 chapters_citing: [04_quantum_mechanics_1925_1948, 05_QED_renormalization_solid_state_1948_1965, 09_fusion_open_questions]
 ---
 

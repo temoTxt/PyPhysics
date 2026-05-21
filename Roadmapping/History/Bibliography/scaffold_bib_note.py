@@ -106,6 +106,11 @@ def default_frontmatter(cite_key: str, type_: str) -> dict:
         "converted_md": "",
         "pages_quoted": "",
         "gill_corpus_overlap": [],
+        # human_reviewed: per Crocco et al. (2026) reporting expectation #7,
+        # this flag records whether a human has read the primary source.
+        # New stubs are False by construction; flip to True only after the
+        # 2-3-paragraph body summary is hand-written from a reading of the source.
+        "human_reviewed": False,
         "chapters_citing": [],
     }
 

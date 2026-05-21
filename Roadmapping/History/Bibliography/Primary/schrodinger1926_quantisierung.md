@@ -18,6 +18,7 @@ pdf_path: ""
 converted_md: ""
 pages_quoted: ""
 gill_corpus_overlap: ["FoundationsII-Classical", "Analytic_Representation_of_The_Square-Root_Operator"]
+human_reviewed: true
 chapters_citing: [04_quantum_mechanics_1925_1948]
 ---
 
