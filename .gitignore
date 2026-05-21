@@ -29,6 +29,12 @@ Roadmapping/History/Bibliography/zotero.bib
 
 # Triage pipeline raw crawler outputs (Phase 3+; regeneratable).
 Roadmapping/Tooling/triage/_inbox/
+# Triage pipeline state cursors (per-crawler last-run timestamps).
+Roadmapping/Tooling/triage/_state.json
+# Triage pipeline daily working surface (regeneratable via build_queue.py;
+# permanent decisions go to triage_decisions.jsonl which IS committed).
+Roadmapping/Tooling/triage/queue.md
+Roadmapping/Tooling/triage/queue_full.jsonl
 
 # Podcast — audio is regenerable from scripts (Phase 10 / PR L only).
 Roadmapping/History/Podcast/audio/*.mp3
