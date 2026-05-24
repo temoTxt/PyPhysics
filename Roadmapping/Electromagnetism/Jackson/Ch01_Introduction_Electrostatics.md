@@ -107,3 +107,7 @@ The two formulations are *mathematically equivalent and physically equivalent* i
 **Notes for author review:** none. This problem is the cleanest possible reduction of the proper-time formulation to the classical one, and serves as the campaign's first canary — for the [`_template_problem.md`](../_template_problem.md) structure, for the [`VOICE_MATCH_GILL.md`](../../Tooling/VOICE_MATCH_GILL.md) read-aloud test, and for the Mathematica MCP workflow. Any drift in the template or in the voice surfaces here first.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh01_P1_5.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh01_P1_5.wl) — runnable independent of the Mathematica MCP.
+
+---
+
+*Note on chapter scope.* The remaining Ch. 1 problems planned for PR 0 reside in Ch. 2 (image-method problems), Ch. 5 (magnetostatic problems), and the optional fourth problem also in Ch. 5. Per the campaign's per-chapter document convention, the image-method problem appears under [`Ch02_Boundary_Value_Problems_Electrostatics_I.md`](Ch02_Boundary_Value_Problems_Electrostatics_I.md) rather than here.
