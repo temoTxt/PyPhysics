@@ -10,6 +10,7 @@ Ch. 11 is where the **proper-time group** of [[Two_Mathematically_Equivalent_Ver
 |---|---|---|
 | [Problem J3e-P11.1 — Relativistic velocity addition](#problem-j3e-p111--relativistic-velocity-addition) | drafted (PR B) | fluency-builder (velocity-duality exercise) |
 | [Problem J3e-P11.3 — Relativistic Doppler effect](#problem-j3e-p113--relativistic-doppler-effect) | drafted (PR B) | fluency-builder (time-derivative duality) |
+| [Problem J3e-P11.5 — 4-vector position transformation](#problem-j3e-p115--4-vector-position-transformation) | drafted (PR B) | fluency-builder (bookkeeping) |
 
 ---
 
@@ -169,3 +170,73 @@ All three forms agree algebraically (after squaring) and numerically (sample `u 
 **Notes for author review:** the observation that the proper-time Doppler formula is *linear* in `(b, u)` rather than square-root in `\beta` is worth recording — it is the simplest example in the campaign of the proper-time variables producing a cleaner algebraic form than the observer-time variables. Not posted to `FINDINGS_for_author_review.md`; structural feature, not a finding.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_3.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_3.wl).
+
+---
+
+### Problem J3e-P11.5 — 4-vector position transformation
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the Lorentz transformation of the position 4-vector is the foundational kinematic statement of special relativity, treated in [[jackson1998_classical_electrodynamics]] §11.3 and §11.6. As the kinematic backbone of every relativistic derivation in Jackson, it is the cleanest place to articulate the relationship between the standard Lorentz group acting on `x^{\mu} = (ct, \mathbf{x})` and the proper-time group of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] §1.3 acting on the 4-velocity `(b, \mathbf{u})`.
+- *Alternatives considered:* J3e-P11.6 (Lorentz boost of `\mathbf{E}` and `\mathbf{B}` — selected next as the headline-adjacent problem for PR B) and J3e-P11.7 (Lorentz invariants — selected as the closing problem of PR B).
+- *Role in this PR:* fluency-builder. The position 4-vector transforms identically under both the Lorentz group and the proper-time group at the level of components; the structural distinction surfaces only when one passes from positions to 4-velocities and to derived quantities.
+
+<!-- TODO: human reviews and fills in — confirms the framing that the 4-position transforms identically under both group structures, with the distinction appearing only at the 4-velocity level -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 11.5 (and 2e Problem 11.5, equivalent). *Paraphrased.*
+
+**Paraphrased statement:** Frame `S'` moves with velocity `\mathbf{v} = v\hat x` relative to frame `S`. Write down the Lorentz transformation of the 4-vector position `x^{\mu} = (ct, x, y, z)`, verify that the Minkowski interval `c^{2}t^{2} - x^{2} - y^{2} - z^{2}` is invariant, and remark on how the same transformation is understood in the proper-time formulation.
+
+**Setup:** The Lorentz boost along `\hat x` with velocity `v` has parameter `\gamma(v) = 1/\sqrt{1 - v^{2}/c^{2}}`. Position 4-vector in frame `S`: `(ct, x, y, z)`. Position 4-vector in frame `S'`: `(ct', x', y', z')`. The transverse components `y` and `z` are unchanged by the boost.
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The standard Lorentz transformation, derivable from the postulates of special relativity (Jackson 3e Eqs. (11.16)–(11.17)), reads
+
+$$
+ct' = \gamma(v)\!\left[ct - \beta x\right], \qquad x' = \gamma(v)\!\left[x - \beta\,ct\right], \qquad y' = y, \quad z' = z,
+$$
+
+with `\beta = v/c`. The Minkowski interval `s^{2} = c^{2}t^{2} - x^{2} - y^{2} - z^{2}` is invariant under this transformation, a property recorded as the kinematic statement of the relativity postulate.
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[tt, xx, yy, zz, vv, cc];
+gammaV = 1/Sqrt[1 - vv^2/cc^2];
+tPrime = gammaV (tt - vv xx/cc^2);
+xPrime = gammaV (xx - vv tt);
+interval = FullSimplify[
+   cc^2 tPrime^2 - xPrime^2 - yy^2 - zz^2
+      - (cc^2 tt^2 - xx^2 - yy^2 - zz^2),
+   Assumptions -> 0 < vv < cc];
+(* Result: 0  ✅ *)
+```
+
+The interval is exactly invariant; the Lorentz boost is therefore a proper isometry of Minkowski spacetime.
+
+#### (c) Proper-time reformulation
+
+The position 4-vector `x^{\mu}` is defined by an observer in a particular inertial frame; its components have no dependence on which clock parametrises a particle's worldline. We observe that the Lorentz transformation above acts identically in the classical and proper-time formulations: the components of `x^{\mu}` transform the same way regardless of whether we use the observer's `t` or the source's `\tau` as the affine parameter along any particular worldline.
+
+What does change between the two formulations is the **affine parameter of the worldline itself**. Classical SR uses the proper time of a particle, computed from observer-frame quantities as `d\tau = dt\sqrt{1 - w^{2}/c^{2}}` where `w = |d\mathbf{x}/dt|`. In the Gill–Zachary formulation, `\tau` is the source's local clock, taken as primary, and the relation `(1/c)\partial_{t} = (1/b)\partial_{\tau}` of Eq. (2) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] expresses the connection between the two clocks at the level of derivatives.
+
+At the level of the 4-position `x^{\mu}`, both formulations agree on the components and on the Minkowski-interval invariance. The structural distinction — Lorentz group vs proper-time group — surfaces when one passes from `x^{\mu}` to derived 4-vectors. The 4-velocity `(b, \mathbf{u})` transforms under the proper-time group via Eq. (11) (verified in [Problem J3e-P11.1](#problem-j3e-p111--relativistic-velocity-addition)), which is related to but distinct from the standard Lorentz boost on `\dot{x}^{\mu} = (\gamma c, \gamma\mathbf{w})`. The identity `\gamma c = b` and `\gamma\mathbf{w} = \mathbf{u}` reconciles the two at the level of components but does *not* reconcile them at the level of which group acts as the fundamental symmetry of the dynamics.
+
+<!-- TODO: human reviews and fills in — confirms the framing that "Lorentz boost on position acts identically in both formulations; the group distinction lives at the 4-velocity level and beyond". This is the load-bearing kinematic claim for Ch. 11 -->
+
+**Comparison:**
+
+| Quantity | Classical (Gaussian) | Proper-time |
+|---|---|---|
+| Position transformation | `ct' = \gamma(ct - \beta x), x' = \gamma(x - \beta ct)` | identical |
+| Minkowski interval | invariant | invariant |
+| Affine parameter | observer-time `t`, with `\tau` derived | source-time `\tau` primary, with `t` related via Eq. (2) |
+| Covariance group acting | Lorentz | proper-time group of Maxwell paper §1.3 |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no, at the position level. The Lorentz boost on `x^{\mu}` is the same operation in either formulation. The choice of affine parameter (and hence of fundamental symmetry group) is independent of the position transformation itself.
+
+**Verdict:** ✅ all formulations consistent at the kinematic 4-position level. The proper-time group's distinctness from the Lorentz group, established in [Problem J3e-P6.11](Ch06_Maxwell_Equations_Macroscopic_Media.md#problem-j3e-p611--symmetric-stress-tensor-and-lorentz-behaviour) and sharpened in [Problem J3e-P11.1](#problem-j3e-p111--relativistic-velocity-addition), does not surface here because positions are 4-vectors irrespective of which clock parametrises the worldline.
+
+**Notes for author review:** none. The 4-position transformation is the cleanest kinematic statement in which the two formulations agree exactly, with no daylight between them at the component level.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_5.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_5.wl).
