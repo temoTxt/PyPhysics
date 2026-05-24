@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 115 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 115 pending · 🔴 0 unavailable
+**Summary**: 117 entries · 🟢 0 public-PD · 🟡 2 acquired · ⚪ 115 pending · 🔴 0 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -128,4 +128,6 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[krantz2019_circuit_qed]] | 2019 | forward | retrospective | ⚪ pending | — |
 | [[pirandola2020_qkd_review]] | 2020 | forward | retrospective | ⚪ pending | — |
 | [[nif2022_ignition]] | 2024 | forward | primary | ⚪ pending | — |
+| [[cheung2025_strings_from_almost_nothing]] | 2025 | forward | retrospective | 🟡 acquired (local only) | `../../Historical_Papers/Retrospective/arxiv_2508.09246v1_bootstrap_string_amplitudes.pdf` |
+| [[qunigudzinas2026_invariant_geometric_qm]] | 2026 | forward | retrospective | 🟡 acquired (local only) | `../../Historical_Papers/Retrospective/Quantum-Mechanical_Physics_as_Invariant_Geometric_Structure.pdf` |
 <!-- AUTO-TABLE-END -->
