@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 116 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 116 pending · 🔴 0 unavailable
+**Summary**: 119 entries · 🟢 0 public-PD · 🟡 3 acquired · ⚪ 116 pending · 🔴 0 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -124,7 +124,10 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[atzeni_meyertervehn2004_inertial]] | 2004 | forward | retrospective | ⚪ pending | — |
 | [[wesson2011_tokamaks]] | 2011 | forward | retrospective | ⚪ pending | — |
 | [[liao2018_micius_satellite]] | 2017 | forward | primary | ⚪ pending | — |
+| [[cole2018_radiation_reaction]] | 2018 | forward | retrospective | 🟡 acquired (local only) | `../../Historical_Papers/Retrospective/cole2018_radiation_reaction.pdf` |
+| [[poder2018_radiation_reaction]] | 2018 | forward | retrospective | 🟡 acquired (local only) | `../../Historical_Papers/Retrospective/poder2018_radiation_reaction.pdf` |
 | [[preskill2018_nisq]] | 2018 | forward | retrospective | ⚪ pending | — |
+| [[wistisen2018_radiation_reaction]] | 2018 | forward | retrospective | 🟡 acquired (local only) | `../../Historical_Papers/Retrospective/wistisen2018_radiation_reaction.pdf` |
 | [[arute2019_quantum_supremacy]] | 2019 | forward | primary | ⚪ pending | — |
 | [[krantz2019_circuit_qed]] | 2019 | forward | retrospective | ⚪ pending | — |
 | [[pirandola2020_qkd_review]] | 2020 | forward | retrospective | ⚪ pending | — |

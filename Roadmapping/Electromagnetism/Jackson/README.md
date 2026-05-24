@@ -27,6 +27,14 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 
 ⭐ indicates a chapter where the proper-time vs classical contrast is most informative; see [§7 of the plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#7-initial-chapter-selection--canonical-problems-list).
 
+## Experimental comparisons
+
+The [`Experimental_Comparisons/`](Experimental_Comparisons/) subdirectory holds cross-experiment analysis documents — predictions of the proper-time framework set against published experimental data. These are *not* per-problem documents in the sense of [`../_template_problem.md`](../_template_problem.md); they have their own structure (a §1 selection provenance, a §2 framework restatement, a §3 per-experiment block, and a §4 cross-experiment summary), but they follow the same voice and Crocco-substantive gating conventions as the chapter documents.
+
+| Comparison document | Tracks | Status |
+|---|---|---|
+| [`Experimental_Comparisons/radiation_reaction_2018.md`](Experimental_Comparisons/radiation_reaction_2018.md) | issue [#43](https://github.com/temoTxt/PyPhysics/issues/43); Cole 2018, Poder 2018, Wistisen 2018 | draft — substantive blocks blank, pending Ch. 14 canonical derivation from PR D |
+
 ## Chapter contributions to PR 0
 
 The PR 0 fluency-warm-up spans Chs. 1–2 and 5 with 3–4 problems where `u = 0` (electrostatics) or `∂_τ = 0` (steady currents), so that the proper-time formulation reduces to the classical answer up to at most a `J → (b/c) J` rescaling. Candidate problems are listed in [§7.3 of the plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#73-pr-a-prequel-adopted); the final selection is made when PR 0 opens.
