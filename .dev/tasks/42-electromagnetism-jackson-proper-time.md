@@ -336,6 +336,29 @@ Per [§13.5 D7](#135-decision-points--confirmed-by-author-2026-05-24): a **PR A-
 
 **Does the prequel gate #42's close?** No. Per [§13.5 D4](#135-decision-points--confirmed-by-author-2026-05-24), only PR A + (PR D OR PR E) gate the issue close. The prequel is preparation, not a campaign deliverable.
 
+### 7.4 PR 0 retrospective (closed 2026-05-24)
+
+PR 0 closed with four per-problem documents drafted and committed:
+
+| Commit | Problem | Verdict | Eq. 24 engaged? |
+|---|---|---|---|
+| `a346f1b` | J3e-P1.5 — charged-sphere self-energy | ✅ classical = proper-time exactly | no |
+| `7e83e9a` | J3e-P2.1 — image method on grounded plane | ✅ classical = proper-time exactly | no |
+| `733aeb0` | J3e-P5.4 — B-field of circular current loop | ✅ classical = proper-time exactly (exact `(b/c)`-cancellation) | no |
+| `bacc30f` | J3e-P5.13 — rotating-sphere dipole moment | ✅ classical = proper-time at leading order; `O((u/c)^{2})` deviation noted | no |
+
+Empirical observations from PR 0:
+
+- **Effort estimate held.** All four problems completed in one focused session, comfortably within the ~1-week estimate in [§13.1 O4](#131-objections-with-partial-responses). The MCP verification step took 1–2 calls per problem and required no debugging. The per-problem documents averaged ~150 lines of markdown each, with ~30–50 lines of derivation prose and the remainder being scaffolding (Selection provenance, Comparison table, Verdict, companion-notebook link).
+- **Voice held under the read-aloud test.** The Gill-voice markers ("we observe that…", "it is easy to show that…", "it follows that…", connective sentence openers, long subordinate-clause sentences with semicolons, the signature "mathematically equivalent but not physically equivalent" anchor) felt natural in derivations of this difficulty. No anti-pattern hyperbole or Claude-voice tells slipped through. The PR A-prequel's "low-stakes content" framing of [§7.3](#73-pr-a-prequel-adopted) appears to have served its purpose.
+- **Template held across four problems of varying difficulty.** The Selection provenance + Source + Setup + (a)/(b)/(c) + Comparison + Verdict structure scaled cleanly from the trivial-reduction case (P1.5) to the three-dimensional volume integral (P5.13). The optional `(c')` branched-treatment subsection did not engage for any PR 0 problem — Eq. 24 is a Hamiltonian-level finding, not a field-equation-level one, and pure electrostatic/magnetostatic problems operate entirely at the field-equation level.
+- **Per-paragraph `<!-- TODO -->` density was lower than [§13.5 D2](#135-decision-points--confirmed-by-author-2026-05-24) anticipated.** Each PR 0 problem carried exactly one substantive `<!-- TODO -->` block — on the Selection provenance — and no others. Derivations in PR 0 are mechanical (pragmatic AI use); there was no interpretive prose to disclose. For Ch. 6 problems where the dissipative term engages, the density will increase substantially. The decision to reassess granularity at PR B remains the right call.
+- **Surprise finding (P5.13):** the rotating-sphere dipole moment carries an `O((u/c)^{2})` proper-time correction that is not a flagged finding but worth recording, because it is the first per-problem result in the campaign where the proper-time formulation produces a non-zero deviation from the classical answer, however small. The correction is far below the observational floor for macroscopic rotating charged spheres. Flagged in the per-problem document's "Notes for author review" as a candidate observation; not posted to `FINDINGS_for_author_review.md` because it is a structural attribute of the velocity-duality bookkeeping rather than an unresolved inconsistency.
+
+**Implications for PR A.** The MCP workflow, the template, and the voice constraint are all validated for the easy-fluency case. PR A's Ch. 6 problems will be the first real test of the dissipative-term machinery and of whether the 3-day-per-headline-problem estimate in [§7.1](#71-headline-payoff-problems-vs-fluency-builder-problems) is accurate. PR A scope is unchanged from [§7](#7-initial-chapter-selection--canonical-problems-list); the 5 Ch. 6 problems begin immediately after this retrospective is committed.
+
+**Implications for the plan.** No changes recommended to §7, §10, §13 based on PR 0 observations alone — the data point is too small. The next decision point is at PR A's mid-point, when the per-paragraph TODO density observation and the headline/fluency cost ratio can be tested against richer content.
+
 ---
 
 ## 8. Definition of done

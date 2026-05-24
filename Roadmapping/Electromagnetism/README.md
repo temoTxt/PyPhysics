@@ -16,7 +16,7 @@ Selected canonical problems (~5–10 per chapter, ~50–100 total). Not exhausti
 
 | PR | Scope | Problems | Status |
 |---|---|---|---|
-| **PR 0** | Chs. 1–2, 5 (fluency warm-up — `u = 0` or steady-current) | 4 | drafted (4/4) — retrospective pending |
+| **PR 0** | Chs. 1–2, 5 (fluency warm-up — `u = 0` or steady-current) | 4 | ✅ closed 2026-05-24 (4/4 drafted, retrospective in [§7.4 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#74-pr-0-retrospective-closed-2026-05-24)) |
 | **PR A** | Ch. 6 Maxwell + macroscopic media | 5 (6.1, 6.4, 6.5, 6.11, 6.20) | not started |
 | **PR B** | Ch. 11 Special Relativity | 5–7 | planned |
 | **PR C** | Ch. 12 Relativistic Dynamics | 5–7 | planned |
