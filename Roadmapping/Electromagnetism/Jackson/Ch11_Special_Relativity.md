@@ -9,6 +9,7 @@ Ch. 11 is where the **proper-time group** of [[Two_Mathematically_Equivalent_Ver
 | Problem | Status | Role |
 |---|---|---|
 | [Problem J3e-P11.1 — Relativistic velocity addition](#problem-j3e-p111--relativistic-velocity-addition) | drafted (PR B) | fluency-builder (velocity-duality exercise) |
+| [Problem J3e-P11.3 — Relativistic Doppler effect](#problem-j3e-p113--relativistic-doppler-effect) | drafted (PR B) | fluency-builder (time-derivative duality) |
 
 ---
 
@@ -97,3 +98,74 @@ The observable consequence of this structural distinction is *not* a different v
 **Notes for author review:** the framing of "proper-time group ≠ Lorentz group" is sharpened in this problem relative to the seed observation in [Problem J3e-P6.11](Ch06_Maxwell_Equations_Macroscopic_Media.md#problem-j3e-p611--symmetric-stress-tensor-and-lorentz-behaviour). I have not posted it to [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md) because it is a structural feature of the framework's geometric content, not an unresolved inconsistency. If the subsequent Ch. 11 problems (Lorentz boost of fields, Lorentz invariants) sharpen the observation further, the findings document may be updated then.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_1.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_1.wl) — runnable independent of the Mathematica MCP.
+
+---
+
+### Problem J3e-P11.3 — Relativistic Doppler effect
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the relativistic Doppler shift is the canonical "moving source / stationary observer" problem and the simplest exercise of the time-derivative duality `(1/c)\partial_{t} = (1/b)\partial_{\tau}` of Eq. (2) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]. Treated in [[jackson1998_classical_electrodynamics]] §11.4.
+- *Alternatives considered:* J3e-P11.4 (transverse Doppler — defer to PR F+ as a finer fluency-builder).
+- *Role in this PR:* fluency-builder.
+
+<!-- TODO: human reviews and fills in — confirms the role of this problem as a time-derivative-duality exercise -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 11.3 (and 2e Problem 11.3, equivalent). *Paraphrased.*
+
+**Paraphrased statement:** A monochromatic source emits radiation at angular frequency `\omega'` in its rest frame. The source moves with velocity `\mathbf{v} = v\hat z` directly toward an observer at rest. Compute the angular frequency `\omega` observed in the lab frame, using both the standard Lorentz boost of the photon 4-vector and the proper-time formulation.
+
+**Setup:** Photon 4-vector in the source's rest frame: `k'^{\mu} = (\omega'/c, k'\hat z)` with `k' = \omega'/c` (null 4-vector). The source moves with lab-velocity `v`, so the proper-velocity of a source fluid element is `u = \gamma(v) v` and the corresponding `b = \gamma(v) c = \sqrt{c^{2} + u^{2}}`.
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The lab-frame angular frequency follows from the Lorentz boost of the photon 4-vector. For longitudinal motion (source approaching observer along `+\hat z`),
+
+$$
+\omega = \omega' \sqrt{\frac{1 + \beta}{1 - \beta}}, \qquad \beta = \frac{v}{c}.
+$$
+
+This is the standard Doppler shift formula of Jackson 3e Eq. (11.30). It is the product `\gamma(1+\beta)` of the time-dilation factor `\gamma` and the geometric "leading-edge" factor `(1 + \beta)`, reduced to a single square-root form.
+
+#### (c) Proper-time reformulation
+
+In the proper-time variables `(b, u)` with `b^{2} = c^{2} + u^{2}`, the Doppler formula takes a particularly clean form. Using `\beta = w/c = u/b` and `\gamma = b/c`, one finds `\gamma(1 - \beta) = (b - u)/c`, and the lab-frame frequency reads
+
+$$
+\omega = \omega'\,\frac{c}{b - u} = \omega'\,\frac{b + u}{c}.
+$$
+
+The two forms are equivalent under `b^{2} - u^{2} = c^{2}`, since `c^{2}/(b-u) = (b+u)`. The proper-time formulation exchanges the classical `\sqrt{(1+\beta)/(1-\beta)}` for `(b+u)/c`, which is a linear function of the proper velocity rather than a square-root function of the observer-time velocity. It is worth observing that the proper-time form makes manifest the photon's linear coupling to the source's 4-velocity component along the line of sight.
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[uu, cc, omegaPrime];
+bSubstituted = Sqrt[cc^2 + uu^2];
+classicalDoppler = omegaPrime Sqrt[(1 + uu/bSubstituted)/(1 - uu/bSubstituted)];
+properTimeDoppler = omegaPrime cc/(bSubstituted - uu);
+altForm = omegaPrime (bSubstituted + uu)/cc;
+Print[FullSimplify[classicalDoppler^2 - altForm^2,
+   Assumptions -> uu > 0 && cc > 0]];
+Print[FullSimplify[properTimeDoppler^2 - altForm^2,
+   Assumptions -> uu > 0 && cc > 0]];
+(* Both: 0  ✅ *)
+```
+
+All three forms agree algebraically (after squaring) and numerically (sample `u = c`, `c = 1`, `\omega' = 1`: all three give `\omega = 1 + \sqrt 2 \approx 2.414`).
+
+<!-- TODO: human reviews and fills in — confirms the framing that the proper-time form `(b+u)/c` is "linear in the source 4-velocity" and that this is worth highlighting as a structural feature of the formulation -->
+
+**Comparison:**
+
+| Quantity | Classical (Gaussian) | Proper-time |
+|---|---|---|
+| Doppler factor | `\sqrt{(1+\beta)/(1-\beta)}` | `(b+u)/c` |
+| Observable `\omega` | identical | identical |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no, at the kinematic level. The proper-time form is a re-expression of the classical Doppler shift in proper-velocity variables, with no observable difference.
+
+**Verdict:** ✅ all formulations consistent. The proper-time form `(b+u)/c` is a structurally cleaner re-expression of the classical Doppler factor; the observable frequency is unchanged.
+
+**Notes for author review:** the observation that the proper-time Doppler formula is *linear* in `(b, u)` rather than square-root in `\beta` is worth recording — it is the simplest example in the campaign of the proper-time variables producing a cleaner algebraic form than the observer-time variables. Not posted to `FINDINGS_for_author_review.md`; structural feature, not a finding.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_3.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_3.wl).
