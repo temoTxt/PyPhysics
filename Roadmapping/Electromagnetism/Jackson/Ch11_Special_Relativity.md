@@ -12,6 +12,7 @@ Ch. 11 is where the **proper-time group** of [[Two_Mathematically_Equivalent_Ver
 | [Problem J3e-P11.3 — Relativistic Doppler effect](#problem-j3e-p113--relativistic-doppler-effect) | drafted (PR B) | fluency-builder (time-derivative duality) |
 | [Problem J3e-P11.5 — 4-vector position transformation](#problem-j3e-p115--4-vector-position-transformation) | drafted (PR B) | fluency-builder (bookkeeping) |
 | [Problem J3e-P11.6 — Lorentz boost of **E** and **B** fields](#problem-j3e-p116--lorentz-boost-of-e-and-b-fields) | drafted (PR B) | headline-adjacent (group-distinction sharpened) |
+| [Problem J3e-P11.8 — Lorentz invariants of the EM field](#problem-j3e-p118--lorentz-invariants-of-the-em-field) | drafted (PR B) | headline-adjacent (closes PR B's invariance arc) |
 
 ---
 
@@ -349,3 +350,102 @@ The proper-time group's distinct action surfaces only when one considers boosts 
 **Notes for author review:** the connection between the field-boost linearity in `(b, u)` and the structurally linear Doppler factor of [Problem J3e-P11.3](#problem-j3e-p113--relativistic-doppler-effect) is worth recording as a pattern. The proper-time variables consistently produce linear expressions where the classical `(\gamma, \beta)` variables produce square-roots, suggesting that `(b, u)` are the natural coordinates for relativistic kinematics in the Gill–Zachary framework. Not posted to `FINDINGS_for_author_review.md`; this is a structural observation about variable choice, not a finding about physics.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_6.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_6.wl).
+
+---
+
+### Problem J3e-P11.8 — Lorentz invariants of the EM field
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the two Lorentz invariants of the electromagnetic field — the scalar `I_{1} = \mathbf{E}^{2} - \mathbf{B}^{2}` and the pseudoscalar `I_{2} = \mathbf{E}\cdot\mathbf{B}` — close the kinematic arc of PR B. Their preservation under Lorentz boosts was verified at the component level in [Problem J3e-P11.6](#problem-j3e-p116--lorentz-boost-of-e-and-b-fields); the present problem identifies them as contractions of the field tensor `F^{\mu\nu}` and interprets their physical content.
+- *Alternatives considered:* J3e-P11.7 (relativistic addition of accelerations — defer to PR C as a dynamical problem) and J3e-P11.10 (uniformly accelerated charge / Rindler observer — defer to PR D as a radiation problem).
+- *Role in this PR:* headline-adjacent. The invariants' tensorial interpretation is the cleanest closing observation for Ch. 11, and the proper-time formulation preserves them by the same algebraic mechanism.
+
+<!-- TODO: human reviews and fills in — confirms the role of this problem as PR B's closing observation -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 11.8 (and 2e Problem 11.8, equivalent). *Paraphrased.*
+
+**Paraphrased statement:** Show that the scalars `I_{1} = \mathbf{E}^{2} - \mathbf{B}^{2}` and `I_{2} = \mathbf{E}\cdot\mathbf{B}` are Lorentz invariants of the electromagnetic field, by identifying them with the contractions `F^{\mu\nu}F_{\mu\nu}` and `F^{\mu\nu}\,{}^{*}F_{\mu\nu}` of the field-strength tensor. Interpret the special cases `I_{1} > 0`, `I_{1} < 0`, and `I_{2} = 0`.
+
+**Setup:** The electromagnetic field tensor in Gaussian units, with metric `\eta_{\mu\nu} = \mathrm{diag}(+, -, -, -)`, has components
+
+$$
+F^{\mu\nu} = \begin{pmatrix} 0 & E_{x} & E_{y} & E_{z} \\ -E_{x} & 0 & -B_{z} & B_{y} \\ -E_{y} & B_{z} & 0 & -B_{x} \\ -E_{z} & -B_{y} & B_{x} & 0 \end{pmatrix}.
+$$
+
+The dual tensor `{}^{*}F^{\mu\nu} = (1/2)\,\epsilon^{\mu\nu\alpha\beta}F_{\alpha\beta}` has components `{}^{*}F^{0i} = B^{i}` and `{}^{*}F^{ij}` carrying the components of `\mathbf{E}` with appropriate Levi-Civita signs.
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The scalar contraction of `F^{\mu\nu}` with its doubly-covariant form `F_{\mu\nu}` evaluates to
+
+$$
+F^{\mu\nu}F_{\mu\nu} = 2(\mathbf{B}^{2} - \mathbf{E}^{2}) = -2\,I_{1}.
+$$
+
+The contraction with the dual tensor evaluates to
+
+$$
+F^{\mu\nu}\,{}^{*}F_{\mu\nu} = -4\,\mathbf{E}\cdot\mathbf{B} = -4\,I_{2}.
+$$
+
+Both contractions are Lorentz scalars by tensor algebra (contracting two rank-2 tensors against the metric yields a scalar), so `I_{1}` and `I_{2}` are themselves Lorentz invariants. `I_{1}` is parity-even (a true scalar); `I_{2}` is parity-odd (a pseudoscalar), reflecting the dual tensor's parity behaviour.
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[capE1, capE2, capE3, capB1, capB2, capB3];
+fUpper = {{0, capE1, capE2, capE3},
+          {-capE1, 0, -capB3, capB2},
+          {-capE2, capB3, 0, -capB1},
+          {-capE3, -capB2, capB1, 0}};
+eta = DiagonalMatrix[{1, -1, -1, -1}];
+fLower = eta . fUpper . eta;
+i1Check = Sum[fUpper[[m, n]] fLower[[m, n]], {m, 1, 4}, {n, 1, 4}];
+fDualUpper = {{0, capB1, capB2, capB3},
+              {-capB1, 0, capE3, -capE2},
+              {-capB2, -capE3, 0, capE1},
+              {-capB3, capE2, -capE1, 0}};
+fDualLower = eta . fDualUpper . eta;
+i2Check = Sum[fUpper[[m, n]] fDualLower[[m, n]], {m, 1, 4}, {n, 1, 4}];
+Print["F^munu F_munu = ", FullSimplify[i1Check]];
+Print["F^munu dual(F)_munu = ", FullSimplify[i2Check]];
+(* F^munu F_munu = 2(B^2 - E^2)  ✅
+   F^munu dual(F)_munu = -4(E.B)  ✅ *)
+```
+
+The physical interpretation of the two invariants follows from the three cases:
+
+- **`I_{2} = 0` and `I_{1} > 0`**: `\mathbf{E}` and `\mathbf{B}` are mutually perpendicular, with `|\mathbf{E}| > |\mathbf{B}|`. There exists a Lorentz frame in which `\mathbf{B} = 0` (the "electric" frame), where only the electric field is present.
+- **`I_{2} = 0` and `I_{1} < 0`**: same orthogonality, with `|\mathbf{B}| > |\mathbf{E}|`. There exists a frame in which `\mathbf{E} = 0` (the "magnetic" frame).
+- **`I_{2} = 0` and `I_{1} = 0`**: `|\mathbf{E}| = |\mathbf{B}|` with `\mathbf{E} \perp \mathbf{B}`. This is the null-field case (a plane wave in vacuum), and no Lorentz frame can transform away either field; both transform together.
+- **`I_{2} \neq 0`**: `\mathbf{E}` and `\mathbf{B}` have a nonzero parallel component. In every Lorentz frame, both `\mathbf{E}` and `\mathbf{B}` are nonzero. The relative orientation of the parallel components is preserved.
+
+#### (c) Proper-time reformulation
+
+The proper-time formulation preserves the same invariants by the same mechanism — `F^{\mu\nu}` is a rank-2 tensor under either group (Lorentz or proper-time), and the contraction `F^{\mu\nu}F_{\mu\nu}` is a scalar under both. The proper-time form of the field-boost equations of [Problem J3e-P11.6](#problem-j3e-p116--lorentz-boost-of-e-and-b-fields) makes this manifest: the invariants `I_{1}` and `I_{2}` are preserved by the `(b, u)` parametrisation just as they are by the `(\gamma, \beta)` parametrisation, because the underlying transformation of `F^{\mu\nu}` is the same.
+
+We observe that the two invariants are the only **algebraic** Lorentz scalars constructible from `F^{\mu\nu}` alone (without derivatives or external structures); higher-order contractions reduce to polynomials in `I_{1}` and `I_{2}` by the Cayley-Hamilton theorem applied to `F^{\mu\nu}`. The proper-time formulation does not introduce any new algebraic invariant of `F^{\mu\nu}` itself.
+
+<!-- TODO: human reviews and fills in — confirms the claim that no new algebraic invariant arises in the proper-time formulation. The framework's distinguishing structure lives at the level of derived quantities (current density, stress tensor, etc.) involving the source velocity u, not at the level of F^munu alone -->
+
+The proper-time formulation does introduce **new invariants** when one includes the source 4-velocity `(b, \mathbf{u})` alongside `F^{\mu\nu}`. The most natural such quantity is `F^{\mu\nu}u_{\nu}` — the Lorentz force per unit charge — which transforms as a 4-vector under both groups but whose components have different `(b, u)`-form expressions per [Problem J3e-P11.6](#problem-j3e-p116--lorentz-boost-of-e-and-b-fields). The full set of invariants involving both `F^{\mu\nu}` and the source 4-velocity is the structure-defining set for the proper-time formulation's covariance, distinct from the Lorentz-group set built from `F^{\mu\nu}` alone.
+
+<!-- TODO: human reviews and fills in — flags the claim that "F^{munu} alone has the same algebraic invariants in both formulations; including the source 4-velocity introduces additional structure distinct to the proper-time framework". This is the closing structural observation for PR B -->
+
+**Comparison:**
+
+| Quantity | Classical (Gaussian) | Proper-time |
+|---|---|---|
+| `I_{1} = E^{2} - B^{2}` | Lorentz scalar | scalar under proper-time group |
+| `I_{2} = E\cdot B` | Lorentz pseudoscalar | pseudoscalar under proper-time group |
+| Tensorial identification | `F^{\mu\nu}F_{\mu\nu} = -2I_{1}`, `F^{\mu\nu}\,{}^{*}F_{\mu\nu} = -4I_{2}` | identical |
+| Algebraic invariants of `F^{\mu\nu}` alone | `I_{1}, I_{2}` | identical |
+| Additional structure | none | `F^{\mu\nu}u_{\nu}` and higher invariants involving source 4-velocity |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no, at the level of algebraic invariants of `F^{\mu\nu}` alone. The proper-time formulation produces the same invariants by the same construction. The framework's distinguishing structure lives in invariants involving both `F^{\mu\nu}` and the source 4-velocity `(b, \mathbf{u})`, which by definition do not exist in the Lorentz-group framework where only `F^{\mu\nu}` and external 4-vectors are available.
+
+**Verdict:** ✅ all formulations consistent. The two algebraic invariants of `F^{\mu\nu}` alone are preserved by both groups; the proper-time framework's additional structure surfaces when one includes the source 4-velocity in the algebra of available invariants.
+
+**Notes for author review:** the closing observation of PR B — that the proper-time framework's distinguishing structure lives in invariants involving both `F^{\mu\nu}` and the source 4-velocity, rather than in `F^{\mu\nu}` alone — is the natural setup for PR C (Ch. 12 relativistic dynamics), where the equations of motion involve `F^{\mu\nu}u_{\nu}` and its derivatives. Not posted to `FINDINGS_for_author_review.md`; structural observation, not a finding.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_8.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_8.wl).
