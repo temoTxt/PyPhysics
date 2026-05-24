@@ -10,7 +10,7 @@ Ch. 6 is the campaign's first chapter in which the proper-time machinery engages
 |---|---|---|
 | [Problem J3e-P6.1 — Maxwell with magnetic monopoles + electric–magnetic duality](#problem-j3e-p61--maxwell-with-magnetic-monopoles-and-electricmagnetic-duality) | drafted (PR A) | headline-adjacent |
 | [Problem J3e-P6.4 — EM momentum of a uniformly-moving point charge](#problem-j3e-p64--em-momentum-of-a-uniformly-moving-point-charge) | drafted (PR A) | headline-payoff (podcast pick #1) |
-| [Problem J3e-P6.5 — Poynting theorem in macroscopic media](#problem-j3e-p65--poynting-theorem-in-macroscopic-media) | planned (PR A) | headline-adjacent |
+| [Problem J3e-P6.5 — Poynting theorem in macroscopic media](#problem-j3e-p65--poynting-theorem-in-macroscopic-media) | drafted (PR A) | headline-adjacent |
 | [Problem J3e-P6.11 — Symmetric stress tensor and Lorentz behaviour](#problem-j3e-p611--symmetric-stress-tensor-and-lorentz-behaviour) | planned (PR A) | headline-adjacent |
 | [Problem J3e-P6.20 — Radiation pressure on a perfect conductor](#problem-j3e-p620--radiation-pressure-on-a-perfect-conductor) | planned (PR A) | headline-payoff (first `(u·a)/b⁴` test) |
 
@@ -257,3 +257,103 @@ In the language of [§12.1's podcast brief](../../../.dev/tasks/42-electromagnet
 **Notes for author review:** the framing in (c) — that the proper-time framework is *consistent with* but does not *require* the Poincaré stresses — is the subtlest interpretive claim in this document and is flagged with a per-paragraph `<!-- TODO -->`. It would be defensible to make a stronger claim (that the framework requires the same Poincaré stresses as classical EM, since the field equations and the field momentum are identical), but I have left the claim conditional pending the author's judgement on whether a stronger statement is warranted. No `FINDINGS_for_author_review.md` entry is recommended for this problem; the result is a confirmation of the classical Abraham–Lorentz puzzle, not a new finding.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_4.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_4.wl) — runnable independent of the Mathematica MCP.
+
+---
+
+### Problem J3e-P6.5 — Poynting theorem in macroscopic media
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the Poynting theorem is the central energy-conservation statement of macroscopic electromagnetism, recorded in [[jackson1998_classical_electrodynamics]] §6.7 and applied throughout the second half of Jackson. As a derived quantity built from the four Maxwell equations, it offers the cleanest test of whether the proper-time formulation preserves conservation-law structure.
+- *Alternatives considered:* J3e-P6.6 (Lorentz transformations of `\mathbf{E}` and `\mathbf{B}` — covered partially in PR B Ch. 11) and J3e-P6.7 (energy flux through a closed surface — special case of the present problem).
+- *Role in this PR:* headline-adjacent. The proper-time derivation is structurally identical to the classical one; the result is that the conservation law `\partial u/\partial t + \nabla\cdot\mathbf{S} = -\mathbf{J}\cdot\mathbf{E}` is preserved under the variable substitution `(1/c)\partial_t = (1/b)\partial_\tau`.
+
+<!-- TODO: human reviews and fills in — confirms the framing of this problem as a "conservation-law preservation" exercise rather than a derivation of new physical content -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 6.5 (and 2e Problem 6.5, equivalent). *Paraphrased; consult the textbook for the precise statement.*
+
+**Paraphrased statement:** Starting from the macroscopic Maxwell equations in a linear medium characterised by permittivity `\varepsilon` and permeability `\mu`, derive the Poynting theorem for the energy density `u = (1/(8\pi))(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H})` and the Poynting vector `\mathbf{S} = (c/(4\pi))\mathbf{E}\times\mathbf{H}`. Identify the term that represents the work done by the field on the free charges. Carry out the analysis in CGS, in SI, and in the proper-time reformulation, and verify that the conservation form is preserved.
+
+**Setup:** Consider a region of space occupied by a linear, isotropic, non-dispersive medium with permittivity `\varepsilon` and permeability `\mu`. The constitutive relations are `\mathbf{D} = \varepsilon\mathbf{E}` and `\mathbf{B} = \mu\mathbf{H}`. The free-current density is `\mathbf{J}_{\text{free}} = \rho_{\text{free}}\mathbf{w}_{\text{free}}` in the observer frame, or equivalently `\rho_{\text{free}}\mathbf{u}_{\text{free}} = (b/c)\mathbf{J}_{\text{free}}` in the proper-time formulation. We assume `\varepsilon` and `\mu` are constants in space and time (no dispersion, no medium motion).
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The macroscopic Maxwell equations in Gaussian units read
+
+$$
+\nabla\cdot\mathbf{D} = 4\pi\rho_{\text{free}},\qquad \nabla\cdot\mathbf{B} = 0,\qquad \nabla\times\mathbf{E} = -\frac{1}{c}\frac{\partial\mathbf{B}}{\partial t},\qquad \nabla\times\mathbf{H} = \frac{1}{c}\frac{\partial\mathbf{D}}{\partial t} + \frac{4\pi}{c}\mathbf{J}_{\text{free}}.
+$$
+
+We dot Faraday's law (third equation) with `\mathbf{H}` and the Ampère–Maxwell law (fourth equation) with `\mathbf{E}`, then subtract,
+
+$$
+\mathbf{H}\cdot(\nabla\times\mathbf{E}) - \mathbf{E}\cdot(\nabla\times\mathbf{H}) = -\frac{1}{c}\!\left[\mathbf{H}\cdot\frac{\partial\mathbf{B}}{\partial t} + \mathbf{E}\cdot\frac{\partial\mathbf{D}}{\partial t}\right] - \frac{4\pi}{c}\mathbf{E}\cdot\mathbf{J}_{\text{free}}.
+$$
+
+Applying the vector identity `\nabla\cdot(\mathbf{E}\times\mathbf{H}) = \mathbf{H}\cdot(\nabla\times\mathbf{E}) - \mathbf{E}\cdot(\nabla\times\mathbf{H})` on the left and the linear-medium relations `\mathbf{E}\cdot\partial\mathbf{D}/\partial t = (\varepsilon/2)\,\partial E^{2}/\partial t = (1/2)\partial(\mathbf{E}\cdot\mathbf{D})/\partial t` (and analogously for `\mathbf{H}\cdot\partial\mathbf{B}/\partial t`) on the right, we obtain
+
+$$
+\nabla\cdot\!\left[\frac{c}{4\pi}\,\mathbf{E}\times\mathbf{H}\right] + \frac{\partial}{\partial t}\!\left[\frac{1}{8\pi}\!\left(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H}\right)\right] = -\mathbf{J}_{\text{free}}\cdot\mathbf{E}.
+$$
+
+This is the Poynting theorem in its standard Gaussian form. The Poynting vector `\mathbf{S} = (c/(4\pi))\mathbf{E}\times\mathbf{H}` is the energy flux, the energy density `u = (1/(8\pi))(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H})` is the stored electromagnetic energy per unit volume, and the right-hand side `-\mathbf{J}_{\text{free}}\cdot\mathbf{E}` is the rate at which the field does work on the free charges per unit volume (negative if the field gains energy from work done by the charges, positive if it loses energy to them).
+
+#### (b) Classical solution — SI
+
+In SI units, the macroscopic Maxwell equations carry no `1/c` factors in the curl equations, but the energy density takes the form `u = (1/2)(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H})` (no `1/(8\pi)`) and the Poynting vector is `\mathbf{S} = \mathbf{E}\times\mathbf{H}` (no `c/(4\pi)`). The derivation is structurally identical, and one obtains
+
+$$
+\nabla\cdot(\mathbf{E}\times\mathbf{H}) + \frac{\partial}{\partial t}\!\left[\frac{1}{2}(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H})\right] = -\mathbf{J}_{\text{free}}\cdot\mathbf{E}.
+$$
+
+The dimensional simplification of the SI form is a notable feature: the absence of the `c/(4\pi)` factor in `\mathbf{S}` reflects the SI convention that `[E\times H] = [\text{power per area}]` directly.
+
+#### (c) Proper-time reformulation
+
+The proper-time macroscopic Maxwell equations are obtained from (a) by the substitution `(1/c)\partial_t \to (1/b)\partial_\tau` and the current-density rescaling `\mathbf{J}_{\text{free}} \to \rho_{\text{free}}\mathbf{u}_{\text{free}}`. Carrying the derivation through the same steps as (a),
+
+$$
+\nabla\cdot\!\left[\frac{c}{4\pi}\,\mathbf{E}\times\mathbf{H}\right] + \frac{1}{c}\,\frac{c}{b}\,\frac{\partial}{\partial\tau}\!\left[\frac{1}{8\pi}\!\left(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H}\right)\right] = -\frac{4\pi}{4\pi b}\rho_{\text{free}}\mathbf{u}_{\text{free}}\cdot\mathbf{E}\cdot c.
+$$
+
+We observe that the apparent factor of `c/b` in front of `\partial_\tau u` is the same as the factor that arises from converting between the two clocks: `\partial/\partial t = (c/b)\partial/\partial\tau` by Eq. (2) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]. Likewise, the proper-time source term `(1/b)\rho_{\text{free}}\mathbf{u}_{\text{free}}\cdot\mathbf{E}` reduces to `(1/c)\mathbf{J}_{\text{free}}\cdot\mathbf{E}` under the current-density rescaling `\rho_{\text{free}}\mathbf{u}_{\text{free}} = (b/c)\mathbf{J}_{\text{free}}`. After simplification, the proper-time Poynting theorem reads
+
+$$
+\nabla\cdot\!\left[\frac{c}{4\pi}\,\mathbf{E}\times\mathbf{H}\right] + \frac{c}{b}\,\frac{\partial u}{\partial\tau} = -\mathbf{J}_{\text{free}}\cdot\mathbf{E},
+$$
+
+which is the same statement as the classical Poynting theorem with the single substitution `\partial/\partial t = (c/b)\partial/\partial\tau`. The Poynting vector, the energy density, and the work source term are unchanged.
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[bb, cc, capJ, capE, rhouFree];
+classicalSource = capJ capE;
+properTimeSource = (1/bb) rhouFree capE;
+rhouFreeAsJ = (bb/cc) capJ;
+properTimeSourceInClassicalLanguage = properTimeSource /. rhouFree -> rhouFreeAsJ;
+FullSimplify[properTimeSourceInClassicalLanguage - (1/cc) classicalSource]
+(* Result: 0  ✅ *)
+```
+
+The proper-time source term `(1/b)\rho_{\text{free}}\mathbf{u}_{\text{free}}\cdot\mathbf{E}` reduces algebraically to the classical source term `(1/c)\mathbf{J}_{\text{free}}\cdot\mathbf{E}`, and the time-derivative term picks up the same `(c/b)` factor that appears throughout the proper-time formulation. The conservation law is therefore preserved with the substitution rules already in [`_proper_time_cheatsheet.md`](../_proper_time_cheatsheet.md); no new substitution rule is needed for the macroscopic Poynting theorem.
+
+It is worth observing what this means at the level of physical interpretation. The energy density `u` and the Poynting vector `\mathbf{S}` are the *same quantities* in either formulation; what differs is only which clock one uses to differentiate `u`. The two formulations are mathematically equivalent and physically equivalent in this case, in the strong sense that no measurement of `u`, `\mathbf{S}`, or `\mathbf{J}\cdot\mathbf{E}` could distinguish them. The local-clock encoding that distinguishes the two formulations in dynamical problems (per Eq. (4) of the Maxwell paper) is absent here because the Poynting theorem is a statement about the *fields*, not about the source's local clock; the conservation form is preserved regardless of which clock the source uses.
+
+<!-- TODO: human reviews and fills in — confirms the framing that the Poynting theorem is preserved "in the strong sense" because the conservation law applies to fields rather than to source dynamics. This is a subtle interpretive point and could be sharpened or weakened depending on the author's preferred reading of the framework -->
+
+**Comparison:**
+
+| Quantity | Classical (CGS) | Classical (SI) | Proper-time |
+|---|---|---|---|
+| Energy density `u` | `(1/(8\pi))(E\cdot D + B\cdot H)` | `(1/2)(E\cdot D + B\cdot H)` | identical |
+| Poynting vector `\mathbf{S}` | `(c/(4\pi))\,\mathbf{E}\times\mathbf{H}` | `\mathbf{E}\times\mathbf{H}` | identical |
+| Work term | `-\mathbf{J}_{\text{free}}\cdot\mathbf{E}` | `-\mathbf{J}_{\text{free}}\cdot\mathbf{E}` | identical (after current-density rescaling) |
+| Conservation form | `\partial u/\partial t + \nabla\cdot\mathbf{S} = -\mathbf{J}\cdot\mathbf{E}` | same | same with `\partial_t \to (c/b)\partial_\tau` |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no. The Poynting theorem's structure is preserved; the only change between formulations is which clock parametrises the time derivative, and that change is the standard `(1/c)\partial_t = (1/b)\partial_\tau` of Eq. (2).
+
+**Verdict:** ✅ all three solutions consistent. The proper-time formulation preserves the macroscopic Poynting theorem exactly; the energy density, energy flux, and work source term are unchanged.
+
+**Notes for author review:** the strong-equivalence claim in the (c) section — that no measurement of `u`, `\mathbf{S}`, or `\mathbf{J}\cdot\mathbf{E}` could distinguish the two formulations — is a stronger statement than the general "mathematically equivalent but not physically equivalent" framing of the Gill–Zachary paper. It is restricted to the conservation-law content of the Poynting theorem and does not generalise to dynamical observables (e.g., the radiation reaction force, which *does* distinguish the formulations per Eq. (4)). Flagged with a `<!-- TODO -->` block; no entry recommended for `FINDINGS_for_author_review.md`.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_5.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_5.wl) — runnable independent of the Mathematica MCP.
