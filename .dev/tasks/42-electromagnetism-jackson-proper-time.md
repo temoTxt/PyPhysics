@@ -411,6 +411,34 @@ Empirical observations from PR B:
 
 **Issue #42 acceptance criteria status.** PR A merged ✅, PR D OR PR E pending. PR B is not gating; it is preparatory chapter work for PR C–E.
 
+### 7.7 PR C retrospective (closed 2026-05-24)
+
+PR C closed with five per-problem documents drafted and committed:
+
+| Commit | Problem | Verdict | Key observation |
+|---|---|---|---|
+| `ab5e661` | J3e-P12.1 — free relativistic Lagrangian | ✅ identical action | proper-time Lagrangian density `L_{\tau} = -mc^{2}` is *constant*; worldline dynamics from constraint `b^{2}-u^{2}=c^{2}` |
+| `c1beec2` | J3e-P12.2 — cyclotron motion | ✅ identical observables | **proper-time cyclotron frequency `\omega_{\tau} = qB/(mc)` is γ-INDEPENDENT**; γ-dependence of lab-frame `\omega_{c}` is pure time-dilation. Podcast pick #4 lesson |
+| `ea2166f` | J3e-P12.5 — E×B drift | ✅ identical drift velocity | `\mathbf{u}\cdot\mathbf{a} = 0` throughout (drift + cyclotron); dissipative term inactive |
+| `13d9bf5` | J3e-P12.10 — Hamiltonian formulation | ✅ identical Hamiltonian | **Eq. 24 anticipated but did NOT engage** (problem is non-spin); branched treatment deferred to PR F+ |
+| `801ddff` | J3e-P12.14 — charged particle in plane wave | ⚠ first PR C engagement of `(u·a)/b⁴` | dissipative term first activates with finite time-average; bridges PR C → PR D and issue #43 |
+
+Empirical observations from PR C:
+
+- **Effort estimate held within [§13.1 O4](#131-objections-with-partial-responses)'s ~2.5–3 week budget.** Five Ch. 12 problems at roughly the same per-problem cost as PR A and PR B. Dynamics content (Lagrangian, Hamiltonian, equations of motion) is more derivational than the kinematic content of PR B, but the structural-observation content is comparable. Net cost matches PR A and PR B's blended average.
+- **Per-paragraph TODO discipline continued sustainably.** Each PR C problem carries 2–4 substantive `<!-- TODO -->` blocks, the same density as PR A and PR B. Reassessment scheduled for the start of PR D per [§7.6](#76-pr-b-retrospective-closed-2026-05-24) remains the right time; density across 15 problems is now stable and the next interpretive load shift will come at the dissipative-term content of PR D.
+- **Eq. 24 branched-treatment workflow did NOT engage in PR C.** [Problem J3e-P12.10](#problem-j3e-p1210--hamiltonian-formulation-for-charged-particle) was anticipated by [§5.1 of the plan](#51-branched-treatment-for-eq-24-touching-problems) as the likely first site of Eq. 24's flagged finding. The actual outcome: Eq. 24 concerns the *Pauli-form* spin-magnetic-moment and `V^{2}/(2mc^{2})` terms, which appear only with explicit spin extension. Jackson Ch. 12 P10 is non-spin classical, so the branched-treatment workflow remains scaffolded but does not engage until a Pauli-reduction problem arrives (likely in PR F+ via a hyperfine or spin-orbit problem). The scaffolding established in [§5.1](#51-branched-treatment-for-eq-24-touching-problems) is correct; it is simply standing in reserve for content that has not yet arrived.
+- **Two new headline-level structural observations.**
+  - **Cyclotron frequency in proper time is γ-independent** (J3e-P12.2). The cleanest example in the campaign of the proper-time formulation producing an algebraically simpler dynamical statement than the classical formulation. The energy-dependence in the lab-frame cyclotron frequency is pure time-dilation, not a feature of the underlying dynamics.
+  - **The dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` coefficient first engages in PR C content at J3e-P12.14** (charged particle in plane wave). At low wave intensity (`a_{0} \ll 1`), the contribution recovers the Thomson-scattering rate; at relativistic intensity (`a_{0} \gtrsim 1`), the regime of Cole/Poder/Wistisen 2018 experiments, the comparison is deferred to issue [#43](https://github.com/temoTxt/PyPhysics/issues/43) and to PR D's Liénard–Wiechert content.
+- **Bridge to PR D is established.** The closing problem J3e-P12.14 sets up the dissipative-term machinery that PR D (radiation by accelerating charges) will fully exercise. The first non-null engagement of the dissipative coefficient is now operational, and the issue-#43 experimental-comparison work has its first dynamical-side derivation available as a starting point.
+
+**Implications for PR D (Ch. 14 radiation by moving charges).** Per [§12.1](#121-per-problem-briefs), PR D contains podcast picks #2 (Liénard–Wiechert third term) and #5 (non-relativistic Larmor). The dissipative-term engagement first surfaced in J3e-P12.14 is the natural lead-in; PR D will exercise the third term `e(\mathbf{u}\cdot\mathbf{a})/(b^{4}s^{3})` of Eq. (7) directly. The issue #43 comparison work becomes operational with PR D's content.
+
+**Implications for the plan.** No changes recommended to §7, §10, §13 based on PR C observations. The Eq. 24 branched-treatment scaffolding is retained for PR F+ spin-content problems. Per-paragraph TODO reassessment remains scheduled for the start of PR D.
+
+**Issue #42 acceptance criteria status.** PR A merged ✅, PR D OR PR E pending. PR B and PR C are preparatory chapter work; neither is gating per [§13.5 D4](#135-decision-points--confirmed-by-author-2026-05-24).
+
 ---
 
 ## 8. Definition of done
