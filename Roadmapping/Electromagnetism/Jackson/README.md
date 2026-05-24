@@ -12,7 +12,7 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 | Ch. 2 | Boundary-Value Problems in Electrostatics I | three-system | PR 0, then PR F+ | 1 / 2–6 | PR 0 in progress — see [`Ch02`](Ch02_Boundary_Value_Problems_Electrostatics_I.md) |
 | Ch. 3 | Boundary-Value Problems in Electrostatics II | three-system | PR F+ | 0 / 4–6 | planned |
 | Ch. 4 | Multipoles, Electrostatics of Macroscopic Media | three-system | PR F+ | 0 / 4–6 | planned |
-| Ch. 5 | Magnetostatics, Faraday's Law, Quasi-Static Fields | three-system | PR 0, then PR F+ | 0 / 2–6 | not started |
+| Ch. 5 | Magnetostatics, Faraday's Law, Quasi-Static Fields | three-system | PR 0, then PR F+ | 1 / 2–6 | PR 0 in progress — see [`Ch05`](Ch05_Magnetostatics_Faraday_Quasi_Static.md) |
 | Ch. 6 | Maxwell Equations + Macroscopic Media ⭐ | three-system | **PR A** | 0 / 5 | not started |
 | Ch. 7 | Plane Electromagnetic Waves, Wave Propagation | three-system | PR F+ | 0 / 4–6 | planned |
 | Ch. 8 | Waveguides, Resonant Cavities, Optical Fibers | three-system | PR F+ | 0 / 4–6 | planned |
