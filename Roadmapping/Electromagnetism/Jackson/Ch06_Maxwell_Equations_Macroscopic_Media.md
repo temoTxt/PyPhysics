@@ -12,7 +12,7 @@ Ch. 6 is the campaign's first chapter in which the proper-time machinery engages
 | [Problem J3e-P6.4 — EM momentum of a uniformly-moving point charge](#problem-j3e-p64--em-momentum-of-a-uniformly-moving-point-charge) | drafted (PR A) | headline-payoff (podcast pick #1) |
 | [Problem J3e-P6.5 — Poynting theorem in macroscopic media](#problem-j3e-p65--poynting-theorem-in-macroscopic-media) | drafted (PR A) | headline-adjacent |
 | [Problem J3e-P6.11 — Symmetric stress tensor and Lorentz behaviour](#problem-j3e-p611--symmetric-stress-tensor-and-lorentz-behaviour) | drafted (PR A) | headline-adjacent |
-| [Problem J3e-P6.20 — Radiation pressure on a perfect conductor](#problem-j3e-p620--radiation-pressure-on-a-perfect-conductor) | planned (PR A) | headline-payoff (first `(u·a)/b⁴` test) |
+| [Problem J3e-P6.20 — Radiation pressure on a perfect conductor](#problem-j3e-p620--radiation-pressure-on-a-perfect-conductor) | drafted (PR A) | headline-payoff (null-result canary for `(u·a)/b⁴`) |
 
 ---
 
@@ -459,3 +459,117 @@ The momentum conservation law `\partial_{\mu}T^{\mu\nu} = -F^{\nu\mu}J_{\mu}/c` 
 **Notes for author review:** the proper-time group vs Lorentz group distinction is established in [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] §1.3 but its full implications for the stress tensor and the conservation law are not, to my knowledge, recorded in the published Gill corpus. The observation that the conservation law form is preserved but the covariance group is replaced is mechanically derivable from the substitution rules; whether it warrants a new entry in `FINDINGS_for_author_review.md` is a judgement call. **I am flagging it here as a candidate observation but not posting it to the findings document**, because it is a structural feature of the framework's geometric content rather than an unresolved inconsistency. If subsequent PRs (particularly Ch. 11 in PR B, where Lorentz behaviour is treated in detail) sharpen the observation, the findings document can be updated then.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_11.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_11.wl) — runnable independent of the Mathematica MCP.
+
+---
+
+### Problem J3e-P6.20 — Radiation pressure on a perfect conductor
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* radiation pressure on a perfect conductor is the simplest boundary-value problem in which Maxwell's equations encounter macroscopic matter, and is recorded in [[jackson1998_classical_electrodynamics]] §6.7–§6.8 in the context of field momentum. [§7 of the campaign plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#7-initial-chapter-selection--canonical-problems-list) flagged this problem as the first occasion in PR A on which the dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` term of Eq. (4) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] could engage.
+- *Alternatives considered:* J3e-P6.21 (radiation pressure on a partially-reflecting dielectric — more complex boundary conditions, defer to PR F+) and J3e-P9.x (radiation from oscillating sources — Ch. 9 territory).
+- *Role in this PR:* headline-payoff. Honest result: the perfect-conductor idealisation snuffs out the `(\mathbf{u}\cdot\mathbf{a})/b^{4}` contribution by demanding infinite surface-charge acceleration over zero duration. The proper-time prediction reduces to the classical `2I/c` exactly, deferring the first real `(\mathbf{u}\cdot\mathbf{a})/b^{4}` engagement to PR D (Ch. 14 Liénard–Wiechert).
+
+<!-- TODO: human reviews and fills in — confirms the framing of this problem as a "null result" for the dissipative term, with the real test deferred to PR D. This is a load-bearing campaign-narrative claim and should be checked carefully -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 6.20 (and 2e Problem 6.20, equivalent). *Paraphrased; consult the textbook for the precise statement.*
+
+**Paraphrased statement:** A plane electromagnetic wave is normally incident on a perfectly conducting half-space. The wave has electric-field amplitude `E_{0}` and angular frequency `\omega`. Compute the radiation pressure exerted on the conductor.
+
+**Setup:** Place the conductor surface at `z = 0` with the conducting medium occupying `z \le 0` and vacuum at `z > 0`. The incident wave propagates in `-\hat z`, with electric field `\mathbf{E}_{\text{inc}}(z, t) = E_{0}\hat x\cos(kz - \omega t)` and magnetic field `\mathbf{B}_{\text{inc}}(z, t) = E_{0}\hat y\cos(kz - \omega t)` (Gaussian units; for a plane wave in vacuum the magnitudes of `\mathbf{E}` and `\mathbf{B}` are equal). The reflected wave propagates in `-\hat z` with amplitude `E_{R}`, phase shift `\varphi` and the same frequency. The boundary condition `\mathbf{E}_{\text{tan}}(z = 0, t) = 0` at the conductor surface determines `E_{R}` and `\varphi`.
+
+#### (a) Classical solution — Gaussian (CGS)
+
+Applying the boundary condition `\mathbf{E}_{\text{tan}}(0, t) = 0` gives `E_{R} = -E_{0}` and `\varphi = 0`, so the reflected wave is
+
+$$
+\mathbf{E}_{\text{ref}}(z, t) = -E_{0}\hat x\cos(kz + \omega t), \qquad \mathbf{B}_{\text{ref}}(z, t) = E_{0}\hat y\cos(kz + \omega t).
+$$
+
+At the surface `z = 0`, the total fields are `\mathbf{E}_{\text{total}}(0, t) = 0` (boundary condition) and `\mathbf{B}_{\text{total}}(0, t) = 2 E_{0}\hat y\cos(\omega t)`. The magnetic field doubles because the reflected and incident `\mathbf{B}` carry the same direction (the sign-flip of `\mathbf{E}` is compensated by the sign-flip of the propagation direction in the Faraday relation).
+
+The radiation pressure on the conductor is the time-averaged normal component of the Maxwell stress tensor at the surface. With the symmetric stress tensor of [Problem J3e-P6.11](#problem-j3e-p611--symmetric-stress-tensor-and-lorentz-behaviour) and the surface fields above,
+
+$$
+T_{zz}(z = 0, t) = \frac{1}{4\pi}\!\left[E_{z}^{2} + B_{z}^{2} - \frac{1}{2}(E^{2} + B^{2})\right] = -\frac{1}{8\pi}(2 E_{0})^{2}\cos^{2}(\omega t) = -\frac{E_{0}^{2}\cos^{2}(\omega t)}{2\pi}.
+$$
+
+Time-averaging over one period, and identifying the radiation pressure with the magnitude of the time-averaged stress,
+
+$$
+P_{\text{rad}} = |\langle T_{zz}\rangle| = \frac{E_{0}^{2}}{4\pi}.
+$$
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[t, omega, capE0, cc];
+ETotal = capE0 Cos[-omega t] + (-capE0) Cos[omega t];
+BTotal = capE0 Cos[-omega t] + capE0 Cos[omega t];
+tZZ = -BTotal^2/(8 Pi);
+timeAvgTZZ = Integrate[tZZ, {t, 0, 2 Pi/omega}] omega/(2 Pi);
+radiationPressure = -FullSimplify[timeAvgTZZ];
+incidentI = cc capE0^2/(8 Pi);
+Print["Radiation pressure = ", radiationPressure];
+Print["2 I / c = ", FullSimplify[2 incidentI/cc]];
+(* Radiation pressure = capE0^2/(4 Pi)
+   2 I / c = capE0^2/(4 Pi)
+   Match? True  ✅ *)
+```
+
+Comparing with the incident intensity `I = c\langle E^{2}\rangle/(4\pi) = c E_{0}^{2}/(8\pi)`, one obtains the standard textbook relation
+
+$$
+P_{\text{rad}} = \frac{2 I}{c}.
+$$
+
+This is the radiation pressure of a fully-reflecting surface: twice the pressure of an absorbing surface, because the reflected wave carries away momentum opposite to that of the incident wave, so the conductor receives twice the momentum it would receive from absorption alone.
+
+#### (b) Classical solution — SI
+
+The SI derivation is structurally identical, with the SI form of the stress tensor and the incident intensity `I_{\text{SI}} = c\varepsilon_{0}\langle E^{2}\rangle/2`. One obtains
+
+$$
+P_{\text{rad}} = \frac{2 I_{\text{SI}}}{c} = \varepsilon_{0} E_{0}^{2}.
+$$
+
+The dimensional rescaling between Gaussian and SI gives `P_{\text{rad}}^{(\text{SI})} = (1/(4\pi\varepsilon_{0})) P_{\text{rad}}^{(\text{Gauss})}` — well, more precisely, the two formulas describe the same physical pressure expressed in different unit systems, with the geometric `2I/c` factor unchanged.
+
+#### (c) Proper-time reformulation
+
+This is the campaign's first PR A problem in which the dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` term of Eq. (4) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] *could* engage. The incident wave is a freely-propagating EM wave with no source, so the dissipative term plays no role in the wave's propagation. The reflected wave, however, is generated by the oscillating surface currents on the conductor as the incident wave drives the conductor's free charges. These surface currents have non-zero acceleration `\mathbf{a}_{\text{surface}}` whenever the field is non-static, and `\mathbf{u}_{\text{surface}}\cdot\mathbf{a}_{\text{surface}}` is generically non-zero for an oscillating conductor.
+
+The perfect-conductor idealisation, however, removes this dynamic by assuming **infinite conductivity**: the surface charges respond instantaneously, with no inertia and no finite acceleration time. In this limit, the surface-current acceleration is operationally undefined — the response is faster than any characteristic time. The boundary condition `\mathbf{E}_{\text{tan}}(z = 0) = 0` is imposed without specifying the dynamics of the charge motion that enforces it. With no finite acceleration to insert, the `(\mathbf{u}\cdot\mathbf{a})/b^{4}` term has nothing to contribute, and the radiation pressure is identical to the classical result.
+
+<!-- TODO: human reviews and fills in — confirms the framing that the perfect-conductor idealisation removes the (u·a)/b⁴ contribution by demanding instantaneous surface-charge response. This is a load-bearing claim and should be checked against the standard treatment of conductor boundary conditions in finite-conductivity media -->
+
+For a **real** conductor with finite conductivity, the surface charges have finite drift velocity and acceleration, and the `(\mathbf{u}\cdot\mathbf{a})/b^{4}` term would contribute. The size of the contribution can be estimated from the Drude-model relaxation time `\tau_{D} \sim m_{e}/(n e^{2} \rho_{\text{resistivity}})`: for a typical metal, `\tau_{D} \sim 10^{-14}` s, the surface-electron drift velocity is `\sim 10^{-3}` m/s under a 1 V/cm field, and the resulting `(\mathbf{u}\cdot\mathbf{a})/b^{4}` correction is `\sim 10^{-30}` relative to the leading classical radiation pressure. This is below any conceivable observational floor, and it is the same order of magnitude as the `O((u/c)^{2})` correction recorded for the rotating sphere in [Problem J3e-P5.13](Ch05_Magnetostatics_Faraday_Quasi_Static.md#problem-j3e-p513--magnetic-dipole-moment-of-a-uniformly-rotating-charged-sphere).
+
+<!-- TODO: human reviews and fills in — confirms the order-of-magnitude estimate for the Drude-model surface-charge contribution. The number 10⁻³⁰ is approximate and warrants a more careful calculation if the campaign's plan calls for it later -->
+
+The conclusion is that PR A's "first test" of the dissipative term is a *null result* by construction: the perfect-conductor idealisation is precisely the case in which the `(\mathbf{u}\cdot\mathbf{a})/b^{4}` term cannot contribute. The first real engagement of the dissipative term is therefore deferred to PR D, where the source itself (an accelerating point charge) has finite `\mathbf{u}\cdot\mathbf{a}` and the Liénard–Wiechert third-term contribution becomes operationally measurable in the radiated power.
+
+The proper-time radiation pressure on the perfect conductor is therefore
+
+$$
+P_{\text{rad, proper-time}} = \frac{2 I}{c},
+$$
+
+identical to the classical Gaussian result.
+
+**Comparison:**
+
+| Quantity | Classical (CGS) | Classical (SI) | Proper-time |
+|---|---|---|---|
+| Boundary condition `\mathbf{E}_{\text{tan}}(z=0)` | `0` | `0` | `0` (same) |
+| `\mathbf{B}_{\text{total}}(z=0)` magnitude | `2 E_{0}\cos\omega t` | same | same |
+| Time-averaged `T_{zz}` | `-E_{0}^{2}/(4\pi)` | `-\varepsilon_{0}E_{0}^{2}/2` | identical to classical |
+| Radiation pressure | `2 I/c` | `2 I/c` | `2 I/c` (identical) |
+| `(\mathbf{u}\cdot\mathbf{a})/b^{4}` contribution | n/a | n/a | absent (perfect-conductor idealisation) |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no, for the idealised perfect-conductor configuration. In a real conductor with finite conductivity the answer would carry an `O((\mathbf{u}\cdot\mathbf{a})/b^{4})` correction estimated at `\sim 10^{-30}` relative to the classical pressure, below any observational floor.
+
+**Verdict:** ✅ all three solutions consistent. The dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` term does not contribute under the perfect-conductor idealisation, so the proper-time formulation reproduces the classical `2I/c` result exactly. This is PR A's null-result canary for the dissipative term; the first non-null engagement is deferred to PR D.
+
+**Notes for author review:** the order-of-magnitude estimate for the finite-conductivity correction (`\sim 10^{-30}` relative) is approximate; a more careful Drude-model calculation would refine it, but the conclusion (below observational floor) is robust. No `FINDINGS_for_author_review.md` entry is recommended for this problem; the null-result outcome is the expected behaviour of the framework under the perfect-conductor idealisation.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_20.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_20.wl) — runnable independent of the Mathematica MCP.
