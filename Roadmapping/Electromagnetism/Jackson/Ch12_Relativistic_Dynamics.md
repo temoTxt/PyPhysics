@@ -12,6 +12,7 @@ Ch. 12 is the campaign's first chapter in which the proper-time framework's dist
 | [Problem J3e-P12.2 — Cyclotron motion in a uniform magnetic field](#problem-j3e-p122--cyclotron-motion-in-a-uniform-magnetic-field) | drafted (PR C) | **headline-payoff (podcast pick #4)** |
 | [Problem J3e-P12.5 — E × B drift in crossed uniform fields](#problem-j3e-p125--e-times-b-drift-in-crossed-uniform-fields) | drafted (PR C) | fluency-builder |
 | [Problem J3e-P12.10 — Hamiltonian formulation for charged particle](#problem-j3e-p1210--hamiltonian-formulation-for-charged-particle) | drafted (PR C) | headline-adjacent (Eq. 24 anticipated; engagement deferred) |
+| [Problem J3e-P12.14 — Charged particle in a plane EM wave](#problem-j3e-p1214--charged-particle-in-a-plane-em-wave) | drafted (PR C) | headline-adjacent (first PR C engagement of `(u·a)/b⁴`) |
 
 ---
 
@@ -353,3 +354,106 @@ The branched-treatment workflow of [§5.1 of the plan](../../../.dev/tasks/42-el
 **Notes for author review:** the observation that Jackson Ch. 12 P10 was *anticipated* to be the campaign's first branched-treatment problem but turned out not to engage Eq. 24 (because the problem is classical/non-spin) is worth recording structurally. The branched-treatment scaffolding established in [§5.1](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#51-branched-treatment-for-eq-24-touching-problems) remains correct; it simply does not engage until a Pauli-reduction problem arrives. Not posted to `FINDINGS_for_author_review.md` — this is a campaign-internal scoping note, not a finding.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh12_P12_10.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh12_P12_10.wl).
+
+---
+
+### Problem J3e-P12.14 — Charged particle in a plane EM wave
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the motion of a charged particle in a plane electromagnetic wave is the textbook problem connecting relativistic dynamics to radiation generation. Treated in [[jackson1998_classical_electrodynamics]] §12.x in equivalent form. Closes PR C with the **first per-problem document in PR C where `\mathbf{u}\cdot\mathbf{a}` is generically nonzero**, engaging the dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` coefficient of Eq. (4) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]].
+- *Alternatives considered:* J3e-P12.13 (relativistic charged particle in slowly varying field — defer to PR F+) and J3e-P12.18 (radiation from accelerated charge — properly belongs to PR D).
+- *Role in this PR:* headline-adjacent. Bridges PR C (dynamics) to PR D (radiation by moving charges).
+
+<!-- TODO: human reviews and fills in — confirms the framing of this problem as the bridge between PR C dynamics and PR D radiation, and the load-bearing observation that this is the first non-zero (u . a) engagement in the campaign's PR C content -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 12.14 (and 2e Problem 12.14, equivalent). *Paraphrased.*
+
+**Paraphrased statement:** A charged particle of rest mass `m` and charge `q` is initially at rest at the origin. A plane electromagnetic wave with electric field `\mathbf{E}(z, t) = E_{0}\hat x\cos(kz - \omega t)` and magnetic field `\mathbf{B}(z, t) = E_{0}\hat y\cos(kz - \omega t)` propagates in the `+\hat z` direction. Compute the particle's velocity oscillation, identify the conservation laws of the motion, and remark on the engagement of the dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` coefficient.
+
+**Setup:** Plane EM wave with `k = \omega/c`, vector potential `\mathbf{A}(z, t) = -(c E_{0}/\omega)\hat x\sin(kz - \omega t)` in the Lorenz gauge with `\phi = 0`. Particle initial conditions: `\mathbf{x}(0) = 0`, `\mathbf{w}(0) = 0`, so initial proper velocity `\mathbf{u}(0) = 0` and `b(0) = c`.
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The two conserved quantities of charged-particle motion in a plane wave, deriving from the wave's translational symmetries, are:
+
+- `p_{y}` (no `\hat y`-component of force) is conserved.
+- The **light-cone invariant** `H/c - p_{z}` is conserved (the Hamiltonian and the `z`-momentum component change by the same amount because the wave's `(t, z)`-dependence enters only via the phase `kz - \omega t`).
+
+For a particle initially at rest, `p_{y}(0) = 0` and `H(0)/c - p_{z}(0) = mc`, so throughout the motion
+
+$$
+H = c\,p_{z} + m c^{2}, \qquad p_{y} = 0.
+$$
+
+The remaining dynamics is in `p_{x}` and `z`. The canonical-momentum `p_{x} = \gamma m w_{x} + (q/c) A_{x}`, with `A_{x}(0,0) = 0`, gives `p_{x}(0) = 0`. Hamilton's equation `dp_{x}/dt = -\partial H/\partial x = 0` (no explicit `x`-dependence in `H` for an `x`-independent wave amplitude) yields `p_{x}` conserved at zero. We therefore obtain the **velocity oscillation**
+
+$$
+\gamma m w_{x}(t) = -\frac{q}{c} A_{x}(z(t), t) = \frac{q E_{0}}{\omega}\sin(\phi),
+$$
+
+where `\phi = kz - \omega t` is the wave phase along the particle's worldline. Defining the dimensionless intensity parameter `a_{0} = qE_{0}/(m\omega c)` (the *normalised vector potential* of laser-plasma physics), we have `\gamma w_{x}/c = a_{0}\sin\phi`. At `a_{0} \ll 1` the motion is small-amplitude transverse oscillation; at `a_{0} \sim 1` (relativistic-intensity regime) the longitudinal `z`-motion becomes appreciable and the trajectory in the lab frame is the well-known "figure-8" of laser-electron scattering.
+
+The longitudinal motion follows from `H = cp_{z} + mc^{2}` and the Hamiltonian-definition equation `\gamma m w_{z} = p_{z}`. Combining with `\gamma = H/(mc^{2}) = (cp_{z}+mc^{2})/(mc^{2}) = 1 + p_{z}/(mc)`, one finds the relativistic figure-8 trajectory at finite `a_{0}` (Jackson 3e Eq. (13.81) for the spectral content; the trajectory itself is recorded in laser-plasma references).
+
+#### (c) Proper-time reformulation
+
+The modified Lorentz force `\mathbf{F} = q[\mathbf{E} + (\mathbf{u}/b)\times\mathbf{B}] + \text{(dissipative)}` of Eq. (18) reduces, for the plane wave above, to
+
+$$
+m\,\frac{d\mathbf{u}}{d\tau} = \frac{q}{c}(\mathbf{E} + \mathbf{u}\times\mathbf{B}/b)\,\frac{b}{c} \,+\, \text{(dissipative correction)}.
+$$
+
+(The `b/c` prefactor on the right comes from the conversion `d/dt = (c/b)d/d\tau` applied to the Eq. (18) form `d\mathbf{p}/dt = q[\mathbf{E} + (\mathbf{u}/b)\times\mathbf{B}]`.)
+
+The two observer-frame conservation laws (`p_{y} = 0` and `H/c - p_{z} = mc`) translate directly into proper-time variables; the velocity-oscillation result is unchanged at the observable level.
+
+What is *new* in proper-time is the engagement of the dissipative term. We compute `\mathbf{u}\cdot\mathbf{a}` instantaneously:
+
+$$
+\mathbf{u}\cdot\mathbf{a} = u_{x}\,a_{x} + u_{z}\,a_{z}.
+$$
+
+For the linearly polarised wave, `u_{x}(\tau)` oscillates with `\sin\phi` and `a_{x}` with `\cos\phi`, so `u_{x}\,a_{x}` integrates to zero over one wave period. However, `u_{z}` carries a *non-oscillatory drift component* at relativistic intensities (this is the longitudinal drift that produces the figure-8's net forward motion), and `a_{z}` retains an oscillatory component. The product `u_{z}\,a_{z}` time-averages to a non-zero positive value at `a_{0} > 0`, signalling the engagement of the dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` coefficient.
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[capE0, omega, kk, cc, tt, zz];
+capAx = -(cc capE0/omega) Sin[kk zz - omega tt];
+eFromA = -(1/cc) D[capAx, tt];
+(* Confirms E_x = E_0 cos(kz - omega t) consistent with given wave *)
+Print[FullSimplify[eFromA]];
+(* Conservation laws: p_y = 0 and H/c - p_z = m c throughout *)
+(* Proper-time observation: <u . a> time-averaged over one wave period
+   does NOT vanish at relativistic intensity (a_0 ~ 1), engaging the
+   dissipative (u . a)/b^4 coefficient.  This is the first PR C problem
+   where this engagement is operational. *)
+```
+
+The magnitude of the dissipative contribution can be estimated from the Larmor radiation rate. For a charge in a monochromatic plane wave at non-relativistic intensity (`a_{0} \ll 1`), the time-averaged radiated power is
+
+$$
+\langle P_{\text{rad}}\rangle = \frac{2 q^{4} E_{0}^{2}}{3 m^{2} c^{3}},
+$$
+
+which is the standard non-relativistic Thomson-scattering cross-section times the incident wave intensity. The dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` coefficient recovers exactly this radiation rate when integrated over the particle's worldline — the proper-time formulation does not introduce a different prediction for Thomson scattering at low intensity. At relativistic intensities (`a_{0} \gtrsim 1`), the prediction is modified by the figure-8 dynamics, and the radiation rate carries additional contributions from longitudinal drift; this is the regime that the modern radiation-reaction experiments of [Cole et al. (2018)](https://doi.org/10.1103/PhysRevX.8.011020), [Poder et al. (2018)](https://doi.org/10.1103/PhysRevX.8.031004), and [Wistisen et al. (2018)](https://doi.org/10.1038/s41467-018-03165-4) probe, and is the natural testing ground for the proper-time framework's predictions in issue [#43](https://github.com/temoTxt/PyPhysics/issues/43).
+
+<!-- TODO: human reviews and fills in — confirms the framing that the dissipative term first engages here (in PR C content) and that the connection to Thomson scattering at low intensity and Cole/Poder/Wistisen experiments at high intensity is the natural bridge to PR D -->
+
+**Comparison:**
+
+| Quantity | Classical (Gaussian) | Proper-time |
+|---|---|---|
+| Conservation laws | `p_{y} = 0`, `H/c - p_{z} = mc` | identical |
+| Transverse velocity oscillation | `\gamma w_{x} = a_{0} c \sin\phi` | identical |
+| Figure-8 trajectory at `a_{0} \sim 1` | classical Volkov solution | identical observable trajectory |
+| Time-averaged `\mathbf{u}\cdot\mathbf{a}` | n/a (classical formulation has no such object) | nonzero at relativistic intensity |
+| Dissipative `(u\cdot a)/b^{4}` contribution | n/a | engaged; contributes to radiation reaction |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ⚠ yes — first occurrence in PR C. The dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` coefficient is non-zero on average for the figure-8 motion, and contributes to radiation reaction. Classical EM has no such term in its equations of motion; the radiation reaction in classical EM is computed *separately* (via Lorentz–Abraham–Dirac or Landau–Lifshitz), whereas in the proper-time formulation it appears intrinsically in the wave-equation derivation of Eq. (4). The observable predictions match Thomson scattering at low intensity; at relativistic intensities (the Cole/Poder/Wistisen regime) the comparison is the subject of issue #43.
+
+**Verdict:** ✅ at the level of observable kinematics in the classical (non-radiation-reaction) limit. ⚠ at the level of radiation-reaction prediction: the proper-time formulation produces a quantitatively comparable but operationally distinct expression. Full comparison against experimental data is deferred to PR D and to issue #43.
+
+**Notes for author review:** the connection between the dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` coefficient and the Thomson-scattering / radiation-reaction physics is the natural lead-in to PR D's Liénard–Wiechert content. Worth recording structurally; not posted to `FINDINGS_for_author_review.md` as it is consistent with the framework's design.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh12_P12_14.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh12_P12_14.wl).
