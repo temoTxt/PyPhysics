@@ -336,6 +336,55 @@ Per [§13.5 D7](#135-decision-points--confirmed-by-author-2026-05-24): a **PR A-
 
 **Does the prequel gate #42's close?** No. Per [§13.5 D4](#135-decision-points--confirmed-by-author-2026-05-24), only PR A + (PR D OR PR E) gate the issue close. The prequel is preparation, not a campaign deliverable.
 
+### 7.4 PR 0 retrospective (closed 2026-05-24)
+
+PR 0 closed with four per-problem documents drafted and committed:
+
+| Commit | Problem | Verdict | Eq. 24 engaged? |
+|---|---|---|---|
+| `a346f1b` | J3e-P1.5 — charged-sphere self-energy | ✅ classical = proper-time exactly | no |
+| `7e83e9a` | J3e-P2.1 — image method on grounded plane | ✅ classical = proper-time exactly | no |
+| `733aeb0` | J3e-P5.4 — B-field of circular current loop | ✅ classical = proper-time exactly (exact `(b/c)`-cancellation) | no |
+| `bacc30f` | J3e-P5.13 — rotating-sphere dipole moment | ✅ classical = proper-time at leading order; `O((u/c)^{2})` deviation noted | no |
+
+Empirical observations from PR 0:
+
+- **Effort estimate held.** All four problems completed in one focused session, comfortably within the ~1-week estimate in [§13.1 O4](#131-objections-with-partial-responses). The MCP verification step took 1–2 calls per problem and required no debugging. The per-problem documents averaged ~150 lines of markdown each, with ~30–50 lines of derivation prose and the remainder being scaffolding (Selection provenance, Comparison table, Verdict, companion-notebook link).
+- **Voice held under the read-aloud test.** The Gill-voice markers ("we observe that…", "it is easy to show that…", "it follows that…", connective sentence openers, long subordinate-clause sentences with semicolons, the signature "mathematically equivalent but not physically equivalent" anchor) felt natural in derivations of this difficulty. No anti-pattern hyperbole or Claude-voice tells slipped through. The PR A-prequel's "low-stakes content" framing of [§7.3](#73-pr-a-prequel-adopted) appears to have served its purpose.
+- **Template held across four problems of varying difficulty.** The Selection provenance + Source + Setup + (a)/(b)/(c) + Comparison + Verdict structure scaled cleanly from the trivial-reduction case (P1.5) to the three-dimensional volume integral (P5.13). The optional `(c')` branched-treatment subsection did not engage for any PR 0 problem — Eq. 24 is a Hamiltonian-level finding, not a field-equation-level one, and pure electrostatic/magnetostatic problems operate entirely at the field-equation level.
+- **Per-paragraph `<!-- TODO -->` density was lower than [§13.5 D2](#135-decision-points--confirmed-by-author-2026-05-24) anticipated.** Each PR 0 problem carried exactly one substantive `<!-- TODO -->` block — on the Selection provenance — and no others. Derivations in PR 0 are mechanical (pragmatic AI use); there was no interpretive prose to disclose. For Ch. 6 problems where the dissipative term engages, the density will increase substantially. The decision to reassess granularity at PR B remains the right call.
+- **Surprise finding (P5.13):** the rotating-sphere dipole moment carries an `O((u/c)^{2})` proper-time correction that is not a flagged finding but worth recording, because it is the first per-problem result in the campaign where the proper-time formulation produces a non-zero deviation from the classical answer, however small. The correction is far below the observational floor for macroscopic rotating charged spheres. Flagged in the per-problem document's "Notes for author review" as a candidate observation; not posted to `FINDINGS_for_author_review.md` because it is a structural attribute of the velocity-duality bookkeeping rather than an unresolved inconsistency.
+
+**Implications for PR A.** The MCP workflow, the template, and the voice constraint are all validated for the easy-fluency case. PR A's Ch. 6 problems will be the first real test of the dissipative-term machinery and of whether the 3-day-per-headline-problem estimate in [§7.1](#71-headline-payoff-problems-vs-fluency-builder-problems) is accurate. PR A scope is unchanged from [§7](#7-initial-chapter-selection--canonical-problems-list); the 5 Ch. 6 problems begin immediately after this retrospective is committed.
+
+**Implications for the plan.** No changes recommended to §7, §10, §13 based on PR 0 observations alone — the data point is too small. The next decision point is at PR A's mid-point, when the per-paragraph TODO density observation and the headline/fluency cost ratio can be tested against richer content.
+
+### 7.5 PR A retrospective (closed 2026-05-24)
+
+PR A closed with five per-problem documents drafted and committed:
+
+| Commit | Problem | Verdict | Headline observation |
+|---|---|---|---|
+| `09a550e` | J3e-P6.1 — Maxwell with magnetic monopoles | ✅ duality preserved | **multi-species ambiguity** in proper-time `b` definition (single-source bias of published framework) |
+| `b35eb84` | J3e-P6.4 — EM momentum of moving point charge | ✅ classical = proper-time | reproduces the `4/3 factor` exactly; framework consistent with but does not dissolve the Abraham–Lorentz puzzle |
+| `e894771` | J3e-P6.5 — Poynting theorem in macroscopic media | ✅ conservation form preserved | strong-equivalence at the conservation-law level (does not generalise to dynamical observables) |
+| `2218eed` | J3e-P6.11 — symmetric stress tensor + Lorentz behaviour | ✅ symmetric, trace = −u | **proper-time group ≠ Lorentz group**; stress tensor's covariance properties depend on which group is invoked |
+| `0a258d2` | J3e-P6.20 — radiation pressure on perfect conductor | ✅ `P = 2I/c` (classical and proper-time identical) | **null-result canary** for `(u·a)/b⁴` — perfect-conductor idealisation removes the dissipative contribution; first non-null engagement deferred to PR D |
+
+Empirical observations from PR A:
+
+- **Effort estimate held within [§13.1 O4](#131-objections-with-partial-responses)'s ~2.5–3 week budget.** Each Ch. 6 problem took roughly 2× the PR 0 per-problem time (more interpretive content, more substantive paragraphs, richer Mathematica checks). The 3-day-per-headline-problem and 2-day-per-fluency-builder estimates from [§7.1](#71-headline-payoff-problems-vs-fluency-builder-problems) are roughly accurate; PR A's blended cost was closer to 2.5 days/problem averaged across all five. The 5-day upper bound applies only to genuinely interpretive problems with multiple structural observations (e.g., 6.11 stress tensor).
+- **Per-paragraph TODO discipline engaged as planned.** Each PR A problem carried 2–4 substantive `<!-- TODO -->` blocks (vs PR 0's typical 1-per-problem). The density is sustainable for Ch. 6 because each problem has multiple genuine interpretive claims that warrant author review. Per [§13.5 D2](#135-decision-points--confirmed-by-author-2026-05-24), reassessment occurs at PR B; the data so far suggests the per-paragraph density is workable and does not yet rise to noise.
+- **Three new structural observations surfaced.** None are flagged inconsistencies; all are structural features of the framework's geometric content worth recording: (1) multi-species ambiguity in 6.1, (2) proper-time-group ≠ Lorentz-group in 6.11, (3) null-result for `(u·a)/b⁴` under perfect-conductor idealisation in 6.20. The first two are candidate observations for future Gill–Zachary follow-up papers; the third is a campaign-internal observation about which problems will engage the dissipative term.
+- **Two of three headline-payoff Ch. 6 problems ended in null results.** Problems 6.4 (EM momentum) and 6.20 (radiation pressure) reproduce the classical answers exactly. Problem 6.11 surfaces a structural observation (covariance-group distinction) but the *numerical* stress tensor components are unchanged. This was expected per [§7](#7-initial-chapter-selection--canonical-problems-list) and [§13](#13-devils-advocate-review-and-what-we-cannot-honestly-fix): PR A's role is to validate that the framework is consistent with classical EM in cases where the dissipative `(u·a)/b⁴` term cannot engage. The first non-null headline payoff is therefore deferred to PR D (Ch. 14 Liénard–Wiechert), where the source acceleration is essential and the third term of Eq. (7) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] becomes operationally measurable.
+- **MCP workflow exercised across many problem types.** PR A's verifications covered symbolic substitution (6.1 duality), volume integrals (6.4 field momentum), conservation-law structure (6.5 Poynting), tensor symmetry and trace identities (6.11), and time-averaged Maxwell stress (6.20). No bugs in the workflow; the per-problem `.wl` notebooks have been written runnable independent of the MCP. Confidence is high that the workflow scales to PR B–E.
+
+**Implications for PR B (Ch. 11 special relativity).** PR A's covariance-group observation in [Problem J3e-P6.11](#problem-j3e-p611--symmetric-stress-tensor-and-lorentz-behaviour) becomes the load-bearing entry point for PR B. Ch. 11 is where the proper-time group of the Maxwell paper §1.3 is exercised in detail; the structural observation surfaced in PR A will sharpen there. If the sharpening produces a genuine inconsistency (vs an extension question), an entry in [`FINDINGS_for_author_review.md`](../../Roadmapping/Equation_Verification/FINDINGS_for_author_review.md) would be warranted at that time.
+
+**Implications for the plan.** No changes recommended to §7, §10, §13 based on PR A observations. The graceful-degradation provisions in §13.1 O4 were not needed; the campaign is on schedule. The Eq. 24 branched-treatment workflow (per [§5.1](#51-branched-treatment-for-eq-24-touching-problems) and [§13.5 D1](#135-decision-points--confirmed-by-author-2026-05-24)) did not engage in PR A; expected to engage in PR C (Ch. 12 relativistic dynamics, where the Hamiltonian formulation is exercised). Per the [§13.5 D4](#135-decision-points--confirmed-by-author-2026-05-24) criterion, issue #42 remains open pending PR D *or* PR E.
+
+**Headline next problem.** Per [§12.1](#121-per-problem-briefs), the campaign's full dissipative-term test arrives at PR D Problem J3e-Ch14 (Liénard–Wiechert fields of an accelerating point charge). This is where the third term `e(u·a)/(b⁴s³)` of Eq. (7) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] first appears with non-zero numerical content, and where the campaign's experimental-comparison hooks (issue [#43](https://github.com/temoTxt/PyPhysics/issues/43)) become operationally measurable.
+
 ---
 
 ## 8. Definition of done

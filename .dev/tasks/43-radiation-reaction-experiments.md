@@ -21,21 +21,23 @@ The CC-BY 4.0 licenses *would* allow committing the PDFs publicly. **Per the res
 
 #42's plan ([`.dev/tasks/42-electromagnetism-jackson-proper-time.md`](42-electromagnetism-jackson-proper-time.md) §7) sequences a 12-PR campaign:
 
-> PR A (Ch. 6) → PR B (Ch. 11) → PR C (Ch. 12) → **PR D (Ch. 14 Radiation by Moving Charges)** → PR E (Ch. 16 Radiation Damping) → PR F+ (backfill)
+> PR 0 (fluency Chs. 1, 2, 5) → PR A (Ch. 6) → PR B (Ch. 11) → PR C (Ch. 12) → **PR D (Ch. 14 Radiation by Moving Charges)** → PR E (Ch. 16 Radiation Damping) → PR F+ (backfill)
 
-PR D is described as "First chapter where the dissipative `(u·a)/b⁴` term *should* contribute non-trivially. Liénard–Wiechert problems are the pivot." Issue #43 explicitly cites PR D as the source of the per-problem derivation template.
+**As of 2026-05-24 (pulled from the #42 branch into this PR), PR 0 and PR A are both closed.** PR 0 shipped four fluency problems (J3e-P1.5, P2.1, P5.4, P5.13), all ✅ classical = proper-time at the relevant order. PR A shipped five Ch. 6 problems (J3e-P6.1, P6.4, P6.5, P6.11, P6.20), with two of three headline-payoff problems ending in null results (perfect-conductor idealisation in P6.20 removes the dissipative contribution; field-momentum and stress-tensor problems reproduce classical answers). The PR A retrospective at [§7.5 of the #42 plan](42-electromagnetism-jackson-proper-time.md#75-pr-a-retrospective-closed-2026-05-24) explicitly identifies #43 as the "experimental-comparison hook" that becomes operationally measurable when PR D lands.
+
+PR D ("First chapter where the dissipative `(u·a)/b⁴` term *should* contribute non-trivially. Liénard–Wiechert problems are the pivot.") is still pending. Issue #43 explicitly cites PR D as the source of the per-problem derivation template.
 
 **Implication.** Without PR D's per-problem template + the Liénard–Wiechert proper-time third-term derivation in canonical-problem form, the prediction document at `Electromagnetism/Jackson/Experimental_Comparisons/radiation_reaction_2018.md` would need to **re-derive the third term from scratch in its own document** — which duplicates work that PR D will do once, generically, for all Ch. 14 problems. The issue itself acknowledges this: "Depends on #42 PR D ... ; *can be worked in parallel once the three bib stubs land*."
 
-### 1c. **No `Electromagnetism/` directory exists yet**
+### 1c. **The `Electromagnetism/` directory exists with the PR 0 + PR A foundation in place**
 
-#42 PR A hasn't shipped either. The campaign's repository scaffolding (`Electromagnetism/Jackson/...`, `Electromagnetism/_template_problem.md`) is not in place. The acceptance criterion "(2) Proper-time prediction document at `Electromagnetism/Jackson/Experimental_Comparisons/radiation_reaction_2018.md`" requires that directory structure first — which is part of PR A's scope.
+(Revised post-merge of the #42 branch.) The directory tree under [`Roadmapping/Electromagnetism/`](../../Roadmapping/Electromagnetism/) is now scaffolded: [`README.md`](../../Roadmapping/Electromagnetism/README.md), [`_template_problem.md`](../../Roadmapping/Electromagnetism/_template_problem.md), [`_proper_time_cheatsheet.md`](../../Roadmapping/Electromagnetism/_proper_time_cheatsheet.md), [`Jackson/README.md`](../../Roadmapping/Electromagnetism/Jackson/README.md), plus per-chapter docs `Ch01_*`, `Ch02_*`, `Ch05_*`, `Ch06_*` and their companion Wolfram Language notebooks under [`Mathematica_Notebooks/Electromagnetism/`](../../Roadmapping/Mathematica_Notebooks/Electromagnetism/). The acceptance criterion "(2) Proper-time prediction document at `Electromagnetism/Jackson/Experimental_Comparisons/radiation_reaction_2018.md`" can now be satisfied by adding the `Experimental_Comparisons/` subdirectory and the prediction document inside the existing tree — no PR-A pre-emption necessary.
 
 ## 2. What this plan does NOT do
 
-Per §1b: this plan does **not** attempt to re-derive the proper-time Liénard–Wiechert third term in the prediction document. That derivation lives in PR D's Ch. 14 work; #43's prediction document *references* it. If #43 had to do the derivation independently, the work would later need to be reconciled with PR D's canonical form. Better to wait.
+Per §1b: this plan does **not** attempt to re-derive the proper-time Liénard–Wiechert third term in canonical per-problem form. That derivation lives in PR D's Ch. 14 work. #43's prediction document does, however, *re-quote* Eq. (7) of the Maxwell paper self-contained (the form-level restatement is pragmatic; only the per-problem canonical derivation is deferred). When PR D lands, the §2.1 restatement reduces to a wikilink pointer per the §6 PR-D-reconciliation list in the prediction doc itself.
 
-Per §1c: this plan does **not** scaffold the `Electromagnetism/` directory tree. That is PR A's scope; doing it here would pre-empt the per-problem template debate that PR A is intended to settle.
+Per §1c (revised post-merge): the `Electromagnetism/` directory tree is now in place from PR 0 + PR A. This plan does **not** modify the per-problem template or per-chapter conventions already established there; #43's prediction document follows the same voice and Crocco-substantive-gating conventions but uses its own structure (it is a cross-experiment analysis document, not a per-problem document).
 
 Per §1a: this plan does **not** commit the PDFs (only the converted markdown), matching Trey's resolved decision.
 
