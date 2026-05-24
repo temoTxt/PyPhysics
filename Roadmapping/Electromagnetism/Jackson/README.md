@@ -8,7 +8,7 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 
 | Chapter | Title | Unit system | PR | Problems | Status |
 |---|---|---|---|---|---|
-| Ch. 1 | Introduction to Electrostatics | three-system (3e Chs. 1–10) | PR 0, then PR F+ | 0 / 2–6 | not started |
+| Ch. 1 | Introduction to Electrostatics | three-system (3e Chs. 1–10) | PR 0, then PR F+ | 1 / 2–6 | PR 0 in progress — see [`Ch01`](Ch01_Introduction_Electrostatics.md) |
 | Ch. 2 | Boundary-Value Problems in Electrostatics I | three-system | PR 0, then PR F+ | 0 / 2–6 | not started |
 | Ch. 3 | Boundary-Value Problems in Electrostatics II | three-system | PR F+ | 0 / 4–6 | planned |
 | Ch. 4 | Multipoles, Electrostatics of Macroscopic Media | three-system | PR F+ | 0 / 4–6 | planned |
