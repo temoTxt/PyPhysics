@@ -11,6 +11,7 @@ Ch. 12 is the campaign's first chapter in which the proper-time framework's dist
 | [Problem J3e-P12.1 — Free relativistic Lagrangian and action](#problem-j3e-p121--free-relativistic-lagrangian-and-action) | drafted (PR C) | fluency-builder |
 | [Problem J3e-P12.2 — Cyclotron motion in a uniform magnetic field](#problem-j3e-p122--cyclotron-motion-in-a-uniform-magnetic-field) | drafted (PR C) | **headline-payoff (podcast pick #4)** |
 | [Problem J3e-P12.5 — E × B drift in crossed uniform fields](#problem-j3e-p125--e-times-b-drift-in-crossed-uniform-fields) | drafted (PR C) | fluency-builder |
+| [Problem J3e-P12.10 — Hamiltonian formulation for charged particle](#problem-j3e-p1210--hamiltonian-formulation-for-charged-particle) | drafted (PR C) | headline-adjacent (Eq. 24 anticipated; engagement deferred) |
 
 ---
 
@@ -256,3 +257,99 @@ We observe that the full motion — drift plus cyclotron — has `\mathbf{u}\cdo
 **Notes for author review:** none. This is a clean fluency-builder confirming the modified Lorentz force law of Eq. (18) reproduces the classical `\mathbf{E}\times\mathbf{B}` drift exactly.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh12_P12_5.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh12_P12_5.wl).
+
+---
+
+### Problem J3e-P12.10 — Hamiltonian formulation for charged particle
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the Hamiltonian formulation of relativistic charged-particle dynamics is the gateway to canonical quantisation and is treated in [[jackson1998_classical_electrodynamics]] §12.1. [§7 of the campaign plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#7-initial-chapter-selection--canonical-problems-list) flagged this problem as the one most likely to engage the **Eq. 24 branched-treatment workflow** per [§5.1](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#51-branched-treatment-for-eq-24-touching-problems) and [§13.5 D1](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#135-decision-points--confirmed-by-author-2026-05-24).
+- *Alternatives considered:* J3e-P12.11 (canonical momentum 4-vector — too brief) and J3e-P12.18 (Lagrangian symmetries and conservation laws — defer to PR F+).
+- *Role in this PR:* headline-adjacent. Outcome: **Eq. 24 does not engage for the classical (non-spin) Hamiltonian** of Jackson Ch. 12. The flagged finding in Eq. 24 concerns the *Pauli-form* spin-magnetic-moment and `V^{2}/(2mc^{2})` terms, which appear only when the formulation is extended to include intrinsic spin (a QED-adjacent setting). The classical relativistic Hamiltonian of this problem uses Gill's DRQM-I kinetic energy `K = (1/2) m b^{2}` without spin extensions; the branched treatment is not invoked here.
+
+<!-- TODO: human reviews and fills in — confirms the framing that Eq. 24 was anticipated to engage in this problem but does not, because Jackson Ch. 12 P10 is non-spin. The branched-treatment workflow is therefore deferred to spin/hyperfine problems in PR F+ -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 12.10 (and 2e Problem 12.10, equivalent). *Paraphrased.*
+
+**Paraphrased statement:** Derive the Hamiltonian for a relativistic charged particle of rest mass `m` and charge `q` in an external electromagnetic field characterised by scalar potential `\phi` and vector potential `\mathbf{A}`. Express the result in canonical-momentum variables `\mathbf{p}` and in proper-time variables `(b, \mathbf{u})`. Verify Hamilton's equations of motion in both formulations.
+
+**Setup:** The Lagrangian for a charged particle in an EM field, in Gaussian units, is
+
+$$
+L = -m c^{2}\,\sqrt{1 - w^{2}/c^{2}} - q\phi + \frac{q}{c}\mathbf{A}\cdot\mathbf{w}.
+$$
+
+The canonical momentum conjugate to position is `\mathbf{p} = \partial L/\partial\mathbf{w} = \gamma m\mathbf{w} + (q/c)\mathbf{A}`, with proper-momentum part `\gamma m\mathbf{w} = m\mathbf{u}`.
+
+#### (a) Classical solution — Gaussian (CGS)
+
+Performing the Legendre transform `H = \mathbf{p}\cdot\mathbf{w} - L` and substituting `\mathbf{w} = (c/b)\mathbf{u}` gives the standard relativistic Hamiltonian (Jackson 3e Eq. (12.34)),
+
+$$
+H = \sqrt{c^{2}(\mathbf{p} - q\mathbf{A}/c)^{2} + m^{2}c^{4}} + q\phi.
+$$
+
+For the free particle (`\mathbf{A} = 0`, `\phi = 0`), `H = \sqrt{c^{2}\mathbf{p}^{2} + m^{2}c^{4}} = \gamma m c^{2}`. Hamilton's equation `d\mathbf{x}/dt = \partial H/\partial\mathbf{p}` recovers `\mathbf{w} = \mathbf{p}c^{2}/H = \gamma m \mathbf{w} c^{2}/(\gamma m c^{2}) = \mathbf{w}` (a tautology, confirming consistency).
+
+#### (c) Proper-time reformulation
+
+In proper-time variables `(b, \mathbf{u})` with `b^{2} = c^{2} + \mathbf{u}^{2}`, the free-particle Hamiltonian takes the algebraically simpler form
+
+$$
+H = m c\,b,
+$$
+
+equivalent to the classical `\gamma m c^{2}` via `b = \gamma c`. The interaction with the EM field adds a `q\phi` term and shifts the canonical momentum by `(q/c)\mathbf{A}`, giving
+
+$$
+H = m c\,b\!\left(\mathbf{p} - q\mathbf{A}/c\right) + q\phi,
+$$
+
+where `b(\mathbf{p} - q\mathbf{A}/c) = \sqrt{c^{2} + (\mathbf{p} - q\mathbf{A}/c)^{2}/m^{2}}` is the effective `b`-variable evaluated at the kinetic momentum `\mathbf{p} - q\mathbf{A}/c`. This is the same Hamiltonian as in (a), expressed in `(b, \mathbf{u})` variables.
+
+We observe that the proper-time form `H = mcb` is structurally analogous to the *non*-relativistic Hamiltonian `H = p^{2}/(2m)` in two respects: (i) it is *quadratic* in `\mathbf{u}` (via `b = \sqrt{c^{2}+u^{2}}`), and (ii) it admits a clean Legendre-transform connection to the proper-time kinetic energy `K = (1/2) m b^{2}` recorded in [Problem J3e-P12.1](#problem-j3e-p121--free-relativistic-lagrangian-and-action). The relation between `H = mcb` and `K = mb^{2}/2` is `H = \sqrt{2 m c^{2} K}` (free case), making the proper-time Hamiltonian a square-root function of the proper-time kinetic energy — algebraically the same structure as classical SR but expressed in proper-velocity variables throughout.
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[uu, cc, mm, bb];
+bbExpr = Sqrt[cc^2 + uu^2];
+hFree = mm cc bbExpr;
+(* Equivalence to gamma m c^2 in observer-time variables *)
+gammaW = 1/Sqrt[1 - ww^2/cc^2];
+hClassicalFree = gammaW mm cc^2;
+diff = FullSimplify[
+   hFree /. uu -> ww/Sqrt[1 - ww^2/cc^2] - hClassicalFree,
+   Assumptions -> 0 < ww < cc && cc > 0 && mm > 0];
+(* Confirms: H_proper-time-form = H_classical at observable level  ✅ *)
+```
+
+**Eq. 24 engagement check.** Eq. (24) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] gives the *Pauli-form* Hamiltonian
+
+$$
+H_{\text{Pauli}} = m c^{2} + \frac{p^{2}}{2m} - e\phi + \frac{e}{c}\mathbf{A}\cdot\mathbf{p} + \frac{e\hbar\boldsymbol\Sigma\cdot\mathbf{B}}{2m} + \frac{V^{2}}{2 m c^{2}},
+$$
+
+with [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md) flagging a missing factor of `c` in the spin-magnetic-moment term and a missing `V^{2}/(2mc^{2})` term. The present problem treats the *non-relativistic-reduction-free* classical Hamiltonian (the relativistic square-root form), not the Pauli reduction; the flagged terms therefore do not enter. **No branched-treatment subsection `(c')` is required**, and the per-problem verdict applies to a single derivation.
+
+<!-- TODO: human reviews and fills in — confirms the determination that Eq. 24 does not engage here. If the author disagrees and wishes a branched treatment (working both as-published and with-correction forms of the Pauli reduction), this is the place to flag it -->
+
+The branched-treatment workflow of [§5.1 of the plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#51-branched-treatment-for-eq-24-touching-problems) is therefore deferred to a future problem in PR F+ that explicitly invokes the Pauli reduction (likely a spin-orbit or hyperfine problem in Ch. 13 or beyond).
+
+**Comparison:**
+
+| Quantity | Classical (Gaussian) | Proper-time |
+|---|---|---|
+| Free Hamiltonian | `\gamma m c^{2}` | `m c b` |
+| With EM field | `\sqrt{c^{2}(\mathbf{p}-q\mathbf{A}/c)^{2}+m^{2}c^{4}}+q\phi` | `m c b(\mathbf{p}-q\mathbf{A}/c)+q\phi` |
+| Canonical momentum | `\gamma m\mathbf{w}+(q/c)\mathbf{A}` | `m\mathbf{u}+(q/c)\mathbf{A}` |
+| Hamilton's equation `d\mathbf{x}/dt` | `\mathbf{p}c^{2}/H` | `\mathbf{u}c/b = \mathbf{w}` |
+| Eq. 24 engagement | n/a | **NOT engaged** (non-spin formulation) |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no. The Hamiltonians are the same physical object expressed in two variable choices; observable predictions are identical.
+
+**Verdict:** ✅ all formulations consistent. The proper-time Hamiltonian `H = mcb` is the algebraically cleaner form of the classical `H = \gamma m c^{2}` for a free particle, and extends to interacting particles via the standard minimal-coupling substitution `\mathbf{p} \to \mathbf{p} - q\mathbf{A}/c`. Eq. 24's branched-treatment workflow is deferred to spin/hyperfine problems in PR F+.
+
+**Notes for author review:** the observation that Jackson Ch. 12 P10 was *anticipated* to be the campaign's first branched-treatment problem but turned out not to engage Eq. 24 (because the problem is classical/non-spin) is worth recording structurally. The branched-treatment scaffolding established in [§5.1](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#51-branched-treatment-for-eq-24-touching-problems) remains correct; it simply does not engage until a Pauli-reduction problem arrives. Not posted to `FINDINGS_for_author_review.md` — this is a campaign-internal scoping note, not a finding.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh12_P12_10.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh12_P12_10.wl).
