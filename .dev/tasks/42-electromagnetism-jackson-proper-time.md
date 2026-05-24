@@ -385,6 +385,32 @@ Empirical observations from PR A:
 
 **Headline next problem.** Per [§12.1](#121-per-problem-briefs), the campaign's full dissipative-term test arrives at PR D Problem J3e-Ch14 (Liénard–Wiechert fields of an accelerating point charge). This is where the third term `e(u·a)/(b⁴s³)` of Eq. (7) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] first appears with non-zero numerical content, and where the campaign's experimental-comparison hooks (issue [#43](https://github.com/temoTxt/PyPhysics/issues/43)) become operationally measurable.
 
+### 7.6 PR B retrospective (closed 2026-05-24)
+
+PR B closed with five per-problem documents drafted and committed:
+
+| Commit | Problem | Verdict | Key observation |
+|---|---|---|---|
+| `ff4baeb` | J3e-P11.1 — relativistic velocity addition | ✅ classical = proper-time | sharpened group distinction at 4-velocity level |
+| `6eade8c` | J3e-P11.3 — relativistic Doppler effect | ✅ identical observable | proper-time form `(b+u)/c` is **linear** in `(b, u)`, vs square-root in `\beta` |
+| `6b512ce` | J3e-P11.5 — 4-vector position transformation | ✅ Minkowski interval invariant | 4-positions transform identically; group distinction is at 4-velocity level and beyond |
+| `675a174` | J3e-P11.6 — Lorentz boost of `\mathbf{E}` and `\mathbf{B}` | ✅ both Lorentz invariants preserved | proper-time form is **linear** in `(b, u)`; multi-source case is where the groups truly diverge |
+| `5bd7b21` | J3e-P11.8 — Lorentz invariants of EM field | ✅ identified `F^{\mu\nu}F_{\mu\nu}, F^{\mu\nu}\,{}^{*}F_{\mu\nu}` | closing claim: `F^{\mu\nu}` alone has same invariants in both groups; framework's distinguishing structure lives in invariants involving source 4-velocity |
+
+Empirical observations from PR B:
+
+- **Effort estimate held within [§13.1 O4](#131-objections-with-partial-responses)'s ~2.5–3 week budget.** Five Ch. 11 problems at roughly the same per-problem cost as Ch. 6 problems in PR A — the kinematic content is shorter than Ch. 6's energy-momentum analysis, but the structural-observation content (proper-time group / Lorentz group distinction) is denser. Net cost per problem roughly matches PR A's blended average.
+- **Per-paragraph TODO discipline continued sustainably.** Each PR B problem carries 2–4 substantive `<!-- TODO -->` blocks, the same density as PR A. Per [§13.5 D2](#135-decision-points--confirmed-by-author-2026-05-24), the reassessment scheduled for the start of PR B is now overdue — having now seen the density across ten problems (5 in PR A + 5 in PR B), the decision is to **keep the per-paragraph density through PR C** and reassess at PR D, where the dissipative-term content will produce a different interpretive load.
+- **One structural pattern emerged across multiple problems.** The proper-time `(b, u)` variables consistently produce **linear** algebraic expressions where the classical `(\gamma, \beta)` variables produce square-roots. Specifically: the Doppler factor `(b+u)/c` vs `\sqrt{(1+\beta)/(1-\beta)}`, the field-boost prefactors `(b E - u B)/c` vs `\gamma(E - \beta B)`. This is a pattern about variable choice, recorded in the per-problem documents but not flagged as a finding because it is a property of the velocity-duality identity itself, not a separate observation.
+- **Closing structural claim for the chapter.** `F^{\mu\nu}` alone has the same algebraic Lorentz invariants under both groups; the framework's distinguishing structure lives in invariants involving BOTH `F^{\mu\nu}` and the source 4-velocity `(b, \mathbf{u})`. This claim is the natural bridge to PR C (Ch. 12 relativistic dynamics), where the equations of motion involve `F^{\mu\nu}u_{\nu}` (the modified Lorentz force of Eq. (18) of the Maxwell paper) and where the proper-time group's distinct action will surface at the dynamical level.
+- **Wolfram MCP disconnect handled gracefully.** The MCP subprocess dropped mid-PR-B between problems J3e-P11.3 and J3e-P11.5. The campaign halted authoring per the author's directive ("stop until the wolfram MCP is online"), the underlying service was verified to be healthy (HTTP 200 on authenticated `initialize`), the disconnect was diagnosed as Claude Code-side, and after the user reconnected via `/mcp` the campaign resumed cleanly. This is the first operational test of the [§13.2 O4](#132-objections-with-no-honest-mitigation) "no kill switch / accept drift" provision; the campaign successfully paused and resumed without state loss.
+
+**Implications for PR C (Ch. 12 relativistic dynamics).** The closing observation of PR B — that the proper-time framework's distinguishing structure lives in invariants involving both `F^{\mu\nu}` and the source 4-velocity — predicts that PR C will be where the proper-time group's distinct action first becomes operationally visible at the dynamical level. The Hamiltonian formulation in Ch. 12 will exercise Eq. (18) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] (modified Lorentz force), and the Hamiltonian itself depends on `b` through the proper-time kinetic energy. This is also the first place in the campaign where Eq. (24) of the Maxwell paper may engage, triggering the branched-treatment workflow of [§5.1](#51-branched-treatment-for-eq-24-touching-problems) per [§13.5 D1](#135-decision-points--confirmed-by-author-2026-05-24).
+
+**Implications for the plan.** No changes recommended to §7, §10, §13 based on PR B observations. The graceful degradation provisions in §13.2 O4 were exercised (the MCP outage) and worked as designed. Per-paragraph TODO discipline reassessment is deferred from "start of PR B" to "start of PR D", given that the pattern has stabilised over ten problems and the next interpretive load shift is expected at the radiation-reaction chapter.
+
+**Issue #42 acceptance criteria status.** PR A merged ✅, PR D OR PR E pending. PR B is not gating; it is preparatory chapter work for PR C–E.
+
 ---
 
 ## 8. Definition of done
