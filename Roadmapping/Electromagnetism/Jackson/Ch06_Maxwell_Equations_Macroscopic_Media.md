@@ -11,7 +11,7 @@ Ch. 6 is the campaign's first chapter in which the proper-time machinery engages
 | [Problem J3e-P6.1 — Maxwell with magnetic monopoles + electric–magnetic duality](#problem-j3e-p61--maxwell-with-magnetic-monopoles-and-electricmagnetic-duality) | drafted (PR A) | headline-adjacent |
 | [Problem J3e-P6.4 — EM momentum of a uniformly-moving point charge](#problem-j3e-p64--em-momentum-of-a-uniformly-moving-point-charge) | drafted (PR A) | headline-payoff (podcast pick #1) |
 | [Problem J3e-P6.5 — Poynting theorem in macroscopic media](#problem-j3e-p65--poynting-theorem-in-macroscopic-media) | drafted (PR A) | headline-adjacent |
-| [Problem J3e-P6.11 — Symmetric stress tensor and Lorentz behaviour](#problem-j3e-p611--symmetric-stress-tensor-and-lorentz-behaviour) | planned (PR A) | headline-adjacent |
+| [Problem J3e-P6.11 — Symmetric stress tensor and Lorentz behaviour](#problem-j3e-p611--symmetric-stress-tensor-and-lorentz-behaviour) | drafted (PR A) | headline-adjacent |
 | [Problem J3e-P6.20 — Radiation pressure on a perfect conductor](#problem-j3e-p620--radiation-pressure-on-a-perfect-conductor) | planned (PR A) | headline-payoff (first `(u·a)/b⁴` test) |
 
 ---
@@ -357,3 +357,105 @@ It is worth observing what this means at the level of physical interpretation. T
 **Notes for author review:** the strong-equivalence claim in the (c) section — that no measurement of `u`, `\mathbf{S}`, or `\mathbf{J}\cdot\mathbf{E}` could distinguish the two formulations — is a stronger statement than the general "mathematically equivalent but not physically equivalent" framing of the Gill–Zachary paper. It is restricted to the conservation-law content of the Poynting theorem and does not generalise to dynamical observables (e.g., the radiation reaction force, which *does* distinguish the formulations per Eq. (4)). Flagged with a `<!-- TODO -->` block; no entry recommended for `FINDINGS_for_author_review.md`.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_5.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_5.wl) — runnable independent of the Mathematica MCP.
+
+---
+
+### Problem J3e-P6.11 — Symmetric stress tensor and Lorentz behaviour
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the Maxwell stress tensor is the Lorentz-covariant repository of momentum-flux information for the electromagnetic field, treated in [[jackson1998_classical_electrodynamics]] §6.7 and §12.10. It is the natural place to ask whether the proper-time formulation preserves the Lorentz-covariant structure of classical EM, or whether the proper-time group of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] §1.3 introduces a distinct covariance structure.
+- *Alternatives considered:* J3e-P6.10 (energy and momentum of EM field — covered partially by J3e-P6.4 and J3e-P6.5) and J3e-P6.12 (Lorentz-force four-form — too closely related to the present problem to merit separate treatment).
+- *Role in this PR:* headline-adjacent. The classical derivation is textbook; the substantive content is the observation that the proper-time formulation has its own covariance group, distinct from the Lorentz group, and that the stress tensor's covariance properties depend on which group one uses.
+
+<!-- TODO: human reviews and fills in — confirms the framing that this problem surfaces the proper-time group's distinctness from the Lorentz group as a structural observation, rather than as a flagged inconsistency -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 6.11 (and 2e Problem 6.11, equivalent). *Paraphrased; consult the textbook for the precise statement.*
+
+**Paraphrased statement:** Derive the symmetric form of the Maxwell stress tensor for the electromagnetic field in vacuum, verify that it satisfies the conservation law `\partial_t g_i + \partial_j T_{ij} = -(\rho E_i + (1/c)(\mathbf{J}\times\mathbf{B})_i)` with field-momentum density `\mathbf{g} = (1/(4\pi c))\mathbf{E}\times\mathbf{B}`, and remark on its behaviour under Lorentz transformations.
+
+**Setup:** Consider the electromagnetic field in a region containing free charge density `\rho` and current density `\mathbf{J}`. In Gaussian units, the symmetric stress tensor of Jackson 3e Eq. (6.120) takes the form
+
+$$
+T_{ij} = \frac{1}{4\pi}\!\left[E_{i}E_{j} + B_{i}B_{j} - \frac{1}{2}\,\delta_{ij}(E^{2} + B^{2})\right].
+$$
+
+By inspection `T_{ij} = T_{ji}`, so the tensor is manifestly symmetric. The diagonal sum yields
+
+$$
+\sum_{i}T_{ii} = \frac{1}{4\pi}\!\left[E^{2} + B^{2} - \frac{3}{2}(E^{2} + B^{2})\right] = -\frac{1}{8\pi}(E^{2} + B^{2}) = -u,
+$$
+
+where `u = (E^{2} + B^{2})/(8\pi)` is the energy density. We observe that the spatial trace of the stress tensor equals the negative of the energy density — a relation that, together with the time–time component `T^{00} = u` and the time–space components `T^{0i} = (1/(4\pi))(\mathbf{E}\times\mathbf{B})_{i}`, assembles into the manifestly traceless 4-tensor `T^{\mu\nu}` with `T^{\mu}{}_{\mu} = 0`.
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[capE1, capE2, capE3, capB1, capB2, capB3];
+eVec = {capE1, capE2, capE3};
+bVec = {capB1, capB2, capB3};
+e2 = eVec . eVec; b2 = bVec . bVec;
+stress = Table[
+   (eVec[[i]] eVec[[j]] + bVec[[i]] bVec[[j]]
+      - (1/2) KroneckerDelta[i, j] (e2 + b2))/(4 Pi),
+   {i, 3}, {j, 3}];
+Print["Symmetric? ", stress === Transpose[stress]];
+trace = FullSimplify[Sum[stress[[i, i]], {i, 3}]];
+energyDensity = (e2 + b2)/(8 Pi);
+Print["Trace + u = ", FullSimplify[trace + energyDensity]];
+(* Symmetric?  True
+   Trace + u = 0  ✅ *)
+```
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The stress tensor and its derivation are recorded explicitly in [[jackson1998_classical_electrodynamics]] §6.7. The momentum conservation law follows from manipulating `\partial_t(\mathbf{E}\times\mathbf{B})` and using Maxwell's equations: the time derivative of the field-momentum density `\mathbf{g} = (1/(4\pi c))\mathbf{E}\times\mathbf{B}` equals the divergence of the stress tensor plus the negative of the Lorentz-force density on the charges,
+
+$$
+\frac{\partial g_{i}}{\partial t} + \frac{\partial T_{ij}}{\partial x_{j}} = -\!\left(\rho E_{i} + \frac{1}{c}(\mathbf{J}\times\mathbf{B})_{i}\right).
+$$
+
+The 4-tensor extension `T^{\mu\nu}` is manifestly Lorentz covariant: it transforms as a rank-2 tensor under the standard Lorentz group, and the conservation law `\partial_{\mu}T^{\mu\nu} = -F^{\nu\mu}J_{\mu}/c` is therefore Lorentz invariant.
+
+#### (b) Classical solution — SI
+
+In SI units the stress tensor reads
+
+$$
+T_{ij} = \varepsilon_{0} E_{i}E_{j} + \frac{1}{\mu_{0}}B_{i}B_{j} - \frac{1}{2}\!\left(\varepsilon_{0}E^{2} + \frac{B^{2}}{\mu_{0}}\right)\delta_{ij},
+$$
+
+with `\mathbf{g} = \varepsilon_{0}\mathbf{E}\times\mathbf{B}` and the conservation law structurally identical. The symmetry, trace, and 4-tensor structure are unchanged.
+
+#### (c) Proper-time reformulation
+
+Here the substantive observation of the campaign engages for the first time at the level of geometric structure rather than algebraic substitution. The classical stress tensor `T^{\mu\nu}` is built from `\mathbf{E}` and `\mathbf{B}` and is Lorentz covariant. The same field-strength tensor `F^{\mu\nu}` appears in the Gill–Zachary proper-time formulation, but the *covariance group* under which the formulation is invariant is **not** the standard Lorentz group. Per [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] §1.3, the Gill–Zachary paper identifies "another group (closely related to the Lorentz group) which fixes the local-time of the particle for all observers" — the proper-time group. The standard Lorentz group preserves the lab-time `t` of the observer; the proper-time group preserves the local-time `\tau` of the source.
+
+It follows that the same numerical components `T^{\mu\nu}` admit *two* covariance interpretations:
+- Under the standard Lorentz group, `T^{\mu\nu}` transforms as a rank-2 tensor in the `(t, \mathbf{x})` coordinates of the observer.
+- Under the proper-time group, the same components must be re-interpreted in the `(\tau, \mathbf{x})` coordinates of the source, and the transformation law is the proper-time group's analog of the Lorentz boost (per Eqs. (10), (11) of the Maxwell paper).
+
+For single-source problems, the two interpretations are related by the velocity-duality substitutions of [`_proper_time_cheatsheet.md`](../_proper_time_cheatsheet.md), and the stress tensor's numerical content is the same. For multi-source problems — particularly those involving radiation from one source measured by an observer in motion relative to another source — the two interpretations diverge, because the proper-time group as published is single-source-centric (recall the structural ambiguity surfaced in [Problem J3e-P6.1](#problem-j3e-p61--maxwell-with-magnetic-monopoles-and-electricmagnetic-duality)).
+
+<!-- TODO: human reviews and fills in — confirms the framing that the proper-time group is "closely related but not identical" to the Lorentz group, and that the stress tensor's covariance properties depend on which group is being invoked. This is a load-bearing structural claim for the campaign and deserves the author's full read -->
+
+The momentum conservation law `\partial_{\mu}T^{\mu\nu} = -F^{\nu\mu}J_{\mu}/c` is preserved in the proper-time formulation under the substitution `(1/c)\partial_t \to (1/b)\partial_\tau` and the current-density rescaling, by the same mechanism as the Poynting theorem of [Problem J3e-P6.5](#problem-j3e-p65--poynting-theorem-in-macroscopic-media). What changes is *not* the conservation law itself but the *covariance group* under which the law is invariant. Classically, Lorentz transformations relate the conservation law as observed in one inertial frame to its form in another; in the proper-time formulation, the proper-time group plays the same role but with the source's local clock held fixed across observers rather than the observer's clock held fixed across sources.
+
+<!-- TODO: human reviews and fills in — confirms the load-bearing claim that the conservation law itself is preserved but the covariance group is replaced by the proper-time group. Whether this is "the same physics with different bookkeeping" or "a distinct geometric structure" is a question the author should answer; the document leaves it deliberately conditional -->
+
+**Comparison:**
+
+| Quantity | Classical (CGS) | Classical (SI) | Proper-time |
+|---|---|---|---|
+| Symmetry `T_{ij} = T_{ji}` | ✅ | ✅ | ✅ |
+| Trace `\sum_{i}T_{ii} = -u` | ✅ | ✅ | ✅ |
+| 4-tensor trace `T^{\mu}{}_{\mu} = 0` | ✅ | ✅ | ✅ |
+| Covariance group | Lorentz | Lorentz | proper-time group (per Maxwell paper §1.3) |
+| Conservation law | `\partial_{\mu}T^{\mu\nu} = -F^{\nu\mu}J_{\mu}/c` | same | same with `(1/c)\partial_t \to (1/b)\partial_\tau` |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ⚠ yes, but the difference is at the *covariance-group* level, not the component level. The numerical components of `T^{\mu\nu}` are unchanged by the proper-time substitution; the transformation properties under boosts are different (proper-time-group boosts of Eq. (11) of the Maxwell paper, not Lorentz boosts of standard SR). This is a structural feature of the framework, not an algebraic substitution that produces different numbers.
+
+**Verdict:** ✅ all three solutions consistent at the component level. ⚠ The covariance group of the proper-time formulation is distinct from the Lorentz group; the stress tensor's "Lorentz behaviour" depends on which group one means by "Lorentz." This is the campaign's first structural observation at the level of geometric structure rather than algebraic substitution, and is the second such observation in the campaign overall (after the multi-species ambiguity of [Problem J3e-P6.1](#problem-j3e-p61--maxwell-with-magnetic-monopoles-and-electricmagnetic-duality)).
+
+**Notes for author review:** the proper-time group vs Lorentz group distinction is established in [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] §1.3 but its full implications for the stress tensor and the conservation law are not, to my knowledge, recorded in the published Gill corpus. The observation that the conservation law form is preserved but the covariance group is replaced is mechanically derivable from the substitution rules; whether it warrants a new entry in `FINDINGS_for_author_review.md` is a judgement call. **I am flagging it here as a candidate observation but not posting it to the findings document**, because it is a structural feature of the framework's geometric content rather than an unresolved inconsistency. If subsequent PRs (particularly Ch. 11 in PR B, where Lorentz behaviour is treated in detail) sharpen the observation, the findings document can be updated then.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_11.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_11.wl) — runnable independent of the Mathematica MCP.
