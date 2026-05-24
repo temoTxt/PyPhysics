@@ -11,6 +11,7 @@ Ch. 11 is where the **proper-time group** of [[Two_Mathematically_Equivalent_Ver
 | [Problem J3e-P11.1 — Relativistic velocity addition](#problem-j3e-p111--relativistic-velocity-addition) | drafted (PR B) | fluency-builder (velocity-duality exercise) |
 | [Problem J3e-P11.3 — Relativistic Doppler effect](#problem-j3e-p113--relativistic-doppler-effect) | drafted (PR B) | fluency-builder (time-derivative duality) |
 | [Problem J3e-P11.5 — 4-vector position transformation](#problem-j3e-p115--4-vector-position-transformation) | drafted (PR B) | fluency-builder (bookkeeping) |
+| [Problem J3e-P11.6 — Lorentz boost of **E** and **B** fields](#problem-j3e-p116--lorentz-boost-of-e-and-b-fields) | drafted (PR B) | headline-adjacent (group-distinction sharpened) |
 
 ---
 
@@ -240,3 +241,111 @@ At the level of the 4-position `x^{\mu}`, both formulations agree on the compone
 **Notes for author review:** none. The 4-position transformation is the cleanest kinematic statement in which the two formulations agree exactly, with no daylight between them at the component level.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_5.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_5.wl).
+
+---
+
+### Problem J3e-P11.6 — Lorentz boost of **E** and **B** fields
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the Lorentz transformation of the electromagnetic field tensor is the standard test of field-theoretic Lorentz covariance, treated in [[jackson1998_classical_electrodynamics]] §11.10. It is PR B's headline-adjacent problem because it exercises the proper-time group on the *fields* (rather than on positions or velocities) and surfaces the cleanest algebraic re-expression of the boost in `(b, u)` variables.
+- *Alternatives considered:* J3e-P11.7 (Lorentz invariants only — selected as the closing problem of PR B because it is a structural confirmation of what J3e-P11.6 already establishes) and J3e-P11.13 (field of a uniformly moving charge — defer to PR F+ as a derived application).
+- *Role in this PR:* headline-adjacent. The classical `(\gamma, \gamma\beta)` form of the field-boost equations rewrites in `(b/c, u/c)` form via the velocity-duality identity; the resulting expressions are *linear* in `(b, u)`, paralleling the structural observation in [Problem J3e-P11.3](#problem-j3e-p113--relativistic-doppler-effect) about the Doppler factor.
+
+<!-- TODO: human reviews and fills in — confirms the role of this problem as headline-adjacent for PR B and the framing of the (b, u) form as "structurally linear" -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 11.6 (and 2e Problem 11.6, equivalent). *Paraphrased.*
+
+**Paraphrased statement:** Frame `S'` moves with velocity `\mathbf{v} = v\hat x` relative to frame `S`. Given the electric field `\mathbf{E}` and magnetic field `\mathbf{B}` measured in `S`, derive the corresponding fields `\mathbf{E}'` and `\mathbf{B}'` measured in `S'`. Verify that the scalar invariant `\mathbf{E}^{2} - \mathbf{B}^{2}` and the pseudoscalar invariant `\mathbf{E}\cdot\mathbf{B}` are preserved by the transformation. Carry out the analysis in both standard `(\gamma, \gamma\beta)` variables and the proper-time `(b, u)` variables.
+
+**Setup:** As in [Problem J3e-P11.5](#problem-j3e-p115--4-vector-position-transformation), `\gamma = \gamma(v)` and `\beta = v/c`. The fields are evaluated at a single spacetime event; we work component-wise.
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The standard Lorentz transformation of the electromagnetic field, recorded as Jackson 3e Eqs. (11.149), reads (with the boost along `+\hat x`):
+
+$$
+\begin{aligned}
+E_{x}' &= E_{x}, & E_{y}' &= \gamma\!\left(E_{y} - \beta\,B_{z}\right), & E_{z}' &= \gamma\!\left(E_{z} + \beta\,B_{y}\right),\\
+B_{x}' &= B_{x}, & B_{y}' &= \gamma\!\left(B_{y} + \beta\,E_{z}\right), & B_{z}' &= \gamma\!\left(B_{z} - \beta\,E_{y}\right).
+\end{aligned}
+$$
+
+The longitudinal components `E_{x}` and `B_{x}` are unchanged; the transverse components mix `\mathbf{E}` and `\mathbf{B}` via the boost factor. The two Lorentz invariants — the scalar `I_{1} = \mathbf{E}^{2} - \mathbf{B}^{2}` and the pseudoscalar `I_{2} = \mathbf{E}\cdot\mathbf{B}` — are preserved by direct algebraic check.
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[capE1, capE2, capE3, capB1, capB2, capB3, vv, cc];
+gammaV = 1/Sqrt[1 - vv^2/cc^2]; beta = vv/cc;
+eP = {capE1, gammaV (capE2 - beta capB3), gammaV (capE3 + beta capB2)};
+bP = {capB1, gammaV (capB2 + beta capE3), gammaV (capB3 - beta capE2)};
+diffI1 = FullSimplify[(eP.eP - bP.bP)
+   - ((capE1^2 + capE2^2 + capE3^2) - (capB1^2 + capB2^2 + capB3^2)),
+   Assumptions -> 0 < vv < cc];
+diffI2 = FullSimplify[eP.bP
+   - (capE1 capB1 + capE2 capB2 + capE3 capB3),
+   Assumptions -> 0 < vv < cc];
+(* diffI1 = 0, diffI2 = 0  ✅ — both invariants preserved *)
+```
+
+#### (c) Proper-time reformulation
+
+Using the velocity-duality identities `u/b = w/c = \beta` and `b/c = \gamma` (with `b^{2} = c^{2} + u^{2}`), the field-transformation equations rewrite in the proper-time variables `(b, u)` as
+
+$$
+\begin{aligned}
+E_{x}' &= E_{x}, & E_{y}' &= \frac{1}{c}\!\left(b\,E_{y} - u\,B_{z}\right), & E_{z}' &= \frac{1}{c}\!\left(b\,E_{z} + u\,B_{y}\right),\\
+B_{x}' &= B_{x}, & B_{y}' &= \frac{1}{c}\!\left(b\,B_{y} + u\,E_{z}\right), & B_{z}' &= \frac{1}{c}\!\left(b\,B_{z} - u\,E_{y}\right).
+\end{aligned}
+$$
+
+We observe that the proper-time form is **linear** in the boost variables `(b, u)`, in contrast to the classical form's non-linear `(\gamma, \gamma\beta)` dependence on `v`. This parallels the structural observation noted in [Problem J3e-P11.3](#problem-j3e-p113--relativistic-doppler-effect): the proper-time variables produce algebraically cleaner expressions because they remove the explicit square-root that the classical `\gamma` factor introduces.
+
+The transformation is, of course, the same Lorentz transformation as in (a) — it acts on the same field tensor `F^{\mu\nu}` and produces the same boosted fields. The two forms differ only in how the boost parameter is expressed; the underlying physical content is unchanged.
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[uu, bb, cc];
+ePProperTime = {capE1, (1/cc) (bb capE2 - uu capB3), (1/cc) (bb capE3 + uu capB2)};
+bPProperTime = {capB1, (1/cc) (bb capB2 + uu capE3), (1/cc) (bb capB3 - uu capE2)};
+diffI1PT = FullSimplify[
+   (ePProperTime.ePProperTime - bPProperTime.bPProperTime)
+      - ((capE1^2 + capE2^2 + capE3^2) - (capB1^2 + capB2^2 + capB3^2))
+   /. bb -> Sqrt[cc^2 + uu^2],
+   Assumptions -> uu > 0 && cc > 0];
+diffI2PT = FullSimplify[
+   ePProperTime.bPProperTime
+      - (capE1 capB1 + capE2 capB2 + capE3 capB3)
+   /. bb -> Sqrt[cc^2 + uu^2],
+   Assumptions -> uu > 0 && cc > 0];
+(* diffI1PT = 0, diffI2PT = 0  ✅ — both invariants preserved in (b, u) form *)
+```
+
+The two Lorentz invariants are preserved in either parametrisation of the boost, as the consistency of the velocity-duality identity requires.
+
+<!-- TODO: human reviews and fills in — confirms the framing that the (b, u) form of the field-boost is "structurally linear" and that this is worth highlighting alongside the analogous Doppler observation -->
+
+It is worth observing what this means for the proper-time group's action on the field tensor. The fields `\mathbf{E}` and `\mathbf{B}` are observer-frame quantities: they are measured at fixed `\mathbf{x}` over an interval of observer time `t`. Under a boost to a frame moving with velocity `v`, the same fields are re-expressed in the moving frame's coordinates. This transformation is the same operation whether one parameterises by `(v, \gamma)` or by `(u, b)`; the proper-time group's distinctness from the Lorentz group, established at the 4-velocity level in [Problem J3e-P11.1](#problem-j3e-p111--relativistic-velocity-addition), does *not* produce a different transformation of the fields. Both groups act on `F^{\mu\nu}` identically when restricted to inertial boosts.
+
+The proper-time group's distinct action surfaces only when one considers boosts between frames in which **the source is not co-moving with one of the two observers**. In that more general setting, the proper-time group preserves the source's local clock as the fundamental kinematic invariant, whereas the Lorentz group preserves the Minkowski interval of observers. For boosts between two observer frames (both treating the same source as external), the two groups agree. For boosts that bring an observer into the source's instantaneous rest frame, they coincide. For boosts between two source frames (rare in classical EM, but conceivable for multi-source problems), they differ — and this is the multi-source ambiguity surfaced in [Problem J3e-P6.1](Ch06_Maxwell_Equations_Macroscopic_Media.md#problem-j3e-p61--maxwell-with-magnetic-monopoles-and-electricmagnetic-duality).
+
+<!-- TODO: human reviews and fills in — flags the multi-source-boost case as the place where the proper-time and Lorentz groups truly diverge, connecting the present problem to the earlier multi-species observation -->
+
+**Comparison:**
+
+| Quantity | Classical `(\gamma, \beta)` | Proper-time `(b, u)` |
+|---|---|---|
+| `E_y'` | `\gamma(E_y - \beta B_z)` | `(b E_y - u B_z)/c` |
+| `B_y'` | `\gamma(B_y + \beta E_z)` | `(b B_y + u E_z)/c` |
+| Functional form | non-linear in `v` (via `\gamma`) | linear in `(b, u)` |
+| `I_1 = E^2 - B^2` | preserved | preserved |
+| `I_2 = E\cdot B` | preserved | preserved |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no, at the level of single-source inertial boosts. The proper-time form `(b E - u B)/c` is a re-expression of the classical `\gamma(E - \beta B)` using the velocity-duality identity; the underlying transformation is the same.
+
+**Verdict:** ✅ all formulations consistent. The proper-time form is algebraically cleaner (linear vs square-root) but represents the same Lorentz boost as the classical form. The proper-time group's distinct action on the field tensor surfaces only in multi-source problems, where the source's local clock is not unique — as noted in [Problem J3e-P6.1](Ch06_Maxwell_Equations_Macroscopic_Media.md#problem-j3e-p61--maxwell-with-magnetic-monopoles-and-electricmagnetic-duality).
+
+**Notes for author review:** the connection between the field-boost linearity in `(b, u)` and the structurally linear Doppler factor of [Problem J3e-P11.3](#problem-j3e-p113--relativistic-doppler-effect) is worth recording as a pattern. The proper-time variables consistently produce linear expressions where the classical `(\gamma, \beta)` variables produce square-roots, suggesting that `(b, u)` are the natural coordinates for relativistic kinematics in the Gill–Zachary framework. Not posted to `FINDINGS_for_author_review.md`; this is a structural observation about variable choice, not a finding about physics.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_6.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh11_P11_6.wl).
