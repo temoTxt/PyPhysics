@@ -19,7 +19,7 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 | Ch. 9 | Radiating Systems, Multipole Fields | three-system | PR F+ | 0 / 4–6 | planned |
 | Ch. 10 | Scattering and Diffraction | three-system | PR F+ | 0 / 4–6 | planned |
 | Ch. 11 | Special Theory of Relativity | CGS only (3e Chs. 11+) | **PR B** | 5 / 5 | PR B drafted — see [`Ch11`](Ch11_Special_Relativity.md) |
-| Ch. 12 | Dynamics of Relativistic Particles and EM Fields ⭐ | CGS only | **PR C** | 2 / 5 | PR C in progress — see [`Ch12`](Ch12_Relativistic_Dynamics.md) |
+| Ch. 12 | Dynamics of Relativistic Particles and EM Fields ⭐ | CGS only | **PR C** | 3 / 5 | PR C in progress — see [`Ch12`](Ch12_Relativistic_Dynamics.md) |
 | Ch. 13 | Collisions, Energy Loss, Scattering of Charged Particles | CGS only | PR F+ | 0 / 4–6 | planned |
 | Ch. 14 | Radiation by Moving Charges ⭐ | CGS only | **PR D** | 0 / 5–7 | planned |
 | Ch. 15 | Bremsstrahlung, Method of Virtual Quanta | CGS only | PR F+ | 0 / 4–6 | planned |

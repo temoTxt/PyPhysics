@@ -10,6 +10,7 @@ Ch. 12 is the campaign's first chapter in which the proper-time framework's dist
 |---|---|---|
 | [Problem J3e-P12.1 — Free relativistic Lagrangian and action](#problem-j3e-p121--free-relativistic-lagrangian-and-action) | drafted (PR C) | fluency-builder |
 | [Problem J3e-P12.2 — Cyclotron motion in a uniform magnetic field](#problem-j3e-p122--cyclotron-motion-in-a-uniform-magnetic-field) | drafted (PR C) | **headline-payoff (podcast pick #4)** |
+| [Problem J3e-P12.5 — E × B drift in crossed uniform fields](#problem-j3e-p125--e-times-b-drift-in-crossed-uniform-fields) | drafted (PR C) | fluency-builder |
 
 ---
 
@@ -174,3 +175,84 @@ The orbit radius computed from `r = u/\omega_{\tau} = u m c/(qB_{0})`. With `u =
 **Notes for author review:** the observation that the proper-time cyclotron frequency is γ-independent is, to my knowledge, recorded in passing in the Gill–Zachary corpus but not given its podcast-ready elevation. Worth flagging as a candidate "first pedagogical example" of the framework's algebraic advantage. Not posted to `FINDINGS_for_author_review.md` — it is consistent with classical EM, not a finding.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh12_P12_2.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh12_P12_2.wl).
+
+---
+
+### Problem J3e-P12.5 — E × B drift in crossed uniform fields
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the `\mathbf{E}\times\mathbf{B}` drift is the textbook plasma-physics application of charged-particle motion in crossed uniform fields, treated in [[jackson1998_classical_electrodynamics]] §12.3. It exercises the modified Lorentz force law in a configuration where both `\mathbf{E}` and `\mathbf{B}` are nonzero, complementing [Problem J3e-P12.2](#problem-j3e-p122--cyclotron-motion-in-a-uniform-magnetic-field) where `\mathbf{E} = 0`.
+- *Alternatives considered:* J3e-P12.6 (motion in a slowly varying field — defer to PR F+) and J3e-P12.7 (gradient drift — defer to PR F+).
+- *Role in this PR:* fluency-builder. The proper-time formulation reproduces the classical drift velocity exactly via the velocity-duality identity; the dissipative term does not engage because `\mathbf{u}\cdot\mathbf{a} = 0` throughout the motion.
+
+<!-- TODO: human reviews and fills in — confirms the role of this problem as fluency-builder rather than headline-payoff -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 12.5 (and 2e Problem 12.5, equivalent). *Paraphrased.*
+
+**Paraphrased statement:** A particle of charge `q` moves in crossed uniform fields `\mathbf{E} = E_{0}\hat x` and `\mathbf{B} = B_{0}\hat z`, with `|E_{0}| < |B_{0}|`. Compute the drift velocity that allows the particle to undergo unaccelerated motion (the "guiding-centre drift"), in both classical and proper-time formulations.
+
+**Setup:** `\mathbf{E} = E_{0}\hat x`, `\mathbf{B} = B_{0}\hat z`, `|E_{0}| < |B_{0}|`. The drift velocity satisfies the steady-state force-balance condition; the cyclotron motion superposed on top is treated in [Problem J3e-P12.2](#problem-j3e-p122--cyclotron-motion-in-a-uniform-magnetic-field). For the steady-state component, `d\mathbf{w}_{d}/dt = 0` and `\mathbf{u}\cdot\mathbf{a} = 0`; the dissipative term of the modified force law vanishes throughout.
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The force-balance condition for an unaccelerated guiding-centre motion in Gaussian units reads
+
+$$
+\mathbf{F} = q\!\left[\mathbf{E} + \frac{1}{c}\mathbf{w}_{d}\times\mathbf{B}\right] = 0.
+$$
+
+Solving for `\mathbf{w}_{d}` perpendicular to both `\mathbf{E}` and `\mathbf{B}`, we obtain the textbook result
+
+$$
+\mathbf{w}_{d} = c\,\frac{\mathbf{E}\times\mathbf{B}}{B^{2}} = -\frac{c E_{0}}{B_{0}}\hat y.
+$$
+
+The drift is perpendicular to both `\mathbf{E}` and `\mathbf{B}`, with magnitude `c E_{0}/B_{0}`. It is real (i.e., subluminal) when `|E_{0}| < |B_{0}|`; the case `|E_{0}| > |B_{0}|` admits no drift-frame solution and the particle's motion is unbounded acceleration in the direction of `\mathbf{E}`.
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[capE0, capB0, cc, vY];
+balance = capE0 + (vY capB0)/cc;
+Solve[balance == 0, vY]
+(* Result: {{vY -> -capE0 cc / capB0}}  ✅ *)
+```
+
+The drift velocity is independent of charge sign — both positive and negative charges drift in the same direction (electrons and ions drift together in a plasma `\mathbf{E}\times\mathbf{B}` configuration).
+
+#### (c) Proper-time reformulation
+
+The modified Lorentz force law of Eq. (18) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] gives the force-balance condition
+
+$$
+\mathbf{F} = q\!\left[\mathbf{E} + \frac{\mathbf{u}_{d}}{b_{d}}\times\mathbf{B}\right] = 0,
+$$
+
+with the dissipative term suppressed because the steady-state drift has zero acceleration (`\mathbf{u}\cdot\mathbf{a} = 0`). Applying the velocity-duality identity `\mathbf{u}/b = \mathbf{w}/c`, the proper-time balance condition reduces to the classical one,
+
+$$
+\mathbf{E} + \frac{1}{c}\mathbf{w}_{d}\times\mathbf{B} = 0,
+$$
+
+and the drift velocity is unchanged. The proper-velocity version of the drift is `\mathbf{u}_{d} = \gamma_{d}\mathbf{w}_{d}` with `\gamma_{d} = 1/\sqrt{1 - (cE_{0}/B_{0})^{2}/c^{2}} = 1/\sqrt{1 - E_{0}^{2}/B_{0}^{2}}`, real provided `|E_{0}| < |B_{0}|`.
+
+We observe that the full motion — drift plus cyclotron — has `\mathbf{u}\cdot\mathbf{a} = 0` at every instant: the drift component contributes zero acceleration, and the cyclotron component contributes acceleration perpendicular to `\mathbf{u}`. The dissipative term `−(\mathbf{u}\cdot\mathbf{a})/b^{4}` therefore plays no role in this problem, and the proper-time and classical formulations agree exactly at the observable level.
+
+<!-- TODO: human reviews and fills in — confirms the framing that "u . a = 0 throughout" for the full drift-plus-cyclotron motion, and that this places ExB drift in the null-result fluency-builder category rather than the headline-payoff category -->
+
+**Comparison:**
+
+| Quantity | Classical (Gaussian) | Proper-time |
+|---|---|---|
+| Drift velocity `\mathbf{w}_{d}` | `c\,\mathbf{E}\times\mathbf{B}/B^{2}` | identical |
+| Proper-velocity drift `\mathbf{u}_{d}` | (not used) | `\gamma_{d}\mathbf{w}_{d}` |
+| Validity condition | `|E| < |B|` | identical |
+| Dissipative contribution | n/a | absent (`\mathbf{u}\cdot\mathbf{a} = 0` throughout) |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no. The drift velocity is identical in both formulations; the proper-velocity drift `\mathbf{u}_{d}` is the velocity-duality rewriting of `\mathbf{w}_{d}`, not a different physical prediction.
+
+**Verdict:** ✅ all formulations consistent. The `\mathbf{E}\times\mathbf{B}` drift is preserved by the proper-time formulation, with the dissipative term inactive throughout the motion. The fluency-builder lesson: when both `\mathbf{E}` and `\mathbf{B}` are present but the motion is steady-state (no acceleration), the proper-time and classical formulations are operationally identical.
+
+**Notes for author review:** none. This is a clean fluency-builder confirming the modified Lorentz force law of Eq. (18) reproduces the classical `\mathbf{E}\times\mathbf{B}` drift exactly.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh12_P12_5.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh12_P12_5.wl).
