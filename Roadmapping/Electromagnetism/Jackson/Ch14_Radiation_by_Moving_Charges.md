@@ -12,6 +12,7 @@ Per-paragraph `<!-- TODO -->` blocks continue per [§13.5 D2](../../../.dev/task
 |---|---|---|
 | [Problem J3e-P14.1 — Liénard–Wiechert potentials](#problem-j3e-p141--li%C3%A9nard-wiechert-potentials) | drafted (PR D) | fluency-builder (foundational) |
 | [Problem J3e-P14.2 — Liénard–Wiechert fields with the proper-time third term](#problem-j3e-p142--li%C3%A9nard-wiechert-fields-with-the-proper-time-third-term) | drafted (PR D) | **HEADLINE-PAYOFF (podcast pick #2)** |
+| [Problem J3e-P14.3 — Non-relativistic Larmor radiation formula](#problem-j3e-p143--non-relativistic-larmor-radiation-formula) | drafted (PR D) | **HEADLINE-PAYOFF (podcast pick #5)** |
 
 ---
 
@@ -193,3 +194,104 @@ The third term is **non-zero** for linearly-accelerated charges (bremsstrahlung 
 **Notes for author review:** **this is the campaign's load-bearing finding to date** and the document warrants the author's full read. The third term is mechanically derivable from the Gill–Zachary substitution rules applied to the Maxwell field equations, but its physical content — a longitudinal radiation component absent from classical EM — is a substantive claim that depends on the framework being the correct formulation. If issue #43's comparison against Cole/Poder/Wistisen 2018 data finds the prediction is *not* supported, this would constitute the campaign's first experimental falsification of the framework. If the prediction *is* supported (or is statistically indistinguishable from quantum-corrected Landau–Lifshitz), the result is a confirmation of the framework's experimental status. Either outcome warrants a separate entry in [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md); flagging here pending the #43 outcome.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh14_P14_2.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh14_P14_2.wl).
+
+---
+
+### Problem J3e-P14.3 — Non-relativistic Larmor radiation formula
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the non-relativistic Larmor formula `P = (2e^{2}a^{2})/(3c^{3})` is the simplest expression in classical electrodynamics for the total power radiated by an accelerating charge, treated in [[jackson1998_classical_electrodynamics]] §14.2. **Podcast pick #5** in [§12.1 of the campaign plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#121-per-problem-briefs); the pedagogical "middle rung" of the podcast gradient, where the proper-time correction is computable as a power series in `u/c` and the regime of experimental measurability is honestly addressed.
+- *Alternatives considered:* J3e-P14.4 (Larmor's formula for non-relativistic monochromatic source — partially covered) and J3e-P14.8 (relativistic Liénard formula — selected separately as J3e-P14.5 for the synchrotron treatment).
+- *Role in this PR:* **HEADLINE-PAYOFF**. Demonstrates the proper-time correction `P_{\text{PT}}/P_{\text{classical}} = 1 - (3/2)(u/c)^{2} + O((u/c)^{4})` and honestly addresses the regime where it is observable.
+
+<!-- TODO: human reviews and fills in — confirms the role of this problem as podcast pick #5's headline-payoff document and the framing of the "middle rung" of the podcast gradient -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 14.3 (and 2e Problem 14.3, equivalent at this number). *Paraphrased.*
+
+**Paraphrased statement:** Compute the total power radiated by a non-relativistically-accelerated point charge `q` of rest mass `m`, using both the classical Liénard–Wiechert formulation and the proper-time formulation of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] Eq. (7). Identify the leading-order proper-time correction as a function of `u/c`, and remark on the regime of experimental measurability.
+
+**Setup:** Point charge `q` with non-relativistic velocity `\mathbf{v}` (i.e., `v \ll c`) and acceleration `\mathbf{a}` of arbitrary magnitude. In the proper-time formulation, `\mathbf{u} \approx \mathbf{v}` and `b \approx c(1 + u^{2}/(2c^{2}))` to leading order.
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The Larmor formula for the total radiated power by a non-relativistic accelerated charge, derivable from the radiation-zone Liénard–Wiechert acceleration field of [Problem J3e-P14.2](#problem-j3e-p142--li%C3%A9nard-wiechert-fields-with-the-proper-time-third-term) (second term only, since the third term vanishes at `u \to 0`), is
+
+$$
+P_{\text{classical}} = \frac{2 e^{2} a^{2}}{3 c^{3}}.
+$$
+
+This is Jackson 3e Eq. (14.22). It applies in the limit `v \ll c`; at relativistic velocities, the relativistic Liénard formula must be used instead (treated in [Problem J3e-P14.5](#problem-j3e-p145--synchrotron-radiation-from-circular-motion)).
+
+#### (c) Proper-time reformulation
+
+The proper-time formulation produces the same total radiated power at the level of the radiation-zone field structure, but with the substitution `c \to b` in the prefactor:
+
+$$
+P_{\text{PT}} = \frac{2 e^{2} a^{2}}{3 b^{3}}.
+$$
+
+Expanding `b = c\sqrt{1 + u^{2}/c^{2}}` in powers of `u/c`,
+
+$$
+b^{3} = c^{3}\left[1 + \frac{u^{2}}{c^{2}}\right]^{3/2} = c^{3}\left[1 + \frac{3 u^{2}}{2 c^{2}} + \frac{3 u^{4}}{8 c^{4}} + \ldots\right].
+$$
+
+Substituting,
+
+$$
+P_{\text{PT}} = \frac{2 e^{2} a^{2}}{3 c^{3}}\left[1 - \frac{3 u^{2}}{2 c^{2}} + \frac{15 u^{4}}{8 c^{4}} - \ldots\right] = P_{\text{classical}}\left[1 - \frac{3 u^{2}}{2 c^{2}} + O((u/c)^{4})\right].
+$$
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[ee, aa, cc, uu];
+bExpansion = cc Sqrt[1 + uu^2/cc^2];
+larmorClassical = (2 ee^2 aa^2)/(3 cc^3);
+larmorPT = (2 ee^2 aa^2)/(3 bExpansion^3);
+ratio = FullSimplify[larmorPT/larmorClassical];
+seriesExp = Normal[Series[ratio, {uu, 0, 4}]];
+Print["P_PT / P_classical = ", ratio];
+Print["Series in u/c: ", seriesExp];
+(* Result: 1 - 3 uu^2/(2 cc^2) + 15 uu^4/(8 cc^4)  ✅ *)
+```
+
+The proper-time correction is **negative at leading order** (the proper-time formulation predicts *less* radiated power than the classical Larmor formula at the same observer-time velocity), with magnitude `(3/2)(u/c)^{2}`. The correction grows at fourth order with coefficient `+15/8`.
+
+#### Regime of experimental measurability
+
+The fractional correction as a function of velocity (using `u \approx v` at non-relativistic speeds):
+
+| Regime | `v/c` | Fractional correction `\Delta P/P` |
+|---|---|---|
+| Chemistry-scale electron | `\sim 10^{-2}` | `\sim -1.5 \times 10^{-4}` |
+| 1 keV electron | `\sim 0.06` | `\sim -5.4 \times 10^{-3}` |
+| 100 keV electron | `\sim 0.55` | `\sim -45\%` (order unity) |
+| Ultrarelativistic | `\to 1` | dominates |
+
+We observe the campaign's honest moment, articulated in the podcast brief and reaffirmed here: **the fractional correction is below the observational floor at the chemistry-scale velocities where Larmor is the right formula, and is order unity at the velocities where Larmor must be upgraded to the relativistic Liénard expression.** The proper-time correction is, in the strict non-relativistic limit, theoretically computable but experimentally inaccessible; in the relativistic limit it is experimentally accessible but the formula has been replaced.
+
+This is the campaign's most pedagogically honest observation: the proper-time formulation produces a correction in a regime that is neither cleanly Larmor-applicable nor cleanly Liénard-applicable. The experimental test of the proper-time prediction must therefore come from the *relativistic* regime — the Liénard formula with the third-term contribution of [Problem J3e-P14.2](#problem-j3e-p142--li%C3%A9nard-wiechert-fields-with-the-proper-time-third-term), as probed by the experiments referenced in issue [#43](https://github.com/temoTxt/PyPhysics/issues/43).
+
+<!-- TODO: human reviews and fills in — confirms the honest moment that the non-relativistic Larmor regime is "below floor where the formula is gorgeous; gorgeous where the formula needs upgrade". The podcast Experimentalist persona's hand-off to J3e-P14.2 and PR E content is articulated here -->
+
+#### Connection to bremsstrahlung
+
+Linear deceleration of a charge (bremsstrahlung) provides a real experimental setting where the proper-time correction is finite and computable. At electron energies of ~MeV — typical for synchrotron-radiation X-ray sources and for the bremsstrahlung X-rays of clinical linacs — the proper-time correction would be `\sim 10^{-3}` to `\sim 10^{-1}`. Precision bremsstrahlung-spectrum measurements achieve `\sim 1\%` accuracy in their classical-Born-approximation regime; the proper-time prediction is at the edge of distinguishability but not currently a clean test. [Problem J3e-P14.6](#problem-j3e-p146--bremsstrahlung-from-a-linearly-decelerating-charge) treats this configuration in detail.
+
+**Comparison:**
+
+| Quantity | Classical (Gaussian) | Proper-time |
+|---|---|---|
+| Radiated power | `(2e^{2}a^{2})/(3c^{3})` | `(2e^{2}a^{2})/(3b^{3})` |
+| Leading correction | none | `\times[1 - (3/2)(u/c)^{2}]` |
+| Validity regime | `v \ll c` | same |
+| Measurable? | yes, at chemistry-scale | only at speeds where Larmor breaks down |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no, at this level. The proper-time prediction is *precisely* the classical Larmor formula with `c \to b`. The "new physics" of the proper-time formulation does not surface in the non-relativistic regime; it surfaces in the third term of Eq. (7), which is `O((u\cdot a)/b^{4})` and is suppressed by `(u/c)^{2}` at non-relativistic velocities.
+
+**Verdict:** ✅ all formulations consistent. The proper-time correction to non-relativistic Larmor is a computable `O((u/c)^{2})` shift below the observational floor at chemistry-scale velocities; the operationally measurable signature of the proper-time formulation lives in the relativistic regime (Liénard formula plus third term — issue #43).
+
+**Notes for author review:** the podcast Experimentalist's hand-off to Cole/Poder/Wistisen 2018 experiments is the natural narrative move from this problem. The proper-time correction to Larmor is *real* and *computable*, but the regime in which it is large enough to measure is the regime where Larmor has been replaced by Liénard. This is the campaign's most pedagogically honest observation, and it is articulated as the load-bearing message of podcast pick #5. Not posted to `FINDINGS_for_author_review.md` — the result is consistent with classical EM at the level of the Larmor approximation, with a documented but unobservable correction.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh14_P14_3.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh14_P14_3.wl).
