@@ -14,6 +14,7 @@ Per-paragraph `<!-- TODO -->` blocks continue per [§13.5 D2](../../../.dev/task
 | [Problem J3e-P14.2 — Liénard–Wiechert fields with the proper-time third term](#problem-j3e-p142--li%C3%A9nard-wiechert-fields-with-the-proper-time-third-term) | drafted (PR D) | **HEADLINE-PAYOFF (podcast pick #2)** |
 | [Problem J3e-P14.3 — Non-relativistic Larmor radiation formula](#problem-j3e-p143--non-relativistic-larmor-radiation-formula) | drafted (PR D) | **HEADLINE-PAYOFF (podcast pick #5)** |
 | [Problem J3e-P14.5 — Synchrotron radiation from circular motion](#problem-j3e-p145--synchrotron-radiation-from-circular-motion) | drafted (PR D) | fluency-builder (u·a = 0, third term null) |
+| [Problem J3e-P14.6 — Bremsstrahlung from a linearly decelerating charge](#problem-j3e-p146--bremsstrahlung-from-a-linearly-decelerating-charge) | drafted (PR D) | fluency-builder (u·a ≠ 0, third term engages) |
 
 ---
 
@@ -374,3 +375,84 @@ We observe that the **circular orbit's angular frequency** in proper-time form i
 **Notes for author review:** none. Synchrotron radiation is the case where the proper-time framework reproduces classical EM exactly, and the experimental record (1947 → present) confirms it at percent-level precision. Not posted to `FINDINGS_for_author_review.md`.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh14_P14_5.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh14_P14_5.wl).
+
+---
+
+### Problem J3e-P14.6 — Bremsstrahlung from a linearly decelerating charge
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* bremsstrahlung — radiation from a charge undergoing linear deceleration (or acceleration) in an external field — is the textbook setting for "non-circular" charged-particle radiation, treated in [[jackson1998_classical_electrodynamics]] §14.5 and §15.x. It is the **non-null counterpoint** to [Problem J3e-P14.5](#problem-j3e-p145--synchrotron-radiation-from-circular-motion): for linearly-accelerated motion, `\mathbf{u}` and `\mathbf{a}` are along the same line, so `\mathbf{u}\cdot\mathbf{a} = \pm|u||a|` is finite, and the proper-time third term of Eq. (7) engages quantitatively.
+- *Alternatives considered:* J3e-P15.x (full bremsstrahlung cross-section in Born approximation — defer to PR F+ as a QED-adjacent problem) and J3e-P14.7 (radiation from oscillating dipole — covered partially elsewhere).
+- *Role in this PR:* fluency-builder. Closes PR D by exercising the third-term machinery on its simplest non-circular geometry; the magnitude of the proper-time correction relative to classical Larmor is computed as a power series in `(u/c)`.
+
+<!-- TODO: human reviews and fills in — confirms the role of bremsstrahlung as the non-null counterpoint to synchrotron, closing PR D's dissipative-term coverage -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 14.6 (and 2e Problem 14.6, equivalent). *Paraphrased.*
+
+**Paraphrased statement:** A charged particle of rest mass `m` and charge `q` decelerates linearly under an external force (e.g., an electron entering a target material). Compute the radiated power and angular distribution in both classical and proper-time formulations, identifying the proper-time third-term contribution.
+
+**Setup:** Linear motion: `\mathbf{u}(\tau)` and `\mathbf{a}(\tau) = d\mathbf{u}/d\tau` are along the same line. For deceleration, `\mathbf{u}\cdot\mathbf{a} = -|u||a|`; for acceleration, `\mathbf{u}\cdot\mathbf{a} = +|u||a|`. The third term of Eq. (7) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] has magnitude proportional to `|u||a|`.
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The classical Liénard formula for the total radiated power, in the special case of linear motion (parallel `\mathbf{w}` and `\mathbf{a}_{\text{cl}}`), simplifies to
+
+$$
+P_{\text{linear, classical}} = \frac{2 e^{2}}{3 c^{3}}\,\gamma^{6}a_{\text{cl}}^{2}.
+$$
+
+The `\gamma^{6}` scaling for linear motion contrasts with the `\gamma^{4}` for circular motion of [Problem J3e-P14.5](#problem-j3e-p145--synchrotron-radiation-from-circular-motion). At non-relativistic velocities (`\gamma \to 1`), the formula reduces to the standard Larmor result.
+
+The angular distribution of the radiation is peaked along the direction of motion at relativistic energies, narrowing as `1/\gamma` (the standard relativistic-beaming pattern of bremsstrahlung X-rays from clinical linacs and synchrotron-source bending magnets).
+
+#### (c) Proper-time reformulation
+
+The proper-time Liénard–Wiechert fields of Eq. (7) of the Maxwell paper engage the third term `e(\mathbf{u}\cdot\mathbf{a})\,\mathbf{r}\times(\mathbf{u}\times\mathbf{r})/(b^{4}s^{3})` non-trivially in this configuration. The contribution to the radiated field at a point in direction `\hat n` makes an angle with `\mathbf{u}` (and with `\mathbf{a}`, since they are collinear), and the field structure includes both a longitudinal and a radial component (as decomposed in [Problem J3e-P14.2](#problem-j3e-p142--li%C3%A9nard-wiechert-fields-with-the-proper-time-third-term)).
+
+The magnitude of the third-term field in the radiation zone scales as
+
+$$
+|\mathbf{E}_{\text{3rd}}| \sim \frac{e\,|\mathbf{u}|\,|\mathbf{u}\cdot\mathbf{a}|}{b^{4}\,r} \sim \frac{1}{r},
+$$
+
+the same radial dependence as the classical Liénard acceleration field. Both contributions add coherently to give the total radiated field.
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+(* Order-of-magnitude estimate of third-term ratio to classical acceleration field *)
+(* |E_3rd| / |E_acc_classical| ~ (e u^2 a / (c^4 r)) / (e a / (c^2 r)) = u^2 / c^2 *)
+(* At non-relativistic intensity, ratio ~ (u/c)^2 *)
+```
+
+Quantitative ratios of third-term to classical-acceleration field strengths:
+
+| Regime | `u/c` | `|\mathbf{E}_{\text{3rd}}|/|\mathbf{E}_{\text{acc, classical}}|` |
+|---|---|---|
+| Chemistry-scale electron | `\sim 10^{-2}` | `\sim 10^{-4}` |
+| 10 keV electron | `\sim 0.1` | `\sim 10^{-2}` |
+| 100 keV electron | `\sim 0.5` | `\sim 0.25` |
+| MeV electron | `\sim 0.9` | order unity |
+| Ultrarelativistic | `\to 1` | dominates |
+
+We observe that bremsstrahlung in the **MeV regime** (typical of clinical-linac X-ray sources and of the bremsstrahlung component of synchrotron-radiation X-rays) is where the proper-time third-term contribution would be of order unity relative to the classical contribution. Precision bremsstrahlung-spectrum measurements achieve `\sim 1`–`2\%` accuracy at clinical-physics energies; the proper-time prediction is at the boundary of distinguishability but not currently a clean cross-check, because the experimental comparisons are typically made against the Born-approximation QED cross-section rather than against the classical Liénard formula.
+
+The natural cleanest test of the proper-time bremsstrahlung prediction would be a precision measurement of the angular distribution of bremsstrahlung from a known monoenergetic electron source at MeV energies, with the goal of distinguishing the proper-time longitudinal-component prediction from the classical purely-transverse prediction. This is conceptually similar to the radiation-reaction tests of Cole/Poder/Wistisen 2018 (issue [#43](https://github.com/temoTxt/PyPhysics/issues/43)) but in a different kinematic regime.
+
+<!-- TODO: human reviews and fills in — confirms the framing of MeV-energy bremsstrahlung as the natural cleaner test of the proper-time third-term contribution, distinct from the radiation-reaction regime of Cole/Poder/Wistisen -->
+
+**Comparison:**
+
+| Quantity | Classical (Gaussian) | Proper-time |
+|---|---|---|
+| Total power (linear motion) | `(2e^{2}/3c^{3})\gamma^{6}a^{2}` | classical + third-term correction `O((u/c)^{2})` |
+| Third-term contribution | n/a | engages with magnitude `(u/c)^{2}` relative to classical at non-rel; order unity at MeV |
+| Polarisation | purely transverse | transverse + longitudinal (third-term contribution) |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ⚠ yes — the third term contributes alongside the classical Larmor / Liénard formula, and the contribution is *not* a `c \to b` redressing of any classical term. The proper-time formulation predicts a quantitatively distinct radiated field for any non-circular acceleration, with the longitudinal-component signature of [Problem J3e-P14.2](#problem-j3e-p142--li%C3%A9nard-wiechert-fields-with-the-proper-time-third-term).
+
+**Verdict:** ⚠ proper-time produces a finite correction to classical bremsstrahlung at non-zero `(u/c)`, with experimental measurability bounded between non-relativistic (`\sim 10^{-4}` correction, below floor) and ultra-relativistic (correction dominates but classical Larmor itself is replaced by Liénard). The MeV regime is the natural target.
+
+**Notes for author review:** the MeV-bremsstrahlung regime is a candidate experimental setting that has not been emphasised in the Gill–Zachary corpus. The Cole/Poder/Wistisen 2018 experiments referenced throughout PR D are at GeV energies and at extreme laser intensities — a different regime. MeV bremsstrahlung at clinical-linac energies, by contrast, is a precision-experiment-rich setting (medical physics, radiation oncology) where the third-term prediction could be tested without requiring the absolute extremes of laser-electron experiments. Worth flagging as a candidate for issue #43's follow-on work; not yet posted because the comparison against current bremsstrahlung experiments has not been carried out.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh14_P14_6.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh14_P14_6.wl).

@@ -21,7 +21,7 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 | Ch. 11 | Special Theory of Relativity | CGS only (3e Chs. 11+) | **PR B** | 5 / 5 | PR B drafted — see [`Ch11`](Ch11_Special_Relativity.md) |
 | Ch. 12 | Dynamics of Relativistic Particles and EM Fields ⭐ | CGS only | **PR C** | 5 / 5 | PR C drafted — see [`Ch12`](Ch12_Relativistic_Dynamics.md) |
 | Ch. 13 | Collisions, Energy Loss, Scattering of Charged Particles | CGS only | PR F+ | 0 / 4–6 | planned |
-| Ch. 14 | Radiation by Moving Charges ⭐ | CGS only | **PR D** | 4 / 5 | PR D in progress — see [`Ch14`](Ch14_Radiation_by_Moving_Charges.md) |
+| Ch. 14 | Radiation by Moving Charges ⭐ | CGS only | **PR D** | 5 / 5 | PR D drafted — see [`Ch14`](Ch14_Radiation_by_Moving_Charges.md) |
 | Ch. 15 | Bremsstrahlung, Method of Virtual Quanta | CGS only | PR F+ | 0 / 4–6 | planned |
 | Ch. 16 | Radiation Damping, Classical Models of Charged Particles ⭐ | CGS only | **PR E** | 0 / 3–5 | planned |
 
