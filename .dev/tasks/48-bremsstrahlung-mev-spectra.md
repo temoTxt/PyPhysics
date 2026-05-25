@@ -5,13 +5,19 @@
 
 ## 1. Four findings from the pre-plan triage that materially shape execution
 
-### 1a. **The issue's claimed PR-D dependency is not visible in the repository as of this plan**
+### 1a. **PR D dependency is now satisfied; the #42 campaign has shipped through PR K**
 
-The issue body asserts that PR D of #42 is "drafted as of 2026-05-24 (commits `31c7779` through `8793f90` on branch `42-electromagnetism-jackson-canonical-problems-cgssi-proper-time-maxwell`)." Neither of those commit hashes resolves in the local git database (`git cat-file -t 31c7779` returns *"Not a valid object name"*), no file at `Roadmapping/Electromagnetism/Jackson/Ch14_Radiation_by_Moving_Charges.md` exists on any branch visible to this checkout, and the `origin/42-*` branch terminates at `1c7b376` (PR A closed) — the PR-D commits are absent.
+(Revised 2026-05-25 after Trey confirmed the push completed and the #42 branch advanced.) The full #42 campaign now lives on this branch via merge `f2a6010`: PR B (Ch. 11), PR C (Ch. 12), **PR D (Ch. 14)**, PR E (Ch. 16), PR F (Ch. 7), PR G (Ch. 4), PR H (Ch. 8), PR I (Ch. 9), PR J (Chs. 10 + 13 + 15), PR K (Chs. 1, 2, 3, 5 supplementaries). The expected commits `31c7779` (PR D problem 1 of 5: P14.1) and `8793f90` (PR D problem 5 of 5: P14.6) are present.
 
-Three possible explanations: (i) PR D was drafted in a local working tree that hasn't been pushed; (ii) PR D was drafted on a fork or in a worktree that this checkout cannot see; (iii) the issue body was written aspirationally ahead of the commits being made.
+**The canonical bremsstrahlung derivation #48's prediction document is built on top of lives at [[Ch14_Radiation_by_Moving_Charges#Problem J3e-P14.6 — Bremsstrahlung from a linearly decelerating charge]].** That document already establishes:
 
-**Implication.** This plan proceeds on the same posture #43 took: the prediction document re-quotes Eq. (7) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] self-contained, with a §6 PR-D reconciliation list that fires when PR D actually lands. The plan flags this dependency-resolution as Open Question 1 in §6.
+- The classical Liénard `γ^6 a^2` formula for linear motion (contrasts with the `γ^4` for circular motion in P14.5).
+- The proper-time third-term scaling `|E_3rd|/|E_acc,classical| ~ (u/c)^2` at non-relativistic intensity → **order unity at MeV** electron energies → **dominates** in the ultra-relativistic limit.
+- A table of (`u/c`) → ratio at chemistry-scale, 10 keV, 100 keV, MeV, and ultrarelativistic.
+- The verdict `⚠` — proper-time produces a quantitatively distinct radiated field for any non-circular acceleration; the longitudinal polarisation signature is the experimental discriminator.
+- The closing "Notes for author review" already explicitly identifies MeV bremsstrahlung at clinical-linac energies as a candidate follow-on to #43 — i.e., this issue #48 was anticipated in PR D's own commentary.
+
+**Implication for #48's prediction document.** §2 reduces from "self-contained restatement of Eq. (7)" (the #43 pattern) to a wikilink pointer to the Ch14 P14.6 canonical derivation. The substantive work of #48 is **per-energy specialization** to clinical-linac 1 / 6 / 18 MeV against the specific bibliography of bremsstrahlung-spectrum measurements scaffolded in Stage 1, plus the cross-experiment summary. The §6 "PR-D reconciliation list" originally planned as a deferred-work item is now satisfied at the structural level by virtue of the canonical derivation existing; what remains is the per-experiment specialisation.
 
 ### 1b. **The third-term contribution is genuinely large at clinical-linac energies**
 
@@ -38,7 +44,7 @@ Three of six papers require Trey to download (institutional access via APS / Els
 
 ## 2. What this plan does NOT do
 
-Per §1a: this plan does **not** assume PR D's canonical Ch. 14 Liénard–Wiechert derivation exists. The prediction document re-quotes Eq. (7) self-contained, with the §6 PR-D reconciliation list firing once PR D actually lands and the canonical derivation becomes wikilink-able.
+(Revised 2026-05-25 — PR D dependency now satisfied per §1a above.) The prediction document does **not** re-derive the proper-time third term self-contained; it wikilinks to [[Ch14_Radiation_by_Moving_Charges#Problem J3e-P14.6 — Bremsstrahlung from a linearly decelerating charge]] and specializes from there. The previously-planned §6 PR-D reconciliation list is folded into the document's structure from the outset rather than being a deferred-work item.
 
 Per the issue's own scope guards: this plan does NOT engage clinical-physics interpretation (dosimetry), Born-approximation refinements that already account for the proper-time third term (we compare to *current* tabulated cross-sections), or radiation-reaction effects (negligible at clinical-linac energies; this is a pure Liénard–Wiechert third-term test, distinct from #43).
 
@@ -138,6 +144,7 @@ If a clinical-medical-physics collaborator becomes reachable independently of th
 
 **Open (need Trey's input before Stage 2/3 ramp-up):**
 
-1. **PR-D commits not yet visible to this checkout.** Trey says PR D is on GitHub for me to pull in, but `origin/42-electromagnetism-jackson-canonical-problems-cgssi-proper-time-maxwell` still terminates at `1c7b376` (PR A closed) and the `Ch14_Radiation_by_Moving_Charges.md` file does not exist on any branch reachable from this checkout. *Action required: Trey verifies the PR-D push went through (perhaps the push hasn't completed, or the commits are on a different branch / fork I cannot see).* This plan continues to operate in the self-contained posture from §1a until PR D becomes visible; once it is, the §6 of the prediction document fires its reconciliation list.
+1. ~~PR-D commits not yet visible~~ **RESOLVED 2026-05-25:** Trey pushed; the full #42 campaign (PR B through PR K) merged into this branch as `f2a6010`. PR D's Ch. 14 P14.6 derivation is now the canonical anchor for #48 — see §1a above.
 2. **Three target energies.** The issue calls out 1, 6, 18 MeV as "typical of clinical linacs." Lock to those three, or add (e.g.) 25 MeV (high-end clinical) or 0.5 MeV (sub-MeV) to expand the signature curve? *Recommendation: lock to the three the issue specifies; expansion happens in a follow-on PR if the comparison surfaces interesting energy-dependence.*
-3. **`.wl` notebook scope.** Empty-cell scaffold ships in this PR, or full Wolfram computation deferred until Stage 3? *Recommendation: empty scaffold ships in this PR (mirrors the campaign convention from PR 0 / PR A where every per-problem document has a companion notebook); full Wolfram MCP-augmented computation in Stage 3 once Zorns engages.*
+3. **`.wl` notebook scope.** Empty-cell scaffold ships in this PR, or full Wolfram computation deferred until Stage 3? *Recommendation: empty scaffold ships in this PR (mirrors the campaign convention; per-problem .wl notebooks are now plentiful on the merged branch); full Wolfram MCP-augmented computation in Stage 3 once Zorns engages.*
+4. **Relationship to Ch15 P15.x backfill.** PR J landed [`Ch15_Bremsstrahlung_Virtual_Quanta.md`](../Roadmapping/Electromagnetism/Jackson/Ch15_Bremsstrahlung_Virtual_Quanta.md) — should #48's prediction doc cross-reference it, and conversely should Ch15 grow a forward-pointer to the Experimental_Comparisons document? *Recommendation: bidirectional cross-link in Stage 2.*
