@@ -11,7 +11,7 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 | Ch. 1 | The Wave Function | **PR A** | 3 / 3 | ✅ drafted — see [`Ch01`](Ch01_Wave_Function.md) |
 | Ch. 2 | Time-Independent Schrödinger Equation | **PR B** | 4 / 4 | ✅ drafted — see [`Ch02`](Ch02_TI_Schrodinger.md) |
 | Ch. 3 | Formalism | **PR C** | 3 / 3 | ✅ drafted — see [`Ch03`](Ch03_Formalism.md) |
-| Ch. 4 ⭐ | Quantum Mechanics in Three Dimensions (hydrogen) | **PR D** | 0 / 5–7 | planned (pivot) |
+| Ch. 4 ⭐ | Quantum Mechanics in Three Dimensions (hydrogen) | **PR D** | 5 / 5 | ✅ drafted — see [`Ch04`](Ch04_QM_3D.md) |
 | Ch. 5 | Identical Particles | PR E | 0 / 3–4 | planned |
 | Ch. 6 | Symmetries and Conservation Laws | PR F | 0 / 3–4 | planned |
 | Ch. 7 ⭐ | Time-Independent Perturbation Theory (fine structure) | **PR G** | 0 / 5–7 | planned (headline) |
