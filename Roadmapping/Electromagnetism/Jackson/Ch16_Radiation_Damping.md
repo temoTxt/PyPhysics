@@ -12,6 +12,7 @@ Ch. 16 is the campaign's **second headline-payoff chapter** (alongside Ch. 14). 
 |---|---|---|
 | [Problem J3e-P16.1 — Abraham–Lorentz radiation reaction and the proper-time dissolution claim](#problem-j3e-p161--abrahamlorentz-radiation-reaction-and-the-proper-time-dissolution-claim) | drafted (PR E) | **HEADLINE-PAYOFF (podcast pick #3)** |
 | [Problem J3e-P16.2 — Radiation-reaction damping of a harmonic oscillator](#problem-j3e-p162--radiation-reaction-damping-of-a-harmonic-oscillator) | drafted (PR E) | fluency-builder (concrete example) |
+| [Problem J3e-P16.3 — Runaway and pre-acceleration: detailed IVP analysis](#problem-j3e-p163--runaway-and-pre-acceleration-detailed-ivp-analysis) | drafted (PR E) | headline-adjacent (pathology detail) |
 
 ---
 
@@ -216,3 +217,106 @@ We observe that for the practical regime of atomic-transition linewidths (`\Gamm
 **Notes for author review:** none. The natural linewidth is the cleanest concrete example of radiation-reaction damping, and the agreement between classical and proper-time formulations in this regime is robust.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh16_P16_2.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh16_P16_2.wl).
+
+---
+
+### Problem J3e-P16.3 — Runaway and pre-acceleration: detailed IVP analysis
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the detailed solution of the Abraham–Lorentz equation under a step-function external force exhibits both pathologies (runaway and pre-acceleration) explicitly, with the precise form of each pathology in evidence. Standard in [[jackson1998_classical_electrodynamics]] §16.x and a topic of 120 years of foundational debate.
+- *Alternatives considered:* J3e-P16.4 (Lorentz–Abraham–Dirac relativistic generalisation — selected next as the final test-case problem) and J3e-P16.7 (Bound-state classical-electron model — defer to PR F+).
+- *Role in this PR:* headline-adjacent. Sharpens the structural argument of J3e-P16.1 with the explicit pre-acceleration solution form.
+
+<!-- TODO: human reviews and fills in — confirms the role of this problem as the detail-and-sharpening companion to J3e-P16.1's headline claim -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 16.3 (and 2e Problem 16.3, equivalent). *Paraphrased.*
+
+**Paraphrased statement:** Consider an initially-at-rest charged particle subjected to a step-function external force `\mathbf{F}_{\text{ext}}(t) = F_{0}\hat x\,\theta(t)`. Solve the classical Abraham–Lorentz equation of motion under the asymptotic boundary condition `\mathbf{a}(t \to \infty) = F_{0}/m`. Display the resulting pre-acceleration solution explicitly. Carry out the analogous initial-value problem in the proper-time framework and contrast.
+
+**Setup:** Particle initially at rest at the origin. External force `\mathbf{F}_{\text{ext}} = F_{0}\hat x\,\theta(t)`. The classical Abraham–Lorentz equation is `m\mathbf{a} = \mathbf{F}_{\text{ext}} + m\tau_{0}\,d\mathbf{a}/dt`, or equivalently `a - \tau_{0}\,da/dt = F_{\text{ext}}/m` (taking the `\hat x` component).
+
+#### (a) Classical solution — Gaussian (CGS)
+
+##### For `t < 0` (no external force):
+
+The equation reduces to `a - \tau_{0}\,da/dt = 0`, with general solution `a(t) = A\,e^{t/\tau_{0}}`. The constant `A` is determined by matching to the `t > 0` solution at `t = 0`.
+
+##### For `t \ge 0` (constant external force `F_{0}`):
+
+The equation is `a - \tau_{0}\,da/dt = F_{0}/m`, with general solution `a(t) = F_{0}/m + B\,e^{t/\tau_{0}}`. To impose the asymptotic boundary condition `a(t \to \infty) = F_{0}/m` (the Newtonian limit), we require `B = 0`, giving `a(t \ge 0) = F_{0}/m`.
+
+##### Matching at `t = 0`:
+
+Continuity of `a(t)` at `t = 0` requires `A = F_{0}/m`. The complete pre-acceleration solution is therefore
+
+$$
+a(t) = \begin{cases}\dfrac{F_{0}}{m}\,e^{t/\tau_{0}} & t < 0,\\[1ex] \dfrac{F_{0}}{m} & t \ge 0.\end{cases}
+$$
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[a, tt, tau0, ff0, mm];
+preAccSolNegT = a[tt] /.
+   DSolve[{a[tt] - tau0 D[a[tt], tt] == 0,
+      a[0] == ff0/mm}, a[tt], tt][[1]];
+preAccSolPosT = a[tt] /.
+   DSolve[{a[tt] - tau0 D[a[tt], tt] == ff0/mm,
+      a[0] == ff0/mm}, a[tt], tt][[1]];
+(* preAccSolNegT = (ff0/mm) Exp[tt/tau0]  ✅
+   preAccSolPosT = ff0/mm  ✅ *)
+```
+
+##### The pre-acceleration is real and unphysical
+
+Numerical estimates: at `t = -\tau_{0}`, `a = (F_{0}/m)/e \approx 0.37(F_{0}/m)`; at `t = -3\tau_{0}`, `a \approx 0.05(F_{0}/m)`. The pre-acceleration is a *finite* effect over a *finite* timescale `\sim \tau_{0}` before the force is applied.
+
+For an electron, `\tau_{0} \approx 6 \times 10^{-24}` s. The pre-acceleration is therefore observationally negligible for any classical-physics experiment (which operates at timescales `\gg \tau_{0}`), but it is **structurally unphysical**: it violates causality, since the particle's response begins before the cause.
+
+The standard interpretation of the pre-acceleration is that the classical Abraham–Lorentz equation is not a literally correct description of charged-particle dynamics at the `\tau_{0}` timescale — it is an *effective theory* whose breakdown at `\tau_{0}` is the boundary of classical EM's validity. Below `\tau_{0}` (i.e., at higher energies / shorter timescales), quantum-electrodynamic effects (electron–positron pair production, vacuum polarisation, photon-electron scattering) become important and the classical description is no longer adequate. The pre-acceleration is thus diagnosed not as a real physical effect but as an artefact of pushing classical EM past its regime of validity.
+
+#### (c) Proper-time reformulation
+
+The proper-time formulation gives a structurally different equation of motion. Per Eq. (4) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]], the dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}\,\partial/\partial\tau` term in the wave equation produces a radiation-reaction drag that is **first-order** in `\partial/\partial\tau`, not third-order. The schematic equation of motion in proper-time is
+
+$$
+m\,\frac{d\mathbf{u}}{d\tau} = \mathbf{F}_{\text{ext}} - \Gamma_{\text{dissipative}}(\mathbf{u}, \mathbf{a}),
+$$
+
+where `\Gamma_{\text{dissipative}}` is derivable from the dissipative term and is first-order in the unknown function `\mathbf{u}(\tau)`. The standard causal initial-value problem applies: given `\mathbf{u}(0) = 0` (particle initially at rest), `\mathbf{u}(\tau)` is uniquely determined for all `\tau > 0`, with no pre-acceleration and no runaway.
+
+For a step-function external force `\mathbf{F}_{\text{ext}} = F_{0}\hat x\,\theta(\tau)`, the proper-time solution has `\mathbf{u}(\tau < 0) = 0` (causal initial condition), and `\mathbf{u}(\tau \ge 0)` grows from zero with the radiation-reaction-modified acceleration. The asymptotic state is `\mathbf{u}(\tau \to \infty) = F_{0}\tau/m + \mathcal{O}(\text{RR corrections})` — Newton's law plus a small correction.
+
+We observe that the structural absence of pre-acceleration in the proper-time formulation is not a coincidence of this particular external force; it is a generic consequence of the equation being first-order in `\partial_{\tau}`. Any first-order initial-value problem with causal initial conditions has causal evolution; the classical pre-acceleration pathology requires the *third*-order structure of Abraham–Lorentz, which the proper-time formulation does not have.
+
+<!-- TODO: human reviews and fills in — confirms the structural argument that "first-order in partial_tau implies causal IVP, therefore no pre-acceleration" is correct in full generality. This is the load-bearing piece of the dissolution claim from J3e-P16.1 -->
+
+##### What the dissolution does NOT eliminate
+
+A non-trivial question is whether the proper-time formulation's first-order structure produces *correct* radiation-reaction dynamics at all kinematic configurations. Specifically:
+
+- At **non-relativistic energies**, the proper-time formulation reproduces the classical Larmor damping rate of [Problem J3e-P16.2](#problem-j3e-p162--radiation-reaction-damping-of-a-harmonic-oscillator) to leading order. Good.
+- At **moderate relativistic energies** (`u \sim c`), the third-term contribution of [Problem J3e-P14.2](Ch14_Radiation_by_Moving_Charges.md#problem-j3e-p142--li%C3%A9nard-wiechert-fields-with-the-proper-time-third-term) engages, and the proper-time RR drag differs from the Landau–Lifshitz approximation to classical Abraham–Lorentz–Dirac by order-unity corrections. Whether the proper-time prediction or the LL prediction matches experimental data is the **open question of issue #43**.
+- At **extreme relativistic energies** (`u \gg c` in proper-time, equivalently `\gamma \gg 1` in classical), QED effects (pair production, virtual photons) become important and neither the classical nor the proper-time *classical* RR theory is adequate. Both formulations agree on this limit-of-applicability.
+
+The proper-time dissolution claim is therefore correctly framed as: *the proper-time formulation does not have the pathologies of classical Abraham–Lorentz–Dirac in the regime where both classical formulations claim to apply*. Whether the proper-time formulation extends correctly into the moderate-relativistic regime where Cole/Poder/Wistisen 2018 measurements live is a separate question that issue #43 is testing.
+
+<!-- TODO: human reviews and fills in — confirms the three-tier honest framing: non-relativistic agreement / moderate-relativistic open question / extreme-relativistic out of both theories' scope. Important to keep all three tiers visible -->
+
+**Comparison:**
+
+| Regime | Classical AL | Proper-time |
+|---|---|---|
+| `t < 0` with future step force | `a(t) = (F_{0}/m)\,e^{t/\tau_{0}}` (pre-acceleration) | `a(t < 0) = 0` (causal) |
+| `t \to \infty` after step force | `a = F_{0}/m` (Newton) | `a \to F_{0}/m` plus RR correction |
+| Runaway solutions | exist (exponential growth) | not present |
+| IVP well-posedness | requires asymptotic BC | standard causal IVP |
+| Pathology timescale | `\tau_{0} \sim 10^{-24}` s | n/a |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** **⚠ yes — and structurally so**, as in J3e-P16.1. The pre-acceleration and runaway pathologies are structural artefacts of the third-order Abraham–Lorentz equation; the proper-time first-order dissipative term has no analogous artefacts.
+
+**Verdict:** ⚠ **the proper-time formulation eliminates the runaway and pre-acceleration pathologies of classical Abraham–Lorentz by structural difference, not by coefficient adjustment.** This sharpens the J3e-P16.1 dissolution claim with the explicit pre-acceleration solution form. Whether the dissolution is physically correct (i.e., whether the proper-time RR gives the right answer in all kinematic regimes) remains the open question of issue #43.
+
+**Notes for author review:** the explicit pre-acceleration solution `a(t<0) = (F_{0}/m)\,e^{t/\tau_{0}}` is the standard textbook diagnostic of the Abraham–Lorentz pathology; recording it here makes the dissolution claim of J3e-P16.1 concrete and verifiable. The three-tier honest framing (non-relativistic OK, moderate-relativistic open, extreme-relativistic out of scope) is the load-bearing summary of the proper-time RR claim. Not posted to `FINDINGS_for_author_review.md` separately — included in the J3e-P16.1 author-review note.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh16_P16_3.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh16_P16_3.wl).
