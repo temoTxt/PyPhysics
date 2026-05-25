@@ -84,12 +84,21 @@ Print["  required r_e/r_0 for g_e:  ", InputForm[x /. First @ Solve[gr[x] == -2.
 
 **For the muon and proton (Eq. III.23):** The formulas $g_\mu^a$, $g_p^a$ are stated, but the corresponding cutoff values $r_\mu$, $r_p$ are not given numerically — so no analogous numerical check was possible.
 
-**Downstream operational consequences (added 2026-05-25 from #50 campaign):** Beyond the original $g_e$ disagreement, the published $r_e$ propagates into the dual-Dirac fine-structure prediction. Per [BS-§14.2 of the Bethe–Salpeter campaign](../Quantum_Mechanics/Bethe_Salpeter/03_FineStructure.md#result-bs-142--2p--2p-fine-structure-splitting-branched), the branched verdict is:
+**Downstream operational consequences (added 2026-05-25 from #50 campaign):** Beyond the original $g_e$ disagreement, the published $r_e$ propagates into multiple precision atomic-physics observables. Per the Bethe–Salpeter campaign, three independent observables now exhibit the same branched verdict:
 
-- **Branch (b)** as-published $r_e \approx 0.499857$: predicts $\Delta E_{FS}(2P_{3/2} - 2P_{1/2}) \approx 10{,}952$ MHz, disagrees with CODATA-2018 measurement $10{,}969.13(10)$ MHz by $\sim 17$ MHz (1.5×10⁻³ fractional).
-- **Branch (c)** corrected $r_e \approx 0.499420$: predicts $\sim 10{,}962$ MHz, agreeing with measurement at the Bethe-estimate precision the campaign can deliver ($\sim 7$ MHz residual from missing two-loop).
+- **Hydrogen fine structure ($2P_{3/2}-2P_{1/2}$)** — [BS-§14.2 of Bethe–Salpeter campaign](../Quantum_Mechanics/Bethe_Salpeter/03_FineStructure.md#result-bs-142--2p--2p-fine-structure-splitting-branched).
+  - Branch (b) as-published $r_e$: predicts $10{,}952$ MHz vs measured $10{,}969.13(10)$ MHz; $\sim 17$ MHz residual (1.5×10⁻³ fractional). ⚠
+  - Branch (c) corrected $r_e$: predicts $10{,}962$ MHz; $\sim 7$ MHz residual (matches QED 2-loop). ✅
 
-The same branched structure is expected to recur in PR F (hyperfine, ~12-sig-fig measured). This is not a new independent finding — it is the same Finding 2 with a new operational signature in precision fine-structure spectroscopy.
+- **Hydrogen 1S hyperfine splitting (21-cm line, $1{,}420.405\,751\,768(2)$ MHz)** — [BS-§22.1 of Bethe–Salpeter campaign](../Quantum_Mechanics/Bethe_Salpeter/06_Hyperfine.md#result-bs-221--fermi-contact-term-and-21-cm-line-branched).
+  - Branch (b) as-published $r_e$: predicts $1{,}418.81$ MHz; $\sim 1.6$ MHz residual (1.1×10⁻³ fractional, **~6 orders of magnitude larger than measurement uncertainty**). ⚠
+  - Branch (c) corrected $r_e$: predicts $1{,}420.04$ MHz; $\sim 0.4$ MHz residual (matches QED 1-loop precision floor). ✅
+
+- **Electron g-factor itself** (original Finding 2): $g_e = -2.0005714$ at branch (b) vs measured $-2.00231930$ (~$0.00175$ discrepancy).
+
+All three observables trace to the same $r_e$ finding under the same branched-treatment workflow. The campaign's combined experimental status: **if branch (c) corrected $r_e$ is adopted, the dual-theory framework agrees with precision atomic spectroscopy at the leading-$g_s$ / Bethe-estimate precision floor; if branch (b) as-published $r_e$ is adopted, the framework is in fractional $\sim 10^{-3}$ disagreement with hyperfine, fine structure, and $g$ measurements**.
+
+This is not new independent findings — it is the same Finding 2 with new operational signatures at high-precision atomic spectroscopy. The hyperfine consequence is the campaign's most precision-sensitive discriminator (measurement uncertainty $\sim 10^{-12}$ vs the $r_e$-driven discrepancy at $\sim 10^{-3}$).
 
 ---
 

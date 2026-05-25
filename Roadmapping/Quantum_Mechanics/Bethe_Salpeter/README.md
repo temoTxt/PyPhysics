@@ -25,7 +25,7 @@ Governing plan: [`.dev/tasks/50-bethe-salpeter-precision-predictions.md`](../../
 | **PR C** ⭐ | **§14 Fine structure (pivot)** | Dirac vs dual Dirac for H 2P₃/₂ – 2P₁/₂ | 3 | ✅ drafted 2026-05-25 (acceptance criterion 2) |
 | **PR D** | §§15–18 — Higher-order rel corrections | `(Zα)⁴` terms; FW vs proper-time | 3 | ✅ drafted 2026-05-25 |
 | **PR E** ⭐ | **§§19–21 Lamb shift (headline)** | self-energy via `K` + radiation-reaction route | 3 | ✅ drafted 2026-05-25 (acceptance criterion 3) |
-| **PR F** ⭐ | **§22 Hyperfine structure (headline)** | H 21-cm line; muonium/positronium deferred to PR I | 2–3 | pending |
+| **PR F** ⭐ | **§22 Hyperfine structure (headline)** | H 21-cm line; muonium/positronium deferred to PR I | 2 | ✅ drafted 2026-05-25 |
 | **PR G** | §§23–37 — Interaction with radiation | photoionisation, multipole; third-term effect on dipole | 3–4 | pending |
 | **PR H** | §§47–60 — Helium ground state | two-electron variational; proper-time energy operator | 3–4 | pending |
 | **PR I** | §§61–80 — Helium excited states | two-electron spectroscopy; positronium / muonium where applicable | 3–4 | pending |
