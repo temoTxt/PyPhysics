@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 122 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 121 pending · 🔴 0 unavailable
+**Summary**: 122 entries · 🟢 0 public-PD · 🟡 3 acquired · ⚪ 119 pending · 🔴 0 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -121,7 +121,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[shor1994_factoring]] | 1994 | forward | primary | ⚪ pending | — |
 | [[grover1996_search]] | 1996 | forward | primary | ⚪ pending | — |
 | [[parkinson1996_gps_theory]] | 1996 | forward | primary | ⚪ pending | — |
-| [[aapm_tg51_1999_clinical_dosimetry]] | 1999 | forward | retrospective | ⚪ pending | `../../Historical_Papers/Retrospective/aapm_tg51_1999_clinical_dosimetry.pdf` |
+| [[aapm_tg51_1999_clinical_dosimetry]] | 1999 | forward | retrospective | 🟡 acquired (local only) | `../../Historical_Papers/Retrospective/aapm_tg51_1999_clinical_dosimetry.pdf` |
 | [[kawrakow2000_egsnrc]] | 2000 | forward | retrospective | 🟡 acquired (local only) | `../../Historical_Papers/Retrospective/kawrakow2000_egsnrc.pdf` |
 | [[nielsen_chuang2000_quantum_computation]] | 2000 | forward | retrospective | ⚪ pending | — |
 | [[ashby2003_gps_relativity]] | 2003 | forward | primary | ⚪ pending | — |
@@ -132,7 +132,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[preskill2018_nisq]] | 2018 | forward | retrospective | ⚪ pending | — |
 | [[arute2019_quantum_supremacy]] | 2019 | forward | primary | ⚪ pending | — |
 | [[krantz2019_circuit_qed]] | 2019 | forward | retrospective | ⚪ pending | — |
-| [[salvat2018_penelope]] | 2019 | forward | retrospective | ⚪ pending | `../../Historical_Papers/Retrospective/salvat2018_penelope.pdf` |
+| [[salvat2018_penelope]] | 2019 | forward | retrospective | 🟡 acquired (local only) | `../../Historical_Papers/Retrospective/salvat2018_penelope.pdf` |
 | [[pirandola2020_qkd_review]] | 2020 | forward | retrospective | ⚪ pending | — |
 | [[nif2022_ignition]] | 2024 | forward | primary | ⚪ pending | — |
 <!-- AUTO-TABLE-END -->
