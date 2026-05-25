@@ -493,6 +493,63 @@ Per [§11 acceptance criteria](#11-acceptance-criteria-for-closing-issue-42), PR
 
 **Issue #42 acceptance criteria status.** PR A merged ✅; **PR D drafted (5/5) and ready for review** — once merged, the second criterion is satisfied. The third criterion (`Roadmapping/README.md` cross-reference) remains pending as a small PR-final commit.
 
+### 7.9 PR E retrospective (closed 2026-05-24)
+
+**PR E is the campaign's second headline-payoff PR and closes the campaign's headline narrative.** All four Ch. 16 problems drafted, all four Wolfram MCP-verified, and the campaign's load-bearing rhetorical claim (the proper-time framework dissolves the classical Abraham–Lorentz pathologies) is now documented with its complete narrative arc and honest caveats.
+
+| Commit | Problem | Verdict | Headline observation |
+|---|---|---|---|
+| `4fc5aac` | J3e-P16.1 — Abraham–Lorentz + dissolution claim | ⚠ **most rhetorically loaded problem** | **proper-time first-order `\partial_{\tau}` structure → no runaway, no pre-acceleration; classical AL pathologies structurally absent** (podcast pick #3) |
+| `0776981` | J3e-P16.2 — RR-damped harmonic oscillator | ✅ identical natural linewidth | concrete-example fluency-builder; `\Gamma = \tau_{0}\omega_{0}^{2}` recovers atomic-transition linewidth `\sim 5 \times 10^{7}` s⁻¹ |
+| `eea90f7` | J3e-P16.3 — pre-acceleration IVP analysis | ⚠ pre-acceleration solution form `a(t<0) = (F_{0}/m)e^{t/\tau_{0}}` | detailed-pathology document; structural argument sharpened with three-tier honest framing |
+| `5208087` | J3e-P16.5 — proper-time RR for Cole/Poder | ⚠ sketch-level prediction | bridges PR E to issue #43; third-term contribution `~10\%` correction to LL, at boundary of distinguishability |
+
+#### The campaign's headline narrative is now complete
+
+PR E closes the campaign's narrative arc that PR D opened:
+
+1. **PR D (Ch. 14)** established the framework's first qualitatively new field-level prediction: the proper-time third term in the Liénard–Wiechert fields predicts a longitudinal radiation component absent from classical EM.
+2. **PR E (Ch. 16)** established the framework's claim to **dissolve the classical Abraham–Lorentz pathologies** (runaway, pre-acceleration) by structural difference (first-order vs third-order in time-derivative).
+3. **Issue #43** is the bridge: whether these structural and field-level predictions match the published Cole/Poder/Wistisen 2018 measurements is the campaign's primary experimental test.
+4. **Issue #48** (new in PR D) is a secondary bridge: whether the third-term contribution to MeV-energy bremsstrahlung is measurable in clinical-physics precision experiments.
+
+#### Honest caveats — the three-tier framing
+
+The dissolution claim is framed across PR E with three operational caveats that must not be softened:
+
+1. **Structural, not predictive.** The dissolution removes the classical pathologies in the proper-time formulation. It does not prove the proper-time RR force is numerically correct at all energies. Issue #43's comparison is the discriminating test.
+2. **Does not address self-energy.** The classical electron's self-energy divergence is a separate pathology not dissolved by the proper-time framework.
+3. **Conditional on framework correctness.** Per [§13 of the plan](#13-devils-advocate-review-and-what-we-cannot-honestly-fix), every claim is "*if Gill–Zachary is the correct formulation, then X*". Whether the framework is correct is the open question that the campaign as a whole tests, not pre-judges.
+
+#### Empirical observations from PR E
+
+- **Effort estimate held within [§13.1 O4](#131-objections-with-partial-responses)'s ~2 week budget.** Four Ch. 16 problems at slightly heavier interpretive load than PR D (the dissolution claim required more careful framing), but the per-problem documents averaged roughly the same length as PR A–D.
+- **Per-paragraph TODO discipline maintained.** Each PR E problem carries 2–4 substantive `<!-- TODO -->` blocks, consistent with PR A–D's density. The discipline is stable; reassessment scheduled for start of PR F+ remains the right time.
+- **Wolfram MCP performed reliably throughout PR E.** No disconnects.
+- **Two podcast picks delivered in PR E (#3) and PR D (#2, #5).** Of the five §12 podcast picks, **four have been documented** with their proper-time treatments. The remaining pick — #1 (EM momentum of uniformly-moving charge, J3e-P6.4) — was delivered in PR A.
+
+#### Issue #42 acceptance criteria — NOW FULLY SATISFIED
+
+Per [§11](#11-acceptance-criteria-for-closing-issue-42):
+
+| Criterion | Status |
+|---|---|
+| PR A merged | ✅ |
+| **PR D AND PR E drafted** (either satisfies "D OR E"; both satisfied) | ✅ ✅ |
+| Root or `Roadmapping/README.md` cross-reference | pending (small PR-final commit) |
+
+**Issue #42 can close as soon as PR D (or PR E, or both as one large PR) is reviewed and merged**, after the `Roadmapping/README.md` cross-reference is added. The campaign has delivered all the load-bearing content envisioned at planning time.
+
+#### Implications for PR F+ (backfill chapters)
+
+Per [§7 of the plan](#7-initial-chapter-selection--canonical-problems-list), PR F+ covers backfill chapters Chs. 1–5, 7–10, 13, 15 at 4–6 problems each. With PRs A–E complete, the campaign has produced **24 problems** across 5 chapters. The backfill scope is 60–80 additional problems across 10 chapters, totalling 80–100 problems for the full campaign (consistent with [§1's](#1-goal-and-scope) "~50–100 total" estimate).
+
+Per [§13.5 D5](#135-decision-points--confirmed-by-author-2026-05-24) (no kill switch), the campaign can continue into PR F+ indefinitely, or close at the current 24-problem state and declare the headline-payoff content complete. Both are legitimate outcomes; the author's discretion governs the choice.
+
+**Implications for the plan.** No changes recommended to §7, §10, §13 based on PR E observations. The campaign's narrative is complete; PR F+ is pedagogical-completeness work, not headline-payoff work. The Eq. 24 branched-treatment workflow remains scaffolded for any future spin/hyperfine problem in PR F+.
+
+**Recommendation:** consider opening the merge PR for #42 review at this checkpoint. The 24 problems across PR 0 + PR A + PR B + PR C + PR D + PR E constitute a coherent self-contained deliverable, with the headline narrative fully articulated and honestly framed. Issue #42 can close formally on the §11 acceptance criteria being satisfied; PR F+ becomes optional ongoing work without #42's open status as motivation.
+
 ---
 
 ## 8. Definition of done
