@@ -14,7 +14,7 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 | Ch. 4 ⭐ | Quantum Mechanics in Three Dimensions (hydrogen) | **PR D** | 5 / 5 | ✅ drafted — see [`Ch04`](Ch04_QM_3D.md) |
 | Ch. 5 | Identical Particles | **PR E** | 3 / 3 | ✅ drafted — see [`Ch05`](Ch05_Identical_Particles.md) |
 | Ch. 6 | Symmetries and Conservation Laws | **PR F** | 3 / 3 | ✅ drafted — see [`Ch06`](Ch06_Symmetries_Conservation.md) |
-| Ch. 7 ⭐ | Time-Independent Perturbation Theory (fine structure) | **PR G** | 0 / 5–7 | planned (headline) |
+| Ch. 7 ⭐ | Time-Independent Perturbation Theory (fine structure) | **PR G** | 5 / 5 | ✅ drafted — see [`Ch07`](Ch07_TI_Perturbation_Theory.md) |
 | Ch. 8 | Variational Principle (helium) | PR H | 0 / 3–4 | planned |
 | Ch. 9 | WKB Approximation | PR I | 0 / 3–4 | planned |
 | Ch. 10 | Scattering | PR J | 0 / 4–6 | planned |
