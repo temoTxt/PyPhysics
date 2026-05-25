@@ -31,7 +31,7 @@ Selected canonical problems (~5–10 per chapter, ~60–100 total across 12 Grif
 | **PR I** | Ch. 9 WKB | 3 | ✅ drafted 2026-05-25 |
 | **PR J** | Ch. 10 Scattering | 4 | ✅ drafted 2026-05-25 |
 | **PR K** | Ch. 11 Quantum Dynamics | 4 | ✅ drafted 2026-05-25 |
-| PR L | Ch. 12 Afterword | 2–3 | planned |
+| **PR L** | Ch. 12 Afterword | 2 | ✅ drafted 2026-05-25 |
 
 Headline (⭐) chapters carry the load-bearing proper-time content; PRs A–C and the backfill PRs are pedagogical-reduction demonstrations.
 

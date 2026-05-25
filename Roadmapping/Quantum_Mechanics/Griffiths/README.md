@@ -19,7 +19,7 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 | Ch. 9 | WKB Approximation | **PR I** | 3 / 3 | ✅ drafted — see [`Ch09`](Ch09_WKB_Approximation.md) |
 | Ch. 10 | Scattering | **PR J** | 4 / 4 | ✅ drafted — see [`Ch10`](Ch10_Scattering.md) |
 | Ch. 11 | Quantum Dynamics (3e renumber) | **PR K** | 4 / 4 | ✅ drafted — see [`Ch11`](Ch11_Quantum_Dynamics.md) |
-| Ch. 12 | Afterword (3e renumber) | PR L | 0 / 2–3 | planned |
+| Ch. 12 | Afterword (3e renumber) | **PR L** | 2 / 2 | ✅ drafted — see [`Ch12`](Ch12_Afterword.md) |
 
 ⭐ indicates a chapter where the proper-time formulation has the most to say; see [§4 of the plan](../../../.dev/tasks/49-quantum-mechanics-griffiths-proper-time.md#4-pr-sequencing-12-prs-al-per-issue-body).
 
