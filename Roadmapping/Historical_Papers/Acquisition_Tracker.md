@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 115 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 115 pending · 🔴 0 unavailable
+**Summary**: 121 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 120 pending · 🔴 0 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -106,6 +106,8 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[eddington1920_stellar_fusion]] | 1920 | forward | primary | ⚪ pending | — |
 | [[bethe1939_ppchain]] | 1939 | forward | primary | ⚪ pending | — |
 | [[lawson1957_criterion]] | 1957 | forward | primary | ⚪ pending | — |
+| [[koch1959_bremsstrahlung_review]] | 1959 | forward | retrospective | ⚪ pending | `../../Historical_Papers/Retrospective/koch1959_bremsstrahlung_review.pdf` |
+| [[tseng1971_screened_bremsstrahlung]] | 1971 | forward | retrospective | ⚪ pending | `../../Historical_Papers/Retrospective/tseng1971_screened_bremsstrahlung.pdf` |
 | [[misner_thorne_wheeler1973]] | 1973 | forward | retrospective | ⚪ pending | — |
 | [[vessot1980_gravity_probe_a]] | 1980 | forward | primary | ⚪ pending | — |
 | [[feynman1982_simulating_physics]] | 1982 | forward | primary | ⚪ pending | — |
@@ -113,10 +115,13 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[wald1984_gr]] | 1984 | forward | retrospective | ⚪ pending | — |
 | [[deutsch1985_quantum_turing]] | 1985 | forward | primary | ⚪ pending | — |
 | [[smith_christodoulidis1985_slr]] | 1985 | forward | primary | ⚪ pending | — |
+| [[seltzer1986_bremsstrahlung_tables]] | 1986 | forward | retrospective | ⚪ pending | `../../Historical_Papers/Retrospective/seltzer1986_bremsstrahlung_tables.pdf` |
 | [[ekert1991_qkd]] | 1991 | forward | primary | ⚪ pending | — |
 | [[shor1994_factoring]] | 1994 | forward | primary | ⚪ pending | — |
 | [[grover1996_search]] | 1996 | forward | primary | ⚪ pending | — |
 | [[parkinson1996_gps_theory]] | 1996 | forward | primary | ⚪ pending | — |
+| [[aapm_tg51_1999_clinical_dosimetry]] | 1999 | forward | retrospective | ⚪ pending | `../../Historical_Papers/Retrospective/aapm_tg51_1999_clinical_dosimetry.pdf` |
+| [[kawrakow2000_egsnrc]] | 2000 | forward | retrospective | 🟡 acquired (local only) | `../../Historical_Papers/Retrospective/kawrakow2000_egsnrc.pdf` |
 | [[nielsen_chuang2000_quantum_computation]] | 2000 | forward | retrospective | ⚪ pending | — |
 | [[ashby2003_gps_relativity]] | 2003 | forward | primary | ⚪ pending | — |
 | [[kitaev2003_topological]] | 2003 | forward | primary | ⚪ pending | — |
@@ -126,6 +131,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[preskill2018_nisq]] | 2018 | forward | retrospective | ⚪ pending | — |
 | [[arute2019_quantum_supremacy]] | 2019 | forward | primary | ⚪ pending | — |
 | [[krantz2019_circuit_qed]] | 2019 | forward | retrospective | ⚪ pending | — |
+| [[salvat2018_penelope]] | 2019 | forward | retrospective | ⚪ pending | `../../Historical_Papers/Retrospective/salvat2018_penelope.pdf` |
 | [[pirandola2020_qkd_review]] | 2020 | forward | retrospective | ⚪ pending | — |
 | [[nif2022_ignition]] | 2024 | forward | primary | ⚪ pending | — |
 <!-- AUTO-TABLE-END -->
