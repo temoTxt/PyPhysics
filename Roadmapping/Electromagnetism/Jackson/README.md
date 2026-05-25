@@ -16,7 +16,7 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 | Ch. 6 | Maxwell Equations + Macroscopic Media ⭐ | three-system | **PR A** | 5 / 5 | PR A drafted — see [`Ch06`](Ch06_Maxwell_Equations_Macroscopic_Media.md) |
 | Ch. 7 | Plane Electromagnetic Waves, Wave Propagation | three-system | **PR F** | 4 / 4 | ✅ drafted — see [`Ch07`](Ch07_Plane_EM_Waves.md) |
 | Ch. 8 | Waveguides, Resonant Cavities, Optical Fibers | three-system | **PR H** | 4 / 4 | ✅ drafted — see [`Ch08`](Ch08_Waveguides_Resonant_Cavities.md) |
-| Ch. 9 | Radiating Systems, Multipole Fields | three-system | PR F+ | 0 / 4–6 | planned |
+| Ch. 9 | Radiating Systems, Multipole Fields | three-system | **PR I** | 4 / 4 | ✅ drafted — see [`Ch09`](Ch09_Radiating_Systems.md) |
 | Ch. 10 | Scattering and Diffraction | three-system | PR F+ | 0 / 4–6 | planned |
 | Ch. 11 | Special Theory of Relativity | CGS only (3e Chs. 11+) | **PR B** | 5 / 5 | PR B drafted — see [`Ch11`](Ch11_Special_Relativity.md) |
 | Ch. 12 | Dynamics of Relativistic Particles and EM Fields ⭐ | CGS only | **PR C** | 5 / 5 | PR C drafted — see [`Ch12`](Ch12_Relativistic_Dynamics.md) |

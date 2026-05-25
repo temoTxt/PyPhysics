@@ -25,7 +25,8 @@ Selected canonical problems (~5–10 per chapter, ~50–100 total). Not exhausti
 | **PR F** | Ch. 7 Plane EM Waves | 4 | ✅ drafted 2026-05-24 |
 | **PR G** | Ch. 4 Multipoles + Macroscopic Media | 4 | ✅ drafted 2026-05-24 |
 | **PR H** | Ch. 8 Waveguides + Resonant Cavities | 4 | ✅ drafted 2026-05-24 |
-| **PR I+** | Remaining backfill: Chs. 1–3 (supplementary), Ch. 5 (supplementary), 9, 10, 13, 15 | 4–6 each | planned |
+| **PR I** | Ch. 9 Radiating Systems (multipole radiation) | 4 | ✅ drafted 2026-05-24 |
+| **PR J+** | Remaining backfill: Chs. 1–3 (supplementary), Ch. 5 (supplementary), 10, 13, 15 | 4–6 each | planned |
 
 Realistic completion: 9–18 months at part-time pace per [§13.2 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#132-objections-with-no-honest-mitigation).
 
