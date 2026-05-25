@@ -23,7 +23,7 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 | Ch. 13 | Collisions, Energy Loss, Scattering of Charged Particles | CGS only | PR F+ | 0 / 4–6 | planned |
 | Ch. 14 | Radiation by Moving Charges ⭐ | CGS only | **PR D** | 5 / 5 | PR D drafted — see [`Ch14`](Ch14_Radiation_by_Moving_Charges.md) |
 | Ch. 15 | Bremsstrahlung, Method of Virtual Quanta | CGS only | PR F+ | 0 / 4–6 | planned |
-| Ch. 16 | Radiation Damping, Classical Models of Charged Particles ⭐ | CGS only | **PR E** | 1 / 4 | PR E in progress — see [`Ch16`](Ch16_Radiation_Damping.md) |
+| Ch. 16 | Radiation Damping, Classical Models of Charged Particles ⭐ | CGS only | **PR E** | 2 / 4 | PR E in progress — see [`Ch16`](Ch16_Radiation_Damping.md) |
 
 ⭐ indicates a chapter where the proper-time vs classical contrast is most informative; see [§7 of the plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#7-initial-chapter-selection--canonical-problems-list).
 
