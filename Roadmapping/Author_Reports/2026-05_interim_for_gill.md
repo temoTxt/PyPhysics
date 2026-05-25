@@ -10,9 +10,26 @@ Following our phone call, this report consolidates the verification work and thr
 
 A note on numbering: tags of the form `#NN` throughout this report refer to **GitHub issues or pull requests in the public [`temoTxt/PyPhysics`](https://github.com/temoTxt/PyPhysics) repository**. Each such reference is a clickable link to the corresponding issue or PR; the URLs follow the pattern `https://github.com/temoTxt/PyPhysics/issues/NN` for issues and `…/pull/NN` for PRs. The verification documents, per-PR campaign chapters, Wolfram-Mathematica notebooks, and bibliography stubs cited in this report all live in that repository as well, accessible at the GitHub URLs listed in their respective issues.
 
+## Papers and source texts referenced
+
+The table below lists every paper and textbook this report cites by abbreviation, so the abbreviations below are unambiguous. Dual-theory papers from your corpus appear in the top group; the next group covers other primary sources (Bethe 1947 supplies the Lamb-shift route used in §5); the bottom group covers the campaign textbooks (Jackson, Griffiths, Bethe-Salpeter) whose canonical problems and precision-spectroscopy results the campaigns work through.
+
+| Abbreviation in report | Full title | Authors | Year | Venue |
+|---|---|---|---|---|
+| **Maxwell paper** | *Two Mathematically Equivalent Versions of Maxwell's Equations* | Gill, Zachary | 2011 | *Foundations of Physics* **41**, 99–128 |
+| **Analytic Dirac** | *Analytic Representation of the Dirac Equation* | Gill, Zachary | ca. 2002 | *Foundations of Physics Letters* (subject to author confirmation of citation details) |
+| **TCEP** | *The Classical Electron Problem* | Gill, Zachary, Lindesay | 2001 | *Foundations of Physics* **31**, 1299–1354 |
+| **DRQM I** | *Dual Relativistic Quantum Mechanics I* | Gill, Ares de Parga, Morris, Wade | 2021 | Manuscript dated 21 August 2021 (Howard University) |
+| **Bethe (1947)** | *The Electromagnetic Shift of Energy Levels* | Bethe | 1947 | *Physical Review* **72**, 339 |
+| **Jackson** | *Classical Electrodynamics* (3rd ed.) | Jackson | 1998 | Wiley |
+| **Griffiths 3e** | *Introduction to Quantum Mechanics* (3rd ed.) | Griffiths, Schroeter | 2018 | Cambridge University Press |
+| **Bethe-Salpeter** | *Quantum Mechanics of One- and Two-Electron Atoms* | Bethe, Salpeter | 1957 / 1977 reprint | Plenum 1957; Springer 1977 reprint |
+
+The "Analytic Dirac" venue is left tentative because the converted-PDF metadata does not record the publication line cleanly; one of the Q-items below is whether the citation we should use matches the conference / journal record you intend.
+
 # §2 How we got here — the process
 
-The work began in May 2026 with a systematic Wolfram-Mathematica re-derivation of every numbered equation in the dual-theory paper corpus (Maxwell paper, *Analytic Representation of the Dirac Equation*, DRQM I, *The Classical Electron Problem*, plus the Banach-space and Navier-Stokes mathematics papers at the load-bearing-results level). The output was [`Roadmapping/Equation_Verification/`](../Equation_Verification/), a per-paper verification document recording each equation as it appears in the paper, a single-line Wolfram check, a step-by-step expanded derivation, a cross-reference to the standard textbook equivalent (Jackson / Sakurai / Goldstein / Weinberg as applicable), and a verdict (✅ / ⚠ / 🔴).
+The work began in May 2026 with a systematic Wolfram-Mathematica re-derivation of every numbered equation in the dual-theory paper corpus (Maxwell paper, Analytic Dirac, DRQM I, TCEP — see the table above for full citation details — plus the Banach-space and Navier-Stokes mathematics papers at the load-bearing-results level). The output was [`Roadmapping/Equation_Verification/`](../Equation_Verification/), a per-paper verification document recording each equation as it appears in the paper, a single-line Wolfram check, a step-by-step expanded derivation, a cross-reference to the standard textbook equivalent (Jackson / Sakurai / Goldstein / Weinberg as applicable), and a verdict (✅ / ⚠ / 🔴).
 
 
 That campaign produced three substantive findings flagged for author review (§7 below) and three load-bearing structural results that survived the re-derivation cleanly. The verification work then opened three downstream campaigns: *[#42 Electromagnetism / Jackson](https://github.com/temoTxt/PyPhysics/issues/42)* (the canonical Jackson problems × CGS/SI × proper-time Maxwell, 66 problems across Chs. 1–16), *[#49 Quantum Mechanics / Griffiths](https://github.com/temoTxt/PyPhysics/issues/49)* (canonical Griffiths problems × 2e/3e × proper-time / dual-theory QM, 41 problems across Chs. 1–12), and *[#50 Bethe-Salpeter precision predictions](https://github.com/temoTxt/PyPhysics/issues/50)* (the precision-experiment counterpart to Griffiths, 28 results across Chs. on hydrogen / helium / Lamb shift / hyperfine / positronium / muonium). The three campaigns are recorded in Pull Requests [PR #51](https://github.com/temoTxt/PyPhysics/pull/51), [PR #52](https://github.com/temoTxt/PyPhysics/pull/52), [PR #53](https://github.com/temoTxt/PyPhysics/pull/53) respectively.
@@ -109,6 +126,8 @@ Three additional errata findings and supporting questions, all of which are prag
 **Q4 — $r_\mu$ and $r_p$ numerical values for DRQM I Eq. III.23.** The formulas $g_\mu^a$ and $g_p^a$ for the muon and proton anomalous moments are stated in DRQM I §III.D alongside the electron formula, but the corresponding cutoff values $r_\mu$ and $r_p$ are not given numerically. Without them, muonium and proton magnetic-moment predictions cannot be computed from the framework. If you have these values, they would close out the analogous discriminator analyses we are presently unable to do for the muon and proton.
 
 **Q5 (optional) — operator-ordering choice in DRQM I §II.D.** Sub-leading $(Z\alpha)^4$ results in the dual-Dirac Foldy-Wouthuysen reduction depend on the operator-ordering choice. We have assumed Weyl ordering throughout the campaign, which reproduces the standard Pauli Hamiltonian at leading order. If the framework intends a different ordering, the sub-leading results would shift and the §6.4 route-(ii) rederivation of $r_e$ would proceed under the different prescription.
+
+**Q6 (citation hygiene) — *Analytic Dirac* citation details.** The Analytic Dirac paper's publication venue is recorded as *Foundations of Physics Letters* ca. 2002 in the table on page 1, but the converted PDF's metadata does not record the publication line cleanly. The cleanest fix would be a one-line confirmation of the journal, volume, and year as you intend the citation to read — so the table can be locked in and any future bibliographic export from the repository carries the correct line.
 
 
 # §8 Closing

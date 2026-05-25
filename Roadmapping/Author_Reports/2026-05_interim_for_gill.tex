@@ -103,16 +103,77 @@ campaign chapters, Wolfram-Mathematica notebooks, and bibliography stubs
 cited in this report all live in that repository as well, accessible at
 the GitHub URLs listed in their respective issues.
 
+\hypertarget{papers-and-source-texts-referenced}{%
+\subsection{Papers and source texts
+referenced}\label{papers-and-source-texts-referenced}}
+
+The table below lists every paper and textbook this report cites by
+abbreviation, so the abbreviations below are unambiguous. Dual-theory
+papers from your corpus appear in the top group; the next group covers
+other primary sources (Bethe 1947 supplies the Lamb-shift route used in
+§5); the bottom group covers the campaign textbooks (Jackson, Griffiths,
+Bethe-Salpeter) whose canonical problems and precision-spectroscopy
+results the campaigns work through.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Abbreviation in report
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Full title
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Authors
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Year
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Venue
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Maxwell paper} & \emph{Two Mathematically Equivalent Versions of
+Maxwell's Equations} & Gill, Zachary & 2011 & \emph{Foundations of
+Physics} \textbf{41}, 99--128 \\
+\textbf{Analytic Dirac} & \emph{Analytic Representation of the Dirac
+Equation} & Gill, Zachary & ca. 2002 & \emph{Foundations of Physics
+Letters} (subject to author confirmation of citation details) \\
+\textbf{TCEP} & \emph{The Classical Electron Problem} & Gill, Zachary,
+Lindesay & 2001 & \emph{Foundations of Physics} \textbf{31},
+1299--1354 \\
+\textbf{DRQM I} & \emph{Dual Relativistic Quantum Mechanics I} & Gill,
+Ares de Parga, Morris, Wade & 2021 & Manuscript dated 21 August 2021
+(Howard University) \\
+\textbf{Bethe (1947)} & \emph{The Electromagnetic Shift of Energy
+Levels} & Bethe & 1947 & \emph{Physical Review} \textbf{72}, 339 \\
+\textbf{Jackson} & \emph{Classical Electrodynamics} (3rd ed.) & Jackson
+& 1998 & Wiley \\
+\textbf{Griffiths 3e} & \emph{Introduction to Quantum Mechanics} (3rd
+ed.) & Griffiths, Schroeter & 2018 & Cambridge University Press \\
+\textbf{Bethe-Salpeter} & \emph{Quantum Mechanics of One- and
+Two-Electron Atoms} & Bethe, Salpeter & 1957 / 1977 reprint & Plenum
+1957; Springer 1977 reprint \\
+\end{longtable}
+
+The ``Analytic Dirac'' venue is left tentative because the converted-PDF
+metadata does not record the publication line cleanly; one of the
+Q-items below is whether the citation we should use matches the
+conference / journal record you intend.
+
 \hypertarget{how-we-got-here-the-process}{%
 \section{§2 How we got here --- the
 process}\label{how-we-got-here-the-process}}
 
 The work began in May 2026 with a systematic Wolfram-Mathematica
 re-derivation of every numbered equation in the dual-theory paper corpus
-(Maxwell paper, \emph{Analytic Representation of the Dirac Equation},
-DRQM I, \emph{The Classical Electron Problem}, plus the Banach-space and
-Navier-Stokes mathematics papers at the load-bearing-results level). The
-output was
+(Maxwell paper, Analytic Dirac, DRQM I, TCEP --- see the table above for
+full citation details --- plus the Banach-space and Navier-Stokes
+mathematics papers at the load-bearing-results level). The output was
 \href{../Equation_Verification/}{\texttt{Roadmapping/Equation\_Verification/}},
 a per-paper verification document recording each equation as it appears
 in the paper, a single-line Wolfram check, a step-by-step expanded
@@ -461,6 +522,15 @@ ordering throughout the campaign, which reproduces the standard Pauli
 Hamiltonian at leading order. If the framework intends a different
 ordering, the sub-leading results would shift and the §6.4 route-(ii)
 rederivation of \(r_e\) would proceed under the different prescription.
+
+\textbf{Q6 (citation hygiene) --- \emph{Analytic Dirac} citation
+details.} The Analytic Dirac paper's publication venue is recorded as
+\emph{Foundations of Physics Letters} ca. 2002 in the table on page 1,
+but the converted PDF's metadata does not record the publication line
+cleanly. The cleanest fix would be a one-line confirmation of the
+journal, volume, and year as you intend the citation to read --- so the
+table can be locked in and any future bibliographic export from the
+repository carries the correct line.
 
 \hypertarget{closing}{%
 \section{§8 Closing}\label{closing}}
