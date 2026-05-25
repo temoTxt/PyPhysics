@@ -14,7 +14,7 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 | Ch. 4 | Multipoles, Electrostatics of Macroscopic Media | three-system | PR F+ | 0 / 4–6 | planned |
 | Ch. 5 | Magnetostatics, Faraday's Law, Quasi-Static Fields | three-system | PR 0, then PR F+ | 2 / 2–6 | PR 0 drafted — see [`Ch05`](Ch05_Magnetostatics_Faraday_Quasi_Static.md) |
 | Ch. 6 | Maxwell Equations + Macroscopic Media ⭐ | three-system | **PR A** | 5 / 5 | PR A drafted — see [`Ch06`](Ch06_Maxwell_Equations_Macroscopic_Media.md) |
-| Ch. 7 | Plane Electromagnetic Waves, Wave Propagation | three-system | PR F+ | 0 / 4–6 | planned |
+| Ch. 7 | Plane Electromagnetic Waves, Wave Propagation | three-system | **PR F** | 4 / 4 | ✅ drafted — see [`Ch07`](Ch07_Plane_EM_Waves.md) |
 | Ch. 8 | Waveguides, Resonant Cavities, Optical Fibers | three-system | PR F+ | 0 / 4–6 | planned |
 | Ch. 9 | Radiating Systems, Multipole Fields | three-system | PR F+ | 0 / 4–6 | planned |
 | Ch. 10 | Scattering and Diffraction | three-system | PR F+ | 0 / 4–6 | planned |
