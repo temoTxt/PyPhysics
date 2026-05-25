@@ -29,8 +29,8 @@ Selected canonical problems (~5–10 per chapter, ~60–100 total across 12 Grif
 | **PR G** ⭐ | Ch. 7 TI Perturbation Theory (fine structure) | 5 | ✅ drafted 2026-05-25 |
 | **PR H** | Ch. 8 Variational Principle (helium) | 3 | ✅ drafted 2026-05-25 |
 | **PR I** | Ch. 9 WKB | 3 | ✅ drafted 2026-05-25 |
-| PR J | Ch. 10 Scattering | 4–6 | planned |
-| PR K | Ch. 11 Quantum Dynamics | 4–6 | planned |
+| **PR J** | Ch. 10 Scattering | 4 | ✅ drafted 2026-05-25 |
+| **PR K** | Ch. 11 Quantum Dynamics | 4 | ✅ drafted 2026-05-25 |
 | PR L | Ch. 12 Afterword | 2–3 | planned |
 
 Headline (⭐) chapters carry the load-bearing proper-time content; PRs A–C and the backfill PRs are pedagogical-reduction demonstrations.

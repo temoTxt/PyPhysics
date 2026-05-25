@@ -17,8 +17,8 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 | Ch. 7 ⭐ | Time-Independent Perturbation Theory (fine structure) | **PR G** | 5 / 5 | ✅ drafted — see [`Ch07`](Ch07_TI_Perturbation_Theory.md) |
 | Ch. 8 | Variational Principle (helium) | **PR H** | 3 / 3 | ✅ drafted — see [`Ch08`](Ch08_Variational_Principle.md) |
 | Ch. 9 | WKB Approximation | **PR I** | 3 / 3 | ✅ drafted — see [`Ch09`](Ch09_WKB_Approximation.md) |
-| Ch. 10 | Scattering | PR J | 0 / 4–6 | planned |
-| Ch. 11 | Quantum Dynamics (3e renumber) | PR K | 0 / 4–6 | planned |
+| Ch. 10 | Scattering | **PR J** | 4 / 4 | ✅ drafted — see [`Ch10`](Ch10_Scattering.md) |
+| Ch. 11 | Quantum Dynamics (3e renumber) | **PR K** | 4 / 4 | ✅ drafted — see [`Ch11`](Ch11_Quantum_Dynamics.md) |
 | Ch. 12 | Afterword (3e renumber) | PR L | 0 / 2–3 | planned |
 
 ⭐ indicates a chapter where the proper-time formulation has the most to say; see [§4 of the plan](../../../.dev/tasks/49-quantum-mechanics-griffiths-proper-time.md#4-pr-sequencing-12-prs-al-per-issue-body).
