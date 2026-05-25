@@ -22,8 +22,9 @@ Selected canonical problems (~5–10 per chapter, ~50–100 total). Not exhausti
 | **PR C** | Ch. 12 Relativistic Dynamics | 5 | ✅ closed 2026-05-24 (5/5 drafted, retrospective in [§7.7 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#77-pr-c-retrospective-closed-2026-05-24)) |
 | **PR D** | Ch. 14 Radiation by Moving Charges | 5 | ✅ closed 2026-05-24 (5/5 drafted, retrospective in [§7.8 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#78-pr-d-retrospective-closed-2026-05-24)) |
 | **PR E** | Ch. 16 Radiation Damping | 4 | ✅ closed 2026-05-24 (4/4 drafted, retrospective in [§7.9 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#79-pr-e-retrospective-closed-2026-05-24)) |
-| **PR F** (first backfill PR) | Ch. 7 Plane EM Waves | 4 | ✅ drafted 2026-05-24 |
-| **PR G+** | Remaining backfill: Chs. 1–5, 8–10, 13, 15 | 4–6 each | planned |
+| **PR F** | Ch. 7 Plane EM Waves | 4 | ✅ drafted 2026-05-24 |
+| **PR G** | Ch. 4 Multipoles + Macroscopic Media | 4 | ✅ drafted 2026-05-24 |
+| **PR H+** | Remaining backfill: Chs. 1–3 (supplementary), Chs. 5 (supplementary), 8–10, 13, 15 | 4–6 each | planned |
 
 Realistic completion: 9–18 months at part-time pace per [§13.2 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#132-objections-with-no-honest-mitigation).
 
