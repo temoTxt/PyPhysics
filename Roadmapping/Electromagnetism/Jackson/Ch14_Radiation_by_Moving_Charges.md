@@ -135,14 +135,25 @@ ClearAll[rV, uV];
 bacResult = TensorExpand[rV \[Cross] (uV \[Cross] rV)];
 Print["r x (u x r) = ", bacResult];
 (* Result: uV (rV . rV) - rV (rV . uV) = u r^2 - r (u . r)
-   This vector has both a longitudinal component (parallel to u) and a
-   radial component (parallel to r), so the third term is NOT transverse
-   to the line of sight in the radiation zone. ✓ *)
+   This vector has both a u-direction component and an r-direction
+   component, so the third term is NOT line-of-sight-transverse. ✓
+   NOTE: this is the BAC-CAB vector identity; it confirms the structural
+   form of r×(u×r) but does NOT verify the third term's existence,
+   coefficient e(u·a)/(b^4 s^3), or its derivation from the proper-time
+   wave equation.  Independent end-to-end derivation is deferred to
+   Gill [18] / Found. Phys. 31 (2001) 1299, where the multi-page
+   computation lives.  The upstream Eq. (7) verification doc itself
+   notes: "Full multi-page derivation in [18] not independently
+   reproduced here." *)
 ```
 
-The structural feature of the third term is its decomposition `\mathbf{r}\times(\mathbf{u}\times\mathbf{r}) = r^{2}\mathbf{u} - (\mathbf{u}\cdot\mathbf{r})\mathbf{r}`. Both a **longitudinal component** (parallel to `\mathbf{u}`) and a **radial component** (parallel to `\mathbf{r}`) appear. Classical Liénard–Wiechert radiation in the radiation zone is *purely transverse* to `\hat r`; the proper-time third term breaks this purity by introducing components along both `\mathbf{u}` and `\hat r`.
+**What this Mathematica check actually verifies.** The BAC-CAB identity above is a vector-calculus statement, not a verification of the proper-time wave equation's third-term solution. The chain that the campaign rests on is: Maxwell paper Eq. (4) (verified ✅, form check) → Eq. (7) (verified ✅, form check + 1D velocity-field exact recovery; **full multi-page derivation in [18] not independently reproduced**) → this document's "third term predicts non-`\hat r`-transverse contribution." The end-to-end independent verification of the third term's existence and coefficient remains the responsibility of [18]'s original derivation and a future campaign rederivation. The "verified ✅" stamp on the upstream Eq. (7) is honest in its scope (form + limit), not in the full-derivation sense; this document inherits that scope.
 
-We observe that this is **the proper-time formulation's first qualitatively new field-level prediction**. Where every prior problem in the campaign (PR 0 through PR C) either reduced exactly to the classical answer or differed only by an `O((u/c)^{2})` correction below observational floor, the third term of Eq. (7) is a *structural* addition to the radiated field: it predicts a longitudinal radiation component in any kinematic configuration where `\mathbf{u}\cdot\mathbf{a} \neq 0`, including all linearly-accelerated charges and all relativistic-intensity plane-wave scattering geometries.
+The structural feature of the third term is its decomposition `\mathbf{r}\times(\mathbf{u}\times\mathbf{r}) = r^{2}\mathbf{u} - (\mathbf{u}\cdot\mathbf{r})\mathbf{r}`. The resulting vector has a component along `\mathbf{u}` (the source's proper-velocity 3-vector) and a component along `\mathbf{r}` (the source-to-field-point displacement). Classical Liénard–Wiechert radiation in the radiation zone is *purely transverse to* `\hat r` (the line of sight); the proper-time third term breaks `\hat r`-transversality by introducing components along both `\mathbf{u}` and `\hat r`.
+
+**Terminology caveat — what "longitudinal" does and does not mean here.** The non-`\hat r`-transversality of the third term is a statement about *the line of sight*, not about *the propagation direction* `\hat k` of an outgoing radiation mode. Standard radiation-zone analysis decomposes the far-field `\mathbf{E}` against `\hat k`; a "longitudinal" component in the propagation sense (parallel to `\hat k`) would violate `\nabla\!\cdot\!\mathbf{E} = 0` in source-free regions. The third term's `\mathbf{u}`-direction component is therefore best read as **a contribution to the radiated field that is not aligned with the standard line-of-sight transversality of classical Liénard–Wiechert**, with the full far-field `\hat k`-decomposition (and the question of whether the third term survives as a true radiation-zone component or instead reorganises into a near-field structure) **not computed in this PR**. The `dP/d\Omega` integration of the third term over a sphere at `r\to\infty` is the cleanest test — it is flagged as pending work, downstream of the issue [#43](https://github.com/temoTxt/PyPhysics/issues/43) numerical setup.
+
+We observe that this is, on the face of the printed Eq. (7), a structurally new contribution to the proper-time Liénard–Wiechert field that has no counterpart in classical EM at the same level of derivation. Whether it produces a measurable far-field signature (Reading A: additional radiated power into non-classical angular modes) or only reshuffles the angular distribution of the same total radiated power (Reading B: structurally distinct field but classically-equivalent integrated power) is **not settled by this document**. Both readings are consistent with the printed form of Eq. (7); the discriminator is the explicit far-field `dP/d\Omega` integration, which is referred forward to issue [#43](https://github.com/temoTxt/PyPhysics/issues/43).
 
 <!-- TODO: human reviews and fills in — confirms the load-bearing claim that "the third term is the first qualitatively new field-level prediction in the campaign". This is the campaign's central narrative claim and warrants the author's full attention -->
 
@@ -153,6 +164,10 @@ $$
 $$
 
 The third term of `\mathbf{B}` is orthogonal to both `\mathbf{r}` and `\mathbf{u}`, with magnitude proportional to `(\mathbf{u}\cdot\mathbf{a})/b^{4}`. We observe (as the Maxwell paper does, in its commentary around Eq. (7)) that `\mathbf{B}` is orthogonal to `\mathbf{E}` overall, but the relative phase between the new third terms differs from the relative phase of the classical first two terms.
+
+#### Frame-dependence caveat on `\mathbf{u}\cdot\mathbf{a}`
+
+The coefficient `\mathbf{u}\cdot\mathbf{a}` of the third term is a **3-vector dot product** between the proper-velocity 3-vector `\mathbf{u} = d\mathbf{x}/d\tau` and the proper-time acceleration `\mathbf{a} = d\mathbf{u}/d\tau`. It is *not* the 4-vector contraction `u^{\mu}a_{\mu}` of standard SR (which vanishes identically by 4-velocity / 4-acceleration orthogonality). The transformation behaviour of `\mathbf{u}\cdot\mathbf{a}` under the proper-time-formulation's boost (Eq. (11) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]) is **not derived in this PR**. The Cole/Poder/Wistisen experimental comparisons of [Problem J3e-P16.5](Ch16_Radiation_Damping.md#problem-j3e-p165--proper-time-rr-prediction-for-the-colepoder-geometry) implicitly assume a definite lab frame; whether the lab-frame `\mathbf{u}\cdot\mathbf{a}` is the right invariant for the "third-term contribution to radiated field" prediction is a covariance question that the PR has not settled. Flagged as pending and tracked in [`_proper_time_cheatsheet.md`](../_proper_time_cheatsheet.md).
 
 #### Experimental signature
 
@@ -187,11 +202,12 @@ The third term is **non-zero** for linearly-accelerated charges (bremsstrahlung 
 | Velocity field | `e\,\mathbf{r}_{\mathbf{v}}(1-v^{2}/c^{2})/s_{v}^{3}` | identical (under velocity duality) |
 | Acceleration field | `e\,\mathbf{r}\times(\mathbf{r}_{\mathbf{v}}\times\mathbf{a})/(c^{2}s_{v}^{3})` | identical structure with `c\to b`, `\mathbf{v}\to\mathbf{u}` |
 | Third term | **ABSENT** | `e\,(\mathbf{u}\cdot\mathbf{a})\,\mathbf{r}\times(\mathbf{u}\times\mathbf{r})/(b^{4}s^{3})` |
-| Radiation polarisation | purely transverse | transverse + longitudinal (when `\mathbf{u}\cdot\mathbf{a}\neq 0`) |
+| `\hat r`-transversality of `\mathbf{E}` | exact in radiation zone | broken when `\mathbf{u}\cdot\mathbf{a}\neq 0` (third term has both `\mathbf{u}`-direction and `\mathbf{r}`-direction components) |
+| Far-field `dP/d\Omega` from third term | n/a | **not computed in this PR** — pending downstream of [#43](https://github.com/temoTxt/PyPhysics/issues/43) |
 
 **Does the proper-time answer differ from a pure `c → b` redressing?** **⚠ YES — first occurrence in the campaign.** The third term is not a `c \to b` redressing of any classical term; it is a structurally new contribution to the radiated field, proportional to `(\mathbf{u}\cdot\mathbf{a})/b^{4}` and absent from classical EM. This is the campaign's load-bearing example of the proper-time formulation predicting something genuinely new.
 
-**Verdict:** ⚠ **the proper-time formulation produces a qualitatively new field-level prediction (longitudinal radiation component when `\mathbf{u}\cdot\mathbf{a}\neq 0`) absent from classical Liénard–Wiechert.** This is consistent with the framework as published; it is not a flagged inconsistency. Whether the prediction is supported by experiment is the open question addressed in issue #43.
+**Verdict:** ⚠ **the printed proper-time Eq. (7) carries a structurally new third term, absent from classical Liénard–Wiechert, that breaks `\hat r`-transversality of `\mathbf{E}` whenever `\mathbf{u}\cdot\mathbf{a}\neq 0`.** Whether this third term contributes to integrated radiated power (Reading A) or only reshuffles angular distribution at fixed total power (Reading B) — and whether `\mathbf{u}\cdot\mathbf{a}`'s frame-dependence preserves the prediction across observer frames — are *not settled in this document*. The form of the term is consistent with the framework as published; the operational consequence is pending the far-field `dP/d\Omega` integration (downstream of issue #43) and a covariance check.
 
 **Notes for author review:** **this is the campaign's load-bearing finding to date** and the document warrants the author's full read. The third term is mechanically derivable from the Gill–Zachary substitution rules applied to the Maxwell field equations, but its physical content — a longitudinal radiation component absent from classical EM — is a substantive claim that depends on the framework being the correct formulation. If issue #43's comparison against Cole/Poder/Wistisen 2018 data finds the prediction is *not* supported, this would constitute the campaign's first experimental falsification of the framework. If the prediction *is* supported (or is statistically indistinguishable from quantum-corrected Landau–Lifshitz), the result is a confirmation of the framework's experimental status. Either outcome warrants a separate entry in [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md); flagging here pending the #43 outcome.
 
@@ -226,11 +242,13 @@ This is Jackson 3e Eq. (14.22). It applies in the limit `v \ll c`; at relativist
 
 #### (c) Proper-time reformulation
 
-The proper-time formulation produces the same total radiated power at the level of the radiation-zone field structure, but with the substitution `c \to b` in the prefactor:
+The proper-time formulation produces the same total radiated power at the level of the radiation-zone field structure of the **first two terms** of Eq. (7) (velocity field + standard-equivalent acceleration field), but with the substitution `c \to b` in the prefactor:
 
 $$
-P_{\text{PT}} = \frac{2 e^{2} a^{2}}{3 b^{3}}.
+P_{\text{PT}}^{(\text{first-two-terms only})} = \frac{2 e^{2} a^{2}}{3 b^{3}}.
 $$
+
+**Important caveat — this formula is the `c\to b` redressing of the first two terms only.** It does **not** include the integrated-power contribution of the proper-time third term of Eq. (7) (the `e(\mathbf{u}\cdot\mathbf{a})\mathbf{r}\times(\mathbf{u}\times\mathbf{r})/(b^{4}s^{3})` piece flagged in [Problem J3e-P14.2](#problem-j3e-p142--li%C3%A9nard-wiechert-fields-with-the-proper-time-third-term)). The third term is, by construction, non-zero whenever `\mathbf{u}\cdot\mathbf{a} \neq 0` — precisely the regime of *linear* acceleration, which is the non-relativistic Larmor problem's natural setting. Whether the third term contributes additively to integrated radiated power (Reading A of J3e-P14.2) or only reshuffles angular distribution at fixed total power (Reading B) is **not computed in this PR**. Under Reading A, the formula above is incomplete; under Reading B, it is the correct total power. The fractional-correction table below is therefore a *partial* characterisation of the proper-time prediction in the non-relativistic regime — the `c\to b` piece only. The third-term integrated `dP/d\Omega` over a sphere at `r\to\infty` is referred forward to issue [#43](https://github.com/temoTxt/PyPhysics/issues/43)'s numerical setup.
 
 Expanding `b = c\sqrt{1 + u^{2}/c^{2}}` in powers of `u/c`,
 
@@ -290,9 +308,9 @@ Linear deceleration of a charge (bremsstrahlung) provides a real experimental se
 | Validity regime | `v \ll c` | same |
 | Measurable? | yes, at chemistry-scale | only at speeds where Larmor breaks down |
 
-**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no, at this level. The proper-time prediction is *precisely* the classical Larmor formula with `c \to b`. The "new physics" of the proper-time formulation does not surface in the non-relativistic regime; it surfaces in the third term of Eq. (7), which is `O((u\cdot a)/b^{4})` and is suppressed by `(u/c)^{2}` at non-relativistic velocities.
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ at the level of the *first two terms of Eq. (7)*, no — the proper-time prediction is *precisely* the classical Larmor formula with `c \to b`. The third term of Eq. (7), however, is *not* a `c\to b` redressing of any classical term, and its integrated-power contribution at non-relativistic velocities is **not computed in this PR** (see caveat above). If the third term's integrated power is `O((u/c)^{2})` it remains below floor; if it is `O(1)` it is missing from the formula above. Honest scope: this problem characterises only the `c\to b` piece.
 
-**Verdict:** ✅ all formulations consistent. The proper-time correction to non-relativistic Larmor is a computable `O((u/c)^{2})` shift below the observational floor at chemistry-scale velocities; the operationally measurable signature of the proper-time formulation lives in the relativistic regime (Liénard formula plus third term — issue #43).
+**Verdict:** ⚠ *partial* — the `c\to b` piece of the proper-time non-relativistic Larmor formula is computable and reduces below floor at chemistry-scale velocities. The third-term contribution to *integrated* radiated power in the same non-relativistic regime is **not derived in this document**; it is structurally present in the field expression of [J3e-P14.2](#problem-j3e-p142--li%C3%A9nard-wiechert-fields-with-the-proper-time-third-term) but its `dP/d\Omega` integration over a sphere at `r\to\infty` is referred forward to issue #43. The operationally measurable signature of the proper-time formulation in the strict non-relativistic regime is therefore "below floor for the `c\to b` piece + undetermined for the third-term piece", not the cleaner null statement the earlier draft of this problem implied.
 
 **Notes for author review:** the podcast Experimentalist's hand-off to Cole/Poder/Wistisen 2018 experiments is the natural narrative move from this problem. The proper-time correction to Larmor is *real* and *computable*, but the regime in which it is large enough to measure is the regime where Larmor has been replaced by Liénard. This is the campaign's most pedagogically honest observation, and it is articulated as the load-bearing message of podcast pick #5. Not posted to `FINDINGS_for_author_review.md` — the result is consistent with classical EM at the level of the Larmor approximation, with a documented but unobservable correction.
 
@@ -409,13 +427,13 @@ The angular distribution of the radiation is peaked along the direction of motio
 
 The proper-time Liénard–Wiechert fields of Eq. (7) of the Maxwell paper engage the third term `e(\mathbf{u}\cdot\mathbf{a})\,\mathbf{r}\times(\mathbf{u}\times\mathbf{r})/(b^{4}s^{3})` non-trivially in this configuration. The contribution to the radiated field at a point in direction `\hat n` makes an angle with `\mathbf{u}` (and with `\mathbf{a}`, since they are collinear), and the field structure includes both a longitudinal and a radial component (as decomposed in [Problem J3e-P14.2](#problem-j3e-p142--li%C3%A9nard-wiechert-fields-with-the-proper-time-third-term)).
 
-The magnitude of the third-term field in the radiation zone scales as
+The magnitude of the third-term field along the `\mathbf{u}` direction scales as
 
 $$
-|\mathbf{E}_{\text{3rd}}| \sim \frac{e\,|\mathbf{u}|\,|\mathbf{u}\cdot\mathbf{a}|}{b^{4}\,r} \sim \frac{1}{r},
+|\mathbf{E}_{\text{3rd}}^{(\mathbf{u})}| \sim \frac{e\,|\mathbf{u}|\,|\mathbf{u}\cdot\mathbf{a}|}{b^{4}\,r} \sim \frac{1}{r},
 $$
 
-the same radial dependence as the classical Liénard acceleration field. Both contributions add coherently to give the total radiated field.
+formally `1/r` like the classical Liénard acceleration field. **However** — per the terminology caveat in [J3e-P14.2](#problem-j3e-p142--li%C3%A9nard-wiechert-fields-with-the-proper-time-third-term) — whether this `1/r`-scaling along `\mathbf{u}` survives the far-field `\hat k`-decomposition as a true outgoing radiation component, or instead reorganises into a near-field plus a transverse-radiation correction, is **not computed in this PR**. The "coherent addition to classical acceleration field" framing below is therefore the natural reading of the printed Eq. (7), but the operational radiated-power consequence depends on which reading (A or B of J3e-P14.2) is correct. Both contributions add coherently to the *field expression*; whether they add coherently to *radiated power into the far zone* is the open question.
 
 **Mathematica check** (Wolfram MCP, 2026-05-24):
 
