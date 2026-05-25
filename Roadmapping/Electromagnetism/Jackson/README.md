@@ -27,6 +27,15 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 
 ⭐ indicates a chapter where the proper-time vs classical contrast is most informative; see [§7 of the plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#7-initial-chapter-selection--canonical-problems-list).
 
+## Experimental comparisons
+
+The [`Experimental_Comparisons/`](Experimental_Comparisons/) subdirectory holds cross-experiment analysis documents — predictions of the proper-time framework set against published experimental data. These are *not* per-problem documents in the sense of [`../_template_problem.md`](../_template_problem.md); they have their own structure (§1 selection provenance, §2 framework restatement / wikilink, per-experiment §3 blocks, §4 cross-experiment summary), but they follow the same voice and Crocco-substantive gating conventions as the chapter documents.
+
+| Comparison document | Tracks | Anchored on | Status |
+|---|---|---|---|
+| [`Experimental_Comparisons/radiation_reaction_2018.md`](Experimental_Comparisons/radiation_reaction_2018.md) | issue [#43](https://github.com/temoTxt/PyPhysics/issues/43); Cole 2018, Poder 2018, Wistisen 2018 | self-contained restatement of Eq. (7) (predates PR D) | draft — substantive blocks blank |
+| [`Experimental_Comparisons/bremsstrahlung_MeV_spectra.md`](Experimental_Comparisons/bremsstrahlung_MeV_spectra.md) | issue [#48](https://github.com/temoTxt/PyPhysics/issues/48); MeV-clinical-linac bremsstrahlung (Koch-Motz 1959, Tseng-Pratt 1971, Seltzer-Berger 1986, EGSnrc, PENELOPE, AAPM TG-51) | wikilink to [Ch14 P14.6](Ch14_Radiation_by_Moving_Charges.md#problem-j3e-p146--bremsstrahlung-from-a-linearly-decelerating-charge) | draft — substantive blocks blank, 5 of 6 bib stubs awaiting PDFs |
+
 ## Chapter contributions to PR 0
 
 The PR 0 fluency-warm-up spans Chs. 1–2 and 5 with 3–4 problems where `u = 0` (electrostatics) or `∂_τ = 0` (steady currents), so that the proper-time formulation reduces to the classical answer up to at most a `J → (b/c) J` rescaling. Candidate problems are listed in [§7.3 of the plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#73-pr-a-prequel-adopted); the final selection is made when PR 0 opens.
