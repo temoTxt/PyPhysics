@@ -439,6 +439,60 @@ Empirical observations from PR C:
 
 **Issue #42 acceptance criteria status.** PR A merged ✅, PR D OR PR E pending. PR B and PR C are preparatory chapter work; neither is gating per [§13.5 D4](#135-decision-points--confirmed-by-author-2026-05-24).
 
+### 7.8 PR D retrospective (closed 2026-05-24)
+
+**PR D is the campaign's first headline-payoff PR.** All five Ch. 14 problems drafted, all five Wolfram MCP-verified, and the campaign's load-bearing field-level prediction (the dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` third term of Eq. (7) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]) is now exhaustively documented.
+
+| Commit | Problem | Verdict | Headline observation |
+|---|---|---|---|
+| `31c7779` | J3e-P14.1 — Liénard–Wiechert potentials | ✅ identical potentials | foundation: `u/b = v/c` reduces proper-time and classical potentials to the same expressions |
+| `437f755` | J3e-P14.2 — LW fields with third term | ⚠ **first qualitatively new field-level prediction** | **proper-time third term `e(u·a)[r×(u×r)]/(b⁴s³)` is absent from classical EM**; predicts longitudinal radiation component when `u·a ≠ 0` (podcast pick #2) |
+| `d32a806` | J3e-P14.3 — non-relativistic Larmor | ✅ identical at leading order; `O((u/c)²)` correction | **podcast pick #5's honest moment:** the correction is below floor at velocities where Larmor is valid, and order unity where Larmor must be replaced by Liénard |
+| `e6ac1c3` | J3e-P14.5 — synchrotron from circular motion | ✅ identical to classical | third term vanishes by `u·a = 0` (orthogonality); null-result confirmation against precision-tested synchrotron data |
+| `8793f90` | J3e-P14.6 — bremsstrahlung from linear deceleration | ⚠ third term engages | non-null counterpoint to synchrotron; **MeV-energy bremsstrahlung identified as candidate new experimental setting** (not previously emphasised in Gill corpus) |
+
+#### Campaign-level observations from PR D
+
+**The dissipative-term machinery is now fully exercised at the field level.** Every dissipative-term scenario in the campaign's plan has been documented:
+
+| Scenario | Engagement | PR D problem |
+|---|---|---|
+| `\mathbf{u} = 0` (static) | vanishes | not in PR D; documented across PRs 0-A |
+| `\mathbf{a} = 0` (uniform motion) | vanishes | not in PR D; documented in PR A (J3e-P6.4) |
+| `\mathbf{u} \perp \mathbf{a}` (circular motion) | vanishes | J3e-P14.5 (synchrotron) ✅ null result |
+| Steady current | vanishes (averaged) | not in PR D; documented in PR 0 (J3e-P5.4) |
+| Perfect-conductor idealisation | vanishes (response is instantaneous) | not in PR D; documented in PR A (J3e-P6.20) |
+| `\mathbf{u}\cdot\mathbf{a} \neq 0` (linear acceleration) | **engages** | J3e-P14.6 (bremsstrahlung) ⚠ non-null |
+| Plane-wave figure-8 at relativistic intensity | **engages** | not in PR D; first noted in PR C (J3e-P12.14) |
+| Radiation-reaction-dominated extreme intensity | **engages** | not in PR D; subject of PR E and issue #43 |
+
+The picture is now complete: the dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` coefficient engages whenever the source's proper-time velocity has a component along its proper-time acceleration, and vanishes in every kinematic configuration where they are orthogonal or one of them is zero. The campaign has documented every category.
+
+**The campaign's load-bearing finding is articulated.** PR D's J3e-P14.2 is the campaign's first qualitatively new field-level prediction:
+
+> *The proper-time Liénard–Wiechert formulation predicts a **longitudinal radiation component** in any kinematic configuration where `\mathbf{u}\cdot\mathbf{a} \neq 0`. Classical Liénard–Wiechert radiation in the radiation zone is purely transverse; the proper-time third term breaks this purity by introducing components along both `\mathbf{u}` (longitudinal) and `\hat r` (radial).*
+
+Whether this prediction is supported by experiment is the open question of issue [#43](https://github.com/temoTxt/PyPhysics/issues/43). The candidate experimental settings now include:
+
+- **Cole 2018 / Poder 2018 / Wistisen 2018** — GeV electron beam × extreme laser intensity. The original §12 podcast-pick targets.
+- **MeV bremsstrahlung at clinical-physics energies** — newly identified in PR D's J3e-P14.6. Precision-experiment-rich setting (medical physics) where the third-term contribution would be order unity and `\sim 1-2\%` measurements achieve distinguishability.
+
+#### Empirical observations from PR D's authoring
+
+- **Effort estimate held within [§13.1 O4](#131-objections-with-partial-responses)'s ~2.5–3 week budget.** Five Ch. 14 problems at roughly the same per-problem cost as PR A–C, with two problems (J3e-P14.2, J3e-P14.6) carrying heavier interpretive load (substantive claims about the third-term contribution) and three lighter (J3e-P14.1, J3e-P14.3, J3e-P14.5).
+- **Per-paragraph TODO discipline reassessment is now overdue.** Per [§7.6 of the plan](#76-pr-b-retrospective-closed-2026-05-24), the planned reassessment of per-paragraph density was deferred to "start of PR D"; PR D has now happened. The density remains 2–4 TODO blocks per problem across PR A–D (20 problems), and the noise concern raised in §13.1 O3 has not materialised. **Decision: keep per-paragraph TODO density through PR E** (the final headline PR); reassess at start of PR F+ if backfill content engages.
+- **Wolfram MCP performed reliably throughout PR D after the PR B reconnect.** No further disconnects.
+
+#### Implications for PR E (Ch. 16 Radiation Damping)
+
+PR E will engage the radiation-reaction physics of the **Abraham–Lorentz–Dirac** problem, podcast pick #3. The setup is now in place: PR C–D have documented the dissipative term across all kinematic categories; PR E will exercise it in the radiation-back-reaction regime where Cole/Poder/Wistisen 2018 measurements live. The first **non-trivial** radiation-reaction observable — a comparison of proper-time predictions against the classical Lorentz–Abraham–Dirac equation — is the natural PR E content.
+
+Per [§11 acceptance criteria](#11-acceptance-criteria-for-closing-issue-42), PR D being merged satisfies the "PR D OR PR E" requirement; issue #42 can close once PR D is reviewed and merged. PR E becomes optional for #42 closure but remains part of the campaign's scope per §7.
+
+**Implications for the plan.** No changes recommended to §7, §10, §13 based on PR D observations. The per-paragraph TODO discipline decision (keep through PR E, reassess at PR F+) is recorded above. Issue #43's experimental-comparison work has its first complete dynamical-side derivation; the comparison document at `Electromagnetism/Jackson/Experimental_Comparisons/radiation_reaction_2018.md` can now be drafted.
+
+**Issue #42 acceptance criteria status.** PR A merged ✅; **PR D drafted (5/5) and ready for review** — once merged, the second criterion is satisfied. The third criterion (`Roadmapping/README.md` cross-reference) remains pending as a small PR-final commit.
+
 ---
 
 ## 8. Definition of done
