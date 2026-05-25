@@ -20,7 +20,7 @@ Selected canonical problems (~5–10 per chapter, ~50–100 total). Not exhausti
 | **PR A** | Ch. 6 Maxwell + macroscopic media | 5 (6.1, 6.4, 6.5, 6.11, 6.20) | ✅ closed 2026-05-24 (5/5 drafted, retrospective in [§7.5 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#75-pr-a-retrospective-closed-2026-05-24)) |
 | **PR B** | Ch. 11 Special Relativity | 5 | ✅ closed 2026-05-24 (5/5 drafted, retrospective in [§7.6 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#76-pr-b-retrospective-closed-2026-05-24)) |
 | **PR C** | Ch. 12 Relativistic Dynamics | 5 | ✅ closed 2026-05-24 (5/5 drafted, retrospective in [§7.7 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#77-pr-c-retrospective-closed-2026-05-24)) |
-| **PR D** | Ch. 14 Radiation by Moving Charges | 5 | in progress (3/5 drafted) |
+| **PR D** | Ch. 14 Radiation by Moving Charges | 5 | in progress (4/5 drafted) |
 | **PR E** | Ch. 16 Radiation Damping | 3–5 | planned |
 | **PR F+** | Chs. 1–5, 7–10, 13, 15 (backfill) | 4–6 each | planned |
 
