@@ -17,12 +17,12 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 | Ch. 7 | Plane Electromagnetic Waves, Wave Propagation | three-system | **PR F** | 4 / 4 | ✅ drafted — see [`Ch07`](Ch07_Plane_EM_Waves.md) |
 | Ch. 8 | Waveguides, Resonant Cavities, Optical Fibers | three-system | **PR H** | 4 / 4 | ✅ drafted — see [`Ch08`](Ch08_Waveguides_Resonant_Cavities.md) |
 | Ch. 9 | Radiating Systems, Multipole Fields | three-system | **PR I** | 4 / 4 | ✅ drafted — see [`Ch09`](Ch09_Radiating_Systems.md) |
-| Ch. 10 | Scattering and Diffraction | three-system | PR F+ | 0 / 4–6 | planned |
+| Ch. 10 | Scattering and Diffraction | three-system | **PR J** | 3 / 3 | ✅ drafted — see [`Ch10`](Ch10_Scattering_Diffraction.md) |
 | Ch. 11 | Special Theory of Relativity | CGS only (3e Chs. 11+) | **PR B** | 5 / 5 | PR B drafted — see [`Ch11`](Ch11_Special_Relativity.md) |
 | Ch. 12 | Dynamics of Relativistic Particles and EM Fields ⭐ | CGS only | **PR C** | 5 / 5 | PR C drafted — see [`Ch12`](Ch12_Relativistic_Dynamics.md) |
-| Ch. 13 | Collisions, Energy Loss, Scattering of Charged Particles | CGS only | PR F+ | 0 / 4–6 | planned |
+| Ch. 13 | Collisions, Energy Loss, Scattering of Charged Particles | CGS only | **PR J** | 3 / 3 | ✅ drafted — see [`Ch13`](Ch13_Collisions_Energy_Loss.md) |
 | Ch. 14 | Radiation by Moving Charges ⭐ | CGS only | **PR D** | 5 / 5 | PR D drafted — see [`Ch14`](Ch14_Radiation_by_Moving_Charges.md) |
-| Ch. 15 | Bremsstrahlung, Method of Virtual Quanta | CGS only | PR F+ | 0 / 4–6 | planned |
+| Ch. 15 | Bremsstrahlung, Method of Virtual Quanta | CGS only | **PR J** | 3 / 3 | ✅ drafted — see [`Ch15`](Ch15_Bremsstrahlung_Virtual_Quanta.md) |
 | Ch. 16 | Radiation Damping, Classical Models of Charged Particles ⭐ | CGS only | **PR E** | 4 / 4 | PR E drafted — see [`Ch16`](Ch16_Radiation_Damping.md) |
 
 ⭐ indicates a chapter where the proper-time vs classical contrast is most informative; see [§7 of the plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#7-initial-chapter-selection--canonical-problems-list).
