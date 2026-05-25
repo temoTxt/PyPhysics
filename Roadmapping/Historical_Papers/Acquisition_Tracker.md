@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 115 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 115 pending · 🔴 0 unavailable
+**Summary**: 117 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 117 pending · 🔴 0 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -81,6 +81,8 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[peskin_schroeder1995_qft]] | 1995 | 1925-1948 | retrospective | ⚪ pending | — |
 | [[weinberg1995_qft_vol1]] | 1995 | 1925-1948 | retrospective | ⚪ pending | — |
 | [[mehra_rechenberg_qm_history]] | 2001 | 1925-1948 | retrospective | ⚪ pending | — |
+| [[griffiths2005_qm_2e]] | 2005 | 1925-1948 | retrospective | ⚪ pending | — |
+| [[griffiths2018_qm_3e]] | 2018 | 1925-1948 | retrospective | ⚪ pending | — |
 | [[yukawa1935_meson]] | 1935 | 1948-1965 | primary | ⚪ pending | — |
 | [[tomonaga1946_qed]] | 1946 | 1948-1965 | primary | ⚪ pending | — |
 | [[bethe1947_lamb_shift_calc]] | 1947 | 1948-1965 | primary | ⚪ pending | — |
