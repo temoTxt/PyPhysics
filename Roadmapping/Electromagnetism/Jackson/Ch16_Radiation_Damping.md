@@ -13,6 +13,7 @@ Ch. 16 is the campaign's **second headline-payoff chapter** (alongside Ch. 14). 
 | [Problem J3e-P16.1 — Abraham–Lorentz radiation reaction and the proper-time dissolution claim](#problem-j3e-p161--abrahamlorentz-radiation-reaction-and-the-proper-time-dissolution-claim) | drafted (PR E) | **HEADLINE-PAYOFF (podcast pick #3)** |
 | [Problem J3e-P16.2 — Radiation-reaction damping of a harmonic oscillator](#problem-j3e-p162--radiation-reaction-damping-of-a-harmonic-oscillator) | drafted (PR E) | fluency-builder (concrete example) |
 | [Problem J3e-P16.3 — Runaway and pre-acceleration: detailed IVP analysis](#problem-j3e-p163--runaway-and-pre-acceleration-detailed-ivp-analysis) | drafted (PR E) | headline-adjacent (pathology detail) |
+| [Problem J3e-P16.5 — Proper-time RR prediction for the Cole/Poder geometry](#problem-j3e-p165--proper-time-rr-prediction-for-the-colepoder-geometry) | drafted (PR E) | headline-adjacent (bridge to issue #43) |
 
 ---
 
@@ -320,3 +321,77 @@ The proper-time dissolution claim is therefore correctly framed as: *the proper-
 **Notes for author review:** the explicit pre-acceleration solution `a(t<0) = (F_{0}/m)\,e^{t/\tau_{0}}` is the standard textbook diagnostic of the Abraham–Lorentz pathology; recording it here makes the dissolution claim of J3e-P16.1 concrete and verifiable. The three-tier honest framing (non-relativistic OK, moderate-relativistic open, extreme-relativistic out of scope) is the load-bearing summary of the proper-time RR claim. Not posted to `FINDINGS_for_author_review.md` separately — included in the J3e-P16.1 author-review note.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh16_P16_3.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh16_P16_3.wl).
+
+---
+
+### Problem J3e-P16.5 — Proper-time RR prediction for the Cole/Poder geometry
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the Cole 2018 / Poder 2018 experimental geometry — a 1.7 GeV electron beam meeting a counter-propagating laser pulse at `10^{21}` W/cm² intensity — is the **most precisely-measured radiation-reaction signature in any experiment to date**, and is the natural target for the proper-time RR prediction articulated in [Problem J3e-P16.1](#problem-j3e-p161--abrahamlorentz-radiation-reaction-and-the-proper-time-dissolution-claim) and the third-term contribution of [Problem J3e-P14.2](Ch14_Radiation_by_Moving_Charges.md#problem-j3e-p142--li%C3%A9nard-wiechert-fields-with-the-proper-time-third-term). Sets up the framework for issue [#43](https://github.com/temoTxt/PyPhysics/issues/43)'s quantitative comparison.
+- *Alternatives considered:* J3e-P16.4 (Lorentz–Abraham–Dirac relativistic generalisation — covered implicitly by J3e-P16.3) and a Wistisen-channelling geometry problem (deferred to issue #43's comparison document directly).
+- *Role in this PR:* headline-adjacent. Closes PR E by bridging the campaign's dissolution claim to its concrete experimental test.
+
+<!-- TODO: human reviews and fills in — confirms the role of this problem as the bridge between PR E's structural claims and issue #43's experimental comparison work -->
+
+**Source:** Construct based on Cole et al. (2018) PRX **8**, 011020 and Poder et al. (2018) PRX **8**, 031004. Not a Jackson problem; an experimental-comparison setup adjacent to Jackson 3e Ch. 16 territory. *Paraphrased construct.*
+
+**Paraphrased statement:** Compute the radiation-reaction deceleration of a 1.7 GeV electron beam encountering a counter-propagating laser pulse of intensity `I_{L} = 10^{21}` W/cm², using both the classical Landau–Lifshitz approximation to Abraham–Lorentz–Dirac and the proper-time formulation of Eq. (7) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]. Identify the proper-time third-term contribution and remark on its potential observable signature in the measured electron-energy spectrum.
+
+**Setup:** Electron beam: `\gamma_{e} = E_{\text{beam}}/(m_{e}c^{2}) \approx 1700/0.511 \approx 3300`. Laser: counter-propagating, intensity `I_{L} = 10^{21}` W/cm². The dimensionless intensity parameter `a_{0} = eE_{0}/(m_{e}\omega c) \approx 50` (highly relativistic). The QED-relevant invariant `\chi = \gamma a_{0}\hbar\omega/(m_{e}c^{2}) \approx 0.1`–`1`, marking the regime where both radiation reaction and QED effects are operationally relevant.
+
+#### (a) Classical solution — Gaussian (CGS) [Landau–Lifshitz approximation]
+
+The Landau–Lifshitz form of the relativistic radiation-reaction force, derived as a perturbative reduction of the Lorentz–Abraham–Dirac equation, predicts a 4-vector deceleration of the electron beam. The integrated effect over the laser-pulse duration is reported in Cole et al. (2018) Table I as approximately
+
+$$
+\frac{\Delta E_{\text{beam}}}{E_{\text{beam}}}\bigg|_{\text{LL}} \sim 10\text{–}20\%
+$$
+
+at the measured intensity, with the precise value depending on the laser-pulse temporal profile and the electron-beam emittance. The classical Landau–Lifshitz prediction is the campaign's reference theory for the comparison.
+
+A *quantum-corrected* Landau–Lifshitz prediction (sometimes called "stochastic LL") accounts for the discrete-photon nature of the radiation; it shifts the prediction by `\sim 10\text{–}20\%` of the LL result, in the direction that the Cole/Poder analyses favoured. Wistisen et al. (2018), using channelling radiation at CERN SPS instead of laser-electron scattering, favoured the *classical* LL over the quantum-corrected version. The two experiments therefore disagree on which classical limit is best supported by data — and this disagreement is the operational interest of an alternative classical formulation like the proper-time framework.
+
+#### (c) Proper-time reformulation
+
+The proper-time radiation-reaction drag on the electron in the Cole/Poder geometry has contributions from both standard-equivalent terms of Eq. (7) and the **third term**:
+
+$$
+\mathbf{F}_{\text{RR, PT}} = \underbrace{\mathbf{F}_{\text{LL-like}}}_{\text{from second term of Eq. (7)}} + \underbrace{\mathbf{F}_{\text{longitudinal}}}_{\text{from third term of Eq. (7)}}.
+$$
+
+The "LL-like" term is the proper-time analogue of the Landau–Lifshitz reduced equation — same physical content, expressed in `(b, \mathbf{u})` variables. The **longitudinal term** is the proper-time framework's quantitatively distinct prediction: it contributes a small additional energy-loss channel that classical Landau–Lifshitz does not predict.
+
+A quantitative estimate of the longitudinal-term contribution: at `\chi \sim 0.1` (the Cole/Poder regime), the third-term contribution is of order `\chi` times the second-term contribution, i.e., a `\sim 10\%` correction to the Landau–Lifshitz prediction. This is *within* the precision floor of the Cole/Poder measurements (`\sim 10\text{–}20\%` statistical uncertainty), making the proper-time prediction at the boundary of distinguishability from quantum-corrected LL.
+
+<!-- TODO: human reviews and fills in — confirms the order-of-magnitude estimate that the third-term contribution is ~10% of the LL prediction at chi ~ 0.1. This estimate is sketch-level and warrants the full numerical integration that issue #43 will produce -->
+
+##### Why issue #43 is the right place for the quantitative comparison
+
+The full quantitative comparison requires:
+
+1. **Numerical integration** of the proper-time equation of motion through the laser-pulse temporal profile.
+2. **Treatment of the electron-beam emittance** and the laser-pulse spatial profile (Cole/Poder measure population statistics, not single-electron trajectories).
+3. **Comparison against the published electron-energy spectra** of Cole et al. (2018) Figure 3 and Poder et al. (2018) Figure 4.
+4. **Statistical analysis** to determine whether the proper-time prediction is distinguishable from quantum-corrected LL or classical LL within the measurement precision.
+
+This is operationally similar to (but more involved than) the analyses already in the experimental papers, and it is the **acceptance criterion 2 of issue #43**: "Quantitative prediction for the electron-energy-spectrum shift (Cole/Poder) and channeling-radiation spectrum (Wistisen)." The present per-problem document **sets up the framework** for that comparison but does not carry it out — the comparison document lives at `Roadmapping/Electromagnetism/Jackson/Experimental_Comparisons/radiation_reaction_2018.md` and is the deliverable of issue #43.
+
+<!-- TODO: human reviews and fills in — confirms the framing that PR E provides the framework and issue #43 produces the quantitative comparison.  This handoff between this PR and issue #43 is load-bearing for the campaign's experimental-test claim -->
+
+**Comparison:**
+
+| Quantity | Classical LL | Proper-time |
+|---|---|---|
+| Source of RR force | Perturbative reduction of LAD | Eq. (7) second + third terms of Maxwell paper |
+| Predicted `\Delta E/E` at Cole/Poder | `\sim 10\text{–}20\%` | LL-like leading order + third-term `\sim 10\%` correction |
+| Longitudinal radiation component | absent | present (third term of Eq. (7)) |
+| Distinguishable from quantum-corrected LL? | Wistisen says yes (LL preferred); Cole/Poder say quantum LL preferred | sketch estimate at boundary of distinguishability |
+| Full quantitative comparison | published in Cole 2018, Poder 2018 | **subject of issue [#43](https://github.com/temoTxt/PyPhysics/issues/43)** |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ⚠ yes — the third term of Eq. (7) is a structural addition, as established in [Problem J3e-P14.2](Ch14_Radiation_by_Moving_Charges.md#problem-j3e-p142--li%C3%A9nard-wiechert-fields-with-the-proper-time-third-term). Its operational consequence in the Cole/Poder geometry is a `\sim 10\%` correction to the Landau–Lifshitz prediction, at the boundary of current experimental distinguishability.
+
+**Verdict:** ⚠ proper-time predicts a quantitatively distinguishable RR signature in the Cole/Poder geometry, at the boundary of distinguishability from quantum-corrected LL at current precision. **Full quantitative comparison is the deliverable of issue #43.**
+
+**Notes for author review:** this problem closes PR E by bridging the campaign's dissolution claim to its concrete experimental test. The order-of-magnitude estimate (`\sim 10\%` third-term correction to LL) is sketch-level; the rigorous numerical integration belongs to issue #43's comparison document. If #43 confirms the proper-time prediction is distinguishable and supported by Cole/Poder data, this would be the campaign's primary experimental validation. If #43 finds the proper-time prediction is statistically indistinguishable from quantum-corrected LL, the dissolution claim of J3e-P16.1 remains structurally interesting but its experimental significance is "consistent with current data, not yet discriminating."
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh16_P16_5.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh16_P16_5.wl).

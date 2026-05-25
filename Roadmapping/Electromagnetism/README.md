@@ -21,7 +21,7 @@ Selected canonical problems (~5–10 per chapter, ~50–100 total). Not exhausti
 | **PR B** | Ch. 11 Special Relativity | 5 | ✅ closed 2026-05-24 (5/5 drafted, retrospective in [§7.6 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#76-pr-b-retrospective-closed-2026-05-24)) |
 | **PR C** | Ch. 12 Relativistic Dynamics | 5 | ✅ closed 2026-05-24 (5/5 drafted, retrospective in [§7.7 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#77-pr-c-retrospective-closed-2026-05-24)) |
 | **PR D** | Ch. 14 Radiation by Moving Charges | 5 | ✅ closed 2026-05-24 (5/5 drafted, retrospective in [§7.8 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#78-pr-d-retrospective-closed-2026-05-24)) |
-| **PR E** | Ch. 16 Radiation Damping | 4 | in progress (3/4 drafted) |
+| **PR E** | Ch. 16 Radiation Damping | 4 | drafted (4/4) — retrospective pending |
 | **PR F+** | Chs. 1–5, 7–10, 13, 15 (backfill) | 4–6 each | planned |
 
 Realistic completion: 9–18 months at part-time pace per [§13.2 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#132-objections-with-no-honest-mitigation).
