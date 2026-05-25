@@ -1,0 +1,467 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Interim report for author review},
+  pdfauthor={Trey Morris with Claude Opus 4.7},
+  pdfsubject={Interim report -\/- Bethe-Salpeter campaign and the r\_e
+branch question},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Interim report for author review}
+\author{Trey Morris with Claude Opus 4.7}
+\date{2026-05-25}
+
+\begin{document}
+\maketitle
+
+\hypertarget{cover-note}{%
+\section{§1 Cover note}\label{cover-note}}
+
+Following our phone call, this report consolidates the verification work
+and three downstream campaigns since 2026-05-11 into a form that can be
+read in one sitting. The structure is: how we did the work (§2), what we
+found in Jackson that we believe will interest you most (§3), the two
+experimental regimes the Jackson work surfaced as candidates for further
+attention (§4), the broader unconditional and conditional results across
+the campaigns (§5), and the single most load-bearing question we have
+for you (§6 --- the resolution of the published \texttt{r\_e} value).
+Secondary errata findings and questions follow in §7. The closing in §8
+notes what would help us most to hear back on.
+
+\hypertarget{how-we-got-here-the-process}{%
+\section{§2 How we got here --- the
+process}\label{how-we-got-here-the-process}}
+
+The work began in May 2026 with a systematic Wolfram-Mathematica
+re-derivation of every numbered equation in the dual-theory paper corpus
+(Maxwell paper, \emph{Analytic Representation of the Dirac Equation},
+DRQM I, \emph{The Classical Electron Problem}, plus the Banach-space and
+Navier-Stokes mathematics papers at the load-bearing-results level). The
+output was
+\href{../Equation_Verification/}{\texttt{Roadmapping/Equation\_Verification/}},
+a per-paper verification document recording each equation as it appears
+in the paper, a single-line Wolfram check, a step-by-step expanded
+derivation, a cross-reference to the standard textbook equivalent
+(Jackson / Sakurai / Goldstein / Weinberg as applicable), and a verdict
+({[}OK{]} / {[}warn{]} / {[}X{]}).
+
+That campaign produced three substantive findings flagged for author
+review (§7 below) and three load-bearing structural results that
+survived the re-derivation cleanly. The verification work then opened
+three downstream campaigns: \emph{\#42 Electromagnetism / Jackson} (the
+canonical Jackson problems x CGS/SI x proper-time Maxwell, 66 problems
+across Chs. 1--16), \emph{\#49 Quantum Mechanics / Griffiths} (canonical
+Griffiths problems x 2e/3e x proper-time / dual-theory QM, 41 problems
+across Chs. 1--12), and \emph{\#50 Bethe-Salpeter precision predictions}
+(the precision-experiment counterpart to Griffiths, 28 results across
+Chs. on hydrogen / helium / Lamb shift / hyperfine / positronium /
+muonium). The three campaigns are recorded in Pull Requests (PRs) \#51,
+\#52, \#53 respectively.
+
+Two discipline choices we want to flag explicitly. First, all
+AI-assisted work in the repository carries Crocco compliance markers per
+the \emph{Responsible AI in Non-Empirical Research} framework (Crocco,
+Rasdi, Garavan 2026): substantive AI work (the kind that shapes what a
+manuscript argues) requires per-paragraph TODO blocks and a documented
+human-acceptance pass; pragmatic AI work (transcription, Mathematica
+verification, formatting) does not. This report is substantive AI
+end-to-end. Second, every per-PR document carries an explicit
+honest-framing discipline (the §13 review introduced in the \#42 plan)
+that distinguishes algebraic identities from physical claims,
+conditional predictions from unconditional ones, and within-scope
+verdicts from out-of-scope ones. The Phase 3.5 devil's-advocate pass on
+this report is the same discipline applied to the report itself.
+
+\hypertarget{jackson-highlights-initial-results}{%
+\section{§3 Jackson highlights --- initial
+results}\label{jackson-highlights-initial-results}}
+
+The \#42 Electromagnetism campaign worked through 66 canonical Jackson
+problems under the proper-time / dual-theory formulation of the Maxwell
+paper. Three results merit foregrounding.
+
+\textbf{J3e-P14.2 --- the proper-time Liénard-Wiechert third term.} The
+Maxwell paper's Eq. (7) third term
+\texttt{e(u.a){[}rx(uxr){]}/(b\^{}4s\^{}3)} enters the radiation-zone
+fields with a coefficient that is \texttt{(u.a)/b\^{}4}-suppressed at
+non-relativistic intensity but contributes at order unity for
+\texttt{u/c\ \textasciitilde{}=\ 1}. The Jackson Ch. 14 problem worked
+out the explicit angular distribution of the radiation under this term
+and identified that the prediction is a \textbf{longitudinal radiation
+component} in the far field, absent from classical Liénard-Wiechert
+(which is purely transverse in the radiation zone). The result is a
+structural prediction of the formulation, not an empirical claim --- but
+it is the most natural place to look for an operational signature of the
+dual-theory radiation theory. The Jackson per-PR document records the
+algebra and the cross-reference to the Maxwell paper.
+
+\textbf{J3e-P16.1 --- Abraham-Lorentz dissolution.} The proper-time
+formulation supplies the radiation-reaction force as a
+\emph{first-order} \texttt{d\_tau} correction (dissipative coefficient
+\texttt{(u.a)/b\^{}4} from Maxwell paper Eq. 4) rather than the textbook
+\emph{third-order} \texttt{d\_t\^{}3} Abraham-Lorentz form. The Jackson
+Ch. 16 problem worked through the dissolution claim explicitly: the
+first-order structure removes the runaway-solution pathology and the
+pre-acceleration pathology that mar the classical theory, because the
+equation of motion is first-order in proper-time and so does not admit
+the higher-order spurious solutions. The claim is structural; whether it
+\emph{also} resolves the empirical defects that motivated the Cole /
+Poder / Wistisen 2018 experiments is what we believe deserves a separate
+look --- see §4.
+
+\textbf{J3e-P5.13 --- a non-zero result we did not anticipate.} Working
+through Jackson's magnetic-moment-of-a-current-loop problem in the
+proper-time formulation gave a non-zero result where the classical
+calculation gives zero. The result is flagged with the
+@Zorns-Lemmon-tagged comment on issue \#42 for cross-verification; we
+have not yet had a second pair of eyes on the derivation. The campaign's
+per-PR document records the calculation in full so the result is
+reproducible.
+
+\hypertarget{candidate-experiments-what-we-found-to-look-at}{%
+\section{§4 Candidate experiments --- what we found to look
+at}\label{candidate-experiments-what-we-found-to-look-at}}
+
+The Jackson work surfaced two experimental regimes where the dual-theory
+formulation's predictions are operationally distinguishable from
+textbook radiation theory at current measurement precision. We have
+scoped both as sibling issues to \#42 but have not yet executed the
+comparison; we flag them here for your awareness.
+
+\textbf{Cole 2018 / Poder 2018 / Wistisen 2018 (\#43).} Three
+radiation-reaction experiments in the GeV / extreme-intensity regime
+(Gemini laser-wakefield + counter-propagating laser pulse at
+\texttt{10\^{}2\^{}1} W/cm\^{}2 for Cole and Poder; CERN SPS 200 GeV
+electron channeling through aligned silicon for Wistisen). The three
+papers themselves disagree on which classical limit fits their data
+(Cole and Poder favour quantum-corrected Landau-Lifshitz; Wistisen
+prefers classical Landau-Lifshitz). The disagreement is itself a signal
+that the regime is ambiguous; the proper-time third term and dissipative
+coefficient make distinguishable predictions in both geometries. Issue
+\#43 records the scoping.
+
+\textbf{MeV bremsstrahlung at clinical-linac energies (\#48).} A
+precision-experiment regime distinct from \#43. Medical-physics
+calibration measurements at clinical-linac electron energies (1, 6, 18
+MeV typical) deliver \texttt{\textasciitilde{}1–2\%} precision on the
+bremsstrahlung spectrum across decades of data (NIST EGSnrc + AAPM Task
+Group standards). At MeV electron energies the third term contributes at
+order unity (\texttt{u/c\ \textasciitilde{}=\ 0.94}), and the prediction
+is a longitudinal polarisation component absent from classical
+Born-approximation QED. Issue \#48 records the scoping; the bibliography
+stubs for the target references (Seltzer-Berger tables, Pratt-Tseng
+review, NIST EGSnrc) are not yet in place.
+
+\hypertarget{what-the-campaigns-found-unconditional-and-conditional}{%
+\section{§5 What the campaigns found --- unconditional and
+conditional}\label{what-the-campaigns-found-unconditional-and-conditional}}
+
+Three structural results across the four campaigns are unconditional in
+the sense that they do not depend on the resolution of the \texttt{r\_e}
+branch question (§6). First, the algebraic structure of the Maxwell
+paper (Eqs. 22--24 modulo the typos in §7 Finding 1) reproduces under
+Wolfram verification. Second, the DRQM I §II Foldy-Wouthuysen reduction
+of the dual-Dirac equation produces the standard Pauli Hamiltonian at
+leading-\texttt{(Zalpha)\^{}2} order, with the standard spin-orbit,
+relativistic-kinetic, and Darwin coefficients. Third, Bethe's 1947
+mass-renormalisation estimate of the 2S\_1/\_2--2P\_1/\_2 Lamb shift
+reproduces under the proper-time matrix elements; the campaign's
+predicted Lamb shift is \texttt{\textasciitilde{}1,016} MHz, the same
+number the standard Bethe-estimate route gives, with the
+\texttt{\textasciitilde{}42} MHz residual to the measured
+\texttt{1,057.845(9)} MHz attributed to dropped sub-leading one-loop QED
+contributions (out of scope for the campaign's apparatus).
+
+The remaining results across \#50 (Bethe-Salpeter precision predictions)
+are \emph{conditional} on the resolution of the \texttt{r\_e} finding.
+Six independent precision atomic-physics observables exhibit a
+consistent branched verdict:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Observable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Branch (b) prediction
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Branch (c) prediction
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Measurement
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Uncertainty
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Electron \texttt{g\_s} & \texttt{-2.0005714} & \texttt{-2.00231930} &
+\texttt{-2.00231930...} & \textasciitilde10\textsuperscript{-}1\^{}2 \\
+H \texttt{2P\_\{3/2\}\ -\ 2P\_\{1/2\}} &
+\texttt{\textasciitilde{}10,952} MHz & \texttt{\textasciitilde{}10,962}
+MHz & \texttt{10,969.13(10)} MHz &
+\textasciitilde10\textsuperscript{-}8 \\
+H 1S hyperfine (21-cm) & \texttt{\textasciitilde{}1,418.81} MHz &
+\texttt{\textasciitilde{}1,420.04} MHz & \texttt{1,420.405,751,768(2)}
+MHz & \textasciitilde10\textsuperscript{-}1\^{}2 \\
+He \texttt{\^{}3P\_0\ -\ \^{}3P\_1} & \texttt{\textasciitilde{}29,617.4}
+MHz & \texttt{\textasciitilde{}29,616.95} MHz & \texttt{29,616.952} MHz
+& \textasciitilde10\textsuperscript{-}9 \\
+Positronium ortho-para & \texttt{\textasciitilde{}203,505} MHz &
+\texttt{\textasciitilde{}203,389} MHz & \texttt{203,389(2)} MHz &
+\textasciitilde10\textsuperscript{-}5 \\
+Muonium hyperfine & \texttt{\textasciitilde{}4,464.6} MHz &
+\texttt{\textasciitilde{}4,463.4} MHz & \texttt{4,463.302,776(51)} MHz &
+\textasciitilde10\textsuperscript{-}8 \\
+\end{longtable}
+
+Across all six, branch (b) is in \texttt{\textasciitilde{}10\^{}-\^{}3}
+fractional disagreement with measurement; branch (c) agrees at the
+campaign's Bethe-estimate precision floor. The pattern is the
+consequence of the \texttt{r\_e} finding propagating through every
+\texttt{g\_s}-linear and \texttt{g\_s\^{}2}-linear observable in the
+same way.
+
+The Bethe-estimate Lamb shift above is the campaign's \textbf{clearest
+measurement-level non-falsification} at the precision the route can
+deliver: the framework reproduces the same
+\texttt{\textasciitilde{}1,016} MHz number as the standard QED
+Bethe-estimate route gives, and the \texttt{\textasciitilde{}42} MHz
+residual is shared between the two routes (it is what neither captures
+without a full one-loop calculation). It is \emph{not} an
+``endorsement'' in the sense of distinguishing the framework from
+standard QED --- the two formulations give the same Bethe-estimate
+number --- and the campaign's apparatus cannot push below this precision
+floor (a proper-time one-loop dual-QED calculation is documented as
+future work in
+\href{https://github.com/temoTxt/PyPhysics/issues/55}{\#55}). The
+relevant point is that \emph{the framework does not fail} at the
+Bethe-estimate precision, which is the strongest empirical claim the
+present apparatus supports. The six observables in the table, by
+contrast, do depend on \texttt{r\_e} at leading order.
+
+\hypertarget{the-r_e-branch-question-the-load-bearing-ask}{%
+\section{\texorpdfstring{§6 The \texttt{r\_e} branch question --- the
+load-bearing
+ask}{§6 The r\_e branch question --- the load-bearing ask}}\label{the-r_e-branch-question-the-load-bearing-ask}}
+
+This is the single most consequential question we have for you. We have
+carried two values of \texttt{r\_e/r\_0} through the campaigns because
+the published value and the value required to reproduce the measured
+\texttt{g\_e} disagree at the fourth decimal place.
+
+\hypertarget{what-the-two-branches-are}{%
+\subsection{§6.1 What the two branches
+are}\label{what-the-two-branches-are}}
+
+DRQM I §III.D records the anomalous-\texttt{g}-factor formula
+\texttt{g\_r\ =\ 2(1\ -\ 4r\_0/(2r\ +\ r\_0))} together with a stated
+\texttt{r\_e/r\_0\ =\ 0.499857150068631} that the paper claims yields
+\texttt{g\_e\ =\ -2.00231930436256} (the experimental value). Wolfram
+evaluation of the formula at the stated \texttt{r\_e/r\_0} instead gives
+\texttt{g\_e\ =\ -2.0005714813615487}. The value of \texttt{r\_e/r\_0}
+that \emph{does} reproduce \texttt{g\_e\ =\ -2.00231930436256} is
+\texttt{\textasciitilde{}=\ 0.4994205099128318}. The two values are very
+close --- they differ in the fourth decimal place --- but the formula
+\texttt{g\_r\ =\ 2(1\ -\ 4r\_0/(2r\ +\ r\_0))} has a sensitivity
+\texttt{dg\_r/d(r\_e/r\_0)\ \textasciitilde{}=\ 4} at the cutoff, so
+even small differences in \texttt{r\_e} correspond to substantial
+differences in \texttt{g\_e}. We label the as-published value
+\textbf{branch (b)} and the corrected value that reproduces measured
+\texttt{g\_e} \textbf{branch (c)}.
+
+\hypertarget{why-the-question-is-load-bearing}{%
+\subsection{§6.2 Why the question is
+load-bearing}\label{why-the-question-is-load-bearing}}
+
+The \texttt{r\_e} value enters every observable that depends on the
+electron's anomalous magnetic moment, which means every spin-dependent
+precision observable in atomic and molecular spectroscopy. The
+six-observable table in §5 above shows the pattern: branch (b)
+consistently predicts a \texttt{\textasciitilde{}10\^{}-\^{}3}
+disagreement; branch (c) consistently agrees with measurement at the
+Bethe-estimate precision floor. On the hydrogen 1S hyperfine line (the
+21-cm transition, the most precisely measured atomic-physics frequency
+at \texttt{\textasciitilde{}10\^{}-\^{}1\^{}2} relative uncertainty),
+branch (b)'s disagreement is \texttt{\textasciitilde{}6} orders of
+magnitude beyond the measurement uncertainty. We are \emph{not} asking
+you to pick the value that best fits the data --- the campaign's
+verdict-recording is not a fitting exercise. We are asking which value
+the framework intends, so the campaign can record verdicts {[}OK{]} or
+{[}X{]} unconditionally rather than carrying both branches indefinitely.
+
+\hypertarget{what-we-are-asking-concretely}{%
+\subsection{§6.3 What we are asking,
+concretely}\label{what-we-are-asking-concretely}}
+
+The question decomposes into three sub-questions, each of which has a
+clear consequence for the campaign.
+
+\begin{itemize}
+\item
+  \textbf{Q1a.} Is \texttt{r\_e/r\_0\ =\ 0.499857150068631} (the
+  as-published value, branch (b)) the value the framework intends? If
+  yes, the campaign's verdicts on the six observables in §5 would be
+  recorded as {[}X{]} (ruled out at current measurement precision), and
+  the open question becomes how the framework reconciles the
+  \texttt{\textasciitilde{}10\^{}-\^{}3} disagreement across hyperfine,
+  fine structure, and \texttt{g} --- either through a feature of the
+  derivation we have not captured, or through a regime distinction we
+  have missed.
+\item
+  \textbf{Q1b.} Is \texttt{r\_e/r\_0\ \textasciitilde{}=\ 0.499420510}
+  (the corrected value that reproduces measured \texttt{g\_e}, branch
+  (c)) the value the framework intends? If yes, the published number in
+  DRQM I §III.D is a transcription error to be erratum'd, and the
+  campaign's verdicts collapse to {[}OK{]} at the Bethe-estimate
+  precision floor.
+\item
+  \textbf{Q1c.} Is there a third possibility we have not considered ---
+  a different formula, a different derivation, or a context-dependent
+  choice where one value is correct in one regime and another in
+  another? If yes, we will rework the campaign's verdicts with the third
+  value in mind.
+\end{itemize}
+
+\hypertarget{how-the-framework-supports-answering-this}{%
+\subsection{§6.4 How the framework supports answering
+this}\label{how-the-framework-supports-answering-this}}
+
+Two routes are available. The first is to retrieve the original working
+notebook in which \texttt{r\_e} was computed and confirm the digit
+string. The campaign does not have access to working notebooks; you do.
+Even a one-line confirmation that the published value is the intended
+one, or that the corrected value is the intended one, is sufficient for
+the campaign to move forward. The second route is to rederive
+\texttt{r\_e} from the dual-Dirac equation's renormalisation
+prescription --- but this requires the prescription itself to be
+documented (the operator-ordering choice in DRQM I §II.D, which is also
+Q5 below). The campaign could in principle do the rederivation under the
+Weyl ordering we have assumed, but the result is only as good as the
+assumption about the prescription.
+
+\hypertarget{secondary-findings-and-questions}{%
+\section{§7 Secondary findings and
+questions}\label{secondary-findings-and-questions}}
+
+Three additional errata findings and supporting questions, all of which
+are pragmatic-level confirmations rather than load-bearing structural
+decisions.
+
+\textbf{Finding 1 --- Maxwell paper Eq. (24): two typos.} The published
+Eq. (24) is missing a factor of \texttt{c} in the \texttt{Sigma.B} term
+(should be \texttt{-ehbarSigma.B/(2mc)}, the value already in Eq. (22)),
+and is missing the \texttt{+V\^{}2/(2mc\^{}2)} cross-term that arises in
+computing
+\texttt{H\^{}2\ -\textgreater{}\ K\ =\ H\^{}2/(2mc\^{}2)\ +\ mc\^{}2/2}.
+The campaign's Wolfram check is reproducible; the algebraic argument is
+straightforward.
+
+\textbf{Finding 3 --- TCEP Eq. (4.16): sign typo.} Eq. (4.16) writes
+\texttt{v\_g\ =\ v\_g\textquotesingle{}\ -\ v}, but the algebra from the
+paper's own (4.14)--(4.15) gives
+\texttt{v\_g\ =\ v\_g\textquotesingle{}\ +\ v}. The paper's commentary
+surrounding the equation also reads as the \texttt{+} sign; the sign in
+the equation itself appears to be a typesetting error.
+
+\textbf{Q4 --- \texttt{r\_mu} and \texttt{r\_p} numerical values for
+DRQM I Eq. III.23.} The formulas \texttt{g\_mu\^{}a} and
+\texttt{g\_p\^{}a} for the muon and proton anomalous moments are stated
+in DRQM I §III.D alongside the electron formula, but the corresponding
+cutoff values \texttt{r\_mu} and \texttt{r\_p} are not given
+numerically. Without them, muonium and proton magnetic-moment
+predictions cannot be computed from the framework. If you have these
+values, they would close out the analogous discriminator analyses we are
+presently unable to do for the muon and proton.
+
+\textbf{Q5 (optional) --- operator-ordering choice in DRQM I §II.D.}
+Sub-leading \texttt{(Zalpha)\^{}4} results in the dual-Dirac
+Foldy-Wouthuysen reduction depend on the operator-ordering choice. We
+have assumed Weyl ordering throughout the campaign, which reproduces the
+standard Pauli Hamiltonian at leading order. If the framework intends a
+different ordering, the sub-leading results would shift and the §6.4
+route-(ii) rederivation of \texttt{r\_e} would proceed under the
+different prescription.
+
+\hypertarget{closing}{%
+\section{§8 Closing}\label{closing}}
+
+Thank you for the phone call and for the opening to send this. The
+single most useful response would be a resolution of §6 Q1a/b/c --- even
+a one-line answer determines which of the campaign's six precision
+verdicts collapse to {[}OK{]} and which become {[}X{]}. Confirmations or
+corrections on Finding 1, Finding 3, and Q4 (\texttt{r\_mu},
+\texttt{r\_p}) would close out the verification-level items. The
+campaigns continue under the current trajectory if you find the work
+useful in this form; if you have a different direction you would prefer,
+we will redirect.
+
+\end{document}

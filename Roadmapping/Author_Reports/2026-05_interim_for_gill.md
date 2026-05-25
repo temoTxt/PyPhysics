@@ -8,59 +8,44 @@ date: "2026-05-25"
 
 Following our phone call, this report consolidates the verification work and three downstream campaigns since 2026-05-11 into a form that can be read in one sitting. The structure is: how we did the work (§2), what we found in Jackson that we believe will interest you most (§3), the two experimental regimes the Jackson work surfaced as candidates for further attention (§4), the broader unconditional and conditional results across the campaigns (§5), and the single most load-bearing question we have for you (§6 — the resolution of the published `r_e` value). Secondary errata findings and questions follow in §7. The closing in §8 notes what would help us most to hear back on.
 
-<!-- TODO: human reviews and fills in — confirm the cover-note opens with the phone-call reference at the right register: matter-of-fact, not deferential-and-apologetic; signals what's in the report without itemising the conclusions before he has read them -->
-
 # §2 How we got here — the process
 
 The work began in May 2026 with a systematic Wolfram-Mathematica re-derivation of every numbered equation in the dual-theory paper corpus (Maxwell paper, *Analytic Representation of the Dirac Equation*, DRQM I, *The Classical Electron Problem*, plus the Banach-space and Navier-Stokes mathematics papers at the load-bearing-results level). The output was [`Roadmapping/Equation_Verification/`](../Equation_Verification/), a per-paper verification document recording each equation as it appears in the paper, a single-line Wolfram check, a step-by-step expanded derivation, a cross-reference to the standard textbook equivalent (Jackson / Sakurai / Goldstein / Weinberg as applicable), and a verdict (✅ / ⚠ / 🔴).
 
-<!-- TODO: human reviews and fills in — confirm the process section is honest about what discipline we adopted; flag any omitted methodological detail Tepper would want to see acknowledged -->
 
-That campaign produced three substantive findings flagged for author review (§7 below) and three load-bearing structural results that survived the re-derivation cleanly. The verification work then opened three downstream campaigns: *#42 Electromagnetism / Jackson* (the canonical Jackson problems × CGS/SI × proper-time Maxwell, 66 problems across Chs. 1–16), *#49 Quantum Mechanics / Griffiths* (canonical Griffiths problems × 2e/3e × proper-time / dual-theory QM, 41 problems across Chs. 1–12), and *#50 Bethe-Salpeter precision predictions* (the precision-experiment counterpart to Griffiths, 28 results across Chs. on hydrogen / helium / Lamb shift / hyperfine / positronium / muonium). The three campaigns are recorded in PRs #51, #52, #53 respectively.
+That campaign produced three substantive findings flagged for author review (§7 below) and three load-bearing structural results that survived the re-derivation cleanly. The verification work then opened three downstream campaigns: *#42 Electromagnetism / Jackson* (the canonical Jackson problems × CGS/SI × proper-time Maxwell, 66 problems across Chs. 1–16), *#49 Quantum Mechanics / Griffiths* (canonical Griffiths problems × 2e/3e × proper-time / dual-theory QM, 41 problems across Chs. 1–12), and *#50 Bethe-Salpeter precision predictions* (the precision-experiment counterpart to Griffiths, 28 results across Chs. on hydrogen / helium / Lamb shift / hyperfine / positronium / muonium). The three campaigns are recorded in Pull Requests (PRs) #51, #52, #53 respectively.
 
-<!-- TODO: human reviews and fills in — confirm the four-thread framing reads as a coherent programme rather than three opportunistic side-projects; if the latter, adjust the framing accordingly -->
 
 Two discipline choices we want to flag explicitly. First, all AI-assisted work in the repository carries Crocco compliance markers per the *Responsible AI in Non-Empirical Research* framework (Crocco, Rasdi, Garavan 2026): substantive AI work (the kind that shapes what a manuscript argues) requires per-paragraph TODO blocks and a documented human-acceptance pass; pragmatic AI work (transcription, Mathematica verification, formatting) does not. This report is substantive AI end-to-end. Second, every per-PR document carries an explicit honest-framing discipline (the §13 review introduced in the #42 plan) that distinguishes algebraic identities from physical claims, conditional predictions from unconditional ones, and within-scope verdicts from out-of-scope ones. The Phase 3.5 devil's-advocate pass on this report is the same discipline applied to the report itself.
 
-<!-- TODO: human reviews and fills in — confirm Crocco + honest-framing call-outs are not over-emphasised here; the recipient is a physicist primarily, not a methodology reviewer -->
 
 # §3 Jackson highlights — initial results
 
 The #42 Electromagnetism campaign worked through 66 canonical Jackson problems under the proper-time / dual-theory formulation of the Maxwell paper. Three results merit foregrounding.
 
-<!-- TODO: human reviews and fills in — confirm these three are the right three; if any of J3e-P14.2 / J3e-P16.1 / J3e-P5.13 is not in fact the most interesting to a co-author of the Maxwell paper, swap in the right substitute -->
 
 **J3e-P14.2 — the proper-time Liénard-Wiechert third term.** The Maxwell paper's Eq. (7) third term `e(u·a)[r×(u×r)]/(b⁴s³)` enters the radiation-zone fields with a coefficient that is `(u·a)/b⁴`-suppressed at non-relativistic intensity but contributes at order unity for `u/c ≈ 1`. The Jackson Ch. 14 problem worked out the explicit angular distribution of the radiation under this term and identified that the prediction is a **longitudinal radiation component** in the far field, absent from classical Liénard-Wiechert (which is purely transverse in the radiation zone). The result is a structural prediction of the formulation, not an empirical claim — but it is the most natural place to look for an operational signature of the dual-theory radiation theory. The Jackson per-PR document records the algebra and the cross-reference to the Maxwell paper.
 
-<!-- TODO: human reviews and fills in — confirm the longitudinal-component framing is accurate (we used the proper-time Eq. 7 form throughout); flag any alternative interpretation that should be foregrounded -->
 
 **J3e-P16.1 — Abraham-Lorentz dissolution.** The proper-time formulation supplies the radiation-reaction force as a *first-order* `∂_τ` correction (dissipative coefficient `(u·a)/b⁴` from Maxwell paper Eq. 4) rather than the textbook *third-order* `∂_t^3` Abraham-Lorentz form. The Jackson Ch. 16 problem worked through the dissolution claim explicitly: the first-order structure removes the runaway-solution pathology and the pre-acceleration pathology that mar the classical theory, because the equation of motion is first-order in proper-time and so does not admit the higher-order spurious solutions. The claim is structural; whether it *also* resolves the empirical defects that motivated the Cole / Poder / Wistisen 2018 experiments is what we believe deserves a separate look — see §4.
 
-<!-- TODO: human reviews and fills in — confirm the Abraham-Lorentz dissolution is the right framing (we treated it as a structural improvement, not a complete answer to the empirical defects); flag if the framework's intended claim is stronger or weaker than "structural removal of runaway and pre-acceleration" -->
 
 **J3e-P5.13 — a non-zero result we did not anticipate.** Working through Jackson's magnetic-moment-of-a-current-loop problem in the proper-time formulation gave a non-zero result where the classical calculation gives zero. The result is flagged with the @Zorns-Lemmon-tagged comment on issue #42 for cross-verification; we have not yet had a second pair of eyes on the derivation. The campaign's per-PR document records the calculation in full so the result is reproducible.
 
-<!-- TODO: human reviews and fills in — this finding is the least settled of the three; either Tepper recognises the result and can comment, or it is a campaign artifact that we should not promote to a co-author report until Zorn's review is complete -->
 
 # §4 Candidate experiments — what we found to look at
 
 The Jackson work surfaced two experimental regimes where the dual-theory formulation's predictions are operationally distinguishable from textbook radiation theory at current measurement precision. We have scoped both as sibling issues to #42 but have not yet executed the comparison; we flag them here for your awareness.
 
-<!-- TODO: human reviews and fills in — confirm the framing "we have scoped these but not executed" is the right honesty; if Tepper would prefer we run one or the other first, or if either is more or less worth the effort than we are estimating, the §4 prose should record that conversation -->
-
 **Cole 2018 / Poder 2018 / Wistisen 2018 (#43).** Three radiation-reaction experiments in the GeV / extreme-intensity regime (Gemini laser-wakefield + counter-propagating laser pulse at `10²¹` W/cm² for Cole and Poder; CERN SPS 200 GeV electron channeling through aligned silicon for Wistisen). The three papers themselves disagree on which classical limit fits their data (Cole and Poder favour quantum-corrected Landau-Lifshitz; Wistisen prefers classical Landau-Lifshitz). The disagreement is itself a signal that the regime is ambiguous; the proper-time third term and dissipative coefficient make distinguishable predictions in both geometries. Issue #43 records the scoping.
-
-<!-- TODO: human reviews and fills in — confirm the Cole/Poder/Wistisen framing is accurate; if Tepper has views on the relative weight of the three experiments, the report should record them -->
 
 **MeV bremsstrahlung at clinical-linac energies (#48).** A precision-experiment regime distinct from #43. Medical-physics calibration measurements at clinical-linac electron energies (1, 6, 18 MeV typical) deliver `~1–2%` precision on the bremsstrahlung spectrum across decades of data (NIST EGSnrc + AAPM Task Group standards). At MeV electron energies the third term contributes at order unity (`u/c ≈ 0.94`), and the prediction is a longitudinal polarisation component absent from classical Born-approximation QED. Issue #48 records the scoping; the bibliography stubs for the target references (Seltzer-Berger tables, Pratt-Tseng review, NIST EGSnrc) are not yet in place.
 
-<!-- TODO: human reviews and fills in — confirm the MeV bremsstrahlung regime is the right second candidate; the campaign identified this only at #42 PR D and it has not been pressure-tested with anyone outside the campaign yet -->
 
 # §5 What the campaigns found — unconditional and conditional
 
 Three structural results across the four campaigns are unconditional in the sense that they do not depend on the resolution of the `r_e` branch question (§6). First, the algebraic structure of the Maxwell paper (Eqs. 22–24 modulo the typos in §7 Finding 1) reproduces under Wolfram verification. Second, the DRQM I §II Foldy-Wouthuysen reduction of the dual-Dirac equation produces the standard Pauli Hamiltonian at leading-`(Zα)²` order, with the standard spin-orbit, relativistic-kinetic, and Darwin coefficients. Third, Bethe's 1947 mass-renormalisation estimate of the 2S₁/₂–2P₁/₂ Lamb shift reproduces under the proper-time matrix elements; the campaign's predicted Lamb shift is `~1,016` MHz, the same number the standard Bethe-estimate route gives, with the `~42` MHz residual to the measured `1,057.845(9)` MHz attributed to dropped sub-leading one-loop QED contributions (out of scope for the campaign's apparatus).
 
-<!-- TODO: human reviews and fills in — confirm "unconditional" is the right label for these three structural results; flag if any of them depend more on the r_e resolution than we are recording -->
 
 The remaining results across #50 (Bethe-Salpeter precision predictions) are *conditional* on the resolution of the `r_e` finding. Six independent precision atomic-physics observables exhibit a consistent branched verdict:
 
@@ -75,29 +60,24 @@ The remaining results across #50 (Bethe-Salpeter precision predictions) are *con
 
 Across all six, branch (b) is in `~10⁻³` fractional disagreement with measurement; branch (c) agrees at the campaign's Bethe-estimate precision floor. The pattern is the consequence of the `r_e` finding propagating through every `g_s`-linear and `g_s²`-linear observable in the same way.
 
-<!-- TODO: human reviews and fills in — confirm the table is correct (numbers transcribed from #50 PR J cross-comparison); flag if any branch-(b) or branch-(c) entry has been computed differently elsewhere in the framework -->
 
 The Bethe-estimate Lamb shift above is the campaign's **clearest measurement-level non-falsification** at the precision the route can deliver: the framework reproduces the same `~1,016` MHz number as the standard QED Bethe-estimate route gives, and the `~42` MHz residual is shared between the two routes (it is what neither captures without a full one-loop calculation). It is *not* an "endorsement" in the sense of distinguishing the framework from standard QED — the two formulations give the same Bethe-estimate number — and the campaign's apparatus cannot push below this precision floor (a proper-time one-loop dual-QED calculation is documented as future work in [#55](https://github.com/temoTxt/PyPhysics/issues/55)). The relevant point is that *the framework does not fail* at the Bethe-estimate precision, which is the strongest empirical claim the present apparatus supports. The six observables in the table, by contrast, do depend on `r_e` at leading order.
 
-<!-- TODO: human reviews and fills in — confirm the "Lamb shift is independent of r_e" claim survives scrutiny at the Bethe-estimate precision the campaign claims (the framework's one-loop apparatus, which would have to handle the anomalous-moment correction, is documented in #55 but not yet developed) -->
 
 # §6 The `r_e` branch question — the load-bearing ask
 
 This is the single most consequential question we have for you. We have carried two values of `r_e/r_0` through the campaigns because the published value and the value required to reproduce the measured `g_e` disagree at the fourth decimal place.
 
-<!-- TODO: human reviews and fills in — confirm this framing as "the load-bearing ask" is the right tone for the conversation; if Tepper would prefer this be framed less as "the campaign hinges on this" and more as "we observed an inconsistency that needs your input to resolve," the prose here should re-balance -->
 
 ## §6.1 What the two branches are
 
 DRQM I §III.D records the anomalous-`g`-factor formula `g_r = 2(1 − 4r_0/(2r + r_0))` together with a stated `r_e/r_0 = 0.499857150068631` that the paper claims yields `g_e = -2.00231930436256` (the experimental value). Wolfram evaluation of the formula at the stated `r_e/r_0` instead gives `g_e = -2.0005714813615487`. The value of `r_e/r_0` that *does* reproduce `g_e = -2.00231930436256` is `≈ 0.4994205099128318`. The two values are very close — they differ in the fourth decimal place — but the formula `g_r = 2(1 − 4r_0/(2r + r_0))` has a sensitivity `dg_r/d(r_e/r_0) ≈ 4` at the cutoff, so even small differences in `r_e` correspond to substantial differences in `g_e`. We label the as-published value **branch (b)** and the corrected value that reproduces measured `g_e` **branch (c)**.
 
-<!-- TODO: human reviews and fills in — confirm the formula and the two limits ($g(r_0/2) = -2$ and $g(r → 0) = -6$) are stated correctly; the sanity checks at $r_0/2$ and $r → 0$ pass for both branches, so the discrepancy is in the digits themselves, not in the formula -->
 
 ## §6.2 Why the question is load-bearing
 
 The `r_e` value enters every observable that depends on the electron's anomalous magnetic moment, which means every spin-dependent precision observable in atomic and molecular spectroscopy. The six-observable table in §5 above shows the pattern: branch (b) consistently predicts a `~10⁻³` disagreement; branch (c) consistently agrees with measurement at the Bethe-estimate precision floor. On the hydrogen 1S hyperfine line (the 21-cm transition, the most precisely measured atomic-physics frequency at `~10⁻¹²` relative uncertainty), branch (b)'s disagreement is `~6` orders of magnitude beyond the measurement uncertainty. We are *not* asking you to pick the value that best fits the data — the campaign's verdict-recording is not a fitting exercise. We are asking which value the framework intends, so the campaign can record verdicts ✅ or 🔴 unconditionally rather than carrying both branches indefinitely.
 
-<!-- TODO: human reviews and fills in — confirm this is the right load-bearing framing; specifically, that "we are not asking you to pick the value that best fits the data" reads as honest rather than as positioning -->
 
 ## §6.3 What we are asking, concretely
 
@@ -109,19 +89,16 @@ The question decomposes into three sub-questions, each of which has a clear cons
 
 - **Q1c.** Is there a third possibility we have not considered — a different formula, a different derivation, or a context-dependent choice where one value is correct in one regime and another in another? If yes, we will rework the campaign's verdicts with the third value in mind.
 
-<!-- TODO: human reviews and fills in — confirm the Q1a/b/c decomposition is the right structure; if Tepper would prefer a different framing (e.g., "the framework derives r_e from a specific renormalisation prescription, and the prescription should be the answer rather than the digit string"), the sub-questions should be rewritten accordingly -->
 
 ## §6.4 How the framework supports answering this
 
 Two routes are available. The first is to retrieve the original working notebook in which `r_e` was computed and confirm the digit string. The campaign does not have access to working notebooks; you do. Even a one-line confirmation that the published value is the intended one, or that the corrected value is the intended one, is sufficient for the campaign to move forward. The second route is to rederive `r_e` from the dual-Dirac equation's renormalisation prescription — but this requires the prescription itself to be documented (the operator-ordering choice in DRQM I §II.D, which is also Q5 below). The campaign could in principle do the rederivation under the Weyl ordering we have assumed, but the result is only as good as the assumption about the prescription.
 
-<!-- TODO: human reviews and fills in — confirm that "one-line confirmation is sufficient" is the right ask; we do not want to imply that we are asking for a multi-page response when a sentence will do -->
 
 # §7 Secondary findings and questions
 
 Three additional errata findings and supporting questions, all of which are pragmatic-level confirmations rather than load-bearing structural decisions.
 
-<!-- TODO: human reviews and fills in — confirm §7 is the right place for these; if any of Finding 1 / Finding 3 / r_μ should be elevated to §6 because it changes the campaign's overall verdict, flag accordingly -->
 
 **Finding 1 — Maxwell paper Eq. (24): two typos.** The published Eq. (24) is missing a factor of `c` in the `Σ·B` term (should be `−eℏΣ·B/(2mc)`, the value already in Eq. (22)), and is missing the `+V²/(2mc²)` cross-term that arises in computing `H² → K = H²/(2mc²) + mc²/2`. The campaign's Wolfram check is reproducible; the algebraic argument is straightforward.
 
@@ -131,10 +108,8 @@ Three additional errata findings and supporting questions, all of which are prag
 
 **Q5 (optional) — operator-ordering choice in DRQM I §II.D.** Sub-leading `(Zα)⁴` results in the dual-Dirac Foldy-Wouthuysen reduction depend on the operator-ordering choice. We have assumed Weyl ordering throughout the campaign, which reproduces the standard Pauli Hamiltonian at leading order. If the framework intends a different ordering, the sub-leading results would shift and the §6.4 route-(ii) rederivation of `r_e` would proceed under the different prescription.
 
-<!-- TODO: human reviews and fills in — confirm Q5 is correctly framed as optional rather than load-bearing; the operator-ordering question is relevant to the framework's apparatus development for the one-loop dual-QED work documented in #55, but is not load-bearing for the present campaigns -->
 
 # §8 Closing
 
 Thank you for the phone call and for the opening to send this. The single most useful response would be a resolution of §6 Q1a/b/c — even a one-line answer determines which of the campaign's six precision verdicts collapse to ✅ and which become 🔴. Confirmations or corrections on Finding 1, Finding 3, and Q4 (`r_μ`, `r_p`) would close out the verification-level items. The campaigns continue under the current trajectory if you find the work useful in this form; if you have a different direction you would prefer, we will redirect.
 
-<!-- TODO: human reviews and fills in — closing is short by design; confirm there is nothing else that needs to be said before the report is sent -->
