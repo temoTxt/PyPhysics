@@ -84,6 +84,13 @@ Print["  required r_e/r_0 for g_e:  ", InputForm[x /. First @ Solve[gr[x] == -2.
 
 **For the muon and proton (Eq. III.23):** The formulas $g_\mu^a$, $g_p^a$ are stated, but the corresponding cutoff values $r_\mu$, $r_p$ are not given numerically — so no analogous numerical check was possible.
 
+**Downstream operational consequences (added 2026-05-25 from #50 campaign):** Beyond the original $g_e$ disagreement, the published $r_e$ propagates into the dual-Dirac fine-structure prediction. Per [BS-§14.2 of the Bethe–Salpeter campaign](../Quantum_Mechanics/Bethe_Salpeter/03_FineStructure.md#result-bs-142--2p--2p-fine-structure-splitting-branched), the branched verdict is:
+
+- **Branch (b)** as-published $r_e \approx 0.499857$: predicts $\Delta E_{FS}(2P_{3/2} - 2P_{1/2}) \approx 10{,}952$ MHz, disagrees with CODATA-2018 measurement $10{,}969.13(10)$ MHz by $\sim 17$ MHz (1.5×10⁻³ fractional).
+- **Branch (c)** corrected $r_e \approx 0.499420$: predicts $\sim 10{,}962$ MHz, agreeing with measurement at the Bethe-estimate precision the campaign can deliver ($\sim 7$ MHz residual from missing two-loop).
+
+The same branched structure is expected to recur in PR F (hyperfine, ~12-sig-fig measured). This is not a new independent finding — it is the same Finding 2 with a new operational signature in precision fine-structure spectroscopy.
+
 ---
 
 ## Finding 3 — TCEP Eq. (4.16): sign typo in the group-velocity relation
