@@ -27,7 +27,7 @@ Selected canonical problems (~5–10 per chapter, ~50–100 total). Not exhausti
 | **PR H** | Ch. 8 Waveguides + Resonant Cavities | 4 | ✅ drafted 2026-05-24 |
 | **PR I** | Ch. 9 Radiating Systems (multipole radiation) | 4 | ✅ drafted 2026-05-24 |
 | **PR J** | Chs. 10 + 13 + 15 (Scattering, Energy Loss, Bremsstrahlung) | 9 | ✅ drafted 2026-05-24 |
-| **PR K+** | Supplementary: Chs. 1, 2, 3 supplementary problems, Ch. 5 supplementary | 4 each | planned |
+| **PR K** | Chs. 1, 2, 3, 5 supplementaries | 13 | ✅ drafted 2026-05-24 — **backfill complete** |
 
 Realistic completion: 9–18 months at part-time pace per [§13.2 of the plan](../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#132-objections-with-no-honest-mitigation).
 

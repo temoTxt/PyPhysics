@@ -144,3 +144,33 @@ It is worth observing that this identical reduction holds for *every* purely ele
 **Notes for author review:** none. This is the second canary problem in PR 0; the template and voice have held up under a problem with more derivational content than [Problem J3e-P1.5](Ch01_Introduction_Electrostatics.md#problem-j3e-p15--electrostatic-self-energy-of-a-uniformly-charged-sphere). Two independent Mathematica MCP checks (induced charge and Maxwell-stress force) are recorded inline, as the verification convention requires.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh02_P2_1.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh02_P2_1.wl) — runnable independent of the Mathematica MCP.
+
+---
+
+## PR K supplementary problems (added 2026-05-24)
+
+Three Ch. 2 supplementary problems added in PR K's final-backfill batch. All static, `u = 0`, `b = c`; proper-time reduces identically to classical.
+
+### Problem J3e-P2.3 — Point charge above grounded sphere
+
+**Statement:** Point charge `q` at distance `d > R` from centre of grounded conducting sphere of radius `R`. Compute the image charge and the induced surface-charge distribution.
+
+**Classical:** Image charge `q' = -qR/d` at distance `R^{2}/d` from centre. Surface charge density and force on `q` follow from the image construction.
+
+**Proper-time:** Static, identical. **Verdict:** ✅. **Companion:** [`JacksonCh02_P2_3.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh02_P2_3.wl).
+
+### Problem J3e-P2.5 — Two grounded planes meeting at angle
+
+**Statement:** Two grounded conducting half-planes meet at a right angle. A point charge `q` lies in the quadrant. Compute the image-charge configuration.
+
+**Classical:** Three image charges at the reflections of `q` through each plane and through the corner. Sum-of-Coulomb-fields potential.
+
+**Proper-time:** Static, identical. **Verdict:** ✅. **Companion:** [`JacksonCh02_P2_5.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh02_P2_5.wl).
+
+### Problem J3e-P2.7 — Conducting cylinder in uniform field
+
+**Statement:** A long conducting cylinder of radius `R` is placed in a previously-uniform external field perpendicular to its axis. Compute the induced surface charge.
+
+**Classical:** Two-dimensional separation of variables in cylindrical coordinates. Induced linear dipole per unit length `\lambda_{p} = 2E_{0}R^{2}`; field outside is `\mathbf{E}_{0}` plus pure-2D-dipole field.
+
+**Proper-time:** Static, identical. **Verdict:** ✅. **Companion:** [`JacksonCh02_P2_7.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh02_P2_7.wl).

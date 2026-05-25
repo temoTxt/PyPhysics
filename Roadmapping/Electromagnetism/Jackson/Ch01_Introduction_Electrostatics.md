@@ -111,3 +111,33 @@ The two formulations are *mathematically equivalent and physically equivalent* i
 ---
 
 *Note on chapter scope.* The remaining Ch. 1 problems planned for PR 0 reside in Ch. 2 (image-method problems), Ch. 5 (magnetostatic problems), and the optional fourth problem also in Ch. 5. Per the campaign's per-chapter document convention, the image-method problem appears under [`Ch02_Boundary_Value_Problems_Electrostatics_I.md`](Ch02_Boundary_Value_Problems_Electrostatics_I.md) rather than here.
+
+---
+
+## PR K supplementary problems (added 2026-05-24)
+
+Three Ch. 1 supplementary problems added in PR K's final-backfill batch. All static, `u = 0`, `b = c`; proper-time reduces identically to classical.
+
+### Problem J3e-P1.1 — Gauss's law for spherical symmetry
+
+**Statement:** Use Gauss's law to compute the electric field inside and outside a uniformly charged solid sphere of radius `R` carrying total charge `Q`.
+
+**Classical:** Inside (`r < R`): `\mathbf{E}(r) = (Qr/R^{3})\hat r` (Gaussian). Outside (`r > R`): `\mathbf{E}(r) = (Q/r^{2})\hat r`. Continuity at `r = R`.
+
+**Proper-time:** Static, identical. **Verdict:** ✅. **Companion:** [`JacksonCh01_P1_1.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh01_P1_1.wl).
+
+### Problem J3e-P1.7 — Energy of two point charges
+
+**Statement:** Compute the electrostatic energy `W = (1/2)\sum_{i\neq j} q_{i}q_{j}/|\mathbf{r}_{i} - \mathbf{r}_{j}|` for a two-charge configuration. Comment on the self-energy issue.
+
+**Classical:** `W = q_{1}q_{2}/r_{12}` (interaction energy). The self-energies `q_{i}^{2}/(2 R_{i})` for finite charge radii diverge in the point-particle limit — the classical electromagnetic self-energy pathology.
+
+**Proper-time:** Static, identical. The proper-time formulation does not dissolve the self-energy divergence (see [§13 of plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#13-devils-advocate-review-and-what-we-cannot-honestly-fix) on this caveat). **Verdict:** ✅ (interaction energy); ⚠ (self-energy divergence is a separate unresolved pathology). **Companion:** [`JacksonCh01_P1_7.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh01_P1_7.wl).
+
+### Problem J3e-P1.13 — Capacitance of parallel plates
+
+**Statement:** Compute the capacitance per unit area of a parallel-plate capacitor with plate separation `d` and vacuum between the plates.
+
+**Classical:** `C/A = 1/(4\pi d)` (Gaussian) or `\varepsilon_{0}/d` (SI). With dielectric of permittivity `\varepsilon`: multiplied by `\varepsilon`.
+
+**Proper-time:** Static, identical. **Verdict:** ✅. **Companion:** [`JacksonCh01_P1_13.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh01_P1_13.wl).

@@ -8,11 +8,11 @@ The thread's README is at [`../README.md`](../README.md). The plan is at [`.dev/
 
 | Chapter | Title | Unit system | PR | Problems | Status |
 |---|---|---|---|---|---|
-| Ch. 1 | Introduction to Electrostatics | three-system (3e Chs. 1–10) | PR 0, then PR F+ | 1 / 2–6 | PR 0 in progress — see [`Ch01`](Ch01_Introduction_Electrostatics.md) |
-| Ch. 2 | Boundary-Value Problems in Electrostatics I | three-system | PR 0, then PR F+ | 1 / 2–6 | PR 0 in progress — see [`Ch02`](Ch02_Boundary_Value_Problems_Electrostatics_I.md) |
-| Ch. 3 | Boundary-Value Problems in Electrostatics II | three-system | PR F+ | 0 / 4–6 | planned |
+| Ch. 1 | Introduction to Electrostatics | three-system (3e Chs. 1–10) | PR 0 + **PR K** | 4 / 2–6 | ✅ — see [`Ch01`](Ch01_Introduction_Electrostatics.md) |
+| Ch. 2 | Boundary-Value Problems in Electrostatics I | three-system | PR 0 + **PR K** | 4 / 2–6 | ✅ — see [`Ch02`](Ch02_Boundary_Value_Problems_Electrostatics_I.md) |
+| Ch. 3 | Boundary-Value Problems in Electrostatics II | three-system | **PR K** | 4 / 4 | ✅ drafted — see [`Ch03`](Ch03_Boundary_Value_Problems_Electrostatics_II.md) |
 | Ch. 4 | Multipoles, Electrostatics of Macroscopic Media | three-system | **PR G** | 4 / 4 | ✅ drafted — see [`Ch04`](Ch04_Multipoles_Macroscopic_Media.md) |
-| Ch. 5 | Magnetostatics, Faraday's Law, Quasi-Static Fields | three-system | PR 0, then PR F+ | 2 / 2–6 | PR 0 drafted — see [`Ch05`](Ch05_Magnetostatics_Faraday_Quasi_Static.md) |
+| Ch. 5 | Magnetostatics, Faraday's Law, Quasi-Static Fields | three-system | PR 0 + **PR K** | 5 / 2–6 | ✅ — see [`Ch05`](Ch05_Magnetostatics_Faraday_Quasi_Static.md) |
 | Ch. 6 | Maxwell Equations + Macroscopic Media ⭐ | three-system | **PR A** | 5 / 5 | PR A drafted — see [`Ch06`](Ch06_Maxwell_Equations_Macroscopic_Media.md) |
 | Ch. 7 | Plane Electromagnetic Waves, Wave Propagation | three-system | **PR F** | 4 / 4 | ✅ drafted — see [`Ch07`](Ch07_Plane_EM_Waves.md) |
 | Ch. 8 | Waveguides, Resonant Cavities, Optical Fibers | three-system | **PR H** | 4 / 4 | ✅ drafted — see [`Ch08`](Ch08_Waveguides_Resonant_Cavities.md) |

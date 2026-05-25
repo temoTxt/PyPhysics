@@ -226,3 +226,33 @@ This is consistent with the structural cancellation noted in [Problem J3e-P5.4](
 **Notes for author review:** the leading-order proper-time correction to the magnetic dipole moment of a rotating charged sphere is, to my knowledge, not recorded in the published Gill–Zachary corpus or in any standard textbook treatment. It is mechanically derivable from the velocity-duality rule alone and does not require Eq. (24) or any other flagged finding. The magnitude `(\omega R/c)^{2}` is far below the precision of any classical-mechanics-scale experiment on a rotating macroscopic charged sphere. For a Penning-trap electron in cyclotron motion with `\omega R/c \sim 10^{-2}`, the analogous correction would be `\sim 10^{-4}`, which is large compared to the `10^{-13}` precision of g-2 measurements; however, the relevant geometry (single electron, not a rotating macroscopic charge distribution) is sufficiently different that the present result does not transfer directly. This is a candidate observation for inclusion in `Roadmapping/Equation_Verification/FINDINGS_for_author_review.md` if PR D or later work confirms a similar `(u/c)^{2}` correction in the radiation-reaction regime.
 
 **Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh05_P5_13.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh05_P5_13.wl) — runnable independent of the Mathematica MCP.
+
+---
+
+## PR K supplementary problems (added 2026-05-24)
+
+Three Ch. 5 supplementary problems added in PR K's final-backfill batch. Steady currents, `∂_τ = 0` averaged; same `(b/c)J` cancellation as J3e-P5.4.
+
+### Problem J3e-P5.5 — Magnetic field of a long solenoid
+
+**Statement:** A solenoid of length `L`, radius `R`, carrying `n` turns per unit length with current `I`. Compute the on-axis magnetic field.
+
+**Classical:** For an infinite solenoid: `B = 4\pi n I/c` (Gaussian, inside) or `\mu_{0}n I` (SI). For finite length: end-corrections via Biot–Savart integration give the standard textbook expression.
+
+**Proper-time:** Steady current, identical cancellation as J3e-P5.4. **Verdict:** ✅. **Companion:** [`JacksonCh05_P5_5.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh05_P5_5.wl).
+
+### Problem J3e-P5.6 — Magnetic field of long straight wire
+
+**Statement:** Compute the magnetic field at distance `\rho` from a long straight wire carrying current `I`.
+
+**Classical:** `B(\rho) = 2I/(c\rho)` (Gaussian) or `\mu_{0}I/(2\pi\rho)` (SI). Circumferential direction by Ampère's law.
+
+**Proper-time:** Identical. **Verdict:** ✅. **Companion:** [`JacksonCh05_P5_6.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh05_P5_6.wl).
+
+### Problem J3e-P5.8 — Inductance of a coaxial cable
+
+**Statement:** Compute the inductance per unit length of a coaxial cable with inner conductor radius `a` and outer radius `b`.
+
+**Classical:** `L/\ell = (2/c^{2})\ln(b/a)` (Gaussian) or `(\mu_{0}/(2\pi))\ln(b/a)` (SI), from the magnetic-flux-per-unit-current ratio.
+
+**Proper-time:** Identical (steady current; same cancellation as before). **Verdict:** ✅. **Companion:** [`JacksonCh05_P5_8.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh05_P5_8.wl).
