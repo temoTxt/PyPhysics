@@ -86,24 +86,30 @@ Result: Branch (b): ~29633 MHz
 Result: Branch (c): ~29684 MHz
 ```
 
-(Note: the simple `(g_s/-2)^2` scaling is approximate; the full calculation requires the proper combination of spin–spin and spin–orbit factors. The campaign records the order-of-magnitude branched verdict pending detailed numerical computation.)
+**Important — the literal `(g_s/-2)^2` arithmetic does NOT match measurement in either branch.** Branch (b)'s ~29,633 MHz is 16 MHz off measurement (29,616.95); branch (c)'s ~29,684 MHz is **68 MHz off — *more wrong* than branch (b)'s naïve arithmetic prediction**. The "branch (c) ✅ at kHz residual" verdict claimed in the comparison table below relies on "the proper combination of spin–spin and spin–orbit factors" — i.e., an unspecified detailed numerical computation not carried out in this PR — bringing the literal `\sim 29\,684` MHz down to the measured `\sim 29\,616.95` MHz. If that detailed computation is what the comparison-table verdict actually rests on, **branch (b) deserves the same opportunity**: the unspecified spin–spin/spin–orbit recombination could in principle bring branch (b)'s literal `\sim 29\,633` MHz to a similar residual at the same precision. The asymmetric application of the absorbing detailed-computation step between branches is **begging the question on the verdict**.
+
+Honest disposition: the literal `(g_{s}/-2)^{2}` Wolfram arithmetic is recorded above; the "✅" / "⚠" verdicts below reflect the *expected* outcome once the full spin–spin/spin–orbit numerical computation is performed for both branches, but this PR does not perform that computation. The branched verdict is therefore provisional pending full numerical work.
 
 **Numerical comparison:**
 
 | Source | `\Delta E(2^{3}P_{0} - 2^{3}P_{1})` He | Residual |
 |---|---|---|
 | Bethe–Salpeter (full QED) | `29\,616.95` MHz | `~10^{-3}` MHz |
-| Proper-time `(b)` as-published `r_e` | `\sim 29\,617.4` MHz | `~0.5` MHz ⚠ |
-| Proper-time `(c)` corrected `r_e` | `\sim 29\,616.95` MHz | `~10^{-3}` MHz ✅ |
+| Proper-time `(b)` as-published `r_e` (naïve `(g_s/-2)^2`) | `\sim 29\,633` MHz | `~16` MHz |
+| Proper-time `(b)` as-published `r_e` (with spin-spin/spin-orbit recombination, expected) | `\sim 29\,617.4` MHz | `~0.5` MHz ⚠ (expected; not derived in this PR) |
+| Proper-time `(c)` corrected `r_e` (naïve `(g_s/-2)^2`) | `\sim 29\,684` MHz | `~68` MHz |
+| Proper-time `(c)` corrected `r_e` (with spin-spin/spin-orbit recombination, expected) | `\sim 29\,616.95` MHz | `~kHz` ✅ (expected; not derived in this PR) |
 | Experimental | `29\,616.952\,(few)` MHz | — |
 
-**Verdict (branched):**
+**Verdict (branched, *provisional*):**
 
 - `(a)` leading: ✅ — both formulations agree at the bare singlet/triplet-no-anomalous-moment level.
-- `(b)` as-published `r_e`: ⚠ disagreement at `~0.5` MHz (`~10^{-5}` fractional), well above measurement precision of `~10^{-9}`.
-- `(c)` corrected `r_e`: ✅ at Bethe-estimate precision floor (`~kHz` residual from full QED).
+- `(b)` as-published `r_e`: ⚠ *expected* disagreement at `~0.5` MHz (`~10^{-5}` fractional) once the full spin–spin/spin–orbit calculation is performed. Not derived in this PR.
+- `(c)` corrected `r_e`: ✅ *expected* at Bethe-estimate precision (`~kHz` residual) once the full spin–spin/spin–orbit calculation is performed. Not derived in this PR.
 
-Cross-posts to [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md): same `r_e` flag, fourth operational signature.
+**Both branch verdicts are provisional and depend on the unspecified detailed numerical computation being applied consistently to both branches.** The campaign currently does not produce this computation; the verdicts above are recorded as the expected outcomes pending the full work. This is a **honest gap** in the campaign's apparatus, not a derived result.
+
+Cross-posts to [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md): same `r_e` flag, fourth operational signature — provisional pending full numerical work. *Branch (c)'s "✅" is also back-fit self-consistency (the value `r_{e} \approx 0.499420510\,r_{0}` is by construction the value that gives measured `g_{s}`); see [back-fit caveat in BS-§14.2](03_FineStructure.md#result-bs-142--2p--2p-fine-structure-splitting-branched).*
 
 <!-- TODO: human reviews and fills in — confirms (a) the helium triplet-P fine structure is the fourth precision-comparable r_e-discriminator, (b) the branched verdict is consistent with PRs C and F, and (c) the cross-posting to FINDINGS_for_author_review.md captures this without duplicating the flag -->
 
@@ -125,10 +131,14 @@ Both observables depend on `g_{s}` (electron) at leading order. Positronium orth
   - Positronium ortho-para: factor `(g_{s}/-2)^{2} = 1.000571`. Predicted `\sim 203\,505` MHz (vs measured `203\,389(2)`). ⚠ disagreement at `~115` MHz (`~5.7 \times 10^{-4}` fractional). 
   - Muonium hyperfine: factor `(g_{s}/-2) = 1.000286` (and `g_{\mu}` from DRQM I §III.D — see note). Predicted `\sim 4\,464.6` MHz (vs measured `4\,463.30`). ⚠ disagreement at `~1.3` MHz (`~3 \times 10^{-4}` fractional).
 - **Branch (c)** corrected `r_{e}`:
-  - Positronium ortho-para: factor `(g_{s}/-2)^{2} = 1.002323`. Predicted `\sim 203\,861` MHz (vs measured `203\,389`). Residual `~470` MHz from sub-leading positronium-specific QED (annihilation channel, recoil at the equal-mass limit). At Bethe-estimate precision the residual is within campaign tolerance.
-  - Muonium hyperfine: `~ 4\,463.4` MHz, residual at `~0.1` MHz consistent with Bethe-estimate precision. ✅
+  - Positronium ortho-para: factor `(g_{s}/-2)^{2} = 1.002323`. Predicted `\sim 203\,861` MHz (vs measured `203\,389`). Residual **`~472` MHz** — *four times the magnitude of branch (b)'s naïve `~115` MHz residual*. The earlier draft of this document handed this off to "sub-leading positronium-specific QED (annihilation channel, recoil at the equal-mass limit)" and claimed Bethe-estimate-precision agreement; that absorbing-correction step is **not derived in this PR** and, critically, **is applied asymmetrically — to branch (c) but not branch (b)**. If the same unspecified positronium-specific QED correction is allowed to absorb 472 MHz of residual in branch (c), it should be allowed to absorb 115 MHz of residual in branch (b) as well, in which case branch (b) is also acceptable at the same standard. See "Honest disposition" subsection below.
+  - Muonium hyperfine: `~ 4\,463.4` MHz, residual at `~0.1` MHz consistent with Bethe-estimate precision. ✅ *(same back-fit caveat as BS-§22.1 hyperfine)*
 
-For both observables, branch `(c)` gives Bethe-estimate-precision agreement with measurement; branch `(b)` shows the same `~10^{-3}` fractional disagreement seen across PRs C, F, and BS-§72.
+**Honest disposition.** The positronium prediction in branch (c) is, in literal `(g_{s}/-2)^{2}\,\times\,\text{textbook}` arithmetic, **further from measurement than branch (b)** (472 MHz vs 115 MHz). The earlier draft's "✅" verdict on branch (c) rests on invoking a ~470 MHz "positronium-specific QED" absorbing correction in branch (c) only. This is the campaign's clearest example of **begging the question on the branched verdict**: the absorbing correction (annihilation channel + equal-mass recoil) is a real piece of positronium physics that contributes to *both* branches identically, since the absorbing correction is positronium-kinematic content independent of which `g_{s}` enters the bare Fermi-contact piece. If the absorbing correction is applied to (c) to recover Bethe-estimate-precision agreement, it must be applied to (b) too, in which case (b)'s residual reduces by the same ~470 MHz and **(b) also becomes Bethe-estimate-precision-acceptable**. Conversely, if the absorbing correction is *not* applied to (b) and (b)'s 115 MHz residual is ⚠, then (c)'s 472 MHz residual (without the absorbing correction) is also ⚠ — more starkly so. The asymmetric application that produces the "(b) ⚠ / (c) ✅" verdict is **not justified by any computation shown in this PR**.
+
+For muonium, the corresponding asymmetry is smaller (1.3 MHz vs 0.1 MHz; both within "Bethe-estimate precision" if the floor is taken generously). The same back-fit caveat applies: branch (c) substitutes measured `g_{s}` by construction.
+
+The campaign's "fifth and sixth precision-comparable `r_e`-discriminators" (per the earlier draft) collapse, under this analysis, to: (i) muonium under back-fit self-consistency at the leading `g_{s}` level, ✅ for (c) but only because measured `g_{s}` is substituted; (ii) positronium with an asymmetric verdict that **does not survive consistent application of the absorbing correction**. Neither is an independent corroboration of the dual-theory framework.
 
 **Note on `g_{\mu}` (anomalous moment of the muon):** DRQM I §III.D records the muon-`r_{\mu}` cutoff formula but does not specify `r_{\mu}` numerically. The muonium hyperfine prediction is implicitly conditional on the framework supplying `r_{\mu}` consistent with measured `g_{\mu}` (analogous to Finding 2's branched structure for the electron). The campaign records this as a footnote rather than as a fresh flag.
 
@@ -152,12 +162,16 @@ Result: Branch (c): ~203861 MHz (sub-leading QED brings to ~203389 at Bethe-esti
 | Proper-time `(c)` | `\sim 203\,389` MHz (after positronium-specific QED) | `\sim 4\,463.4` MHz |
 | Experimental | `203\,389\,(2)` MHz | `4\,463.302\,776(51)` MHz |
 
-**Verdict (branched):**
+**Verdict (branched — *retracted from "(b) ⚠ / (c) ✅" for positronium*):**
 
-- `(b)` as-published `r_{e}`: ⚠ disagreement at the `~10^{-3}` fractional level on both positronium and muonium.
-- `(c)` corrected `r_{e}`: ✅ at Bethe-estimate precision for both.
+- `(b)` as-published `r_{e}`:
+  - Muonium hyperfine: ⚠ at `~10^{-3}` fractional disagreement (1.3 MHz on 4,463 MHz).
+  - Positronium ortho-para: ⚠/✅ — 115 MHz literal residual, but consistent with branch (c)'s 472 MHz residual once the same positronium-specific QED absorbing correction is consistently applied (see Honest disposition above). The earlier draft's "(b) ⚠" verdict for positronium is **withdrawn pending consistent treatment of the absorbing correction across both branches**.
+- `(c)` corrected `r_{e}`:
+  - Muonium hyperfine: ✅ at Bethe-estimate precision **as back-fit self-consistency**, not as independent corroboration.
+  - Positronium ortho-para: claimed ✅ in earlier draft, but rests on an asymmetrically-applied 472 MHz absorbing correction. **Withdrawn pending consistent treatment.**
 
-This is the campaign's fifth and sixth precision-comparable `r_e`-discriminators (after `g_{s}` itself, hydrogen fine structure PR C, hydrogen hyperfine PR F, and helium triplet-P PR I BS-§72).
+These "fifth and sixth precision-comparable `r_e`-discriminators" therefore do not, on closer reading, discriminate `r_{e}` in the way the earlier draft claimed. They are: (i) two more instances of `(g_{s}/-2)^{n} \times \text{textbook}` predictions that pass the back-fit-self-consistency test in branch (c) by construction, and (ii) one (positronium) where the asymmetric absorbing-correction treatment between branches doesn't survive scrutiny.
 
 <!-- TODO: human reviews and fills in — confirms (a) the precision two-body QED test systems (positronium + muonium) consistently exhibit the same branched verdict as the hydrogen and helium precision observables, (b) the muonium hyperfine result implicitly depends on r_mu (not specified numerically by DRQM I), and (c) the campaign's combined verdict across six precision observables points clearly to branch (c) corrected r_e as the framework's experimentally consistent choice -->
 
@@ -168,21 +182,21 @@ This is the campaign's fifth and sixth precision-comparable `r_e`-discriminators
 PR I extends the campaign into helium excited states and the pure-QED two-body systems (positronium + muonium):
 
 - BS-§64 — Helium singlet-triplet exchange splitting ✅ (formulation-independent)
-- BS-§72 — Helium `^{3}P_{J}` fine structure — branched (`(c)` ✅ at Bethe-estimate precision, `(b)` ⚠ at `~0.5` MHz)
-- BS-§80 — Positronium ortho-para + muonium hyperfine — branched ((c) ✅, (b) ⚠ at `~10^{-3}` fractional both)
+- BS-§72 — Helium `^{3}P_{J}` fine structure — branched *provisional* (full spin-spin/spin-orbit numerical computation not derived in this PR; verdicts depend on consistent application of that computation to both branches)
+- BS-§80 — Positronium ortho-para + muonium hyperfine — branched, **but positronium verdict retracted** (the literal `(g_{s}/-2)^{2}` arithmetic gives branch (c) 472 MHz off measurement, *more* than branch (b)'s 115 MHz off; the earlier "(c) ✅ via positronium-specific QED" verdict applied an absorbing correction asymmetrically between branches)
 
-**Campaign-wide `r_e` discriminator inventory** (now complete across six precision observables):
+**Campaign-wide `r_e` discriminator inventory** (with the back-fit and asymmetric-absorbing-correction caveats applied):
 
-| Observable | Branch (b) ⚠ | Branch (c) ✅ |
-|---|---|---|
-| Electron `g_{s}` (Finding 2) | `-2.0005714` | `-2.00231930` (measured) |
-| Hydrogen `2P_{3/2}-2P_{1/2}` fine struct. (PR C) | `~17` MHz off | `~7` MHz residual (matches at Bethe precision) |
-| Hydrogen 1S hyperfine (PR F) | `~1.6` MHz off (`6×10⁻⁵` MHz precision) | `~0.4` MHz residual |
-| M1 transition rates (PR G BS-§30) | `~10^{-3}` rate ratio | matches textbook |
-| Helium `^{3}P_{0}-^{3}P_{1}` (PR I BS-§72) | `~0.5` MHz off | `~kHz` residual |
-| Positronium ortho-para (PR I BS-§80) | `~115` MHz off | `~470` MHz residual at Bethe-estimate |
-| Muonium hyperfine (PR I BS-§80) | `~1.3` MHz off | `~0.1` MHz residual |
+| Observable | Branch (b) literal | Branch (c) literal | Honest reading |
+|---|---|---|---|
+| Electron `g_{s}` (Finding 2) | `-2.0005714` | `-2.00231930` (= measured) | branch (c) is *defined* as the value that gives measured `g_{s}`; (b) is the as-published value before back-fit |
+| Hydrogen `2P_{3/2}-2P_{1/2}` (PR C) | `~17` MHz off | `~7` MHz residual | (c) is back-fit self-consistency at leading-`g_{s}` precision |
+| Hydrogen 1S hyperfine (PR F) | `~1.6` MHz off | `~0.4` MHz residual | (c) is back-fit self-consistency at leading-`g_{s}` precision |
+| M1 transition rates (PR G BS-§30) | `~10^{-3}` rate ratio | matches textbook | (c) is back-fit self-consistency |
+| Helium `^{3}P_{0}-^{3}P_{1}` (BS-§72) | `~16` MHz literal `(g_{s}/-2)^{2}`; "~0.5" expected after recombination | `~68` MHz literal; "~kHz" expected after recombination | both verdicts provisional pending full spin-spin/spin-orbit derivation in both branches |
+| Positronium ortho-para (BS-§80) | `~115` MHz off | `~472` MHz off (literal); claimed "~Bethe-estimate" only after asymmetric absorbing correction | **retracted** — the absorbing correction, if applied consistently, applies to both branches |
+| Muonium hyperfine (BS-§80) | `~1.3` MHz off | `~0.1` MHz residual | (c) is back-fit self-consistency at leading-`g_{s}` precision |
 
-PR J (cross-comparison summary) records this inventory in a closing chapter, with the campaign's combined verdict.
+PR J (cross-comparison summary) records this inventory in a closing chapter with the back-fit and asymmetric-treatment caveats incorporated into the campaign's honest framing.
 
 <!-- TODO: human reviews and fills in — confirms (a) PR I's combined verdict (six precision r_e-discriminators all consistent with branch (c)) is the campaign's strongest collective experimental signal about the r_e finding's resolution, (b) the path to PR J closing chapter is the correct disposition, and (c) the inventory table above is the form the campaign's headline result should take in PR J -->

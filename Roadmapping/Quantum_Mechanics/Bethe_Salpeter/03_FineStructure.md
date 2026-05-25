@@ -104,6 +104,8 @@ Adding to the leading Dirac value: `10\,949 + 3.13 \approx 10\,952` MHz. This **
 
 Adding to leading Dirac: `10\,949 + 12.7 \approx 10\,962` MHz. Remaining `\sim 7` MHz is recoil + two-loop, matching textbook QED's residual. **Branch (c) agrees with measurement at the Bethe-estimate precision** the campaign can deliver (~few MHz from missing two-loop).
 
+**Back-fit caveat — what branch (c) is and is not testing.** The value `r_{e} \approx 0.499420510\,r_{0}` of branch (c) is, by construction (see [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md) Finding 2's `Solve[]` step), the `r_{e}` value that produces `g_{s} = -2.00231930` — i.e., the *measured* `g_{s}`. The prediction `\Delta E_{anom}^{(c)}` then reduces to *the textbook anomalous-moment correction* `(g_{s,\text{measured}} - 2)/2 \times E_{\text{leading}}`. That is the same formula textbook QED uses, with the same numerical input (measured `g_{s}`), so the "branch (c) ✅" verdict is the *trivial* statement that the textbook leading-`g_{s}` calculation reproduces measurement at textbook leading-`g_{s}` precision when one uses the measured `g_{s}`. This is not an independent corroboration of the dual-theory framework's distinct content; it is a self-consistency check that *if* one chooses `r_{e}` to back-fit `g_{s}`, *then* `g_{s}`-dependent observables reproduce textbook. See [`10_CrossComparison.md` §2](10_CrossComparison.md#2-the-r_e-back-fit-self-consistency-across-six-g_s-dependent-observables) for the campaign-wide reframe.
+
 **Wolfram MCP check:** verify the anomalous-`g` correction coefficient `(g - 2)/2 \cdot E_{leading}`. (See [`BetheSalpeter_S14_2.wl`](../../Mathematica_Notebooks/Quantum_Mechanics/BetheSalpeter_S14_2.wl) for the symbolic check.)
 
 ```text
@@ -128,9 +130,9 @@ Result: ~0 ✅  (Branch (c) numerical)
 
 - `(a)` leading Dirac: ✅ — dual-Dirac reproduces standard Dirac at leading order.
 - `(b)` as-published `r_e`: ⚠ disagreement with measurement at the `\sim 17` MHz level (1.5×10⁻³ fractional) traceable to the flagged DRQM I §III.D `r_e` finding.
-- `(c)` corrected `r_e`: ✅ at the Bethe-estimate precision (~few-MHz residual from missing two-loop); the framework agrees with measurement to the precision the campaign can presently deliver.
+- `(c)` corrected `r_e`: ✅ at the Bethe-estimate precision (~few-MHz residual from missing two-loop). **Read this as back-fit self-consistency, not independent corroboration:** branch (c)'s `r_{e}` is *defined* as the value that gives the measured `g_{s}`, and the formula `(g_{s, \text{measured}}-2)/2 \times E_{\text{leading}}` is identical to textbook QED's leading-`g_{s}` formula. The "✅" means *if you back-fit `r_{e}` to measured `g_{s}`, then the leading-`g_{s}` prediction matches measurement at leading-`g_{s}` precision* — a tautology, not a discrimination.
 
-The campaign's verdict is conditional on which branch of `r_e` is the intended one. The flagged finding remains open.
+The campaign's verdict is conditional on which branch of `r_e` is the intended one. The flagged finding remains open. The 7 MHz residual on a 10,969 MHz observable measured to 0.1 MHz precision is, in precision-spectroscopy terms, ~70-σ from measurement; the "✅" applies relative to the Bethe-estimate leading-`g_{s}` precision floor, not relative to the experimental uncertainty.
 
 <!-- TODO: human reviews and fills in — confirms the campaign's verdict structure for PR C: leading-order ✅ (both branches), anomalous-correction branched (b) ⚠ vs (c) ✅, with the conditional framing flagged to readers. Notes that this is the campaign's first precision-comparable result where the framework's experimental status is contingent on the resolution of the r_e finding -->
 

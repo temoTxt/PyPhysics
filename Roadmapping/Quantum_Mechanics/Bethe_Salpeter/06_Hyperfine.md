@@ -64,6 +64,8 @@ This **disagrees with measurement** `1\,420.405\,751\,768(2)` MHz by `\sim 1.6` 
 
 This **agrees with measurement** at the level of `~ 0.4` MHz residual, which is consistent with the campaign's Bethe-estimate-level precision (the textbook QED corrections beyond leading `g_{s}` — `\alpha/\pi`-order, recoil, nuclear-structure — total `\sim 0.4` MHz and are out of scope for the campaign).
 
+**Back-fit caveat — what branch (c) is and is not testing.** Same caveat as in [`03_FineStructure.md` BS-§14.2](03_FineStructure.md#result-bs-142--2p--2p-fine-structure-splitting-branched). The value `r_{e} \approx 0.499420510\,r_{0}` is by construction the value that gives measured `g_{s}`; the prediction `(g_{s, \text{measured}}/-2) \times 1\,418.4` reduces to the *textbook* Fermi-contact prediction with the measured anomalous moment. The "branch (c) ✅" verdict therefore says: *if you back-fit `r_{e}` to measured `g_{s}`, then the textbook leading-Fermi-contact formula with measured `g_{s}` reproduces measurement at textbook leading-`g_{s}` precision*. That is a self-consistency check, not independent corroboration of the dual-theory framework's content distinct from textbook QED. The 0.4 MHz residual on a 1,420 MHz observable measured to 2 Hz precision is `\sim 10^{5}` σ from measurement; the "✅" is relative to the Bethe-estimate / leading-`g_{s}` precision floor, not relative to experimental uncertainty. See [`10_CrossComparison.md` §2](10_CrossComparison.md#2-the-r_e-back-fit-self-consistency-across-six-g_s-dependent-observables).
+
 **Wolfram MCP check:** verify the branch arithmetic by recomputing `(g_{s}/-2) \cdot 1\,418.4` at both `r_{e}` values.
 
 ```text
@@ -89,7 +91,7 @@ Result: Branch (c): 1420.045  ✅  (matches table below)
 
 - `(a)` leading Fermi: ✅ — both formulations give the same `1\,418.4` MHz baseline.
 - `(b)` as-published `r_e`: ⚠ disagreement with measurement at `\sim 1.6` MHz level (`1.1\times 10^{-3}` fractional), traceable to the flagged DRQM I §III.D `r_e` finding. This is `\sim 6` orders of magnitude *larger* than the measurement uncertainty — the most precise atomic-physics measurement is *highly sensitive* to which `r_e` value the dual-theory framework adopts.
-- `(c)` corrected `r_e`: ✅ at the campaign's precision floor (`\sim 0.4` MHz residual from textbook QED corrections beyond leading `g_{s}` — `\alpha/\pi`, recoil, nuclear-structure — which the campaign does not derive independently).
+- `(c)` corrected `r_e`: ✅ at the campaign's precision floor (`\sim 0.4` MHz residual from textbook QED corrections beyond leading `g_{s}`). **Back-fit self-consistency, not independent corroboration** — see back-fit caveat above.
 
 The campaign's verdict is conditional on which branch of `r_e` is the intended one. The flagged finding remains open.
 

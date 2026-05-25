@@ -60,9 +60,11 @@ In[]:= FullSimplify[((c^2*p^2 + m^2*c^4)/(2*m*c^2) + m*c^2/2) - (m*c^2 + p^2/(2*
 Result: 0 ✅
 ```
 
+**What this check actually verifies — and what it does not.** The identity above is *algebraically trivial by construction*: `K` is **defined** as `H_{0}^{2}/(2 m c^{2}) + m c^{2}/2 = (c^{2}p^{2} + m^{2}c^{4})/(2 m c^{2}) + m c^{2}/2`, and elementary arithmetic gives `= p^{2}/(2m) + m c^{2}/2 + m c^{2}/2 = p^{2}/(2m) + m c^{2}`. The Wolfram MCP check confirms that elementary arithmetic; it does *not* verify physical content. In particular, the campaign's implicit claim that `K` "reduces to the non-relativistic Coulomb Hamiltonian" — true at this *algebraic* level — should not be read as "the proper-time `K` reproduces the relativistic hydrogen spectrum at higher order." The actual relativistic kinetic energy is `\sqrt{c^{2}p^{2} + m^{2}c^{4}} = m c^{2} + p^{2}/(2m) - p^{4}/(8 m^{3} c^{2}) + \ldots`; the proper-time `K = (c^{2}p^{2} + m^{2}c^{4})/(2 m c^{2}) + m c^{2}/2 = m c^{2} + p^{2}/(2m)` differs from the relativistic kinetic energy *starting at* the `p^{4}/(8 m^{3} c^{2})` order (relativistic correction). `K` is therefore *not* the relativistic kinetic energy at any order beyond non-rel; it agrees with the relativistic kinetic energy *only* at the order at which it agrees with the Schrödinger kinetic energy, which is leading order. The framework's relativistic content lives in the *dual Dirac equation* (PR C onward), not in `K`. This caveat is load-bearing for reading the rest of the campaign: PR A's ✅ verdicts are mechanical-algebraic, not predictive endorsements.
+
 **Numerical comparison:** *Not applicable.* The Schrödinger equation itself is not a measured number; the spectrum it generates is verified in BS-§4 below.
 
-**Verdict:** ✅ — proper-time `K + V_{0}` and Bethe–Salpeter's Schrödinger Hamiltonian are operator-identical (modulo the `m c^{2}` rest-energy offset). No relativistic correction enters at this level.
+**Verdict:** ✅ — proper-time `K + V_{0}` and Bethe–Salpeter's Schrödinger Hamiltonian are operator-identical (modulo the `m c^{2}` rest-energy offset) **as a definitional algebraic identity**, not as a physical claim about relativistic content. No relativistic correction enters at this level because the operator `K`, by definition, has no relativistic content beyond the non-rel kinetic energy; relativistic content enters via the dual Dirac equation in PR C, not via `K`.
 
 ---
 
