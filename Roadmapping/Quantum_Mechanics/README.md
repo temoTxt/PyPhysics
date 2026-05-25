@@ -24,8 +24,8 @@ Selected canonical problems (~5–10 per chapter, ~60–100 total across 12 Grif
 | **PR B** | Ch. 2 TI Schrödinger Equation | 4 | ✅ drafted 2026-05-25 |
 | **PR C** | Ch. 3 Formalism | 3 | ✅ drafted 2026-05-25 |
 | **PR D** ⭐ | Ch. 4 QM in 3D (hydrogen pivot) | 5 | ✅ drafted 2026-05-25 |
-| PR E | Ch. 5 Identical Particles | 3–4 | planned |
-| PR F | Ch. 6 Symmetries | 3–4 | planned |
+| **PR E** | Ch. 5 Identical Particles | 3 | ✅ drafted 2026-05-25 |
+| **PR F** | Ch. 6 Symmetries | 3 | ✅ drafted 2026-05-25 |
 | **PR G** ⭐ | Ch. 7 TI Perturbation Theory (fine structure) | 5–7 | planned |
 | PR H | Ch. 8 Variational Principle (helium) | 3–4 | planned |
 | PR I | Ch. 9 WKB | 3–4 | planned |
