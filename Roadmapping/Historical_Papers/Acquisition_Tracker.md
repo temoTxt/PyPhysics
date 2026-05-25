@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 121 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 120 pending · 🔴 0 unavailable
+**Summary**: 122 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 121 pending · 🔴 0 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -39,6 +39,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[fitzgerald1889_aether]] | 1889 | 1860-1900 | primary | ⚪ pending | — |
 | [[lorentz1892_electron_theory]] | 1892 | 1860-1900 | primary | ⚪ pending | — |
 | [[thomson1897_cathode_rays]] | 1897 | 1860-1900 | primary | ⚪ pending | — |
+| [[jackson1975_classical_electrodynamics]] | 1975 | 1860-1900 | retrospective | ⚪ pending | — |
 | [[buchwald1985_maxwell_microphysics]] | 1985 | 1860-1900 | retrospective | ⚪ pending | — |
 | [[siegel1991_innovation_maxwell]] | 1991 | 1860-1900 | retrospective | ⚪ pending | — |
 | [[jackson1998_classical_electrodynamics]] | 1998 | 1860-1900 | retrospective | ⚪ pending | — |
