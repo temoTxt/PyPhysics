@@ -92,6 +92,17 @@ for you (§6 --- the resolution of the published \texttt{r\_e} value).
 Secondary errata findings and questions follow in §7. The closing in §8
 notes what would help us most to hear back on.
 
+A note on numbering: tags of the form \texttt{\#NN} throughout this
+report refer to \textbf{GitHub issues or pull requests in the public
+\href{https://github.com/temoTxt/PyPhysics}{\texttt{temoTxt/PyPhysics}}
+repository}. Each such reference is a clickable link to the
+corresponding issue or PR; the URLs follow the pattern
+\texttt{https://github.com/temoTxt/PyPhysics/issues/NN} for issues and
+\texttt{.../pull/NN} for PRs. The verification documents, per-PR
+campaign chapters, Wolfram-Mathematica notebooks, and bibliography stubs
+cited in this report all live in that repository as well, accessible at
+the GitHub URLs listed in their respective issues.
+
 \hypertarget{how-we-got-here-the-process}{%
 \section{§2 How we got here --- the
 process}\label{how-we-got-here-the-process}}
@@ -112,15 +123,22 @@ derivation, a cross-reference to the standard textbook equivalent
 That campaign produced three substantive findings flagged for author
 review (§7 below) and three load-bearing structural results that
 survived the re-derivation cleanly. The verification work then opened
-three downstream campaigns: \emph{\#42 Electromagnetism / Jackson} (the
-canonical Jackson problems x CGS/SI x proper-time Maxwell, 66 problems
-across Chs. 1--16), \emph{\#49 Quantum Mechanics / Griffiths} (canonical
-Griffiths problems x 2e/3e x proper-time / dual-theory QM, 41 problems
-across Chs. 1--12), and \emph{\#50 Bethe-Salpeter precision predictions}
-(the precision-experiment counterpart to Griffiths, 28 results across
-Chs. on hydrogen / helium / Lamb shift / hyperfine / positronium /
-muonium). The three campaigns are recorded in Pull Requests (PRs) \#51,
-\#52, \#53 respectively.
+three downstream campaigns:
+\emph{\href{https://github.com/temoTxt/PyPhysics/issues/42}{\#42
+Electromagnetism / Jackson}} (the canonical Jackson problems x CGS/SI x
+proper-time Maxwell, 66 problems across Chs. 1--16),
+\emph{\href{https://github.com/temoTxt/PyPhysics/issues/49}{\#49 Quantum
+Mechanics / Griffiths}} (canonical Griffiths problems x 2e/3e x
+proper-time / dual-theory QM, 41 problems across Chs. 1--12), and
+\emph{\href{https://github.com/temoTxt/PyPhysics/issues/50}{\#50
+Bethe-Salpeter precision predictions}} (the precision-experiment
+counterpart to Griffiths, 28 results across Chs. on hydrogen / helium /
+Lamb shift / hyperfine / positronium / muonium). The three campaigns are
+recorded in Pull Requests
+\href{https://github.com/temoTxt/PyPhysics/pull/51}{PR \#51},
+\href{https://github.com/temoTxt/PyPhysics/pull/52}{PR \#52},
+\href{https://github.com/temoTxt/PyPhysics/pull/53}{PR \#53}
+respectively.
 
 Two discipline choices we want to flag explicitly. First, all
 AI-assisted work in the repository carries Crocco compliance markers per
@@ -130,19 +148,21 @@ manuscript argues) requires per-paragraph TODO blocks and a documented
 human-acceptance pass; pragmatic AI work (transcription, Mathematica
 verification, formatting) does not. This report is substantive AI
 end-to-end. Second, every per-PR document carries an explicit
-honest-framing discipline (the §13 review introduced in the \#42 plan)
-that distinguishes algebraic identities from physical claims,
-conditional predictions from unconditional ones, and within-scope
-verdicts from out-of-scope ones. The Phase 3.5 devil's-advocate pass on
-this report is the same discipline applied to the report itself.
+honest-framing discipline (the §13 review introduced in the
+\href{https://github.com/temoTxt/PyPhysics/issues/42}{\#42} plan) that
+distinguishes algebraic identities from physical claims, conditional
+predictions from unconditional ones, and within-scope verdicts from
+out-of-scope ones. The Phase 3.5 devil's-advocate pass on this report is
+the same discipline applied to the report itself.
 
 \hypertarget{jackson-highlights-initial-results}{%
 \section{§3 Jackson highlights --- initial
 results}\label{jackson-highlights-initial-results}}
 
-The \#42 Electromagnetism campaign worked through 66 canonical Jackson
-problems under the proper-time / dual-theory formulation of the Maxwell
-paper. Three results merit foregrounding.
+The \href{https://github.com/temoTxt/PyPhysics/issues/42}{\#42}
+Electromagnetism campaign worked through 66 canonical Jackson problems
+under the proper-time / dual-theory formulation of the Maxwell paper.
+Three results merit foregrounding.
 
 \textbf{J3e-P14.2 --- the proper-time Liénard-Wiechert third term.} The
 Maxwell paper's Eq. (7) third term
@@ -156,7 +176,8 @@ component} in the far field, absent from classical Liénard-Wiechert
 (which is purely transverse in the radiation zone). The result is a
 structural prediction of the formulation, not an empirical claim --- but
 it is the most natural place to look for an operational signature of the
-dual-theory radiation theory. The Jackson per-PR document records the
+dual-theory radiation theory. The Jackson per-PR document under
+\href{https://github.com/temoTxt/PyPhysics/pull/51}{PR \#51} records the
 algebra and the cross-reference to the Maxwell paper.
 
 \textbf{J3e-P16.1 --- Abraham-Lorentz dissolution.} The proper-time
@@ -177,10 +198,11 @@ look --- see §4.
 through Jackson's magnetic-moment-of-a-current-loop problem in the
 proper-time formulation gave a non-zero result where the classical
 calculation gives zero. The result is flagged with the
-@Zorns-Lemmon-tagged comment on issue \#42 for cross-verification; we
-have not yet had a second pair of eyes on the derivation. The campaign's
-per-PR document records the calculation in full so the result is
-reproducible.
+@Zorns-Lemmon-tagged comment on
+\href{https://github.com/temoTxt/PyPhysics/issues/42}{issue \#42} for
+cross-verification; we have not yet had a second pair of eyes on the
+derivation. The campaign's per-PR document records the calculation in
+full so the result is reproducible.
 
 \hypertarget{candidate-experiments-what-we-found-to-look-at}{%
 \section{§4 Candidate experiments --- what we found to look
@@ -189,10 +211,12 @@ at}\label{candidate-experiments-what-we-found-to-look-at}}
 The Jackson work surfaced two experimental regimes where the dual-theory
 formulation's predictions are operationally distinguishable from
 textbook radiation theory at current measurement precision. We have
-scoped both as sibling issues to \#42 but have not yet executed the
-comparison; we flag them here for your awareness.
+scoped both as sibling issues to
+\href{https://github.com/temoTxt/PyPhysics/issues/42}{\#42} but have not
+yet executed the comparison; we flag them here for your awareness.
 
-\textbf{Cole 2018 / Poder 2018 / Wistisen 2018 (\#43).} Three
+\textbf{Cole 2018 / Poder 2018 / Wistisen 2018
+(\href{https://github.com/temoTxt/PyPhysics/issues/43}{\#43}).} Three
 radiation-reaction experiments in the GeV / extreme-intensity regime
 (Gemini laser-wakefield + counter-propagating laser pulse at
 \texttt{10\^{}2\^{}1} W/cm\^{}2 for Cole and Poder; CERN SPS 200 GeV
@@ -201,20 +225,26 @@ papers themselves disagree on which classical limit fits their data
 (Cole and Poder favour quantum-corrected Landau-Lifshitz; Wistisen
 prefers classical Landau-Lifshitz). The disagreement is itself a signal
 that the regime is ambiguous; the proper-time third term and dissipative
-coefficient make distinguishable predictions in both geometries. Issue
-\#43 records the scoping.
+coefficient make distinguishable predictions in both geometries.
+\href{https://github.com/temoTxt/PyPhysics/issues/43}{Issue \#43}
+records the scoping.
 
-\textbf{MeV bremsstrahlung at clinical-linac energies (\#48).} A
-precision-experiment regime distinct from \#43. Medical-physics
-calibration measurements at clinical-linac electron energies (1, 6, 18
-MeV typical) deliver \texttt{\textasciitilde{}1–2\%} precision on the
-bremsstrahlung spectrum across decades of data (NIST EGSnrc + AAPM Task
-Group standards). At MeV electron energies the third term contributes at
-order unity (\texttt{u/c\ \textasciitilde{}=\ 0.94}), and the prediction
-is a longitudinal polarisation component absent from classical
-Born-approximation QED. Issue \#48 records the scoping; the bibliography
-stubs for the target references (Seltzer-Berger tables, Pratt-Tseng
-review, NIST EGSnrc) are not yet in place.
+\textbf{MeV bremsstrahlung at clinical-linac energies
+(\href{https://github.com/temoTxt/PyPhysics/issues/48}{\#48}).} A
+precision-experiment regime distinct from
+\href{https://github.com/temoTxt/PyPhysics/issues/43}{\#43}.
+Medical-physics calibration measurements at clinical-linac electron
+energies (1, 6, 18 MeV typical) deliver \texttt{\textasciitilde{}1–2\%}
+precision on the bremsstrahlung spectrum across decades of data (NIST
+EGSnrc + AAPM Task Group standards). At MeV electron energies the third
+term contributes at order unity
+(\texttt{u/c\ \textasciitilde{}=\ 0.94}), and the prediction is a
+longitudinal polarisation component absent from classical
+Born-approximation QED.
+\href{https://github.com/temoTxt/PyPhysics/issues/48}{Issue \#48}
+records the scoping; the bibliography stubs for the target references
+(Seltzer-Berger tables, Pratt-Tseng review, NIST EGSnrc) are not yet in
+place.
 
 \hypertarget{what-the-campaigns-found-unconditional-and-conditional}{%
 \section{§5 What the campaigns found --- unconditional and
@@ -236,10 +266,11 @@ number the standard Bethe-estimate route gives, with the
 \texttt{1,057.845(9)} MHz attributed to dropped sub-leading one-loop QED
 contributions (out of scope for the campaign's apparatus).
 
-The remaining results across \#50 (Bethe-Salpeter precision predictions)
-are \emph{conditional} on the resolution of the \texttt{r\_e} finding.
-Six independent precision atomic-physics observables exhibit a
-consistent branched verdict:
+The remaining results across
+\href{https://github.com/temoTxt/PyPhysics/issues/50}{\#50}
+(Bethe-Salpeter precision predictions) are \emph{conditional} on the
+resolution of the \texttt{r\_e} finding. Six independent precision
+atomic-physics observables exhibit a consistent branched verdict:
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
