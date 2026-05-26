@@ -170,6 +170,63 @@ These three scenarios are observationally degenerate in $(g_s/-2)^n$-form observ
 
 READY (no blocker, but iter 3 may surface a BLOCKED state if §III.D leaves $r_e$ as a free parameter without producing a closed form).
 
+## Iteration 3 — 2026-05-26 — §III.D inspection: NO closed-form derivation → outcome C → STOP
+
+### What advanced
+
+Read source-of-record §4 (`Roadmapping/Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md` §III.D, Eqs. III.18–III.23, lines 434–507) and characterised the structure of the framework's derivation of the cutoff.
+
+### Key finding (load-bearing for the empirical-test verdict)
+
+**The §III.D as-published does NOT derive a closed-form for $r_e/r_0$ in $\alpha$.** The derivation produces:
+
+- Eq. (III.18) — the $-[1 - 4r_0/(2r+r_0)] \cdot e\hbar(\boldsymbol\sigma\cdot\mathbf{B})/(2mc)$ magnetic term as a structural consequence of the dual-Dirac Foldy–Wouthuysen reduction (algebraic regrouping of the spherical-coordinate calculation — verdict ✅ per verification doc line 447).
+- Eq. (III.21–22) — the framework's $g$-factor formula $g_r(r) = 2[1 - 4r_0/(2r+r_0)]$ as a clean algebraic consequence of (III.18) with $\mathbf{s} = \hbar\boldsymbol\sigma/2$. Limit checks: $g_r(r_0/2) = -2$ ✅ and $g_r(r\to 0) = -6$ ✅.
+- Eq. (III.22) numerical claim — "$r_e = 0.499857150068631 \cdot r_0$ yields $g = -2.00231930436256$". **This is presented as an empirical numerical fact, not derived.** Per Tepper Gill's 2026-05-25 author guidance (verification doc line 507): "the published $r_e/r_0 = 0.499857150068631$ is an *initial-value* result from a uni-observable numerical search against $g_s$" — i.e., a back-fit, not a derivation.
+
+**Structural consequence.** $r_e/r_0$ in the framework as published is a **free parameter** in the §III.D apparatus, fixed empirically by matching $g_r(r) = g_s^{\text{meas}}$. The framework as written contains no expression $r_e/r_0 = f(\alpha)$ in closed form. Issue [#54](https://github.com/temoTxt/PyPhysics/issues/54) tracks the open question of whether a first-principles rederivation from the dual-Dirac renormalisation prescription would *produce* a closed-form expression; that derivation is not in the published paper.
+
+### Interpretation of iter-2's $10^{-11}$ residual agreement in light of iter-3
+
+The iter-2 finding (Wolfram MCP: $\Delta g_e^{\text{obs}} - \Delta g_e^{\text{pred,KK+LR+KF}} = -9.7 \times 10^{-12}$) is **algebraically forced**: any back-fit cutoff $r_e^*/r_0$ satisfying $g_r(r_e^*/r_0) = g_e^{\text{meas}}$ will, when subtracted from the closed-form one-loop value $r_e^{\text{Schwinger}}/r_0 = (2 - \alpha/(2\pi))/(4 + \alpha/\pi)$, yield via $dg_r/dr$ propagation a $\Delta g_e$ identical to $g_e^{\text{meas}} - g_e^{\text{Schwinger}}$ — which is by definition the all-orders-QED-beyond-one-loop content of measured $g_e$. **This is not evidence of intentional Schwinger encoding in §III.D; it is a tautological consequence of the back-fit.**
+
+The empirical-test path's binary outcome-matrix in the brief (B: KK-consistent → intentional; C: KK-inconsistent → coincidental) requires refinement: the KK-consistency observation alone, in the as-published framework, is structurally forced by the back-fit and does not bear on the intentionality question. Intentionality requires a *derivation* of the closed-form — which §III.D as published does not contain.
+
+### Outcome-matrix branch — DEFINITE: C-as-published
+
+**Outcome C** per the brief's framing: the framework's $r_e$ prescription (as published) is a free parameter fit to $g_s^{\text{meas}}$, not a derivation in $\alpha$. The closed-form match at $\sim 10^{-6}$ is a contingent algebraic consequence of the back-fit, not evidence of intentional Schwinger encoding at the derivation level.
+
+**Finding 2 status:** stays at ⚠ CHARACTERISED. The triangulated $r_e/r_0 = 0.499\,420\,509\,912\,83$ is the joint-best-fit cutoff under the six-observable Pass B weighting (PR #62 result); the closed-form $(2-\alpha/(2\pi))/(4+\alpha/\pi) = 0.499\,419\,632\,156\,99$ matches it to $8.78 \times 10^{-7}$ in $r$ (equivalently to $3.51 \times 10^{-6}$ in $g_e$ — which is exactly the all-orders QED beyond Schwinger one-loop), but this match is structurally forced and not evidence of derivation-level intentionality.
+
+**Path to outcome B** (intentional Schwinger encoding): requires issue #54's first-principles rederivation from the dual-Dirac renormalisation prescription to *produce* the closed-form $(2 - \alpha/(2\pi))/(4 + \alpha/\pi)$ as a derived identity. This is outside the empirical-test path's scope and is tracked separately under #54.
+
+### Empirical-test path acceptance criteria — satisfiable
+
+Per issue #66:
+
+> If unknown or unintentional: empirical test executed via extended joint fit. Wolfram MCP notebook at `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_schwinger_residual_test.wl` adding higher-precision observables to the fit; residual-to-closed-form analysed for Karplus–Kroll consistency.
+
+- ✅ Wolfram MCP notebook created (iter 2).
+- ✅ Residual-to-closed-form analysed for KK consistency (iter 2): $\Delta g_e^{\text{obs}}$ matches $\Delta g_e^{\text{pred,KK+LR+KF}}$ to $\sim 10^{-12}$.
+- ⚠ "Adding higher-precision observables to the fit" — iter 3's structural finding makes this redundant: any such observable that scales as $(g_s/-2)^n$ will tighten $\sigma_r$ but reproduce the same back-fit central value, because the six existing observables are already saturated against $g_s^{\text{meas}}$ to its CODATA precision; and any observable that does *not* scale as $(g_s/-2)^n$ has a framework-prediction formula that is **not derived in the published Bethe–Salpeter campaign** (the type-(b) candidates from iter 1: 1S–2S, antiprotonic helium, muonic-H Lamb shift). The Penning-trap Fan 2023 $g_e$ at ~$10^{-13}$ precision (iter-1 candidate 1) could be added, but the structural argument shows it would not change the substantive verdict.
+- ✅ Crocco compliance: substantive AI for interpretation, per-section TODO blocks in the notebook (Section 7).
+- ✅ Wolfram MCP gotchas obeyed per CLAUDE.md.
+
+### Halting condition
+
+Per the brief's done-criteria:
+
+> Stop the loop only when:
+> - All acceptance criteria for the empirical-test path in issue #66 can be checked, **or**
+> - A BLOCKED state is recorded, **or**
+> - The empirical residual test has produced a definite verdict: Karplus–Kroll consistent (Schwinger encoding intentional) → outcome B, or inconsistent (encoding coincidental) → outcome C.
+
+**Definite verdict reached.** The KK-consistency observation at $10^{-12}$ in iter 2 is real but is structurally forced by the back-fit (iter 3) — it is *not* evidence of intentional encoding at the §III.D-as-published derivation level. Outcome C as published. The loop halts here. Tepper-confirmation path (master #67's parallel route) remains the way to upgrade C → B if Tepper indicates the §III.D derivation does produce a closed-form by some mechanism not visible in the verification doc, or if #54's first-principles rederivation does so.
+
+### Status
+
+**HALT.** Empirical-test path acceptance criteria checkable; definite verdict (C-as-published) recorded. No ScheduleWakeup. Orchestrator will lift the (refined) Tepper question into a #66 comment after morning review.
+
 ## Questions for Tepper (queue)
 
-1. **(2026-05-26, iter 2)** In the DRQM I §III.D derivation of the cutoff $r_e/r_0$ from the dual-Dirac renormalisation prescription, does the derivation produce a closed-form expression in $\alpha$? Specifically, is $r_e/r_0 = (2 - \alpha/(2\pi))/(4 + \alpha/\pi)$ the framework's derived value (which would correspond to $g_e = -2 - \alpha/\pi$ = Schwinger one-loop, with higher-order QED entering via separate framework loop corrections), or is $r_e/r_0$ engineered to reproduce all-orders QED directly (which would require the cutoff itself to encode the Karplus-Kroll, Laporta-Remiddi, Kinoshita coefficients — and at what level of the §III.D derivation does this encoding occur)? **Empirical context:** the iter-2 Wolfram MCP numerics show that the triangulated $r_e/r_0 = 0.499\,420\,509\,912\,83$ differs from the closed-form one-loop value by exactly the all-orders-QED-beyond-one-loop contribution to $g_e$ ($\Delta g_e = +3.5151 \times 10^{-6}$, agreeing with KK+LR+KF to better than $10^{-11}$). This is structurally consistent with either scenario, so author input is the cleanest way to disambiguate.
+1. **(2026-05-26, iter 3 — refined from iter 2)** The DRQM-I §III.D derivation (Eqs. III.18–III.23) produces the framework's $g$-factor formula $g_r(r) = 2[1 - 4r_0/(2r+r_0)]$ and the limit checks $g_r(r_0/2) = -2$ and $g_r(r\to 0) = -6$, but leaves $r_e/r_0$ as an empirical parameter to be fit (per your 2026-05-25 guidance, the published value was obtained by a uni-observable numerical search against $g_s^{\text{meas}}$). The triangulated value $r_e/r_0 = 0.499\,420\,509\,912\,83$ from PR #62 (Pass B joint fit across the six $g_s$-dependent observables) matches the closed-form Schwinger one-loop value $(2 - \alpha/(2\pi))/(4 + \alpha/\pi) = 0.499\,419\,632\,156\,99$ to $8.78 \times 10^{-7}$ in $r$, equivalently $3.51 \times 10^{-6}$ in $g_e$ — which numerically equals the all-orders-QED-beyond-one-loop content of measured $g_e$ to ~$10^{-11}$ (Karplus–Kroll + Laporta–Remiddi + Kinoshita–Fukuda; verified by Wolfram MCP in `r_e_schwinger_residual_test.wl`). However, iter 3 finds that this $10^{-11}$ agreement is *algebraically forced* by the back-fit ($r$ chosen so $g_r(r) = g_e^{\text{meas}}$), not evidence of intentional Schwinger encoding. **Question:** is there an in-progress or planned first-principles rederivation of $r_e/r_0$ from the dual-Dirac renormalisation prescription (per the issue #54 framing) that produces a closed-form expression in $\alpha$? If yes — does it produce the closed-form $(2 - \alpha/(2\pi))/(4 + \alpha/\pi)$ as a derived identity, in which case Finding 2 closes ✅ at outcome B? If no — outcome C-as-published stands, and the empirical-test path's verdict is that the closed-form match is structurally forced rather than derivation-level intentional.
