@@ -18,6 +18,7 @@ The campaign's honest framing at PR F (per [§7.2 of plan](../../../.dev/tasks/5
 
 ---
 
+<!-- TODO: rename anchor slug from "...-branched" to "...-at-triangulated-r_e" in a future cleanup pass; preserved verbatim here so inbound cross-references (10_CrossComparison.md, FINDINGS) keep resolving -->
 ### Result BS-§22.1 — Fermi contact term and 21-cm line (at triangulated `r_e`) <a id="result-bs-221--fermi-contact-term-and-21-cm-line-branched"></a>
 
 **Selection provenance:** the hydrogen 21-cm hyperfine splitting is the campaign's second precision-comparable headline (after Lamb shift PR E) and the strongest experimental constraint on any QM framework's electron-magnetic-moment-coupling structure. The leading term depends linearly on `g_{s}`; the DRQM I §III.D `r_e` finding propagates directly, evaluated at the triangulated `r_e/r_0 = 0.4994205099128317` per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62) (closes [#61](https://github.com/temoTxt/PyPhysics/issues/61)). *Substantive AI; un-branched-verdict cleanup post-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62).*
@@ -84,6 +85,8 @@ This finding cross-posts to [`FINDINGS_for_author_review.md`](../../Equation_Ver
 <!-- TODO: human reviews and fills in — confirms (a) the hyperfine prediction is the campaign's most precision-sensitive r_e-dependent observable, (b) the un-branched verdict at the triangulated `r_e` matches measurement at the Bethe-estimate precision floor, and (c) the self-consistency framing is faithfully recorded. -->
 
 **Notes for author review:** The hydrogen 21-cm line is the most precisely measured atomic-physics frequency at present (12 sig figs). At the triangulated `r_e`, the dual-theory framework predicts `1\,420.04` MHz, agreeing with measurement at the `~0.4` MHz Bethe-estimate-precision floor. This residual is `~ 10^5` measurement-σ — meaningful relative to QED-precision standards but not relative to the framework's known precision-floor scope. Cross-reference to [PR #62](https://github.com/temoTxt/PyPhysics/pull/62) and the [follow-up author note](../../Author_Reports/2026-05_re_triangulation_followup_for_gill.md) for the triangulation's full residual table.
+
+**Historical note** (pre-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62) framing, recorded for context): under the as-published $r_e = 0.499857150068631\,r_0$, the leading Fermi-contact prediction was `1\,418.81` MHz — a `~1.6` MHz disagreement against the measured `1\,420.405\,751\,768(2)` MHz, which is approximately **6 orders of magnitude beyond the measurement uncertainty**. That observation was the campaign's single sharpest empirical signal that the as-published $r_e$ was incompatible with the most precise atomic-physics measurement, and is what motivated the triangulation refinement in PR #62. The observation remains recorded in [`FINDINGS_for_author_review.md` Finding 2](../../Equation_Verification/FINDINGS_for_author_review.md#finding-2--drqm-i-eq-iii22-published-r_e-does-not-reproduce-the-experimental-g_e) under "Downstream operational consequences".
 
 ---
 

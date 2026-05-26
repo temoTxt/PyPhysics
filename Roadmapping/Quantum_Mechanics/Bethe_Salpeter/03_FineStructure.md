@@ -70,6 +70,7 @@ The structural argument: DRQM I Eq. II.D, when expanded in `\pi/(m c)`, returns 
 
 ---
 
+<!-- TODO: rename anchor slug from "...-branched" to "...-at-triangulated-r_e" in a future cleanup pass; preserved verbatim here so inbound cross-references (10_CrossComparison.md, FINDINGS) keep resolving -->
 ### Result BS-§14.2 — 2P₃/₂–2P₁/₂ fine-structure splitting (at triangulated `r_e`) <a id="result-bs-142--2p--2p-fine-structure-splitting-branched"></a>
 
 **Selection provenance:** the 2P₃/₂–2P₁/₂ splitting is the precision-comparable headline of PR C. The Sommerfeld–Dirac value of this splitting depends on the electron's gyromagnetic ratio `g_{s}` through the spin–orbit Lande factor; the dual-Dirac framework's prediction is evaluated at the triangulated `r_e/r_0 = 0.4994205099128317` per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62) (closes [#61](https://github.com/temoTxt/PyPhysics/issues/61)). *Substantive AI; un-branched-verdict cleanup post-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62).*
