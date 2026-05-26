@@ -40,10 +40,12 @@
 (* by any choice of r alone.                                                                            *)
 (*                                                                                                       *)
 (* IMPLICATION FOR FINDING 2.  The empirical triangulation, under honest weighting, returns branch (c).*)
-(* The open question is no longer "branch (b) or branch (c)" -- it is "what is the first-principles    *)
-(* derivation of r_e from the dual-Dirac renormalisation prescription that reproduces branch (c)?"     *)
-(* That is the goal of issue #54.  This notebook supplies the empirical target value to which #54's    *)
-(* first-principles rederivation must agree.                                                             *)
+(* The natural framing: the published r_e is an *initial-value* result from a uni-observable           *)
+(* numerical search against g_s alone; the triangulated value is a *refinement calculation* on top of *)
+(* that initial value, using all six g_s-dependent observables as joint constraints.  Issue #54's     *)
+(* first-principles derivation from the dual-Dirac renormalisation prescription is a potential        *)
+(* further refinement; it could agree with this triangulation, refine further, or expose a            *)
+(* derivation-level structure that reframes the cutoff entirely.                                       *)
 (*                                                                                                       *)
 (* CROCCO COMPLIANCE.  Notebook arithmetic (g_r evaluation, FindMinimum, Hessian, residual table) is   *)
 (* PRAGMATIC AI.  Objective-function choice (which \[Sigma] model), weighting interpretation, the      *)
@@ -202,8 +204,9 @@ Print["back-fit against g_s alone.  This is the structural consequence of every 
 Print["(g_s/-2)^n \[Times] textbook (per Bethe_Salpeter/10_CrossComparison.md \[Section]2):  one back-fit applied"];
 Print["six times yields one r_e value.  The campaign's six-observable agreement is consistent with"];
 Print["branch (c), as the campaign already documented; the triangulation makes that consistency"];
-Print["quantitative and supplies a single concrete value for the first-principles rederivation"];
-Print["work in issue #54 to reproduce."];
+Print["quantitative.  Read this as a *refinement* of the published initial-value r_e using more"];
+Print["constraints (six observables vs one), not as a result the published derivation must reproduce."];
+Print["Issue #54's first-principles rederivation, if pursued, is a potential further refinement."];
 
 
 (* ============================================================ *)
