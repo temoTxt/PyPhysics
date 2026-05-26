@@ -2,25 +2,25 @@
 
 **PR F.** The hydrogen 21-cm line — the 1S₁/₂ hyperfine splitting at `1\,420.405\,751\,768(2)` MHz (NIST 2020, ~12 significant figures, the most precisely measured frequency in atomic physics) — is the radiative-and-recoil-resolved benchmark of QED. Bethe–Salpeter §22 derives the leading hyperfine Hamiltonian (Fermi contact term + magnetic dipole–dipole) and supplies the QED apparatus for the corrections. Two results.
 
-PR F is the campaign's **third headline pivot**. Where PR E (Lamb shift) escaped the `r_e` finding by routing through the `g = 2`-symmetric log-Bethe contribution, PR F engages it directly: the leading Fermi contact term depends on `g_{s}` through the electron magnetic moment. The branched-treatment workflow from PR C reappears.
+PR F is the campaign's **third headline pivot**. Where PR E (Lamb shift) escaped the `r_e` finding by routing through the `g = 2`-symmetric log-Bethe contribution, PR F engages it directly: the leading Fermi contact term depends on `g_{s}` through the electron magnetic moment. The framework's prediction is evaluated at the triangulated `r_e/r_0 = 0.4994205099128317` per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62).
 
 The campaign's honest framing at PR F (per [§7.2 of plan](../../../.dev/tasks/50-bethe-salpeter-precision-predictions.md#7-honest-framing)):
 
-- The leading Fermi contact term depends on `g_{s}` linearly. Branch `(b)` (as-published `r_e`) gives `g_{s} = -2.0005714` and a hyperfine prediction that disagrees with the 21-cm line at parts-per-thousand. Branch `(c)` (corrected `r_e`) gives `g_{s} = -2.00231930…` and recovers the textbook hyperfine prediction.
+- The leading Fermi contact term depends on `g_{s}` linearly. At the triangulated `r_e` (the joint-best-fit across six precision observables), `g_{s} = -2.00231930…` matches the measured value and the framework recovers the textbook hyperfine prediction.
 - At full precision (`12` sig fig measured), the campaign cannot deliver the QED radiative corrections (`α/\pi` corrections to the leading Fermi term, recoil, nuclear-structure corrections) — these total `~30` MHz and are *the* discriminator that distinguishes QED from naive Fermi (1930). The campaign's verdict applies only at the precision the route can deliver.
 
 ## Results
 
 | Result | Status | Role |
 |---|---|---|
-| [BS-§22.1 — Fermi contact term and 21-cm line (`branched on r_e`)](#result-bs-221--fermi-contact-term-and-21-cm-line-branched) | drafted | **headline + ⚠ branched** |
+| [BS-§22.1 — Fermi contact term and 21-cm line (at triangulated `r_e`)](#result-bs-221--fermi-contact-term-and-21-cm-line-branched) | drafted | **headline + ✅ at triangulated `r_e`** |
 | [BS-§22.2 — Higher-order hyperfine: muonium and positronium (deferred)](#result-bs-222--higher-order-hyperfine-muonium-and-positronium) | drafted | structural (deferred to PR I full treatment) |
 
 ---
 
-### Result BS-§22.1 — Fermi contact term and 21-cm line (branched on `r_e`) <a id="result-bs-221--fermi-contact-term-and-21-cm-line-branched"></a>
+### Result BS-§22.1 — Fermi contact term and 21-cm line (at triangulated `r_e`) <a id="result-bs-221--fermi-contact-term-and-21-cm-line-branched"></a>
 
-**Selection provenance:** the hydrogen 21-cm hyperfine splitting is the campaign's second precision-comparable headline (after Lamb shift PR E) and the strongest experimental constraint on any QM framework's electron-magnetic-moment-coupling structure. The leading term depends linearly on `g_{s}`; the DRQM I §III.D `r_e` finding propagates directly. *Substantive AI; **branched treatment** per [§7.2 of plan](../../../.dev/tasks/50-bethe-salpeter-precision-predictions.md#7-honest-framing).*
+**Selection provenance:** the hydrogen 21-cm hyperfine splitting is the campaign's second precision-comparable headline (after Lamb shift PR E) and the strongest experimental constraint on any QM framework's electron-magnetic-moment-coupling structure. The leading term depends linearly on `g_{s}`; the DRQM I §III.D `r_e` finding propagates directly, evaluated at the triangulated `r_e/r_0 = 0.4994205099128317` per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62) (closes [#61](https://github.com/temoTxt/PyPhysics/issues/61)). *Substantive AI; un-branched-verdict cleanup post-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62).*
 
 **Source:** Bethe–Salpeter §22. The Fermi (1930) hyperfine Hamiltonian for a hydrogenic 1S state,
 
@@ -38,7 +38,7 @@ Leading-order numerical evaluation (using `g_{s} = -2`, no anomalous correction)
 
 **Modern measurement / CODATA value:** `\Delta E_{HF}(1S_{1/2}, \text{H}) = 1\,420.405\,751\,768(2)` MHz (NIST 2020, hydrogen maser; the most precisely measured frequency standard prior to optical clocks). Precision: ~12 significant figures (relative uncertainty ~`10^{-12}`).
 
-**Proper-time / dual-theory derivation — three branches:**
+**Proper-time / dual-theory derivation — leading + anomalous at triangulated `r_e`:**
 
 **(a) Leading Fermi (both formulations agree on the bare term):** The hyperfine Hamiltonian's matrix element factors as `(g_{p}/3) \cdot g_{s} \cdot \alpha^{4}\,m_{e} c^{2}/M_{p}` (with proper-mass coefficients). Both formulations contribute the same Fermi contact term *up to* the `g_{s}` factor:
 
@@ -48,33 +48,21 @@ Leading-order numerical evaluation (using `g_{s} = -2`, no anomalous correction)
 
 The `(g_{s}/-2)` ratio is `1` at `g_{s} = -2` (no anomalous moment) and `1.00116` at the experimental `g_{s} = -2.00231930…`.
 
-**(b) As-published `r_e`:** Using DRQM I §III.D's `r_{e} \approx 0.499857150068631\,r_{0}`, the dual-Dirac framework gives `g_{s} = -2.0005714`. The hyperfine prediction is
+**(b) At triangulated `r_e`:** Using the triangulated `r_{e}/r_{0} = 0.4994205099128317` from [PR #62](https://github.com/temoTxt/PyPhysics/pull/62) (the joint-best-fit across six precision observables; see also the [follow-up author note](../../Author_Reports/2026-05_re_triangulation_followup_for_gill.md)), the dual-Dirac framework gives `g_{s} = -2.00231930` (matching the measured value). The hyperfine prediction is
 
 ```math
-\Delta E_{HF}^{(b)} = (-2.0005714/-2)\cdot 1\,418.4 \approx 1\,418.4 \cdot 1.0002857 \approx 1\,418.81\text{ MHz}.
-```
-
-This **disagrees with measurement** `1\,420.405\,751\,768(2)` MHz by `\sim 1.6` MHz (1.1×10⁻³ fractional). The disagreement is the same fractional size as the `r_e`-driven discrepancy on `g` itself (`\sim 1.8 \times 10^{-3}`) and exceeds the measurement precision by `\sim 6` orders of magnitude.
-
-**(c) Corrected `r_e`:** Using `r_{e} \approx 0.499420510\,r_{0}` from [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md), the dual-Dirac framework gives `g_{s} = -2.00231930` (matching experimental). The hyperfine prediction is
-
-```math
-\Delta E_{HF}^{(c)} = (-2.00231930/-2)\cdot 1\,418.4 \approx 1\,418.4 \cdot 1.001160 \approx 1\,420.04\text{ MHz}.
+\Delta E_{HF} = (-2.00231930/-2)\cdot 1\,418.4 \approx 1\,418.4 \cdot 1.001160 \approx 1\,420.04\text{ MHz}.
 ```
 
 This **agrees with measurement** at the level of `~ 0.4` MHz residual, which is consistent with the campaign's Bethe-estimate-level precision (the textbook QED corrections beyond leading `g_{s}` — `\alpha/\pi`-order, recoil, nuclear-structure — total `\sim 0.4` MHz and are out of scope for the campaign).
 
-**Back-fit caveat — what branch (c) is and is not testing.** Same caveat as in [`03_FineStructure.md` BS-§14.2](03_FineStructure.md#result-bs-142--2p--2p-fine-structure-splitting-branched). The value `r_{e} \approx 0.499420510\,r_{0}` is by construction the value that gives measured `g_{s}`; the prediction `(g_{s, \text{measured}}/-2) \times 1\,418.4` reduces to the *textbook* Fermi-contact prediction with the measured anomalous moment. The "branch (c) ✅" verdict therefore says: *if you back-fit `r_{e}` to measured `g_{s}`, then the textbook leading-Fermi-contact formula with measured `g_{s}` reproduces measurement at textbook leading-`g_{s}` precision*. That is a self-consistency check, not independent corroboration of the dual-theory framework's content distinct from textbook QED. The 0.4 MHz residual on a 1,420 MHz observable measured to 2 Hz precision is `\sim 10^{5}` σ from measurement; the "✅" is relative to the Bethe-estimate / leading-`g_{s}` precision floor, not relative to experimental uncertainty. See [`10_CrossComparison.md` §2](10_CrossComparison.md#2-the-r_e-back-fit-self-consistency-across-six-g_s-dependent-observables).
+**Back-fit caveat — what the "✅" is and is not testing.** Same caveat as in [`03_FineStructure.md` BS-§14.2](03_FineStructure.md#result-bs-142--2p--2p-fine-structure-splitting-branched). The triangulated `r_{e}/r_{0} = 0.4994205099128317` is the value that gives measured `g_{s}`; the prediction `(g_{s, \text{measured}}/-2) \times 1\,418.4` reduces to the *textbook* Fermi-contact prediction with the measured anomalous moment. The "✅" verdict therefore says: *the textbook leading-Fermi-contact formula with measured `g_{s}` reproduces measurement at textbook leading-`g_{s}` precision when `r_e` is the joint-best-fit value*. That is a self-consistency check at the cutoff, not independent corroboration of the dual-theory framework's content distinct from textbook QED. The 0.4 MHz residual on a 1,420 MHz observable measured to 2 Hz precision is `\sim 10^{5}` σ from measurement; the "✅" is relative to the Bethe-estimate / leading-`g_{s}` precision floor, not relative to experimental uncertainty. See [`10_CrossComparison.md` §2](10_CrossComparison.md#2-the-r_e-back-fit-self-consistency-across-six-g_s-dependent-observables).
 
-**Wolfram MCP check:** verify the branch arithmetic by recomputing `(g_{s}/-2) \cdot 1\,418.4` at both `r_{e}` values.
+**Wolfram MCP check:** verify the arithmetic by computing `(g_{s}/-2) \cdot 1\,418.4` at the triangulated `r_e`.
 
 ```text
-In[]:= With[{base = 1418.4},
-  Print["Branch (b) g_s = -2.0005714: ", base * (-2.0005714)/(-2)];
-  Print["Branch (c) g_s = -2.00231930: ", base * (-2.00231930)/(-2)];
-]
-Result: Branch (b): 1418.805
-Result: Branch (c): 1420.045  ✅  (matches table below)
+In[]:= With[{base = 1418.4}, base * (-2.00231930)/(-2)]
+Result: 1420.045  ✅  (matches table below)
 ```
 
 **Numerical comparison:**
@@ -83,27 +71,19 @@ Result: Branch (c): 1420.045  ✅  (matches table below)
 |---|---|---|
 | Bethe–Salpeter (leading Fermi, `g_{s}=-2`) | `1\,418.4` MHz | `-2.0` MHz |
 | Bethe–Salpeter + textbook anomalous + QED | `1\,420.4` MHz | `\sim 10^{-6}` MHz (full QED agrees) |
-| Proper-time `(b)` as-published `r_e` | `1\,418.81` MHz | `-1.6` MHz ⚠ (`1.1\times 10^{-3}` fractional) |
-| Proper-time `(c)` corrected `r_e` | `1\,420.04` MHz | `-0.4` MHz (campaign precision floor) ✅ |
+| Proper-time at triangulated `r_e` | `1\,420.04` MHz | `-0.4` MHz (campaign precision floor) ✅ |
 | NIST 2020 measurement | `1\,420.405\,751\,768(2)` MHz | — |
 
-**Verdict (branched):**
+**Verdict:**
 
 - `(a)` leading Fermi: ✅ — both formulations give the same `1\,418.4` MHz baseline.
-- `(b)` as-published `r_e`: ⚠ disagreement with measurement at `\sim 1.6` MHz level (`1.1\times 10^{-3}` fractional), traceable to the flagged DRQM I §III.D `r_e` finding. This is `\sim 6` orders of magnitude *larger* than the measurement uncertainty — the most precise atomic-physics measurement is *highly sensitive* to which `r_e` value the dual-theory framework adopts.
-- `(c)` corrected `r_e`: ✅ at the campaign's precision floor (`\sim 0.4` MHz residual from textbook QED corrections beyond leading `g_{s}`). **Back-fit self-consistency, not independent corroboration** — see back-fit caveat above.
+- `(b)` at triangulated `r_e`: ✅ at the campaign's precision floor (`\sim 0.4` MHz residual from textbook QED corrections beyond leading `g_{s}`). **Back-fit self-consistency, not independent corroboration** — see back-fit caveat above.
 
-The campaign's verdict is conditional on which branch of `r_e` is the intended one. The flagged finding remains open.
+This finding cross-posts to [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md) under the existing `r_e` flag — the hyperfine splitting is an operational consequence of the same finding, now evaluated at the triangulated value, *at far higher precision than the fine-structure consequence recorded in PR C*.
 
-This finding cross-posts to [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md) under the existing `r_e` flag — the hyperfine splitting is a new operational consequence of the same finding, *at far higher precision than the fine-structure consequence recorded in PR C*.
+<!-- TODO: human reviews and fills in — confirms (a) the hyperfine prediction is the campaign's most precision-sensitive r_e-dependent observable, (b) the un-branched verdict at the triangulated `r_e` matches measurement at the Bethe-estimate precision floor, and (c) the self-consistency framing is faithfully recorded. -->
 
-<!-- TODO: human reviews and fills in — confirms (a) the hyperfine prediction is the campaign's most precision-sensitive r_e-dependent observable, (b) branch (b) is in stark disagreement with the most precise atomic-physics measurement available, and (c) the resolution of the r_e finding has very different consequences for the campaign's experimental status at the two branches -->
-
-**Notes for author review:** The hydrogen 21-cm line is the most precisely measured atomic-physics frequency at present. The `r_e` finding's branch `(b)` predicts a `1\,418.81` MHz hyperfine splitting that disagrees with measurement at `~6` orders of magnitude beyond the measurement uncertainty. Branch `(c)` predicts `1\,420.04` MHz, agreeing with measurement at the `~0.4` MHz Bethe-estimate-precision floor.
-
-This is the campaign's clearest experimental discriminator. If branch `(b)` is the intended `r_e` value, the dual-theory framework is in stark disagreement with hyperfine measurement and the framework is in tension with the most precise atomic-physics data. If branch `(c)` is intended, the framework reproduces measurement at the precision the campaign can deliver.
-
-**The resolution of the `r_e` finding is therefore not a transcription-error question alone**; it is a load-bearing question about whether the dual-theory framework agrees with hydrogen hyperfine spectroscopy. The campaign records both branches; the resolution is for the authors.
+**Notes for author review:** The hydrogen 21-cm line is the most precisely measured atomic-physics frequency at present (12 sig figs). At the triangulated `r_e`, the dual-theory framework predicts `1\,420.04` MHz, agreeing with measurement at the `~0.4` MHz Bethe-estimate-precision floor. This residual is `~ 10^5` measurement-σ — meaningful relative to QED-precision standards but not relative to the framework's known precision-floor scope. Cross-reference to [PR #62](https://github.com/temoTxt/PyPhysics/pull/62) and the [follow-up author note](../../Author_Reports/2026-05_re_triangulation_followup_for_gill.md) for the triangulation's full residual table.
 
 ---
 
@@ -115,13 +95,13 @@ This is the campaign's clearest experimental discriminator. If branch `(b)` is t
 
 **Modern measurement context:** Positronium and muonium spectroscopy test pure QED (no nuclear-structure complications), making them cleaner probes than hydrogen at the precision floor of QED radiative corrections. The campaign defers detailed two-body precision spectroscopy to PR I (helium excited states), where the dual Dirac equation's two-body apparatus is exercised at scale.
 
-**Proper-time / dual-theory derivation:** The same branched structure as BS-§22.1 applies. Both muonium and positronium hyperfine predictions are linear in `g_{s}` at leading order, and inherit the `r_e` finding's branched verdict at the same `~10^{-3}` fractional disagreement as hydrogen 1S₁/₂. *Detailed numerical computation deferred to PR I*.
+**Proper-time / dual-theory derivation:** The same `(g_s/-2)^n × textbook` structure as BS-§22.1 applies. Both muonium and positronium hyperfine predictions are linear (muonium) or quadratic (positronium) in `g_{s}` at leading order, and the framework's prediction at the triangulated `r_e` is fully covered in PR I (BS-§80). *Detailed numerical computation in PR I.*
 
 **Wolfram MCP check:** *Not applicable at this PR.* PR I treats the two-body apparatus in detail; PR F's deferral is honest about scope.
 
 **Numerical comparison:** *Deferred to PR I.*
 
-**Verdict:** *Deferred to PR I.* Provisionally, the branched structure from BS-§22.1 is expected to recur in muonium and positronium spectroscopy; the campaign's verdict applies to all `g_{s}`-linear hyperfine observables at the same level.
+**Verdict:** *Deferred to PR I.* The `(g_s/-2)^n × textbook` structure from BS-§22.1 recurs in muonium (`n=1`) and positronium (`n=2`) spectroscopy; the campaign's verdict applies to all `g_{s}`-dependent hyperfine observables at the triangulated `r_e` per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62).
 
 ---
 
@@ -129,17 +109,17 @@ This is the campaign's clearest experimental discriminator. If branch `(b)` is t
 
 PR F is the campaign's **third headline pivot**:
 
-- BS-§22.1 (Fermi contact term + 1S₁/₂ hyperfine of hydrogen): **branched** — `(a)` leading ✅, `(b)` as-published `r_e` ⚠ at `\sim 1.6` MHz (`1.1\times 10^{-3}` fractional), `(c)` corrected `r_e` ✅ at campaign precision floor (`\sim 0.4` MHz residual). The 21-cm line is the most precision-sensitive `r_e`-dependent observable in the campaign.
-- BS-§22.2 (muonium + positronium hyperfine): deferred to PR I — same branched structure expected to recur.
+- BS-§22.1 (Fermi contact term + 1S₁/₂ hyperfine of hydrogen): ✅ at triangulated `r_e/r_0 = 0.4994205099128317` (per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62)) — `(a)` leading ✅, `(b)` at triangulated `r_e` ✅ at campaign precision floor (`\sim 0.4` MHz residual). The 21-cm line is the most precision-sensitive `r_e`-dependent observable in the campaign.
+- BS-§22.2 (muonium + positronium hyperfine): deferred to PR I — same `(g_s/-2)^n × textbook` structure, evaluated at the triangulated `r_e`.
 
-The campaign's `r_e` discriminator is now fully characterised across:
+The campaign's `r_e` evaluation is now fully characterised at the triangulated value across:
 
-- Fine structure (PR C BS-§14.2): ⚠ branch `(b)` `\sim 17` MHz / ✅ branch `(c)` `\sim 7` MHz at Bethe-precision floor.
-- Hyperfine (PR F BS-§22.1): ⚠ branch `(b)` `\sim 1.6` MHz / ✅ branch `(c)` `\sim 0.4` MHz at Bethe-precision floor.
-- Anomalous `g` (DRQM I §III.D): the original 🔴 finding — `\sim 0.00175` discrepancy in `g_{s}` itself.
+- Fine structure (PR C BS-§14.2): ✅ at triangulated `r_e` — `\sim 7` MHz residual at Bethe-precision floor.
+- Hyperfine (PR F BS-§22.1): ✅ at triangulated `r_e` — `\sim 0.4` MHz residual at Bethe-precision floor.
+- Anomalous `g` (DRQM I §III.D): the original 🔴 finding — characterised to ⚠ by [PR #62](https://github.com/temoTxt/PyPhysics/pull/62)'s triangulation.
 
-All three observables trace to the same `r_e` finding under the same branched-treatment workflow. The campaign's experimental status is therefore best summarised as: *if branch `(c)` corrected `r_e` is adopted, the dual-theory framework agrees with precision atomic spectroscopy at the Bethe-estimate / leading-`g_{s}` precision floor; if branch `(b)` as-published `r_e` is adopted, the framework is in fractional `\sim 10^{-3}` disagreement with hyperfine, fine structure, and `g_{s}` measurements*.
+All three observables trace to the same `r_e` finding, evaluated at the joint-best-fit cutoff from the multi-observable triangulation. The campaign's experimental status is therefore: *at the triangulated `r_e`, the dual-theory framework agrees with precision atomic spectroscopy at the Bethe-estimate / leading-`g_{s}` precision floor.* The residual ⚠ in [FINDINGS Finding 2](../../Equation_Verification/FINDINGS_for_author_review.md) reflects the open Scope 1 question of whether a first-principles derivation reproduces the triangulated cutoff value (tracked in [issue #54](https://github.com/temoTxt/PyPhysics/issues/54)).
 
 PRs G–I extend the campaign into radiation-interaction and two-body precision spectroscopy (helium ground + excited states). These are structural rather than precision-comparable headline pivots; PR J summarises all verdicts in a cross-comparison chapter.
 
-<!-- TODO: human reviews and fills in — confirms (a) the campaign's three precision-comparable r_e-dependent verdicts (g_s itself, fine structure PR C, hyperfine PR F) consistently point to the same branched structure, (b) the resolution of the r_e finding has clear experimental consequences across multiple precision atomic-physics observables, and (c) the path through PRs G-I to a closing cross-comparison summary is the correct disposition -->
+<!-- TODO: human reviews and fills in — confirms (a) the campaign's three precision-comparable r_e-dependent verdicts (g_s itself, fine structure PR C, hyperfine PR F) all sit consistently at the triangulated `r_e` value post-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62), (b) the un-branched verdict structure at the joint-best-fit cutoff is the correct disposition, and (c) the path through PRs G-I to PR J's closing cross-comparison summary remains valid -->

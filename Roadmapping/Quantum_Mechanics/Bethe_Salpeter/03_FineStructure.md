@@ -13,15 +13,15 @@ PR C is the campaign's **pivot**: the first precision result where the dual Dira
 The campaign's honest framing applies here in full force:
 
 - The dual Dirac equation's reduction to the Pauli / FW Hamiltonian at leading-non-rel-relativistic order is the load-bearing claim (DRQM I §II.1–II.3, verified ✅).
-- The anomalous-`g`-factor `r_e` finding (DRQM I §III.D, 🔴) propagates into the magnetic-dipole piece of the spin–orbit term and is treated with **branched treatment**.
-- The Sommerfeld–Dirac formula's leading `(Z\alpha)^{2}` correction is reproduced by both formulations; the `(Z\alpha)^{4}` and anomalous-`g` corrections are where the branched treatment engages.
+- The anomalous-`g`-factor `r_e` finding (DRQM I §III.D, ⚠ characterised post-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62)) propagates into the magnetic-dipole piece of the spin–orbit term and is evaluated at the triangulated `r_e/r_0 = 0.4994205099128317` per the joint fit across six precision observables.
+- The Sommerfeld–Dirac formula's leading `(Z\alpha)^{2}` correction is reproduced by both formulations; the `(Z\alpha)^{4}` and anomalous-`g` corrections are where the triangulated-`r_e` evaluation engages.
 
 ## Results
 
 | Result | Status | Role |
 |---|---|---|
 | [BS-§14.1 — Spin–orbit coupling and Sommerfeld–Dirac formula](#result-bs-141--spinorbit-coupling-and-sommerfelddirac-formula) | drafted | structural — leading-order ✅ |
-| [BS-§14.2 — 2P₃/₂–2P₁/₂ fine-structure splitting (`branched on r_e`)](#result-bs-142--2p--2p-fine-structure-splitting-branched) | drafted | **headline + ⚠ branched** |
+| [BS-§14.2 — 2P₃/₂–2P₁/₂ fine-structure splitting (at triangulated `r_e`)](#result-bs-142--2p--2p-fine-structure-splitting-branched) | drafted | **headline + ✅ at triangulated `r_e`** |
 | [BS-§14.3 — Relativistic kinetic + Darwin terms](#result-bs-143--relativistic-kinetic--darwin-terms) | drafted | structural — leading-order ✅ |
 
 ---
@@ -66,13 +66,13 @@ The structural argument: DRQM I Eq. II.D, when expanded in `\pi/(m c)`, returns 
 | Proper-time / dual-Dirac | identical at leading order (per DRQM I §II.D) | matches |
 | CODATA-2018 implicit | Sommerfeld–Dirac validated to (Zα)² precision | — |
 
-**Verdict:** ✅ — dual Dirac reproduces Sommerfeld–Dirac formula at leading `(Z\alpha)^{2}` order. Sub-leading departures from anomalous `g` are treated in the next result via branched treatment.
+**Verdict:** ✅ — dual Dirac reproduces Sommerfeld–Dirac formula at leading `(Z\alpha)^{2}` order. Sub-leading departures from anomalous `g` are evaluated at the triangulated `r_e` value in the next result (per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62)).
 
 ---
 
-### Result BS-§14.2 — 2P₃/₂–2P₁/₂ fine-structure splitting (branched on `r_e`) <a id="result-bs-142--2p--2p-fine-structure-splitting-branched"></a>
+### Result BS-§14.2 — 2P₃/₂–2P₁/₂ fine-structure splitting (at triangulated `r_e`) <a id="result-bs-142--2p--2p-fine-structure-splitting-branched"></a>
 
-**Selection provenance:** the 2P₃/₂–2P₁/₂ splitting is the precision-comparable headline of PR C. The Sommerfeld–Dirac value of this splitting depends on the electron's gyromagnetic ratio `g_{s}` through the spin–orbit Lande factor; the dual-Dirac framework's prediction inherits the DRQM I §III.D `r_e` finding. *Substantive AI; **branched treatment per [§7.3 of plan](../../../.dev/tasks/50-bethe-salpeter-precision-predictions.md#7-honest-framing)**.*
+**Selection provenance:** the 2P₃/₂–2P₁/₂ splitting is the precision-comparable headline of PR C. The Sommerfeld–Dirac value of this splitting depends on the electron's gyromagnetic ratio `g_{s}` through the spin–orbit Lande factor; the dual-Dirac framework's prediction is evaluated at the triangulated `r_e/r_0 = 0.4994205099128317` per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62) (closes [#61](https://github.com/temoTxt/PyPhysics/issues/61)). *Substantive AI; un-branched-verdict cleanup post-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62).*
 
 **Source:** Bethe–Salpeter §14. The Sommerfeld–Dirac splitting
 
@@ -84,36 +84,25 @@ with the standard angular-momentum factor evaluating to `\Delta E_{FS} = m_{e} c
 
 **Modern measurement / CODATA value:** `\Delta E_{FS}(2P_{3/2} - 2P_{1/2}) = 10\,969(1)` MHz (CODATA-2018, full QED prediction); experimental measurement `10\,969.13(10)` MHz (Hagley & Pipkin 1994 + subsequent refinements). The leading Dirac calculation (`m_e c² \alpha^4 / 32`) differs from the measured value by ~`20` MHz; the anomalous-`g` correction `(g - 2)/2 \cdot 10\,949 \approx 12.7` MHz and recoil + two-loop contributions account for the remaining ~`8` MHz.
 
-**Proper-time / dual-theory derivation — three branches:**
+**Proper-time / dual-theory derivation — leading + anomalous:**
 
-**(a) Leading Dirac (both formulations agree):** Per BS-§14.1, the dual Dirac equation reproduces the leading Sommerfeld–Dirac formula. The dual-theory leading-order prediction is `m_{e} c^{2}\,\alpha^{4}/32 \approx 10\,949` MHz, *identical* to the textbook leading Dirac prediction. This is the floor from which both anomalous-`g` corrections are measured.
+**(a) Leading Dirac (both formulations agree):** Per BS-§14.1, the dual Dirac equation reproduces the leading Sommerfeld–Dirac formula. The dual-theory leading-order prediction is `m_{e} c^{2}\,\alpha^{4}/32 \approx 10\,949` MHz, *identical* to the textbook leading Dirac prediction. This is the floor from which the anomalous-`g` correction is measured.
 
-**(b) Anomalous-`g` correction with as-published `r_e`:** Using DRQM I §III.D's stated `r_e \approx 0.499857150068631\,r_{0}`, the dual-Dirac anomalous moment is `g_{s} = -2.0005714`. The anomalous-`g` correction to the fine-structure splitting is
-
-```math
-\Delta E_{anom}^{(b)} = \frac{g_{s} - 2}{2} \cdot \Delta E_{leading} \approx \frac{0.0005714}{2}\cdot 10\,949 \approx 3.13\text{ MHz}.
-```
-
-Adding to the leading Dirac value: `10\,949 + 3.13 \approx 10\,952` MHz. This **disagrees with measurement** (`10\,969.13(10)` MHz) by `\sim 17` MHz, a ~1.5×10⁻³ fractional discrepancy.
-
-**(c) Anomalous-`g` correction with corrected `r_e`:** The corrected `r_e \approx 0.499420510\,r_{0}` from [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md) gives `g_{s} = -2.00231930` (matching experimental anomalous moment). The anomalous correction is
+**(b) Anomalous-`g` correction at the triangulated `r_e`:** Using the triangulated `r_{e}/r_{0} = 0.4994205099128317` from [PR #62](https://github.com/temoTxt/PyPhysics/pull/62) (the joint-best-fit across six precision observables; see also the [follow-up author note](../../Author_Reports/2026-05_re_triangulation_followup_for_gill.md)), the dual-Dirac anomalous moment is `g_{s} = -2.00231930` (matching the measured value). The anomalous-`g` correction to the fine-structure splitting is
 
 ```math
-\Delta E_{anom}^{(c)} = \frac{0.00231930}{2}\cdot 10\,949 \approx 12.7\text{ MHz}.
+\Delta E_{anom} = \frac{g_{s} - 2}{2} \cdot \Delta E_{leading} \approx \frac{0.00231930}{2}\cdot 10\,949 \approx 12.7\text{ MHz}.
 ```
 
-Adding to leading Dirac: `10\,949 + 12.7 \approx 10\,962` MHz. Remaining `\sim 7` MHz is recoil + two-loop, matching textbook QED's residual. **Branch (c) agrees with measurement at the Bethe-estimate precision** the campaign can deliver (~few MHz from missing two-loop).
+Adding to leading Dirac: `10\,949 + 12.7 \approx 10\,962` MHz. Remaining `\sim 7` MHz is recoil + two-loop, matching textbook QED's residual. **The framework agrees with measurement at the Bethe-estimate precision** the campaign can deliver (~few MHz from missing two-loop).
 
-**Back-fit caveat — what branch (c) is and is not testing.** The value `r_{e} \approx 0.499420510\,r_{0}` of branch (c) is, by construction (see [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md) Finding 2's `Solve[]` step), the `r_{e}` value that produces `g_{s} = -2.00231930` — i.e., the *measured* `g_{s}`. The prediction `\Delta E_{anom}^{(c)}` then reduces to *the textbook anomalous-moment correction* `(g_{s,\text{measured}} - 2)/2 \times E_{\text{leading}}`. That is the same formula textbook QED uses, with the same numerical input (measured `g_{s}`), so the "branch (c) ✅" verdict is the *trivial* statement that the textbook leading-`g_{s}` calculation reproduces measurement at textbook leading-`g_{s}` precision when one uses the measured `g_{s}`. This is not an independent corroboration of the dual-theory framework's distinct content; it is a self-consistency check that *if* one chooses `r_{e}` to back-fit `g_{s}`, *then* `g_{s}`-dependent observables reproduce textbook. See [`10_CrossComparison.md` §2](10_CrossComparison.md#2-the-r_e-back-fit-self-consistency-across-six-g_s-dependent-observables) for the campaign-wide reframe.
+**Back-fit caveat — what the "✅" is and is not testing.** The triangulated `r_{e}/r_{0} = 0.4994205099128317` is the value that, by the joint fit's structure, gives `g_{s} = -2.00231930` — i.e., the *measured* `g_{s}`. The prediction `\Delta E_{anom}` then reduces to *the textbook anomalous-moment correction* `(g_{s,\text{measured}} - 2)/2 \times E_{\text{leading}}`. That is the same formula textbook QED uses, with the same numerical input (measured `g_{s}`), so the "✅" verdict is the *trivial* statement that the textbook leading-`g_{s}` calculation reproduces measurement at textbook leading-`g_{s}` precision when one uses the measured `g_{s}`. This is not an independent corroboration of the dual-theory framework's distinct content; it is a self-consistency check that the triangulated `r_e` reproduces `g_s`-dependent observables at textbook leading-`g_s` precision. See [`10_CrossComparison.md` §2](10_CrossComparison.md#2-the-r_e-back-fit-self-consistency-across-six-g_s-dependent-observables) for the campaign-wide reframe.
 
 **Wolfram MCP check:** verify the anomalous-`g` correction coefficient `(g - 2)/2 \cdot E_{leading}`. (See [`BetheSalpeter_S14_2.wl`](../../Mathematica_Notebooks/Quantum_Mechanics/BetheSalpeter_S14_2.wl) for the symbolic check.)
 
 ```text
-In[]:= FullSimplify[((-2.0005714) - (-2))/2 * 10949 - 3.13]
-Result: ~0 ✅  (Branch (b) numerical)
-
 In[]:= FullSimplify[((-2.00231930) - (-2))/2 * 10949 - 12.7]
-Result: ~0 ✅  (Branch (c) numerical)
+Result: ~0 ✅  (at triangulated `r_e`)
 ```
 
 **Numerical comparison:**
@@ -122,23 +111,21 @@ Result: ~0 ✅  (Branch (c) numerical)
 |---|---|---|
 | Bethe–Salpeter (leading Dirac) | `10\,949` MHz | `-20` MHz (missing anom. + recoil + 2-loop) |
 | Bethe–Salpeter + full QED | `10\,969(1)` MHz | `0` (agrees) |
-| Proper-time `(b)` as-published `r_e` | `10\,952` MHz | `-17` MHz ⚠ |
-| Proper-time `(c)` corrected `r_e` | `10\,962` MHz | `-7` MHz (Bethe-estimate residual) |
+| Proper-time at triangulated `r_e` | `10\,962` MHz | `-7` MHz (Bethe-estimate residual) |
 | CODATA-2018 measurement | `10\,969.13(10)` MHz | — |
 
-**Verdict (branched):**
+**Verdict:**
 
 - `(a)` leading Dirac: ✅ — dual-Dirac reproduces standard Dirac at leading order.
-- `(b)` as-published `r_e`: ⚠ disagreement with measurement at the `\sim 17` MHz level (1.5×10⁻³ fractional) traceable to the flagged DRQM I §III.D `r_e` finding.
-- `(c)` corrected `r_e`: ✅ at the Bethe-estimate precision (~few-MHz residual from missing two-loop). **Read this as back-fit self-consistency, not independent corroboration:** branch (c)'s `r_{e}` is *defined* as the value that gives the measured `g_{s}`, and the formula `(g_{s, \text{measured}}-2)/2 \times E_{\text{leading}}` is identical to textbook QED's leading-`g_{s}` formula. The "✅" means *if you back-fit `r_{e}` to measured `g_{s}`, then the leading-`g_{s}` prediction matches measurement at leading-`g_{s}` precision* — a tautology, not a discrimination.
+- `(b)` at triangulated `r_e`: ✅ at the Bethe-estimate precision (~few-MHz residual from missing two-loop). **Read this as back-fit self-consistency, not independent corroboration:** the triangulated `r_{e}` is the value that gives the measured `g_{s}`, and the formula `(g_{s, \text{measured}}-2)/2 \times E_{\text{leading}}` is identical to textbook QED's leading-`g_{s}` formula. The "✅" means *the leading-`g_{s}` prediction matches measurement at leading-`g_{s}` precision when `r_{e}` is the joint-best-fit value* — a self-consistency at the cutoff, not a discrimination from standard QED.
 
-The campaign's verdict is conditional on which branch of `r_e` is the intended one. The flagged finding remains open. The 7 MHz residual on a 10,969 MHz observable measured to 0.1 MHz precision is, in precision-spectroscopy terms, ~70-σ from measurement; the "✅" applies relative to the Bethe-estimate leading-`g_{s}` precision floor, not relative to the experimental uncertainty.
+The 7 MHz residual on a 10,969 MHz observable measured to 0.1 MHz precision is, in precision-spectroscopy terms, ~70-σ from measurement; the "✅" applies relative to the Bethe-estimate leading-`g_{s}` precision floor, not relative to the experimental uncertainty.
 
-<!-- TODO: human reviews and fills in — confirms the campaign's verdict structure for PR C: leading-order ✅ (both branches), anomalous-correction branched (b) ⚠ vs (c) ✅, with the conditional framing flagged to readers. Notes that this is the campaign's first precision-comparable result where the framework's experimental status is contingent on the resolution of the r_e finding -->
+<!-- TODO: human reviews and fills in — confirms the un-branched verdict structure for PR C post-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62): leading-order ✅, anomalous-correction ✅ at triangulated `r_e` with the self-consistency framing flagged to readers. -->
 
-**Notes for author review:** PR C's `(b)` branch records a `\sim 17` MHz fine-structure disagreement traceable to the `r_e` finding, comparable to (but smaller than) the `r_e`-driven `g`-factor discrepancy itself. The `(c)` branch's `\sim 7` MHz residual is at the order of magnitude of two-loop QED, which is out of scope for the campaign per the Bethe-estimate precision floor. Either branch is publishable, contingent on the framework's adopted `r_e` value. PR F (hyperfine) repeats this branched structure at parts-per-billion precision.
+**Notes for author review:** PR C's anomalous-correction residual of `\sim 7` MHz at the triangulated `r_e` is at the order of magnitude of two-loop QED, which is out of scope for the campaign per the Bethe-estimate precision floor. Cross-reference to [PR #62](https://github.com/temoTxt/PyPhysics/pull/62) and the [follow-up author note](../../Author_Reports/2026-05_re_triangulation_followup_for_gill.md) for the empirical-triangulation backing. PR F (hyperfine) follows the same `(g_s/-2)^n × textbook` structure at parts-per-billion precision.
 
-This finding cross-posts to [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md) under the existing `r_e` flag — the fine-structure splitting is a new operational consequence of the same finding, not a new independent flag.
+This finding cross-posts to [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md) under the existing `r_e` flag — the fine-structure splitting is an operational consequence of the same finding, now evaluated at the triangulated value.
 
 ---
 
@@ -179,13 +166,13 @@ Why is the Darwin coefficient `1/(8 m² c²)` (textbook) and *not* something dif
 PR C is the campaign's first precision-comparable pivot:
 
 - BS-§14.1 (spin–orbit + leading Sommerfeld–Dirac): ✅ — dual Dirac reproduces leading `(Z\alpha)^{2}` Sommerfeld–Dirac fine structure
-- BS-§14.2 (2P₃/₂–2P₁/₂ splitting): **branched** — `(a)` leading ✅, `(b)` as-published `r_e` ⚠ (`-17` MHz vs measurement), `(c)` corrected `r_e` ✅ at Bethe-estimate precision (`-7` MHz residual)
+- BS-§14.2 (2P₃/₂–2P₁/₂ splitting): ✅ at triangulated `r_e/r_0 = 0.4994205099128317` (per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62)) — `(a)` leading Dirac ✅, `(b)` anomalous-`g` at triangulated `r_e` ✅ at Bethe-estimate precision (`-7` MHz residual from missing two-loop)
 - BS-§14.3 (rel-kin + Darwin): ✅ — identical between formulations
 
-The campaign's first ⚠ — branch `(b)` of BS-§14.2 — is recorded with explicit cross-reference to the DRQM I §III.D `r_e` finding. The campaign does *not* report a fresh independent flagged finding; rather, it documents that the same `r_e` finding has new operational consequences in fine structure beyond the original `g`-factor disagreement.
+The anomalous-`g` evaluation in BS-§14.2 is recorded with explicit cross-reference to the DRQM I §III.D `r_e` finding (now ⚠ characterised at the triangulated value per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62)). The campaign does *not* report a fresh independent flagged finding; rather, it documents that the same `r_e` finding has operational consequences in fine structure beyond the original `g`-factor disagreement, now evaluated at the joint-best-fit cutoff.
 
 PR D will treat higher-order relativistic corrections (`(Z\alpha)^{4}` terms); these are sub-leading to PR C's `(Z\alpha)^{2}` baseline and are the natural setting for the campaign's "the Pauli / FW reduction reproduces standard QED at order `(Z\alpha)^{2}` precision" claim. PR E (Lamb shift) is the campaign's second precision pivot.
 
 **Acceptance criterion 2 of #50 satisfied with PR C merge.**
 
-<!-- TODO: human reviews and fills in — confirms (a) PR C's branched verdict structure is the correct disposition of the campaign's first precision-comparable result, (b) the cross-post to FINDINGS_for_author_review.md is at the existing r_e flag rather than a new independent flag, and (c) the path forward through PR D and PR E is consistent with the campaign plan -->
+<!-- TODO: human reviews and fills in — confirms (a) PR C's un-branched verdict at the triangulated `r_e` is the correct disposition post-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62), (b) the cross-post to FINDINGS_for_author_review.md is at the existing r_e flag rather than a new independent flag, and (c) the path forward through PR D and PR E is consistent with the campaign plan -->
