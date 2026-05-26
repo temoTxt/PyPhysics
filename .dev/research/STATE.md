@@ -126,3 +126,72 @@ Then assemble closure equation $\langle\pi^2/(2m)\rangle + \langle V_0^2/(2mc^2)
 **Outcome-matrix:** still not yet determinable — full closure equation not yet assembled. **No BLOCKED state.**
 
 **Status:** READY for next iteration (Section 3 expectation-value integrals).
+
+---
+
+## Iteration 4 — 2026-05-26T18:35Z — Section 3 assembled + diagnostic → BLOCKED (Outcome D)
+
+**Advanced:** Computed all three expectation-value integrals via Wolfram MCP on the cutoff-restricted trial $\psi_1 = e^{-r/aa}$ over $[r_e, \infty)$, assembled closure equation, and diagnostic-tested it. Key results recorded in `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_variational.wl` Section 3.
+
+### Integrals (Wolfram MCP, 2026-05-26)
+
+$$\langle 1/r\rangle = \frac{aa + 2r_e}{aa^2 + 2\,aa\,r_e + 2r_e^2}, \quad \langle 1/r^2\rangle = \frac{2}{aa^2 + 2\,aa\,r_e + 2r_e^2}, \quad \langle T\rangle = \frac{\hbar^2}{2m\,aa^2}.$$
+
+The kinetic $\langle T\rangle$ is in the **gradient form** $\langle\hbar^2|\nabla\psi|^2/(2m)\rangle/\langle|\psi|^2\rangle$ and is *independent* of $r_e$ on this trial (the $r^2 e^{-2r/aa}$ density factors out).
+
+### Dimensionless closure equation
+
+Lengths in $r_0 = e^2/(mc^2)$, energies in $mc^2$: $\hat{a} = aa/r_0$, $\hat{r}_e = r_e/r_0$, $\alpha = e^2/(\hbar c)$.
+
+$$E_{\rm dim}(\hat{a}, \hat{r}_e) \;\equiv\; \frac{\langle K_D - mc^2\rangle}{mc^2} \;=\; \frac{1}{2\alpha^2 \hat{a}^2} \;-\; \frac{\hat{a} + 2\hat{r}_e - 1}{\hat{a}^2 + 2\hat{a}\hat{r}_e + 2\hat{r}_e^2}.$$
+
+Closure #7 (strong reading $\langle K_D\rangle = mc^2$, no separate binding subtraction): set $E_{\rm dim} = 0$.
+
+### Diagnostic (Wolfram MCP numerical evaluation, $\alpha = 1/137.035999$)
+
+| Regime | $\hat{a}$ | $\hat{r}_e$ | $E_{\rm dim}$ | Verdict |
+|---|---|---|---|---|
+| Electron-radius scale | $1$ | $0.5$ | $+9389.0$ | Kinetic dominates by $4$ orders; NR expansion **invalid** |
+| Bohr scale | $1/\alpha^2 \approx 18\,778$ | $0.5$ | $-2.662\times 10^{-5}$ | Matches $-\alpha^2/2$; cutoff invisible |
+| Bohr scale, no cutoff | $1/\alpha^2$ | $0$ | $-2.662\times 10^{-5}$ | Identical to $\hat{r}_e = 0.5$ to 10 sig figs |
+| (reference) | — | — | $-\alpha^2/2 = -2.663\times 10^{-5}$ | textbook hydrogen 1s binding |
+
+**$\hat{r}_e$-sensitivity at Bohr scale:** $\partial E_{\rm dim}/\partial\hat{r}_e \sim \alpha^6 \sim 10^{-13}$. The shift in $\hat{r}_e$ needed to move $E_{\rm dim}$ from $-\alpha^2/2$ to $0$ is $\delta\hat{r}_e \sim 1/(4\alpha^4) \sim 3\times 10^8$ — far outside the physical range.
+
+### Why the closure cannot pin $\hat{r}_e$
+
+The DRQM I §III derivation expands $K_D = H_D^2/(2mc^2) + mc^2/2$ as a power series in $V_0/(mc^2)$ and $\hbar/(mc\,r)$, valid only for $r \gg \hbar/(mc)$ (Compton wavelength) and $V_0/(mc^2) \ll 1$. At the cutoff $r_e \sim r_0$, both expansion parameters become $O(1)/O(1/\alpha)$ — **the expansion (III.4) is invalid at the cutoff scale**. The expanded $K_D$ as written is a useful *atomic-physics* effective Hamiltonian (valid at $r \sim a_B$), not a *radial-cutoff variational* Hamiltonian (which would require $r \sim r_e$).
+
+At the Bohr-scale trial ($\hat{a} \sim 1/\alpha^2$), where the NR expansion *is* valid, the cutoff $\hat{r}_e \sim 1$ is invisible because the trial mass-density $r^2 e^{-2r/aa}$ peaks at $r = aa \sim 18\,000 r_0$, with $r_e/aa \sim \alpha^2$ as the suppression factor.
+
+**Net:** there is *no scale* at which both (a) the NR expansion (III.4) is valid AND (b) the cutoff $\hat{r}_e$ couples meaningfully to the closure equation. Route X with the published expanded $K_D$ is structurally inadequate to determine $r_e/r_0$.
+
+### Outcome-matrix branch and BLOCKED state
+
+**Outcome D — Derivation intractable / Tepper-blocker.** Specifically, **BLOCKED on author input** for one of two clarifications:
+
+1. **Framework-internal $\Delta E_{\rm SE}^{\rm framework}(r_e)$ specification.** The candidate-2 brief anticipated this need ("framework-internal binding/self-energy contributions"). Without an explicit form for $\Delta E_{\rm SE}$ at the cutoff scale, the closure $\langle K_D\rangle = mc^2 + \Delta E_{\rm SE}$ degenerates to $\langle K_D\rangle = mc^2$, which has no non-trivial $\hat{r}_e$ solution as demonstrated above.
+
+2. **Alternative reading of "variational determination of $r_e$".** If the intended quantity is *not* the expanded $K_D$ but the un-expanded full $H_D$ under a radial-cutoff regulator (radial-Dirac eigenvalue problem with $r \in [r_e, \infty)$), that is a 5-10-iteration arc — a different sub-route, not Route X as defined. Author input on whether to commit Claude to this is requested.
+
+### Closure-condition classification — final status
+
+| # | Condition | Classification (final) | Status |
+|---|---|---|---|
+| 1 | Variational stationarity $\partial E/\partial r_e = 0$ | **ad-hoc** | Not framework-internal; cannot terminally fix outcome A/B. |
+| 2 | Radial-boundary current conservation $\mathbf{J}\!\cdot\!\hat{\mathbf{r}}\,\big|_{r=r_e} = 0$ | **ad-hoc** pending author input | No published framework requirement. |
+| 3 | $g$-factor closure $g_r(r_e) = g_e^{\rm exp}$ | **framework-external** | Used by PR #62 triangulation. |
+| 4 | Critical-point locking $r_e = r_0/2$ | **framework-internal, tree-level only** | Yields $g = -2$ exactly; misses the $\alpha/\pi$ anomalous moment. |
+| 5 | Normalisation closure | **ad-hoc / no info** | Discarded. |
+| 6 | Schwinger one-loop closure | **framework-external** | Candidate 3 route. |
+| 7 | Energy-eigenvalue mass-renormalisation | **framework-internal but inadequate at NR-expansion level** | This iteration's BLOCKED result: closure $\langle K_D\rangle = mc^2$ has no $\hat{r}_e$-sensitive solution; framework needs to supply $\Delta E_{\rm SE}^{\rm framework}(r_e)$. |
+
+### Acceptance-criteria check against issue #65
+
+- [ ] First-principles $r_e/r_0$ derived from variational principle on the dual-Dirac equation — **NO** (closure has no non-trivial solution at the NR expansion level).
+- [x] Closure conditions enumerated and classified framework-internal-vs-ad-hoc — **YES** (table above).
+- [x] Result cross-checked against triangulated $0.4994205099128317$ and Schwinger closed-form — **YES, vacuously** (no result to check).
+- [x] Outcome-matrix branch determined — **YES (Outcome D).**
+- [x] BLOCKED state recorded with specific author-input requirements — **YES** (two specific clarifications listed above).
+
+**Status:** BLOCKED — Outcome D. **Loop stops here.** Orchestrator should review and either (a) post author-input request comment on issue #65 with the two specific clarifications above, or (b) re-direct this branch to the un-expanded full-Dirac arc as a new sub-task. Per loop-prompt instructions: no PR opened, no issue comments posted by Claude during overnight iterations.

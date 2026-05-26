@@ -67,27 +67,80 @@ Print["N^2 = ", Simplify[Nsq]];
 Print["Sanity (re->0): N^2 -> 1/(pi aa^3), expected match: ", Simplify[Limit[Nsq, re -> 0, Assumptions -> {aa > 0}] == 1/(Pi aa^3)]];
 
 (* ============================================================ *)
-(* Section 3.  PLACEHOLDER -- Compute \[LeftAngleBracket]K_D\[RightAngleBracket]_{r_e, aa}.  *)
+(* Section 3.  Expectation values + closure equation assembly.   *)
 (* ============================================================ *)
 (*                                                                                            *)
-(* Next iteration: build K_D term-by-term from DRQM I Eq. (III.4):                            *)
-(*   K_D = pi^2/(2m) + \[Beta] V_0 + mc^2 - (e hbar \[CapitalSigma].B)/(2mc)                  *)
-(*       + (V_0 \[Alpha].pi)/(mc) - (i hbar \[Alpha].\[Del]V_0)/(2mc) + V_0^2/(2mc^2).        *)
-(* For the field-free s-state (no B, no spin-orbit), only the scalar terms survive:           *)
-(*   <K_D>_{r_e,aa} = <pi^2/(2m)>_{r_e,aa} + mc^2 + <V_0>_{r_e,aa} + <V_0^2/(2mc^2)>_{r_e,aa} *)
-(* (the spin-flip and chain-rule terms vanish on the spherically-symmetric trial).             *)
-(*                                                                                            *)
-(* Closure condition #7 (mass-renormalisation):                                                *)
-(*   <K_D>_{r_e,aa} = mc^2 + <V_0>_{r_e,aa}   <-- the framework absorbs the bind-energy.      *)
-(* Equivalently:                                                                               *)
-(*   <pi^2/(2m)>_{r_e,aa} + <V_0^2/(2mc^2)>_{r_e,aa} = 0.                                      *)
-(* This is one equation; the second comes from stationarity d/d(aa) of the LHS on the trial. *)
-(*                                                                                            *)
-(* TODO next iteration: implement <pi^2/(2m)>, <1/r>, <1/r^2> integrals symbolically and      *)
-(* feed them into the coupled (aa, r_e) system.  Then cross-check r_e/r_0 against the         *)
-(* triangulated 0.4994205099128317 and the Schwinger closed-form.                              *)
+(* K_D from DRQM I Eq. (III.4); for the field-free s-state (no B, no spin-orbit, no chain-   *)
+(* rule term on a spherically symmetric trial), only the scalar terms survive:                *)
+(*   <K_D>_{r_e,aa} = <T>_{r_e,aa} + mc^2 + <V_0>_{r_e,aa} + <V_0^2/(2mc^2)>_{r_e,aa}.        *)
+(* <T> computed in the GRADIENT form <hbar^2 |grad psi|^2/(2m)> (positive-definite,           *)
+(* variationally appropriate for a soft cutoff where \[Psi](r_e) != 0).                       *)
 
-Print["Section 3: PLACEHOLDER. <K_D> computation queued for next iteration."];
+(* Wolfram MCP 2026-05-26 results (single-line cells for MCP-transport safety): *)
+ClearAll[aa, re, r, mm, cc, hbar, ee, alpha];
+mean1OverR = (aa + 2 re)/(aa^2 + 2 aa re + 2 re^2);
+mean1OverRsq = 2/(aa^2 + 2 aa re + 2 re^2);
+meanT = hbar^2/(2 mm aa^2);   (* gradient form -- independent of r_e on this trial *)
+meanV0 = -ee^2 mean1OverR;
+meanV0sqOver2mc2 = (ee^4/(2 mm cc^2)) mean1OverRsq;
+meanKDminusMC2 = meanT + meanV0 + meanV0sqOver2mc2;
+Print["<1/r>   = ", mean1OverR];
+Print["<1/r^2> = ", mean1OverRsq];
+Print["<T>     = ", meanT, "   (note: independent of r_e in gradient form)"];
+Print["<K_D-mc^2> = ", meanKDminusMC2];
+
+(* Dimensionless form: lengths in r_0 = e^2/(mc^2), energy in mc^2.                            *)
+(* aHat = aa/r_0, rHat = r_e/r_0, alpha = e^2/(hbar c).                                        *)
+(*   <T>/(mc^2)               =  1/(2 alpha^2 aHat^2)                                          *)
+(*   <V_0>/(mc^2)             = -(aHat + 2 rHat)/(aHat^2 + 2 aHat rHat + 2 rHat^2)             *)
+(*   <V_0^2/(2mc^2)>/(mc^2)   =  1/(aHat^2 + 2 aHat rHat + 2 rHat^2)                            *)
+(*                                                                                              *)
+(* CLOSURE (Route X, strong reading: <K_D> = mc^2, no separate binding subtraction):           *)
+(*   Edim(aHat, rHat) = 1/(2 alpha^2 aHat^2) - (aHat + 2 rHat - 1)/(aHat^2 + 2 aHat rHat + 2 rHat^2) = 0. *)
+
+ClearAll[Edim, aHat, rHat, alphaNum];
+Edim[aH_, rH_, al_] := 1/(2 al^2 aH^2) - (aH + 2 rH - 1)/(aH^2 + 2 aH rH + 2 rH^2);
+alphaNum = 1/137.035999;
+Print["Edim at electron-radius scale (aHat=1, rHat=0.5): ", N[Edim[1, 0.5, alphaNum]]];
+Print["Edim at Bohr scale (aHat=1/alpha^2, rHat=0.5):    ", N[Edim[1/alphaNum^2, 0.5, alphaNum]]];
+Print["Edim at Bohr scale (aHat=1/alpha^2, rHat=0):      ", N[Edim[1/alphaNum^2, 0, alphaNum]]];
+Print["Standard hydrogen binding -alpha^2/2 = ", N[-alphaNum^2/2]];
+
+(* --------------------------------------------------------------------------------- *)
+(* DIAGNOSTIC (substantive AI):                                                       *)
+(*                                                                                    *)
+(* (a) ELECTRON-RADIUS SCALE (aHat ~ 1, rHat ~ 0.5).  <T>/(mc^2) ~ 1/(2 alpha^2) ~    *)
+(*     9400.  The non-relativistic kinetic-energy expression is invalid here          *)
+(*     (localising the electron inside r_0 requires momentum ~ hbar/r_0 = mc/alpha,   *)
+(*     super-relativistic).  DRQM I Eq. (III.4) is an EXPANSION valid only for        *)
+(*     r >> hbar/(mc) (Compton wavelength) and V_0/(mc^2) << 1 -- both fail at r ~ r_e.*)
+(*     So <K_D> as written is NOT the correct operator at the cutoff scale.            *)
+(*                                                                                    *)
+(* (b) BOHR SCALE (aHat ~ 1/alpha^2 ~ 18800, rHat ~ 0.5).  <K_D-mc^2>/(mc^2) ~        *)
+(*     -alpha^2/2 (textbook hydrogen 1s).  But cutoff is INVISIBLE here -- Edim is     *)
+(*     identical at rHat = 0 and rHat = 0.5 to 10 sig figs (cutoff is ~r_0; trial      *)
+(*     concentrated at ~a_B = r_0/alpha^2; ratio ~alpha^2 ~ 5e-5).  So the closure     *)
+(*     <K_D> = mc^2 at Bohr scale cannot pin rHat: dEdim/drHat ~ alpha^6 ~ 10^-13.    *)
+(*                                                                                    *)
+(* (c) NO INTERMEDIATE SCALE solves the closure: there is no aHat at which the         *)
+(*     expansion (III.4) is valid AND the cutoff rHat couples to the closure.         *)
+(*                                                                                    *)
+(* CONCLUSION.  Closure condition #7 (mass-renormalisation) with the published         *)
+(* expanded form of K_D and a non-relativistic exponential trial CANNOT determine     *)
+(* rHat first-principles.  To make Route X tractable, one of:                          *)
+(*   - The framework must supply an explicit \[CapitalDelta]E_SE^framework(r_e)        *)
+(*     to act as the closure target (currently unspecified in DRQM I);                 *)
+(*   - OR the calculation must be redone with the un-expanded full Dirac equation     *)
+(*     H_D \[Psi] = lambda \[Psi] under a radial cutoff regulator (a 5-10 iteration   *)
+(*     arc, not in this notebook's scope).                                            *)
+(*                                                                                    *)
+(* This is BLOCKED on author input: see Author_Reports/                                *)
+(* 2026-05_re_derivation_candidates_for_gill.md Candidate 2 and issue #65.            *)
+
+Print["Section 3: closure equation assembled.  See diagnostic comment block above:  *"];
+Print["  closure has no solution at electron-radius scale (NR expansion invalid),    *"];
+Print["  no rHat-coupling at Bohr scale (cutoff invisible to trial).                  *"];
+Print["  BLOCKED on framework-internal \[CapitalDelta]E_SE(r_e) specification.        *"];
 
 (* ============================================================ *)
 (* Human acceptance section (Crocco compliance).                  *)
