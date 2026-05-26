@@ -1,3 +1,10 @@
+---
+title: "Follow-up note: empirical triangulation of \\(r_e/r_0\\)"
+author: "Trey Morris with Claude Opus 4.7"
+date: "2026-05-26"
+subject: "Empirical triangulation of r_e/r_0 across six precision observables (follow-up to interim report)"
+---
+
 # Follow-up note: empirical triangulation of $r_e/r_0$ — for Tepper Gill
 
 **Date:** 2026-05-26.
