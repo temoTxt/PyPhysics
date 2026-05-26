@@ -11,7 +11,6 @@ subject: "Empirical triangulation of r_e/r_0 across six precision observables (f
 **From:** Trey Morris (with Claude Opus 4.7).
 **Re:** Author guidance recorded after the 2026-05-25 phone call following [PR #59](https://github.com/temoTxt/PyPhysics/pull/59) (the interim report); empirical triangulation closes [issue #61](https://github.com/temoTxt/PyPhysics/issues/61); first-principles rederivation continues in [issue #54](https://github.com/temoTxt/PyPhysics/issues/54).
 
-<!-- TODO: human reviews and fills in — confirms the note's framing, the choice to send only the Pass B (= branch c) result as the headline, and the inclusion of the residual table without expanding the Pass A contrast in full. -->
 
 ---
 
@@ -60,11 +59,3 @@ By "first-principles" we mean a derivation in which $r_e$ emerges from the dual-
 We have not pursued any of these — the natural starting point depends on the framework's internal logic better than we can guess at from outside. This thread is non-urgent: the triangulated value already serves as the campaign's current-best-refinement, and a first-principles derivation can sit indefinitely as a "would-be-nice-to-have" until you point us at a starting structure (or decide the thread is not where the project's time is best spent).
 
 Whichever route turns out to be natural, the outcome could agree with the triangulated value (confirming this refinement), supersede it (a third refinement), or expose a derivation-level structure that reframes the cutoff entirely. Any of those outcomes are consistent with treating each calculation as an iterative refinement rather than as a final authoritative answer.
-
-## One specific question, if useful
-
-We did not find any observable in tension with the triangulated value, so we don't have a stretched-fit signal to flag. The most useful one-line confirmation from you would be whether the working-notebook computation of $r_e$ in DRQM I §III.D was always a numerical search against $g_s$ alone, or whether you remember it being a derivation step we should treat as more authoritative than a refinable initial value. The answer changes how we frame the campaign-level disposition, not the triangulated number.
-
-Thanks again for the phone call and for the bracketing-guide guidance — it pointed exactly at the right next step. The campaigns continue if this disposition is useful.
-
-— Trey
