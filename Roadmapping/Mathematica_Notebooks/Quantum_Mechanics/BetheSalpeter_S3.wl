@@ -1,0 +1,38 @@
+(* ::Package:: *)
+
+(* BetheSalpeter_S3.wl  --  Companion to Bethe_Salpeter/01_NonRelHydrogen.md *)
+(*                                                                            *)
+(* PR A scaffold result.  Verifies the algebraic identity                     *)
+(*                                                                            *)
+(*    K = H_0^2/(2 m c^2) + m c^2/2   with  H_0^2 = c^2 p^2 + m^2 c^4         *)
+(*                                                                            *)
+(* simplifies to                                                              *)
+(*                                                                            *)
+(*    K = m c^2 + p^2/(2 m)                                                   *)
+(*                                                                            *)
+(* HONEST SCOPE OF THIS CHECK:                                                *)
+(*                                                                            *)
+(* The identity above is algebraically trivial by construction.  K is         *)
+(* DEFINED as (c^2 p^2 + m^2 c^4)/(2 m c^2) + m c^2/2; elementary arithmetic *)
+(* gives = p^2/(2m) + m c^2.  Wolfram confirms the arithmetic; it does NOT   *)
+(* verify physical content.                                                   *)
+(*                                                                            *)
+(* In particular, this notebook does NOT verify that K reproduces the        *)
+(* relativistic hydrogen spectrum.  The actual relativistic kinetic energy   *)
+(* is sqrt(c^2 p^2 + m^2 c^4) = m c^2 + p^2/(2m) - p^4/(8 m^3 c^2) + ...,    *)
+(* which K (= m c^2 + p^2/(2m)) does NOT match starting at p^4/(8 m^3 c^2).  *)
+(* K is therefore not the relativistic kinetic energy at any order beyond   *)
+(* non-rel.  The framework's relativistic content lives in the dual Dirac   *)
+(* equation (PR C onward), not in K.                                          *)
+(*                                                                            *)
+(* The campaign's "K reduces *exactly* to NR kinetic" claim is true as       *)
+(* algebra and is the load-bearing scaffold for PRs A-B (which exercise     *)
+(* observables at non-rel order only).  It is NOT a claim about              *)
+(* relativistic, fine-structure, or higher-order content.                    *)
+(*                                                                            *)
+(* Author: Trey Morris with Claude Opus 4.7.  Date: 2026-05-25.               *)
+
+ClearAll[m, c, p];
+expr = ((c^2 p^2 + m^2 c^4)/(2 m c^2) + m c^2 / 2) - (m c^2 + p^2/(2 m));
+Print["K - (m c^2 + p^2/(2m)) = ", FullSimplify[expr]];
+Print["Expected: 0 (definitional algebraic identity; NOT a physical claim about relativistic content)"];
