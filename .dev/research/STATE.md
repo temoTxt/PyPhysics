@@ -95,3 +95,34 @@ Two routes to break the impasse without author input:
 **Outcome-matrix:** still not yet determinable. Framework-internal closure exists in principle (#7 with minimal binding spec, or #4 sharpened to dual-Dirac eigenvalue criticality), but no definite $r_e/r_0$ has been computed. **No BLOCKED state yet** — Routes X and Y are both pursuable without author input; if Route X produces an $r_e/r_0$ that matches triangulated, that's outcome A; if it matches Schwinger, outcome B; if it produces a different value, outcome C; if intractable, then BLOCKED on author input for the binding/SE prescription.
 
 **Status:** READY for next iteration (Route X start).
+
+---
+
+## Iteration 3 — 2026-05-26T18:18Z — Route X start: `r_e_derivation_variational.wl` scaffold + Section 1 (norm)
+
+**Advanced:** Created `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_variational.wl` with:
+
+1. **Header docstring** documenting source-of-record (DRQM I §III, FoundationsII-Classical §2.2, STATE.md iter 1-2), Route X framing, honest scope (substantive AI), trial-wavefunction choice (exp(-r/aa) soft cutoff), and Wolfram-MCP gotchas per CLAUDE.md.
+2. **Section 1: Symbol setup + trial wavefunction.** Defines $r_0 = e^2/(mc^2)$ (classical electron radius, Gaussian units), trial $\psi_1(r; aa) = \exp(-r/aa)$ on radial domain $[r_e, \infty)$ (soft cutoff — amplitude truncated below $r_e$, not forced to zero).
+3. **Section 2: Cutoff-restricted normalisation.** Computed the radial integral $\int_{r_e}^\infty r^2 e^{-2r/aa}\, dr$ via Wolfram MCP. **Closed form:**
+$$\int_{r_e}^{\infty} r^2 e^{-2r/aa}\, dr \;=\; \frac{aa\,(aa^2 + 2\,aa\,r_e + 2\,r_e^2)}{4\,e^{2r_e/aa}}.$$
+**Sanity check $r_e \to 0$:** $\to aa^3/4$, matching the standard 1s hydrogen norm. ✅ (Wolfram MCP 2026-05-26).
+4. **Section 3: PLACEHOLDER for $\langle K_D\rangle$.** Documented the plan: for the field-free s-state, only scalar terms in (III.4) survive (no B, no spin–orbit), so
+$$\langle K_D\rangle_{r_e, aa} = \langle \pi^2/(2m)\rangle + mc^2 + \langle V_0\rangle + \langle V_0^2/(2mc^2)\rangle.$$
+Closure #7 collapsed to its scalar reading: with $\Delta E_{\rm bind} = \langle V_0\rangle$, the mass-renormalisation condition becomes
+$$\langle \pi^2/(2m)\rangle_{r_e, aa} + \langle V_0^2/(2mc^2)\rangle_{r_e, aa} = 0.$$
+This is one equation for two unknowns $(aa, r_e)$; the second condition is variational stationarity $\partial\langle K_D\rangle/\partial aa = 0$ on the trial.
+5. **Human-acceptance stub** (Crocco): three substantive-AI choices flagged — trial-wavefunction form, the reading of $\Delta E_{\rm bind}$ as $\langle V_0\rangle$, and the choice of $aa$-stationarity as the companion condition.
+
+**Closure-condition classification update:** Condition #7 collapsed to the form $\langle\pi^2/(2m)\rangle + \langle V_0^2/(2mc^2)\rangle = 0$. Whether this is solvable for finite $(aa, r_e)$ is the question for next iteration. Currently *tentatively framework-internal* — the reading $\Delta E_{\rm bind} = \langle V_0\rangle$ is the textbook default for non-relativistic mass renormalisation and consistent with the framework's "$V$ as part of the mass" form (FoundationsII-Classical §2.2), but the dual framework's published apparatus does not pin this prescription explicitly. **Will become BLOCKED on author input** if the calculation yields an $r_e/r_0$ that disagrees with both the triangulated and Schwinger values — then we'll need to determine whether $\Delta E_{\rm bind} \ne \langle V_0\rangle$ in this framework.
+
+**Next:** Compute the three remaining expectation values symbolically in Wolfram MCP:
+- $\langle V_0\rangle_{r_e,aa} = -e^2 \langle 1/r\rangle_{r_e,aa}$ (one radial integral with $1/r$)
+- $\langle V_0^2/(2mc^2)\rangle_{r_e,aa} = e^4/(2mc^2) \langle 1/r^2\rangle_{r_e,aa}$ (one radial integral with $1/r^2$)
+- $\langle \pi^2/(2m)\rangle_{r_e,aa}$ — kinetic energy expectation: the trial $\psi_1 = N e^{-r/aa}$ has $\nabla^2 \psi_1 = (1/aa^2 - 2/(aa\, r))\psi_1$, so $\langle -\hbar^2 \nabla^2/(2m)\rangle = (\hbar^2/(2m))[1/aa^2 - (2/aa)\langle 1/r\rangle]$. Two integrals reused from above.
+
+Then assemble closure equation $\langle\pi^2/(2m)\rangle + \langle V_0^2/(2mc^2)\rangle = 0$ in symbolic form. **Goal of next iteration: write Section 3 of the notebook with these three integrals + the assembled closure equation; no numerical solve yet.**
+
+**Outcome-matrix:** still not yet determinable — full closure equation not yet assembled. **No BLOCKED state.**
+
+**Status:** READY for next iteration (Section 3 expectation-value integrals).
