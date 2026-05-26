@@ -149,11 +149,12 @@ pandoc "$OUT_MD" \
   --variable=colorlinks:true \
   --variable=linkcolor:blue \
   --variable=urlcolor:blue \
-  --metadata title="Interim report for author review" \
   --metadata author="Trey Morris with Claude Opus 4.7" \
   --metadata date="$PINNED_DATE" \
-  --metadata subject="Interim report -- Bethe-Salpeter campaign and the r_e branch question" \
   --output "$OUT_TEX"
+# title and subject are read from the .md's YAML frontmatter (yaml_metadata_block).
+# author and date are pinned on the command line so PDF metadata is uniform across
+# reports and date is stable across rebuilds (override with REPORT_DATE=YYYY-MM-DD).
 
 # ----------------------------------------------------------------------
 # Step 3: defensive check — no <!-- TODO survived

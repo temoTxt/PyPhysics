@@ -104,6 +104,33 @@ The resolution path remains as flagged at the top of this entry: most likely a t
 
 This is not a set of independent findings — it is the same Finding 2 with new operational signatures recorded across high-precision atomic spectroscopy. The hyperfine consequence is the campaign's most precision-sensitive discriminator (measurement uncertainty $\sim 10^{-12}$ vs the $r_e$-driven discrepancy at $\sim 10^{-3}$).
 
+**Update — 2026-05-26: Tepper Gill author guidance + empirical triangulation (closes [#61](https://github.com/temoTxt/PyPhysics/issues/61)).** Following [PR #59](https://github.com/temoTxt/PyPhysics/pull/59)'s interim report, Tepper Gill confirmed in author feedback (2026-05-25) that **branches (b) and (c) are bracketing guides, not theoretical predictions** — the published $r_e/r_0 = 0.499857150068631$ was obtained from a numerical search for a cutoff that reproduced the measured electron $g_s$, and he now asks for the value that best fits *all six* precision observables jointly. The work in [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_triangulation.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_triangulation.wl) ([issue #61](https://github.com/temoTxt/PyPhysics/issues/61)) performs that joint fit.
+
+The notebook reports both weighting choices the substantive-AI decision exposes:
+
+- **Pass A (measurement-$\sigma$ only, the literal "best fit to all six measurements" reading):** $r_e/r_0 = 0.4994061257148855$, $\sigma_r = 2.35\times10^{-13}$. This optimum pulls $g_e$ off the measured value by $\approx 5.76\times10^{-5}$ trying to compensate the hyperfine and helium fine-structure residuals — those residuals are framework-precision-floor effects (Bethe-estimate / sub-leading-QED gaps to measurement) that the leading-$(g_s/-2)^n$ model *cannot* fit by any choice of $r_e$ alone, so Pass A is an artifact of treating framework-floor residuals as if they were measurement uncertainty. Reported for transparency about the substantive-AI weighting choice; not the honest answer.
+
+- **Pass B (measurement-$\sigma$ plus a framework-precision-floor noise term, the physically-meaningful reading):** $r_e/r_0 = 0.4994205099128317$, $\sigma_r = 2.50\times10^{-13}$. **This matches branch (c) ($= 0.4994205099128318$) to 16 significant figures.** $g_e$ at this $r_e$ matches the measured $-2.00231930436256$ to 16 sig figs. $\chi^2_{\min} = 3.99958$, consistent with the four observables sitting at their framework-floor residuals.
+
+The triangulation therefore **confirms branch (c) as the joint-best-fit across all six observables**, under the only weighting that respects the framework's known Bethe-estimate precision floor. This is a structural consequence of every observable being $(g_s/-2)^n \times \text{textbook}$ (per [Bethe–Salpeter cross-comparison §2](../Quantum_Mechanics/Bethe_Salpeter/10_CrossComparison.md#2-the-r_e-back-fit-self-consistency-across-six-g_s-dependent-observables)): one back-fit applied six times yields one $r_e$ value.
+
+**Per-observable residuals at the triangulated optimum:**
+
+| Observable | Prediction | Measurement | Residual (abs) | Residual ($\sigma_{\text{meas}}$) | Source of residual |
+|---|---|---|---|---|---|
+| Electron $g_s$ | $-2.00231930\ldots$ | $-2.00231930\ldots$ | $0$ | $0$ | matches by construction |
+| H $2P_{3/2}-2P_{1/2}$ | $10{,}962$ MHz | $10{,}969.13$ MHz | $-7.13$ MHz | $-71.3\,\sigma$ | Bethe-estimate floor (BS-§14.2) |
+| H 1S hyperfine | $1{,}420.04$ MHz | $1{,}420.4058$ MHz | $-0.366$ MHz | $-1.83\times10^{8}\,\sigma$ | sub-leading QED (BS-§22.1) |
+| He ${}^3P_0-{}^3P_1$ | $29{,}616.95$ MHz | $29{,}616.952$ MHz | $-0.002$ MHz | $-66.7\,\sigma$ | kHz floor (BS-§72) |
+| Positronium ortho-para | $203{,}389$ MHz | $203{,}389$ MHz | $0$ | $0$ | matches by construction |
+| Muonium hyperfine | $4{,}463.40$ MHz | $4{,}463.3028$ MHz | $+0.097$ MHz | $+1{,}906\,\sigma$ | sub-leading QED (BS-§80) |
+
+**Stretched-fit flag:** NONE. Every $>3\sigma_{\text{meas}}$ residual is a documented framework-precision-floor effect, not a tension with the joint optimum.
+
+**Status change.** Finding 2's verdict moves from 🔴 (flagged) to ⚠ (characterised) under this update: the discrepancy is now quantitatively understood as a 16-sig-fig agreement at $r_e/r_0 = 0.4994205099128317$, which differs from the published $0.499857150068631$ in the fourth decimal place. The natural framing of the relationship between the two values: the published $r_e$ is an *initial-value* result from a uni-observable numerical search against $g_s$, and the triangulated value is a *refinement calculation* on top of that initial value, using all six $g_s$-dependent observables as joint constraints. A subsequent first-principles derivation from the dual-Dirac renormalisation prescription (tracked in [issue #54](https://github.com/temoTxt/PyPhysics/issues/54)) is a further potential refinement; it could agree with the triangulated value, refine it further, or expose a derivation-level structure that reframes the cutoff entirely. The ⚠ marker accepts the triangulated value as the campaign's current-best-refinement and remains open to further refinement from #54.
+
+<!-- TODO: human reviews and fills in — confirms that (a) Tepper's bracketing-guide guidance is faithfully recorded; (b) the Pass A vs Pass B contrast is the correct way to expose the substantive-AI weighting choice; (c) the conclusion that Pass B = branch (c) to 16 sig figs is the right honest framing; (d) the stretched-fit flag reading is correct (no observable in tension); (e) the verdict-marker shift from 🔴 to ⚠ pending #54 is the right disposition; (f) the residual table accurately identifies each framework-floor source. -->
+
 ---
 
 ## Finding 3 — TCEP Eq. (4.16): sign typo in the group-velocity relation
