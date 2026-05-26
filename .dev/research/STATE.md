@@ -56,3 +56,42 @@ Candidate closure conditions, to be classified `framework-internal` vs `ad-hoc`:
 **Outcome-matrix:** not yet determinable (need at least one framework-internal closure condition before any branch is reachable).
 
 **Status:** READY for next iteration.
+
+---
+
+## Iteration 2 — 2026-05-26T17:55Z — closure-condition inventory + framework-internal/ad-hoc classification
+
+**Advanced:** Reviewed companion verification docs for any framework-specified boundary/gauge structure at the cutoff. Key finding: **FoundationsII-Classical Sec 2.2** (verified in `Roadmapping/Equation_Verification/FoundationsII-Classical.md` Eq. 2.11) establishes that **$r = r_0$ is a critical point of the dual Hamiltonian force** $\mathbf{F}_K = -\nabla V(1 + V/(mc^2))$, *within the framework's H-as-part-of-mass form* $H = \sqrt{c^2\mathbf{p}^2 + (mc^2 + V)^2}$. This is the only framework-internal preferred radial scale beyond $r_0$ itself that I have located. The Maxwell paper §I.D 4-current $J^\mu_{\rm Gill} = (b\rho, \mathbf{J})$ (Maxwell paper Eq. 12, with $\mathbf{J} = (c/b)\rho\mathbf{u}$) implies a *bulk* continuity equation in proper-time, but I found no published radial-boundary continuity condition.
+
+### Closure-condition inventory (full enumeration)
+
+| # | Condition | Framework-internal evidence | Classification | Notes |
+|---|---|---|---|---|
+| 1 | **Variational stationarity** $\partial E[r_e]/\partial r_e = 0$ | None — DRQM I does *not* state $r_e$ is determined by stationarity of any functional. The Dresden-renormalisation-analog remark on Maxwell paper line 223 ([Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md:696](../Roadmapping/Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md)) hints at mass-renormalisation but does not pin a variational principle on $r_e$. | **ad-hoc** (unless author confirms) | Tractable as scaffolding for the Mathematica route; cannot terminally fix an outcome-A/B result without author endorsement. |
+| 2 | **Radial-boundary current conservation** $\mathbf{J}\!\cdot\!\hat{\mathbf{r}}\,\big|_{r=r_e} = 0$ | Bulk continuity is guaranteed by the dual-current structure (Maxwell paper Eqs. 12–15), but no boundary form is published. | **ad-hoc** pending author input | Would force a node in $\Psi$ at $r=r_e$; numerically over-constrains. |
+| 3 | **$g$-factor closure** $g_r(r_e) = g_e^{\rm exp}$ | This is what the published paper does — uses experimental input. | **framework-external** | Already executed in PR #62 (triangulated $r_e/r_0 = 0.4994205099128317$). Not eligible as a *first-principles* derivation. |
+| 4 | **Critical-point locking** $r_e = r_0/2$ | $r_0$ is the critical point of $\mathbf{F}_K$ (FoundationsII-Classical Eq. 2.11). A "midpoint" cutoff $r_e = r_0/2$ would lock into the dual-Hamiltonian's structural geometry. | **framework-internal but wrong-precision** | Direct plug-in: $g_r(r_0/2) = 2[1 - 4r_0/(r_0+r_0)] = -2$. Misses the Schwinger $\alpha/\pi$ correction. So this condition yields the Dirac-tree-level $g=-2$ exactly; it cannot reproduce $0.4994$. |
+| 5 | **Normalisation closure** $\int_{r_e}^{\infty} |\Psi|^2 d^3 r = 1$ | None — trivially achievable for any $r_e$ via rescaling. | **ad-hoc / no info** | Discard. |
+| 6 | **Schwinger one-loop closure** $r_e/r_0 = (2 - \alpha/(2\pi))/(4 + \alpha/\pi)$ | Inverts $g_r$ against the Schwinger $g_e^{(1\text{-loop})} = -2 - \alpha/\pi$ analytically; $\sim 10^{-6}$ from triangulated. | **framework-external** | This is Candidate 3's route. Requires the framework's renormalisation prescription to produce an $\alpha$-dependent ratio internally — not established. |
+| 7 | **Energy-eigenvalue mass-renormalisation** $\langle K_D \rangle_{r_e} = m_e c^2 + \Delta E_{\rm bind}^{\rm framework} + \Delta E_{\rm SE}^{\rm framework}$ | The renormalisation-condition language in the candidate-2 brief; analogous to QED's $\alpha(\mu_0) = \alpha_{\rm phys}$ at a chosen reference scale. | **framework-internal IFF** the framework specifies $\Delta E_{\rm bind}^{\rm framework}$ and $\Delta E_{\rm SE}^{\rm framework}$ — currently *unspecified* in DRQM I as published. | **Load-bearing.** This is the only framework-internal candidate with non-trivial dynamics. Requires author input or independent identification of the framework's binding/SE prescription. |
+
+### Classification summary
+
+- **Framework-internal & sufficient-precision:** *none yet* — #4 is internal but yields only $g=-2$; #7 is internal but contains an unspecified term.
+- **Framework-internal & insufficient-precision:** #4 (critical-point locking → $g=-2$ exactly, off by $\sim 10^{-3}$).
+- **Framework-external:** #3, #6 (use measured $g_e$ or Schwinger one-loop respectively).
+- **Ad-hoc:** #1, #2, #5.
+
+### Forward path
+
+Two routes to break the impasse without author input:
+
+**Route X — Push #7 with a *minimal* framework-internal binding/SE specification.** Try $\Delta E_{\rm bind} = $ Coulomb expectation value $\langle V_0 \rangle = -e^2 \langle 1/r \rangle$ evaluated on the cutoff-truncated ground state; $\Delta E_{\rm SE} = 0$ (no separate SE at this stage). If $\langle K_D \rangle_{r_e} = m_e c^2 + \langle V_0\rangle_{r_e}$ produces a tractable equation, solve symbolically and compare against $0.4994205099$. The classification of this result depends on whether the framework endorses "$\Delta E_{\rm bind} = \langle V_0\rangle$" as the renormalisation prescription (probably yes — it's the standard textbook reading, and DRQM I's perturbation structure does not contradict it).
+
+**Route Y — Sharpen the #4 critical-point analysis.** $r_0$ is a critical point of $\mathbf{F}_K$. Where is the critical point of *the dual-Dirac eigenvalue* $\lambda$ as a function of $r$? If $\partial\lambda/\partial r|_{r=r_e} = 0$ has a definite solution, that's a fully framework-internal closure condition with no external input. The eigenvalue $\lambda$ comes from solving Eq. (III.4)–(III.8) under the radial-cutoff convention; this requires actually setting up the radial Dirac equation with the cutoff regulator. Tractable but lengthy.
+
+**Next:** Begin Route X. Create `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_variational.wl` (`.wl` style template per CLAUDE.md, single-line Wolfram cells, avoid `V`/`e`/`Dot` pitfalls). First cell: set up the radial Dirac equation with the cutoff regulator (radial domain $[r_e, \infty)$, hydrogenic trial $\psi_1 = N e^{-r/a}/r$ with $a$ to be optimised). Second cell: compute $\langle K_D \rangle_{r_e}$ symbolically for this trial. **Goal of next iteration is the file scaffolding + first cell only** — full eigenvalue evaluation is a 2-3 iteration arc.
+
+**Outcome-matrix:** still not yet determinable. Framework-internal closure exists in principle (#7 with minimal binding spec, or #4 sharpened to dual-Dirac eigenvalue criticality), but no definite $r_e/r_0$ has been computed. **No BLOCKED state yet** — Routes X and Y are both pursuable without author input; if Route X produces an $r_e/r_0$ that matches triangulated, that's outcome A; if it matches Schwinger, outcome B; if it produces a different value, outcome C; if intractable, then BLOCKED on author input for the binding/SE prescription.
+
+**Status:** READY for next iteration (Route X start).
