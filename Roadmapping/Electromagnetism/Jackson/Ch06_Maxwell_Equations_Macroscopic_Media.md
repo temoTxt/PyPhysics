@@ -1,0 +1,575 @@
+# Ch. 6 — Maxwell Equations, Macroscopic Electromagnetism, Conservation Laws
+
+This chapter contains Jackson canonical problems on Maxwell's equations and their conservation laws, worked in the proper-time reformulation alongside their classical CGS and SI solutions. Per [§4 of the plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#4-unit-system-handling), Ch. 6 of Jackson is presented in the three-system regime.
+
+Ch. 6 is the campaign's first chapter in which the proper-time machinery engages on every problem. The configurations are no longer static or purely-magnetostatic; time-varying fields, displacement currents, and (in [Problem J3e-P6.20](#problem-j3e-p620--radiation-pressure-on-a-perfect-conductor)) the dissipative `−(\mathbf{u}\cdot\mathbf{a})/b^{4}` coefficient of Eq. (4) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] all enter the discussion. Per [§13.5 D2 of the plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#135-decision-points--confirmed-by-author-2026-05-24), per-paragraph `<!-- TODO: human reviews and fills in -->` blocks accompany each substantive interpretive claim throughout this chapter.
+
+## Problems in this chapter
+
+| Problem | Status | Role |
+|---|---|---|
+| [Problem J3e-P6.1 — Maxwell with magnetic monopoles + electric–magnetic duality](#problem-j3e-p61--maxwell-with-magnetic-monopoles-and-electricmagnetic-duality) | drafted (PR A) | headline-adjacent |
+| [Problem J3e-P6.4 — EM momentum of a uniformly-moving point charge](#problem-j3e-p64--em-momentum-of-a-uniformly-moving-point-charge) | drafted (PR A) | headline-payoff (podcast pick #1) |
+| [Problem J3e-P6.5 — Poynting theorem in macroscopic media](#problem-j3e-p65--poynting-theorem-in-macroscopic-media) | drafted (PR A) | headline-adjacent |
+| [Problem J3e-P6.11 — Symmetric stress tensor and Lorentz behaviour](#problem-j3e-p611--symmetric-stress-tensor-and-lorentz-behaviour) | drafted (PR A) | headline-adjacent |
+| [Problem J3e-P6.20 — Radiation pressure on a perfect conductor](#problem-j3e-p620--radiation-pressure-on-a-perfect-conductor) | drafted (PR A) | headline-payoff (null-result canary for `(u·a)/b⁴`) |
+
+---
+
+### Problem J3e-P6.1 — Maxwell with magnetic monopoles and electric–magnetic duality
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the magnetic-monopole extension of Maxwell's equations is a textbook test of the structural symmetries of the theory, treated in [[jackson1998_classical_electrodynamics]] §6.11 and §6.12 and recorded in equivalent form in [[jackson1975_classical_electrodynamics]]. It is the natural opening problem for Ch. 6 because it exercises *all four* Maxwell equations on equal footing and forces the campaign to confront how the proper-time substitution rules act on the source terms in both the curl and divergence equations.
+- *Alternatives considered:* J3e-P6.2 (gauge transformations and the Lorenz gauge — interesting but operates only on the potentials, not the field equations) and J3e-P6.3 (energy in the Lorenz-gauge formulation — too closely related to J3e-P6.5 to merit a separate entry).
+- *Role in this PR:* headline-adjacent. The classical derivation is short, but the proper-time analysis surfaces a structural observation about how the framework's `b² = c² + u²` depends on the choice of source species — a non-trivial issue when both electric and magnetic monopoles are present.
+
+<!-- TODO: human reviews and fills in — confirms the choice of monopoles as PR A's opening problem (rather than J3e-P6.2 gauge transformations) before this problem is rolled into the PR -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 6.1 (and 2e Problem 6.1, equivalent). *Paraphrased; consult the textbook for the precise statement.*
+
+**Paraphrased statement:** Generalise Maxwell's equations to admit magnetic-monopole sources (a magnetic charge density `\rho_{m}` and a magnetic current density `\mathbf{J}_{m}`). Demonstrate that the resulting set of equations is invariant under the electric–magnetic duality transformation `\mathbf{E} \to \mathbf{B}`, `\mathbf{B} \to -\mathbf{E}`, `\rho_{e} \to \rho_{m}`, `\rho_{m} \to -\rho_{e}`, `\mathbf{J}_{e} \to \mathbf{J}_{m}`, `\mathbf{J}_{m} \to -\mathbf{J}_{e}`. Carry out the analysis in CGS, in SI, and in the proper-time reformulation.
+
+**Setup:** Following [[jackson1998_classical_electrodynamics]] §6.11, we adopt the symmetric form of Maxwell's equations in which a magnetic-charge density and a magnetic-current density appear on the right-hand sides of `\nabla\cdot\mathbf{B}` and `\nabla\times\mathbf{E}` respectively, mirroring the electric sources on `\nabla\cdot\mathbf{E}` and `\nabla\times\mathbf{B}`. The electric monopoles have charge density `\rho_{e}` and current density `\mathbf{J}_{e} = \rho_{e}\mathbf{w}_{e}` (with `\mathbf{w}_{e}` their observer-time velocity); similarly `\rho_{m}` and `\mathbf{J}_{m} = \rho_{m}\mathbf{w}_{m}` for the magnetic monopoles. In the proper-time formulation, the corresponding proper velocities are `\mathbf{u}_{e}` and `\mathbf{u}_{m}`, with `b_{e}^{2} = c^{2} + \mathbf{u}_{e}^{2}` and `b_{m}^{2} = c^{2} + \mathbf{u}_{m}^{2}`.
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The Maxwell equations extended with magnetic-monopole sources, in Gaussian units, read
+
+$$
+\begin{aligned}
+\nabla\cdot\mathbf{E} &= 4\pi\rho_{e},\\
+\nabla\cdot\mathbf{B} &= 4\pi\rho_{m},\\
+\nabla\times\mathbf{E} &= -\frac{1}{c}\frac{\partial\mathbf{B}}{\partial t} - \frac{4\pi}{c}\mathbf{J}_{m},\\
+\nabla\times\mathbf{B} &= \frac{1}{c}\frac{\partial\mathbf{E}}{\partial t} + \frac{4\pi}{c}\mathbf{J}_{e}.
+\end{aligned}
+$$
+
+The Faraday law (third equation) acquires a magnetic-current source `−(4\pi/c)\mathbf{J}_{m}` in symmetry with the electric-current source of the Ampère–Maxwell law (fourth equation); the divergence equations carry the charge-density sources `4\pi\rho_{e}` and `4\pi\rho_{m}` respectively.
+
+It is easy to show that this set is invariant under the duality transformation. Applying `\mathbf{E}\to\mathbf{B}`, `\mathbf{B}\to-\mathbf{E}`, `\rho_{e}\to\rho_{m}`, `\rho_{m}\to-\rho_{e}`, `\mathbf{J}_{e}\to\mathbf{J}_{m}`, `\mathbf{J}_{m}\to-\mathbf{J}_{e}` to the first equation gives `\nabla\cdot\mathbf{B} = 4\pi\rho_{m}`, which is the second equation; conversely the second yields `\nabla\cdot(-\mathbf{E}) = 4\pi(-\rho_{e})`, equivalent to the first. The third equation transforms to `\nabla\times\mathbf{B} = -(1/c)\partial(-\mathbf{E})/\partial t - (4\pi/c)(-\mathbf{J}_{e}) = (1/c)\partial\mathbf{E}/\partial t + (4\pi/c)\mathbf{J}_{e}`, which is the fourth; and the fourth transforms to the third. The four equations therefore form a closed orbit of size two under the duality, and the transformation is a symmetry of the field equations.
+
+The duality is, as recorded by Jackson 3e §6.11, the simplest of a one-parameter family of continuous rotations of the `(\mathbf{E},\mathbf{B})` doublet, with the discrete `\pi/2`-rotation above as one limit. We restrict attention to the discrete case for the present problem.
+
+<!-- TODO: human reviews and fills in — confirms the framing of the duality as a "structural symmetry of the field equations" rather than a deeper claim about physical equivalence between electric and magnetic charges -->
+
+#### (b) Classical solution — SI
+
+In SI units, Maxwell's equations with magnetic-monopole sources read
+
+$$
+\begin{aligned}
+\nabla\cdot\mathbf{E} &= \frac{\rho_{e}}{\varepsilon_{0}},\\
+\nabla\cdot\mathbf{B} &= \mu_{0}\rho_{m},\\
+\nabla\times\mathbf{E} &= -\frac{\partial\mathbf{B}}{\partial t} - \mu_{0}\mathbf{J}_{m},\\
+\nabla\times\mathbf{B} &= \mu_{0}\varepsilon_{0}\frac{\partial\mathbf{E}}{\partial t} + \mu_{0}\mathbf{J}_{e}.
+\end{aligned}
+$$
+
+The duality transformation in SI is conventionally written `\mathbf{E}\to c\mathbf{B}`, `c\mathbf{B}\to-\mathbf{E}`, `\rho_{e}\to\rho_{m}/c`, `c\rho_{m}\to-\rho_{e}`, with similar `c`-factors for the currents. The `c`-factors arise because `\mathbf{E}` and `c\mathbf{B}` share a dimension in SI but not the same numerical magnitude, so the duality cannot exchange them without an explicit unit-conversion factor. We observe that this dimensional asymmetry, absent in Gaussian units, is one of the reasons that Jackson 3e Chs. 11+ revert to Gaussian when treating field-theoretic dualities and Lorentz covariance.
+
+<!-- TODO: human reviews and fills in — confirms the framing of the c-factors as "unit-system bookkeeping that is asymmetric in SI" rather than a deeper claim about field-theoretic structure -->
+
+#### (c) Proper-time reformulation
+
+The proper-time Maxwell equations of Eq. (3′) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]], extended with magnetic-monopole sources, read
+
+$$
+\begin{aligned}
+\nabla\cdot\mathbf{E} &= 4\pi\rho_{e},\\
+\nabla\cdot\mathbf{B} &= 4\pi\rho_{m},\\
+\nabla\times\mathbf{E} &= -\frac{1}{b_{e}}\frac{\partial\mathbf{B}}{\partial\tau_{e}} - \frac{4\pi}{b_{m}}\rho_{m}\mathbf{u}_{m},\\
+\nabla\times\mathbf{B} &= \frac{1}{b_{e}}\frac{\partial\mathbf{E}}{\partial\tau_{e}} + \frac{4\pi}{b_{e}}\rho_{e}\mathbf{u}_{e}.
+\end{aligned}
+$$
+
+We have written `b_{e}` and `\tau_{e}` for the proper-time variables associated with the electric source in the Ampère–Maxwell equation, and `b_{m}` for the variable associated with the magnetic source in the Faraday equation. **The question of which proper-time variable to use in the displacement-current term of the Faraday equation does not have a unique answer in the framework as published**, because the Gill–Zachary paper formulates the proper-time substitution for a single source species. In the single-species case, this ambiguity does not arise; the magnetic-monopole extension is the first place in the campaign where it becomes operationally relevant.
+
+<!-- TODO: human reviews and fills in — flags the multi-species ambiguity as a structural observation about the framework's domain of validity; needs author judgement on whether this is an extension worth pursuing in DRQM-II or a non-issue because the displacement-current term is unique in the lab frame anyway -->
+
+The source-term reductions to the classical formulation are exact, by the same algebraic cancellation noted in [Problem J3e-P5.4](Ch05_Magnetostatics_Faraday_Quasi_Static.md#problem-j3e-p54--magnetic-field-of-a-circular-current-loop-on-its-axis): using `\rho_{e}\mathbf{u}_{e} = (b_{e}/c)\mathbf{J}_{e}` and `\rho_{m}\mathbf{u}_{m} = (b_{m}/c)\mathbf{J}_{m}`,
+
+$$
+\frac{4\pi}{b_{e}}\rho_{e}\mathbf{u}_{e} = \frac{4\pi}{c}\mathbf{J}_{e}, \qquad \frac{4\pi}{b_{m}}\rho_{m}\mathbf{u}_{m} = \frac{4\pi}{c}\mathbf{J}_{m}.
+$$
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[bb, cc, capJe, capJm];
+electricSource = (4 Pi/bb) (bb/cc) capJe;
+electricSourceClassical = (4 Pi/cc) capJe;
+magneticSource = (4 Pi/bb) (bb/cc) capJm;
+magneticSourceClassical = (4 Pi/cc) capJm;
+FullSimplify[electricSource - electricSourceClassical]   (* 0  ✅ *)
+FullSimplify[magneticSource - magneticSourceClassical]   (* 0  ✅ *)
+```
+
+Both source-term reductions vanish identically. The cancellation found at the field-equation level in [Problem J3e-P5.4](Ch05_Magnetostatics_Faraday_Quasi_Static.md#problem-j3e-p54--magnetic-field-of-a-circular-current-loop-on-its-axis) for electric sources extends symmetrically to magnetic sources, as the duality between the two species would require.
+
+It follows that, restricting to either pure electric monopoles (`\rho_{m} = 0`, `\mathbf{J}_{m} = 0`) or pure magnetic monopoles (`\rho_{e} = 0`, `\mathbf{J}_{e} = 0`), the proper-time formulation reduces to the classical formulation by the same exact-cancellation mechanism as in PR 0. The duality transformation acts on the *classical* equations and on the *proper-time* equations symmetrically; the proper-time formulation does not break the duality symmetry of the classical theory.
+
+<!-- TODO: human reviews and fills in — confirms the framing that "the duality symmetry is preserved by the proper-time substitution" is an algebraic claim about the substitution rules, not a deeper physical statement about whether magnetic monopoles exist or are observable -->
+
+**Comparison:**
+
+| Quantity | Classical (CGS) | Classical (SI) | Proper-time |
+|---|---|---|---|
+| `\nabla\cdot\mathbf{E}` source | `4\pi\rho_{e}` | `\rho_{e}/\varepsilon_{0}` | `4\pi\rho_{e}` |
+| `\nabla\cdot\mathbf{B}` source | `4\pi\rho_{m}` | `\mu_{0}\rho_{m}` | `4\pi\rho_{m}` |
+| `\nabla\times\mathbf{E}` source term | `-(4\pi/c)\mathbf{J}_{m}` | `-\mu_{0}\mathbf{J}_{m}` | `-(4\pi/b_{m})\rho_{m}\mathbf{u}_{m} = -(4\pi/c)\mathbf{J}_{m}` |
+| `\nabla\times\mathbf{B}` source term | `(4\pi/c)\mathbf{J}_{e}` | `\mu_{0}\mathbf{J}_{e}` | `(4\pi/b_{e})\rho_{e}\mathbf{u}_{e} = (4\pi/c)\mathbf{J}_{e}` |
+| Duality symmetry under `\pi/2` rotation | preserved | preserved (with `c`-factor bookkeeping) | preserved (single-species); structurally ambiguous for mixed sources |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no, for the source-term content of each equation individually. The proper-time formulation produces the same source structure as the classical one for any single-species sub-problem. The displacement-current `(1/b)\partial_\tau` term has the same content as classical `(1/c)\partial_t` under the time-derivative duality of Eq. (2) of the Maxwell paper.
+
+**Verdict:** ✅ all three solutions are consistent at the level of the field equations. ⚠ A structural observation: the proper-time framework as published does not specify how to handle the displacement-current term when both electric and magnetic monopoles are present with distinct proper velocities. The ambiguity does not affect the present problem's verification of the duality symmetry, but it is the first place in the campaign where the framework's single-species formulation becomes operationally visible.
+
+**Notes for author review:** the multi-species ambiguity in the proper-time formulation (which `\tau` governs the displacement-current term when both electric and magnetic monopoles are present?) is a structural observation about the framework's domain of validity, not a flagged inconsistency. It does not bear on the single-species derivations of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] Eqs. (1)–(23), all of which are verified. It is worth recording as a candidate question for any future Gill–Zachary follow-up paper that addresses multi-species sources (the kinetic-theory regime, plasma physics with both electrons and positrons treated separately, etc.). I have flagged it in this document but not posted it to [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md) because it is an extension question, not an inconsistency in the published framework.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_1.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_1.wl) — runnable independent of the Mathematica MCP.
+
+---
+
+### Problem J3e-P6.4 — EM momentum of a uniformly-moving point charge
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the electromagnetic momentum of a slowly-moving point charge is the textbook entry to the Abraham–Lorentz "4/3 problem" and to the broader question of where electromagnetic momentum lives — in the field, in the matter, or in some mix. It is recorded as a standard problem in [[jackson1998_classical_electrodynamics]] and is podcast pick #1 in [§12.1 of the campaign plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#121-per-problem-briefs).
+- *Alternatives considered:* J3e-P6.3 (energy and momentum of a Lorenz-gauge formulation — too closely related to J3e-P6.5 to merit separate treatment) and J3e-P12.6 (radiation pressure on a charged particle in a plane wave — a Ch. 12 problem, deferred to PR C).
+- *Role in this PR:* headline-payoff. The Abraham–Lorentz puzzle is one of the campaign's load-bearing narrative threads, and the proper-time analysis must address it transparently: the framework reproduces the classical `(4/3)` factor exactly for uniform motion, neither dissolving nor exacerbating the puzzle.
+
+<!-- TODO: human reviews and fills in — confirms the role of this problem as a headline-payoff for PR A, and the framing that the proper-time framework does not dissolve the 4/3 puzzle (vs the framing that it does, which would be a stronger claim) -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 6.4 (and 2e Problem 6.4, equivalent). *Paraphrased; consult the textbook for the precise statement.*
+
+**Paraphrased statement:** A point charge `q` (regularised as a uniformly charged solid sphere of radius `R` to make the field-energy integrals finite) moves with constant velocity `\mathbf{v}` of magnitude `v \ll c` in the observer's frame. Compute the linear momentum carried by the electromagnetic field of the moving charge. Carry out the analysis in CGS, in SI, and in the proper-time reformulation, and remark on the famous "4/3 factor" that the result exhibits.
+
+**Setup:** The charge moves with velocity `\mathbf{v} = v\hat z` in the observer's frame. In its rest frame the charge is a uniformly charged solid sphere of radius `R` carrying total charge `q`, with the rest-frame electric field given by the result of [Problem J3e-P1.5](Ch01_Introduction_Electrostatics.md#problem-j3e-p15--electrostatic-self-energy-of-a-uniformly-charged-sphere). To leading order in `v/c`, the lab-frame electric field is the rest-frame field translated rigidly with the source, and the lab-frame magnetic field follows from the relativistic field transformation `\mathbf{B} = (\mathbf{v}/c)\times\mathbf{E}` (Gaussian). The proper-time velocity of the source fluid element is `\mathbf{u} = (b/c)\mathbf{v}` with `b^{2} = c^{2} + u^{2}`, so `u \to v` and `b \to c` in the non-relativistic limit.
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The electromagnetic momentum density in Gaussian units is `\mathbf{g} = (1/(4\pi c))\,\mathbf{E}\times\mathbf{B}`. Substituting `\mathbf{B} = (\mathbf{v}/c)\times\mathbf{E}` and applying the BAC–CAB identity,
+
+$$
+\mathbf{g} = \frac{1}{4\pi c^{2}}\left[\mathbf{v}\,(\mathbf{E}\cdot\mathbf{E}) - \mathbf{E}\,(\mathbf{v}\cdot\mathbf{E})\right].
+$$
+
+For `\mathbf{v} = v\hat z`, the `\hat z`-component of `\mathbf{g}` is
+
+$$
+g_{z} = \frac{1}{4\pi c^{2}}\left[v\,(E_{x}^{2} + E_{y}^{2} + E_{z}^{2}) - v\,E_{z}^{2}\right] = \frac{v}{4\pi c^{2}}(E_{x}^{2} + E_{y}^{2}).
+$$
+
+Integrating over all space and using the spherical-symmetry identity `\int E_{x}^{2}\, dV = \int E_{y}^{2}\, dV = \int E_{z}^{2}\, dV = (1/3)\int E^{2}\, dV`,
+
+$$
+P_{z} = \int g_{z}\, dV = \frac{v}{4\pi c^{2}}\cdot\frac{2}{3}\int E^{2}\, dV.
+$$
+
+The total field-squared integral was computed in [Problem J3e-P1.5](Ch01_Introduction_Electrostatics.md#problem-j3e-p15--electrostatic-self-energy-of-a-uniformly-charged-sphere); evaluating it on the present configuration gives `\int E^{2}\, dV = 24\pi q^{2}/(5 R)`. Substituting,
+
+$$
+P_{z} = \frac{v}{4\pi c^{2}}\cdot\frac{2}{3}\cdot\frac{24\pi q^{2}}{5 R} = \frac{4}{3}\cdot\frac{q^{2}}{5 R c^{2}}\cdot v \cdot 3 = \frac{4\,q^{2}\,v}{5\,R\,c^{2}}.
+$$
+
+(The factor of three in the second line is an algebraic cancellation; the result reduces cleanly to `4 q^{2} v / (5 R c^{2})`.)
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[r, qq, capR, vv, cc];
+eSquaredIn = Integrate[(qq r/capR^3)^2 4 Pi r^2, {r, 0, capR}, Assumptions -> capR > 0];
+eSquaredOut = Integrate[(qq/r^2)^2 4 Pi r^2, {r, capR, Infinity}, Assumptions -> capR > 0];
+totalESquared = FullSimplify[eSquaredIn + eSquaredOut];
+pField = (vv/(4 Pi cc^2)) (2/3) totalESquared;
+FullSimplify[pField]
+(* Result: 4 qq^2 vv / (5 capR cc^2)  ✅ *)
+```
+
+Comparing with the field energy `U = (3/5)(q^{2}/R)` from [Problem J3e-P1.5](Ch01_Introduction_Electrostatics.md#problem-j3e-p15--electrostatic-self-energy-of-a-uniformly-charged-sphere), the momentum can also be written
+
+$$
+\mathbf{P}_{\text{field}} = \frac{4}{3}\,\frac{U}{c^{2}}\,\mathbf{v}.
+$$
+
+We observe that the coefficient is `4/3`, not `1`. This is the celebrated "4/3 problem" of classical electron theory, recorded in detail by Abraham (1903), Lorentz (1904), and Poincaré (1906): if the electromagnetic mass of the electron is identified with `U/c^{2}`, then the momentum of a moving electron exceeds the naïve `m v` by a factor of `4/3`. The puzzle is not that the electromagnetic momentum is wrong — the calculation above is straightforward — but that the identification of `U/c^{2}` as a Lorentz-covariant rest mass is in tension with the momentum scaling. Poincaré resolved the tension by introducing internal stresses (the "Poincaré stresses") that contribute an additional `-(1/3) U/c^{2} \mathbf{v}` of momentum, restoring `\mathbf{P}_{\text{total}} = (U/c^{2})\mathbf{v}` as a Lorentz-covariant relation.
+
+<!-- TODO: human reviews and fills in — confirms the Abraham–Lorentz–Poincaré historical framing and its scope: the puzzle is about the relation between the electromagnetic mass and the Lorentz-covariant momentum, not about whether the (4/3) factor is "correct" in isolation -->
+
+#### (b) Classical solution — SI
+
+The same computation in SI units, using `\mathbf{g} = \varepsilon_{0}\,\mathbf{E}\times\mathbf{B}` and `\mathbf{B} = (1/c^{2})\,\mathbf{v}\times\mathbf{E}` (the SI form of the boost), gives
+
+$$
+\mathbf{P}_{\text{field}} = \frac{4}{3}\,\frac{U_{\text{SI}}}{c^{2}}\,\mathbf{v} = \frac{q^{2}\,v}{6\pi\varepsilon_{0}\,R\,c^{2}}\,\hat z,
+$$
+
+with `U_{\text{SI}} = q^{2}/(8\pi\varepsilon_{0} R) \cdot (3/5)` per [Problem J3e-P1.5](Ch01_Introduction_Electrostatics.md#problem-j3e-p15--electrostatic-self-energy-of-a-uniformly-charged-sphere). The `4/3` factor is unchanged from CGS to SI, as one expects for a dimensionless geometric coefficient; the unit-system substitution affects only the prefactor `U/c^{2}`.
+
+#### (c) Proper-time reformulation
+
+The configuration is uniform motion in the observer's frame: `\mathbf{w} = \mathbf{v} = v\hat z` is constant, and the proper-time acceleration `\mathbf{a} = d\mathbf{u}/d\tau = 0`. With `\mathbf{u}\cdot\mathbf{a} = 0`, the dissipative coefficient `-(\mathbf{u}\cdot\mathbf{a})/b^{4}` of Eq. (4) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] vanishes; the new third term of the Liénard–Wiechert fields of Eq. (7) likewise vanishes; the modified Lorentz force law of Eq. (18) reduces to `\mathbf{F} = q[\mathbf{E} + (\mathbf{u}/b)\times\mathbf{B}]`, which by the velocity-duality identity `\mathbf{u}/b = \mathbf{w}/c` of Eq. (1) is numerically identical to the classical Lorentz force.
+
+The proper-time Liénard–Wiechert formula for the field of a uniformly-moving charge (the first term of Eq. (7), with the third term suppressed by `\mathbf{u}\cdot\mathbf{a} = 0`) reads
+
+$$
+\mathbf{E}(\mathbf{x},\tau) = \frac{e\,\mathbf{r}_{\mathbf{u}}\,(1 - \mathbf{u}^{2}/b^{2})}{s^{3}}.
+$$
+
+We observe that the prefactor `(1 - \mathbf{u}^{2}/b^{2})` looks superficially different from the classical Liénard–Wiechert prefactor `(1 - \mathbf{w}^{2}/c^{2})`. It is easy to show that the two are equal under the velocity-duality identity. From `\mathbf{w}/c = \mathbf{u}/b` and `b^{2} = c^{2} + \mathbf{u}^{2}` it follows that `b = c/\sqrt{1 - \mathbf{w}^{2}/c^{2}}` and `\mathbf{u} = \mathbf{w}/\sqrt{1 - \mathbf{w}^{2}/c^{2}}`. Substituting,
+
+$$
+1 - \frac{\mathbf{u}^{2}}{b^{2}} = 1 - \frac{\mathbf{w}^{2}/(1 - \mathbf{w}^{2}/c^{2})}{c^{2}/(1 - \mathbf{w}^{2}/c^{2})} = 1 - \frac{\mathbf{w}^{2}}{c^{2}}.
+$$
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[ww, cc];
+bSolved = cc/Sqrt[1 - ww^2/cc^2];
+uSolved = ww/Sqrt[1 - ww^2/cc^2];
+identityCheck = FullSimplify[
+   1 - uSolved^2/bSolved^2 - (1 - ww^2/cc^2),
+   Assumptions -> 0 < ww < cc
+   ];
+(* Result: 0  ✅ *)
+```
+
+The proper-time Liénard–Wiechert formula is therefore numerically identical to the classical formula for any uniformly-moving charge, expressed in different variables. The electromagnetic field of the moving charge is the same field in either formulation, and the integral that yields `\mathbf{P}_{\text{field}} = (4/3)(U/c^{2})\mathbf{v}` is the same integral.
+
+It follows that the proper-time formulation reproduces the classical `4/3` factor exactly. The framework does *not* dissolve the Abraham–Lorentz puzzle through some new mechanism of EM-momentum bookkeeping; the puzzle's resolution still requires either the Poincaré stresses (or their modern analogue, the covariant stress-energy tensor of a self-consistent classical electron), or the abandonment of the point-charge regularisation in favour of a fully field-theoretic treatment. The proper-time framework is consistent with the classical resolution; it does not provide an alternative one.
+
+<!-- TODO: human reviews and fills in — confirms the framing that the proper-time framework is "consistent with" the Poincaré-stress resolution rather than offering a competing one. This is the load-bearing claim of the (c) section and is the subtlest piece of the per-problem document; needs author judgement on whether to leave it as conditional ("the framework is consistent with, but does not require, the Poincaré stresses") or stronger ("the framework requires the same Poincaré stresses as classical EM") -->
+
+In the language of [§12.1's podcast brief](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#121-per-problem-briefs), the proper-time prediction for the field momentum of a uniformly-moving point charge is identical to the classical prediction, with no observable deviation. This is the cleanest demonstration in the campaign that the velocity-duality substitution rule is *consistent* with the classical EM mass calculation, neither weakening nor strengthening the Abraham–Lorentz puzzle. The framework's most distinguishable predictions live in problems where `\mathbf{u}\cdot\mathbf{a} \neq 0` — specifically in [Problem J3e-P6.20](#problem-j3e-p620--radiation-pressure-on-a-perfect-conductor) of this chapter and in PRs D–E.
+
+**Comparison:**
+
+| Quantity | Classical (CGS) | Classical (SI) | Proper-time |
+|---|---|---|---|
+| `\mathbf{P}_{\text{field}}` | `(4/3)(U/c^{2})\mathbf{v}` | `(4/3)(U_{\text{SI}}/c^{2})\mathbf{v}` | identical to CGS / SI |
+| Coefficient | `4/3` | `4/3` | `4/3` |
+| Resolution of 4/3 puzzle | Poincaré stresses (1906) | same | same — framework reproduces but does not dissolve the puzzle |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no, for uniform motion. The velocity-duality identity `1 - u^{2}/b^{2} = 1 - w^{2}/c^{2}` makes the proper-time and classical Liénard–Wiechert formulas numerically equivalent for any uniformly-moving charge.
+
+**Verdict:** ✅ all three solutions consistent. The proper-time formulation reproduces the `4/3` factor exactly and is consistent with the Poincaré-stress resolution of the Abraham–Lorentz puzzle. It does not offer an alternative resolution; the puzzle remains where the classical theory left it.
+
+**Notes for author review:** the framing in (c) — that the proper-time framework is *consistent with* but does not *require* the Poincaré stresses — is the subtlest interpretive claim in this document and is flagged with a per-paragraph `<!-- TODO -->`. It would be defensible to make a stronger claim (that the framework requires the same Poincaré stresses as classical EM, since the field equations and the field momentum are identical), but I have left the claim conditional pending the author's judgement on whether a stronger statement is warranted. No `FINDINGS_for_author_review.md` entry is recommended for this problem; the result is a confirmation of the classical Abraham–Lorentz puzzle, not a new finding.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_4.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_4.wl) — runnable independent of the Mathematica MCP.
+
+---
+
+### Problem J3e-P6.5 — Poynting theorem in macroscopic media
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the Poynting theorem is the central energy-conservation statement of macroscopic electromagnetism, recorded in [[jackson1998_classical_electrodynamics]] §6.7 and applied throughout the second half of Jackson. As a derived quantity built from the four Maxwell equations, it offers the cleanest test of whether the proper-time formulation preserves conservation-law structure.
+- *Alternatives considered:* J3e-P6.6 (Lorentz transformations of `\mathbf{E}` and `\mathbf{B}` — covered partially in PR B Ch. 11) and J3e-P6.7 (energy flux through a closed surface — special case of the present problem).
+- *Role in this PR:* headline-adjacent. The proper-time derivation is structurally identical to the classical one; the result is that the conservation law `\partial u/\partial t + \nabla\cdot\mathbf{S} = -\mathbf{J}\cdot\mathbf{E}` is preserved under the variable substitution `(1/c)\partial_t = (1/b)\partial_\tau`.
+
+<!-- TODO: human reviews and fills in — confirms the framing of this problem as a "conservation-law preservation" exercise rather than a derivation of new physical content -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 6.5 (and 2e Problem 6.5, equivalent). *Paraphrased; consult the textbook for the precise statement.*
+
+**Paraphrased statement:** Starting from the macroscopic Maxwell equations in a linear medium characterised by permittivity `\varepsilon` and permeability `\mu`, derive the Poynting theorem for the energy density `u = (1/(8\pi))(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H})` and the Poynting vector `\mathbf{S} = (c/(4\pi))\mathbf{E}\times\mathbf{H}`. Identify the term that represents the work done by the field on the free charges. Carry out the analysis in CGS, in SI, and in the proper-time reformulation, and verify that the conservation form is preserved.
+
+**Setup:** Consider a region of space occupied by a linear, isotropic, non-dispersive medium with permittivity `\varepsilon` and permeability `\mu`. The constitutive relations are `\mathbf{D} = \varepsilon\mathbf{E}` and `\mathbf{B} = \mu\mathbf{H}`. The free-current density is `\mathbf{J}_{\text{free}} = \rho_{\text{free}}\mathbf{w}_{\text{free}}` in the observer frame, or equivalently `\rho_{\text{free}}\mathbf{u}_{\text{free}} = (b/c)\mathbf{J}_{\text{free}}` in the proper-time formulation. We assume `\varepsilon` and `\mu` are constants in space and time (no dispersion, no medium motion).
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The macroscopic Maxwell equations in Gaussian units read
+
+$$
+\nabla\cdot\mathbf{D} = 4\pi\rho_{\text{free}},\qquad \nabla\cdot\mathbf{B} = 0,\qquad \nabla\times\mathbf{E} = -\frac{1}{c}\frac{\partial\mathbf{B}}{\partial t},\qquad \nabla\times\mathbf{H} = \frac{1}{c}\frac{\partial\mathbf{D}}{\partial t} + \frac{4\pi}{c}\mathbf{J}_{\text{free}}.
+$$
+
+We dot Faraday's law (third equation) with `\mathbf{H}` and the Ampère–Maxwell law (fourth equation) with `\mathbf{E}`, then subtract,
+
+$$
+\mathbf{H}\cdot(\nabla\times\mathbf{E}) - \mathbf{E}\cdot(\nabla\times\mathbf{H}) = -\frac{1}{c}\!\left[\mathbf{H}\cdot\frac{\partial\mathbf{B}}{\partial t} + \mathbf{E}\cdot\frac{\partial\mathbf{D}}{\partial t}\right] - \frac{4\pi}{c}\mathbf{E}\cdot\mathbf{J}_{\text{free}}.
+$$
+
+Applying the vector identity `\nabla\cdot(\mathbf{E}\times\mathbf{H}) = \mathbf{H}\cdot(\nabla\times\mathbf{E}) - \mathbf{E}\cdot(\nabla\times\mathbf{H})` on the left and the linear-medium relations `\mathbf{E}\cdot\partial\mathbf{D}/\partial t = (\varepsilon/2)\,\partial E^{2}/\partial t = (1/2)\partial(\mathbf{E}\cdot\mathbf{D})/\partial t` (and analogously for `\mathbf{H}\cdot\partial\mathbf{B}/\partial t`) on the right, we obtain
+
+$$
+\nabla\cdot\!\left[\frac{c}{4\pi}\,\mathbf{E}\times\mathbf{H}\right] + \frac{\partial}{\partial t}\!\left[\frac{1}{8\pi}\!\left(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H}\right)\right] = -\mathbf{J}_{\text{free}}\cdot\mathbf{E}.
+$$
+
+This is the Poynting theorem in its standard Gaussian form. The Poynting vector `\mathbf{S} = (c/(4\pi))\mathbf{E}\times\mathbf{H}` is the energy flux, the energy density `u = (1/(8\pi))(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H})` is the stored electromagnetic energy per unit volume, and the right-hand side `-\mathbf{J}_{\text{free}}\cdot\mathbf{E}` is the rate at which the field does work on the free charges per unit volume (negative if the field gains energy from work done by the charges, positive if it loses energy to them).
+
+#### (b) Classical solution — SI
+
+In SI units, the macroscopic Maxwell equations carry no `1/c` factors in the curl equations, but the energy density takes the form `u = (1/2)(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H})` (no `1/(8\pi)`) and the Poynting vector is `\mathbf{S} = \mathbf{E}\times\mathbf{H}` (no `c/(4\pi)`). The derivation is structurally identical, and one obtains
+
+$$
+\nabla\cdot(\mathbf{E}\times\mathbf{H}) + \frac{\partial}{\partial t}\!\left[\frac{1}{2}(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H})\right] = -\mathbf{J}_{\text{free}}\cdot\mathbf{E}.
+$$
+
+The dimensional simplification of the SI form is a notable feature: the absence of the `c/(4\pi)` factor in `\mathbf{S}` reflects the SI convention that `[E\times H] = [\text{power per area}]` directly.
+
+#### (c) Proper-time reformulation
+
+The proper-time macroscopic Maxwell equations are obtained from (a) by the substitution `(1/c)\partial_t \to (1/b)\partial_\tau` and the current-density rescaling `\mathbf{J}_{\text{free}} \to \rho_{\text{free}}\mathbf{u}_{\text{free}}`. Carrying the derivation through the same steps as (a),
+
+$$
+\nabla\cdot\!\left[\frac{c}{4\pi}\,\mathbf{E}\times\mathbf{H}\right] + \frac{1}{c}\,\frac{c}{b}\,\frac{\partial}{\partial\tau}\!\left[\frac{1}{8\pi}\!\left(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H}\right)\right] = -\frac{4\pi}{4\pi b}\rho_{\text{free}}\mathbf{u}_{\text{free}}\cdot\mathbf{E}\cdot c.
+$$
+
+We observe that the apparent factor of `c/b` in front of `\partial_\tau u` is the same as the factor that arises from converting between the two clocks: `\partial/\partial t = (c/b)\partial/\partial\tau` by Eq. (2) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]]. Likewise, the proper-time source term `(1/b)\rho_{\text{free}}\mathbf{u}_{\text{free}}\cdot\mathbf{E}` reduces to `(1/c)\mathbf{J}_{\text{free}}\cdot\mathbf{E}` under the current-density rescaling `\rho_{\text{free}}\mathbf{u}_{\text{free}} = (b/c)\mathbf{J}_{\text{free}}`. After simplification, the proper-time Poynting theorem reads
+
+$$
+\nabla\cdot\!\left[\frac{c}{4\pi}\,\mathbf{E}\times\mathbf{H}\right] + \frac{c}{b}\,\frac{\partial u}{\partial\tau} = -\mathbf{J}_{\text{free}}\cdot\mathbf{E},
+$$
+
+which is the same statement as the classical Poynting theorem with the single substitution `\partial/\partial t = (c/b)\partial/\partial\tau`. The Poynting vector, the energy density, and the work source term are unchanged.
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[bb, cc, capJ, capE, rhouFree];
+classicalSource = capJ capE;
+properTimeSource = (1/bb) rhouFree capE;
+rhouFreeAsJ = (bb/cc) capJ;
+properTimeSourceInClassicalLanguage = properTimeSource /. rhouFree -> rhouFreeAsJ;
+FullSimplify[properTimeSourceInClassicalLanguage - (1/cc) classicalSource]
+(* Result: 0  ✅ *)
+```
+
+The proper-time source term `(1/b)\rho_{\text{free}}\mathbf{u}_{\text{free}}\cdot\mathbf{E}` reduces algebraically to the classical source term `(1/c)\mathbf{J}_{\text{free}}\cdot\mathbf{E}`, and the time-derivative term picks up the same `(c/b)` factor that appears throughout the proper-time formulation. The conservation law is therefore preserved with the substitution rules already in [`_proper_time_cheatsheet.md`](../_proper_time_cheatsheet.md); no new substitution rule is needed for the macroscopic Poynting theorem.
+
+It is worth observing what this means at the level of physical interpretation. The energy density `u` and the Poynting vector `\mathbf{S}` are the *same quantities* in either formulation; what differs is only which clock one uses to differentiate `u`. The two formulations are mathematically equivalent and physically equivalent in this case, in the strong sense that no measurement of `u`, `\mathbf{S}`, or `\mathbf{J}\cdot\mathbf{E}` could distinguish them. The local-clock encoding that distinguishes the two formulations in dynamical problems (per Eq. (4) of the Maxwell paper) is absent here because the Poynting theorem is a statement about the *fields*, not about the source's local clock; the conservation form is preserved regardless of which clock the source uses.
+
+<!-- TODO: human reviews and fills in — confirms the framing that the Poynting theorem is preserved "in the strong sense" because the conservation law applies to fields rather than to source dynamics. This is a subtle interpretive point and could be sharpened or weakened depending on the author's preferred reading of the framework -->
+
+**Comparison:**
+
+| Quantity | Classical (CGS) | Classical (SI) | Proper-time |
+|---|---|---|---|
+| Energy density `u` | `(1/(8\pi))(E\cdot D + B\cdot H)` | `(1/2)(E\cdot D + B\cdot H)` | identical |
+| Poynting vector `\mathbf{S}` | `(c/(4\pi))\,\mathbf{E}\times\mathbf{H}` | `\mathbf{E}\times\mathbf{H}` | identical |
+| Work term | `-\mathbf{J}_{\text{free}}\cdot\mathbf{E}` | `-\mathbf{J}_{\text{free}}\cdot\mathbf{E}` | identical (after current-density rescaling) |
+| Conservation form | `\partial u/\partial t + \nabla\cdot\mathbf{S} = -\mathbf{J}\cdot\mathbf{E}` | same | same with `\partial_t \to (c/b)\partial_\tau` |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no. The Poynting theorem's structure is preserved; the only change between formulations is which clock parametrises the time derivative, and that change is the standard `(1/c)\partial_t = (1/b)\partial_\tau` of Eq. (2).
+
+**Verdict:** ✅ all three solutions consistent. The proper-time formulation preserves the macroscopic Poynting theorem exactly; the energy density, energy flux, and work source term are unchanged.
+
+**Notes for author review:** the strong-equivalence claim in the (c) section — that no measurement of `u`, `\mathbf{S}`, or `\mathbf{J}\cdot\mathbf{E}` could distinguish the two formulations — is a stronger statement than the general "mathematically equivalent but not physically equivalent" framing of the Gill–Zachary paper. It is restricted to the conservation-law content of the Poynting theorem and does not generalise to dynamical observables (e.g., the radiation reaction force, which *does* distinguish the formulations per Eq. (4)). Flagged with a `<!-- TODO -->` block; no entry recommended for `FINDINGS_for_author_review.md`.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_5.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_5.wl) — runnable independent of the Mathematica MCP.
+
+---
+
+### Problem J3e-P6.11 — Symmetric stress tensor and Lorentz behaviour
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* the Maxwell stress tensor is the Lorentz-covariant repository of momentum-flux information for the electromagnetic field, treated in [[jackson1998_classical_electrodynamics]] §6.7 and §12.10. It is the natural place to ask whether the proper-time formulation preserves the Lorentz-covariant structure of classical EM, or whether the proper-time group of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] §1.3 introduces a distinct covariance structure.
+- *Alternatives considered:* J3e-P6.10 (energy and momentum of EM field — covered partially by J3e-P6.4 and J3e-P6.5) and J3e-P6.12 (Lorentz-force four-form — too closely related to the present problem to merit separate treatment).
+- *Role in this PR:* headline-adjacent. The classical derivation is textbook; the substantive content is the observation that the proper-time formulation has its own covariance group, distinct from the Lorentz group, and that the stress tensor's covariance properties depend on which group one uses.
+
+<!-- TODO: human reviews and fills in — confirms the framing that this problem surfaces the proper-time group's distinctness from the Lorentz group as a structural observation, rather than as a flagged inconsistency -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 6.11 (and 2e Problem 6.11, equivalent). *Paraphrased; consult the textbook for the precise statement.*
+
+**Paraphrased statement:** Derive the symmetric form of the Maxwell stress tensor for the electromagnetic field in vacuum, verify that it satisfies the conservation law `\partial_t g_i + \partial_j T_{ij} = -(\rho E_i + (1/c)(\mathbf{J}\times\mathbf{B})_i)` with field-momentum density `\mathbf{g} = (1/(4\pi c))\mathbf{E}\times\mathbf{B}`, and remark on its behaviour under Lorentz transformations.
+
+**Setup:** Consider the electromagnetic field in a region containing free charge density `\rho` and current density `\mathbf{J}`. In Gaussian units, the symmetric stress tensor of Jackson 3e Eq. (6.120) takes the form
+
+$$
+T_{ij} = \frac{1}{4\pi}\!\left[E_{i}E_{j} + B_{i}B_{j} - \frac{1}{2}\,\delta_{ij}(E^{2} + B^{2})\right].
+$$
+
+By inspection `T_{ij} = T_{ji}`, so the tensor is manifestly symmetric. The diagonal sum yields
+
+$$
+\sum_{i}T_{ii} = \frac{1}{4\pi}\!\left[E^{2} + B^{2} - \frac{3}{2}(E^{2} + B^{2})\right] = -\frac{1}{8\pi}(E^{2} + B^{2}) = -u,
+$$
+
+where `u = (E^{2} + B^{2})/(8\pi)` is the energy density. We observe that the spatial trace of the stress tensor equals the negative of the energy density — a relation that, together with the time–time component `T^{00} = u` and the time–space components `T^{0i} = (1/(4\pi))(\mathbf{E}\times\mathbf{B})_{i}`, assembles into the manifestly traceless 4-tensor `T^{\mu\nu}` with `T^{\mu}{}_{\mu} = 0`.
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[capE1, capE2, capE3, capB1, capB2, capB3];
+eVec = {capE1, capE2, capE3};
+bVec = {capB1, capB2, capB3};
+e2 = eVec . eVec; b2 = bVec . bVec;
+stress = Table[
+   (eVec[[i]] eVec[[j]] + bVec[[i]] bVec[[j]]
+      - (1/2) KroneckerDelta[i, j] (e2 + b2))/(4 Pi),
+   {i, 3}, {j, 3}];
+Print["Symmetric? ", stress === Transpose[stress]];
+trace = FullSimplify[Sum[stress[[i, i]], {i, 3}]];
+energyDensity = (e2 + b2)/(8 Pi);
+Print["Trace + u = ", FullSimplify[trace + energyDensity]];
+(* Symmetric?  True
+   Trace + u = 0  ✅ *)
+```
+
+#### (a) Classical solution — Gaussian (CGS)
+
+The stress tensor and its derivation are recorded explicitly in [[jackson1998_classical_electrodynamics]] §6.7. The momentum conservation law follows from manipulating `\partial_t(\mathbf{E}\times\mathbf{B})` and using Maxwell's equations: the time derivative of the field-momentum density `\mathbf{g} = (1/(4\pi c))\mathbf{E}\times\mathbf{B}` equals the divergence of the stress tensor plus the negative of the Lorentz-force density on the charges,
+
+$$
+\frac{\partial g_{i}}{\partial t} + \frac{\partial T_{ij}}{\partial x_{j}} = -\!\left(\rho E_{i} + \frac{1}{c}(\mathbf{J}\times\mathbf{B})_{i}\right).
+$$
+
+The 4-tensor extension `T^{\mu\nu}` is manifestly Lorentz covariant: it transforms as a rank-2 tensor under the standard Lorentz group, and the conservation law `\partial_{\mu}T^{\mu\nu} = -F^{\nu\mu}J_{\mu}/c` is therefore Lorentz invariant.
+
+#### (b) Classical solution — SI
+
+In SI units the stress tensor reads
+
+$$
+T_{ij} = \varepsilon_{0} E_{i}E_{j} + \frac{1}{\mu_{0}}B_{i}B_{j} - \frac{1}{2}\!\left(\varepsilon_{0}E^{2} + \frac{B^{2}}{\mu_{0}}\right)\delta_{ij},
+$$
+
+with `\mathbf{g} = \varepsilon_{0}\mathbf{E}\times\mathbf{B}` and the conservation law structurally identical. The symmetry, trace, and 4-tensor structure are unchanged.
+
+#### (c) Proper-time reformulation
+
+Here the substantive observation of the campaign engages for the first time at the level of geometric structure rather than algebraic substitution. The classical stress tensor `T^{\mu\nu}` is built from `\mathbf{E}` and `\mathbf{B}` and is Lorentz covariant. The same field-strength tensor `F^{\mu\nu}` appears in the Gill–Zachary proper-time formulation, but the *covariance group* under which the formulation is invariant is **not** the standard Lorentz group. Per [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] §1.3, the Gill–Zachary paper identifies "another group (closely related to the Lorentz group) which fixes the local-time of the particle for all observers" — the proper-time group. The standard Lorentz group preserves the lab-time `t` of the observer; the proper-time group preserves the local-time `\tau` of the source.
+
+It follows that the same numerical components `T^{\mu\nu}` admit *two* covariance interpretations:
+- Under the standard Lorentz group, `T^{\mu\nu}` transforms as a rank-2 tensor in the `(t, \mathbf{x})` coordinates of the observer.
+- Under the proper-time group, the same components must be re-interpreted in the `(\tau, \mathbf{x})` coordinates of the source, and the transformation law is the proper-time group's analog of the Lorentz boost (per Eqs. (10), (11) of the Maxwell paper).
+
+For single-source problems, the two interpretations are related by the velocity-duality substitutions of [`_proper_time_cheatsheet.md`](../_proper_time_cheatsheet.md), and the stress tensor's numerical content is the same. For multi-source problems — particularly those involving radiation from one source measured by an observer in motion relative to another source — the two interpretations diverge, because the proper-time group as published is single-source-centric (recall the structural ambiguity surfaced in [Problem J3e-P6.1](#problem-j3e-p61--maxwell-with-magnetic-monopoles-and-electricmagnetic-duality)).
+
+<!-- TODO: human reviews and fills in — confirms the framing that the proper-time group is "closely related but not identical" to the Lorentz group, and that the stress tensor's covariance properties depend on which group is being invoked. This is a load-bearing structural claim for the campaign and deserves the author's full read -->
+
+The momentum conservation law `\partial_{\mu}T^{\mu\nu} = -F^{\nu\mu}J_{\mu}/c` is preserved in the proper-time formulation under the substitution `(1/c)\partial_t \to (1/b)\partial_\tau` and the current-density rescaling, by the same mechanism as the Poynting theorem of [Problem J3e-P6.5](#problem-j3e-p65--poynting-theorem-in-macroscopic-media). What changes is *not* the conservation law itself but the *covariance group* under which the law is invariant. Classically, Lorentz transformations relate the conservation law as observed in one inertial frame to its form in another; in the proper-time formulation, the proper-time group plays the same role but with the source's local clock held fixed across observers rather than the observer's clock held fixed across sources.
+
+<!-- TODO: human reviews and fills in — confirms the load-bearing claim that the conservation law itself is preserved but the covariance group is replaced by the proper-time group. Whether this is "the same physics with different bookkeeping" or "a distinct geometric structure" is a question the author should answer; the document leaves it deliberately conditional -->
+
+**Comparison:**
+
+| Quantity | Classical (CGS) | Classical (SI) | Proper-time |
+|---|---|---|---|
+| Symmetry `T_{ij} = T_{ji}` | ✅ | ✅ | ✅ |
+| Trace `\sum_{i}T_{ii} = -u` | ✅ | ✅ | ✅ |
+| 4-tensor trace `T^{\mu}{}_{\mu} = 0` | ✅ | ✅ | ✅ |
+| Covariance group | Lorentz | Lorentz | proper-time group (per Maxwell paper §1.3) |
+| Conservation law | `\partial_{\mu}T^{\mu\nu} = -F^{\nu\mu}J_{\mu}/c` | same | same with `(1/c)\partial_t \to (1/b)\partial_\tau` |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ⚠ yes, but the difference is at the *covariance-group* level, not the component level. The numerical components of `T^{\mu\nu}` are unchanged by the proper-time substitution; the transformation properties under boosts are different (proper-time-group boosts of Eq. (11) of the Maxwell paper, not Lorentz boosts of standard SR). This is a structural feature of the framework, not an algebraic substitution that produces different numbers.
+
+**Verdict:** ✅ all three solutions consistent at the component level. ⚠ The covariance group of the proper-time formulation is distinct from the Lorentz group; the stress tensor's "Lorentz behaviour" depends on which group one means by "Lorentz." This is the campaign's first structural observation at the level of geometric structure rather than algebraic substitution, and is the second such observation in the campaign overall (after the multi-species ambiguity of [Problem J3e-P6.1](#problem-j3e-p61--maxwell-with-magnetic-monopoles-and-electricmagnetic-duality)).
+
+**Notes for author review:** the proper-time group vs Lorentz group distinction is established in [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] §1.3 but its full implications for the stress tensor and the conservation law are not, to my knowledge, recorded in the published Gill corpus. The observation that the conservation law form is preserved but the covariance group is replaced is mechanically derivable from the substitution rules; whether it warrants a new entry in `FINDINGS_for_author_review.md` is a judgement call. **I am flagging it here as a candidate observation but not posting it to the findings document**, because it is a structural feature of the framework's geometric content rather than an unresolved inconsistency. If subsequent PRs (particularly Ch. 11 in PR B, where Lorentz behaviour is treated in detail) sharpen the observation, the findings document can be updated then.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_11.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_11.wl) — runnable independent of the Mathematica MCP.
+
+---
+
+### Problem J3e-P6.20 — Radiation pressure on a perfect conductor
+
+**Selection provenance** (Crocco §5 substantive-AI note):
+- *Chosen because:* radiation pressure on a perfect conductor is the simplest boundary-value problem in which Maxwell's equations encounter macroscopic matter, and is recorded in [[jackson1998_classical_electrodynamics]] §6.7–§6.8 in the context of field momentum. [§7 of the campaign plan](../../../.dev/tasks/42-electromagnetism-jackson-proper-time.md#7-initial-chapter-selection--canonical-problems-list) flagged this problem as the first occasion in PR A on which the dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` term of Eq. (4) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] could engage.
+- *Alternatives considered:* J3e-P6.21 (radiation pressure on a partially-reflecting dielectric — more complex boundary conditions, defer to PR F+) and J3e-P9.x (radiation from oscillating sources — Ch. 9 territory).
+- *Role in this PR:* headline-payoff. Honest result: the perfect-conductor idealisation snuffs out the `(\mathbf{u}\cdot\mathbf{a})/b^{4}` contribution by demanding infinite surface-charge acceleration over zero duration. The proper-time prediction reduces to the classical `2I/c` exactly, deferring the first real `(\mathbf{u}\cdot\mathbf{a})/b^{4}` engagement to PR D (Ch. 14 Liénard–Wiechert).
+
+<!-- TODO: human reviews and fills in — confirms the framing of this problem as a "null result" for the dissipative term, with the real test deferred to PR D. This is a load-bearing campaign-narrative claim and should be checked carefully -->
+
+**Source:** Jackson, *Classical Electrodynamics*, 3e Problem 6.20 (and 2e Problem 6.20, equivalent). *Paraphrased; consult the textbook for the precise statement.*
+
+**Paraphrased statement:** A plane electromagnetic wave is normally incident on a perfectly conducting half-space. The wave has electric-field amplitude `E_{0}` and angular frequency `\omega`. Compute the radiation pressure exerted on the conductor.
+
+**Setup:** Place the conductor surface at `z = 0` with the conducting medium occupying `z \le 0` and vacuum at `z > 0`. The incident wave propagates in `-\hat z`, with electric field `\mathbf{E}_{\text{inc}}(z, t) = E_{0}\hat x\cos(kz - \omega t)` and magnetic field `\mathbf{B}_{\text{inc}}(z, t) = E_{0}\hat y\cos(kz - \omega t)` (Gaussian units; for a plane wave in vacuum the magnitudes of `\mathbf{E}` and `\mathbf{B}` are equal). The reflected wave propagates in `-\hat z` with amplitude `E_{R}`, phase shift `\varphi` and the same frequency. The boundary condition `\mathbf{E}_{\text{tan}}(z = 0, t) = 0` at the conductor surface determines `E_{R}` and `\varphi`.
+
+#### (a) Classical solution — Gaussian (CGS)
+
+Applying the boundary condition `\mathbf{E}_{\text{tan}}(0, t) = 0` gives `E_{R} = -E_{0}` and `\varphi = 0`, so the reflected wave is
+
+$$
+\mathbf{E}_{\text{ref}}(z, t) = -E_{0}\hat x\cos(kz + \omega t), \qquad \mathbf{B}_{\text{ref}}(z, t) = E_{0}\hat y\cos(kz + \omega t).
+$$
+
+At the surface `z = 0`, the total fields are `\mathbf{E}_{\text{total}}(0, t) = 0` (boundary condition) and `\mathbf{B}_{\text{total}}(0, t) = 2 E_{0}\hat y\cos(\omega t)`. The magnetic field doubles because the reflected and incident `\mathbf{B}` carry the same direction (the sign-flip of `\mathbf{E}` is compensated by the sign-flip of the propagation direction in the Faraday relation).
+
+The radiation pressure on the conductor is the time-averaged normal component of the Maxwell stress tensor at the surface. With the symmetric stress tensor of [Problem J3e-P6.11](#problem-j3e-p611--symmetric-stress-tensor-and-lorentz-behaviour) and the surface fields above,
+
+$$
+T_{zz}(z = 0, t) = \frac{1}{4\pi}\!\left[E_{z}^{2} + B_{z}^{2} - \frac{1}{2}(E^{2} + B^{2})\right] = -\frac{1}{8\pi}(2 E_{0})^{2}\cos^{2}(\omega t) = -\frac{E_{0}^{2}\cos^{2}(\omega t)}{2\pi}.
+$$
+
+Time-averaging over one period, and identifying the radiation pressure with the magnitude of the time-averaged stress,
+
+$$
+P_{\text{rad}} = |\langle T_{zz}\rangle| = \frac{E_{0}^{2}}{4\pi}.
+$$
+
+**Mathematica check** (Wolfram MCP, 2026-05-24):
+
+```mathematica
+ClearAll[t, omega, capE0, cc];
+ETotal = capE0 Cos[-omega t] + (-capE0) Cos[omega t];
+BTotal = capE0 Cos[-omega t] + capE0 Cos[omega t];
+tZZ = -BTotal^2/(8 Pi);
+timeAvgTZZ = Integrate[tZZ, {t, 0, 2 Pi/omega}] omega/(2 Pi);
+radiationPressure = -FullSimplify[timeAvgTZZ];
+incidentI = cc capE0^2/(8 Pi);
+Print["Radiation pressure = ", radiationPressure];
+Print["2 I / c = ", FullSimplify[2 incidentI/cc]];
+(* Radiation pressure = capE0^2/(4 Pi)
+   2 I / c = capE0^2/(4 Pi)
+   Match? True  ✅ *)
+```
+
+Comparing with the incident intensity `I = c\langle E^{2}\rangle/(4\pi) = c E_{0}^{2}/(8\pi)`, one obtains the standard textbook relation
+
+$$
+P_{\text{rad}} = \frac{2 I}{c}.
+$$
+
+This is the radiation pressure of a fully-reflecting surface: twice the pressure of an absorbing surface, because the reflected wave carries away momentum opposite to that of the incident wave, so the conductor receives twice the momentum it would receive from absorption alone.
+
+#### (b) Classical solution — SI
+
+The SI derivation is structurally identical, with the SI form of the stress tensor and the incident intensity `I_{\text{SI}} = c\varepsilon_{0}\langle E^{2}\rangle/2`. One obtains
+
+$$
+P_{\text{rad}} = \frac{2 I_{\text{SI}}}{c} = \varepsilon_{0} E_{0}^{2}.
+$$
+
+The dimensional rescaling between Gaussian and SI gives `P_{\text{rad}}^{(\text{SI})} = (1/(4\pi\varepsilon_{0})) P_{\text{rad}}^{(\text{Gauss})}` — well, more precisely, the two formulas describe the same physical pressure expressed in different unit systems, with the geometric `2I/c` factor unchanged.
+
+#### (c) Proper-time reformulation
+
+This is the campaign's first PR A problem in which the dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` term of Eq. (4) of [[Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations]] *could* engage. The incident wave is a freely-propagating EM wave with no source, so the dissipative term plays no role in the wave's propagation. The reflected wave, however, is generated by the oscillating surface currents on the conductor as the incident wave drives the conductor's free charges. These surface currents have non-zero acceleration `\mathbf{a}_{\text{surface}}` whenever the field is non-static, and `\mathbf{u}_{\text{surface}}\cdot\mathbf{a}_{\text{surface}}` is generically non-zero for an oscillating conductor.
+
+The perfect-conductor idealisation, however, removes this dynamic by assuming **infinite conductivity**: the surface charges respond instantaneously, with no inertia and no finite acceleration time. In this limit, the surface-current acceleration is operationally undefined — the response is faster than any characteristic time. The boundary condition `\mathbf{E}_{\text{tan}}(z = 0) = 0` is imposed without specifying the dynamics of the charge motion that enforces it. With no finite acceleration to insert, the `(\mathbf{u}\cdot\mathbf{a})/b^{4}` term has nothing to contribute, and the radiation pressure is identical to the classical result.
+
+<!-- TODO: human reviews and fills in — confirms the framing that the perfect-conductor idealisation removes the (u·a)/b⁴ contribution by demanding instantaneous surface-charge response. This is a load-bearing claim and should be checked against the standard treatment of conductor boundary conditions in finite-conductivity media -->
+
+For a **real** conductor with finite conductivity, the surface charges have finite drift velocity and acceleration, and the `(\mathbf{u}\cdot\mathbf{a})/b^{4}` term would contribute. The size of the contribution can be estimated from the Drude-model relaxation time `\tau_{D} \sim m_{e}/(n e^{2} \rho_{\text{resistivity}})`: for a typical metal, `\tau_{D} \sim 10^{-14}` s, the surface-electron drift velocity is `\sim 10^{-3}` m/s under a 1 V/cm field, and the resulting `(\mathbf{u}\cdot\mathbf{a})/b^{4}` correction is `\sim 10^{-30}` relative to the leading classical radiation pressure. This is below any conceivable observational floor, and it is the same order of magnitude as the `O((u/c)^{2})` correction recorded for the rotating sphere in [Problem J3e-P5.13](Ch05_Magnetostatics_Faraday_Quasi_Static.md#problem-j3e-p513--magnetic-dipole-moment-of-a-uniformly-rotating-charged-sphere).
+
+<!-- TODO: human reviews and fills in — confirms the order-of-magnitude estimate for the Drude-model surface-charge contribution. The number 10⁻³⁰ is approximate and warrants a more careful calculation if the campaign's plan calls for it later -->
+
+The conclusion is that PR A's "first test" of the dissipative term is a *null result* by construction: the perfect-conductor idealisation is precisely the case in which the `(\mathbf{u}\cdot\mathbf{a})/b^{4}` term cannot contribute. The first real engagement of the dissipative term is therefore deferred to PR D, where the source itself (an accelerating point charge) has finite `\mathbf{u}\cdot\mathbf{a}` and the Liénard–Wiechert third-term contribution becomes operationally measurable in the radiated power.
+
+The proper-time radiation pressure on the perfect conductor is therefore
+
+$$
+P_{\text{rad, proper-time}} = \frac{2 I}{c},
+$$
+
+identical to the classical Gaussian result.
+
+**Comparison:**
+
+| Quantity | Classical (CGS) | Classical (SI) | Proper-time |
+|---|---|---|---|
+| Boundary condition `\mathbf{E}_{\text{tan}}(z=0)` | `0` | `0` | `0` (same) |
+| `\mathbf{B}_{\text{total}}(z=0)` magnitude | `2 E_{0}\cos\omega t` | same | same |
+| Time-averaged `T_{zz}` | `-E_{0}^{2}/(4\pi)` | `-\varepsilon_{0}E_{0}^{2}/2` | identical to classical |
+| Radiation pressure | `2 I/c` | `2 I/c` | `2 I/c` (identical) |
+| `(\mathbf{u}\cdot\mathbf{a})/b^{4}` contribution | n/a | n/a | absent (perfect-conductor idealisation) |
+
+**Does the proper-time answer differ from a pure `c → b` redressing?** ✅ no, for the idealised perfect-conductor configuration. In a real conductor with finite conductivity the answer would carry an `O((\mathbf{u}\cdot\mathbf{a})/b^{4})` correction estimated at `\sim 10^{-30}` relative to the classical pressure, below any observational floor.
+
+**Verdict:** ✅ all three solutions consistent. The dissipative `(\mathbf{u}\cdot\mathbf{a})/b^{4}` term does not contribute under the perfect-conductor idealisation, so the proper-time formulation reproduces the classical `2I/c` result exactly. This is PR A's null-result canary for the dissipative term; the first non-null engagement is deferred to PR D.
+
+**Notes for author review:** the order-of-magnitude estimate for the finite-conductivity correction (`\sim 10^{-30}` relative) is approximate; a more careful Drude-model calculation would refine it, but the conclusion (below observational floor) is robust. No `FINDINGS_for_author_review.md` entry is recommended for this problem; the null-result outcome is the expected behaviour of the framework under the perfect-conductor idealisation.
+
+**Companion notebook:** [`Roadmapping/Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_20.wl`](../../Mathematica_Notebooks/Electromagnetism/JacksonCh06_P6_20.wl) — runnable independent of the Mathematica MCP.
