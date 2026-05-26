@@ -54,3 +54,43 @@ A one-loop self-energy in the (II.3) kernel, written as a Schwinger proper-time 
 **Outcome-matrix:** not yet determinable (still scoping the kernel; no numerical $r_e/r_0$ yet).
 
 **Status:** READY.
+
+## Iteration 2 — 2026-05-26 — TCEP ingested (classical radiation structure)
+
+**Advanced.** Read `Roadmapping/Equation_Verification/The_Classical_Electron_Problem.md` (247 lines). Extracted the proper-time radiation-reaction ingredients that feed a one-loop self-energy.
+
+### Modified Liénard–Wiechert potentials (TCEP Eqs. 3.26–3.27)
+
+Standard:
+$$\mathbf{A} = \frac{q\mathbf{w}}{cs},\quad \Phi = \frac{q}{s},\quad s = r - \frac{\mathbf{r}\!\cdot\!\mathbf{w}}{c}.$$
+
+Proper-time (substitute Maxwell-paper Eq. (1) $\mathbf{w}/c = \mathbf{u}/b$):
+$$\mathbf{A}_\tau = \frac{q\mathbf{u}}{bs},\quad \Phi_\tau = \frac{q}{s},\quad s = r - \frac{\mathbf{r}\!\cdot\!\mathbf{u}}{b}, \qquad r = c(t-t').$$
+
+**Retarded condition (TCEP Eq. 3.30):** $c(t-t') = \int_{\tau'}^{\tau} b(s)\,ds$ — the light-cone $r = c\Delta t$ uses observer $c$, but the proper-time integration measure is $b$. The photon Green's function inherits this structure.
+
+### Modified Larmor radiation (TCEP Eqs. 3.51, 3.54)
+
+- **Larmor-like classical piece** (3.51): $\iint(-dU^c/d\tau)\,d\Omega = (2/3)\,q^2|\mathbf{a}|^2/b^3$. Same as textbook with $c\to b$.
+- **Full radiated power** (3.54): $(2/3)(q^2|\mathbf{a}|^2/b^3)(1-\beta^2)^{-3}[1 - \tfrac{1}{5}\beta^2(4+\beta^2) + \tfrac{1}{5}\beta^2(6+\beta^2)\sin^2\!\alpha]$ with $\beta = |\mathbf{u}|/b$, $\alpha = \angle(\mathbf{a},\mathbf{u})$.
+- **Headline finding (3.55 vs 3.54):** the proper-time radiation formula does *not* reduce to textbook Larmor at $\beta\to 0$ — there is a non-trivial $O(\beta^2)$ residual $\beta^2(-4 + 11\sin^2\!\alpha)/5$. This is the load-bearing classical prediction of TCEP §3.3.
+
+### Implications for the one-loop self-energy
+
+The classical Larmor formula is recovered in QED as $\langle e^-|\Sigma|e^-\rangle$ at zero binding — the imaginary part of the on-shell self-energy reproduces the radiated power (Bjorken–Drell §10). The TCEP modifications give:
+
+1. **Photon kinetic term**: in the dual framework, the photon propagator should have $b$-factors in place of $c$ in the longitudinal-velocity-coupled pieces. Heuristically, $D_F(k) \sim 1/k^2$ in textbook QED becomes $D_F(k;u) \sim 1/(k^2 - (\mathbf{k}\!\cdot\!\mathbf{u}/b)^2 + \ldots)$ — schema only; needs derivation.
+2. **Vertex modification**: the $\bar\psi\gamma^\mu\psi A_\mu$ vertex in the (II.3) "potential-in-the-mass" form has *no* $V\boldsymbol\alpha\!\cdot\!\boldsymbol\pi/(mc)$ awkward piece (vs (II.1)) — so the proper-time self-energy in the (II.3) kernel is just a scalar-loop integral with Pauli kinetic + $V^2/(2mc^2)$ insertions.
+3. **$r_e$ as Larmor cutoff**: classical Larmor radiation diverges as $r\to 0$ in the self-field; the cutoff $r_e$ is the spatial scale at which the framework regularises the divergent self-mass — exactly the role $r_e$ plays in the §III.D $\psi_2$-substitution.
+
+### Mass-renormalisation: TCEP has none explicitly written
+
+TCEP §5 gives three forms of $K$ — (5.4) rest-mass-fixed $K = H^2/(2mc^2) + mc^2/2$, (5.6) Lorentz-frame-fixed $K = H^2/(mc^2)$, (5.7) momentum-fixed $K = \sqrt{H^2 - c^2\mathbf{P}_0^2}$ (Bakamjian–Thomas). These are *kinematic* re-parametrisations, **not** a renormalisation condition.
+
+**Gap:** no committed framework-internal statement of "physical mass = bare mass + $\Sigma(p)|_{\rm on-shell}$" exists in either TCEP or DRQM I. The mass-renormalisation condition that would fix $r_e$ is therefore a candidate `BLOCKED: <Tepper input>` item, to be re-checked after reading Bethe–Salpeter §3 / Lamb-shift derivation.
+
+**Next.** Read source-of-record §3 — `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/05_LambShift.md` — for the framework's *existing* one-loop self-energy precedent. Look specifically for: (a) the explicit proper-time photon propagator form, (b) the mass-renormalisation prescription used in the Lamb-shift calculation, (c) any reference $r_e$-like cutoff scale. If those are written down, we can lift the propagator + renormalisation scheme directly into the $r_e$ derivation.
+
+**Outcome-matrix:** not yet determinable (still scoping kernel + propagator).
+
+**Status:** READY.
