@@ -32,7 +32,7 @@ The cleanup target structure (un-branched, at the triangulated value):
 **Verdict:** ✅ at the framework's Bethe-estimate / sub-leading-QED precision floor, at the triangulated $r_e/r_0 = 0.4994205099128317$ (per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62)). The honest reading remains: the prediction is `(g_s/-2)^n × textbook leading-g_s term`, which matches measurement by construction once `g_s` is the back-fit value — a self-consistency check at leading-`g_s` precision, not an independent discrimination from standard QED (per [`10_CrossComparison.md` §2](../../Roadmapping/Quantum_Mechanics/Bethe_Salpeter/10_CrossComparison.md#2-the-r_e-back-fit-self-consistency-across-six-g_s-dependent-observables)).
 ```
 
-**Scope 1 — derivation companion docs.** The triangulation notebook ([`r_e_triangulation.wl`](../../Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_triangulation.wl)) and the `BetheSalpeter_S3.wl` companion ([`BetheSalpeter_S3.wl`](../../Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/BetheSalpeter_S3.wl)) establish the `.wl` style: top docstring block citing companion verification doc, `ClearAll`/`Print`/`FullSimplify` per-cell, honest-scope discipline inline. The four candidate starting points (Section 1 below) are documented in the follow-up author note at [`2026-05_re_triangulation_followup_for_gill.md`](../../Roadmapping/Author_Reports/2026-05_re_triangulation_followup_for_gill.md). The derivation's companion verification doc would extend the Eq. (III.21–23) section of [`Dual_Relativistic_Quantum_Mechanics_I.md`](../../Roadmapping/Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md) or live as a sibling under `Roadmapping/Equation_Verification/`.
+**Scope 1 — derivation companion docs.** The triangulation notebook ([`r_e_triangulation.wl`](../../Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_triangulation.wl)) and the `BetheSalpeter_S3.wl` companion ([`BetheSalpeter_S3.wl`](../../Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/BetheSalpeter_S3.wl)) establish the `.wl` style: top docstring block citing companion verification doc, `ClearAll`/`Print`/`FullSimplify` per-cell, honest-scope discipline inline. The three candidate starting points (Section 1 below) are documented in the follow-up author note at [`2026-05_re_triangulation_followup_for_gill.md`](../../Roadmapping/Author_Reports/2026-05_re_triangulation_followup_for_gill.md). A fourth candidate originally considered — retrieving an unpublished working-notebook derivation step — is empty per Tepper's 2026-05-25 author guidance (the original cutoff was a numerical search, not a derivation). The derivation's companion verification doc would extend the Eq. (III.21–23) section of [`Dual_Relativistic_Quantum_Mechanics_I.md`](../../Roadmapping/Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md) or live as a sibling under `Roadmapping/Equation_Verification/`.
 
 **FINDINGS Finding 2 current state.** Verdict marker is ⚠ (was 🔴) per the PR #62 update at [`FINDINGS_for_author_review.md`](../../Roadmapping/Equation_Verification/FINDINGS_for_author_review.md). The marker moves to ✅ on Scope 1 completion if the derivation agrees with the triangulated value; stays ⚠ (with the derivation result recorded) if a third refinement is exposed.
 
@@ -62,15 +62,14 @@ The plan is split by scope. Scope 2 has no external dependencies and can ship fi
 
 ### Scope 1 — Candidates summary document for the first-principles derivation (immediate; derivation work itself is deferred and conditional)
 
-**Conceptual reframe (2026-05-26):** the published $r_e$ value was a cutoff fixed by numerical search against $g_s$, not a derived quantity. PR #62's triangulation widened the search from one observable to six, which *increases the cutoff's credibility* but does not *promote it to a derived quantity*. There are no pre-existing derivation notebooks to wire up; a first-principles derivation would be genuinely new theory work, dependent on Tepper's input on which framework-internal route is natural. Scope 1's immediate deliverable is therefore a **candidates summary document** that lays out the four routes (with 1–3 paragraph explanations each) for Tepper to react to; the derivation work itself is deferred to a downstream task contingent on his selection.
+**Conceptual reframe (2026-05-26):** the published $r_e$ value was a cutoff fixed by numerical search against $g_s$, not a derived quantity. PR #62's triangulation widened the search from one observable to a joint fit across six observables that share $(g_s/-2)^n \times \text{textbook}$ structure, which confirms the framework's structural prescription is self-consistent under a single cutoff but does not promote that cutoff to a derived quantity. There are no pre-existing derivation notebooks to wire up; a first-principles derivation would be genuinely new theory work, dependent on Tepper's input on which framework-internal route is natural. Scope 1's immediate deliverable is therefore a **candidates summary document** that lays out the three remaining candidate routes (with 1–3 paragraph explanations each) for Tepper to react to; the derivation work itself is deferred to a downstream task contingent on his selection. (A fourth candidate originally considered — retrieving an unpublished working-notebook derivation step — was ruled out by Tepper's 2026-05-25 author guidance that the original cutoff value was a numerical search alone.)
 
 5. **Create the candidates summary document.** Draft `Roadmapping/Author_Reports/2026-05_re_derivation_candidates_for_gill.md`, following the Author_Reports naming convention. The document covers:
-   - **Context** — what the triangulation changed (one-observable → six-observable cutoff search); the honest reading that the value remains a cutoff, not a derived quantity; the credibility gain from widening the constraint set.
+   - **Context** — the honest reading that the value remains a cutoff, not a derived quantity; the joint-fit-self-consistency reading per `10_CrossComparison.md §2` (one structural fact applied to six manifestations, not six independent constraints); the open derivation question.
    - **Candidate 1 — Proper-time self-energy integral.** 1–3 paragraphs covering the framework's analog of the one-loop electron self-energy diagram in the proper-time formulation; what the route would compute and what the output would look like.
    - **Candidate 2 — Variational determination via the renormalised dual-Dirac equation.** 1–3 paragraphs on fixing $r_e$ by a mass-condition at the cutoff, analogous to standard-QED renormalisation conditions on $\alpha(\mu)$; the additional consistency conditions that may be needed for closure.
-   - **Candidate 3 — Structural constant of the dual representation.** 1–3 paragraphs on the possibility that $r_e/r_0$ is a calculable framework constant (from $b$-factor projection structure, second-order Dirac decomposition, or operator-ordering coefficients) rather than a renormalisation parameter.
-   - **Candidate 4 — Working-notebook derivation step not in the published prose.** 1–3 paragraphs on retrieving the original DRQM I §III.D working calculation (if it exists) for any framework-internal derivation step that did not make it into the published text.
-   - **Closing** — explicit honest framing: this thread is non-urgent; the triangulated value already serves at six-observable credibility; we defer to Tepper on whether any of the candidates is natural to pursue; the campaign continues with the triangulated value as the empirical cutoff regardless.
+   - **Candidate 3 — Closed-form Schwinger identification of the triangulated value.** 1–3 paragraphs on $r_e/r_0 = (2 - \alpha/(2\pi))/(4 + \alpha/\pi)$ reproducing the Schwinger one-loop anomalous moment $g_e = -2 - \alpha/\pi$ via the DRQM I cutoff formula. Recasts the derivation question from "what value should the cutoff have?" to "why does the framework specify this particular cutoff prescription?"
+   - **Closing** — explicit honest framing: this thread is non-urgent; the triangulated value already serves at the framework's precision floor; we defer to Tepper on whether any of the three candidates is natural to pursue; the campaign continues with the triangulated value as the empirical cutoff regardless.
 
 6. **Build the PDF deliverable.** Run `cd Roadmapping/Author_Reports && REPORT_DATE=2026-05-26 ./build_report.sh 2026-05_re_derivation_candidates_for_gill` to produce the `.tex` and `.pdf`. Target page count: 3–5 within the build script's [3, 7] guard.
 
@@ -100,7 +99,7 @@ The plan is split by scope. Scope 2 has no external dependencies and can ship fi
 ## Dependencies
 
 - **Scope 2** has no external dependencies — executes against `main` post-PR #62 merge using files already present.
-- **Scope 1** is dependent on Tepper Gill's input on which of the four candidate starting points is natural for the framework. No external libraries.
+- **Scope 1** is dependent on Tepper Gill's input on which of the three candidate starting points is natural for the framework. No external libraries.
 - **Wolfram MCP** for running the Scope 1 derivation notebook (already documented in [`CLAUDE.md`](../../CLAUDE.md)). The three MCP gotchas (single-line code; avoid `V` reserved for Vanadium; avoid `e` resolving to Euler's number; non-commutative `Dot`) apply.
 
 ## Acceptance Criteria
@@ -116,7 +115,7 @@ The plan is split by scope. Scope 2 has no external dependencies and can ship fi
 
 ### Scope 1 (candidates summary document; immediate)
 
-- [ ] `Roadmapping/Author_Reports/2026-05_re_derivation_candidates_for_gill.md` exists, carries YAML frontmatter (title, author, date, subject), and covers all four candidates with 1–3 paragraph explanations each.
+- [ ] `Roadmapping/Author_Reports/2026-05_re_derivation_candidates_for_gill.md` exists, carries YAML frontmatter (title, author, date, subject), and covers all three remaining candidates with 1–3 paragraph explanations each (Candidate 4 ruled out per Tepper's 2026-05-25 author guidance).
 - [ ] The document opens with explicit honest framing: the $r_e$ value remains a cutoff (not a derived quantity); the triangulation increased its credibility by widening the constraint set; no derivation notebooks exist at present.
 - [ ] The document closes with deferral to Tepper on which candidate (if any) is natural for the framework; thread explicitly non-urgent; the triangulated value stands as the campaign's $r_e$ disposition regardless.
 - [ ] `.tex` and `.pdf` built via `build_report.sh`; PDF page count within `[3, 7]`; PDF metadata reads correctly (Title from YAML, Author + Date pinned).
@@ -150,9 +149,9 @@ grep -l "0.4994205099128317" Roadmapping/Quantum_Mechanics/Bethe_Salpeter/*.md
 test -f Roadmapping/Author_Reports/2026-05_re_derivation_candidates_for_gill.md
 head -6 Roadmapping/Author_Reports/2026-05_re_derivation_candidates_for_gill.md | grep -q '^title:' && echo 'YAML title present'
 
-# 5. All four candidates are present as section headings
-grep -cE '^## Candidate [1-4]' Roadmapping/Author_Reports/2026-05_re_derivation_candidates_for_gill.md
-# expected: 4
+# 5. All three remaining candidates are present as section headings (Candidate 4 ruled out per Tepper's 2026-05-25 guidance)
+grep -cE '^## Candidate [1-3]' Roadmapping/Author_Reports/2026-05_re_derivation_candidates_for_gill.md
+# expected: 3
 
 # 6. PDF builds and lands in the [3, 7] page guard
 REPORT_DATE=2026-05-26 ./Roadmapping/Author_Reports/build_report.sh 2026-05_re_derivation_candidates_for_gill 2>&1 | tail -5
