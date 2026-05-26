@@ -41,7 +41,18 @@ The honest formulation adds a framework-floor noise term to each $\sigma_i$ (so 
 
 A natural way to read the relationship between the published $r_e$ and this triangulated value: the published $r_e/r_0 = 0.499\,857\ldots$ is an *initial-value* result from the working-notebook numerical search against $g_s$ alone, and this joint fit across six observables is a *refinement calculation* on top of that initial value. The triangulated $r_e/r_0 = 0.499\,420\,509\,912\,831\,7$ supersedes the initial value the same way any iteratively-refined numerical result supersedes an earlier estimate — it does not invalidate the derivation that produced the initial value, it refines the cutoff identification using more constraints (six observables instead of one).
 
-A further refinement is still open: a first-principles derivation of $r_e$ from the dual-Dirac renormalisation prescription (DRQM I §III.D) — tracked in [issue #54](https://github.com/temoTxt/PyPhysics/issues/54). That derivation could agree with the triangulated value (confirming this refinement), supersede it (a third refinement), or expose a derivation-level structure that reframes the cutoff entirely. Any of those outcomes are consistent with treating each calculation as an iterative refinement rather than as a final authoritative answer.
+A further refinement is still open: a first-principles derivation of $r_e$ from the dual-Dirac renormalisation prescription (DRQM I §III.D) — tracked in [issue #54](https://github.com/temoTxt/PyPhysics/issues/54).
+
+By "first-principles" we mean a derivation in which $r_e$ emerges from the dual-Dirac equation's internal structure rather than being fixed by inverse-solving against measured $g_e$. The output of such a derivation would be a closed-form expression for $r_e/r_0$ in terms of the framework's fundamental parameters (functions of $\alpha$, $r_0$, and the structural constants of the dual representation), evaluating numerically to $\approx 0.499\,420\,509\ldots$ if the empirical refinement holds, or to a different value if the derivation exposes a structure the triangulation has not captured. The plausible starting points we have considered — and would defer to your judgment on which is natural for this framework — are:
+
+- the proper-time self-energy integral in the dual-Dirac formalism, with $r_e$ emerging as the regulator scale at which mass renormalisation closes consistently;
+- a variational determination, with $r_e$ fixed by demanding the renormalised dual-Dirac equation reproduce the physical electron mass at the cutoff (analogous to how the standard-QED running coupling is fixed by a renormalisation condition);
+- a structural constant of the dual representation — something the $b$-factor projection structure or the second-order Dirac decomposition singles out — making $r_e/r_0$ a derivable framework-internal ratio rather than a renormalisation choice;
+- or a derivation step from your original DRQM I §III.D working notebook that did not make it into the published prose, which we would not have visibility into from the repository alone.
+
+We have not pursued any of these — the natural starting point depends on the framework's internal logic better than we can guess at from outside. This thread is non-urgent: the triangulated value already serves as the campaign's current-best-refinement, and a first-principles derivation can sit indefinitely as a "would-be-nice-to-have" until you point us at a starting structure (or decide the thread is not where the project's time is best spent).
+
+Whichever route turns out to be natural, the outcome could agree with the triangulated value (confirming this refinement), supersede it (a third refinement), or expose a derivation-level structure that reframes the cutoff entirely. Any of those outcomes are consistent with treating each calculation as an iterative refinement rather than as a final authoritative answer.
 
 ## One specific question, if useful
 
