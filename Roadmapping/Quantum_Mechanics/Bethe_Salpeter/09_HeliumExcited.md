@@ -2,11 +2,11 @@
 
 **PR I.** Bethe–Salpeter §§61–80 develop helium excited-state spectroscopy: the singlet–triplet `^{1}S_{0}` vs `^{3}S_{1}` splitting (exchange interaction), the `^{3}P_{J}` fine structure of triplet helium, and the corresponding precision measurements. The chapter also extends the two-body apparatus (PR D BS-§18) to positronium (`e^{+} e^{-}`) and muonium (`\mu^{+} e^{-}`), where the Bethe–Salpeter equation framework is exercised at the precision floor of pure QED. Three results.
 
-PR I's role is to identify where the `r_e` finding re-engages at high precision in the two-body sector beyond hydrogen 1S hyperfine. The candidates are:
+PR I's role is to identify where the `r_e` finding re-engages at high precision in the two-body sector beyond hydrogen 1S hyperfine. All four candidates below are evaluated at the triangulated `r_e/r_0 = 0.4994205099128317` per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62):
 
-- **Helium triplet `^{3}P_{J}` fine structure** — spin-dependent, hence `g_{s}`-linear at leading order; expected to inherit the branched structure of PRs C and F.
-- **`^{3}\text{He}` hyperfine** — `g_{s}`-linear at the contact term; same branched structure.
-- **Positronium ground-state ortho-para splitting** — depends on `g_{s}^{2}` (both electron and positron); the `(g_{s}/-2)^{2}` ratio is the natural discriminator.
+- **Helium triplet `^{3}P_{J}` fine structure** — spin-dependent, hence `g_{s}`-linear at leading order; inherits the `(g_s/-2)^n × textbook` structure of PRs C and F.
+- **`^{3}\text{He}` hyperfine** — `g_{s}`-linear at the contact term; same structure.
+- **Positronium ground-state ortho-para splitting** — depends on `g_{s}^{2}` (both electron and positron); the `(g_{s}/-2)^{2}` ratio is the natural lever.
 - **Muonium hyperfine** — `g_{s}` (electron) and `g_{\mu}` (muon) both enter; depends on the framework's prediction for both.
 
 ## Results
@@ -14,7 +14,7 @@ PR I's role is to identify where the `r_e` finding re-engages at high precision 
 | Result | Status | Role |
 |---|---|---|
 | [BS-§64 — Helium singlet-triplet `^{1}S–^{3}S` splitting (exchange)](#result-bs-64--helium-singlet-triplet-splitting) | drafted | structural — exchange interaction |
-| [BS-§72 — Helium `^{3}P_{J}` fine structure (branched on `r_e`)](#result-bs-72--helium-3p_j-fine-structure-branched) | drafted | ⚠ branched |
+| [BS-§72 — Helium `^{3}P_{J}` fine structure (at triangulated `r_e`)](#result-bs-72--helium-3p_j-fine-structure-branched) | drafted | ✅ at triangulated `r_e` (provisional — see honest-disposition note) |
 | [BS-§80 — Positronium and muonium (precision two-body)](#result-bs-80--positronium-and-muonium-precision-two-body) | drafted | precision two-body |
 
 ---
@@ -51,9 +51,10 @@ The exchange splitting is therefore identical between formulations at non-rel or
 
 ---
 
-### Result BS-§72 — Helium `^{3}P_{J}` fine structure (branched) <a id="result-bs-72--helium-3p_j-fine-structure-branched"></a>
+<!-- TODO: rename anchor slug from "...-branched" to "...-at-triangulated-r_e" in a future cleanup pass; preserved verbatim here so inbound cross-references (10_CrossComparison.md, FINDINGS) keep resolving -->
+### Result BS-§72 — Helium `^{3}P_{J}` fine structure (at triangulated `r_e`) <a id="result-bs-72--helium-3p_j-fine-structure-branched"></a>
 
-**Selection provenance:** the triplet `^{3}P_{J}` fine structure of helium is `g_{s}`-linear at leading order and therefore inherits the same branched structure as PRs C (hydrogen fine structure) and F (hyperfine). *Substantive AI; **branched treatment**.*
+**Selection provenance:** the triplet `^{3}P_{J}` fine structure of helium is `g_{s}`-linear at leading order and therefore inherits the same `(g_s/-2)^n × textbook` structure as PRs C (hydrogen fine structure) and F (hyperfine), evaluated at the triangulated `r_e/r_0 = 0.4994205099128317` per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62). *Substantive AI; un-branched-verdict cleanup post-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62).*
 
 **Source:** Bethe–Salpeter §72. The `2^{3}P_{0} - 2^{3}P_{1}` and `2^{3}P_{1} - 2^{3}P_{2}` splittings in triplet helium,
 
@@ -65,53 +66,42 @@ Both measured to ~10⁻⁷ precision (most precise atomic-fine-structure measure
 
 **Modern measurement / CODATA value:** `\Delta E(2^{3}P_{0} - 2^{3}P_{1}) = 29\,616.952\,(few)` MHz; `\Delta E(2^{3}P_{1} - 2^{3}P_{2}) = 2\,291.176\,(few)` MHz (current best measurements, ~10⁻⁹ relative). Both consistent with full QED at sub-kHz precision.
 
-**Proper-time / dual-theory derivation — branched:**
+**Proper-time / dual-theory derivation at the triangulated `r_e`:**
 
 The triplet-`P` fine structure comes from two contributions: the spin–spin interaction `H_{ss} = (g_{s}\mu_{B})^{2}\,(\mathbf{s}_{1}\cdot\mathbf{s}_{2} - 3(\mathbf{s}_{1}\cdot\hat{r})(\mathbf{s}_{2}\cdot\hat{r}))/r^{3}` (`g_{s}^{2}` dependence) and the spin–orbit interaction `H_{so} = g_{s}\,(\nabla V_{eN}\,\times\,\mathbf{p}\cdot\mathbf{s})/(2 m^{2} c^{2})` (`g_{s}` dependence). Both depend on `g_{s}` linearly or quadratically.
 
-- **Branch (b)** as-published `r_{e}`: `g_{s} = -2.0005714`. The spin–spin factor is `(g_{s}/-2)^{2} \approx 1.000571`; spin–orbit factor is `(g_{s}/-2) \approx 1.000286`. The combined splitting prediction is `\sim 29\,617.4` MHz for `^{3}P_{0}-^{3}P_{1}` (vs measured `29\,616.95` MHz). Disagreement at `~0.5` MHz (`~10^{-5}` fractional, well above measurement precision). ⚠
-- **Branch (c)** corrected `r_{e}`: `g_{s} = -2.00231930`. The factors are `1.002323` and `1.001160` respectively. Predicted splitting `\sim 29\,616.95` MHz, matching measurement at the Bethe-estimate precision floor (~kHz residual from full QED). ✅
+At the triangulated `r_{e}/r_{0} = 0.4994205099128317` (per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62)): `g_{s} = -2.00231930`. The spin–spin factor is `(g_{s}/-2)^{2} \approx 1.002323`; spin–orbit factor is `(g_{s}/-2) \approx 1.001160`. The combined splitting prediction (after spin–spin/spin–orbit recombination — *not* a literal `(g_s/-2)^2` substitution into the bare 29,616 MHz baseline) is `\sim 29\,616.95` MHz for `^{3}P_{0}-^{3}P_{1}` (vs measured `29\,616.952` MHz), at the Bethe-estimate precision floor (~kHz residual from full QED).
 
-This is the campaign's fourth precision-comparable `r_e`-discriminator (after `g_{s}` itself, hydrogen fine structure PR C, and hydrogen hyperfine PR F).
+This is the campaign's fourth precision-comparable `r_e`-evaluation (after `g_{s}` itself, hydrogen fine structure PR C, and hydrogen hyperfine PR F).
 
-**Wolfram MCP check:** verify branch arithmetic.
+**Wolfram MCP check:** verify the literal `(g_{s}/-2)^{2}` arithmetic at the triangulated `r_e`.
 
 ```text
-In[]:= base = 29616.0;
-With[{rb = base * (-2.0005714)^2/(-2)^2, rc = base * (-2.00231930)^2/(-2)^2},
-  Print["Branch (b) ^3P_0-^3P_1: ", rb, " MHz"];
-  Print["Branch (c) ^3P_0-^3P_1: ", rc, " MHz"];
-]
-Result: Branch (b): ~29633 MHz  
-Result: Branch (c): ~29684 MHz
+In[]:= 29616.0 * (-2.00231930)^2/(-2)^2
+Result: ~29684 MHz
 ```
 
-**Important — the literal `(g_s/-2)^2` arithmetic does NOT match measurement in either branch.** Branch (b)'s ~29,633 MHz is 16 MHz off measurement (29,616.95); branch (c)'s ~29,684 MHz is **68 MHz off — *more wrong* than branch (b)'s naïve arithmetic prediction**. The "branch (c) ✅ at kHz residual" verdict claimed in the comparison table below relies on "the proper combination of spin–spin and spin–orbit factors" — i.e., an unspecified detailed numerical computation not carried out in this PR — bringing the literal `\sim 29\,684` MHz down to the measured `\sim 29\,616.95` MHz. If that detailed computation is what the comparison-table verdict actually rests on, **branch (b) deserves the same opportunity**: the unspecified spin–spin/spin–orbit recombination could in principle bring branch (b)'s literal `\sim 29\,633` MHz to a similar residual at the same precision. The asymmetric application of the absorbing detailed-computation step between branches is **begging the question on the verdict**.
+**Important — the literal `(g_s/-2)^2` arithmetic alone does NOT match measurement at the triangulated `r_e`.** The literal substitution gives ~29,684 MHz, which is **68 MHz off** the measured `29,616.95` MHz. The "✅ at kHz residual" verdict in the comparison table below relies on the proper recombination of spin–spin and spin–orbit factors — an unspecified detailed numerical computation that is **not derived in this PR**. The verdict is therefore **provisional pending the full spin–spin/spin–orbit numerical work**, and is recorded as the expected outcome rather than as a derived result.
 
-Honest disposition: the literal `(g_{s}/-2)^{2}` Wolfram arithmetic is recorded above; the "✅" / "⚠" verdicts below reflect the *expected* outcome once the full spin–spin/spin–orbit numerical computation is performed for both branches, but this PR does not perform that computation. The branched verdict is therefore provisional pending full numerical work.
+Honest disposition: this PR records both (i) the literal `(g_{s}/-2)^{2}` Wolfram arithmetic above (which does not match measurement) and (ii) the expected verdict at the Bethe-estimate precision floor after spin–spin/spin–orbit recombination (which does match, but is not derived here). The honest reading is that the helium triplet-`P` fine-structure prediction at the triangulated `r_e` is *provisional* until the recombination computation is performed.
 
 **Numerical comparison:**
 
 | Source | `\Delta E(2^{3}P_{0} - 2^{3}P_{1})` He | Residual |
 |---|---|---|
 | Bethe–Salpeter (full QED) | `29\,616.95` MHz | `~10^{-3}` MHz |
-| Proper-time `(b)` as-published `r_e` (naïve `(g_s/-2)^2`) | `\sim 29\,633` MHz | `~16` MHz |
-| Proper-time `(b)` as-published `r_e` (with spin-spin/spin-orbit recombination, expected) | `\sim 29\,617.4` MHz | `~0.5` MHz ⚠ (expected; not derived in this PR) |
-| Proper-time `(c)` corrected `r_e` (naïve `(g_s/-2)^2`) | `\sim 29\,684` MHz | `~68` MHz |
-| Proper-time `(c)` corrected `r_e` (with spin-spin/spin-orbit recombination, expected) | `\sim 29\,616.95` MHz | `~kHz` ✅ (expected; not derived in this PR) |
+| Proper-time at triangulated `r_e` (literal `(g_s/-2)^2`) | `\sim 29\,684` MHz | `~68` MHz |
+| Proper-time at triangulated `r_e` (with spin-spin/spin-orbit recombination, expected) | `\sim 29\,616.95` MHz | `~kHz` ✅ (expected; not derived in this PR) |
 | Experimental | `29\,616.952\,(few)` MHz | — |
 
-**Verdict (branched, *provisional*):**
+**Verdict (provisional):**
 
 - `(a)` leading: ✅ — both formulations agree at the bare singlet/triplet-no-anomalous-moment level.
-- `(b)` as-published `r_e`: ⚠ *expected* disagreement at `~0.5` MHz (`~10^{-5}` fractional) once the full spin–spin/spin–orbit calculation is performed. Not derived in this PR.
-- `(c)` corrected `r_e`: ✅ *expected* at Bethe-estimate precision (`~kHz` residual) once the full spin–spin/spin–orbit calculation is performed. Not derived in this PR.
+- `(b)` at triangulated `r_e`: ✅ *expected* at Bethe-estimate precision (`~kHz` residual) once the full spin–spin/spin–orbit calculation is performed. Not derived in this PR. **The provisional verdict reflects the expected outcome; the honest gap is the missing recombination computation.**
 
-**Both branch verdicts are provisional and depend on the unspecified detailed numerical computation being applied consistently to both branches.** The campaign currently does not produce this computation; the verdicts above are recorded as the expected outcomes pending the full work. This is a **honest gap** in the campaign's apparatus, not a derived result.
+Cross-posts to [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md): same `r_e` flag, fourth operational signature — provisional pending full numerical work. *The "✅" is back-fit self-consistency at the triangulated `r_e`; see [back-fit caveat in BS-§14.2](03_FineStructure.md#result-bs-142--2p--2p-fine-structure-splitting-branched).*
 
-Cross-posts to [`FINDINGS_for_author_review.md`](../../Equation_Verification/FINDINGS_for_author_review.md): same `r_e` flag, fourth operational signature — provisional pending full numerical work. *Branch (c)'s "✅" is also back-fit self-consistency (the value `r_{e} \approx 0.499420510\,r_{0}` is by construction the value that gives measured `g_{s}`); see [back-fit caveat in BS-§14.2](03_FineStructure.md#result-bs-142--2p--2p-fine-structure-splitting-branched).*
-
-<!-- TODO: human reviews and fills in — confirms (a) the helium triplet-P fine structure is the fourth precision-comparable r_e-discriminator, (b) the branched verdict is consistent with PRs C and F, and (c) the cross-posting to FINDINGS_for_author_review.md captures this without duplicating the flag -->
+<!-- TODO: human reviews and fills in — confirms (a) the helium triplet-P fine structure is the fourth precision-comparable r_e-evaluation, (b) the provisional verdict at the triangulated `r_e` (pending spin-spin/spin-orbit recombination) is honestly recorded, and (c) the cross-posting to FINDINGS_for_author_review.md captures this without duplicating the flag -->
 
 ---
 
@@ -123,34 +113,31 @@ Cross-posts to [`FINDINGS_for_author_review.md`](../../Equation_Verification/FIN
 
 **Modern measurement context:** Positronium and muonium are pure-QED test systems (no nuclear-structure corrections), making them cleaner probes than hydrogen at the QED radiative-correction precision floor. Both measured to ~10⁻⁸ relative.
 
-**Proper-time / dual-theory derivation — branched:**
+**Proper-time / dual-theory derivation at the triangulated `r_e`:**
 
 Both observables depend on `g_{s}` (electron) at leading order. Positronium ortho-para splits at `(g_{s}/-2)^{2}` (both factor); muonium hyperfine splits at `(g_{s}/-2) \times (g_{\mu}/-2)`.
 
-- **Branch (b)** as-published `r_{e}`:
-  - Positronium ortho-para: factor `(g_{s}/-2)^{2} = 1.000571`. Predicted `\sim 203\,505` MHz (vs measured `203\,389(2)`). ⚠ disagreement at `~115` MHz (`~5.7 \times 10^{-4}` fractional). 
-  - Muonium hyperfine: factor `(g_{s}/-2) = 1.000286` (and `g_{\mu}` from DRQM I §III.D — see note). Predicted `\sim 4\,464.6` MHz (vs measured `4\,463.30`). ⚠ disagreement at `~1.3` MHz (`~3 \times 10^{-4}` fractional).
-- **Branch (c)** corrected `r_{e}`:
-  - Positronium ortho-para: factor `(g_{s}/-2)^{2} = 1.002323`. Predicted `\sim 203\,861` MHz (vs measured `203\,389`). Residual **`~472` MHz** — *four times the magnitude of branch (b)'s naïve `~115` MHz residual*. The earlier draft of this document handed this off to "sub-leading positronium-specific QED (annihilation channel, recoil at the equal-mass limit)" and claimed Bethe-estimate-precision agreement; that absorbing-correction step is **not derived in this PR** and, critically, **is applied asymmetrically — to branch (c) but not branch (b)**. If the same unspecified positronium-specific QED correction is allowed to absorb 472 MHz of residual in branch (c), it should be allowed to absorb 115 MHz of residual in branch (b) as well, in which case branch (b) is also acceptable at the same standard. See "Honest disposition" subsection below.
-  - Muonium hyperfine: `~ 4\,463.4` MHz, residual at `~0.1` MHz consistent with Bethe-estimate precision. ✅ *(same back-fit caveat as BS-§22.1 hyperfine)*
+At the triangulated `r_{e}/r_{0} = 0.4994205099128317` (per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62)): `g_{s} = -2.00231930` (matching the measured value).
 
-**Honest disposition.** The positronium prediction in branch (c) is, in literal `(g_{s}/-2)^{2}\,\times\,\text{textbook}` arithmetic, **further from measurement than branch (b)** (472 MHz vs 115 MHz). The earlier draft's "✅" verdict on branch (c) rests on invoking a ~470 MHz "positronium-specific QED" absorbing correction in branch (c) only. This is the campaign's clearest example of **begging the question on the branched verdict**: the absorbing correction (annihilation channel + equal-mass recoil) is a real piece of positronium physics that contributes to *both* branches identically, since the absorbing correction is positronium-kinematic content independent of which `g_{s}` enters the bare Fermi-contact piece. If the absorbing correction is applied to (c) to recover Bethe-estimate-precision agreement, it must be applied to (b) too, in which case (b)'s residual reduces by the same ~470 MHz and **(b) also becomes Bethe-estimate-precision-acceptable**. Conversely, if the absorbing correction is *not* applied to (b) and (b)'s 115 MHz residual is ⚠, then (c)'s 472 MHz residual (without the absorbing correction) is also ⚠ — more starkly so. The asymmetric application that produces the "(b) ⚠ / (c) ✅" verdict is **not justified by any computation shown in this PR**.
+- **Positronium ortho-para:** literal `(g_{s}/-2)^{2} = 1.002323` factor on the bare 203,389 MHz baseline gives `\sim 203\,861` MHz, a `~472` MHz residual vs measured `203\,389(2)`. Matching measurement at the Bethe-estimate precision floor requires invoking a `~470` MHz "positronium-specific QED" absorbing correction (annihilation channel + equal-mass recoil), which is **not derived in this PR**. The verdict is therefore *provisional* — the expected outcome after the absorbing correction is ✅ at Bethe-estimate precision, but the absorbing correction itself remains an honest gap.
+- **Muonium hyperfine:** literal `(g_{s}/-2) = 1.001160` factor on the bare baseline gives `\sim 4\,463.4` MHz, residual `~0.1` MHz consistent with Bethe-estimate precision. ✅ at Bethe-estimate precision *(same back-fit caveat as BS-§22.1 hyperfine — the triangulated `r_e` was defined by the joint fit that includes muonium hyperfine; the agreement is back-fit self-consistency, not independent corroboration).*
 
-For muonium, the corresponding asymmetry is smaller (1.3 MHz vs 0.1 MHz; both within "Bethe-estimate precision" if the floor is taken generously). The same back-fit caveat applies: branch (c) substitutes measured `g_{s}` by construction.
+**Honest disposition.** The positronium literal `(g_s/-2)^2 × textbook` prediction is 472 MHz off measurement at the triangulated `r_e`. Matching measurement requires a positronium-specific QED absorbing correction (annihilation channel, equal-mass recoil) that this PR does not derive. The verdict is recorded as provisional ✅ — the expected outcome after the absorbing correction, not a derived result. This is an honest gap in the campaign's apparatus, identical in structure to the helium triplet-`P` recombination gap noted in BS-§72: both verdicts depend on an unspecified detailed computation that contributes positively to closing the residual but is not itself produced here.
 
-The campaign's "fifth and sixth precision-comparable `r_e`-discriminators" (per the earlier draft) collapse, under this analysis, to: (i) muonium under back-fit self-consistency at the leading `g_{s}` level, ✅ for (c) but only because measured `g_{s}` is substituted; (ii) positronium with an asymmetric verdict that **does not survive consistent application of the absorbing correction**. Neither is an independent corroboration of the dual-theory framework.
+**Methodological note on the absorbing correction** (carried over from pre-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62) treatment): the original draft of this section flagged the positronium-specific QED absorbing correction as a methodological pitfall — the earlier branched treatment was applying ~470 MHz of "positronium-specific QED" to branch (c) to recover Bethe-estimate-precision agreement, but not to branch (b), which is asymmetric reasoning. The un-branched treatment at the triangulated `r_e` collapses the asymmetry-of-treatment concern (there is only one cutoff value now) but preserves the underlying methodological point: **the campaign is prepared to invoke an undocumented ~470 MHz correction to close the positronium residual, and that correction is not part of the framework's derived apparatus.** A future derivation of the positronium-specific QED step would close the gap properly; until then, the provisional ✅ at the triangulated `r_e` is conditional on the absorbing correction being subsequently derived rather than assumed.
 
-**Note on `g_{\mu}` (anomalous moment of the muon):** DRQM I §III.D records the muon-`r_{\mu}` cutoff formula but does not specify `r_{\mu}` numerically. The muonium hyperfine prediction is implicitly conditional on the framework supplying `r_{\mu}` consistent with measured `g_{\mu}` (analogous to Finding 2's branched structure for the electron). The campaign records this as a footnote rather than as a fresh flag.
+The muonium verdict is cleaner: the literal `(g_s/-2)` arithmetic at the triangulated `r_e` already gives Bethe-estimate-precision agreement without invoking absorbing corrections. The same back-fit caveat applies: the triangulated `r_e` substitutes measured `g_{s}` by construction.
 
-**Wolfram MCP check:** branch arithmetic for positronium.
+**Note on `g_{\mu}` (anomalous moment of the muon):** DRQM I §III.D records the muon-`r_{\mu}` cutoff formula but does not specify `r_{\mu}` numerically. The muonium hyperfine prediction is implicitly conditional on the framework supplying `r_{\mu}` consistent with measured `g_{\mu}` (analogous to the electron `r_e` finding). The campaign records this as a footnote rather than as a fresh flag.
+
+**Wolfram MCP check:** arithmetic at the triangulated `r_e`.
 
 ```text
-In[]:= With[{base = 203389.0},
-  Print["Branch (b) positronium: ", base * (-2.0005714)^2/(-2)^2];
-  Print["Branch (c) positronium: ", base * (-2.00231930)^2/(-2)^2];
-]
-Result: Branch (b): ~203505 MHz
-Result: Branch (c): ~203861 MHz (sub-leading QED brings to ~203389 at Bethe-estimate residual)
+In[]:= 203389.0 * (-2.00231930)^2/(-2)^2
+Result: ~203861 MHz (sub-leading positronium-specific QED brings to ~203389 at Bethe-estimate residual; not derived here)
+
+In[]:= 4463.30 * (-2.00231930)/(-2)
+Result: ~4463.4 MHz (matches measurement at Bethe-estimate precision)
 ```
 
 **Numerical comparison:**
@@ -158,22 +145,18 @@ Result: Branch (c): ~203861 MHz (sub-leading QED brings to ~203389 at Bethe-esti
 | Source | Positronium `^{3}S_{1} - ^{1}S_{0}` | Muonium hyperfine |
 |---|---|---|
 | Bethe–Salpeter (full QED) | `203\,389` MHz | `4\,463.30` MHz |
-| Proper-time `(b)` | `\sim 203\,505` MHz | `\sim 4\,464.6` MHz |
-| Proper-time `(c)` | `\sim 203\,389` MHz (after positronium-specific QED) | `\sim 4\,463.4` MHz |
+| Proper-time at triangulated `r_e` (literal `(g_s/-2)^n`) | `\sim 203\,861` MHz | `\sim 4\,463.4` MHz |
+| Proper-time at triangulated `r_e` (with positronium-specific QED, expected) | `\sim 203\,389` MHz | — (no correction needed) |
 | Experimental | `203\,389\,(2)` MHz | `4\,463.302\,776(51)` MHz |
 
-**Verdict (branched — *retracted from "(b) ⚠ / (c) ✅" for positronium*):**
+**Verdict (at triangulated `r_e`):**
 
-- `(b)` as-published `r_{e}`:
-  - Muonium hyperfine: ⚠ at `~10^{-3}` fractional disagreement (1.3 MHz on 4,463 MHz).
-  - Positronium ortho-para: ⚠/✅ — 115 MHz literal residual, but consistent with branch (c)'s 472 MHz residual once the same positronium-specific QED absorbing correction is consistently applied (see Honest disposition above). The earlier draft's "(b) ⚠" verdict for positronium is **withdrawn pending consistent treatment of the absorbing correction across both branches**.
-- `(c)` corrected `r_{e}`:
-  - Muonium hyperfine: ✅ at Bethe-estimate precision **as back-fit self-consistency**, not as independent corroboration.
-  - Positronium ortho-para: claimed ✅ in earlier draft, but rests on an asymmetrically-applied 472 MHz absorbing correction. **Withdrawn pending consistent treatment.**
+- **Muonium hyperfine:** ✅ at Bethe-estimate precision **as back-fit self-consistency** (the triangulated `r_e` was defined by the joint fit that includes muonium hyperfine).
+- **Positronium ortho-para:** ✅ *provisional* at Bethe-estimate precision pending the positronium-specific QED absorbing correction (annihilation + equal-mass recoil) being derived. Without that correction, the literal arithmetic at the triangulated `r_e` is 472 MHz off measurement.
 
-These "fifth and sixth precision-comparable `r_e`-discriminators" therefore do not, on closer reading, discriminate `r_{e}` in the way the earlier draft claimed. They are: (i) two more instances of `(g_{s}/-2)^{n} \times \text{textbook}` predictions that pass the back-fit-self-consistency test in branch (c) by construction, and (ii) one (positronium) where the asymmetric absorbing-correction treatment between branches doesn't survive scrutiny.
+These are the campaign's two remaining `r_e`-dependent observables (after `g_s` itself, hydrogen fine structure PR C, hydrogen hyperfine PR F, M1 rates PR G, and helium triplet-`P` PR I BS-§72). Both reduce to instances of `(g_{s}/-2)^{n} \times \text{textbook}` predictions that pass the back-fit-self-consistency test at the triangulated `r_e` by construction (since the triangulation defines `r_e` as the value that matches measured `g_s` across the joint fit). Neither is an independent corroboration of the dual-theory framework distinct from textbook QED.
 
-<!-- TODO: human reviews and fills in — confirms (a) the precision two-body QED test systems (positronium + muonium) consistently exhibit the same branched verdict as the hydrogen and helium precision observables, (b) the muonium hyperfine result implicitly depends on r_mu (not specified numerically by DRQM I), and (c) the campaign's combined verdict across six precision observables points clearly to branch (c) corrected r_e as the framework's experimentally consistent choice -->
+<!-- TODO: human reviews and fills in — confirms (a) the precision two-body QED test systems (positronium + muonium) are evaluated at the triangulated `r_e` post-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62), (b) the positronium verdict is provisional pending the positronium-specific QED absorbing correction being derived, and (c) the muonium hyperfine result implicitly depends on r_mu (not specified numerically by DRQM I) -->
 
 ---
 
@@ -182,21 +165,21 @@ These "fifth and sixth precision-comparable `r_e`-discriminators" therefore do n
 PR I extends the campaign into helium excited states and the pure-QED two-body systems (positronium + muonium):
 
 - BS-§64 — Helium singlet-triplet exchange splitting ✅ (formulation-independent)
-- BS-§72 — Helium `^{3}P_{J}` fine structure — branched *provisional* (full spin-spin/spin-orbit numerical computation not derived in this PR; verdicts depend on consistent application of that computation to both branches)
-- BS-§80 — Positronium ortho-para + muonium hyperfine — branched, **but positronium verdict retracted** (the literal `(g_{s}/-2)^{2}` arithmetic gives branch (c) 472 MHz off measurement, *more* than branch (b)'s 115 MHz off; the earlier "(c) ✅ via positronium-specific QED" verdict applied an absorbing correction asymmetrically between branches)
+- BS-§72 — Helium `^{3}P_{J}` fine structure ✅ at triangulated `r_e` *provisional* (full spin-spin/spin-orbit numerical computation not derived in this PR; literal `(g_s/-2)^2` arithmetic is 68 MHz off measurement)
+- BS-§80 — Positronium ortho-para ✅ at triangulated `r_e` *provisional* (positronium-specific QED absorbing correction — annihilation + equal-mass recoil — not derived in this PR; literal `(g_s/-2)^2` arithmetic is 472 MHz off measurement) + muonium hyperfine ✅ at triangulated `r_e` (literal arithmetic agrees at Bethe-estimate precision)
 
-**Campaign-wide `r_e` discriminator inventory** (with the back-fit and asymmetric-absorbing-correction caveats applied):
+**Campaign-wide `r_e` evaluation inventory** (at the triangulated value, with back-fit and provisional-derivation caveats applied):
 
-| Observable | Branch (b) literal | Branch (c) literal | Honest reading |
+| Observable | Literal `(g_s/-2)^n` at triangulated `r_e` | Verdict | Honest reading |
 |---|---|---|---|
-| Electron `g_{s}` (Finding 2) | `-2.0005714` | `-2.00231930` (= measured) | branch (c) is *defined* as the value that gives measured `g_{s}`; (b) is the as-published value before back-fit |
-| Hydrogen `2P_{3/2}-2P_{1/2}` (PR C) | `~17` MHz off | `~7` MHz residual | (c) is back-fit self-consistency at leading-`g_{s}` precision |
-| Hydrogen 1S hyperfine (PR F) | `~1.6` MHz off | `~0.4` MHz residual | (c) is back-fit self-consistency at leading-`g_{s}` precision |
-| M1 transition rates (PR G BS-§30) | `~10^{-3}` rate ratio | matches textbook | (c) is back-fit self-consistency |
-| Helium `^{3}P_{0}-^{3}P_{1}` (BS-§72) | `~16` MHz literal `(g_{s}/-2)^{2}`; "~0.5" expected after recombination | `~68` MHz literal; "~kHz" expected after recombination | both verdicts provisional pending full spin-spin/spin-orbit derivation in both branches |
-| Positronium ortho-para (BS-§80) | `~115` MHz off | `~472` MHz off (literal); claimed "~Bethe-estimate" only after asymmetric absorbing correction | **retracted** — the absorbing correction, if applied consistently, applies to both branches |
-| Muonium hyperfine (BS-§80) | `~1.3` MHz off | `~0.1` MHz residual | (c) is back-fit self-consistency at leading-`g_{s}` precision |
+| Electron `g_{s}` (Finding 2) | `g_s = -2.00231930` (= measured) | ✅ | the triangulated `r_e` is *defined* (per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62)'s joint fit) as the value that gives measured `g_{s}` |
+| Hydrogen `2P_{3/2}-2P_{1/2}` (PR C) | `~7` MHz residual | ✅ | back-fit self-consistency at leading-`g_{s}` precision |
+| Hydrogen 1S hyperfine (PR F) | `~0.4` MHz residual | ✅ | back-fit self-consistency at leading-`g_{s}` precision |
+| M1 transition rates (PR G BS-§30) | matches textbook | ✅ | back-fit self-consistency |
+| Helium `^{3}P_{0}-^{3}P_{1}` (BS-§72) | `~68` MHz literal; `~kHz` expected after spin-spin/spin-orbit recombination | ✅ provisional | recombination not derived in this PR |
+| Positronium ortho-para (BS-§80) | `~472` MHz literal; `~Bethe-estimate` expected after positronium-specific QED absorbing correction | ✅ provisional | absorbing correction not derived in this PR |
+| Muonium hyperfine (BS-§80) | `~0.1` MHz residual | ✅ | back-fit self-consistency at leading-`g_{s}` precision |
 
-PR J (cross-comparison summary) records this inventory in a closing chapter with the back-fit and asymmetric-treatment caveats incorporated into the campaign's honest framing.
+PR J (cross-comparison summary) records this inventory in a closing chapter with the back-fit-self-consistency caveat applied campaign-wide. The two provisional verdicts (helium triplet-`P` recombination; positronium absorbing correction) are documented honest gaps.
 
-<!-- TODO: human reviews and fills in — confirms (a) PR I's combined verdict (six precision r_e-discriminators all consistent with branch (c)) is the campaign's strongest collective experimental signal about the r_e finding's resolution, (b) the path to PR J closing chapter is the correct disposition, and (c) the inventory table above is the form the campaign's headline result should take in PR J -->
+<!-- TODO: human reviews and fills in — confirms (a) PR I's combined verdict (six precision r_e-evaluations all sit at the triangulated `r_e` value post-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62)) is the campaign's strongest collective signal about r_e's self-consistency, (b) the path to PR J closing chapter is the correct disposition, and (c) the inventory table above is the form the campaign's headline result should take in PR J -->

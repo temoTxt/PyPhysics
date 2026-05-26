@@ -1,0 +1,68 @@
+---
+title: "Candidates for a first-principles derivation of \\(r_e/r_0\\)"
+author: "Trey Morris with Claude Opus 4.7"
+date: "2026-05-26"
+subject: "Four candidate starting points for deriving r_e from the dual-Dirac framework's internal structure (follow-up to the triangulation note)"
+---
+
+# Candidates for a first-principles derivation of $r_e/r_0$ — for Tepper Gill
+
+**Date:** 2026-05-26.
+**From:** Trey Morris (with Claude Opus 4.7).
+**Re:** Follow-up to the 2026-05-26 triangulation note ([`Roadmapping/Author_Reports/2026-05_re_triangulation_followup_for_gill.md`](2026-05_re_triangulation_followup_for_gill.md)); Scope 1 of [issue #54](https://github.com/temoTxt/PyPhysics/issues/54).
+
+---
+
+## Context
+
+The DRQM I §III.D $r_e$ value was originally a *cutoff parameter*, fixed by a numerical search against the measured electron $g_s$. The empirical refinement in [PR #62](https://github.com/temoTxt/PyPhysics/pull/62) widened that search to a joint fit across six observables (electron $g_s$, H $2P_{3/2}-2P_{1/2}$, H 1S hyperfine, He ${}^3P_0-{}^3P_1$, positronium ortho-para, muonium hyperfine), and returned $r_e/r_0 = 0.499\,420\,509\,912\,831\,7$. The honest reading of this result, recorded in detail in [`Bethe_Salpeter/10_CrossComparison.md §2`](../Quantum_Mechanics/Bethe_Salpeter/10_CrossComparison.md#2-the-r_e-self-consistency-across-six-g_s-dependent-observables-at-the-triangulated-value): the six observables are not six independent constraints on the cutoff, because each is computed as $(g_s/-2)^n \times \text{textbook}$ with $n \in \{1, 2\}$, so all six share a single dependence on $g_s$ and therefore on $r_e$. The joint fit is *one structural fact* (the single-parameter cutoff prescription) applied to six manifestations, not six independent tests. What the multi-observable fit *does* confirm is that the six manifestations are mutually consistent at the framework's precision floor — i.e., the $(g_s/-2)^n \times \text{textbook}$ scaling holds across all six — which is a self-consistency check on the framework's structural prescription, not an independent corroboration of the cutoff's value.
+
+There is, at present, **no first-principles derivation of $r_e/r_0$** anywhere in the campaign or in the published DRQM I material we have visibility into. The value originated as a cutoff search, and it remains a cutoff value. The triangulation confirms the framework's $(g_s/-2)^n \times \text{textbook}$ structure is self-consistent across multiple observables under a single cutoff; it does not promote that cutoff to a derived quantity. A genuine first-principles derivation — in which $r_e$ emerges from the dual-Dirac equation's internal structure rather than being fit to data — would be a genuinely new piece of theory work. (See Candidate 3 below for a *partial* identification: the triangulated value already has a clean closed-form Schwinger reading that recasts the derivation question into "*why* does the framework specify this cutoff prescription?" rather than "what numerical value should the cutoff have?")
+
+This note collects the three candidate starting points we have considered for such a derivation, with one to three paragraphs on each describing what the route would look like, what its plausibility appears to be from outside the framework's internal logic, and what would be required to pursue it. (A fourth candidate we had initially considered — retrieving a derivation step from the original DRQM I §III.D working notebook that did not make it into the published prose — has been ruled out by your 2026-05-25 author guidance that the original cutoff was a numerical search against $g_s$ alone, with no derivation-step working draft to retrieve.) We are **not proposing any of these three** — we defer to your judgment on which (if any) is natural for the framework. The thread is non-urgent: the triangulated value already serves as the campaign's current-best-refinement at the framework's precision floor, and a first-principles derivation is a "would-be-nice-to-have" rather than a load-bearing item.
+
+---
+
+## Candidate 1 — Proper-time self-energy integral
+
+The dual theory's distinguishing feature is the proper-time first-order Dirac structure: the standard Dirac equation $(i\gamma^\mu \partial_\mu - m)\psi = 0$ is replaced by a proper-time-formulated version in which the dynamical variable is $\partial_\tau$ rather than $\partial_t$. The natural place to look for $r_e$ as a derived quantity is the framework's analog of the one-loop electron self-energy diagram: the diagram in which a single photon propagator and a single electron propagator close into a loop on the external electron line.
+
+In standard QED, the one-loop self-energy $\Sigma(p)$ has a UV divergence that is absorbed into mass renormalisation via a counterterm. The cutoff procedure (Pauli–Villars, dimensional regularisation, lattice cutoff) introduces a regulator scale, and in the renormalised expression that scale's dependence cancels modulo the running of $\alpha$. In the dual-theory's proper-time formulation, the analog calculation would feature the proper-time propagator and a proper-time photon propagator. The UV behavior might be qualitatively different from standard QED: possibly finite, possibly with a different divergence structure rooted in the proper-time integral's analytic properties.
+
+Concretely, the route would set up a Schwinger-like proper-time integral representation of the dual-Dirac propagator, compute the one-loop self-energy with the proper-time photon propagator, and identify the natural scale at which the mass counterterm equals the physical-minus-bare mass difference. If the integral is finite, that scale is determined unambiguously; if divergent, it is set by the renormalisation condition. The output $r_e/r_0$ would be a numerical function of $\alpha$ and the dual-Dirac structure constants ($b$, $c$, the projection-operator coefficients), evaluating to a definite numerical value the campaign could compare against $0.499\,420\,509\ldots$
+
+---
+
+## Candidate 2 — Variational determination via the renormalised dual-Dirac equation
+
+In the dual-Dirac equation $\hat{H}_{\text{dual}} \psi = E \psi$, the cutoff $r_e$ appears as a parameter — whether as a hard cutoff in the radial integration, or as a regulator in the small-$r$ behavior of the wavefunction. The eigenvalue $E$ depends on $r_e$: $E = E(r_e)$. A variational determination would fix $r_e$ by demanding that the physical electron mass eigenvalue be recovered at the cutoff, $E(r_e) = m_e c^2$ (including any binding-energy or self-energy contributions specified by the framework).
+
+This is analogous to how the standard-QED running coupling $\alpha(\mu)$ is fixed by the renormalisation condition $\alpha(\mu_0) = \alpha_{\text{phys}}$ at a chosen reference scale: a framework parameter is fixed by a physical observable evaluated at the framework's natural scale. The advantage of this route over Candidate 1 is that it side-steps the UV-divergence question entirely — the variational principle operates within the framework's renormalised structure, not on the divergent bare-vertex calculation. The disadvantage is that mass-condition-alone might not uniquely determine $r_e$: additional consistency conditions (gauge invariance of the photon propagator at the cutoff, current conservation at the radial boundary, perhaps the magnetic-moment relation closing the system) may be needed for closure.
+
+If the right set of consistency conditions can be assembled, the variational route is the most direct path from the dual-Dirac equation's internal structure to a numerical $r_e/r_0$. The calculation would be a coupled eigenvalue / renormalisation-condition problem solvable symbolically (Mathematica) once the conditions are specified. The output is again comparable against the triangulated $0.499\,420\,509\ldots$ — but the route's credibility depends on whether the additional consistency conditions are framework-internally motivated or look ad hoc.
+
+---
+
+## Candidate 3 — The triangulated value already has a clean closed-form Schwinger reading
+
+The triangulated $r_e/r_0 = 0.499\,420\,509\,912\,831\,7$ is, to within $\sim 10^{-6}$, the closed-form value
+
+$$\boxed{\;r_e/r_0 \;=\; \frac{2 - \alpha/(2\pi)}{4 + \alpha/\pi}\;=\;0.499\,419\,632\,156\ldots\;}$$
+
+obtained by inverting $g_r = 2[1 - 4 r_0/(2 r + r_0)]$ against the **Schwinger one-loop QED anomalous moment** $g_e^{(1\text{-loop})} = -2 - \alpha/\pi = -2.002\,322\,819\,465\,7\ldots$ The residual discrepancy between the closed-form $0.499\,419\,632$ and the triangulated $0.499\,420\,510$ is exactly the gap between the Schwinger one-loop and the all-orders measured $g_e = -2.002\,319\,304\,362\,5\ldots$ (which includes the Karplus–Kroll two-loop and higher corrections at $\sim 10^{-6}$ relative). In other words: at one-loop QED precision, the cutoff prescription $r_e = (2 - \alpha/(2\pi))/(4 + \alpha/\pi) \cdot r_0$ is what makes the formula $g_r = 2[1 - 4 r_0/(2 r + r_0)]$ reproduce the Schwinger result exactly.
+
+This is, from outside the framework's internal logic, the cleanest and most natural reading of the cutoff identification: the DRQM I §III.D formula is, at the precision the framework's apparatus delivers, an algebraic re-encoding of the Schwinger one-loop anomalous moment through a particular cutoff substitution. The reason the triangulation across six observables returns essentially the same value as the uni-observable back-fit against $g_s$ alone is that **every other observable's prediction is $(g_s/-2)^n \times \text{textbook}$**, so substituting the measured $g_s$ is the same operation whether done once or six times — and the measured $g_s$ is, to one-loop QED precision, exactly what the closed-form cutoff is engineered to reproduce.
+
+What the *first-principles* derivation question reduces to, on this reading, is: **why does the framework specify this particular cutoff prescription?** Two sub-questions: (i) Is there a derivation in which the dual-Dirac equation's renormalisation structure produces $r_e = (2 - \alpha/(2\pi))/(4 + \alpha/\pi) \cdot r_0$ as the natural mass-renormalisation scale (Candidates 1 or 2 applied at one-loop precision)? Or (ii) is the cutoff a structural constant of the dual representation itself, such that the combination $2 - \alpha/(2\pi))/(4 + \alpha/\pi)$ comes out of the framework's algebra without reference to QED at all? Question (i) is a one-loop calculation that should be tractable if the framework's renormalisation prescription is fully specified; question (ii) requires identifying the framework-internal origin of an $\alpha$-dependent ratio, which is harder. If question (i) is the natural reading, the campaign can attempt the calculation directly; if question (ii), we would need your guidance on which structural decomposition produces $\alpha$-dependent ratios in the framework.
+
+We did not see this identification in the published DRQM I §III.D text. If it is a known property of the framework, please tell us — that would simplify the disposition considerably. If it is a coincidence at the campaign's precision (i.e., the triangulated value happens to be close to the Schwinger closed-form but is not engineered to be), the Karplus–Kroll-level residual is the test: with more precision-spectroscopy observables in the joint fit, the residual should not systematically point at the two-loop QED corrections unless the cutoff genuinely is encoding QED.
+
+---
+
+## Closing — how this thread sits
+
+We expect the most likely outcome, given your 2026-05-25 guidance and the campaign's posture, is that none of these three candidates rises above the triangulated cutoff in usefulness for the campaign's current scope. The triangulated value is empirically well-constrained at the framework's precision floor (the joint-fit consistency across six manifestations of the $(g_s/-2)^n \times \text{textbook}$ scaling), agrees with measurement at that floor, and is sufficient for the campaign's downstream work without a first-principles derivation behind it. The Scope 1 thread is therefore non-urgent — it remains open as a "would-be-nice-to-have" for future framework development, not as a load-bearing item. Candidate 3's Schwinger closed-form identification — if it is intentional in the framework's construction — may already be the answer.
+
+If one of the three candidates does look natural to you, we would be glad to pursue it via Mathematica symbolic calculation with your guidance on the framework's internal logic. If none of them looks natural, the triangulated value stands as the campaign's $r_e$ disposition and Scope 1 can be closed without a derivation. Either way, our position is that the triangulation has confirmed the $(g_s/-2)^n \times \text{textbook}$ structure is self-consistent under a single cutoff at the framework's precision floor; that is the campaign's current honest-scope position on the $r_e$ question.
+
+— Trey

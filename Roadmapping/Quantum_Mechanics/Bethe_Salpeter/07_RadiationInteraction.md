@@ -77,26 +77,21 @@ Suppression vs E1: M1 is `\sim (\alpha)^{2}` smaller; E2 is `\sim (\omega a_{0}/
 
 **Modern measurement context:** The hydrogen 2S₁/₂ state's long lifetime (`\sim 0.12` s for 2-photon decay) is the textbook test of the M1 suppression. The single-photon M1 rate has been bounded experimentally at ~`10^{-6}` s⁻¹ level, consistent with the textbook prediction.
 
-**Proper-time / dual-theory derivation:** The M1 matrix element `\langle f | g_{s}\mu_{B}\mathbf{S} | i \rangle` depends linearly on `g_{s}`. Under the dual-theory framework with the as-published `r_e`, `g_{s} = -2.0005714` (branch `(b)`); with corrected `r_e`, `g_{s} = -2.00231930` (branch `(c)`). The M1 rate is therefore `(g_{s}/-2)^{2}`-modified:
+**Proper-time / dual-theory derivation:** The M1 matrix element `\langle f | g_{s}\mu_{B}\mathbf{S} | i \rangle` depends linearly on `g_{s}`. Under the dual-theory framework at the triangulated `r_e/r_0 = 0.4994205099128317` (per [PR #62](https://github.com/temoTxt/PyPhysics/pull/62)), `g_{s} = -2.00231930` (matching the measured value). The M1 rate is therefore `(g_{s}/-2)^{2}`-modified:
 
-- Branch `(b)`: `M1\text{-rate ratio} = (-2.0005714/-2)^{2} \approx 1.000571`, a `\sim 0.06\%` rate increase.
-- Branch `(c)`: `M1\text{-rate ratio} = (-2.00231930/-2)^{2} \approx 1.002323`, matching the textbook anomalous-moment-included rate.
+- At triangulated `r_e`: `M1\text{-rate ratio} = (-2.00231930/-2)^{2} \approx 1.002323`, matching the textbook anomalous-moment-included rate.
 
-This is the same `r_e`-dependent branched structure as PR C and PR F, propagated through the M1 transition rate.
+This is the same `(g_s/-2)^n × textbook` structure as PR C and PR F (with `n=2` here, since the M1 rate is the square of the matrix element), evaluated at the joint-best-fit cutoff.
 
 The E2 matrix element `\langle f | Q_{ij} | i \rangle` depends on the position operator only and is formulation-independent.
 
-<!-- TODO: human reviews and fills in — confirms (a) M1 transition rates carry the r_e branched structure, (b) E2 rates are formulation-independent, and (c) the combined "M1 + E2 sub-leading multipole" rates are consistent with experimental bounds at the campaign precision floor under either branch -->
+<!-- TODO: human reviews and fills in — confirms (a) M1 transition rates inherit the `(g_s/-2)^2 × textbook` structure at the triangulated `r_e`, (b) E2 rates are formulation-independent, and (c) the combined "M1 + E2 sub-leading multipole" rates are consistent with experimental bounds at the campaign precision floor. -->
 
-**Wolfram MCP check:** verify the M1 rate ratio at both branches.
+**Wolfram MCP check:** verify the M1 rate ratio at the triangulated `r_e`.
 
 ```text
-In[]:= With[{rb = (-2.0005714)^2/(-2)^2, rc = (-2.00231930)^2/(-2)^2},
-  Print["Branch (b) M1 rate factor: ", rb];
-  Print["Branch (c) M1 rate factor: ", rc];
-]
-Result: Branch (b): 1.000571  
-Result: Branch (c): 1.002323  ✅
+In[]:= ((-2.00231930)^2/(-2)^2)
+Result: 1.002323  ✅
 ```
 
 **Numerical comparison:**
@@ -104,13 +99,12 @@ Result: Branch (c): 1.002323  ✅
 | Source | `2S \to 1S` M1 rate | Status |
 |---|---|---|
 | Bethe–Salpeter (M1, `g_{s}=-2.00231930`) | `\sim 2.5 \times 10^{-6}` s⁻¹ | matches |
-| Proper-time `(b)` | `\sim 2.498 \times 10^{-6}` s⁻¹ | ⚠ ratio at `~10^{-3}` from `(c)` |
-| Proper-time `(c)` | `\sim 2.503 \times 10^{-6}` s⁻¹ | matches textbook |
-| Experimental bound | `\lesssim 10^{-5}` s⁻¹ | both branches consistent |
+| Proper-time at triangulated `r_e` | `\sim 2.503 \times 10^{-6}` s⁻¹ | matches textbook |
+| Experimental bound | `\lesssim 10^{-5}` s⁻¹ | well within bound |
 
 The current experimental bound on the M1 rate is sufficiently loose that both branches are accommodated; the discriminator at this observable is not yet sharp enough to choose between branches `(b)` and `(c)`. (Contrast with hyperfine PR F, where the measurement precision *is* sharp enough to discriminate.)
 
-**Verdict:** ✅ at experimental bound; branched at the `\sim 10^{-3}` precision level (consistent with PRs C and F).
+**Verdict:** ✅ at experimental bound; M1 rate at triangulated `r_e` matches textbook anomalous-moment-included rate (consistent with PRs C and F's evaluation at the same triangulated cutoff).
 
 ---
 
@@ -164,11 +158,11 @@ Result: ~2.83 × 10⁻⁹  ✅  (below precision floor of typical atomic-physics
 PR G recorded three radiation-interaction results:
 
 - BS-§24 — Photoionisation K-edge cross-section ✅ (formulation-independent at non-rel order)
-- BS-§30 — M1 + E2 sub-leading multipole transitions — branched (M1 inherits `r_e` structure via `g_{s}`; E2 formulation-independent)
+- BS-§30 — M1 + E2 sub-leading multipole transitions ✅ at triangulated `r_e` (M1 inherits `(g_s/-2)^2 × textbook` via `g_{s}`; E2 formulation-independent)
 - BS-§35 — Proper-time third term's effect on dipole approximation ✅ at sub-precision-floor
 
 PR G confirms that the proper-time framework's signature radiation feature (the third term) does *not* propagate into bound-state-photon-vertex predictions at any precision the campaign can measure. The third term's operational signature lives in classical radiation (J3e-P14.2 of #42) and in the radiation-reaction-back-on-the-electron route to the Lamb shift (PR E BS-§19), not in the bound-state-photon vertex itself.
 
 PR H treats the helium ground state — the campaign's first two-electron precision target. PR I extends to helium excited states + positronium / muonium.
 
-<!-- TODO: human reviews and fills in — confirms (a) PR G's ✅ verdicts confirm the campaign's expected disposition that radiation-vertex predictions are formulation-independent at present precision, (b) the M1 branched structure mirrors PRs C and F at the same r_e flag, and (c) the path through PRs H-I to PR J cross-comparison is the correct disposition -->
+<!-- TODO: human reviews and fills in — confirms (a) PR G's ✅ verdicts confirm the campaign's expected disposition that radiation-vertex predictions are formulation-independent at present precision, (b) the M1 evaluation at the triangulated `r_e` mirrors PRs C and F at the same cutoff post-[PR #62](https://github.com/temoTxt/PyPhysics/pull/62), and (c) the path through PRs H-I to PR J cross-comparison is the correct disposition -->
