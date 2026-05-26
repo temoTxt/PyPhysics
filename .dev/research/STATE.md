@@ -94,3 +94,46 @@ TCEP §5 gives three forms of $K$ — (5.4) rest-mass-fixed $K = H^2/(2mc^2) + m
 **Outcome-matrix:** not yet determinable (still scoping kernel + propagator).
 
 **Status:** READY.
+
+## Iteration 3 — 2026-05-26 — Bethe–Salpeter §3 (Lamb-shift) ingested
+
+**Advanced.** Read `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/05_LambShift.md` (190 lines). Answered the three queued questions; *most important finding: no proper-time one-loop QED calculation exists in the codebase — candidate-1 is the first attempt at producing one*.
+
+### (a) Explicit proper-time photon propagator form — **NOT written**
+
+BS §3 (Result BS-§19 lines 41–54) uses textbook Bethe (1947): minimal coupling $\boldsymbol\pi = \mathbf{p} - q\mathbf{A}/c$ is unchanged, and the radiation field is treated *non-relativistically* (just an $\mathbf{A}\cdot\mathbf{p}$ coupling with photon mode-sum $\propto \delta(\omega_k - \omega)$ from energy conservation). **No $D_F^{(\tau)}(x-y)$ in proper-time form has been written down in the codebase.** Line 54 is explicit: *"A full proper-time one-loop QED calculation would be needed... The campaign does not produce that calculation."*
+
+### (b) Mass-renormalisation prescription — **textbook Bethe-subtraction, not framework-modified**
+
+BS §19 lines 47–50: matrix elements, energy denominators, Bethe-log UV cutoff $K\sim mc^2$, and mass-counterterm subtraction are all *formulation-independent*. The dual framework reproduces $\Delta E^{\rm SE}_{2S}\approx 1040$ MHz *because it inherits the standard NR calculation unchanged*. So at one-loop level the framework currently has no prescription beyond textbook Bethe.
+
+### (c) $r_e$-like cutoff in the Lamb shift — **doesn't engage**
+
+BS §20 lines 113–114: *"The $r_e$ finding does NOT propagate into the Lamb shift... The Lamb shift's $\mathbf{p}\cdot\mathbf{A}$ coupling is independent of the anomalous-$g$ factor; the leading log-Bethe contribution uses $g=2$ implicitly."*
+
+So the existing Lamb-shift route uses UV cutoff $K\sim mc^2 \Leftrightarrow$ length cutoff $\lambda_C = \hbar/(mc)$. With $r_0 = e^2/(mc^2) = \alpha\lambda_C$ and triangulated $r_e\approx r_0/2 = (\alpha/2)\lambda_C \approx 3.65\times 10^{-3}\,\lambda_C$, **the empirical $r_e$ is parametrically smaller than the Bethe cutoff by a factor $\alpha/2$.** This is a major clue: $r_e$ is *not* a UV cutoff in the QFT sense — it sits at the *Coulomb-binding* scale $\sim e^2/(mc^2)$, not at the Compton scale $\hbar/(mc)$.
+
+### Conceptual re-framing of $r_e$
+
+DRQM I §III.D §III.7 reveals $r_e$ as the spatial scale where the small-component elimination $\psi_2 = c\boldsymbol\sigma\!\cdot\!\boldsymbol\pi\psi_1/(\lambda - V_0 + mc^2)$ stops being a valid approximation. The cutoff enters via $(\lambda - V_0 + mc^2)^{-1} \approx [2mc^2(1+r_0/(2r))]^{-1}$ which *fails* when $r \lesssim r_0$ because $V_0 = -e^2/r$ overwhelms the rest energy. So $r_e$ is a **bound-state regularisation scale**, not a UV-loop cutoff. The empirical $r_e/r_0 \approx 0.4994$ says: the small-component formula breaks down when $r\sim r_0/2$, where $|V_0| = 2mc^2$ — *exactly the pair-production threshold*. Plausible physical interpretation: $r_e$ marks the radius inside which the bound-state wave-function picks up virtual $e^+e^-$ contributions, requiring the full one-loop dressing.
+
+### Strategy revision for the self-energy derivation
+
+The dual one-loop self-energy on the (II.3) Pauli-kernel must:
+1. Use a proper-time photon propagator (to-be-derived; not in repo). Heuristic: $D_F^{(\tau)}(x-y) = \int (d^4k/(2\pi)^4)\,e^{-ik\cdot(x-y)}/[k^2 + i\epsilon]$ where the time-component of $k$ is conjugate to $\tau$ via $k_0 \cdot b = E$ rather than $k_0 c = E$.
+2. Compute $\delta m_{\rm bound}(r) - \delta m_{\rm free}$ (Bethe subtraction) for an electron in the Coulomb potential $V_0 = -e^2/r$.
+3. Identify the cutoff $r_e$ from a *physical* renormalisation condition: the radiative correction at $r = r_e$ should equal the tree-level small-component amplitude — i.e. $r_e$ is fixed by demanding the perturbation series stays controlled.
+
+Concretely, the testable conjecture: $r_e$ is the radius at which $|\delta m_{\rm bound}(r)|/m \sim O(\alpha/(4\pi))$ — the natural one-loop coupling. Solving $|\delta m_{\rm bound}(r_e)| = \kappa\,(\alpha/(4\pi))\,m$ for $r_e$ should yield $r_e/r_0 \sim 0.499$ if the framework is consistent.
+
+### What remains BLOCKED (potential Tepper input)
+
+- The functional form of the proper-time photon propagator $D_F^{(\tau)}$ has not been written in the published framework. Two natural candidates: (i) Schwinger proper-time with $b$ replacing $c$ in the dispersion, $k^2 = (\omega/b)^2 - \mathbf{k}^2$; (ii) standard Feynman propagator with the $b/c$ conversion absorbed into the source's coupling rather than the propagator. **Choice between (i) and (ii) is the key Tepper-blocker candidate** — different choices give different numerical $r_e/r_0$ at the same order in $\alpha$.
+
+For *this iteration's* progress, proceed with (ii) (no propagator modification, all dual structure in the source) as the *default working hypothesis*. If the resulting $r_e$ is off by an $O(1)$ factor that depends on $b/c$, that's signal for (i).
+
+**Next.** Create `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_self_energy.wl` (header + first cell only) per `BetheSalpeter_S3.wl` template. The first cell sets up the **standard** (non-dual) Schwinger proper-time integral for the one-loop electron self-energy in Coulomb-bound hydrogen, as a reference baseline. The dual modification enters in cell 2 (next-next iteration).
+
+**Outcome-matrix:** still scoping; tentative **D-track** signal (no proper-time photon propagator in repo) — but pursuing default hypothesis (ii) before declaring BLOCKED.
+
+**Status:** READY.
