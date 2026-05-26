@@ -84,6 +84,26 @@ Print["  required r_e/r_0 for g_e:  ", InputForm[x /. First @ Solve[gr[x] == -2.
 
 **For the muon and proton (Eq. III.23):** The formulas $g_\mu^a$, $g_p^a$ are stated, but the corresponding cutoff values $r_\mu$, $r_p$ are not given numerically — so no analogous numerical check was possible.
 
+**Downstream operational consequences (added 2026-05-25 from #50 campaign):** Beyond the original $g_e$ disagreement, the published $r_e$ propagates into multiple precision atomic-physics observables. Per the Bethe–Salpeter campaign, three independent observables now exhibit the same branched verdict:
+
+- **Hydrogen fine structure ($2P_{3/2}-2P_{1/2}$)** — [BS-§14.2 of Bethe–Salpeter campaign](../Quantum_Mechanics/Bethe_Salpeter/03_FineStructure.md#result-bs-142--2p--2p-fine-structure-splitting-branched).
+  - Branch (b) as-published $r_e$: predicts $10{,}952$ MHz vs measured $10{,}969.13(10)$ MHz; $\sim 17$ MHz residual (1.5×10⁻³ fractional). ⚠
+  - Branch (c) corrected $r_e$: predicts $10{,}962$ MHz; $\sim 7$ MHz residual (matches QED 2-loop). ✅
+
+- **Hydrogen 1S hyperfine splitting (21-cm line, $1{,}420.405\,751\,768(2)$ MHz)** — [BS-§22.1 of Bethe–Salpeter campaign](../Quantum_Mechanics/Bethe_Salpeter/06_Hyperfine.md#result-bs-221--fermi-contact-term-and-21-cm-line-branched).
+  - Branch (b) as-published $r_e$: predicts $1{,}418.81$ MHz; $\sim 1.6$ MHz residual (1.1×10⁻³ fractional, **~6 orders of magnitude larger than measurement uncertainty**). ⚠
+  - Branch (c) corrected $r_e$: predicts $1{,}420.04$ MHz; $\sim 0.4$ MHz residual (matches QED 1-loop precision floor). ✅
+
+- **Electron g-factor itself** (original Finding 2): $g_e = -2.0005714$ at branch (b) vs measured $-2.00231930$ (~$0.00175$ discrepancy).
+
+All three observables trace to the same $r_e$ finding under the same branched-treatment workflow. The campaign's combined experimental status: **if branch (c) corrected $r_e$ is adopted, the dual-theory framework agrees with precision atomic spectroscopy at the leading-$g_s$ / Bethe-estimate precision floor; if branch (b) as-published $r_e$ is adopted, the framework is in fractional $\sim 10^{-3}$ disagreement with hyperfine, fine structure, and $g$ measurements**.
+
+**Back-fit caveat — what branch (c)'s "agreement" actually means.** The "corrected $r_e \approx 0.499420510 \, r_0$" of branch (c) is, by construction (per the `Solve[]` step above), the $r_e$ value that produces $g_s = -2.00231930$ — *the experimentally measured $g_s$*. Each branched-treatment observable's branch (c) prediction is then computed as $(g_{s,\,\text{measured}}/-2)^n \times (\text{textbook QED leading-$g_s$ term})$, which reduces to the textbook leading-$g_s$ formula with the standard measured input. The "branch (c) ✅" verdict therefore says: *if one back-fits $r_e$ to measured $g_s$, the textbook leading-$g_s$ formula with the measured $g_s$ reproduces measurement at textbook leading-$g_s$ precision*. This is a self-consistency check (one parameter back-fit; one constrained equation; one consistent solution); it is **not** an independent corroboration of the dual-theory framework's content distinct from standard QED. The "branch (c) is what precision spectroscopy requires" framing of the Bethe–Salpeter campaign's closing chapter is conditional on this back-fit reading — see [Bethe-Salpeter cross-comparison §2](../Quantum_Mechanics/Bethe_Salpeter/10_CrossComparison.md#2-the-r_e-back-fit-self-consistency-across-six-g_s-dependent-observables).
+
+The resolution path remains as flagged at the top of this entry: most likely a transcription error in the published $r_e/r_0$ digits, in which case updating the published value to the back-fit value brings the framework's $g_s$-dependent predictions into self-consistency at the textbook leading-$g_s$ precision standard textbook QED already meets. If the published value reflects the derivation itself (not a transcription error), the framework's $g_s$ prediction needs to be revisited and the downstream branched verdicts carry no independent meaning either way.
+
+This is not a set of independent findings — it is the same Finding 2 with new operational signatures recorded across high-precision atomic spectroscopy. The hyperfine consequence is the campaign's most precision-sensitive discriminator (measurement uncertainty $\sim 10^{-12}$ vs the $r_e$-driven discrepancy at $\sim 10^{-3}$).
+
 ---
 
 ## Finding 3 — TCEP Eq. (4.16): sign typo in the group-velocity relation
