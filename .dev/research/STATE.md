@@ -137,3 +137,45 @@ For *this iteration's* progress, proceed with (ii) (no propagator modification, 
 **Outcome-matrix:** still scoping; tentative **D-track** signal (no proper-time photon propagator in repo) — but pursuing default hypothesis (ii) before declaring BLOCKED.
 
 **Status:** READY.
+
+## Iteration 4 — 2026-05-26 — Cell 1 scaffolded (baseline Schwinger)
+
+**Advanced.** Created `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_self_energy.wl`:
+
+- **Header** (~50 lines) documents target value $r_e/r_0 = 0.499\,420\,509\,912\,831\,7$ and Schwinger reference $0.499\,419\,632\,156$; lists Wolfram-MCP-safe symbol conventions (`ee`, `potV`, `alf`, `capLambda`, `r0`, `re`, `ssMin`, `bb`); records 4-cell inventory (Cell 1 baseline / Cell 2 dual / Cell 3 bound-state / Cell 4 numerical); includes Crocco substantive-AI TODO block flagging the two photon-propagator-form choices as the Tepper-blocker candidate.
+- **Cell 1 — baseline standard QED on-shell mass shift.** Single-line Wolfram expression:
+  $$\frac{\delta m}{m} = \frac{3\alpha}{4\pi}\Bigl[\log(\Lambda^2/m^2) + \tfrac{1}{2}\Bigr]$$
+
+  (Bjorken–Drell Eq. 10.59, Schwinger 1948.) Print statements give the symbolic form and a numerical at $\alpha = 1/137.036$, $\Lambda/m = 1$ (Bethe NR cutoff): $\delta m/m \approx 8.71\times 10^{-4}$.
+
+### Sanity-check heuristic and what it tells us
+
+Naive identification $\Lambda = \hbar/(r_e c)$ gives $\log(\Lambda^2/m^2) = -2\log(r_e/\lambda_C) = -2\log(\alpha\cdot r_e/r_0)$. Plugging $r_e/r_0 = 0.5$:
+
+| Quantity | Value |
+|---|---|
+| $\log(\Lambda^2/m^2)$ | $11.23$ |
+| $\delta m/m$ | $2.04\times 10^{-2}$ |
+| Natural one-loop coupling $\alpha/(4\pi)$ | $5.81\times 10^{-4}$ |
+| Ratio $\delta m/m$ : $\alpha/(4\pi)$ | $\approx 35$ |
+
+(Plain-Python sanity-check; Wolfram MCP not loaded in this session.)
+
+**Reading.** The simple "$\Lambda$ = inverse-$r_e$" identification over-estimates the radiative correction by a factor $\sim 35$. Two plausible resolutions:
+
+1. **The dual framework supplies a different $\Lambda \leftrightarrow r_e$ identification** — e.g. $\Lambda \sim \hbar/(b\,r_e)$ where $b > c$ for bound states, suppressing the log. This is the structural prediction of hypothesis (i) (proper-time photon propagator with $b$-dispersion).
+2. **The bound-state matrix element supplies the missing suppression** — Bethe's flat $\log(K/⟨\Delta E⟩)$ structure replaces a hard UV log with a sum-over-states log, parametrically smaller because Coulomb energy denominators average over the entire Rydberg series. This is consistent with hypothesis (ii) (propagator unchanged, all dual structure in the source).
+
+These two pictures are *distinguishable*: (i) shifts $r_e/r_0$ via $\log(b/c)$ corrections at fixed bound-state $\langle p^2 \rangle$, while (ii) shifts $r_e/r_0$ via the Bethe-log replacement at fixed photon-loop measure. Cells 2–3 will compute both and compare against the triangulated $r_e/r_0 = 0.4994205099$.
+
+### File listing
+```
+$ ls Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_self_energy.wl
+Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_self_energy.wl
+```
+
+**Next.** Draft **Cell 2** in the same `.wl` file: the dual modification under *hypothesis (ii)* (photon propagator unchanged, dual structure in source). Concretely: write the bound-electron self-energy as a Schwinger proper-time integral over the Coulomb bound-state propagator $G_C(x,y; E)$ rather than the free Dirac propagator, with proper-time parameter $s$ replacing the textbook Feynman parameter via the (II.3) "potential-in-the-mass" kernel $K_{\rm s2}$. The output expression should be of the form $\delta m(r) = (\alpha/\pi)\,m\,F(r/r_0)$ for some dimensionless $F$, with $F(r_e/r_0) = \kappa$ providing the renormalisation condition.
+
+**Outcome-matrix:** still scoping (heuristic sanity-check identifies the *qualitative shape* of the answer but no numerical $r_e/r_0$ yet); **A-track / B-track distinction** awaits Cell 3 evaluation.
+
+**Status:** READY.
