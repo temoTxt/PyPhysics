@@ -76,10 +76,13 @@
 
 ClearAll[alf, m, capLambda]; deltaMOverM = (3 alf/(4 Pi)) (Log[capLambda^2/m^2] + 1/2); Print["Cell 1 — Standard QED on-shell mass shift (Schwinger 1948 / Bjorken–Drell Eq. 10.59):"]; Print["  δm/m = ", deltaMOverM]; Print["  At α = 1/137.036, Λ/m = 1 (Bethe NR cutoff): δm/m ≈ ", N[deltaMOverM /. {alf -> 1/137.036, capLambda -> 1, m -> 1}, 6]];
 
-(* Expected output:                                                           *)
-(*   Cell 1 — Standard QED on-shell mass shift (Schwinger 1948 / B–D 10.59):  *)
-(*     δm/m = (3 α/(4π))(Log(Λ²/m²) + 1/2)                                    *)
-(*     At α = 1/137.036, Λ/m = 1: δm/m ≈ 0.000871...                          *)
+(* Expected output  (✅ confirmed by Wolfram MCP, 2026-05-26):                *)
+(*   delta m/m (symbolic) = (3 alf (1/2 + Log[capLambda^2/m^2])) / (4 Pi)     *)
+(*   at alf=1/137.036, capLambda/m=1: 0.000871057                             *)
+(*   heuristic Log(L^2/m^2) at re/r0=0.5: 11.2268                              *)
+(*   heuristic delta m/m: 0.0204294                                            *)
+(*   natural 1-loop coupling alf/(4 Pi): 0.000580705                           *)
+(*   ratio heuristic / natural: ~35.2                                          *)
 (*                                                                            *)
 (* The Λ ↔ proper-time-cutoff correspondence:                                 *)
 (*   ssMin = 1/Λ², so Log(Λ²/m²) = -Log(m² ssMin) = Log(1/(m² ssMin)).        *)

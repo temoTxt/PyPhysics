@@ -159,7 +159,7 @@ Naive identification $\Lambda = \hbar/(r_e c)$ gives $\log(\Lambda^2/m^2) = -2\l
 | Natural one-loop coupling $\alpha/(4\pi)$ | $5.81\times 10^{-4}$ |
 | Ratio $\delta m/m$ : $\alpha/(4\pi)$ | $\approx 35$ |
 
-(Plain-Python sanity-check; Wolfram MCP not loaded in this session.)
+**All four values confirmed by Wolfram MCP (2026-05-26):** `delta m/m (symbolic) = (3 alf (1/2 + Log[capLambda^2/m^2]))/(4 Pi)`; at $\alpha=1/137.036$, $\Lambda/m=1$ → `0.000871057`; heuristic $r_e/r_0=0.5$ → `Log = 11.2268`, $\delta m/m$ = `0.0204294`; natural one-loop coupling = `0.000580705`; ratio ≈ 35.2.
 
 **Reading.** The simple "$\Lambda$ = inverse-$r_e$" identification over-estimates the radiative correction by a factor $\sim 35$. Two plausible resolutions:
 
