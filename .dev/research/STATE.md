@@ -225,7 +225,39 @@ Per the brief's done-criteria:
 
 ### Status
 
-**HALT.** Empirical-test path acceptance criteria checkable; definite verdict (C-as-published) recorded. No ScheduleWakeup. Orchestrator will lift the (refined) Tepper question into a #66 comment after morning review.
+**HALT (preliminary).** Empirical-test path acceptance criteria checkable; definite verdict (C-as-published) recorded. Iter 4 will draft the §III.D verification-doc append before final halt.
+
+## Iteration 4 — 2026-05-26 — drafted §III.D "Schwinger identification — empirical residual test" subsection
+
+### What advanced
+
+Wrote a new subsection `#### Schwinger identification — empirical residual test (2026-05-26, issue #66 Candidate 3)` into `Roadmapping/Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md` immediately after the 2026-05-26 update at line 507, consolidating iters 1–3 into a canonical verification-doc record. This is the iteration step shape explicitly listed in `.dev/research/brief.md` §3 ("Draft a section of `Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md` §III.D append").
+
+The subsection captures:
+
+- **Motivation** — the closed-form $r_e/r_0 = (2 - \alpha/(2\pi))/(4 + \alpha/\pi)$ obtained by inverting $g_r(r) = -2 - \alpha/\pi$, and its $8.78 \times 10^{-7}$ gap to the triangulated value.
+- **Empirical test table** — the 11-row Wolfram MCP table from iter 2 (constants, closed-form vs triangulated, $\Delta r$, $dg_r/dr$, $\Delta g_e$ propagation, KK two-loop, LR three-loop, KF four-loop, sum, residual) with full measurement / coefficient provenance (Karplus–Kroll 1950, Sommerfield 1957, Petermann 1957, Laporta–Remiddi 1996, Aoyama–Hayakawa–Kinoshita–Nio).
+- **Numerical observation** — 9–10 digit agreement, well below the framework's $10^{-6}$ floor.
+- **Structural caveat** — the agreement is algebraically forced by the back-fit definition of $r_e^{\text{triang}}$; necessary for any cutoff reproducing $g_e^{\text{meas}}$, not sufficient to identify intentional encoding.
+- **Distinguishing intentional from forced** — inspection of §III.D Eqs. (III.18)–(III.23) shows no closed-form derivation in $\alpha$; the cutoff is fit empirically.
+- **Verdict** — Outcome **C-as-published**, Finding 2 stays ⚠ CHARACTERISED. Outcome **B** open through (1) #54 first-principles rederivation, or (2) framework predictions for type-(b) observables.
+- **Human-acceptance TODO block** — per Crocco compliance, four-point review checklist for the human reviewer.
+
+The subsection is internally cross-linked to `r_e_schwinger_residual_test.wl`, `r_e_triangulation.wl`, `FINDINGS_for_author_review.md` Finding 2, the issue trackers (#54, #61, #66), and back to this STATE log.
+
+### Outcome-matrix branch
+
+Unchanged: **C-as-published**. The iter-4 write-up does not change the substantive verdict; it consolidates the iter 1–3 findings for human-reviewer surface.
+
+### Status
+
+**HALT (final).** The empirical-test path has reached a definite verdict and the canonical verification-doc record is in place. No ScheduleWakeup. Three artifacts now form the deliverable:
+
+1. [`Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_schwinger_residual_test.wl`](../../Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_schwinger_residual_test.wl) — Wolfram MCP empirical-test notebook (iter 2).
+2. [`Roadmapping/Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md`](../../Roadmapping/Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md) §III.D "Schwinger identification — empirical residual test" subsection (iter 4).
+3. The Tepper-queue entry below — for the orchestrator to lift to a #66 comment.
+
+Orchestrator: lift the Tepper question, review the §III.D append, and decide whether the verdict moves Finding 2 from ⚠ to a different marker before/after Tepper response.
 
 ## Questions for Tepper (queue)
 

@@ -506,6 +506,54 @@ Print["  required r_e/r_0 = ", InputForm[x /. First @ Solve[gr[x] == -2.00231930
 
 **Update — 2026-05-26 (closes [#61](https://github.com/temoTxt/PyPhysics/issues/61)).** Per Tepper Gill's 2026-05-25 author guidance (branches (b) and (c) are bracketing guides, not theoretical predictions), an empirical joint fit across all six precision atomic-physics observables that depend on $g_s$ (electron $g_s$, H $2P_{3/2}-2P_{1/2}$, H 1S hyperfine, He ${}^3P_0-{}^3P_1$, positronium ortho-para, muonium hyperfine) was performed in [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_triangulation.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_triangulation.wl). Under the physically-meaningful weighting (measurement-$\sigma$ plus framework-precision-floor noise term), the joint optimum is $r_e/r_0 = 0.4994205099128317$ with $\sigma_r = 2.50\times10^{-13}$, matching branch (c) to 16 sig figs. The natural framing: the published $r_e/r_0 = 0.499857150068631$ is an *initial-value* result from a uni-observable numerical search against $g_s$; the triangulated value is a *refinement calculation* on top of that initial value, using all six observables jointly. The full residual table and the Pass A vs Pass B substantive-AI weighting contrast are recorded in [`FINDINGS_for_author_review.md` Finding 2](FINDINGS_for_author_review.md#finding-2--drqm-i-eq-iii22-published-r_e-does-not-reproduce-the-experimental-g_e). Verdict marker shifts from 🔴 to ⚠ accordingly; first-principles rederivation (a potential further refinement) tracked in [#54](https://github.com/temoTxt/PyPhysics/issues/54).
 
+#### Schwinger identification — empirical residual test (2026-05-26, [issue #66](https://github.com/temoTxt/PyPhysics/issues/66) Candidate 3)
+
+**Motivation.** Inverting the §III.D formula $g_r(r) = 2[1 - 4r_0/(2r+r_0)]$ at the Schwinger one-loop QED anomalous moment $g_e = -2 - \alpha/\pi$ gives the closed-form
+
+$$
+\left.\frac{r_e}{r_0}\right|_{\text{Schwinger}} \;=\; \frac{2 - \alpha/(2\pi)}{4 + \alpha/\pi} \;=\; 0.499\,419\,632\,156\,99\ldots,
+$$
+
+which differs from the triangulated $r_e/r_0 = 0.499\,420\,509\,912\,83$ by $\Delta r = +8.78\times10^{-7}$. Issue #66 asks whether this near-coincidence indicates that §III.D's cutoff prescription is engineered to reproduce one-loop QED through a derived identity in $\alpha$, or whether the match is contingent.
+
+**Empirical test.** Wolfram MCP at 20-digit precision in [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_schwinger_residual_test.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_schwinger_residual_test.wl):
+
+| Quantity | Value | Notes |
+|---|---|---|
+| $\alpha$ (CODATA 2018) | $7.297\,352\,5693\times 10^{-3}$ | |
+| $r_e/r_0$ closed-form | $0.499\,419\,632\,156\,99$ | inversion of $g_r(r) = -2 - \alpha/\pi$ |
+| $r_e/r_0$ triangulated | $0.499\,420\,509\,912\,83$ | PR #62 Pass B optimum |
+| $\Delta r$ | $+8.78\times10^{-7}$ | triangulated − closed-form |
+| $dg_r/dr$ at $r_{\text{closed}}$ | $4.0048$ | $= 16/(2r+1)^2$ |
+| $\Delta g_e$ from $\Delta r$ | $+3.515\times10^{-6}$ | linear-in-$\Delta r$ propagation |
+| $\Delta g_e = g_e^{\text{meas}} - g_e^{\text{Schwinger}}$ | $+3.515\times10^{-6}$ | |
+| Karplus–Kroll two-loop $+2 C_2(\alpha/\pi)^2$, $C_2 = 0.328\,478\,965\,579\,193$ | $+3.545\times10^{-6}$ | Karplus–Kroll 1950 + Sommerfield 1957 + Petermann 1957 |
+| Laporta–Remiddi three-loop $-2 C_3(\alpha/\pi)^3$, $C_3 = 1.181\,241\,456\,587$ | $-2.96\times10^{-8}$ | Laporta–Remiddi 1996, *Phys. Lett. B* **379**, 283 |
+| Kinoshita-Fukuda+ four-loop $+2 C_4(\alpha/\pi)^4$, $C_4 \approx 1.9106$ | $+1.1\times10^{-10}$ | Aoyama–Hayakawa–Kinoshita–Nio numerical |
+| Sum (KK + LR + KF) | $+3.515\,11\times10^{-6}$ | |
+| Residual: observed − predicted | $-9.7\times10^{-12}$ | |
+
+**Numerical observation.** The triangulated $r_e/r_0$ lies on the all-orders-QED curve in $r$-space: $\Delta g_e^{\text{observed}}$ matches $\Delta g_e^{\text{predicted}}$ (Schwinger one-loop + KK two-loop + LR three-loop + KF four-loop) to better than $5\times 10^{-12}$ — a 9-to-10-digit agreement, well below the framework's nominal $10^{-6}$ precision floor.
+
+**Structural caveat (load-bearing for the interpretation).** This $10^{-11}$ agreement is *algebraically forced* by the back-fit, not evidence of intentional Schwinger encoding in §III.D. The triangulated $r_e/r_0$ is *defined* (per `r_e_triangulation.wl` Pass B) as the cutoff that makes $g_r(r) = g_e^{\text{meas}}$ to 16 sig figs. Therefore
+
+$$
+\Delta g_e^{\text{obs}} \;:=\; g_e^{\text{meas}} - g_e^{\text{Schwinger}} \;=\; g_e^{\text{meas}} - (-2 - \alpha/\pi)
+$$
+
+is identically equal, by construction, to the standard-QED all-orders-beyond-one-loop contribution $-2[a_e - \alpha/(2\pi)] = +2 C_2(\alpha/\pi)^2 - 2 C_3(\alpha/\pi)^3 + 2 C_4(\alpha/\pi)^4 - \ldots$ Any cutoff value satisfying $g_r(r) = g_e^{\text{meas}}$, when subtracted from the closed-form Schwinger value via the linear $dg_r/dr$ propagation, will yield this same residual. The agreement is therefore **necessary** for any cutoff reproducing $g_e^{\text{meas}}$ — including those produced by mechanisms entirely unrelated to one-loop QED — and is **not sufficient** to identify intentional encoding.
+
+**Distinguishing intentional from forced.** Intentionality at the §III.D derivation level would require the framework to *produce the closed-form expression* $(2 - \alpha/(2\pi))/(4 + \alpha/\pi)$ as a derived identity in $\alpha$. Inspection of §III.D Eqs. (III.18)–(III.23): the framework derives the formula $g_r(r) = 2[1 - 4r_0/(2r+r_0)]$ and the limit checks $g_r(r_0/2) = -2$ and $g_r(r \to 0) = -6$, but **leaves $r_e/r_0$ as a free parameter** — per Tepper Gill's 2026-05-25 guidance, the published value $0.499857150068631$ was obtained by a uni-observable numerical search against $g_s^{\text{meas}}$, not derived from the framework's structure. No closed-form expression $r_e/r_0 = f(\alpha)$ appears in the published §III.D.
+
+**Verdict.** At the §III.D-as-published level, the Schwinger identification of $r_e/r_0$ is **structurally forced by the back-fit**, not derived as a closed-form identity. The empirical residual test is consistent with intentional Schwinger encoding *up to the structural caveat above* — the $10^{-11}$ agreement cannot, on its own, distinguish "framework derives the closed-form" from "framework back-fits any value that reproduces $g_e^{\text{meas}}$." Discriminating B from C requires either:
+
+1. **Inspection of a first-principles rederivation** from the dual-Dirac renormalisation prescription (tracked in [#54](https://github.com/temoTxt/PyPhysics/issues/54)) that produces $r_e/r_0$ in closed form — if it produces $(2 - \alpha/(2\pi))/(4 + \alpha/\pi)$, outcome **B** (intentional Schwinger encoding) ✅.
+2. **Framework predictions for observables whose QED corrections do not factorise through $g_s$** (e.g., hydrogen 1S–2S transition, antiprotonic helium, muonic-H Lamb shift) — these break the $(g_s/-2)^n$-form degeneracy of the existing six-observable fit and would constrain $r_e$ independently of $g_e^{\text{meas}}$. Framework prediction formulas for these are not derived in the published Bethe–Salpeter campaign.
+
+Finding 2 verdict: stays at ⚠ **CHARACTERISED**. The empirical-test path's outcome is **C-as-published** (Schwinger match algebraically forced, not derivation-level intentional). Outcome **B** (intentional) remains open through the routes above. Loop iteration log: [`.dev/research/STATE.md`](../../.dev/research/STATE.md) iters 1–3.
+
+<!-- TODO: human reviews and fills in — confirms (a) the structural caveat is the right framing of the iter-2 $10^{-11}$ KK+LR+KF agreement, (b) the C-as-published verdict correctly distinguishes "back-fit-forced" from "derivation-level intentional", (c) the two discrimination routes (#54 first-principles rederivation; type-(b) observables) correctly bracket what would upgrade C → B, and (d) the verdict-marker stays at ⚠ rather than shifting to ✅ or 🔴. Note any choice the reviewer would have made differently. -->
+
 ---
 
 
