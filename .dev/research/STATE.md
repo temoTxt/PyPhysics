@@ -261,3 +261,65 @@ This forecast warns us: a naive mass-renormalisation $\lambda(r_e) = m_e c^2$ li
 **Outcome-matrix:** still not yet determinable — Route Z arc just started. Forecast (above) flags that closure #7a may give wrong scale; #7b or #7c are more likely paths to the right scale.
 
 **Status:** READY for next iteration (Stage 2: analytic Dirac-Coulomb solutions).
+
+---
+
+## Iteration 6 — 2026-05-26T19:30Z — Stage 2: Dirac-Coulomb indicial structure + standard 1s eigenvalue confirmed
+
+**Advanced:** Set up the dimensionless radial Dirac equations for $s_{1/2}$ ($\kappa = -1$) in the electron's self-Coulomb $V_0 = -e^2/r$, verified the indicial structure, and confirmed the textbook (no-cutoff) 1s eigenvalue via Wolfram MCP.
+
+### Dimensionless radial Dirac-Coulomb system
+
+With $x = r/r_0$, $\Lambda = \lambda/(mc^2)$, $\alpha = e^2/(\hbar c)$ (using $r_0 mc^2/(\hbar c) = \alpha$):
+
+$$g'(x) = \alpha\!\left(\Lambda + 1 + \tfrac{1}{x}\right)f(x), \qquad f'(x) + \tfrac{2}{x}f(x) = -\alpha\!\left(\Lambda - 1 + \tfrac{1}{x}\right)g(x).$$
+
+### Indicial roots (Wolfram MCP 2026-05-26 ✓)
+
+Try $g, f \sim x^\nu$ as $x \to 0$; balance dominant $1/x$ terms. Indicial equation:
+$$\nu^2 + 2\nu + \alpha^2 = 0 \;\Rightarrow\; \nu_\pm = -1 \pm \gamma_D, \qquad \gamma_D \equiv \sqrt{1-\alpha^2}.$$
+Series in $\alpha$: $\nu_+ = -\alpha^2/2 - \alpha^4/8 - \alpha^6/16 - O(\alpha^8)$; $\nu_- = -2 + \alpha^2/2 + O(\alpha^4)$. So $g_{\rm reg} \sim x^{-\alpha^2/2}$ (almost-finite, weak singularity) and $g_{\rm irr} \sim x^{-2 + \alpha^2/2}$ (strong $1/r^2$ singularity).
+
+### Closed-form structure
+
+The standard solution ansatz is
+$$g(x) \;=\; x^{-1+\gamma_D}\, e^{-\alpha\epsilon x}\,\phi(x), \qquad \epsilon \equiv \sqrt{1-\Lambda^2},$$
+which reduces $\phi$ to a confluent hypergeometric equation. **Caveat:** the direct second-order ODE for $g(x)$ alone (eliminating $f$ from the coupled system) has a non-standard singular structure: the factor $h(x) = \alpha(\Lambda + 1 + 1/x) = (\alpha/x)(1 + (1+\Lambda)x)$ introduces a spurious singularity at $x = -1/(1+\Lambda)$ in the ODE coefficients. The textbook approach (Greiner *Relativistic Quantum Mechanics* §9, Bjorken-Drell vol. I §15) uses the coupled-$g,f$ pair directly, mapping to a 2-by-2 confluent hypergeometric system whose closed-form solutions are:
+
+$$g(\rho) \,\propto\, \rho^{\gamma_D - 1} e^{-\rho/2}\!\left[c_M M(\gamma_D - \nu_S,\, 2\gamma_D + 1;\, \rho) + c_U \rho^{-2\gamma_D + 1\,?} \cdots\right],$$
+
+with $\rho = 2\alpha\epsilon x$ and $\nu_S = \alpha\Lambda/\epsilon$ (Sommerfeld parameter). $M = {}_1F_1$ is regular at the origin; the second linearly independent solution (involving $U = $ confluent hypergeometric of the second kind, or equivalently the Whittaker $W$ function) is irregular at the origin and decays at infinity.
+
+### Standard (no-cutoff) bound-state quantization
+
+For $r_e = 0$, only the regular ($\nu_+ = -1+\gamma_D$) branch is admitted. Quantization comes from terminating the series at infinity:
+$$\gamma_D - \nu_S = -n', \qquad n' = 0, 1, 2, \ldots$$
+For the 1s ground state ($n' = 0$): $\nu_S = \gamma_D$, giving $\Lambda_{1s} = \sqrt{1-\alpha^2}$. **Series expansion (Wolfram MCP 2026-05-26 ✓):**
+$$\Lambda_{1s} - 1 \;=\; -\tfrac{\alpha^2}{2} - \tfrac{\alpha^4}{8} - \tfrac{\alpha^6}{16} - \tfrac{5\alpha^8}{128} - O(\alpha^{10}).$$
+Numerically at $\alpha = 1/137.035999$: binding $-2.6626 \times 10^{-5}\, mc^2$ — matches textbook hydrogen-1s to 5 sig figs.
+
+### Route Z (cutoff) — what changes
+
+With cutoff at $r = r_e > 0$, the singular point $r=0$ is excluded, so **both** indicial branches $\nu_\pm$ are admissible on $[r_e, \infty)$. The general solution is a linear combination, exponentially decaying at $r \to \infty$ (use Whittaker $W$-type or $U$-confluent-hypergeometric). The eigenvalue is determined by a single transcendental equation:
+$$\boxed{\,g(r_e;\,\lambda) = 0\,}$$
+imposed on the asymptotically-decaying combination. This is *one equation* in *one unknown* $\lambda$ for given $r_e$, so $\lambda(r_e)$ is a well-defined function.
+
+In terms of Whittaker $W$ (which is the natural exponentially-decaying-at-infinity solution):
+$$g_{\rm dec}(r) \;\propto\; \frac{1}{r} W_{\nu_S, \gamma_D}(2\alpha\epsilon r/r_0) \cdot [\text{spinor structure}]$$
+plus an analogous expression for $f$. The cutoff condition is then $W_{\nu_S, \gamma_D}(2\alpha\epsilon r_e/r_0) = 0$ (or the equivalent on the full 2-spinor pair).
+
+### Asymptotic checks for Stage 4
+
+- **$r_e \to 0$:** Cutoff vanishes, recover $\Lambda(0) = \sqrt{1-\alpha^2}$.
+- **$r_e \to \infty$:** Bound state pushed out of existence; $\Lambda(r_e) \to 1^-$ (or no bound state).
+- **Closure #7a target:** $\Lambda(r_e^*) = 1$ (i.e., $\lambda = mc^2$) defines some $r_e^*$. Per Iteration 5's forecast, this $r_e^*$ is likely Bohr-scale ($\sim a_B \sim r_0/\alpha^2$), giving wrong scale vs triangulated.
+
+### Closure-condition status
+
+Forecast from Iter 5 stands: closure #7a (global mass-renormalisation) likely gives wrong scale (Bohr); closures #7b (local pointwise) or #7c (operator-coefficient $r_e = r_0/2$) more plausible. Stage 4 will resolve this numerically.
+
+**Next (Stage 3):** Explicit Whittaker-$W$ form of the asymptotically-decaying radial-Dirac solution; set up the transcendental cutoff equation $g(r_e; \lambda) = 0$ symbolically in Wolfram MCP. Verify the $r_e \to 0$ limit recovers $\Lambda_{1s} = \sqrt{1-\alpha^2}$.
+
+**Outcome-matrix:** still not yet determinable — explicit cutoff eigenvalue equation not yet assembled.
+
+**Status:** READY for next iteration (Stage 3: Whittaker form + transcendental cutoff equation).
