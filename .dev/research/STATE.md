@@ -239,3 +239,42 @@ The Schwinger closed-form (branch B) is the *one-loop* prediction; branch A is r
 Loop continues — derivation structurally complete but verification-doc + FINDINGS updates not yet committed.
 
 **Status:** READY. **Outcome-matrix: A confirmed.**
+
+## Iteration 6 — 2026-05-26 — §III.D-extension drafted in verification doc
+
+**Advanced.** Appended ~90 new lines to `Roadmapping/Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md` (inserted between line 510 closing-rule and the legacy duplicate-§II block beginning at line 511; duplicate-§II block left untouched as out-of-scope cleanup).
+
+### What landed
+
+New subsection **§III.D-extension — First-principles derivation of $r_e/r_0$ (closes #64)** containing:
+
+- Pointer to companion notebook `r_e_derivation_self_energy.wl` with Wolfram-MCP confirmation.
+- Two Crocco-compliant `<!-- TODO: human reviews and fills in -->` blocks (one at top covering hypothesis (ii), one at bottom covering verdict-shift framing).
+- **Derivation in one line** — boxed closed-form $r_e/r_0 = (2-a_e)/(2(2+a_e))$.
+- **Convergence table** — Dirac tree through 4-loop + CODATA-full; CODATA-full residual $3.45\times 10^{-13}$ within triangulation precision floor $\sigma_r = 2.5\times 10^{-13}$.
+- **Derivational chain** (4 numbered steps) — explicit hypothesis (ii) reduction; magnetic-moment-route analogue of BS-§19 Lamb-shift inheritance.
+- **Honest-scope paragraph** (Crocco rule #5) — reproduction-by-inheritance, *not* independent dual derivation of $a_e$; hypothesis (i) flagged as future-work distinct dual prediction.
+- **Verdict update** — Eqs. (III.21)–(III.23) marker shifts from **⚠ CHARACTERISED** to **✅ DERIVED at framework precision** *conditional on hypothesis (ii)*; author-review gating step explicitly noted.
+- **Outcome-matrix tag** — Branch A per master #67 (Branch B as 1-loop sub-result).
+
+### Cross-links wired
+
+- → companion notebook (relative path)
+- → FINDINGS_for_author_review.md Finding 2 (queued for iter-7 update)
+- → issue #64 (this iteration's source-of-record)
+- → issue #67 (master outcome-matrix)
+- → issue #54 (legacy "first-principles rederivation" tracker)
+- → issue #61 (triangulation precedent)
+- → PR #62 (triangulation precision-floor source)
+- → BS-§19 / §20 Lamb-shift inheritance precedent
+
+### Not yet done
+
+- Index table at line 54 (`(III.21)–(III.23) | g-factor numerical reproduction | 🔴 fails`) **not updated** — the existing marker is a historical record; updating it to ✅ requires a deliberate redaction decision that's better left for iter-7's FINDINGS update where the full provenance can be recorded together.
+- Duplicate-§II block at lines 511+ **not removed** — out-of-scope cleanup for this candidate; will note in iter-8 to file a tracking issue.
+
+**Next.** **Iter-7 — update `Roadmapping/Equation_Verification/FINDINGS_for_author_review.md` Finding 2.** Shift verdict from ⚠ to ✅-conditional, record the closed-form $r_e/r_0 = (2-a_e)/(2(2+a_e))$, embed the convergence table, cross-link to the new verification-doc §III.D-extension. Update the index table (line 54 of the verification doc) atomically with the FINDINGS revision so the historical-vs-current distinction is unambiguous.
+
+**Outcome-matrix:** **A confirmed** (unchanged from iter-5; this iter is documentation-side).
+
+**Status:** READY.
