@@ -69,6 +69,27 @@ Each speaker's lines begin with a bold persona name followed by a colon. Stage d
 
 `lint_episode.py` (PR C) validates: YAML schema, speakers ∈ canonical cast, every `animations_cued` resolves to a real Manim scene file under `../../Animations/manim_scenes/`, every wikilinked source resolves, rough word-count → runtime cross-check.
 
+## Preshow prep documents
+
+`preshow_*.md` files are a distinct doc type from the `episode_NN_*.md` scripts: a **prompt bank** that supports a recorded conversation with a guest, rather than a written-dialogue script. The 3-voice cast (Historian / Physicist / Experimentalist) still anchors the format, but each menu item carries a voice tag (`[H]` / `[P]` / `[E]`) indicating the natural opener and a citation back to the source verification doc or primary bibliography note. The guest is a fourth voice; the regulars draw the guest into dialogue rather than scripting them.
+
+Frontmatter variant for preshow prep docs:
+
+```yaml
+---
+doc_type: preshow_prep
+title: "<Pre-show title>"
+guest: "<Guest name>"
+speakers: [Historian, Physicist, Experimentalist]
+target_runtime_min: 120                              # 60–180 min typical for a pre-show
+buckets: [history, society_culture, experiments, thought_experiments]
+status: draft                                        # draft | reviewed | recorded
+issue: <NN>                                          # tracking issue
+---
+```
+
+Naming convention: `preshow_<short_topic>.md` (e.g., `preshow_tepper_proper_time.md`). Preshow docs are **not** validated by `lint_episode.py` — the linter targets the episode-script schema; the preshow schema is intentionally lighter (no `animations_cued`, no chapter binding, voice tags instead of speaker turns).
+
 ## Layout
 
 ```
@@ -84,6 +105,7 @@ Podcast/
 ├── episode_07_PNT_GPS_SLR_QKD.md
 ├── episode_08_quantum_computing.md
 ├── episode_09_fusion.md
+├── preshow_tepper_proper_time.md        # preshow prep doc (issue #74)
 ├── lint_episode.py                      # introduced in PR C
 ├── build_audio.py                       # introduced in PR L (optional)
 ├── build_episode_video.py               # introduced in PR L (optional)
