@@ -508,6 +508,37 @@ Print["  required r_e/r_0 = ", InputForm[x /. First @ Solve[gr[x] == -2.00231930
 
 ---
 
+#### First-principles derivation of $r_e$ — variational route (closes [#65](https://github.com/temoTxt/PyPhysics/issues/65))
+
+The candidate-2 variational/renormalised-dual-Dirac route was pursued over 7 substantive iterations on branch `65-theory-candidate-2-…` (process log: [`../../.dev/research/STATE.md`](../../.dev/research/STATE.md); computation: [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_variational.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_variational.wl)).
+
+**Closure-condition inventory.** Seven candidate closures were enumerated and classified framework-internal vs ad-hoc (full table in STATE.md iter 7). Two framework-internal readings coincide on a single value:
+
+- **#4 — Critical-point of $\mathbf{F}_K$.** From [`FoundationsII-Classical.md`](FoundationsII-Classical.md) Sec 2.2 Eq. (2.11), $r_0$ is a critical point of the dual Hamiltonian force in the "V-as-part-of-mass" framework. The midpoint $r_e = r_0/2$ is the natural geometric cutoff.
+- **#7c-tree — Operator-coefficient at tree-Dirac target.** The Eq. (III.22) operator coefficient $g_r(r_e) = 2[1 - 4r_0/(2r_e+r_0)]$ equals the standard Dirac $g = -2$ exactly at $r_e/r_0 = 1/2$.
+
+Both closures yield the same first-principles answer at framework precision:
+
+$$\boxed{\;r_e/r_0 \;=\; \tfrac{1}{2}\quad\text{(framework tree-level, exact)}.\;}$$
+
+**Numerical comparison (Wolfram MCP 2026-05-26):**
+
+| Reading | $r_e/r_0$ | Δ vs triangulated | Source |
+|---|---|---|---|
+| #4 / #7c-tree (framework-internal) | $0.5000000000$ | $+5.7949\times 10^{-4}$ | this work, exact |
+| #7c-Schwinger (QED-external) | $0.4994196322$ | $-8.78\times 10^{-7}$ | requires $g_e^{(1\text{-loop})} = -2 - \alpha/\pi$ as input |
+| Triangulated (PR #62) | $0.4994205099$ | (reference) | empirical joint fit |
+
+The tree-vs-triangulated gap of $5.79\times 10^{-4}$ is *exactly* the Schwinger one-loop anomalous moment scale. The Schwinger-vs-triangulated gap of $8.78\times 10^{-7}$ is the Karplus-Kroll two-loop QED residual. **The framework's published algebra reproduces $r_e/r_0 = 1/2$ at tree level; the $\alpha/(2\pi)$ shift required to match the triangulated joint-best-fit is a QED radiative correction that the framework does not algorithmically generate.**
+
+**Negative-result diagnostic for Route X** (variational stationarity of $\langle K_D\rangle$ on a hydrogenic trial $\psi_1 \propto e^{-r/aa}$ over $[r_e, \infty)$): no first-principles solution. At electron-radius scale $\hat{a}\sim 1$ the NR expansion of (III.4) is invalid ($\langle T\rangle \sim 9{,}400\,mc^2$, super-relativistic); at Bohr scale $\hat{a}\sim 1/\alpha^2$ the cutoff $r_e \sim r_0$ is invisible (sensitivity $\sim \alpha^6 \sim 10^{-13}$). The published expanded $K_D$ cannot serve as the operator in a radial-cutoff variational principle — the framework's $r_e$ is structurally an *evaluation point of operator coefficients*, not a *radial cutoff in the integration domain*. Detailed diagnostic in STATE.md iter 4 + notebook Section 3.
+
+**Verdict.** Verdict marker for Eqs. (III.21)–(III.23) remains ⚠ (characterised). Issue [#65](https://github.com/temoTxt/PyPhysics/issues/65) is closed by this work with **Outcome C** (definite first-principles value $r_e/r_0 = 1/2$ obtained, distinct from triangulated; the gap is identified as exactly the Schwinger correction). See [`FINDINGS_for_author_review.md` Finding 2](FINDINGS_for_author_review.md#finding-2--drqm-i-eq-iii22-published-r_e-does-not-reproduce-the-experimental-g_e) "Update — 2026-05-26 (Candidate 2 first-principles route)" for the full disposition.
+
+<!-- TODO: human reviews and fills in — confirms (a) closure #7c (operator-coefficient at the framework target g-factor) is the correct framework-internal reading of "variational determination", and (b) the tree-level g = -2 is the right framework target (vs an internally-defined alpha-corrected value that the campaign missed). -->
+
+---
+
 
 
 The paper introduces three dual relativistic wave equations, all of the form

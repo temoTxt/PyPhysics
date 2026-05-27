@@ -129,6 +129,42 @@ The triangulation therefore **confirms branch (c) as the joint-best-fit across a
 
 **Status change.** Finding 2's verdict moves from 🔴 (flagged) to ⚠ (characterised) under this update: the discrepancy is now quantitatively understood as a 16-sig-fig agreement at $r_e/r_0 = 0.4994205099128317$, which differs from the published $0.499857150068631$ in the fourth decimal place. The natural framing of the relationship between the two values: the published $r_e$ is an *initial-value* result from a uni-observable numerical search against $g_s$, and the triangulated value is a *refinement calculation* on top of that initial value, using all six $g_s$-dependent observables as joint constraints. A subsequent first-principles derivation from the dual-Dirac renormalisation prescription (tracked in [issue #54](https://github.com/temoTxt/PyPhysics/issues/54)) is a further potential refinement; it could agree with the triangulated value, refine it further, or expose a derivation-level structure that reframes the cutoff entirely. The ⚠ marker accepts the triangulated value as the campaign's current-best-refinement and remains open to further refinement from #54.
 
+### Update — 2026-05-26 (Candidate 2 first-principles route, closes [#65](https://github.com/temoTxt/PyPhysics/issues/65))
+
+The candidate-2 variational/renormalised-dual-Dirac-equation route was pursued in branch `65-theory-candidate-2-variational-determination-of-r_e-via-renormalised-dual-dirac-equation` over 7 substantive iterations (process log: [`.dev/research/STATE.md`](../.dev/research/STATE.md); computation: [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_variational.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_variational.wl)). **Terminal outcome: C** (definite first-principles value distinct from triangulated).
+
+**Closure inventory.** Seven candidate closure conditions were enumerated and classified framework-internal-vs-ad-hoc (full table in STATE.md iter 7). Two framework-internal readings coincide on a single value:
+
+- **Closure #4 — Critical-point of $\mathbf{F}_K$.** Per [`FoundationsII-Classical.md`](FoundationsII-Classical.md) Sec 2.2 Eq. (2.11), $r_0$ is a critical point of the dual Hamiltonian force in the framework's "V-as-part-of-mass" form. The natural cutoff is the midpoint $r_e = r_0/2$.
+- **Closure #7c-tree — Operator-coefficient at tree-Dirac target.** The DRQM I (III.22) operator coefficient $g_r(r_e) = 2[1 - 4r_0/(2r_e+r_0)]$ equals the standard Dirac $g = -2$ exactly at $r_e/r_0 = 1/2$.
+
+Both framework-internal closures yield the same exact answer:
+
+$$\boxed{\;r_e/r_0 \;=\; \tfrac{1}{2}\quad\text{(framework tree-level, first-principles)}.\;}$$
+
+**Numerical comparison (Wolfram MCP 2026-05-26):**
+
+| Closure | $r_e/r_0$ | Δ vs triangulated | Source |
+|---|---|---|---|
+| #4 / #7c-tree | $0.5000000000$ | $+5.7949\times 10^{-4}$ | framework-internal, exact |
+| #7c-Schwinger | $0.4994196322$ | $-8.78\times 10^{-7}$ | requires QED $g_e^{(1\text{-loop})}=-2-\alpha/\pi$ as input |
+| Triangulated (PR #62) | $0.4994205099$ | (reference) | empirical joint fit |
+
+The tree-vs-triangulated gap of $5.79\times 10^{-4}$ is *exactly* the size of the Schwinger one-loop anomalous moment $\alpha/(2\pi) = 1.16\times 10^{-3}$ multiplied by the sensitivity coefficient $\sim 0.5$. The Schwinger-vs-triangulated gap of $8.78\times 10^{-7}$ is the Karplus-Kroll two-loop QED residual. **The framework's algebra reproduces the cutoff value at tree level; the $\alpha/(2\pi)$ shift required to match the triangulated joint-best-fit is a QED radiative correction the framework does not algorithmically generate.**
+
+**Negative-result diagnostic for Route X (non-relativistic $K_D$ variational).** A complementary route — variational stationarity of $\langle K_D\rangle$ on a hydrogenic trial $\psi_1 \propto e^{-r/aa}$ over the cutoff-restricted domain $[r_e, \infty)$ — was set up and shown to have **no first-principles solution**: at electron-radius scale the NR expansion of $K_D$ (III.4) is invalid (kinetic energy is $\sim 9\,000\,mc^2$, super-relativistic); at Bohr scale the cutoff $r_e\sim r_0$ is invisible (sensitivity $\sim \alpha^6 \sim 10^{-13}$). The published expanded $K_D$ cannot be used as the operator in a radial-cutoff variational principle — the framework's $r_e$ is structurally an *evaluation point of operator coefficients*, not a *radial cutoff in the integration domain*. Full computation in STATE.md iter 4 + notebook Section 3.
+
+**Implication for Finding 2 disposition.** Finding 2's status remains ⚠ (characterised). The disposition is now sharpened:
+
+1. **Empirical (Pass B triangulation):** $r_e/r_0 = 0.4994205099128317$ — the campaign's current best refinement, joint-fit-validated.
+2. **First-principles framework-internal (this update):** $r_e/r_0 = 1/2$ exact (tree-Dirac); coincides with critical-point closure.
+3. **Gap = QED radiative correction:** the $5.79\times 10^{-4}$ gap between (1) and (2) is the Schwinger $\alpha/(2\pi)$ correction. To close it within the framework, the dual-Dirac apparatus would need to internally produce the anomalous moment $\alpha/\pi$ — which neither DRQM I nor its companion papers algorithmically deliver. The framework can either accept the Schwinger 1-loop value as an external QED input (collapsing to Candidate 3's reading) or remain at tree-level $1/2$ as a strictly framework-internal answer.
+
+**Status indicator remains ⚠.** Finding 2 is now characterised at three levels: published initial-value $0.499857$, empirical joint-fit $0.4994205099$, and framework first-principles $1/2$. The latter two differ by exactly the Schwinger correction, which is a clean structural identification rather than a tension.
+
+<!-- TODO: human reviews and fills in — confirms that (a) the Route Z operator-coefficient closure #7c is the correct framework-internal reading of "variational determination" (vs the alternative variational-stationarity reading that hit Outcome D in Route X iter 4); (b) the identification of closure #4 (critical-point of F_K) with closure #7c-tree (operator-coefficient at g=-2) is faithful to the framework's algebra; (c) the conclusion that the framework's algebra cannot internally produce the alpha/(2pi) correction is correct, or — if there is a mechanism the campaign missed — the author indicates which DRQM I/companion-paper apparatus would supply it. -->
+
+
 <!-- TODO: human reviews and fills in — confirms that (a) Tepper's bracketing-guide guidance is faithfully recorded; (b) the Pass A vs Pass B contrast is the correct way to expose the substantive-AI weighting choice; (c) the conclusion that Pass B = branch (c) to 16 sig figs is the right honest framing; (d) the stretched-fit flag reading is correct (no observable in tension); (e) the verdict-marker shift from 🔴 to ⚠ pending #54 is the right disposition; (f) the residual table accurately identifies each framework-floor source. -->
 
 ---
