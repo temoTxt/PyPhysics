@@ -65,3 +65,22 @@
 - **Outcome-matrix:** #3 not yet determinable (need measurement provenance + framework value). #2 trending **A**.
 - **(Z-i)/(Z-ii):** unchanged — #2 no divergence; #3 divergence (if any) only via anomalous-g cutoff, not yet computed. NOTE: a measurement value for Li²⁺ 2P FS is still UNRESOLVED — brief's 7,367 MHz refuted by $Z^4$ scaling; literature provenance lookup still required before #3 verdict (do not adopt brief figure).
 - **Status:** READY.
+
+## Iteration 4 — 2026-05-27 — execute cell 1 via Wolfram MCP (Z=3 leading Dirac FS verified)
+
+**Step taken:** ran cell 1 of `r_e_Li2plus_spectroscopy.wl` through `mcp__wolfram__WolframLanguageEvaluator`. Recorded the result inline in the notebook.
+
+**Wolfram MCP result (2026-05-27):** `{10949.283786302933, 886891.9866905379, 81.00000000000003}` ✅
+- Z=1 leading Dirac FS = **10,949.28 MHz** — matches BS-§14.2's ~10,949 MHz sanity value ✓.
+- Z=3 leading Dirac FS = **886,892 MHz = 886.9 GHz** (infinite-nuclear-mass).
+- $Z^4$ ratio = **81.00** ✓.
+- (Harmless `Symbol::undefined2` warning on the `ZZ` pattern var in `SetDelayed`; does not affect the numeric output.)
+
+**Conclusion:** the Li²⁺ 2P₃/₂–2P₁/₂ leading-Dirac scale is **~887 GHz**, definitively refuting the brief's draft 7.4 GHz / 7,367 MHz figures (wrong by ~2 orders of magnitude). The ~887 GHz figure is now the verified scale of record for #3.
+
+**Queued next:** add cell 2 to the notebook — framework prediction $\Delta E_{FS}^{\rm fw}(Z{=}3) = (g_s/-2)^1 \times \Delta E_{\rm leading}(Z{=}3)$ at $g_s = -2.00231930$ (the Z=1-triangulated universal cutoff, reading **(Z-i)**); compute the Z=3 anomalous offset = $\frac{g_s-2}{2}\times 886\,892$ MHz $\approx +1\,029$ MHz, framework total $\approx 887\,921$ MHz. Then execute it. (Reduced-mass + recoil refinement for ⁷Li is a sub-% correction, ~−200 MHz; defer as a refinement note.) After that, the literature-provenance lookup for the Li²⁺ 2P FS measurement is the gating item before drafting #3's verdict in the doc.
+
+- **Current observable focus:** #3 fine structure (primary).
+- **Outcome-matrix:** #3 not yet determinable (framework value pending cell 2; measurement provenance still unresolved). #2 trending **A**.
+- **(Z-i)/(Z-ii):** unchanged — #2 no divergence; #3 leading $Z^4$ verified, anomalous-g cutoff divergence not yet computed.
+- **Status:** READY.

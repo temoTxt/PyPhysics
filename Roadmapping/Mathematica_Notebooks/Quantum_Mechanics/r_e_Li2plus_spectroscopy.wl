@@ -41,3 +41,7 @@ ClearAll[mec2eV, hh, alpha, ZZ, dEfsLeading]; mec2eV = 510998.95; hh = 4.1356676
 Print["Z=1 leading Dirac FS = ", dEfsLeading[1], " MHz  (expect ~10949, BS-S14.2 sanity)"];
 Print["Z=3 leading Dirac FS = ", dEfsLeading[3], " MHz  (expect ~886800 ~= 887 GHz; refutes brief 7.4 GHz)"];
 Print["Z^4 ratio check = ", dEfsLeading[3]/dEfsLeading[1], "  (expect 81)"];
+(* Wolfram MCP result 2026-05-27:  {10949.283786302933, 886891.9866905379, 81.00000000000003}  ✅ *)
+(*   Z=1 = 10949.28 MHz  (matches BS-S14.2 ~10949 ✓);  Z=3 = 886892 MHz = 886.9 GHz;  ratio = 81 ✓. *)
+(*   => Li(2+) 2P3/2-2P1/2 leading-Dirac scale is ~887 GHz.  Brief's 7.4 GHz / 7367 MHz figures are *)
+(*      refuted (wrong by ~2 orders of magnitude); do NOT adopt them as the #3 measurement.          *)
