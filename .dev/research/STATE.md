@@ -97,3 +97,33 @@ Final Z-scan: **Z = {2, 3, 6, 8, 14, 20}** — all absolute, well-distributed. �
 - **Next:** look up + record the ¹⁶O⁷⁺ (Z=8) absolute bound-electron g-factor + uncertainty + DOI (Verdú, Djekić, Stahl, Valenzuela, Vogel, Werth, Beier, Kluge, Quint, PRL 92, 093002 (2004), "Electronic g Factor of Hydrogenlike Oxygen ¹⁶O⁷⁺").
 - **Outcome-matrix tentative:** **C-leaning** (B live), unchanged.
 - **Status:** READY (1/6 ions catalogued with absolute values; ion set FINAL at Z={2,3,6,8,14,20}).
+
+## Iteration 5 — 2026-05-27 — ¹⁶O⁷⁺ (Z=8) g-factor + provenance (ion 2/6)
+
+**Step taken:** Looked up and recorded the ¹⁶O⁷⁺ absolute bound-electron g-factor (queued from iter 4). Verified via web search against the primary source.
+
+**¹⁶O⁷⁺ (Z=8) — recorded value:**
+- **Experimental:** $g_e^{\rm exp}(^{16}{\rm O}^{7+}) = 2.000\,047\,025\,4(15)_{\rm stat}(44)_{\rm sys}$ → combined $\sigma \approx 46\times10^{-10}$, i.e. $2.0000470254(46)$.
+- **Theory (bound-state QED):** $g_e^{\rm theo} = 2.000\,047\,020\,2(6)$ (exp–theo agree at 1.1σ; 0.25% BS-QED test).
+- **Source:** J. L. Verdú, S. Djekić, S. Stahl, T. Valenzuela, M. Vogel, G. Werth, T. Beier, H.-J. Kluge, W. Quint, *"Electronic g Factor of Hydrogenlike Oxygen ¹⁶O⁷⁺,"* **Phys. Rev. Lett. 92, 093002 (2004)**. DOI: **10.1103/PhysRevLett.92.093002**. (Single ¹⁶O⁷⁺ ion in a Penning trap; first calculated resonance line shape.)
+
+**Framework-relevant derived quantities (Wolfram-verify at joint-fit step):**
+- $a_e^{\rm bound}(Z{=}8) = (g-2)/2 = +0.000\,023\,512\,7$. The Z=8 binding term $-\tfrac13(Z\alpha)^2 \approx -1.136\times10^{-3}$ nearly cancels the free-electron anomaly $a_e=+1.1597\times10^{-3}$ → net $g \approx 2.0000$.
+- (Z-ii) back-fit estimate: $r_e^{(Z=8)}/r_0 = (2-a)/(2(2+a)) \approx 0.499\,994$ (hand estimate; verify in `.wl`).
+
+**Z-trend across the catalogued + projected points (the headline emerging pattern):**
+| Z | source | $g_e^{\rm bound}$ | $a_e^{\rm bound}=(g-2)/2$ | back-fit $r_e^{(Z)}/r_0$ (est.) |
+|---|---|---|---|---|
+| 1 (free) | CODATA | 2.00231930 | +0.00115965 | 0.499420510 (triangulated) |
+| 2 | Schneider22 | 2.00217742 | +0.00108871 | ≈0.499456 |
+| 8 | Verdú04 | 2.00004703 | +0.00002351 | ≈0.499994 |
+| 14 (proj.) | Sturm13 | 1.99534896 | −0.00232552 | ≈0.501164 |
+
+- The back-fit $r_e^{(Z)}/r_0$ **monotonically sweeps through 0.5** as Z increases (crossing 0.5 near Z≈8–9, where the binding correction exactly cancels the free anomaly so $g=2$ and $r_e/r_0=1/2$ — the tree-Dirac value). This is a **large, clean, monotonic Z-dependence**, not scatter.
+- **Outcome A (Z-universal single cutoff) is now effectively ruled out** by inspection: a fixed $r_e/r_0=0.499421$ predicts $g=-2.00231930$ at every Z, but measured $|g|$ ranges 2.0000–2.0022 across the scan — residuals of order $10^{-3}$–$10^{-4}$, i.e. $10^6$–$10^7\sigma$. The joint χ² will confirm quantitatively.
+- The back-fit curve is exactly the inversion of QED's bound-state $g(Z\alpha)=2[1-\tfrac13(Z\alpha)^2-\ldots]+\tfrac{\alpha}{\pi}+\ldots$ → **Outcome C** (per-Z inheritance of QED's $a_e(Z\alpha)$; the framework supplies the g-formula but not the $-\tfrac13(Z\alpha)^2$ binding term). Distinguishing **C vs B** hinges on whether the framework can *derive* the $(Z\alpha)^2$ coefficient internally — it cannot (g-formula leaves each state's cutoff free), so C is strongly favoured; the joint fit's $a+b(Z\alpha)^2$ form-fit will characterise the curve either way.
+
+- **Current ion focus:** ¹⁶O⁷⁺ (Z=8) — done.
+- **Next:** transcribe ¹²C⁵⁺ (Z=6) absolute g-factor with full provenance — brief table lists $2.001\,041\,590\,18(3)$, Sturm 2011 *PRL* **107**, 023002; verify value + DOI (DOI 10.1103/PhysRevLett.107.023002).
+- **Outcome-matrix tentative:** **C** (firming up; A effectively excluded by the Z=8 point; B requires an internal $(Z\alpha)^2$ derivation the framework lacks).
+- **Status:** READY (2/6 ions catalogued: He⁺ Z=2 ✅, O⁷⁺ Z=8 ✅; remaining C⁵⁺ Z=6, Si¹³⁺ Z=14, Ca¹⁹⁺ Z=20 + Li²⁺ Z=3 import).
