@@ -122,3 +122,23 @@
 - **Outcome-matrix:** **#3 → A** (Z-universal cutoff; (Z-ii)≡(Z-i); framework value 887,920 MHz). **#2 → A** (Lamb shift $r_e$-independent). Verdict-drafting pending measurement provenance.
 - **(Z-i)/(Z-ii):** **RESOLVED — no divergence for either observable.** #2: Lamb shift $r_e$-independent. #3: §III.D cutoff has no Z-dependence ⇒ (Z-ii) not derivable, ≡ (Z-i).
 - **Status:** READY.
+
+## Iteration 7 — 2026-05-27 — measurement-provenance lookup #3 (WebSearch): scale confirmed ~888 GHz, brief figure refuted
+
+**Step taken:** WebSearch for the hydrogen-like Li²⁺ 2P₃/₂–2P₁/₂ fine-structure interval.
+
+**Findings:**
+- **Scale CONFIRMED:** hydrogenic Li²⁺ 2P FS ≈ H value × $Z^4$(=81) ≈ 0.366 cm⁻¹ × 81 ≈ **29.6 cm⁻¹ ≈ 888 GHz** (a generic source rounded to "0.4 cm⁻¹ × 81 = 32.4 cm⁻¹"). Consistent with our Wolfram-verified leading-Dirac 886,892 MHz / framework 887,920 MHz. **The brief's 7,367 MHz / 7.4 GHz figures are definitively refuted** (~2 orders of magnitude low).
+- **Brief's confusion source identified:** **neutral lithium** (3-electron, "Li I") 2p₃/₂–2p₁/₂ fine structure is ≈ 10 GHz (arXiv:1405.4111 "QED corrections to the 2P fine splitting in Li" treats neutral Li, ~10 GHz). The brief conflated hydrogenic **Li²⁺** (1-electron, Z=3, FS ~888 GHz) with neutral/many-electron Li (FS ~10 GHz). These are different systems; #3's target is the hydrogenic ~888 GHz interval.
+- **Direct high-precision EXPERIMENTAL value of the hydrogenic Li²⁺ 2P FS interval was NOT surfaced** in this search. The canonical Li²⁺ 2s–2p precision experiment is **Riis et al., Phys. Rev. A 49, 207 (1994)** (measured the 2S–2P Lamb shift, i.e. #2; the FS interval is less directly/precisely measured for hydrogenic Li²⁺). #2's measurement is already provenanced in the brief: **Schiffer et al., PRL 74, 2188 (1995), $\Delta E_{2S-2P}=62\,765(21)$ MHz** (verify Riis vs Schiffer attribution when drafting).
+
+**Provenance status:** #3 — framework prediction in hand (887,920 MHz, outcome A); precise experimental comparison value still to be pinned. NOT a hard BLOCKED state: framework prediction is computed and outcome A is determined; the open item is the experimental reference value, which is a literature-completeness matter, not a Tepper-input dependency.
+
+**Queued next:** one targeted lookup of Riis et al. 1994 (PRA 49, 207) for the precise hydrogenic Li²⁺ 2S–2P / 2P-FS values to pin #3's experimental comparison and cross-check #2's Schiffer-1995 value. THEN draft the #3 section in `12_Li2plus_Spectroscopy.md` (measurement + framework 887,920 MHz + verdict A, back-fit-self-consistency + weak-discriminator framing).
+
+- **Current observable focus:** #3 fine structure (primary).
+- **Outcome-matrix:** **#3 → A** (framework 887,920 MHz; scale confirmed ~888 GHz). **#2 → A**. Both verdicts pending only doc-drafting + final measurement-value citation.
+- **(Z-i)/(Z-ii):** RESOLVED — no divergence for either observable (unchanged from iter-6).
+- **Status:** READY.
+
+**Sources (iter-7):** arXiv:1405.4111 (Li 2P fine splitting, neutral Li); generic Z⁴-scaling fine-structure references. Riis et al., Phys. Rev. A 49, 207 (1994) [to verify next iter]. Schiffer et al., PRL 74, 2188 (1995) [#2, from brief].
