@@ -295,3 +295,22 @@ Crocco `<!-- TODO human reviews -->` blocks retained (substantive-AI doc). Did N
 - **Next:** append the Z-scan multi-Z verdict to `Equation_Verification/FINDINGS_for_author_review.md` Finding 2 (parallel to PR #70's lepton-axis update) — the last remaining done-criteria item. **After that: STOP the loop** (all done-criteria met: ≥5 ions ✅, joint χ²+Z-scaling fit ✅, Z-axis verdict in STATE.md + 14_HydrogenicIon_Zscan.md ✅, FINDINGS update ✅).
 - **Outcome-matrix:** **C** (final).
 - **Status:** READY — primary output doc finalized; one documentation step (FINDINGS) remains before loop stop.
+
+## Iteration 13 — 2026-05-27 — FINDINGS Finding-2 multi-Z update — ALL DONE-CRITERIA MET, LOOP STOPS
+
+**Step taken:** Appended an "Update — 2026-05-27: hydrogenic-ion Z-scan (#82) — the Z-axis verdict" subsection to `Equation_Verification/FINDINGS_for_author_review.md` Finding 2 (inserted after the existing iter-5/6 TODO block, before the Finding-3 divider). Records: the 5-ion data + DOIs, the (Z-i) χ²=1.03×10¹⁶ refutation, the (Z-ii) inheritance result ($c_0$=free cutoff, $c_2$≈1/6), the **Branch C** outcome-matrix classification as the Z-axis analog of PR #70's lepton-axis verdict, the Crocco provenance line, and a fresh human-review TODO block.
+
+**DONE-CRITERIA AUDIT (all met):**
+1. ✅ **5+ ions catalogued with provenance:** ³He⁺(2), ¹²C⁵⁺(6), ¹⁶O⁷⁺(8), ²⁸Si¹³⁺(14), ¹¹⁸Sn⁴⁹⁺(50) — all absolute g-factors, web-verified DOIs. (Li²⁺ Z=3 import from #78 pending; not blocking — 5 solid points span Z=2–50.)
+2. ✅ **Per-ion framework prediction under (Z-i) and (Z-ii)** in `14_HydrogenicIon_Zscan.md` §3–§4.
+3. ✅ **Joint χ² + Z-scaling fit reported** in `r_e_Zscan_fit.wl` (Wolfram-MCP-executed): χ²=1.03×10¹⁶ (Z-i); quadratic form-fit (Z-ii).
+4. ✅ **Z-axis verdict (C) recorded in BOTH** STATE.md (iters 9–12) AND `14_HydrogenicIon_Zscan.md` §6.
+5. ✅ **FINDINGS Finding-2 multi-Z update appended.**
+
+**FINAL VERDICT — Outcome C (Z-specific through QED bound-state $a_e(Z\alpha)$ inheritance).** Branch A (Z-universal cutoff) refuted at χ²≈10¹⁶ over Z=2–50; the per-Z back-fit inherits QED's $-\tfrac13(Z\alpha)^2$ binding structure (slope $c_2$≈1/6, intercept = free-electron cutoff), which the framework does not derive internally. Directly parallels PR #70's lepton-axis verdict. Derivational Branch B remains open, gated on #75 (Tepper hypothesis-(i) input).
+
+**Open (non-blocking, for orchestrator/morning review):** Li²⁺ Z=3 import from #78 once that branch delivers a physical value; PR open + GitHub comments (orchestrator handles — NOT this loop). The brief's Li²⁺ placeholder ($2.0000251707$) is unphysical and must not be used.
+
+- **Current ion focus:** none — campaign complete.
+- **Outcome-matrix:** **C** (final).
+- **Status:** ✅ **COMPLETE — LOOP STOPPED.** All done-criteria met; no ScheduleWakeup issued. Branch ready for orchestrator PR/review.
