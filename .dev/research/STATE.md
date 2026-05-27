@@ -101,3 +101,24 @@
 - **Current observable focus:** #3 fine structure (primary).
 - **Outcome-matrix:** #3 framework value computed (887,920 MHz, Z-i); branch determination pending §III.D (A vs B) + measurement provenance. #2 trending **A**.
 - **Status:** READY.
+
+## Iteration 6 — 2026-05-27 — read source-of-record §4 (DRQM I §III.D) — (Z-ii) RESOLVED → collapses to (Z-i)
+
+**Step taken:** read `Roadmapping/Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md` Eqs. (III.21)–(III.23) + §III.D-extension (lines 451–588). One step (read + determination).
+
+**DECISIVE (Z-i)/(Z-ii) DETERMINATION:**
+
+- **§III.D cutoff formula (III.21–22):** $g_r = 2\left[1 - \dfrac{4r_0}{2r+r_0}\right]$, with $r_0 = e^2/(m_e c^2)$ — the **electron's own classical radius**. **There is NO nuclear charge $Z$ anywhere in the formula.** The cutoff $r_e/r_0$ is fixed by matching the **free-electron** anomalous moment $g_s=-2.00231930$ (back-fit; published $0.499857150068631$ is wrong, triangulated $0.4994205099128317$ is the value that reproduces $g_s$).
+- **Cross-particle (III.23):** muon/proton get their OWN $r_0^\ell = e^2/(m_\ell c^2)$ — the cutoff is **particle-mass-dependent** (per-lepton), and the muon back-fit ($r_\mu/r_0^\mu=0.499417379$) differs from the electron's at $>57\,000\sigma$. But this dependence is on the **bound particle's identity/mass, NOT on the external nuclear charge Z.**
+- **⇒ The framework provides NO Z-scaling of the cutoff.** The electron's $g_s$ is intrinsic and Z-independent (same in H, Li²⁺, free). **Reading (Z-ii) "Z-scaled cutoff" is NOT DERIVABLE from §III.D — it collapses to (Z-i).** The SAME $r_e/r_0 = 0.4994205099128317$ (hence same $g_s$, same $(g_s/-2)=1.00115965$ factor) applies at Z=3. **Outcome A for #3.**
+
+**Honest consequence (important reframe):** because the framework cutoff is a free-electron property with no Z-handle, **#3 is a WEAKER Z-axis discriminator than the brief hoped.** The Li²⁺ prediction is just $Z^4$-scaled leading Dirac × the same $(g_s/-2)$ factor — no NEW Z-axis signal beyond the trivial $Z^4$ scaling. The brief's premise (#3 "engages $r_e$ through the anomalous-g mechanism and is a real Z-axis discriminator") holds only in that $r_e$ enters the prediction, but it does NOT vary with Z, so it cannot discriminate a Z-universal vs Z-scaled cutoff — there is no Z-scaled cutoff on offer. Both this branch's observables (#2, #3) end up **outcome A / (Z-i)=(Z-ii)**.
+
+**Caveat to document:** a real bound-state-QED effect exists (bound-electron g-factor gains $(Z\alpha)^2$ corrections in the nuclear field), but §III.D does NOT model it (it models the free anomalous moment). At Z=3 this correction to the ~1,028 MHz anomalous piece is $\sim(Z\alpha)^2 a_e \times$(that piece) ≈ sub-MHz — within the Bethe-estimate floor, so it doesn't change the verdict.
+
+**Queued next:** literature-provenance lookup for the actual measured Li²⁺ 2P₃/₂–2P₁/₂ fine-structure interval (gating item before #3 verdict; brief's 7,367 MHz already refuted, need the real ~887 GHz-scale measurement + source). Use WebSearch / known refs (e.g. Riis et al. 1994; precision Li²⁺ FS literature). THEN draft #3 section in `12_Li2plus_Spectroscopy.md` with measurement + framework 887,920 MHz + verdict (outcome A, back-fit-self-consistency framing, weak-discriminator note).
+
+- **Current observable focus:** #3 fine structure (primary).
+- **Outcome-matrix:** **#3 → A** (Z-universal cutoff; (Z-ii)≡(Z-i); framework value 887,920 MHz). **#2 → A** (Lamb shift $r_e$-independent). Verdict-drafting pending measurement provenance.
+- **(Z-i)/(Z-ii):** **RESOLVED — no divergence for either observable.** #2: Lamb shift $r_e$-independent. #3: §III.D cutoff has no Z-dependence ⇒ (Z-ii) not derivable, ≡ (Z-i).
+- **Status:** READY.
