@@ -91,3 +91,28 @@
 - **Outcome-matrix:** still not finalized (need MCP exact value + Pachucki comparator), but provisional reading: since the (g_s/-2) correction is only +0.116% and the cutoff is held universal (Z-i), if the framework's 29.85 GHz matches Pachucki's QED comparator within the textbook-leading-g_s floor → **branch A** (universal cutoff survives the out-of-sample Z=3 test). Confirm next iters.
 - **(Z-i)/(Z-ii):** (Z-i) prediction now numerically pinned (~29 845 MHz). (Z-ii) Z-scaled reading still needs a framework Z-running prescription — branch-D risk persists if absent.
 - **Status:** READY.
+
+## Iteration 5 — 2026-05-27 — execute + debug Wolfram cells (MCP); framework prediction pinned ≈ 29.80 GHz
+
+**What advanced:** Ran all four cells via Wolfram MCP, found and fixed a methodological double-count, re-ran.
+
+**First MCP run confirmed the arithmetic:**
+- Cell 1 (H sanity): leading-Fermi H 1s HFS = **1421.16 MHz** ✅ (reproduces 21-cm baseline; ~0.2% above the campaign's 1418.4 MHz due to omitted reduced-mass factor).
+- Cell 4 (angular structure): I·S(F=2) = **+3/4**, I·S(F=1) = **−5/4**, headline F=2↔1 splitting = **2a = (I+½)a** ✅. This is the verified I=3/2 extension of BS-§22's I=1/2 machinery.
+
+**Bug found + fixed (the "debug" of this step):** iter-4 Cell 2 scaled the *measured* H value (1420.4058 MHz). That value already carries the electron-g_s correction (and proton-specific QED/recoil/nuclear-structure), so Cell 3's additional ×(g_s/−2) **double-counted the anomalous moment (~+34 MHz)** and wrongly imported proton nuclear-structure terms. The campaign structure is `framework = (g_s/−2)ⁿ × (textbook LEADING g_s=−2 term)`. Fixed Cell 2 to scale `dnuHleadingFermi = 1418.4` (BS-§22.1 g_s=−2 baseline).
+
+**Corrected MCP run (self-consistent across two routes):**
+- scaleRatio (Li/H) = **20.9878**.
+- textbook Li²⁺ 1s HFS (g_s=−2 leading) = **29 769.1 MHz**.
+- **framework Li²⁺ 1s HFS prediction (g_s=−2.00231930) = 29 803.6 MHz ≈ 29.80 GHz** (Z-i universal cutoff).
+- cross-check (scale the framework-H value 1420.04 MHz by the ratio) = 29 803.5 MHz → **agrees to 0.1 MHz**, confirming the methodology is internally consistent.
+- g_s contributes **+34 MHz** (+0.116%) over the g_s=−2 baseline.
+
+**Below-floor caveat recorded:** the reduced-mass ratio (Li²⁺ nucleus ≫ proton) is a separate ~+0.14% (~+42 MHz) correction NOT yet applied (would push to ~29 846 MHz); it sits at/below the campaign's Bethe-estimate precision floor and is comparable to the g_s correction — to be noted in the doc verdict as a floor caveat, not a precision claim.
+
+- **Current observable focus:** #4 Li-7 1s hyperfine.
+- **Next:** fetch the exact Pachucki et al. 2023 (arXiv:2309.00436) Table VII Li²⁺ 1s HFS QED-theory comparator value, compute the residual vs the framework's 29 804 MHz, and assign the outcome-matrix branch. Then draft the #4 per-observable section in `Bethe_Salpeter/13_Li2plus_Hyperfine.md` with verdict.
+- **Outcome-matrix:** framework prediction pinned (~29 804 MHz, Z-i); branch assignment pending the Pachucki comparator + residual. Provisional: if 29 804 MHz matches Pachucki's value within the ~0.1–0.5% Bethe-estimate floor → **branch A** (universal cutoff survives the out-of-sample Z=3 test).
+- **(Z-i)/(Z-ii):** (Z-i) = 29 804 MHz (firm). (Z-ii) still needs a framework Z-running prescription for r_e — branch-D risk if the framework has none.
+- **Status:** READY.

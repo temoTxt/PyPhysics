@@ -41,13 +41,22 @@ ClearAll[alphaFS, meOverMp, gProton, mec2Hz, dnuHsanity]; alphaFS = 1/137.035999
 (* Top-interval splitting dnu = a (I + 1/2)  =>  dnu ~ mu_I (2I+1)/(2I) Z^3.    *)
 (* So  dnu_Li / dnu_H = [muLi (2 ILi+1)/(2 ILi)] / [muP (2 IP+1)/(2 IP)] * Z^3. *)
 (* mu in nuclear magnetons; muP = 2.79284734, ILi = 3/2, IP = 1/2, Z = 3.      *)
-ClearAll[muProton, muLi7, spinP, spinLi, zCharge, nucFactorP, nucFactorLi, scaleRatio, dnuHmeas, dnuLiTextbook]; muProton = 2.79284734; muLi7 = 3.256427; spinP = 1/2; spinLi = 3/2; zCharge = 3; nucFactorP = muProton*(2*spinP+1)/(2*spinP); nucFactorLi = muLi7*(2*spinLi+1)/(2*spinLi); scaleRatio = (nucFactorLi/nucFactorP)*zCharge^3; dnuHmeas = 1420.405751768; dnuLiTextbook = scaleRatio*dnuHmeas; Print["Cell2: scaleRatio (Li/H) = ", scaleRatio, " ;  textbook Li2+ 1s HFS (g_s=-2) = ", dnuLiTextbook, " MHz"];
+(*                                                                            *)
+(* METHODOLOGICAL FIX (iter 5): scale the g_s=-2 LEADING-Fermi H baseline      *)
+(* (dnuHleadingFermi = 1418.4 MHz, per BS-S22.1), NOT the MEASURED H value.    *)
+(* The measured 1420.4058 MHz already carries the electron-g_s correction and *)
+(* proton-specific QED/recoil/nuclear-structure terms; scaling it and THEN    *)
+(* applying (g_s/-2) in Cell 3 would double-count the anomalous moment         *)
+(* (~ +34 MHz) and wrongly import proton nuclear-structure corrections.        *)
+(* The campaign structure is  framework = (g_s/-2)^n * (textbook LEADING).     *)
+ClearAll[muProton, muLi7, spinP, spinLi, zCharge, nucFactorP, nucFactorLi, scaleRatio, dnuHleadingFermi, dnuLiTextbook]; muProton = 2.79284734; muLi7 = 3.256427; spinP = 1/2; spinLi = 3/2; zCharge = 3; nucFactorP = muProton*(2*spinP+1)/(2*spinP); nucFactorLi = muLi7*(2*spinLi+1)/(2*spinLi); scaleRatio = (nucFactorLi/nucFactorP)*zCharge^3; dnuHleadingFermi = 1418.4; dnuLiTextbook = scaleRatio*dnuHleadingFermi; Print["Cell2: scaleRatio (Li/H) = ", scaleRatio, " ;  textbook Li2+ 1s HFS (g_s=-2 leading) = ", dnuLiTextbook, " MHz"];
 
 
 (* ---- Cell 3: framework correction (g_s/-2)^1 at triangulated r_e ---------- *)
 (* Hyperfine is LINEAR in g_s (n=1, per 10_CrossComparison.md S2).            *)
 (* gsTri = -2.00231930436 at r_e/r_0 = 0.4994205099128317 (PR #62).           *)
-ClearAll[gsTri, gsFactor, dnuLiFramework]; gsTri = -2.00231930436; gsFactor = gsTri/(-2); dnuLiFramework = dnuLiTextbook*gsFactor; Print["Cell3: (g_s/-2) = ", gsFactor, " ;  framework Li2+ 1s HFS prediction = ", dnuLiFramework, " MHz"];
+(* Single g_s application (the double-count of iter-4's draft is fixed).       *)
+ClearAll[gsTri, gsFactor, dnuLiFramework, dnuLiCrossCheck]; gsTri = -2.00231930436; gsFactor = gsTri/(-2); dnuLiFramework = dnuLiTextbook*gsFactor; dnuLiCrossCheck = scaleRatio*1420.04; Print["Cell3: (g_s/-2) = ", gsFactor, " ;  framework Li2+ 1s HFS prediction = ", dnuLiFramework, " MHz  (cross-check scaling framework-H 1420.04: ", dnuLiCrossCheck, " MHz)"];
 
 
 (* ---- Cell 4: I=3/2 angular structure -- F levels and interval rule -------- *)
