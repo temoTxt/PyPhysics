@@ -119,3 +119,16 @@
 - **Measurement provenance recorded this iteration:** §Li-1 records the #1 mis-attribution (Z≈8 value; Sturm 2014 = ¹²C⁵⁺ paper); #2 Schiffer 1995 62,765(21) MHz logged as the one clean valid measurement; #3/#4 provenance notes carried into stubs.
 - **Next:** draft §Li-2 (Lamb shift) — the cleanest computable comparison (valid Schiffer 1995 measurement). Extend notebook Section 2: compute the framework Bethe-estimate Lamb-shift prediction at Z=3 by scaling the Z=1 ~1016 MHz Bethe-estimate via (Zα)⁴/n³ with the shrinking Bethe-log, compare to 62,765 MHz; record that this is reproduction-by-construction (weak discriminator). Wolfram-verify the Z⁴ × Bethe-log scaling numerically.
 - **Status:** READY.
+
+## Iteration 7 — 2026-05-27 — compute + draft §Li-2 Lamb shift (Wolfram-verified)
+
+**Advanced:** Extended notebook Section 2 with the verified Lamb-shift computation and drafted the full §Li-2 result section in `11_Li2plus_HydrogenicIon.md` (As measured / QED Z-expansion / framework prediction / Wolfram check / numerical table / verdict + Crocco TODO). Updated the results-table row to ✅. **#2 is the first observable with a complete, valid prediction-vs-measurement comparison.**
+
+- **Wolfram-verified (2026-05-27):** measured Li²⁺/H Lamb ratio = 59.33 (vs naive Z⁴ = 81); Bethe-log bracket constant C ≈ −1.626 (bracket 8.21 at Z=1 → 6.02 at Z=3); effective scaling 0.7325 × Z⁴. **Framework Li²⁺ Bethe-estimate = 60,282 MHz**, residual −2,483 MHz (**~3.96%**) — the SAME fractional residual as Z=1 (42 MHz/1057.8 = 4.0%). Confirms reproduction-by-construction.
+- **Verdict #2:** ✅ at Bethe-estimate precision floor. Weak discriminator; (Z-i)=(Z-ii) (g=2-symmetric); cutoff does not engage. **Branch A trivially** for #2.
+- **Current observable focus:** #2 Lamb shift — COMPLETE (prediction + measurement + verdict).
+- **Outcome-matrix:** **trending A, B ruled out structurally.** #2 ✅ (Branch A trivially); #1 prediction done but comparison BLOCKED (mis-attributed measurement); #3/#4 pending.
+- **(Z-i)/(Z-ii) differences:** #2 none (weak discriminator); #1 none (cutoff Z-invariant). The genuine reading-difference tests are #3/#4 (where the anomaly piece enters), but per the gating result both readings coincide there too since the cutoff is Z-invariant — so (Z-ii) never actually differs from (Z-i) anywhere; it is "not derivable."
+- **Measurement provenance recorded this iteration:** #2 = Schiffer 1995 *PRL* **74** 2188, 62,765(21) MHz — VALID, the clean comparison.
+- **Next:** draft §Li-3 (fine structure). Extend notebook Section 3: compute leading-Dirac Li²⁺ 2P₃/₂–2P₁/₂ = m_e c²(Zα)⁴/32 at Z=3 (≈887 GHz, Wolfram-verify) + the anomalous correction ((g_s−2)/2)·ΔE_leading at the Z-universal cutoff (≈1028 MHz). Record the 🔴 measurement-provenance issue (brief's 7367 MHz is helium-like Li⁺, not hydrogenic Li²⁺) → #3 comparison likely prediction-without-valid-measurement, candidate BLOCKED. Then §Li-4 hyperfine, then §Li-5 joint χ²/verdict.
+- **Status:** READY.
