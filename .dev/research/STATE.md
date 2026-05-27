@@ -195,3 +195,69 @@ At the Bohr-scale trial ($\hat{a} \sim 1/\alpha^2$), where the NR expansion *is*
 - [x] BLOCKED state recorded with specific author-input requirements — **YES** (two specific clarifications listed above).
 
 **Status:** BLOCKED — Outcome D. **Loop stops here.** Orchestrator should review and either (a) post author-input request comment on issue #65 with the two specific clarifications above, or (b) re-direct this branch to the un-expanded full-Dirac arc as a new sub-task. Per loop-prompt instructions: no PR opened, no issue comments posted by Claude during overnight iterations.
+
+---
+
+## Iteration 5 — 2026-05-26T19:00Z — User pivot: commit to full-Dirac arc (Route Z); BLOCKED lifted; Stage 1 (radial-Dirac setup)
+
+**User decision (interactive):** Commit Claude to the un-expanded full-Dirac arc (5-10 iterations) rather than wait on author input. This pivots from Route X (NR-Pauli $K_D$ + radial cutoff) to Route Z: the full $H_D \Psi = \lambda \Psi$ with a hard-wall radial cutoff at $r = r_e$.
+
+**BLOCKED state lifted.** Iteration 4's Outcome-D diagnosis stands as a *negative* result for Route X (the published NR expansion of $K_D$ cannot pin $r_e$ variationally); Route Z is the alternative not blocked by that diagnosis.
+
+**Framework-internal motivation for Route Z (newly identified).** Gill's *Analytic Representation of The Dirac Equation* (ARTDE), per verification doc `Equation_Verification/Analytic_Representation_of_The_Dirac_Equation.md` line 161 and the converted Markdown line 592, states explicitly: *"If we introduce a cutoff, the [$A^2$] contribution is of order $\gamma^7$"* (where $\gamma$ = fine-structure constant in Gill's notation, $\alpha^7 \sim 8\times 10^{-16}$). This is a framework-internal anticipation that a *radial cutoff* leaves a definite $O(\alpha^7)$ residual on the $A^2$ self-energy term — Route Z's natural target. The same cutoff approximation $(\lambda - V + mc^2) \approx 2mc^2(1 + r_0/(2r))$ is used in ARTDE Sec V exactly as in DRQM I Eq. (III.7), confirming structural consistency.
+
+### Route Z arc plan (stages, 5-10 iterations)
+
+**Stage 1 (this iteration).** Set up the radial Dirac equation for an $s_{1/2}$ state ($\kappa = -1$) in the electron's self-Coulomb potential $V_0 = -e^2/r$. Identify the regular and irregular near-origin solutions and define the hard-wall cutoff boundary condition. Document the structural difference from Route X.
+
+**Stage 2 (next iter).** Analytic solution of the un-cutoff Dirac-Coulomb problem (textbook, Sakurai §3.7 / Greiner). Closed-form eigenvalue $\lambda_n = mc^2/\sqrt{1 + (\alpha/(n-|\kappa|+\sqrt{\kappa^2-\alpha^2}))^2}$; for $n=1, \kappa=-1$: $\lambda_1 = mc^2\sqrt{1-\alpha^2}$.
+
+**Stage 3.** Cutoff-modified eigenvalue $\lambda(r_e)$ via boundary condition $g(r_e) = 0$ at the cutoff (where $g$ = large component). This requires both regular and irregular solutions; the matching condition determines $\lambda$. Set up in Wolfram MCP.
+
+**Stage 4.** Impose closure condition. Two readings to evaluate:
+- **Mass-renormalisation:** $\lambda(r_e^*) = m_e c^2$ (no binding at the cutoff). Numerically solve.
+- **$A^2$-residual:** the framework's $O(\alpha^7)$ residual from ARTDE — interpret as the deviation of $r_e/r_0$ from the tree-level $1/2$.
+
+**Stage 5.** Cross-check $r_e^*/r_0$ against triangulated $0.4994205099128317$ and Schwinger $(2-\alpha/(2\pi))/(4+\alpha/\pi) = 0.499419632\ldots$ Classify outcome A/B/C.
+
+**Stage 6.** Write up. Update `FINDINGS_for_author_review.md` Finding 2 with the result; update DRQM I §III.D verification doc with the variational route.
+
+### Stage 1 — radial Dirac equation setup (this iteration's substantive work)
+
+For an $s_{1/2}$ state ($l=0$, $j=1/2$, $\kappa = -1$), the standard 4-spinor ansatz factors the angular dependence onto $\chi_{\kappa,m}$ (2-component spinor spherical harmonics), leaving two coupled radial ODEs for $g(r)$ (large) and $f(r)$ (small):
+
+$$\frac{dg}{dr} + \frac{1+\kappa}{r}\,g \;=\; \frac{1}{\hbar c}\!\left(\lambda - V_0 + mc^2\right)f, \qquad \frac{df}{dr} + \frac{1-\kappa}{r}\,f \;=\; -\frac{1}{\hbar c}\!\left(\lambda - V_0 - mc^2\right)g.$$
+
+For $\kappa = -1$ (s_{1/2}), $V_0 = -e^2/r$:
+
+$$\frac{dg}{dr} \;=\; \frac{1}{\hbar c}\!\left(\lambda + e^2/r + mc^2\right)f, \qquad \frac{df}{dr} + \frac{2}{r}\,f \;=\; -\frac{1}{\hbar c}\!\left(\lambda + e^2/r - mc^2\right)g.$$
+
+**Near-origin behaviour.** Try $g, f \sim r^{\nu-1}$ as $r \to 0$. Substituting and balancing the dominant $e^2/(r\hbar c) = \alpha/r$ terms with $d/dr \sim (\nu-1)/r$ yields the indicial equation:
+$$\nu^2 \;=\; \kappa^2 - \alpha^2 \;=\; 1 - \alpha^2,$$
+giving $\nu_\pm = \pm\sqrt{1-\alpha^2}$. Define $\gamma_D \equiv \sqrt{1-\alpha^2}$ (Dirac index); $\nu_+ = +\gamma_D \approx 0.999973$, $\nu_- = -\gamma_D$.
+
+- **Standard (no-cutoff) Dirac-Coulomb:** only $\nu_+$ (regular) is admitted. The $\nu_-$ (irregular) solution has $|\psi|^2 \sim r^{-2 + 2\nu_-} = r^{-2(1+\gamma_D)}$ near origin → not square-integrable.
+- **Cutoff Dirac-Coulomb (Route Z):** with hard wall at $r = r_e > 0$, BOTH solutions are admissible on $[r_e, \infty)$ since the singular point $r=0$ is excluded. The eigenvalue $\lambda$ is fixed by the boundary condition $g(r_e) = 0$ (Dirichlet on upper component) matched against the requirement of normalisable behaviour at infinity.
+
+**Hard-wall boundary condition: $g(r_e) = 0$.** This is the framework-natural choice — the upper-component wavefunction vanishes at the cutoff radius, modeling a "Dirac box" with the electron confined to $r > r_e$. The lower component $f(r_e)$ is then determined by the radial Dirac equation as a derivative of $g$.
+
+**Structural difference from Route X.** Route X's "soft cutoff" (truncated exponential trial) used an *approximate* $K_D$ Hamiltonian with the cutoff entering only through normalisation; Route Z uses the *exact* $H_D$ with the cutoff as a hard-wall Dirichlet boundary on the radial domain $[r_e, \infty)$. Route Z is dimensionally well-behaved: the radial integrals all converge regardless of $r_e$ value, and the eigenvalue $\lambda(r_e)$ is a definite function of the cutoff.
+
+**Asymptotic expectation at $r_e \to 0$:** $\lambda(r_e) \to mc^2\sqrt{1-\alpha^2} = mc^2(1 - \alpha^2/2 - \alpha^4/8 - \ldots)$ — the textbook hydrogen 1s. At $r_e \to \infty$: $\lambda(r_e) \to mc^2$ (no bound state). So $\lambda(r_e) = m_e c^2$ is solvable for some intermediate $r_e^* > 0$.
+
+**Sanity-check predictions for Stage 4:**
+- *If* the closure $\lambda(r_e^*) = m_e c^2$ is the right reading and *if* the physical electron mass $m_e c^2$ is what cancels the Dirac-Coulomb binding $\alpha^2/2 \cdot mc^2$, then $r_e^*$ should be Bohr-scale ($\sim 1/\alpha^2 \cdot r_0 \approx a_B$) — **wrong scale** vs triangulated $r_e/r_0 \sim 0.5$.
+- *If* instead the closure target is the framework's $O(\alpha^7)$ residual structure, then $r_e^*/r_0$ should be $1/2 + O(\alpha)$ — **right scale**.
+
+This forecast warns us: a naive mass-renormalisation $\lambda(r_e) = m_e c^2$ likely gives the *wrong scale*. The right closure may need to be more subtle — e.g., demanding the *Dirac eigenvalue equation's local-operator structure* match $m_e c^2$ at $r = r_e$, rather than the global eigenvalue.
+
+**Closure-condition refinement (substantive AI choice, to be revisited Stage 4):**
+- **#7a (global):** $\lambda(r_e) = m_e c^2$ — global eigenvalue equals physical mass. **Likely wrong scale.**
+- **#7b (local):** The Dirac eigenvalue equation evaluated *locally at $r=r_e$* on the regular solution: $H_D \psi |_{r=r_e} = m_e c^2 \psi |_{r=r_e}$. This is a *pointwise* condition, more in line with the paper's "evaluation at $r_e$" convention. Yields a transcendental equation in $r_e/r_0$.
+- **#7c (operator-coefficient):** Demand the operator coefficient $1 + r_0/(2r_e)$ from (III.7) equal a specific framework value (e.g., $2$, giving $r_e = r_0/2$ — the tree-level critical point).
+
+**Next:** Stage 2 — explicit analytic solution of the un-cutoff Dirac-Coulomb radial equations for $s_{1/2}$. Identify regular ($r^{\gamma_D - 1}$ near origin) and irregular ($r^{-\gamma_D - 1}$ near origin) solutions in closed form (confluent hypergeometric / Whittaker functions). Set up Wolfram MCP cells.
+
+**Outcome-matrix:** still not yet determinable — Route Z arc just started. Forecast (above) flags that closure #7a may give wrong scale; #7b or #7c are more likely paths to the right scale.
+
+**Status:** READY for next iteration (Stage 2: analytic Dirac-Coulomb solutions).
