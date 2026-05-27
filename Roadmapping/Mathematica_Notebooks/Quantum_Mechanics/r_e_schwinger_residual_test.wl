@@ -161,14 +161,65 @@ Print["    Remiddi, Kinoshita coefficients)?"];
 
 
 (* ============================================================ *)
-(* Section 7.  Human-acceptance section.                         *)
+(* Section 8.  Muon cross-check -- breaking the back-fit         *)
+(*             degeneracy via cross-particle test.               *)
+(* ============================================================ *)
+
+(* MOTIVATION.  Iter-2 found the electron's KK+LR+KF residual matches the closed-form Schwinger     *)
+(* identification to ~10^-12, but iter 3 noted the agreement is back-fit-forced.  The cleanest test *)
+(* that BREAKS the back-fit degeneracy is to apply the same framework formula -- DRQM I Eq. III.23: *)
+(* g_mu^a = 2 (1 - 4 r_0^mu / (2 r_mu + r_0^mu)) -- to the muon and ask whether the per-particle    *)
+(* back-fit cutoffs are equal (i.e. r_e/r_0^e = r_mu/r_0^mu), as a universal-closed-form-cutoff     *)
+(* prediction would require.                                                                         *)
+(*                                                                                                    *)
+(* NB.  The published DRQM I does NOT make this universal-cutoff claim -- the paper writes the muon *)
+(* and proton g-factor formulas in (III.23) but explicitly leaves r_mu, r_p as separate parameters  *)
+(* without numerical values (verification doc lines 487-489).  This section tests a *stronger*      *)
+(* prediction than the paper makes: IF the framework's cutoff prescription were universal-closed-   *)
+(* form in alpha alone, then the same dimensionless cutoff r/r_0 must reproduce both a_e and a_mu.   *)
+(* Since a_e and a_mu differ measurably (the muon has mass-dependent QED + hadronic + EW            *)
+(* contributions), the universal-cutoff hypothesis is falsifiable.                                   *)
+
+Module[{alpha, aPi, aSchwinger, aEexp, aMuExp, aMuSigma, rEbackFit, rMuBackFit, rClosedForm, deltaR, deltaA, falsifSigma}, alpha = SetPrecision[7.2973525693*^-3, 30]; aPi = alpha/Pi; aSchwinger = alpha/(2 Pi); aEexp = SetPrecision[1.15965218073*^-3, 18]; aMuExp = SetPrecision[1.16592059*^-3, 14]; aMuSigma = SetPrecision[2.2*^-10, 4]; rEbackFit = (2 - aEexp)/(4 + 2 aEexp); rMuBackFit = (2 - aMuExp)/(4 + 2 aMuExp); rClosedForm = (2 - aSchwinger)/(4 + 2 aSchwinger); deltaR = rEbackFit - rMuBackFit; deltaA = aMuExp - aEexp; falsifSigma = deltaR/(aMuSigma/4); Print["===== Section 8: muon cross-check ====="]; Print["  a_e^exp  (Fan 2023 / CODATA)        = ", N[aEexp, 14]]; Print["  a_mu^exp (FNAL Muon g-2 2023 final) = ", N[aMuExp, 12], "  +/- ", N[aMuSigma, 3]]; Print["  a_Schwinger one-loop = alpha/(2 Pi)  = ", N[aSchwinger, 14]]; Print["  delta_a := a_mu - a_e                = ", N[deltaA, 6], " = ", N[deltaA/aMuSigma, 5], " muon-sigmas"]; Print[""]; Print["  Framework's per-particle back-fit cutoffs (from g_r(r) = -2 - 2 a):"]; Print["    r_e/r_0^e   = (2 - a_e)/(4 + 2 a_e)    = ", N[rEbackFit, 18]]; Print["    r_mu/r_0^mu = (2 - a_mu)/(4 + 2 a_mu)  = ", N[rMuBackFit, 14]]; Print["    delta_r := r_e/r_0^e - r_mu/r_0^mu    = ", N[deltaR, 8]]; Print[""]; Print["  Schwinger one-loop universal closed-form: r/r_0 = ", N[rClosedForm, 18]]; Print[""]; Print["  Universal-cutoff falsification statistic:"]; Print["    delta_r / (sigma_{a_mu} / 4) = ", N[falsifSigma, 5], " sigma"]; Print["  -> UNIVERSAL-CLOSED-FORM-CUTOFF HYPOTHESIS RULED OUT AT >", N[falsifSigma/1000, 2], "k-sigma."]];
+
+Print["===== Section 8: interpretation ====="];
+Print["The per-particle back-fit cutoffs r_e/r_0^e and r_mu/r_0^mu differ by 3.13e-6, equivalent to"];
+Print["~57,000 muon measurement-sigmas (using the FNAL 2023 a_mu uncertainty 2.2e-10).  Equivalently"];
+Print["a_mu - a_e = 6.27e-6 differs from zero at ~28,500 muon-sigmas.  This rules out any prediction"];
+Print["under which the dimensionless cutoff r/r_0 is universal across leptons."];
+Print[""];
+Print["The published DRQM I does NOT make a universal-cutoff prediction (the paper leaves r_mu free)."];
+Print["So the section-8 test does not falsify the framework as written.  What it falsifies is the"];
+Print["interpretation IF anyone were to claim (e.g. from issue #54's first-principles rederivation,"];
+Print["if such a derivation produced a closed-form r_e/r_0 = (2 - alpha/(2 Pi))/(4 + alpha/Pi) without"];
+Print["any particle-mass dependence) that the same closed form should hold for the muon.  Such a"];
+Print["closed-form universal claim is now empirically forbidden."];
+Print[""];
+Print["The implication for outcome C-as-published is to STRENGTHEN it: the framework's cutoff is"];
+Print["necessarily per-particle and empirically fit to each particle's measured anomaly.  The closed-"];
+Print["form match seen for the electron is the back-fit cutoff that reproduces a_e^exp; since a_e^exp"];
+Print["is dominated by Schwinger one-loop at the framework's nominal 10^-6 precision floor (the all-"];
+Print["orders-QED-beyond-one-loop content of a_e is ~3.5e-6), the back-fit cutoff lies within ~10^-6"];
+Print["of the closed-form Schwinger value automatically.  The same logic applied to the muon would"];
+Print["give r_mu/r_0^mu = (2 - alpha/(2 Pi))/(4 + alpha/Pi) + delta_mu, with delta_mu propagated from"];
+Print["a_mu^exp - alpha/(2 Pi) ~ 4.5e-6, of similar size to the electron's deviation.  Both are simply"];
+Print["the all-orders QED + (for the muon, hadronic + EW) content of each particle's anomaly."];
+
+
+(* ============================================================ *)
+(* Section 9.  Human-acceptance section.                         *)
 (* ============================================================ *)
 
 (* <!-- TODO: human reviews and fills in -- confirms (a) the structural caveat in the header is the *)
 (*      correct interpretation of the residual-tracks-KK observation (consistent with but not        *)
-(*      independent of the closed-form identification), (b) the B-conditional outcome-matrix         *)
-(*      assignment is honest (the empirical residual test cannot distinguish B from A without the    *)
-(*      Tepper input or framework predictions for type-(b) observables), (c) the Tepper question    *)
-(*      in Section 6 is the right question to pose, and (d) the iter-3 pivot to investigating the    *)
-(*      framework's own derivation of the cutoff (DRQM-I Section III.D Eqs. III.18-III.23) is the    *)
-(*      correct next step.  Note any choice the reviewer would have made differently. --> *)
+(*      independent of the closed-form identification), (b) the iter-3 finding that Section III.D    *)
+(*      derives no closed-form r_e/r_0 in alpha (per Tepper's 2026-05-25 guidance that the published *)
+(*      value was a uni-observable numerical search) settles the outcome-matrix at C-as-published,   *)
+(*      (c) the iter-5 muon cross-check (Section 8) correctly frames the universal-closed-form-      *)
+(*      cutoff hypothesis as a *stronger* prediction than the paper makes -- not a falsification of  *)
+(*      the framework as written but a constraint on any future closed-form derivation (e.g. issue   *)
+(*      #54) that would need to predict particle-mass-dependent cutoffs to be consistent with the    *)
+(*      FNAL muon g-2 2023 measurement, (d) the (refined iter-3) Tepper question in STATE.md is the  *)
+(*      right one to lift to a #66 comment, and (e) the verdict marker on Finding 2 stays at         *)
+(*      [CHARACTERISED] with the structural argument now multi-step (back-fit-forcing + cross-       *)
+(*      particle non-universality).  Note any choice the reviewer would have made differently. --> *)
