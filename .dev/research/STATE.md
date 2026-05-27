@@ -323,3 +323,81 @@ Forecast from Iter 5 stands: closure #7a (global mass-renormalisation) likely gi
 **Outcome-matrix:** still not yet determinable — explicit cutoff eigenvalue equation not yet assembled.
 
 **Status:** READY for next iteration (Stage 3: Whittaker form + transcendental cutoff equation).
+
+---
+
+## Iteration 7 — 2026-05-26T20:00Z — Stages 3-5 collapsed: Route Z TERMINAL RESULT (Outcome C)
+
+**Advanced (per user instruction "stop the queue and just go as fast as possible"):** Collapsed Stages 3 (Whittaker form), 4 (numerical cutoff Dirac eigenvalue), and 5 (closure resolution) into a single sweep. The candidate-2 arc reaches a definite, framework-internal first-principles result.
+
+### Diagnostic on the Whittaker / shooting approach (Stage 3 attempt → redirected)
+
+Initial Wolfram-MCP shooting attempt (NDSolve on radial Dirac on $x \in [x_e, 20]$ for various $\Lambda$) was insufficient: the natural Bohr-scale of the bound state is $a_B/r_0 = 1/\alpha^2 \approx 18\,778$, so $x_{\max} = 20$ is far inside the wavefunction. The cutoff Dirac eigenvalue $\Lambda(r_e)$ for $r_e \sim r_0$ shifts from $\Lambda_{1s} = \sqrt{1-\alpha^2}$ by only $\sim \alpha^4 mc^2 \sim 10^{-9}$ — i.e., **the eigenvalue is essentially insensitive to the cutoff at electron-radius scale**. This reconfirms iter 4's Outcome-D diagnostic on closure #7a: the global mass-renormalisation $\Lambda(r_e) = 1$ requires $r_e \to \infty$, not $r_e \sim r_0$.
+
+### Closure #7c (operator-coefficient) — the framework-internal anchor
+
+The DRQM I §III derivation produces the operator coefficient $g_r(r_e) = 2[1 - 4r_0/(2r_e + r_0)]$ evaluated *at* $r = r_e$. The framework-internal reading of "variational determination of $r_e$" is closure #7c: pick $r_e$ such that this operator coefficient takes its **framework target value** for the spin-magnetic moment.
+
+**Tree-level target** (standard Dirac, no anomalous moment): $g_r(r_e) = -2$. Solving:
+$$2\!\left[1 - \frac{4r_0}{2r_e + r_0}\right] = -2 \;\Longrightarrow\; \frac{4r_0}{2r_e + r_0} = 2 \;\Longrightarrow\; r_e/r_0 = \tfrac{1}{2} \quad\text{(exact)}.$$
+
+**Schwinger 1-loop target** ($g = -2 - \alpha/\pi$, QED-external input): Solving $g_r(r_e) = -2(1+\alpha/(2\pi))$ gives the closed form $r_e/r_0 = (2 - \alpha/(2\pi))/(4 + \alpha/\pi) = 0.49941963215\ldots$ at $\alpha = 1/137.035999$ (Wolfram MCP confirmed: diff against the textbook form is exactly 0).
+
+### Numerical comparison
+
+| Reading | $r_e/r_0$ | Δ vs triangulated | Source |
+|---|---|---|---|
+| **Tree-level (framework-internal)** | $0.5000000000000000$ | $+5.79\times 10^{-4}$ | DRQM I (III.22) at $g = -2$ |
+| **Schwinger 1-loop (QED-external)** | $0.4994196321556$ | $-8.78\times 10^{-7}$ | DRQM I (III.22) at $g = -2 - \alpha/\pi$ |
+| **Triangulated (PR #62)** | $0.4994205099128$ | (reference) | joint fit, 6 observables |
+
+The tree-level discrepancy $5.79\times 10^{-4} \approx \alpha/(2\pi) \cdot$ (sensitivity coefficient) is precisely the Schwinger correction. The Schwinger discrepancy $8.78\times 10^{-7}$ is precisely the Karplus-Kroll 2-loop residual.
+
+### Conclusion — Outcome C
+
+**Candidate 2 (variational/operator-coefficient determination on the renormalised dual-Dirac equation) yields a definite framework-internal first-principles value:**
+$$\boxed{\;r_e/r_0 \;=\; \tfrac{1}{2} \;\text{(exact, framework tree-level)}\;}$$
+
+This **does NOT** match the triangulated $0.4994205099128317$. The discrepancy is exactly the size of the Schwinger one-loop QED correction, which the framework's published apparatus does not internally generate. To reach the triangulated value, the framework must accept the Schwinger anomalous moment as external QED input — at which point candidate 2 collapses into candidate 3 (the Schwinger closed-form reading).
+
+**Outcome-matrix branch: C** — "Derivation reproduces a different definite value." The new value $r_e/r_0 = 1/2$ is the framework's tree-level result. **Finding 2 update needed:** record that the framework-internal first-principles cutoff is $r_0/2$ (tree-Dirac critical-point), with the $\alpha/(2\pi)$ shift identified as a QED-radiative requirement.
+
+### Acceptance criteria check vs issue #65
+
+- [x] Framework-internal closure condition identified (#7c operator-coefficient at tree level).
+- [x] Closure conditions enumerated and classified framework-internal-vs-ad-hoc (table in iter 4 + refinement #7a/b/c in iter 5 + final identification of #7c-tree as framework-internal in this iter).
+- [x] First-principles $r_e/r_0$ derived via the renormalised dual-Dirac equation: **$r_e/r_0 = 1/2$ exact** (tree level).
+- [x] Result cross-checked against triangulated $0.4994205099128317$: **gap is $5.79\times 10^{-4} \approx \alpha/(2\pi)$, exactly the Schwinger correction.**
+- [x] Result cross-checked against Schwinger closed-form $(2-\alpha/(2\pi))/(4+\alpha/\pi) = 0.4994196321556$: **the Schwinger reading reproduces this closed-form analytically; matches triangulated to $10^{-6}$ (Karplus-Kroll 2-loop residual).**
+- [x] Outcome-matrix branch determined: **C** (definite new value at framework precision, distinct from triangulated; with Schwinger 1-loop refinement collapsing to candidate 3).
+
+### Closure-condition classification — FINAL
+
+| # | Condition | Classification | Result |
+|---|---|---|---|
+| 1 | Variational stationarity $\partial E/\partial r_e = 0$ | ad-hoc | — |
+| 2 | Radial-boundary current conservation | ad-hoc | — |
+| 3 | $g$-factor closure (external $g_e$) | framework-external | $r_e/r_0 = 0.4994205099128$ (PR #62 method) |
+| 4 | Critical-point locking $r_e = r_0/2$ | **framework-internal** | $r_e/r_0 = 1/2$ exact (= #7c-tree) |
+| 5 | Normalisation closure | ad-hoc | — |
+| 6 | Schwinger one-loop closure | framework-external (QED) | $r_e/r_0 = 0.4994196321556$ |
+| 7a | Global mass-renormalisation $\lambda(r_e) = mc^2$ | framework-internal but degenerate | wrong scale (Bohr); no solution at $r_e \sim r_0$ |
+| 7b | Local pointwise eigenvalue equation | framework-internal | not separately developed; would converge to #7c |
+| 7c-tree | Operator-coefficient at tree-Dirac target $g=-2$ | **framework-internal** | $r_e/r_0 = 1/2$ exact (≡ #4) |
+| 7c-Schwinger | Operator-coefficient at Schwinger target $g=-2-\alpha/\pi$ | framework-external (QED input) | $r_e/r_0 = 0.4994196321556$ (≡ #6) |
+
+The two **framework-internal** closures (#4 and #7c-tree) coincide: both give $r_e/r_0 = 1/2$ exactly. This is the unique first-principles answer the framework's published algebra can deliver.
+
+**Outcome-matrix:** **C**. Definite value $r_e/r_0 = 1/2$ at framework precision, distinct from the triangulated $0.4994\ldots$ by exactly the Schwinger correction.
+
+**Status:** **TERMINATED.** Acceptance criteria met. Per loop-prompt instructions: stop the loop (omit ScheduleWakeup). No PR opened, no issue comments posted — orchestrator handles morning review.
+
+### Hand-off to orchestrator
+
+- **Branch state:** all iter 1-7 commits pushed to `origin/65-theory-candidate-2-variational-determination-of-r_e-via-renormalised-dual-dirac-equation`.
+- **Key file:** `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_variational.wl` Section 4 contains the terminal-result computation.
+- **Suggested next actions (orchestrator):**
+  1. Update `Roadmapping/Equation_Verification/FINDINGS_for_author_review.md` Finding 2 to record the Route Z first-principles result $r_e/r_0 = 1/2$ at framework precision.
+  2. Post comment on issue #65 summarizing the Outcome C conclusion: framework's first-principles answer is tree-level $1/2$; matching the triangulated $0.4994\ldots$ requires Schwinger QED input.
+  3. Decide whether to open PR merging this branch (it's a *negative* first-principles result with a specific positive identification of the framework's tree-level cutoff, which is itself a publishable finding).
+  4. Issue #65 acceptance criteria checked above can be transcribed to the issue and the issue closed/moved per the project's done-criteria.
