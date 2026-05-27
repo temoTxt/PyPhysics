@@ -151,3 +151,23 @@
 - **Next (final substantive step):** draft the #4 per-observable section in `Bethe_Salpeter/13_Li2plus_Hyperfine.md` — measurement provenance (no direct exp; Pachucki comparator), framework prediction (29 804 MHz minimal / 29 867 MHz with standard corrections), the residual table above, the I=3/2 angular-structure derivation, the branch-A verdict + structural-self-consistency caveat + Bohr–Weisskopf floor caveat, Crocco substantive-AI tags + `<!-- TODO: human reviews and fills in -->` blocks (incl. the exact Pachucki digit). **This completes the done-criteria → STOP after the doc has the verdict.**
 - **(Z-i)/(Z-ii):** (Z-i) firm (29 804 minimal / 29 867 with std corrections). (Z-ii) hypothetical-only (framework asserts universal cutoff).
 - **Status:** READY (doc draft is the terminal step).
+
+## Iteration 8 — 2026-05-27 — draft `13_Li2plus_Hyperfine.md` with verdict — DONE, LOOP STOPS
+
+**What advanced:** Created `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/13_Li2plus_Hyperfine.md` (this branch's distinct output file) — the complete #4 per-observable result section. Contents:
+- Chapter intro framing it as the Z=3/I=3/2 extension of BS-§22.1; companion-notebook link.
+- **Source + the substantive $I=3/2$ angular structure**: $F=1,2$; I·S eigenvalues (F=2:+3/4, F=1:−5/4); headline interval = 2a = (I+½)a — the explicit substantive-AI extension of BS-§22's proton I=1/2 apparatus, with a `<!-- TODO human review -->` block.
+- **Measurement provenance**: no direct Li²⁺ experiment; comparator = Pachucki et al. 2023 (arXiv:2309.00436) Table VII; Li-7 μ_I=+3.256427 μ_N; exact digit flagged for human PDF extraction.
+- **Framework prediction**: Cell-2/3/5 MCP numbers — minimal 29 804 MHz, with-standard-corrections 29 867 MHz; full residual table.
+- **Verdict: branch A** at leading-g_s/Bethe-estimate floor, with the load-bearing **structural-self-consistency caveat** (g_s enhancement is Z-independent, identical to textbook QED → agreement by construction, not independent Z=3 discrimination), the **(Z-i)/(Z-ii) honesty** note (framework asserts universal cutoff; Z-running not claimed → (Z-ii)/branch-B/C/D not the framework's position), and the **Bohr–Weisskopf nuclear-structure floor caveat** (out of scope per #78).
+- Crocco substantive-AI tags + `<!-- TODO: human reviews and fills in -->` blocks throughout (angular structure, provenance/exact-digit, verdict disposition).
+
+**DONE-CRITERIA MET:**
+1. ✅ `13_Li2plus_Hyperfine.md` has the #4 result section: measurement provenance + framework prediction (Z-i; Z-ii addressed as non-asserted) + verdict.
+2. ✅ `r_e_Li2plus_hyperfine.wl` exists with Wolfram-MCP-verified cells (1–5) for the Fermi-contact prediction at Z=3, I=3/2.
+3. ✅ Outcome-matrix branch recorded: **A** (structural self-consistency).
+
+- **Current observable focus:** #4 Li-7 1s hyperfine — COMPLETE.
+- **OUTCOME-MATRIX BRANCH: A** (final).
+- **Open items for human/orchestrator (not blocking):** (a) extract exact Pachucki Table VII Li²⁺ digit into the residual table; (b) contribute the 29 804/29 867 MHz prediction to the Self-Energy branch's joint-χ² fit (`r_e_Li2plus_joint_fit.wl` — owned by that branch, not edited here); (c) PR + GitHub comments handled by orchestrator after morning review.
+- **Status:** ✅ DONE — loop stops (no further ScheduleWakeup).
