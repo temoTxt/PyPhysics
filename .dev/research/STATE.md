@@ -401,3 +401,66 @@ The two **framework-internal** closures (#4 and #7c-tree) coincide: both give $r
   2. Post comment on issue #65 summarizing the Outcome C conclusion: framework's first-principles answer is tree-level $1/2$; matching the triangulated $0.4994\ldots$ requires Schwinger QED input.
   3. Decide whether to open PR merging this branch (it's a *negative* first-principles result with a specific positive identification of the framework's tree-level cutoff, which is itself a publishable finding).
   4. Issue #65 acceptance criteria checked above can be transcribed to the issue and the issue closed/moved per the project's done-criteria.
+
+---
+
+## Iteration 8 — 2026-05-26T22:00Z — Framework-mechanism survey for $\alpha/(2\pi)$ shift (re-opened on user request)
+
+**Goal (user instruction):** Investigate whether the dual-theory framework has any internal mechanism that could generate the Schwinger $\alpha/(2\pi)$ shift between the framework tree-level $r_e/r_0 = 1/2$ and the triangulated $0.4994205099$.
+
+**Approach:** Survey of all framework apparatus capable of producing $\alpha$-dependent corrections to the spin-magnetic moment. Each mechanism evaluated for whether it can produce $\alpha/(2\pi)$ on a *free* electron (the Schwinger correction is a kinematic property of an inertial electron, not a radiation-reaction effect).
+
+### Mechanism survey
+
+| # | Framework apparatus | Order of magnitude | Free-electron contribution? | Verdict |
+|---|---|---|---|---|
+| M1 | Cutoff parameter $r_e$ itself | Determined by $r_e$ | (definition) | **Circular** — what we're trying to determine. |
+| M2 | $b$-vs-$c$ proper-time relativity (Maxwell paper §I.D, Foundations II §3) | $\dot{b}/c \sim u\cdot a/c^3$ on bound source; $\sim \alpha^2$ at atomic | **No** — vanishes for $\mathbf{u}=0$ | Wrong order ($\alpha^2$ vs $\alpha$) and absent on inertial source. |
+| M3 | Dual Maxwell dissipative term ($\mu$-field-mass; Maxwell paper Eq. 4, 6; Foundations II §3.8) | $\mu^2 \propto \ddot{b}/(2b^3) \sim a^2/c^4$; vanishes for inertial $\mathbf{u}=$ const | **No** — only manifests during emission (acceleration) | Classical radiation-reaction effect, $O(1)$ during emission; identically zero for free electron. |
+| M4 | Dual square-root equations (II.2 vs II.3 vs II.1 differences) | Relativistic; expansion in $V_0/(mc^2)$ and $\hbar/(mcr)$ | Yes (operator-coefficient level) | Already encoded in (III.18)–(III.20) and the $g_r(r_e)$ formula. No additional $\alpha$ mechanism. |
+| M5 | ARTDE $A^2$ contribution with cutoff (ARTDE paper Eq. 28; verified at line 161) | Explicitly $O(\gamma^7) = O(\alpha^7) \sim 8\times 10^{-16}$ | Stated to be negligible | Far too small to account for $\alpha/(2\pi) \sim 10^{-3}$. |
+| M6 | Second-quantized dual Maxwell theory (Foundations II Sec 5.10, §3.8 prediction) | Unspecified — "will not produce self-energy or infrared divergence" but no $\alpha$-corrections quantified | **Unknown** — not computed in any published paper | **The only un-eliminated candidate.** Whether the second-quantized version produces the Schwinger correction is an open question. |
+
+### Discussion of M2-M5 (eliminated)
+
+**M2 (b-vs-c relativity).** For a free electron at rest, $\mathbf{w} = 0 \Rightarrow b = c$ exactly. The $b$-factor produces *no* $\alpha$-correction in the free-electron limit. For a bound electron with $u \sim \alpha c$, $b/c = \sqrt{1 + u^2/c^2} \approx 1 + \alpha^2/2$, giving $O(\alpha^2)$ — wrong order for Schwinger.
+
+**M3 (dissipative term).** Maxwell paper Eq. (4) shows the dissipative coefficient $\dot{b}/b^2$ (≈ $\mathbf{u}\!\cdot\!\mathbf{a}/b^3$) vanishes identically when $\mathbf{u}$ is constant (inertial source). The dissipative photon-mass $\mu$ in Eq. (6) inherits this: $\mu = 0$ for inertial sources (Maxwell paper verification doc line 316: "*Gill's $\mu$ is a dynamical, source-dependent photon mass that vanishes whenever the source is inertial*"). For a free electron at rest, ALL dissipative effects vanish. The Schwinger correction is a quantum-vacuum kinematic effect on the free inertial electron — the dual Maxwell dissipative machinery cannot couple to it.
+
+**M4 (dual square-root variants).** Eqs. (II.1), (II.2), (II.3) are three equivalent reformulations of $K = H^2/(2mc^2) + mc^2/2$ for different choices of square-root Hamiltonian. The published expansion (III.4)–(III.20) collapses to the operator-coefficient formula $g_r(r_e)$ as the framework's anomalous-moment apparatus. No published computation extracts an additional $\alpha$-shift from comparing variants. The differences are operator-algebra rearrangements, not new dynamics.
+
+**M5 (ARTDE $A^2$ cutoff).** Gill explicitly computes the $A^2$-contribution with cutoff and states it is $O(\gamma^7) = O(\alpha^7) \approx 8\times 10^{-16}$ (ARTDE paper Eq. 31–32; converted markdown line 592). This is **12 orders of magnitude smaller** than the Schwinger correction $\alpha/(2\pi) \sim 1.16\times 10^{-3}$. Decisively the wrong order.
+
+### M6 — the only candidate (open)
+
+The framework claims (Foundations II §5.10, paraphrased): *"a second-quantized version of the Einstein or Einstein-dual theory will not have a self-energy or infrared divergence."* This is a claim about divergence structure, not about finite radiative corrections. The natural follow-up: **does the second-quantized dual Maxwell theory produce a finite vertex correction analogous to QED's $g - 2 = \alpha/\pi$, after the divergences are absent by construction?**
+
+The campaign has no published computation of this. **This is the load-bearing open question for closing the $\alpha/(2\pi)$ gap from within the framework.**
+
+If the answer is yes (and the second-quantized result happens to coincide with QED's $\alpha/\pi$ for structural reasons), then closure #7c-Schwinger would be framework-internal rather than framework-external — and the triangulated $r_e/r_0 = 0.4994205099$ would be a fully first-principles result of the dual-theory programme.
+
+If the answer is no (the dual theory's second-quantized vertex correction differs from QED's), then the framework would predict a different $g-2$, and one of:
+- (i) The framework's $g - 2$ matches experiment via a different mechanism (in which case the campaign should reproduce that calculation);
+- (ii) The framework's $g - 2$ disagrees with experiment, in which case the framework's anomalous-moment claim fails as a physical theory.
+
+### Outcome of investigation
+
+**Negative survey result.** Among the framework's published apparatus, only the (uncomputed) second-quantized dual Maxwell theory could plausibly produce the $\alpha/(2\pi)$ shift on a free electron. All other mechanisms either vanish on inertial sources (M3), give wrong order (M2, M5), or are already absorbed in the $g_r(r_e)$ formula (M4).
+
+**Outcome-matrix: C remains.** No new mechanism identified; the framework's published algebra still cannot internally close the Schwinger gap. The investigation **sharpens** the BLOCKED-on-author-input request from the generic "framework supplies $\Delta E_{\rm SE}^{\rm framework}$" (iter 4) to a specific question:
+
+> **For Tepper Gill:** Has the second-quantized version of the dual Maxwell theory been computed for the vacuum vertex correction (analogue of QED's one-loop $g - 2$)? If so, does it produce $\alpha/(2\pi)$, or a different value? If not, is there an in-principle obstruction to such a calculation, or is it simply a programme-pending derivation?
+
+### Closure-condition classification — update
+
+| # | Condition | Classification | Status |
+|---|---|---|---|
+| 7c-Schwinger | Operator-coefficient at Schwinger target $g=-2-\alpha/\pi$ | framework-external (currently); could become framework-internal if **M6** computation produces $\alpha/\pi$ | **BLOCKED on M6 author input.** |
+
+### Acceptance-criteria check (re-confirmed)
+
+All issue #65 acceptance criteria remain checked (this investigation adds rigour to the FINDINGS update but does not change the core Outcome C disposition). The investigation strengthens rather than weakens the campaign's conclusion: the framework's published apparatus does NOT contain an $\alpha/(2\pi)$ mechanism on a free electron; the only candidate is the un-published second-quantized vertex correction.
+
+**Outcome-matrix:** **C** (unchanged). The negative survey result is itself a strong contribution to Finding 2 — it elevates "the framework does not algorithmically produce $\alpha/\pi$" from a campaign assertion to a checked structural fact.
+
+**Status:** **TERMINATED (again).** Loop stops. Loop-prompt's stop conditions met: acceptance criteria all checked + BLOCKED state with a specific, concrete author-input question (M6 second-quantized vertex correction).

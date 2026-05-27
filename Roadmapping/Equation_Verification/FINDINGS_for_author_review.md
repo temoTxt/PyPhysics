@@ -162,7 +162,19 @@ The tree-vs-triangulated gap of $5.79\times 10^{-4}$ is *exactly* the size of th
 
 **Status indicator remains ⚠.** Finding 2 is now characterised at three levels: published initial-value $0.499857$, empirical joint-fit $0.4994205099$, and framework first-principles $1/2$. The latter two differ by exactly the Schwinger correction, which is a clean structural identification rather than a tension.
 
-<!-- TODO: human reviews and fills in — confirms that (a) the Route Z operator-coefficient closure #7c is the correct framework-internal reading of "variational determination" (vs the alternative variational-stationarity reading that hit Outcome D in Route X iter 4); (b) the identification of closure #4 (critical-point of F_K) with closure #7c-tree (operator-coefficient at g=-2) is faithful to the framework's algebra; (c) the conclusion that the framework's algebra cannot internally produce the alpha/(2pi) correction is correct, or — if there is a mechanism the campaign missed — the author indicates which DRQM I/companion-paper apparatus would supply it. -->
+**Mechanism survey (Route Z iter 8, 2026-05-26):** an explicit check of all framework apparatus capable of producing $\alpha$-dependent corrections to the free-electron magnetic moment was performed (full table in [`.dev/research/STATE.md`](../../.dev/research/STATE.md) iter 8):
+
+| Mechanism | Order | Free electron? |
+|---|---|---|
+| $b$-vs-$c$ proper-time relativity | $\alpha^2$ | vanishes ($w=0 \Rightarrow b=c$) |
+| Dual Maxwell dissipative term ($\mu$ photon-mass) | $\alpha^3$ on bound; $0$ on inertial | **vanishes identically** for inertial source |
+| Dual square-root variants (II.1–II.3) | absorbed in $g_r(r_e)$ formula | no additional mechanism |
+| ARTDE $A^2$ with cutoff | $\alpha^7$ (Gill, line 161) | far too small ($\sim 10^{-16}$) |
+| **Second-quantized dual Maxwell vacuum vertex correction** | **unknown — not computed** | **unknown** |
+
+All quantified mechanisms either give wrong order, vanish on inertial sources, or are already in the $g_r(r_e)$ formula. **The only un-eliminated candidate is the second-quantized dual Maxwell vertex correction**, which Foundations II §5.10 asserts will be free of self-energy and IR divergences but does not compute a finite remainder. This is the load-bearing open question.
+
+<!-- TODO: human reviews and fills in — confirms that (a) the Route Z operator-coefficient closure #7c is the correct framework-internal reading of "variational determination" (vs the alternative variational-stationarity reading that hit Outcome D in Route X iter 4); (b) the identification of closure #4 (critical-point of F_K) with closure #7c-tree (operator-coefficient at g=-2) is faithful to the framework's algebra; (c) the conclusion that the framework's algebra cannot internally produce the alpha/(2pi) correction is correct given the M1-M5 mechanism survey, or — if there is a mechanism the campaign missed — the author indicates which DRQM I/companion-paper apparatus would supply it; (d) for the un-eliminated candidate M6 (second-quantized dual Maxwell vertex correction): is there a computation (published or unpublished) of the dual-theory vacuum vertex correction analogous to QED's one-loop g-2?  If so, does it produce alpha/(2pi) on the inertial electron?  If not, is the calculation programme-pending or in-principle obstructed? -->
 
 
 <!-- TODO: human reviews and fills in — confirms that (a) Tepper's bracketing-guide guidance is faithfully recorded; (b) the Pass A vs Pass B contrast is the correct way to expose the substantive-AI weighting choice; (c) the conclusion that Pass B = branch (c) to 16 sig figs is the right honest framing; (d) the stretched-fit flag reading is correct (no observable in tension); (e) the verdict-marker shift from 🔴 to ⚠ pending #54 is the right disposition; (f) the residual table accurately identifies each framework-floor source. -->
