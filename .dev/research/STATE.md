@@ -50,3 +50,23 @@
 - **Measurement provenance recorded this iteration:** brief's #3 value (7,367 MHz, "Bayfield/Riis era") flagged as probably wrong-ion (Li⁺ not Li²⁺); no value transcribed to a doc.
 - **Next:** read source-of-record §3 (`Bethe_Salpeter/06_Hyperfine.md`, BS-§22) — hyperfine also engages `r_e` via the Fermi-contact `g_s` term (second genuine discriminator); record the Z=1 formula + Z-scaling (expect Z³ × nuclear factors; Li-7 I=3/2). Then §4 DRQM I (III.22)/(III.23) for the cutoff-Z-scaling question that gates every (Z-ii) reading.
 - **Status:** READY.
+
+## Iteration 3 — 2026-05-27 — read source-of-record §3 (hyperfine apparatus)
+
+**Advanced:** Read `Bethe_Salpeter/06_Hyperfine.md` (BS-§22.1/.2) in full and extracted the Z=1 baseline + Z-scaling for observable #4.
+
+- **Z=1 hyperfine formula (BS-§22.1):** Fermi contact Hamiltonian `H_HF = (8π/3) g_p μ_N g_s μ_B δ³(r) I·S`; 1S splitting
+  `ΔE_HF(1S₁/₂) = (4/3) g_p (m_e/M_p) α⁴ m_e c² (1 + QED)`. H leading (g_s=−2) ≈ **1,418.4 MHz**; + anomalous → 1,420.04 MHz; NIST 2020 = **1,420.405 751 768(2) MHz** (~12 sig fig, hydrogen maser). 
+- **Z-scaling identified:** **Z³** (electron contact density `|ψ(0)|² ∝ (Z/a₀)³ · 1/n³`), times **nuclear factors** (nuclear g-factor `g_I`, spin `I`, reduced-mass) — NOT Z⁴. For ⁷Li²⁺: Z=3 (Z³=27), nucleus ⁷Li with **I=3/2**, μ(⁷Li) ≈ 3.2564 μ_N ⇒ g_I = μ/I ≈ 2.171 (replaces proton's g_p ≈ 5.586). The Z³ enhancement is partly offset by the smaller Li nuclear g-factor and the I-dependent F-splitting factor.
+- **`r_e` mechanism (second genuine discriminator):** BS-§22.1 — leading Fermi term depends **linearly on g_s** via `ΔE_HF = (g_s/−2)·ΔE_{HF,g=−2}`. So observable #4 is a genuine Z-axis discriminator, and at Z=1 it is the *most* precision-sensitive `r_e`-dependent observable in the whole campaign (21-cm line, 12 sig fig).
+  - **(Z-i) universal cutoff:** `r_e/r_0 = 0.4994205099128317` → g_s = −2.00231930 → factor (g_s/−2) = 1.00116 multiplies the Z³-scaled Li²⁺ Fermi base.
+  - **(Z-ii) Z-scaled cutoff:** different g_s at Z=3 ⇒ deviation. Derivability pending §4 (DRQM I III.22/III.23).
+  - **Back-fit caveat (BS-§22.1 line 60):** same as #3 — triangulated `r_e` is *defined* to give measured g_s; the "✅" is self-consistency, not independent corroboration. Z=3 test asks whether that *same* cutoff keeps reproducing the Z-universal a_e.
+- **Measurement provenance (⚠ verify, not red-flag):** brief's #4 target "~12.7 GHz (Beckmann 1974)" is **order-of-magnitude consistent** with hydrogenic ⁷Li²⁺ (known ⁷Li²⁺ 1s HFS ≈ 11.8–11.9 GHz; Z³ enhancement of ~1.42 GHz partly offset by nuclear factors). NO red flag like #3. BUT Beckmann, Böklen, Elke 1974 (*Z. Physik* **270** 173) is primarily a **nuclear-magnetic-moment** paper; the specific Li²⁺ HFS value may be derived there rather than directly measured. Source + exact value to be verified/sourced to a direct measurement when drafting #4.
+
+- **Current observable focus:** #4 hyperfine — apparatus read; genuine + highest-precision `r_e` discriminator; provenance "verify exact value/source."
+- **Outcome-matrix:** still not determinable. **Structural synthesis now visible:** all three `r_e`-engaging observables (#1 g-factor, #3 fine structure, #4 hyperfine) reduce to the **same `(g_s/−2)ⁿ × textbook` structure**, so the Z-axis test collapses to a single question — *does the universal `r_e/r_0` reproduce the (Z-universal) electron anomaly a_e at Z=3?* This is gated entirely on §4 (whether the framework gives a Z-scaled cutoff). #2 Lamb shift is the lone non-discriminator (g=2-symmetric).
+- **(Z-i)/(Z-ii) differences:** for #4, differ iff cutoff is Z-scaled (Z-i: ×1.00116 factor; Z-ii TBD). Derivability pending §4.
+- **Measurement provenance recorded this iteration:** brief's #4 value (~12.7 GHz, Beckmann 1974) flagged "verify exact value + direct source"; no value transcribed to a doc.
+- **Next:** read source-of-record §4 (`Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md`, §III.D Eqs. III.22/III.23) — **THE gating read** for every (Z-ii) reading. III.23 gives muon/proton analogues at the *same* dimensionless `r_e/r_0` with `r_0 = e²/(mc²)` rescaled (lepton-axis precedent, PR #70). Determine whether the analogous Z-axis statement holds (r_e/r_0 fixed across Z, only r_0 rescales — i.e. Z-universal) or whether Z enters the cutoff differently — this decides Branch A vs B for #1/#3/#4.
+- **Status:** READY.
