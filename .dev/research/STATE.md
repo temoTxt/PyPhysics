@@ -185,3 +185,21 @@ Final Z-scan: **Z = {2, 3, 6, 8, 14, 20}** — all absolute, well-distributed. �
 - **Next:** look up + record ⁴⁰Ca¹⁹⁺ (Z=20) absolute g-factor + uncertainty + DOI (brief cites "Glazov 2019 / Köhler-Langes 2018"; verify the primary measurement — likely Köhler-Langes/Sturm/Vogel; note theory by Glazov et al.).
 - **Outcome-matrix tentative:** **C** (A excluded — measured data now span $g$=1.9953→2.0022, a $4.7\times10^{-3}$ spread vs the (Z-i) single-value prediction; B needs an internal $(Z\alpha)^2$ derivation the framework lacks).
 - **Status:** READY (4/6 ions catalogued: He⁺ Z=2 ✅, C⁵⁺ Z=6 ✅, O⁷⁺ Z=8 ✅, Si¹³⁺ Z=14 ✅; remaining Ca¹⁹⁺ Z=20 + Li²⁺ Z=3 import).
+
+## Iteration 8 — 2026-05-27 — ⁴⁰Ca¹⁹⁺ resolved: no H-like data → substitute ¹¹⁸Sn⁴⁹⁺ (Z=50)
+
+**Step taken:** Attempted the ⁴⁰Ca¹⁹⁺ (Z=20) absolute g-factor lookup (queued from iter 7). Multiple web searches. Finding forces a third ion-set refinement at the high-Z end.
+
+**⚠ Brief-table source error + finding:** The brief cites Ca¹⁹⁺ as "Glazov 2019 / Köhler-Langes 2018" — **both are lithium-like systems, not hydrogenic Ca¹⁹⁺:**
+- Glazov et al., *PRL* **123**, 173001 (2019) = g factor of **lithiumlike** ²⁸Si¹¹⁺ (3-electron).
+- Köhler et al., *Nat. Comm.* **7**, 10246 (2016) = Zeeman effect in **lithiumlike** calcium (3-electron).
+- Sources indicate an H-like ⁴⁰Ca¹⁹⁺ g-factor was "in preparation"; **no published absolute hydrogenic Ca¹⁹⁺ g-factor located.** Consistent with the Be³⁺ (iter 3) and Ne⁹⁺ (iter 4) outcomes — the brief's high-Z/exotic picks were aspirational.
+
+**Decision (substantive — high-Z anchor):** **Drop ⁴⁰Ca¹⁹⁺ (Z=20)** (no usable H-like measurement). **Substitute ¹¹⁸Sn⁴⁹⁺ (Z=50)** — Morgner et al. 2023 *Nature*, the cleanest published **absolute hydrogenic** g-factor at high Z. Rationale: (a) it is a genuine 1-electron (hydrogenic) measurement, unlike the Li-like Ca/Si data; (b) Z=50 hugely extends the lever arm (vs the {2…14} cluster), making the $(Z\alpha)^2$-curvature / Z-scaling test decisive; (c) caveat — at Z=50, $(Z\alpha)^2 = 0.133$, so the perturbative $g=2[1-\tfrac13(Z\alpha)^2-\ldots]$ expansion is poor; the fit must use the **full nonperturbative Dirac point value** $g_D = \tfrac23[1+2\sqrt{1-(Z\alpha)^2}]$ plus QED, not the truncated series. This is handled in `r_e_Zscan_fit.wl` by carrying the measured $g$ directly into the back-fit (the back-fit $r_e^{(Z)}/r_0=(2-a)/(2(2+a))$ uses measured $a=(g-2)/2$ regardless of expansion order).
+
+**Final Z-scan set: Z = {2, 3, 6, 8, 14, 50}** (He⁺, Li²⁺[import], C⁵⁺, O⁷⁺, Si¹³⁺, Sn⁴⁹⁺). Optional 7th bonus: ²⁰⁸Pb⁸¹⁺ (Z=82) if its absolute H-like value is quickly sourced.
+
+- **Current ion focus:** Ca¹⁹⁺ (resolved → dropped, no H-like data); Sn⁴⁹⁺ queued.
+- **Next:** look up + record ¹¹⁸Sn⁴⁹⁺ (Z=50) absolute bound-electron g-factor + uncertainty + DOI (Morgner, Tu, König, Sailer, Heiße, et al., *"Stringent test of QED with hydrogen-like tin,"* **Nature 622, 53 (2023)**; verify value + DOI).
+- **Outcome-matrix tentative:** **C** (A excluded; a Z=50 anchor will sharpen the C-vs-B discrimination via the curvature test).
+- **Status:** READY (4/6 ions catalogued with absolute values; ion set re-finalized Z={2,3,6,8,14,50}; Ca¹⁹⁺ dropped, Sn⁴⁹⁺ substituted).
