@@ -53,3 +53,19 @@
 - **Next:** look up + record ⁹Be³⁺ (Z=4) bound-electron g-factor with DOI/year provenance (likely a Mainz/MPIK Penning-trap result; verify the current best value + source). Per the brief, "(verify in iter 1)" — no value pre-listed, so this needs a genuine lookup.
 - **Outcome-matrix tentative:** **C-leaning** (with B as a live possibility given the clean $-\tfrac13(Z\alpha)^2$ leading term); A appears disfavoured already given the Z=2 drift, but not falsified until the joint χ² is run.
 - **Status:** READY (1/5+ ions catalogued: ³He⁺ Z=2 ✅; Li²⁺ Z=3 to be imported from #78).
+
+## Iteration 3 — 2026-05-27 — ⁹Be³⁺ (Z=4) resolved: no precision data → drop + substitute ²⁰Ne⁹⁺ (Z=10)
+
+**Step taken:** Attempted the ⁹Be³⁺ (Z=4) bound-electron g-factor lookup (the brief's "(verify in iter 1)" placeholder). Web-searched for a Be³⁺ Penning-trap measurement; none located. Cross-checked against my knowledge of the measured-ion set.
+
+**Finding — Be³⁺ has no precision bound-electron g-factor measurement:**
+- Hydrogen-like ions with high-precision Penning-trap bound-electron g-factors (the established set): ¹²C⁵⁺ (Häffner 2000), ¹⁶O⁷⁺ (2004), ²⁸Si¹³⁺ (Sturm 2011/2013), ⁴⁰Ca¹⁹⁺ (2019), ²⁰Ne⁹⁺ (Sailer 2022), ³He⁺ (Schneider 2022), ¹¹⁸Sn⁴⁹⁺ (Morgner 2023), ²⁰⁸Pb⁸¹⁺ (2023/24).
+- **⁹Be³⁺ is NOT in this set.** Beryllium appears in trap physics as the singly-charged ⁹Be⁺ laser-cooling / quantum-logic coolant ion, not as hydrogenic Be³⁺. The brief's "various Penning-trap groups" pointer for Be³⁺ does not resolve to an actual measurement.
+
+**Decision (substantive — ion-list refinement):** **Drop ⁹Be³⁺ (Z=4)** from the Z-scan for lack of measurement provenance (the brief explicitly authorises per-iteration refinement of the target list). **Substitute ²⁰Ne⁹⁺ (Z=10).** Rationale: (a) it has the **most precise** bound-electron g-factor measured to date (coupled-ion differential method, $\sim10^{-11}$ relative), giving the fit a high-weight mid-Z anchor; (b) it improves the Z lever-arm distribution — revised scan is **Z = {2, 3, 6, 10, 14, 20}**, a near-even spread for resolving any $(Z\alpha)^2$ curvature, vs the original {2,3,4,6,14,20} which clustered low.
+- Provisional source for the substitute (to verify + record next iter): T. Sailer, V. Debierre, Z. Harman, F. Heiße, C. König, J. Morgner, B. Tu, A. V. Volotka, C. H. Keitel, K. Blaum, S. Sturm, *"Measurement of the bound-electron g-factor difference in coupled ions,"* **Nature 606, 479–483 (2022)**, DOI 10.1038/s41586-022-04807-w.
+
+- **Current ion focus:** Be³⁺ (resolved → dropped); ²⁰Ne⁹⁺ queued.
+- **Next:** look up + record the precise ²⁰Ne⁹⁺ (Z=10) bound-electron g-factor absolute value + uncertainty + DOI (Sailer 2022). Note: that paper's headline is a *difference/isotope-shift* measurement — confirm whether it reports an absolute ²⁰Ne⁹⁺ g-factor or whether the absolute value must be sourced from the companion theory/earlier work; record provenance accordingly.
+- **Outcome-matrix tentative:** **C-leaning** (B live), unchanged from iter 2.
+- **Status:** READY (1/5+ ions catalogued; revised target Z = {2, 3, 6, 10, 14, 20}; Be³⁺ dropped, Ne⁹⁺ substituted).
