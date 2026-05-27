@@ -203,3 +203,33 @@ Final Z-scan: **Z = {2, 3, 6, 8, 14, 20}** — all absolute, well-distributed. �
 - **Next:** look up + record ¹¹⁸Sn⁴⁹⁺ (Z=50) absolute bound-electron g-factor + uncertainty + DOI (Morgner, Tu, König, Sailer, Heiße, et al., *"Stringent test of QED with hydrogen-like tin,"* **Nature 622, 53 (2023)**; verify value + DOI).
 - **Outcome-matrix tentative:** **C** (A excluded; a Z=50 anchor will sharpen the C-vs-B discrimination via the curvature test).
 - **Status:** READY (4/6 ions catalogued with absolute values; ion set re-finalized Z={2,3,6,8,14,50}; Ca¹⁹⁺ dropped, Sn⁴⁹⁺ substituted).
+
+## Iteration 9 — 2026-05-27 — ¹¹⁸Sn⁴⁹⁺ (Z=50) g-factor + provenance (ion 5/6; ≥5 criterion MET)
+
+**Step taken:** Looked up and recorded the ¹¹⁸Sn⁴⁹⁺ absolute bound-electron g-factor (queued from iter 8). Web search confirmed value + provenance.
+
+**¹¹⁸Sn⁴⁹⁺ (Z=50) — recorded value:**
+- **Experimental:** $g_e^{\rm exp}(^{118}{\rm Sn}^{49+}) = 1.910\,562\,059(1)$ (relative $\sigma \approx 5\times10^{-10}$).
+- **Theory (BS-QED, complete 2-loop):** $g_e^{\rm theo} = 1.910\,561\,821(299)$ (theory-limited; exp 300× more precise than theory).
+- **Source:** J. Morgner, B. Tu, C. M. König, T. Sailer, F. Heiße, H. Bekker, B. Sikora, C. Lyu, V. A. Yerokhin, Z. Harman, J. R. Crespo López-Urrutia, C. H. Keitel, S. Sturm, K. Blaum, *"Stringent test of QED with hydrogen-like tin,"* **Nature 622, 53–57 (2023)**. DOI: **10.1038/s41586-023-06453-2**. (ALPHATRAP; field $1.6\times10^{15}$ V/cm, 60× stronger than the Si¹³⁺ test.)
+
+**Framework-relevant derived quantities (Wolfram-verify at joint-fit step):**
+- $a_e^{\rm bound}(Z{=}50) = (g-2)/2 = \mathbf{-0.044\,718\,970\,5}$ (strongly negative; $(Z\alpha)^2=0.1331$, perturbative series invalid — must use full Dirac $g_D=\tfrac23[1+2\sqrt{1-(Z\alpha)^2}]=1.90808$ + QED).
+- (Z-ii) back-fit estimate: $r_e^{(Z=50)}/r_0 = (2-a)/(2(2+a)) \approx \mathbf{0.522\,863}$ — a **+2.9% departure** from the Z=1 value 0.499421. Decisive against Outcome A.
+
+**COMPLETE measured Z-scan (5 absolute points + free reference):**
+| Z | source | $g_e^{\rm bound}$ | $a_e^{\rm bound}=(g-2)/2$ | back-fit $r_e^{(Z)}/r_0$ (hand est.) |
+|---|---|---|---|---|
+| 1 (free) | CODATA | 2.0023193044 | +0.0011596522 | 0.4994205099 |
+| 2 ³He⁺ | Schneider22 | 2.0021774158 | +0.0010887079 | ≈0.499456 |
+| 6 ¹²C⁵⁺ | Sturm14 | 2.0010415902 | +0.0005207951 | ≈0.499739 |
+| 8 ¹⁶O⁷⁺ | Verdú04 | 2.0000470254 | +0.0000235127 | ≈0.499994 |
+| 14 ²⁸Si¹³⁺ | Sturm11 | 1.9953489587 | −0.0023255207 | ≈0.501164 |
+| 50 ¹¹⁸Sn⁴⁹⁺ | Morgner23 | 1.9105620590 | −0.0447189705 | ≈0.522863 |
+
+**Li²⁺ (Z=3) import status — ⚠ brief placeholder is unphysical:** brief lists $g(^7{\rm Li}^{2+})=2.0000251707(10)$ attrib. "Sturm 2014 Nature 506, 467" — but (a) Nature 506,467 is the C⁵⁺ paper (already used for Z=6), and (b) the value is unphysical: the Z=3 binding trend requires $g\approx2.00200$ (between He⁺ 2.00218 and C⁵⁺ 2.00104), **not** 2.00003. Per branch rules I do **not** re-derive Li²⁺ — it must be imported from #78's actual Self-Energy-branch result. **Action:** treat Li²⁺ as a *pending optional 6th point*; the 5 solidly-measured ions {2,6,8,14,50} already satisfy the ≥5 criterion and span Z=2–50, so the joint fit + verdict proceed without it. Slot Li²⁺ in if/when #78 delivers a physical value.
+
+- **Current ion focus:** ¹¹⁸Sn⁴⁹⁺ (Z=50) — done. **Data collection complete (5 ions).**
+- **Next:** scaffold `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Zscan_fit.wl` — header + constants ($\alpha$, the 6 g-values) + per-Z back-fit cell computing $r_e^{(Z)}/r_0=(2-a)/(2(2+a))$ and the (Z-i) residuals $g^{\rm meas}(Z)-(-2.00231930)$. (Joint χ² + Z-scaling form-fit in the following iteration.)
+- **Outcome-matrix tentative:** **C** (A now decisively excluded by the Sn⁴⁹⁺ +2.9% back-fit departure; the Sn point also anchors the B-vs-C curvature test).
+- **Status:** READY — **≥5 ions catalogued ✅** (He⁺ Z=2, C⁵⁺ Z=6, O⁷⁺ Z=8, Si¹³⁺ Z=14, Sn⁴⁹⁺ Z=50, all absolute w/ provenance; Li²⁺ Z=3 pending optional import). Next: build the fit notebook.
