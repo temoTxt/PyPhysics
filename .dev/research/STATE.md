@@ -276,3 +276,22 @@ Final Z-scan: **Z = {2, 3, 6, 8, 14, 20}** — all absolute, well-distributed. �
 - **Next:** draft `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/14_HydrogenicIon_Zscan.md` — per-ion sections (5 ions w/ full provenance), the (Z-i)/(Z-ii) tables, the joint-fit result, the Z-axis verdict (Outcome C), the honest-scope + Crocco substantive-AI human-acceptance block, and the wikilinks to DRQM I §III.D / FINDINGS Finding 2 / PR #70. (Then: append FINDINGS Finding-2 multi-Z update; then STOP — done-criteria will be met.)
 - **Outcome-matrix:** **C** (confirmed by MCP: A rejected; B requires an internal $(Z\alpha)^2$ derivation the framework lacks; the back-fit inherits QED bound-state structure).
 - **Status:** READY — **joint χ² + Z-scaling fit REPORTED ✅; Z-axis verdict (C) recorded ✅; ≥5 ions ✅.** Remaining for done-criteria: write 14_HydrogenicIon_Zscan.md + FINDINGS update (documentation of the above).
+
+## Iteration 12 — 2026-05-27 — finalize `14_HydrogenicIon_Zscan.md` (primary output doc)
+
+**Step taken:** The doc already existed (pre-drafted steel-man with the Branch C verdict) but carried stale provenance and lacked the executed-fit numbers. Updated it to the final state in 6 targeted edits.
+
+**Edits made:**
+1. **Header State line** → reflects iter 11/12: 5 ions catalogued (Z=2–50), joint fit executed; notes the Sn⁴⁹⁺-for-Ca¹⁹⁺ substitution + Li²⁺ pending.
+2. **§2 ion catalog** → final 5-ion table with **corrected sources**: C⁵⁺ → *Nature* 506,467 (2014) [10.1038/nature13026] (was wrongly "PRL 107"); Si¹³⁺ → *PRL* 107,023002 (2011) (was wrongly "PRL 110, 263002 (2013)"); **added ¹¹⁸Sn⁴⁹⁺ Z=50** [10.1038/s41586-023-06453-2]; removed Ca¹⁹⁺ row. Added drop-decisions note (Be³⁺/Ne⁹⁺/Ca¹⁹⁺) + high-Z perturbative caveat.
+3. **§3 (Z-i) table** → added Z=50 row; replaced σ-estimates with MCP residuals/σ-counts; **boxed χ² = 1.03×10¹⁶**.
+4. **§4 back-fit table** → added Z=50 row (0.522870866); MCP-precise values.
+5. **§5 form-fit** → replaced the muddled "b≈−0.5" text with the actual MCP linear+quadratic fits; the two diagnostics (intercept = free cutoff to 9.8e-8; slope $c_2$=0.16628≈1/6 with the $(-\tfrac12)(-\tfrac13)$ derivation).
+6. **§6 verdict** → cites χ²=1.03×10¹⁶ + form-fit. **§8 open items** → marked χ² + form-fit DONE; Li²⁺ import + FINDINGS update remain.
+
+Crocco `<!-- TODO human reviews -->` blocks retained (substantive-AI doc). Did NOT touch #78-owned files.
+
+- **Current ion focus:** documentation (joint fit done).
+- **Next:** append the Z-scan multi-Z verdict to `Equation_Verification/FINDINGS_for_author_review.md` Finding 2 (parallel to PR #70's lepton-axis update) — the last remaining done-criteria item. **After that: STOP the loop** (all done-criteria met: ≥5 ions ✅, joint χ²+Z-scaling fit ✅, Z-axis verdict in STATE.md + 14_HydrogenicIon_Zscan.md ✅, FINDINGS update ✅).
+- **Outcome-matrix:** **C** (final).
+- **Status:** READY — primary output doc finalized; one documentation step (FINDINGS) remains before loop stop.
