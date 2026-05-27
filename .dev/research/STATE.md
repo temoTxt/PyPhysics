@@ -33,3 +33,22 @@
 - **Outcome-matrix:** not yet determinable (Z=3 prediction not yet computed).
 - **(Z-i)/(Z-ii):** not yet diverged — both readings share the leading Dirac $Z^4$ term; any divergence enters only through the anomalous-g piece's cutoff treatment, not yet computed.
 - **Status:** READY.
+
+## Iteration 2 — 2026-05-27 — read source-of-record §3 (10_CrossComparison §2/§3)
+
+**Step taken:** read `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/10_CrossComparison.md` (PR J cross-comparison; §2 scaling pattern + §3 Lamb-shift reframe). One step (read + record).
+
+**Confirmed:**
+
+- **$n_{FS}=1$ CONFIRMED** for fine structure. §2 (line 57): $f_i(g_s)$ is "linear for spin–orbit and Fermi contact contributions; quadratic for two-fermion spin–spin contributions like positronium ortho-para." The 2P₃/₂–2P₁/₂ splitting is a **spin–orbit** observable ⇒ linear ⇒ $n=1$. ($n=2$ applies only to two-fermion spin-spin, e.g. positronium ortho-para.)
+- **Framework prediction structure for #3:** $\Delta E_{FS}^{\rm fw}(Z) = (g_s/-2)^1 \times \Delta E_{FS}^{\rm leading\,Dirac}(Z)$. Numerically at Z=1: $(g_s/-2)=(-2.00231930/-2)=1.00115965$, $\times 10\,949 = 10\,962$ MHz — reproduces BS-§14.2's 10,962. The $(g_s/-2)$ factor = the anomalous-moment multiplier; $r_e$ enters via $g_s = g_r(r_e/r_0)$ (brief line 30).
+- **Triangulated cutoff (Z=1) re-confirmed across sources:** $r_e/r_0 = 0.4994205099128317$ (PR #62 joint-best-fit; gives $g_s=-2.00231930$ by construction).
+- **#3 honesty disposition (inherited, carry into doc):** §2 lines 70–72 + §1 line 48 — the six $g_s$-dependent "✅ at triangulated $r_e$" results are **one back-fit applied six times, not six independent corroborations**. #3's framework "✅" is back-fit self-consistency at the textbook leading-$g_s$ precision floor.
+- **#2 Lamb-shift weak-discriminator CONFIRMED from source (§3 line 90):** "The Lamb shift result is $r_e$-independent because the leading log-Bethe contribution is $g_s$-symmetric." ⇒ **(Z-i) and (Z-ii) give identical #2 predictions** — validates the brief's priority signal. #2 is ✅-by-inheritance / reproduction-not-endorsement (§3 lines 86–89); document briefly, no Z-axis-test value.
+
+**Queued next:** scaffold `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Li2plus_spectroscopy.wl` (new notebook, Crocco header + `<!-- TODO -->`), cell 1 = Z=3 leading Dirac FS $= m_e c^2 (Z\alpha)^4/32$ at $Z=3$ with ⁷Li reduced-mass correction, to fix the correct ~887 GHz scale (supersedes brief's suspect 7.4 GHz / 7,367 MHz). Use single-line Wolfram cells; symbols `ee`/`potV` per CLAUDE.md gotchas.
+
+- **Current observable focus:** #3 fine structure (primary).
+- **Outcome-matrix:** #3 not yet determinable (Z=3 prediction not yet computed). #2 trending **A** (✅ by inheritance under universal cutoff, $r_e$-independent ⇒ (Z-i)=(Z-ii)).
+- **(Z-i)/(Z-ii):** #2 — **no divergence** (Lamb shift $r_e$-independent, source-confirmed). #3 — leading Dirac $Z^4$ shared; potential divergence only in the anomalous-g cutoff treatment (not yet computed).
+- **Status:** READY.
