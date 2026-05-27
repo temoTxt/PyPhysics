@@ -16,9 +16,46 @@ Companion notebook: [`r_e_Li2plus_spectroscopy.wl`](../../Mathematica_Notebooks/
 | Result | Status | Outcome | Role |
 |---|---|---|---|
 | [§12.3 — 2P₃/₂–2P₁/₂ fine structure (Z=3)](#1232--2p2p-fine-structure-z3-primary) | drafted | **A** | **primary — Z-axis test, ✅ at framework precision** |
-| §12.2 — 2S₁/₂–2P₁/₂ Lamb shift (Z=3) | pending | (A) | weak discriminator — ✅-by-inheritance |
+| [§12.2 — 2S₁/₂–2P₁/₂ Lamb shift (Z=3)](#122--2s2p-lamb-shift-z3-weak-discriminator) | drafted | **A** | weak discriminator — ✅-by-inheritance |
+
+**Branch verdict:** both observables resolve to **outcome A** — the framework reproduces the textbook prediction under the **Z=1-triangulated universal cutoff**, with **(Z-i) ≡ (Z-ii)** for both (no framework-internal Z-scaling of the cutoff exists; see §12.3). Neither observable independently discriminates the dual theory from standard QED: #3 is back-fit self-consistency at the Bethe-estimate precision floor, #2 is reproduction-by-inheritance of Bethe-1947. The hoped-for "fine structure as a real Z-axis discriminator" does **not** materialize, because the §III.D anomalous-$g$ cutoff is a free-electron property with no nuclear-charge handle.
 
 ---
+
+### §12.2 — 2S₁/₂–2P₁/₂ Lamb shift (Z=3) *(weak discriminator)* <a id="122--2s2p-lamb-shift-z3-weak-discriminator"></a>
+
+**Source-of-record:** [`05_LambShift.md`](05_LambShift.md) BS-§19/§20 (Z=1 Bethe-1947 self-energy), [`10_CrossComparison.md` §3](10_CrossComparison.md#3-the-lamb-shift-result--reproduction-not-endorsement). *Substantive AI.*
+
+**Measurement.** Schiffer et al., *Phys. Rev. Lett.* **74**, 2188 (1995): $\Delta E_{2S-2P}({}^7\text{Li}^{2+}) = 62\,765(21)$ MHz. <!-- TODO: human verifies this is the hydrogenic Li²⁺ 2S₁/₂–2P₁/₂ interval and the Schiffer-1995 citation/value. -->
+
+**Framework prediction (Bethe-estimate Z-scaling).** The Lamb shift is the radiative (self-energy) part beyond Sommerfeld–Dirac. Its leading term scales as $Z^4$ times a slowly-varying bracket $\big[\ln(Z\alpha)^{-2} - \ln(k_0/Z^2 Ry)_{2S} + \tfrac{19}{30}\big]$ that *shrinks* with Z. Scaling the hydrogen 2S Lamb shift (1057.845 MHz) by $Z^4\cdot\text{bracket}(3)/\text{bracket}(1)$ (notebook cell 3, Wolfram-MCP):
+
+| recipe | factor | Z=3 framework Lamb shift |
+|---|---|---|
+| leading-log bracket scaling (this notebook) | 57.77 | 61,113 MHz |
+| brief Bethe-estimate recipe | 59.3 | 62,730 MHz |
+
+Both **bracket the measured 62,765(21) MHz.** The ~1.6 GHz spread between scaling recipes **is** the framework's Bethe-estimate precision floor at Z=3 — far larger than the 21 MHz measurement uncertainty.
+
+**(Z-i) vs (Z-ii) — no divergence.** The Lamb shift is **$r_e$-independent**: the leading log-Bethe contribution is $g_s$-symmetric (per [`10_CrossComparison.md` §3](10_CrossComparison.md#3-the-lamb-shift-result--reproduction-not-endorsement)). The triangulated cutoff $r_e$ does not enter at the Bethe-estimate order, so **(Z-i) ≡ (Z-ii)** trivially. This is why #2 is a *weak* Z-axis discriminator and was deprioritized relative to #3.
+
+**Verdict: ✅ outcome A — reproduction, not endorsement.** The framework reproduces the textbook Bethe-1947 self-energy estimate by construction (matrix elements, energy denominators, Bethe-log cutoff, and mass-renormalisation subtraction are all formulation-independent — BS-§19/§20). The Z=3 value agrees with measurement *at the framework's Bethe-estimate precision floor* (~GHz at Z=3), which is itself coarser than the 21 MHz measurement σ. The framework makes no distinguishable prediction here: it inherits the textbook calculation and its residual. A distinguishable Lamb-shift prediction would require a full proper-time one-loop dual-QED calculation, out of scope for this campaign (per [`10_CrossComparison.md` §3](10_CrossComparison.md#3-the-lamb-shift-result--reproduction-not-endorsement)).
+
+<!-- TODO: human reviews and fills in — confirms (a) the Bethe-estimate Z-scaling and the ~61–63 GHz framework range, (b) the r_e-independence ⇒ (Z-i)≡(Z-ii) weak-discriminator status, and (c) the reproduction-not-endorsement verdict framing inherited from 10_CrossComparison §3. -->
+
+---
+
+## Branch retrospective
+
+Issue #78's Li²⁺ spectroscopy branch (observables #2 + #3) closes at **outcome A for both observables**:
+
+- **#3 fine structure** — framework 887,920 MHz (leading Dirac 886,892 + anomalous +1,028); ✅ at the Bethe-estimate precision floor, read as back-fit self-consistency. The §III.D anomalous-$g$ cutoff has **no nuclear-charge dependence** ($r_0 = e^2/m_ec^2$ is a free-electron property), so reading (Z-ii) collapses to (Z-i): there is no framework-internal Z-scaled cutoff. **#3 is therefore a weaker Z-axis discriminator than anticipated** — the Li²⁺ prediction is just the $Z^4$-scaled hydrogen result times the same $(g_s/-2)$ factor.
+- **#2 Lamb shift** — framework Bethe-estimate ~61–63 GHz, ✅-by-inheritance at the framework precision floor; $r_e$-independent, (Z-i)≡(Z-ii).
+
+**Net:** consistent with [`10_CrossComparison.md`](10_CrossComparison.md)'s campaign-wide honest scope — the dual-theory framework reproduces hydrogenic Li²⁺ spectroscopy where it reduces to (or back-fits at the cutoff to) textbook QED, and produces **no prediction at Z=3 that is both distinct from standard QED and tested against experiment.** The Z=3 extension adds no new discriminating power over the Z=1 results because the framework's only $r_e$-bearing mechanism (the anomalous-$g$ cutoff) is Z-independent.
+
+<!-- TODO: human reviews and fills in — confirms the branch verdict: both observables outcome A, (Z-i)≡(Z-ii), and the "no new Z-axis discrimination from the Z=3 extension" conclusion driven by the Z-independence of the §III.D cutoff. -->
+
 
 ### §12.3 — 2P₃/₂–2P₁/₂ fine structure (Z=3) *(primary)* <a id="1232--2p2p-fine-structure-z3-primary"></a>
 

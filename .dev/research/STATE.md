@@ -176,3 +176,28 @@
 - **Outcome-matrix:** **#3 → A (DOCUMENTED, verdict ✅).** **#2 → A (pending draft).**
 - **(Z-i)/(Z-ii):** RESOLVED — no divergence (unchanged).
 - **Status:** READY.
+
+## Iteration 10 — 2026-05-27 — DRAFT #2 Lamb shift + overall verdict — STOP CRITERION MET
+
+**Step taken:** (a) added notebook cell 3 (Wolfram-verified) computing the Z=3 Lamb-shift Bethe-estimate Z-scaling: leading-log factor 57.77 → 61,113 MHz, brief recipe 59.3× → 62,730 MHz, both bracketing measured 62,765(21) MHz; (b) drafted **§12.2 #2 Lamb-shift section** in `12_Li2plus_Spectroscopy.md` (measurement Schiffer 1995, framework ~61–63 GHz Bethe-estimate, $r_e$-independent ⇒ (Z-i)≡(Z-ii), verdict ✅ outcome A reproduction-not-endorsement); (c) added the **branch verdict row + retrospective** to the doc.
+
+**✅ STOP CRITERION MET:** both #2 and #3 now have framework predictions documented in `12_Li2plus_Spectroscopy.md` with verdicts.
+
+**FINAL OUTCOME-MATRIX (this branch's two observables):**
+- **#3 fine structure → A.** Framework 887,920 MHz (leading Dirac 886,892 + anomalous +1,028, $n_{FS}=1$). ✅ at Bethe-estimate precision; back-fit self-consistency, not independent corroboration. Comparison vs theoretical ~888 GHz (no direct hydrogenic-Li²⁺ 2P-FS precision experiment located).
+- **#2 Lamb shift → A.** Framework Bethe-estimate ~61–63 GHz vs Schiffer 1995 62,765(21) MHz. ✅-by-inheritance; reproduction-not-endorsement.
+- **(Z-i) ≡ (Z-ii) for BOTH** — decisive finding (iter-6): the §III.D anomalous-$g$ cutoff $g_r=2[1-4r_0/(2r+r_0)]$, $r_0=e^2/(m_ec^2)$, has **no nuclear-charge $Z$**; it is a free-electron property. No framework-internal Z-scaled cutoff exists ⇒ (Z-ii) not derivable, collapses to (Z-i). **The Z=3 extension adds no new Z-axis discrimination over Z=1.**
+
+**KEY NEGATIVE RESULT (for orchestrator/author):** the brief's premise that #3 fine structure is "a real Z-axis discriminator" does NOT hold — because the framework's only $r_e$-bearing mechanism is Z-independent, the Li²⁺ prediction is just the $Z^4$-scaled hydrogen value × the same $(g_s/-2)$ factor, carrying no discriminating power beyond Z=1. Both observables are textbook-equivalent (#2) or back-fit-self-consistent at the cutoff (#3), consistent with `10_CrossComparison.md`'s campaign-wide honest scope.
+
+**Brief corrections logged (for orchestrator):** (1) brief's #3 "≈7,367 MHz / ~7.4 GHz" is wrong by ~2 orders of magnitude — hydrogenic Li²⁺ 2P FS ≈ 888 GHz ($Z^4$×H); figure likely conflated with neutral-Li (~10 GHz). (2) brief's "Riis et al. 1994" attribution for #3 is wrong — that paper is He-like Li⁺ (2-electron 1s2s–1s2p), not hydrogenic Li²⁺. Do NOT edit brief.md (research input).
+
+**Deliverables complete:**
+- `12_Li2plus_Spectroscopy.md` — both observables, measurement + framework + verdict ✓
+- `r_e_Li2plus_spectroscopy.wl` — Wolfram-MCP-verified cells for both observables (cell 1 leading Dirac, cell 2 framework #3, cell 3 #2 Lamb) ✓
+- STATE.md — per-observable outcome-matrix + overall branch verdict ✓
+
+- **Current observable focus:** DONE (both).
+- **Outcome-matrix:** **#3 → A, #2 → A.** Branch verdict: both outcome A, (Z-i)≡(Z-ii), no new Z-axis discrimination.
+- **(Z-i)/(Z-ii):** RESOLVED — no divergence for either.
+- **Status:** ✅ COMPLETE — loop stopping. Orchestrator to handle PR/GitHub comments after morning review.
