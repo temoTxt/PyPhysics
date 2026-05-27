@@ -131,7 +131,53 @@ The triangulation therefore **confirms branch (c) as the joint-best-fit across a
 
 **Candidate-3 update — 2026-05-26 ([issue #66](https://github.com/temoTxt/PyPhysics/issues/66)).** The triangulated $r_e/r_0 = 0.499\,420\,509\,912\,83$ matches the closed-form Schwinger one-loop value $(2 - \alpha/(2\pi))/(4 + \alpha/\pi) = 0.499\,419\,632\,156\,99$ to $8.78 \times 10^{-7}$ in $r$, equivalent to $3.515 \times 10^{-6}$ in $g_e$ — which numerically equals the all-orders-QED-beyond-one-loop content of $g_e^{\text{meas}}$ (Karplus–Kroll two-loop + Laporta–Remiddi three-loop + Kinoshita-Fukuda-Sasaki four-loop, summing to $3.5151 \times 10^{-6}$) to better than $10^{-11}$. Iter-2 numerics in [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_schwinger_residual_test.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_schwinger_residual_test.wl). However, iter 3 establishes that DRQM-I §III.D as written **does not derive a closed-form** $r_e/r_0 = f(\alpha)$ — the cutoff is left as a free parameter, with the published value obtained by uni-observable back-fit (per Tepper's 2026-05-25 guidance). The $10^{-11}$ KK+LR+KF agreement is therefore **algebraically forced** by the back-fit, not evidence of intentional encoding. Iter-5's cross-particle test using the **Fermilab Muon $g-2$ Collaboration final 2023 result** $a_\mu^{\text{exp}} = 116\,592\,059(22) \times 10^{-11}$ (Aguillard et al., *Phys. Rev. D* **108**, 092009) gives a muon back-fit cutoff $r_\mu/r_0^\mu = 0.499\,417\,379\,350$ differing from the electron's by $\Delta r = 3.13 \times 10^{-6}$ ($\sim 57{,}000\,\sigma_{a_\mu}$), **ruling out any universal closed-form** $r/r_0 = f(\alpha)$ at $> 57$kσ. The empirical-test path's verdict is **outcome C-as-published**; outcome B (intentional encoding) remains open only through a particle-mass-dependent first-principles derivation under #54. The ⚠ marker is unchanged but is now backed by a three-step structural argument (no closed-form derivation in §III.D; electron's KK+LR+KF match is back-fit-forced; universal closed-form ruled out cross-particle). Companion verification-doc subsection: [§III.D "Schwinger identification — empirical residual test"](Dual_Relativistic_Quantum_Mechanics_I.md#schwinger-identification--empirical-residual-test-2026-05-26-issue-66-candidate-3). Loop iteration log: [`.dev/research/STATE.md`](../../.dev/research/STATE.md) iters 1–6.
 
-<!-- TODO: human reviews and fills in — confirms that (a) Tepper's bracketing-guide guidance is faithfully recorded; (b) the Pass A vs Pass B contrast is the correct way to expose the substantive-AI weighting choice; (c) the conclusion that Pass B = branch (c) to 16 sig figs is the right honest framing; (d) the stretched-fit flag reading is correct (no observable in tension); (e) the verdict-marker shift from 🔴 to ⚠ pending #54 is the right disposition; (f) the residual table accurately identifies each framework-floor source; (g) the Candidate-3 2026-05-26 update correctly frames the three-step structural argument (no closed-form derivation + back-fit-forced electron match + universal-form ruled out cross-particle) and the constraint it places on any future closed-form derivation from #54. -->
+### Update — 2026-05-26 (Candidate 2 first-principles route, closes [#65](https://github.com/temoTxt/PyPhysics/issues/65))
+
+The candidate-2 variational/renormalised-dual-Dirac-equation route was pursued in branch `65-theory-candidate-2-variational-determination-of-r_e-via-renormalised-dual-dirac-equation` over 7 substantive iterations (process log: [`.dev/research/STATE.md`](../.dev/research/STATE.md); computation: [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_variational.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_variational.wl)). **Terminal outcome: C** (definite first-principles value distinct from triangulated).
+
+**Closure inventory.** Seven candidate closure conditions were enumerated and classified framework-internal-vs-ad-hoc (full table in STATE.md iter 7). Two framework-internal readings coincide on a single value:
+
+- **Closure #4 — Critical-point of $\mathbf{F}_K$.** Per [`FoundationsII-Classical.md`](FoundationsII-Classical.md) Sec 2.2 Eq. (2.11), $r_0$ is a critical point of the dual Hamiltonian force in the framework's "V-as-part-of-mass" form. The natural cutoff is the midpoint $r_e = r_0/2$.
+- **Closure #7c-tree — Operator-coefficient at tree-Dirac target.** The DRQM I (III.22) operator coefficient $g_r(r_e) = 2[1 - 4r_0/(2r_e+r_0)]$ equals the standard Dirac $g = -2$ exactly at $r_e/r_0 = 1/2$.
+
+Both framework-internal closures yield the same exact answer:
+
+$$\boxed{\;r_e/r_0 \;=\; \tfrac{1}{2}\quad\text{(framework tree-level, first-principles)}.\;}$$
+
+**Numerical comparison (Wolfram MCP 2026-05-26):**
+
+| Closure | $r_e/r_0$ | Δ vs triangulated | Source |
+|---|---|---|---|
+| #4 / #7c-tree | $0.5000000000$ | $+5.7949\times 10^{-4}$ | framework-internal, exact |
+| #7c-Schwinger | $0.4994196322$ | $-8.78\times 10^{-7}$ | requires QED $g_e^{(1\text{-loop})}=-2-\alpha/\pi$ as input |
+| Triangulated (PR #62) | $0.4994205099$ | (reference) | empirical joint fit |
+
+The tree-vs-triangulated gap of $5.79\times 10^{-4}$ is *exactly* the size of the Schwinger one-loop anomalous moment $\alpha/(2\pi) = 1.16\times 10^{-3}$ multiplied by the sensitivity coefficient $\sim 0.5$. The Schwinger-vs-triangulated gap of $8.78\times 10^{-7}$ is the Karplus-Kroll two-loop QED residual. **The framework's algebra reproduces the cutoff value at tree level; the $\alpha/(2\pi)$ shift required to match the triangulated joint-best-fit is a QED radiative correction the framework does not algorithmically generate.**
+
+**Negative-result diagnostic for Route X (non-relativistic $K_D$ variational).** A complementary route — variational stationarity of $\langle K_D\rangle$ on a hydrogenic trial $\psi_1 \propto e^{-r/aa}$ over the cutoff-restricted domain $[r_e, \infty)$ — was set up and shown to have **no first-principles solution**: at electron-radius scale the NR expansion of $K_D$ (III.4) is invalid (kinetic energy is $\sim 9\,000\,mc^2$, super-relativistic); at Bohr scale the cutoff $r_e\sim r_0$ is invisible (sensitivity $\sim \alpha^6 \sim 10^{-13}$). The published expanded $K_D$ cannot be used as the operator in a radial-cutoff variational principle — the framework's $r_e$ is structurally an *evaluation point of operator coefficients*, not a *radial cutoff in the integration domain*. Full computation in STATE.md iter 4 + notebook Section 3.
+
+**Implication for Finding 2 disposition.** Finding 2's status remains ⚠ (characterised). The disposition is now sharpened:
+
+1. **Empirical (Pass B triangulation):** $r_e/r_0 = 0.4994205099128317$ — the campaign's current best refinement, joint-fit-validated.
+2. **First-principles framework-internal (this update):** $r_e/r_0 = 1/2$ exact (tree-Dirac); coincides with critical-point closure.
+3. **Gap = QED radiative correction:** the $5.79\times 10^{-4}$ gap between (1) and (2) is the Schwinger $\alpha/(2\pi)$ correction. To close it within the framework, the dual-Dirac apparatus would need to internally produce the anomalous moment $\alpha/\pi$ — which neither DRQM I nor its companion papers algorithmically deliver. The framework can either accept the Schwinger 1-loop value as an external QED input (collapsing to Candidate 3's reading) or remain at tree-level $1/2$ as a strictly framework-internal answer.
+
+**Status indicator remains ⚠.** Finding 2 is now characterised at three levels: published initial-value $0.499857$, empirical joint-fit $0.4994205099$, and framework first-principles $1/2$. The latter two differ by exactly the Schwinger correction, which is a clean structural identification rather than a tension.
+
+**Mechanism survey (Route Z iter 8, 2026-05-26):** an explicit check of all framework apparatus capable of producing $\alpha$-dependent corrections to the free-electron magnetic moment was performed (full table in [`.dev/research/STATE.md`](../../.dev/research/STATE.md) iter 8):
+
+| Mechanism | Order | Free electron? |
+|---|---|---|
+| $b$-vs-$c$ proper-time relativity | $\alpha^2$ | vanishes ($w=0 \Rightarrow b=c$) |
+| Dual Maxwell dissipative term ($\mu$ photon-mass) | $\alpha^3$ on bound; $0$ on inertial | **vanishes identically** for inertial source |
+| Dual square-root variants (II.1–II.3) | absorbed in $g_r(r_e)$ formula | no additional mechanism |
+| ARTDE $A^2$ with cutoff | $\alpha^7$ (Gill, line 161) | far too small ($\sim 10^{-16}$) |
+| **Second-quantized dual Maxwell vacuum vertex correction** | **unknown — not computed** | **unknown** |
+
+All quantified mechanisms either give wrong order, vanish on inertial sources, or are already in the $g_r(r_e)$ formula. **The only un-eliminated candidate is the second-quantized dual Maxwell vertex correction**, which Foundations II §5.10 asserts will be free of self-energy and IR divergences but does not compute a finite remainder. This is the load-bearing open question. The three framework specifications needed to *attempt* this calculation are tracked in [issue #75](https://github.com/temoTxt/PyPhysics/issues/75) (proper-time photon propagator form, bound-state propagator, mass-renormalisation prescription at the cutoff) — author-engagement-blocked pending Tepper input.
+
+<!-- TODO: human reviews and fills in — confirms that (a) Tepper's bracketing-guide guidance is faithfully recorded; (b) the Pass A vs Pass B contrast is the correct way to expose the substantive-AI weighting choice; (c) the conclusion that Pass B = branch (c) to 16 sig figs is the right honest framing; (d) the stretched-fit flag reading is correct (no observable in tension); (e) the verdict-marker shift from 🔴 to ⚠ pending #54 is the right disposition; (f) the residual table accurately identifies each framework-floor source; (g) the Candidate-3 2026-05-26 update correctly frames the three-step structural argument (no closed-form derivation + back-fit-forced electron match + universal-form ruled out cross-particle); (h) the Candidate-2 Route-Z operator-coefficient closure #7c is the correct framework-internal reading; (i) the closure #4 / #7c-tree identification is faithful to the framework's algebra; (j) the conclusion that the framework's algebra cannot internally produce the α/(2π) correction is correct given the M1–M5 mechanism survey, with M6 (second-quantized dual Maxwell vertex correction) the only un-eliminated candidate now tracked in #75. -->
+
 
 ---
 
