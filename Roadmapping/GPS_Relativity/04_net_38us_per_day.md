@@ -87,7 +87,7 @@ as-launched frequency (MHz) = 10.2299999954
 
 ## 6. Comparison with Ashby (2003)
 
-Ashby §3.3 Eq. (39) gives the operational frequency offset as `−4.4647 × 10⁻¹⁰`, citing the same point-mass + centrifugal decomposition with the IAU 2000 geoid potential. The headline `+38.6 μs/day` figure in Ashby uses the IAU 2000 geoid, which absorbs the J₂ correction (deferred to effect 08 in this campaign); our `+38.54 μs/day` uses the bare point-mass `−GM/R⊕`. The `0.06 μs/day` difference is the J₂ contribution to the geoid potential, accounted for in effect 08.
+Ashby §3.3 Eq. (39) gives the operational frequency offset as `−4.4647 × 10⁻¹⁰`, citing the same point-mass + centrifugal decomposition with the IAU 2000 geoid potential. The headline `+38.6 μs/day` figure in Ashby uses the IAU 2000 geoid, which absorbs the J₂ correction (deferred to effect 08 in this campaign); our `+38.54 μs/day` uses the bare point-mass `−GM/R⊕`. The unrounded reconciliation is `+38.54 + 0.033 (J₂ to geoid) = +38.57`, exactly matching Ashby's unrounded value `4.4647 × 10⁻¹⁰ × 86 400 = 38.57 μs/day`; the remaining `~0.03 μs/day` apparent discrepancy with Ashby's *rounded* `+38.6` figure is round-off (Ashby's `+38.6` rounds up from `+38.57`; ours `+38.54` rounds down to `+38.5`).
 
 The "deliberately slowed clock" mention in the popular Space Daily article ([issue #57](https://github.com/temoTxt/PyPhysics/issues/57)) is the operational consequence of this calculation. Without the offset, GPS pseudoranges would drift at `c × 38.6 × 10⁻⁶ ≈ 11.6 km/day` — close to the article's quoted `~10 km/day` figure (the small discrepancy is because GPS positioning uses *differences* of clock signals, which partially cancel a constant rate offset).
 
@@ -95,4 +95,4 @@ The factor-of-`3/2` collapse (gravity + velocity = `3GM/(2ac²)` for any circula
 
 ## 7. Verdict
 
-✅ reproduces Ashby (2003) §3.3 Eq. (39) at quoted precision; the small `0.06 μs/day` discrepancy with Ashby's `+38.6 μs/day` is the J₂ correction to the geoid potential, accounted for separately in effect 08. The pre-launch frequency offset `−4.4647 × 10⁻¹⁰` is operationally confirmed by every GPS satellite launched since 1977 (the first NTS-2 satellite). Without this correction, GPS would not work.
+✅ reproduces Ashby (2003) §3.3 Eq. (39) at quoted precision; the small `0.03 μs/day` underrun vs Ashby's unrounded `+38.57 μs/day` is exactly the J₂ correction to the geoid potential (accounted for separately in effect 08), with the remaining discrepancy vs Ashby's *rounded* `+38.6` figure being round-off. The pre-launch frequency offset `−4.4647 × 10⁻¹⁰` is operationally confirmed by every GPS satellite launched since 1977 (the first NTS-2 satellite). Without this correction, GPS would not work.

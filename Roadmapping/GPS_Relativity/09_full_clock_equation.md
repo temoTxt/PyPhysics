@@ -68,13 +68,13 @@ The full GPS relativistic error budget, in canonical units:
 | 03 Velocity time dilation | `−7.11 μs/day` | secular | pre-launch offset |
 | 04 Net headline (02 + 03) | `+38.54 μs/day` (pointmass) | secular | pre-launch offset |
 | 08a J₂ correction to geoid | `+0.033 μs/day` | secular | pre-launch offset |
-| 08b J₂ correction to satellite orbit | `−0.001 μs/day` (avg) | secular | pre-launch offset |
+| 08b J₂ correction to satellite orbit | `+0.003 ns/day` (avg, ≈ 3 ps) | secular | pre-launch offset |
 | **04 + 08 operational net** | **`+38.57 μs/day`** | **secular** | **pre-launch (`Δf/f = −4.4647 × 10⁻¹⁰`)** |
 | 05 Eccentricity periodic | `≤ ±46 ns` (`e=0.02`) | periodic | broadcast ephemeris + receiver |
 | 06 Sagnac per signal | `≤ ±137 ns` | path-dependent | receiver firmware |
 | 07 Shapiro per signal | `≤ +62 ps` | path-dependent | geodetic post-processing only |
 | 08c Lense-Thirring | `~ 10⁻¹⁶` | sub-ps | (not currently corrected) |
-| 08d Higher PN | `~ 10⁻¹⁹` | below noise floor | (not currently corrected) |
+| 08d Higher PN | `~ 10⁻²⁰` | below noise floor | (not currently corrected) |
 
 If any of effects 02 + 03 + 04 + 05 + 06 were ignored, the resulting pseudorange error per day:
 

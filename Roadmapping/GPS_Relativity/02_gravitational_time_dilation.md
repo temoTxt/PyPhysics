@@ -79,7 +79,7 @@ A common alternative decomposition in operational GPS documents combines the geo
 
 $$\left.\frac{\Delta f}{f}\right|_{\rm grav} = \frac{\Phi_{\rm geoid}}{c^2} - \frac{\Phi(a_{\rm GPS})}{c^2}.$$
 
-With `Φ_geoid/c² = −6.969 290 × 10⁻¹⁰` (the IAU 2000 value with J₂ and centrifugal absorbed) and `Φ(a_GPS)/c² = −1.669 814 × 10⁻¹⁰`, this gives `5.299 476 × 10⁻¹⁰` → `+45.787 μs/day`. The `0.14 μs/day` difference between this and our `45.65` arises from the centrifugal piece, which we cleanly carry into effect 03 instead of folding into the "gravitational" account. **The two decompositions agree on the total — they differ only in the bookkeeping.**
+With `Φ_geoid/c² = −6.969 290 × 10⁻¹⁰` (the IAU 2000 value with J₂ and centrifugal absorbed) and `Φ(a_GPS)/c² = −1.669 814 × 10⁻¹⁰`, this gives `5.299 476 × 10⁻¹⁰` → `+45.787 μs/day`. The `0.14 μs/day` difference between this and our `45.65` decomposes into three contributions (using effect 08's numbers): centrifugal at equator (`+0.10 μs/day`, carried into effect 03's `v_eq²/(2c²)` term); J₂ at equator (`+0.033 μs/day`, accounted for in effect 08); and small residuals (`~0.01 μs/day`) from higher zonal harmonics and tidal averages folded into the empirical IAU 2000 W₀ value. **The two decompositions agree on the total — they differ in where each sub-contribution is bookkept.**
 
 ## 7. Verdict
 

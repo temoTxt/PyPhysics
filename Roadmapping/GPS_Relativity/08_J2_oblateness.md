@@ -1,6 +1,6 @@
 # Effect 08 — J₂ oblateness and higher post-Newtonian corrections
 
-**One-line summary:** Earth's quadrupole moment `J₂ = 1.0826267 × 10⁻³` modifies the gravitational potential at both the geoid (contributing `~+0.03 μs/day` to the headline offset) and the GPS satellite orbit (contributing `~−0.001 μs/day`). The net `~+0.03 μs/day` is the difference between our pointmass-decomposition result `+38.54 μs/day` and Ashby's IAU-2000-decomposition result `+38.57 μs/day`. Other higher-PN corrections (Lense-Thirring, post-PN, tidal) are below the picosecond floor and operationally negligible.
+**One-line summary:** Earth's quadrupole moment `J₂ = 1.0826267 × 10⁻³` modifies the gravitational potential at both the geoid (contributing `~+0.033 μs/day` to the headline offset) and the GPS satellite orbit (contributing `~+0.003 ns/day`, negligible). The net `~+0.033 μs/day` is the difference between our pointmass-decomposition result `+38.54 μs/day` and Ashby's IAU-2000-decomposition result `+38.57 μs/day`. Other higher-PN corrections (Lense-Thirring, post-PN, tidal) are below the picosecond floor and operationally negligible.
 
 **Status:** ✅ drafted.
 **Ashby (2003) cross-reference:** §3.5, Eq. (24); §7 (other small effects).
@@ -24,7 +24,7 @@ For the geoid, `J₂` is *already absorbed* into the conventional IAU 2000 value
 | `P₂(0)` | `−1/2` | Legendre `P₂` at equator (θ = π/2) |
 | `P₂(1)` | `+1` | Legendre `P₂` at pole (θ = 0) |
 
-The GPS orbit has inclination `i = 55°`, so the satellite samples a range of colatitudes — the time-averaged value of `P₂(cos θ)` over an inclined circular orbit is `(3 sin²i − 2)/4 ≈ −0.0376` for `i = 55°`.
+The GPS orbit has inclination `i = 55°`, so the satellite samples a range of colatitudes. With `cos(θ_sat) = sin(i) sin(ω+f)` along the orbit and `⟨sin²(ω+f)⟩ = 1/2`, the time-averaged Legendre polynomial is `⟨P₂(cos θ)⟩ = (3 sin²i − 2)/4`. For `i = 55°` (`sin²i = 0.6710`): `⟨P₂⟩ = (3 × 0.6710 − 2)/4 = +0.00326` — a small positive value.
 
 ## 3. Derivation
 
@@ -42,19 +42,19 @@ $$\Delta t_{J_2,\,{\rm geoid}} \;=\; 3.764 \times 10^{-13} \times 86\,400 \;\app
 
 added to the headline (gravity contribution increases because the geoid is more bound than the pointmass model assumes).
 
-For the satellite, averaging over an inclined circular orbit:
+For the satellite, the J₂ part of the potential evaluated at orbital radius `a` is `Φ_{J₂} = +(GM_⊕/a) · J₂ · (R_⊕/a)² · P₂(cos θ)` (from `Φ_full = −GM/r [1 − J₂(R/r)²P₂]`). The orbit-averaged contribution to the satellite's clock rate is:
 
-$$\left\langle\frac{\Phi_{J_2,\,{\rm sat}}}{c^2}\right\rangle_t \;=\; -\frac{GM_\oplus J_2 (R_\oplus/a)^2}{c^2}\, \langle P_2 \rangle \;\approx\; +\,\frac{GM_\oplus J_2 (R_\oplus/a)^2}{c^2} \cdot 0.0376.$$
+$$\left\langle\frac{\Phi_{J_2,\,{\rm sat}}}{c^2}\right\rangle_t \;=\; \frac{GM_\oplus J_2 R_\oplus^2}{a^3\, c^2}\, \langle P_2 \rangle \;=\; \frac{GM_\oplus J_2}{a\, c^2}\left(\frac{R_\oplus}{a}\right)^{\!2}\!\langle P_2 \rangle.$$
 
 Magnitude:
 
-$$\left|\frac{\Phi_{J_2,\,{\rm sat}}}{c^2}\right| \;=\; 1.083 \times 10^{-3} \times 0.0577 \times 1.670 \times 10^{-10} \times 0.0376 \;\approx\; 3.9 \times 10^{-16},$$
+$$\left\langle\frac{\Phi_{J_2,\,{\rm sat}}}{c^2}\right\rangle_t \;=\; \frac{1.083 \times 10^{-3} \times 0.0577 \times 1.670 \times 10^{-10}}{1} \times 0.00326 \;\approx\; 3.40 \times 10^{-17},$$
 
 corresponding to:
 
-$$\Delta t_{J_2,\,{\rm sat}} \;\approx\; 3 \times 10^{-11}\ {\rm s/day} \;\approx\; 0.03\ {\rm ns/day},$$
+$$\Delta t_{J_2,\,{\rm sat}} \;\approx\; 2.9 \times 10^{-12}\ {\rm s/day} \;\approx\; +0.003\ {\rm ns/day},$$
 
-which is operationally negligible.
+a *positive* contribution (`⟨P₂⟩ > 0` for `i = 55°` makes the satellite's J₂ potential slightly less negative, so the satellite ticks marginally faster than a point-mass model would predict). The magnitude is operationally negligible.
 
 The net contribution of `J₂` to the headline ±38 μs/day:
 
@@ -67,31 +67,31 @@ $$\boxed{\;\Delta t_{J_2,\,{\rm net}} \;\approx\; +0.033\ \mu{\rm s/day}\;}$$
 | Contribution | Magnitude (per day) |
 |---|---|
 | `J₂` to geoid | `+0.033 μs/day` |
-| `J₂` to satellite orbit (time-averaged) | `−0.001 μs/day` |
+| `J₂` to satellite orbit (time-averaged) | `+0.003 ns/day` (≈ 3 ps/day) |
 | Lense-Thirring (frame-dragging) | `~ 10⁻¹⁶` per orbit = sub-ps |
-| Post-PN (next-order in `1/c⁴`) | `~ 10⁻¹⁹` = below precision floor |
+| Post-PN (next-order in `1/c⁴`) | `~ 10⁻²⁰` = below precision floor |
 | Tidal (Sun + Moon) | `~ 10⁻¹⁶` = sub-ps |
-| Total higher-order | `~ +0.032 μs/day` |
+| Total higher-order | `~ +0.033 μs/day` (dominated by J₂ to geoid) |
 
 The Lense-Thirring contribution from Earth's rotation (the "gravitomagnetic" frame-dragging from `J⊕`) is the leading post-Schwarzschild correction; for GPS it is at the `10⁻¹⁶` level and is absorbed into the operational `−4.4647 × 10⁻¹⁰` offset implicitly (the offset is *defined* to match the observed satellite-clock-vs-ground-clock comparison, which is sensitive to all effects through that level).
 
 ## 5. Wolfram MCP check
 
 ```wolfram
-cc=299792458; GMe=3.986004418*^14; RR=6378137; aGPS=26560000; J2val=1.0826267*^-3; inc = 55 Degree; (* time-averaged P2 over inclined circular orbit *) avgP2 = (3 Sin[inc]^2 - 2)/4; geoidJ2 = GMe J2val/(2 RR cc^2); satJ2 = GMe J2val (RR/aGPS)^2/cc^2 Abs[avgP2]; Print["J2 to geoid /c^2 = ", ScientificForm[N[geoidJ2,8]]]; Print["J2 geoid microsec/day = ", N[geoidJ2 86400 1*^6, 6]]; Print["<P2> over inclined orbit (i=55) = ", N[avgP2,6]]; Print["J2 to satellite /c^2 = ", ScientificForm[N[satJ2,8]]]; Print["J2 satellite microsec/day = ", N[satJ2 86400 1*^6, 6]]; (* Reconcile with Ashby 38.57 *) baseline = GMe/(RR cc^2) - 3 GMe/(2 aGPS cc^2) + (7.2921151467*^-5 RR)^2/(2 cc^2); Print["baseline 38.5 microsec/day = ", N[baseline 86400 1*^6,6]]; Print["baseline + J2 corrections = ", N[(baseline+geoidJ2-satJ2) 86400 1*^6,6]]
+ClearAll[cc,GMe,RR,aGPS,J2val,inc,avgP2,geoidJ2,satJ2,baseline]; cc=299792458; GMe=3.986004418*^14; RR=6378137; aGPS=26560000; J2val=1.0826267*^-3; inc=55 Degree; avgP2=(3 Sin[inc]^2-2)/4; geoidJ2=GMe J2val/(2 RR cc^2); satJ2=GMe J2val RR^2 avgP2/(aGPS^3 cc^2); Print["<P2> over inclined orbit (i=55) = ", N[avgP2,8]]; Print["J2 to geoid /c^2 = ", ScientificForm[N[geoidJ2,8]]]; Print["J2 geoid microsec/day = ", N[geoidJ2 86400 1*^6, 6]]; Print["J2 to satellite /c^2 = ", ScientificForm[N[satJ2,8]]]; Print["J2 satellite ns/day = ", N[satJ2 86400 1*^9, 6]]; baseline=GMe/(RR cc^2) - 3 GMe/(2 aGPS cc^2) + (7.2921151467*^-5 RR)^2/(2 cc^2); Print["baseline (pointmass) microsec/day = ", N[baseline 86400 1*^6,6]]; Print["baseline + J2 (geoid + sat) microsec/day = ", N[(baseline+geoidJ2+satJ2) 86400 1*^6,6]]
 ```
 
 **Result:**
 ```
+<P2> over inclined orbit (i=55) = 0.0032575537
 J2 to geoid /c^2 = 3.7640092×10⁻¹³
 J2 geoid microsec/day = 0.0325211
-<P2> over inclined orbit (i=55) = -0.0376604
-J2 to satellite /c^2 = 3.92583×10⁻¹⁶
-J2 satellite microsec/day = 0.0000339
-baseline 38.5 microsec/day = 38.5413
-baseline + J2 corrections = 38.5739
+J2 to satellite /c^2 = 3.39602×10⁻¹⁷
+J2 satellite ns/day = 0.00293416
+baseline (pointmass) microsec/day = 38.5413
+baseline + J2 (geoid + sat) microsec/day = 38.5738
 ```
-✅ matches §4 and reconciles with Ashby's `+38.57 μs/day` operational value.
+✅ matches §4 and reconciles with Ashby's `+38.57 μs/day` operational value. The `ClearAll` at the top of the block is required — without it, an `inc` variable from a prior evaluation can contaminate the `<P₂>` result.
 
 ## 6. Comparison with Ashby (2003)
 
@@ -99,7 +99,7 @@ Ashby §3.5 Eq. (24) gives the same `J₂` contribution to the geoid potential. 
 
 The Lense-Thirring contribution (Ashby §3.5 Eq. (26)) is at the `10⁻¹⁶` level — within reach of future optical-clock satellite missions (e.g., ACES on the ISS, expected to detect Lense-Thirring at the `~10⁻¹⁷` level), but not relevant for the current GPS atomic clocks (cesium and rubidium standards with `~10⁻¹⁴` stability).
 
-The post-PN corrections at order `1/c⁴` were dropped from the master equation in effect 01 with a magnitude estimate of `~10⁻¹⁹`. This is correctly identified as below the precision floor of any current or near-future GPS atomic clock.
+The post-PN corrections at order `1/c⁴` were dropped from the master equation in effect 01 with a magnitude estimate of `~10⁻²⁰` (products of two `1/c²` factors, each `~10⁻¹⁰` at GPS). This is correctly identified as below the precision floor of any current or near-future GPS atomic clock.
 
 ## 7. Verdict
 

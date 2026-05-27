@@ -7,9 +7,9 @@
 
 ## 1. Effect statement
 
-The geometry outside the Earth is modeled as the Schwarzschild solution of Einstein's equations for a non-rotating, spherically symmetric mass. The rotation of the Earth contributes through the Kerr correction (the frame-dragging term `~ J⊕`), but at GPS altitude the Kerr correction is `~ 10⁻¹⁶` per orbit and is absorbed into effect 08. The geoid corrections from oblateness (`J₂`) are also deferred to effect 08. The setup here is the spherically symmetric weak-field metric, expanded to the order at which all subsequent clock-rate calculations are carried out.
+The geometry outside the Earth is modeled as the Schwarzschild solution of Einstein's equations for a non-rotating, spherically symmetric mass. Two independent corrections are flagged but not folded into the leading-order analysis: (a) the Kerr / Lense-Thirring rotational gravitomagnetic correction from Earth's angular momentum `J⊕` (entering `g_{0φ}`) is `~ 10⁻¹⁶` per orbit and is flagged in effect 08 §6 as below the operational floor; (b) the static `J₂` quadrupole correction to the Earth's mass distribution (entering `g_{00}`) is the subject of effect 08 itself. These are independent effects with different physical origins (rotation vs mass distribution) and they are not "absorbed into" each other. The setup here is the spherically symmetric weak-field metric, expanded to the order at which all subsequent clock-rate calculations are carried out.
 
-The post-Newtonian expansion truncates at `1/c²` — corrections at `1/c⁴` are at the `10⁻¹⁹` level for GPS and are below the operational precision floor.
+The post-Newtonian expansion truncates at `1/c²` — corrections at `1/c⁴` are at the `10⁻²⁰` level for GPS (products of two `1/c²` factors, each `~ 10⁻¹⁰` at GPS) and are below the operational precision floor.
 
 ## 2. Setup
 
@@ -41,7 +41,7 @@ we obtain the exact form
 
 $$\left(\frac{d\tau}{dt}\right)^{\!2} = 1 - \frac{2GM}{rc^2} - \frac{v^2}{c^2}\left(1 + \mathcal{O}\!\left(\frac{2GM}{rc^2}\right)\right).$$
 
-The first parenthesis on the right is `1 − 2GM/(rc²) ≈ 1 − 1.4 × 10⁻⁹` at the Earth's surface and `1 − 3.3 × 10⁻¹⁰` at GPS altitude. The second parenthesis, when expanded, contributes corrections of order `(GM/rc²)(v²/c²) ≈ 10⁻¹⁹`, which we drop. To order `1/c²`:
+The first parenthesis on the right is `1 − 2GM/(rc²) ≈ 1 − 1.4 × 10⁻⁹` at the Earth's surface and `1 − 3.3 × 10⁻¹⁰` at GPS altitude. The second parenthesis, when expanded, contributes corrections of order `(GM/rc²)(v²/c²) ≈ 10⁻²⁰`, which we drop. To order `1/c²`:
 
 $$\boxed{\;\frac{d\tau}{dt} \;\approx\; 1 \;-\; \frac{GM}{rc^2} \;-\; \frac{v^2}{2c^2}\;}$$
 
@@ -77,7 +77,7 @@ v_eq^2/(2 c^2) = 1.2034088×10⁻¹²
 
 ## 6. Comparison with Ashby (2003)
 
-Ashby §3 develops the post-Newtonian expansion in the same form. His Eq. (12) is the line element above; his Eq. (16) is the master expression we boxed. Ashby retains an additional `+U·v²/c⁴` cross-term in Eq. (16) for completeness; that term is `10⁻¹⁹` for GPS and is dropped from all subsequent operational equations. Our truncation at `1/c²` matches Ashby's operational treatment in §4 onwards.
+Ashby §3 develops the post-Newtonian expansion in the same form. His Eq. (12) is the line element above; his Eq. (16) is the master expression we boxed. Ashby retains an additional `+U·v²/c⁴` cross-term in Eq. (16) for completeness; that term is `~10⁻²⁰` for GPS and is dropped from all subsequent operational equations. Our truncation at `1/c²` matches Ashby's operational treatment in §4 onwards.
 
 The sign convention `g_{00} = −(1 − 2GM/rc²)` (mostly-plus metric) matches Ashby and MTW; Weinberg uses the opposite sign convention but his clock-rate formulas, after the convention conversion, reduce to the same boxed result.
 

@@ -70,9 +70,9 @@ vel microsec/day = -7.10962
 
 ## 6. Comparison with Ashby (2003)
 
-Ashby §3.2 derives the velocity time dilation in Eq. (20). His quoted value is `−7.2 μs/day`, which agrees with ours to within rounding: Ashby uses a slightly different `v_sat ≈ 3.874 km/s` (rounded), giving `v_sat²/(2c²) ≈ 8.34 × 10⁻¹¹`; the `0.1 μs/day` apparent disagreement is the difference between including vs neglecting the ground-station rotation contribution. Our `−7.11 μs/day` includes the equator-station rotation as a credit (it reduces the magnitude of the satellite's deficit); Ashby's `−7.2 μs/day` is the satellite-only contribution.
+Ashby §3.2 derives the velocity time dilation in Eq. (20) using `Δf/f = -(v_sat² - v_grnd²)/(2c²)` (i.e., *including* the ground-station rotation). With rounded parameters this evaluates to about `-7.1 μs/day`; some secondary sources quote `-7.2 μs/day`, which appears to be either rounding from a slightly different `v_sat` value or the "satellite-only" `-v_sat²/(2c²)` shortcut that omits the ground term. **Worth verifying directly from Ashby (2003) §3.2 which figure he actually writes and which decomposition he uses.** Our `-7.11 μs/day` uses the full `-(v_sat² - v_grnd²)/(2c²)` form with equator-station rotation included.
 
-A common (but incorrect) decomposition treats `v_grnd = 0` (i.e., the ground clock is treated as if at rest in ECI). That gives `−v_sat²/(2c²) × 86 400 = −7.22 μs/day`. The right operational answer includes the ground-station rotation, which contributes `+0.10 μs/day`. The net velocity contribution is `−7.11 μs/day`.
+A simplified (and incomplete) decomposition treats `v_grnd = 0` (i.e., the ground clock is treated as if at rest in ECI). That gives `−v_sat²/(2c²) × 86 400 = −7.22 μs/day`. The full operational answer includes the ground-station rotation, which contributes `+0.10 μs/day`. The net velocity contribution is `−7.11 μs/day`.
 
 ## 7. Verdict
 

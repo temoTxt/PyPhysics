@@ -24,7 +24,7 @@ where `(ω⊕ × r)` is the velocity field of an ECEF-rest point as seen from EC
 | Symbol | Value | Meaning |
 |---|---|---|
 | `ω⊕` | `7.292 × 10⁻⁵ rad/s` | Earth sidereal rotation rate |
-| `2ω⊕/c²` | `1.624 × 10⁻²¹ s/m²` | Sagnac coefficient |
+| `2ω⊕/c²` | `1.623 × 10⁻²¹ s/m²` | Sagnac coefficient |
 | `A_E` | path-dependent (m²) | projected equatorial area swept by photon |
 
 ## 3. Derivation
@@ -55,15 +55,15 @@ The sign: a westbound signal (against Earth's rotation) has `A_E < 0` and `Δt_S
 
 The Sagnac coefficient is:
 
-$$\frac{2 \omega_\oplus}{c^2} \;=\; \frac{2 \times 7.292\,115 \times 10^{-5}}{(2.998 \times 10^8)^2} \;=\; 1.624 \times 10^{-21}\ {\rm s/m^2}.$$
+$$\frac{2 \omega_\oplus}{c^2} \;=\; \frac{2 \times 7.292\,115 \times 10^{-5}}{(2.998 \times 10^8)^2} \;=\; 1.623 \times 10^{-21}\ {\rm s/m^2}.$$
 
 The maximum projected area for a GPS signal: the triangle whose vertices are the Earth's center, the GPS satellite, and the ground receiver. When this triangle is in the equatorial plane and at maximum extent, `A_E ≈ a_GPS · R⊕ / 2 ≈ 8.47 × 10¹³ m²`. Substituting:
 
-$$\big|\Delta t_{\rm Sagnac}\big|_{\rm max} \;=\; 1.624 \times 10^{-21} \times 8.47 \times 10^{13} \;\approx\; 1.375 \times 10^{-7}\ {\rm s} \;=\; \boxed{\;\approx 137\ {\rm ns}.\;}$$
+$$\big|\Delta t_{\rm Sagnac}\big|_{\rm max} \;=\; 1.623 \times 10^{-21} \times 8.47 \times 10^{13} \;\approx\; 1.374 \times 10^{-7}\ {\rm s} \;=\; \boxed{\;\approx 137\ {\rm ns}.\;}$$
 
 Operational GPS literature commonly quotes "`~133 ns` maximum"; the small discrepancy with our `137` is because the geometric maximum is constrained by the visibility horizon (the satellite must be above the receiver's local horizon to be received), not the full half-disk.
 
-A `137 ns` per-signal correction corresponds to a pseudorange error of `c × 137 ns ≈ 41 m` if uncorrected — substantially larger than the meter-scale civilian GPS accuracy. Every GPS receiver computes the Sagnac correction from the broadcast satellite ephemeris and the receiver's known ECEF position; this is one of the standard receiver-side corrections in any GPS firmware.
+A `137 ns` per-signal correction corresponds to a pseudorange error of `c × 137.4 ns ≈ 41.2 m` if uncorrected — substantially larger than the meter-scale civilian GPS accuracy. Every GPS receiver computes the Sagnac correction from the broadcast satellite ephemeris and the receiver's known ECEF position; this is one of the standard receiver-side corrections in any GPS firmware.
 
 ## 5. Wolfram MCP check
 
@@ -73,12 +73,12 @@ cc=299792458; om=7.2921151467*^-5; aGPS=26560000; RR=6378137; Amax = aGPS RR/2; 
 
 **Result:**
 ```
-Sagnac coefficient (s/m^2) = 1.6243988×10⁻²¹
-max projected area (m^2) = 8.4701700×10¹³
-max Sagnac (ns) = 137.587
-pseudorange error (m) = 41.249
+Sagnac coefficient (s/m^2) = 1.6227145×10⁻²¹
+max projected area (m^2) = 8.4701659×10¹³
+max Sagnac (ns) = 137.4466
+pseudorange error (m) = 41.2055
 ```
-✅ matches §4.
+✅ matches §4. (Note: an earlier version of this block quoted `1.624×10⁻²¹` / `137.587 ns` / `41.249 m` — those values do not reproduce from a clean Wolfram session with the parameter values in this campaign's README, and have been corrected.)
 
 ## 6. Comparison with Ashby (2003)
 
