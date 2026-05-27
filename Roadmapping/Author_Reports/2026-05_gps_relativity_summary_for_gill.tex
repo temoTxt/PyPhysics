@@ -1,0 +1,417 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={GPS satellite relativistic corrections --- standard derivation, proper-time companion, and open questions for a curved-spacetime extension},
+  pdfauthor={Trey Morris with Claude Opus 4.7},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{GPS satellite relativistic corrections --- standard derivation,
+proper-time companion, and open questions for a curved-spacetime
+extension}
+\author{Trey Morris with Claude Opus 4.7}
+\date{2026-05-27}
+
+\begin{document}
+\maketitle
+
+\hypertarget{cover-note}{%
+\section{§1 Cover note}\label{cover-note}}
+
+This is a short follow-up to the
+\href{./2026-05_interim_for_gill.md}{interim report of 2026-05-25},
+narrowly scoped to one applied-relativity question that opened in the
+public repository the same week: the relativistic clock-correction
+problem for GPS satellites, prompted by a popular-science article on the
+headline \(\pm 38\,\mu\)s/day offset
+(\href{https://github.com/temoTxt/PyPhysics/issues/57}{issue \#57}). Two
+campaigns followed --- a standard-method derivation
+(\href{https://github.com/temoTxt/PyPhysics/pull/71}{PR \#71})
+reproducing Ashby's \emph{Living Reviews} treatment end-to-end, and a
+proper-time companion
+(\href{https://github.com/temoTxt/PyPhysics/pull/73}{PR \#73}) that
+applies the Gill--Zachary substitution rules to each of the nine
+effects. The companion campaign surfaced four open questions about how
+the framework should extend to curved spacetime --- questions the
+framework as-published does not yet answer. This report consolidates the
+two campaigns and the four questions in a form short enough to read
+alongside the broader interim report.
+
+\hypertarget{what-this-report-is-and-is-not}{%
+\subsection{What this report is and is
+not}\label{what-this-report-is-and-is-not}}
+
+This is a \emph{consolidation} of two campaigns of which the underlying
+work is committed to the public repository in full. It is not a
+re-derivation, not a journal-style summary, and not a request that you
+read the per-effect documents to interpret the questions in §5 --- each
+question is self-contained. The report's load-bearing section is §5;
+everything else is context to make §5 readable in one sitting.
+
+\hypertarget{the-gps-question}{%
+\section{§2 The GPS question}\label{the-gps-question}}
+
+GPS satellites carry atomic clocks that, once in orbit, tick faster than
+ground clocks by \(+38.57\,\mu\)s/day from the combined gravitational
+redshift (\(+45.65\)) and special-relativistic velocity dilation
+(\(-7.11\)). The engineering response is to slow the satellite clock by
+exactly this fractional rate before launch --- the fundamental clock
+frequency of \(10.230\,000\,000\,00\) MHz is built at
+\(10.229\,999\,995\,43\) MHz, a fractional offset
+\(\Delta f/f = -4.4647 \times 10^{-10}\). Once in orbit, the
+relativistic gain exactly cancels the pre-launch slowdown, and the
+satellite clock matches a ground clock at the geoid potential. This is
+the most stringently-tested applied-relativity result available: a
+deployed satellite constellation operating since 1977, with the
+relativistic correction validated daily against the \(\sim 10^{-10}\)
+precision of cesium and rubidium clocks. Ashby (2003) is the canonical
+reference; the IAU 2000 geoid potential supplies the ground-side
+reference and the operational pre-launch offset is in the GPS Interface
+Control Document.
+
+The proper-time framework's perspective is operationally aligned with
+how GPS actually works: the satellite's atomic clock \emph{is} its
+proper time \(\tau\), and the question ``how does \(\tau_{\rm sat}\)
+relate to \(\tau_{\rm grnd}\)'' is exactly the kinematic question the
+framework's \(b = \sqrt{c^2 + \mathbf{u}^2}\) and \(dt/d\tau = b/c\)
+apparatus is designed to answer. The campaign set out to determine,
+per-effect, whether the framework reproduces standard SR + GR at
+GPS-relevant precision (the expected outcome, given the framework's
+claim of mathematical equivalence), and to surface any structural
+difference that would be operationally distinguishable at the
+next-generation optical-clock precision floor (\(\sim 10^{-17}\)) or in
+regimes the framework as-published does not cover.
+
+\hypertarget{standard-derivation-what-pr-71-reproduces}{%
+\section{§3 Standard derivation --- what PR \#71
+reproduces}\label{standard-derivation-what-pr-71-reproduces}}
+
+The standard campaign covered nine separately-named effects, each in its
+own per-effect document with a Wolfram-MCP numerical check and a
+comparison against Ashby (2003). The headline numerical decomposition
+reproduces Ashby end-to-end at the precision the published parameters
+can sustain:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Effect
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Standard-method magnitude
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Ashby cross-reference
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+02 Gravitational time dilation & \(+45.65\,\mu\)s/day & §3.1 Eq. (19) \\
+03 Velocity time dilation & \(-7.11\,\mu\)s/day & §3.2 Eq. (20) \\
+04 Net headline + \(J_2\) & \(+38.57\,\mu\)s/day & §3.3 Eq. (39) \\
+Pre-launch frequency offset & \(\Delta f/f = -4.4647 \times 10^{-10}\) &
+§3.3 Eq. (39) \\
+05 Eccentricity periodic (\(e = 0.02\)) & \(\pm 46\) ns peak & §4 Eq.
+(43) \\
+06 Sagnac maximum & \(\sim 137\) ns per signal & §3.4 Eq. (35) \\
+07 Shapiro maximum & \(\sim 62\) ps per signal & §6 Eq. (53) \\
+08 \(J_2\) contribution to geoid & \(+0.033\,\mu\)s/day & §3.5 Eq.
+(24) \\
+\end{longtable}
+
+The campaign's value to the repository is \emph{consolidation} ---
+collecting Ashby's per-effect derivations into one place with
+Wolfram-MCP verification of every quoted number from named parameter
+values (IERS / WGS-84 / EGM2008 / GPS ICD-200). This is a
+reproduction-of-standard exercise; no novel claim is made. We flag the
+campaign here because §4's proper-time companion is conditional on the
+§3 baseline being right.
+
+\hypertarget{proper-time-companion-what-pr-73-found}{%
+\section{§4 Proper-time companion --- what PR \#73
+found}\label{proper-time-companion-what-pr-73-found}}
+
+The companion campaign worked the same nine effects under the
+\href{../Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md}{Gill--Zachary
+substitution rules} (\(\mathbf{w}/c = \mathbf{u}/b\),
+\((1/c)\partial_t = (1/b)\partial_\tau\), \(b^2 = c^2 + \mathbf{u}^2\)),
+recording per-effect whether the framework applies as-published or
+requires a speculative extension. The 9 per-effect documents split into
+three categories:
+
+\textbf{{[}OK{]} Direct framework application (pt\_03, pt\_06).} Two
+effects where the verified substitution rules apply without
+modification. \textbf{pt\_03 velocity time dilation} is the cleanest
+demonstration in the campaign: the framework's \(d\tau/dt = c/b\) equals
+the standard \(1/\gamma = \sqrt{1 - v^2/c^2}\) \emph{exactly}, by
+algebraic identity from the velocity-duality substitution
+\(\mathbf{w}/c = \mathbf{u}/b\). The numerical value \(-7.11\,\mu\)s/day
+is identical to standard; the agreement is at all decimal places, not at
+any precision floor. \textbf{pt\_06 Sagnac} runs through the
+rotating-frame photon-null condition with \(c \to b\) substitution; the
+result \(\Delta t = -2\boldsymbol{\omega} \cdot \mathbf{A} / b^2\)
+reduces to the standard \(-2\boldsymbol{\omega} \cdot \mathbf{A} / c^2\)
+at \(b \approx c\) for an Earth-rotating receiver, with the residual at
+\(\sim 10^{-10}\) ns (invisible to current GPS clocks, marginal at
+next-generation optical-clock precision).
+
+\textbf{{[}warn{]} Partial --- kinematic {[}OK{]} + speculative GR
+extension (pt\_01, pt\_04, pt\_05).} Three effects where the kinematic
+piece is direct framework application but the gravitational piece
+requires a curved-spacetime extension that the framework as-published
+does not provide. The campaign adopts a \emph{minimal-extension
+hypothesis} (replace \(c\) by the local \(b\) in the Schwarzschild line
+element) and shows it reduces to standard at GPS-relevant velocities.
+The combined headline \(+38.57\,\mu\)s/day is reproduced; the
+operational pre-launch frequency offset
+\(\Delta f/f = -4.4647 \times 10^{-10}\) is unchanged. \textbf{pt\_05
+eccentricity} additionally surfaces a framework-specific
+\emph{third-term} contribution
+\((\mathbf{u} \cdot \mathbf{a})/b^4 \cdot \tau_{\rm signal}\) from the
+wave-equation dissipative coefficient in Maxwell-paper Eq. (4); for GPS
+circular orbits this vanishes (\(\mathbf{u} \perp \mathbf{a}\)), and for
+elliptical orbits at \(e = 0.02\) it is \(\sim 10^{-34}\) s per signal,
+operationally invisible. The same coefficient appears in the
+radiation-reaction sub-investigation
+\href{https://github.com/temoTxt/PyPhysics/issues/43}{\#43} where it
+contributes at order unity --- the framework is internally consistent on
+which structures appear where.
+
+\textbf{{[}X{]} Framework as-published doesn't extend (pt\_02, pt\_07,
+pt\_08).} Three effects that are purely gravitational (Schwarzschild
+redshift; Shapiro propagation delay; \(J_2\) multipole). The framework's
+substitution rules govern SR Maxwell + flat-space dynamics; they do not
+extend to curved spacetime in any verified paper. Under the same minimal
+\(c \to b\) Schwarzschild extension, each effect reduces to standard at
+GPS precision --- but the speculative extension is the load-bearing
+assumption, not a derived result. Every doc in this category carries a
+substantive-AI TODO block on its §0 ``Framework applicability''
+paragraph.
+
+\textbf{Operational summary.} At GPS precision
+(\(\mathbf{u}^2/c^2 \approx 1.7 \times 10^{-10}\); gravitational
+\(GM/(rc^2) \approx 10^{-10}\); clock stability \(\sim 10^{-14}\)), the
+framework reproduces the standard prediction for every effect. The
+pre-launch frequency offset \(\Delta f/f = -4.4647 \times 10^{-10}\) is
+unchanged; the operational engineering response is unchanged. \textbf{No
+observable deviation was found.} This is the \emph{expected} outcome of
+mathematical equivalence in the appropriate limit, and is consistent
+with --- but does not independently validate --- either formulation. A
+\emph{negative} finding (the framework predicting something different at
+GPS precision that disagreed with measurement) would have been a serious
+problem for the framework; none was found.
+
+\hypertarget{four-open-questions-for-a-curved-spacetime-extension}{%
+\section{§5 Four open questions for a curved-spacetime
+extension}\label{four-open-questions-for-a-curved-spacetime-extension}}
+
+This is the load-bearing section of the report. The four questions all
+surface from the proper-time companion's {[}X{]} and {[}warn{]}
+per-effect documents; each is operationally invisible at
+current-generation GPS precision but structurally load-bearing for the
+framework's extension to regimes where the differences would matter.
+Each question is \emph{one short paragraph} by design; the per-effect
+documents in \texttt{Roadmapping/GPS\_Relativity/} carry the supporting
+context if you want to chase down details.
+
+\textbf{Q1. What is the correct curved-spacetime extension of the
+framework?} The minimal-extension hypothesis used in pt\_01, pt\_02,
+pt\_04, pt\_07, and pt\_08 is \(c \to b\) in the Schwarzschild line
+element, with \(b \to c\) at low velocity. This is \emph{one} possible
+extension; we considered three others without resolution. Alternatives
+include (a) \(c \to b\) applied only in the time-time metric component
+\(g_{00}\), (b) treating null and timelike geodesics differently (the
+photon's local frame has \(\mathbf{u} = 0\) and so \(b = c\), but the
+worldline along which the metric is evaluated does not), and (c)
+replacing the metric structure entirely with a \(b\)-dependent
+connection that reduces to the Schwarzschild connection in the \(b = c\)
+limit. For GPS at the \(10^{-10}\) precision floor, all four hypotheses
+reduce to the same operational answer; the question matters for
+next-generation optical-clock GPS (\(10^{-17}\) stability is at the edge
+of distinguishing them) and for strong-field regimes where \(GM/(rc^2)\)
+is no longer \(\sim 10^{-10}\). The campaign cannot resolve this from
+the verified corpus and flags it as the principal Tepper-input ask of
+this report.
+
+\textbf{Q2. How does \(\mathbf{u} \cdot \mathbf{a}\) transform under the
+proper-time boost (Maxwell-paper Eq. 11)?} This is the same open
+question recorded in the
+\href{../Electromagnetism/_proper_time_cheatsheet.md}{\texttt{Roadmapping/Electromagnetism/\_proper\_time\_cheatsheet.md}
+§4a} (in the cheat-sheet's open-questions list, flagged for the
+radiation-reaction sub-investigation
+\href{https://github.com/temoTxt/PyPhysics/issues/43}{\#43}). It
+surfaces again in pt\_05 of the GPS campaign: the third-term
+contribution \((\mathbf{u} \cdot \mathbf{a})/b^4\) to the eccentricity
+correction depends on \(\mathbf{u} \cdot \mathbf{a}\) having a
+frame-independent operational meaning, and the covariance of this
+3-vector dot product under the proper-time boost has not been derived in
+any verified paper. For GPS the question is moot
+(\(\mathbf{u} \cdot \mathbf{a} = 0\) for circular orbits;
+\(\sim 10^{-34}\) s for elliptical), but it bears on whether the
+radiation-reaction predictions of
+\href{https://github.com/temoTxt/PyPhysics/issues/43}{\#43} are
+frame-independent at the level the experiments need. Even a one-line
+confirmation that \(\mathbf{u} \cdot \mathbf{a}\) transforms as a
+Lorentz scalar (or, conversely, that it does not) would resolve this for
+both campaigns.
+
+\textbf{Q3. Does the framework predict a satellite-side Sagnac
+contribution?} The standard Sagnac correction
+\(\Delta t = -2\boldsymbol{\omega} \cdot \mathbf{A} / c^2\) carries
+\(c\) because it is derived in the rotating frame of the
+\emph{receiver}. Under the proper-time framework, the receiver's
+effective light-speed is \(b_{\rm recv} = \sqrt{c^2 + u_{\rm recv}^2}\)
+where \(u_{\rm recv} \leq 465\) m/s is the ground rotation, giving
+\(b_{\rm recv}^2/c^2 - 1 \approx 1.2 \times 10^{-12}\). The
+receiver-side derivation in pt\_06 uses \(b_{\rm recv}\) and recovers
+the standard prediction at this precision. A symmetric reading of the
+framework --- in which the satellite's
+\(b_{\rm sat} = \sqrt{c^2 + u_{\rm sat}^2}\) (with
+\(u_{\rm sat} \approx 3874\) m/s, giving
+\(b_{\rm sat}^2/c^2 - 1 \approx 1.7 \times 10^{-10}\)) also enters the
+Sagnac formula on the source-side --- would predict an additional
+satellite-side correction at the \(\sim 10^{-10}\) of the standard
+Sagnac level. This is below current GPS precision but at the edge of
+next-generation optical-clock receivers. We ask whether the framework
+intends the source-side and receiver-side \(b\) to enter symmetrically,
+or whether the receiver-frame derivation is the complete prediction.
+
+\textbf{Q4. Are there framework-specific \(J_2\)-like corrections beyond
+the speculative extension?} Earth's quadrupole moment
+\(J_2 = 1.083 \times 10^{-3}\) modifies the gravitational potential via
+a \(P_2(\cos\theta)\) multipole term. Under the speculative \(c \to b\)
+extension, the \(J_2\) correction enters via the same \(1/b^2\) factor
+as the leading point-mass term, reproducing the standard
+\(+0.033\,\mu\)s/day contribution to the headline. A first-principles
+derivation of multipole-induced clock corrections from the framework's
+underlying dynamics would clarify whether the standard contribution is
+the leading-order term or whether additional \(b\)-dependent
+contributions arise at higher multipole order. The Lense-Thirring
+(frame-dragging) contribution from Earth's rotation --- at the
+\(\sim 10^{-16}\) level for current GPS but within reach of ACES on the
+ISS --- sits in the same category: the framework's prediction would need
+a curved-spacetime gravitomagnetic extension that we have not derived.
+For GPS Q4 is sub-picosecond per day; for next-generation Earth-orbiting
+clock missions it is the leading post-Schwarzschild correction.
+
+\hypertarget{suggested-next-steps}{%
+\section{§6 Suggested next steps}\label{suggested-next-steps}}
+
+Ordered by what would unblock the most downstream work:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Resolve Q1.} Of the four questions, Q1 (the curved-spacetime
+  extension) is the one that determines whether the other three have
+  well-defined answers. Q3 and Q4 are partially dependent on it; Q2 is
+  independent and propagates to issue
+  \href{https://github.com/temoTxt/PyPhysics/issues/43}{\#43}
+  regardless. Even a directional answer --- ``the right extension is
+  \(c \to b\) everywhere'', or ``it's the \(c \to b\) only in \(g_{00}\)
+  variant'', or ``the framework's intended GR extension is not yet
+  written down, but the right answer is the cleanest minimal coupling
+  consistent with the Maxwell paper's substitution rules'' --- would let
+  the GPS campaign convert the four {[}X{]} and {[}warn{]} per-effect
+  documents from speculative to derived.
+\item
+  \textbf{Address Q2 across two campaigns.} A
+  \(\mathbf{u} \cdot \mathbf{a}\) transformation rule would close out
+  the third-term contribution in both pt\_05 (GPS) and the
+  radiation-reaction sub-investigation
+  \href{https://github.com/temoTxt/PyPhysics/issues/43}{\#43}. Since
+  \href{https://github.com/temoTxt/PyPhysics/issues/43}{\#43} is the
+  regime where \(\mathbf{u} \cdot \mathbf{a}\) is operationally
+  observable, the GPS context is incidental but the cross-campaign
+  consistency is the load-bearing reason to write the rule down.
+\item
+  \textbf{Defer Q3 and Q4 to next-generation precision.} Neither
+  question affects current GPS operations. They are flagged here for
+  completeness and for future-mission scope (optical-clock GPS, ACES,
+  mission concepts at the \(10^{-17}\)--\(10^{-18}\) clock-stability
+  floor). If you signal interest in either, the campaign would open
+  follow-on threads.
+\end{enumerate}
+
+If you find this report useful in its form and would prefer a
+substantive theory thread on Q1 --- a derived curved-spacetime extension
+of the framework, going through the dual-Dirac equation or the
+proper-time photon propagator --- that is the natural next campaign, and
+we would scope it as a follow-on issue keyed off your direction. If the
+as-published framework's silence on GR is intentional (the framework is
+SR-and-flat-space by design, leaving GR to the standard GR apparatus),
+confirming that would let us close the four open questions in this
+report with that disposition recorded.
+
+Thank you for the opening to send focused follow-ups in this form. The
+prior interim report's §6 \(r_e\) question remains the highest-load ask
+across all campaigns; this report's Q1 is the highest-load ask within
+the GPS scope but is a much smaller decision since GPS is operationally
+non-falsifying at current precision.
+
+\end{document}
