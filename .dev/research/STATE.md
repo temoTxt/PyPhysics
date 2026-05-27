@@ -142,3 +142,24 @@
 - **Status:** READY.
 
 **Sources (iter-7):** arXiv:1405.4111 (Li 2P fine splitting, neutral Li); generic Z⁴-scaling fine-structure references. Riis et al., Phys. Rev. A 49, 207 (1994) [to verify next iter]. Schiffer et al., PRL 74, 2188 (1995) [#2, from brief].
+
+## Iteration 8 — 2026-05-27 — Riis et al. 1994 lookup: it's Li⁺ (2-electron), NOT hydrogenic Li²⁺ — second brief mis-attribution
+
+**Step taken:** targeted WebSearch for Riis et al., PRA 49, 207 (1994).
+
+**Finding (correction):** Riis et al. 1994 measures **Li⁺** (singly-ionized, **two-electron** 1s2s ³S₁–1s2p ³P_J manifold), NOT hydrogenic **Li²⁺** (one-electron, Z=3). It is "the best two-electron Lamb shift measurement in the literature" (±0.5 MHz); Li⁺ ⁷Li spin-averaged effective shift = 37,429.40(39) MHz. **This is a He-like (Z=3, 2-electron) system — a different observable from this branch's hydrogenic Li²⁺ targets.** So the brief's "Riis et al. (1994)" attribution for #3 is a **second mis-attribution** (after the 7,367 MHz / neutral-Li confusion in iter-7).
+
+**Consequence for #3 measurement provenance — characterized:**
+- **No clean high-precision direct EXPERIMENTAL value of the hydrogenic Li²⁺ 2²P₃/₂–2²P₁/₂ fine-structure interval was located** in two targeted searches (iter-7 generic + iter-8 Riis). The literature the brief pointed to is for *different species* (neutral Li ~10 GHz; He-like Li⁺ 1s2s–1s2p).
+- **The comparison value for #3 is therefore the THEORETICAL hydrogenic-ion value** (Sommerfeld–Dirac + QED, $Z^4$-scaled): leading Dirac 886,892 MHz; full-QED ≈ 887,9xx MHz (leading + anomalous + recoil + two-loop), well-known for hydrogenic ions. Framework's 887,920 MHz reproduces this at the Bethe-estimate floor — **outcome A**, comparison is framework-vs-textbook-QED (both $Z^4$ Dirac × same $(g_s/-2)$), NOT framework-vs-direct-experiment.
+- **NOT a hard BLOCKED state:** the framework prediction is computed and outcome A determined; the limitation is experimental-data sparseness for this specific interval (a literature fact, recorded honestly in the verdict), not a Tepper-input dependency.
+- **#2 provenance note:** keep the brief's Schiffer et al., PRL 74, 2188 (1995), $\Delta E_{2S-2P}(^7\text{Li}^{2+})=62\,765(21)$ MHz for the Lamb shift; flag "verify Schiffer is hydrogenic Li²⁺ 2S₁/₂–2P₁/₂" as a drafting check (it is consistent with the brief's Z-scaled ≈62,729 MHz estimate).
+
+**Queued next:** **DRAFT the #3 fine-structure section** in `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/12_Li2plus_Spectroscopy.md` (create the file with header + #3 section): framework prediction 887,920 MHz (leading 886,892 + anomalous 1,028), outcome A, (Z-i)≡(Z-ii) with the §III.D no-Z-dependence reasoning, back-fit-self-consistency caveat, weak-Z-discriminator reframe, comparison to theoretical ~888 GHz with the honest "no direct precision experiment for this interval located" note + Crocco `<!-- TODO -->` blocks. THEN draft #2 (brief) and overall branch verdict.
+
+- **Current observable focus:** #3 fine structure (primary) — moving to documentation.
+- **Outcome-matrix:** **#3 → A**, **#2 → A**. Both framework predictions computed; ready to document.
+- **(Z-i)/(Z-ii):** RESOLVED — no divergence (unchanged).
+- **Status:** READY.
+
+**Sources (iter-8):** Riis et al., *Phys. Rev. A* **49**, 207 (1994) — Li⁺ (2-electron) Lamb shift/HFS [journals.aps.org/pra/abstract/10.1103/PhysRevA.49.207].
