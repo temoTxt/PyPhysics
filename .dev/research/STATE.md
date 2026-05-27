@@ -233,3 +233,24 @@ Final Z-scan: **Z = {2, 3, 6, 8, 14, 20}** — all absolute, well-distributed. �
 - **Next:** scaffold `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Zscan_fit.wl` — header + constants ($\alpha$, the 6 g-values) + per-Z back-fit cell computing $r_e^{(Z)}/r_0=(2-a)/(2(2+a))$ and the (Z-i) residuals $g^{\rm meas}(Z)-(-2.00231930)$. (Joint χ² + Z-scaling form-fit in the following iteration.)
 - **Outcome-matrix tentative:** **C** (A now decisively excluded by the Sn⁴⁹⁺ +2.9% back-fit departure; the Sn point also anchors the B-vs-C curvature test).
 - **Status:** READY — **≥5 ions catalogued ✅** (He⁺ Z=2, C⁵⁺ Z=6, O⁷⁺ Z=8, Si¹³⁺ Z=14, Sn⁴⁹⁺ Z=50, all absolute w/ provenance; Li²⁺ Z=3 pending optional import). Next: build the fit notebook.
+
+## Iteration 10 — 2026-05-27 — scaffold `r_e_Zscan_fit.wl`
+
+**Step taken:** Created `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Zscan_fit.wl` (the joint-fit notebook), mirroring the house style of `r_e_triangulation.wl` (`(* ::Package:: *)` header, single-line `;`-joined cells for MCP transport safety, `Print[..., InputForm[...]]`, `(* === *)` banners). Inspected sibling notebooks first to match conventions.
+
+**Notebook structure (5 sections, MCP-ready):**
+- **Header block:** purpose, the two readings (Z-i universal / Z-ii Z-scaled), the **honest-scope caveat** (Z-ii is a one-to-one re-encoding of measured g; only Z-i is falsifiable; a clean Z-ii form-fit = Outcome C inheritance not B), **Crocco SUBSTANTIVE-AI tag** on the Z-scaling functional-form choice, and the full **measurement-provenance table** (5 ions + DOIs), with the Li²⁺ unphysical-placeholder note.
+- **S0** constants: `alpha`=CODATA 2018, `gFreeMag`=2.00231930436256, `xUniversal`=0.4994205099128317, `Zvals`={2,6,8,14,50}, `gMeas`, `gSig`.
+- **S1** `gr[x_]:=2(1-4/(2x+1))` + `backfit[a_]:=(2-a)/(2(2+a))` + sanity checks (gr[1/2]=−2; |gr[xUniversal]|≈2.0023193).
+- **S2** per-Z `aBound=(gMeas-2)/2`, `xBackfit=backfit/@aBound`.
+- **S3** (Z-i) universal-cutoff χ²: fixed prediction at every Z, residuals + σ-counts + total χ².
+- **S4** (Z-ii) Z-scaling fit: `Fit` of `xBackfit` vs `(Zα)²` — linear `c0+c2 u` and quadratic; intercept vs xUniversal vs 1/2.
+- **S5** QED-leading cross-check `gQEDlead[Z]` vs measured.
+- Trailing **EXPECTED** comment block with the iter 2–9 hand estimates to confirm on the MCP run.
+
+**Guardrails honored:** single-line cells; symbols `alpha`/`gMeas`/etc. (no bare `e`/`V`); no symbolic Dot. Did NOT touch any `r_e_Li2plus_*.wl` (#78-owned).
+
+- **Current ion focus:** joint fit (notebook scaffolded, not yet executed).
+- **Next:** **execute the notebook cells via Wolfram MCP** (S1→S5), record the actual outputs inline as `(* Result: ... *)` in `r_e_Zscan_fit.wl`, and confirm/correct the hand estimates — especially S3 χ² (expect ≫ N_ions → A rejected) and the S4 linear-fit intercept + slope. Debug any cell that errors.
+- **Outcome-matrix tentative:** **C** (pending the MCP-confirmed χ² and form-fit).
+- **Status:** READY (notebook scaffolded; 5 ions catalogued; joint fit pending MCP execution).
