@@ -45,3 +45,25 @@ Print["Z^4 ratio check = ", dEfsLeading[3]/dEfsLeading[1], "  (expect 81)"];
 (*   Z=1 = 10949.28 MHz  (matches BS-S14.2 ~10949 ✓);  Z=3 = 886892 MHz = 886.9 GHz;  ratio = 81 ✓. *)
 (*   => Li(2+) 2P3/2-2P1/2 leading-Dirac scale is ~887 GHz.  Brief's 7.4 GHz / 7367 MHz figures are *)
 (*      refuted (wrong by ~2 orders of magnitude); do NOT adopt them as the #3 measurement.          *)
+
+(* ---------------------------------------------------------------------------------------- *)
+(* CELL 2 -- Observable #3, framework prediction at Z=3 under reading (Z-i) (universal cutoff). *)
+(*   n_FS = 1 (spin-orbit, linear in g_s/-2):  dE_FS^fw(Z) = (g_s/-2) * dE_leadingDirac(Z).    *)
+(*   g_s = -2.00231930 = g_r (r_e/r_0) at the Z=1-triangulated r_e/r_0 = 0.4994205099128317    *)
+(*   (PR #62).  (Z-i) applies the SAME g_s at Z=3 (cutoff assumed Z-universal).                *)
+(*   Anomalous offset at Z=3 = ((g_s/-2) - 1) * dE_leading(Z=3); framework total = sum.         *)
+
+ClearAll[gs, gfac, dEleadZ3, dEfwZ3, dEanomZ3]; gs = -2.00231930; gfac = gs/-2; dEleadZ3 = mec2eV*(3*alpha)^4/32/hh/10^6; dEfwZ3 = gfac*dEleadZ3; dEanomZ3 = dEfwZ3 - dEleadZ3;
+Print["g_s/-2 factor = ", gfac];
+Print["Z=3 anomalous offset = ", dEanomZ3, " MHz"];
+Print["Z=3 framework total (Z-i) = ", dEfwZ3, " MHz"];
+(* Wolfram MCP result 2026-05-27:  {gfac, dEleadZ3, dEanomZ3, dEfwZ3} = *)
+(*   {1.00115965, 886891.9866905379, 1028.4842923656106, 887920.4709829035}  ✅ *)
+(*   => (Z-i) framework prediction: dE_FS(2P3/2-2P1/2, Li2+) = 887920 MHz = 887.92 GHz          *)
+(*      (leading Dirac 886892 + anomalous +1028 MHz).  Infinite-nuclear-mass; 7Li reduced-mass  *)
+(*      + recoil refinement is ~-0.02% (~-200 MHz), within the Bethe-estimate precision floor.  *)
+(*   (Z-ii) Z-scaled cutoff: NOT YET DERIVABLE -- pending DRQM I S III.D-extension reading       *)
+(*      (source-of-record S4).  If no framework-internal Z-scaling emerges, (Z-ii) == (Z-i).     *)
+(* <!-- TODO: human reviews and fills in -- this is the n_FS=1 (g_s/-2)*textbook prediction;      *)
+(*      same back-fit-self-consistency caveat as BS-S14.2 applies (g_s is the measured value     *)
+(*      by construction of the triangulated r_e), now extrapolated to Z=3 under (Z-i). -->        *)

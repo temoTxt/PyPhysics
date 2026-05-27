@@ -84,3 +84,20 @@
 - **Outcome-matrix:** #3 not yet determinable (framework value pending cell 2; measurement provenance still unresolved). #2 trending **A**.
 - **(Z-i)/(Z-ii):** unchanged — #2 no divergence; #3 leading $Z^4$ verified, anomalous-g cutoff divergence not yet computed.
 - **Status:** READY.
+
+## Iteration 5 — 2026-05-27 — cell 2: framework #3 prediction at Z=3 (Z-i), Wolfram-verified
+
+**Step taken:** added cell 2 to `r_e_Li2plus_spectroscopy.wl` and executed via Wolfram MCP. Framework fine-structure prediction for Li²⁺ under reading **(Z-i)** (universal Z=1-triangulated cutoff), $n_{FS}=1$: $\Delta E_{FS}^{\rm fw}(Z{=}3) = (g_s/-2)\times\Delta E_{\rm leading}(Z{=}3)$.
+
+**Wolfram MCP result (2026-05-27):** `{1.00115965, 886891.9866905379, 1028.4842923656106, 887920.4709829035}` ✅
+- $(g_s/-2)$ factor = **1.00115965** (at $g_s=-2.00231930$, triangulated $r_e/r_0=0.4994205099128317$).
+- leading Dirac Z=3 = 886,892 MHz; **anomalous offset Z=3 = +1,028.5 MHz**; **framework total (Z-i) = 887,920 MHz = 887.92 GHz**.
+- Infinite-nuclear-mass; ⁷Li reduced-mass + recoil refinement ~−0.02% (~−200 MHz), within Bethe-estimate floor.
+
+**(Z-i)/(Z-ii) status:** (Z-i) framework value now in hand = **887,920 MHz**. **(Z-ii) Z-scaled cutoff NOT YET DERIVABLE** — pending the DRQM I §III.D-extension reading (source-of-record §4); if no framework-internal Z-scaling emerges there, **(Z-ii) ≡ (Z-i)** (the anomalous factor $a_e=0.00115965$ is tiny, so even a modest Z-scaling of the cutoff shifts only the ~1,028 MHz anomalous piece, i.e. sub-0.1% of the total — #3 is a *weak* discriminator at the leading scale but the anomalous piece is where any Z-axis signal lives).
+
+**Queued next:** read source-of-record §4 — `Roadmapping/Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md` §III.D Eqs. (III.22)/(III.23) — the anomalous-g / $r_e$ formula + muon/proton analogue (the framework's only published Z-precedent). Determine whether §III.D's reasoning implies a Z-scaled cutoff [→ (Z-ii) derivable, outcome **B**] or only a Z-universal one [→ (Z-ii)≡(Z-i), outcome **A**]. THEN literature-provenance lookup for the Li²⁺ 2P FS measurement (gating item before #3 verdict). THEN draft #3 section in `12_Li2plus_Spectroscopy.md`.
+
+- **Current observable focus:** #3 fine structure (primary).
+- **Outcome-matrix:** #3 framework value computed (887,920 MHz, Z-i); branch determination pending §III.D (A vs B) + measurement provenance. #2 trending **A**.
+- **Status:** READY.
