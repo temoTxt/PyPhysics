@@ -331,3 +331,11 @@ b8c5020  iter-2 — ingest TCEP, identify mass-renorm gap as possible blocker
 **Outcome-matrix:** **A confirmed**, loop-terminal.
 
 **Status:** ✅ **DONE** — loop terminated, no further ScheduleWakeup. Pre-existing pending wakeup at ~22:37 will fire once, read this DONE status, and (per brief's stop condition "all acceptance criteria can be checked") not schedule a successor.
+
+## Iteration 9 — 2026-05-26 — pre-existing wakeup fired post-termination, loop confirmed DONE
+
+Pre-existing wakeup (scheduled at end of iter-5, 22:37 local) fired. Read iter-8 `Status: ✅ DONE`; per brief stop condition (all acceptance criteria can be checked) **no successor scheduled**. Documentation surface unchanged; no code touched. Loop terminal; orchestrator picks up at morning review.
+
+**Outcome-matrix:** **A confirmed** (unchanged).
+
+**Status:** ✅ **DONE — TERMINAL.**
