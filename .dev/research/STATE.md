@@ -127,3 +127,31 @@ Final Z-scan: **Z = {2, 3, 6, 8, 14, 20}** — all absolute, well-distributed. �
 - **Next:** transcribe ¹²C⁵⁺ (Z=6) absolute g-factor with full provenance — brief table lists $2.001\,041\,590\,18(3)$, Sturm 2011 *PRL* **107**, 023002; verify value + DOI (DOI 10.1103/PhysRevLett.107.023002).
 - **Outcome-matrix tentative:** **C** (firming up; A effectively excluded by the Z=8 point; B requires an internal $(Z\alpha)^2$ derivation the framework lacks).
 - **Status:** READY (2/6 ions catalogued: He⁺ Z=2 ✅, O⁷⁺ Z=8 ✅; remaining C⁵⁺ Z=6, Si¹³⁺ Z=14, Ca¹⁹⁺ Z=20 + Li²⁺ Z=3 import).
+
+## Iteration 6 — 2026-05-27 — ¹²C⁵⁺ (Z=6) g-factor + provenance fix (ion 3/6)
+
+**Step taken:** Transcribed/verified the ¹²C⁵⁺ absolute bound-electron g-factor (queued from iter 5). Two web searches resolved a value-vs-source ambiguity.
+
+**⚠ Brief-table source correction (provenance):** The brief assigns C⁵⁺ to "Sturm 2011 *PRL* **107**, 023002" — **that paper is the ²⁸Si¹³⁺ measurement, not C⁵⁺.** The brief's *value* ($2.00104159018(3)$) is correct and comes from the 2014 *Nature* electron-mass paper, not PRL 107. (Flag for the Si¹³⁺ iteration: re-verify that source too, since the brief lists Si¹³⁺ as "Sturm 2013 *PRL* **110**, 263002" — likely also needs checking.)
+
+**¹²C⁵⁺ (Z=6) — recorded value:**
+- **Experimental:** $g_e^{\rm bound}(^{12}{\rm C}^{5+}) = 2.001\,041\,590\,18(3)$ (relative $\sigma \approx 1.5\times10^{-11}$). Supersedes Häffner et al. 2000 ($2.001\,041\,596(5)$, *PRL* **85**, 5308) — the 2014 value is ~1.2σ lower and ~170× more precise.
+- **Source:** S. Sturm, F. Köhler, J. Zatorski, A. Wagner, Z. Harman, G. Werth, W. Quint, C. H. Keitel, K. Blaum, *"High-precision measurement of the atomic mass of the electron,"* **Nature 506, 467–470 (2014)**, DOI **10.1038/nature13026**. Refined analysis: F. Köhler et al., *"The electron mass from g-factor measurements on hydrogen-like carbon ¹²C⁵⁺,"* **J. Phys. B 48, 144032 (2015)**, DOI 10.1088/0953-4075/48/14/144032.
+
+**Framework-relevant derived quantities (Wolfram-verify at joint-fit step):**
+- $a_e^{\rm bound}(Z{=}6) = (g-2)/2 = +0.000\,520\,795\,09$. Binding term $-\tfrac13(Z\alpha)^2 \approx -6.39\times10^{-4}$ partially cancels free $a_e$.
+- (Z-ii) back-fit estimate: $r_e^{(Z=6)}/r_0 = (2-a)/(2(2+a)) \approx 0.499\,739$ — sits between Z=2 (0.499456) and Z=8 (0.499994), as required by the monotonic sweep.
+
+**Updated Z-trend table (3 absolute points + free + Si projection):**
+| Z | source | $g_e^{\rm bound}$ | $a_e^{\rm bound}$ | back-fit $r_e^{(Z)}/r_0$ (est.) |
+|---|---|---|---|---|
+| 1 (free) | CODATA | 2.00231930 | +0.00115965 | 0.499420510 |
+| 2 | Schneider22 | 2.00217742 | +0.00108871 | ≈0.499456 |
+| 6 | Sturm14 | 2.00104159 | +0.00052080 | ≈0.499739 |
+| 8 | Verdú04 | 2.00004703 | +0.00002351 | ≈0.499994 |
+| 14 (proj.) | (verify) | 1.99534896 | −0.00232552 | ≈0.501164 |
+
+- **Current ion focus:** ¹²C⁵⁺ (Z=6) — done.
+- **Next:** look up + record ²⁸Si¹³⁺ (Z=14) absolute g-factor with full provenance. Brief value $1.995\,348\,958\,7(5)$; **verify the source** (brief cites "Sturm 2013 *PRL* **110**, 263002" and also "Köhler 2016 *Nat. Comm.* **7**, 10246" — determine the correct primary; note Sturm 2011 *PRL* **107**, 023002 is the original Si¹³⁺ paper).
+- **Outcome-matrix tentative:** **C** (A excluded; B needs an internal $(Z\alpha)^2$ derivation the framework lacks).
+- **Status:** READY (3/6 ions catalogued: He⁺ Z=2 ✅, C⁵⁺ Z=6 ✅, O⁷⁺ Z=8 ✅; remaining Si¹³⁺ Z=14, Ca¹⁹⁺ Z=20 + Li²⁺ Z=3 import).
