@@ -1,0 +1,43 @@
+(* ::Package:: *)
+
+(* r_e_Li2plus_spectroscopy.wl  --  Companion to Bethe_Salpeter/12_Li2plus_Spectroscopy.md *)
+(*                                                                                          *)
+(* Issue #78, branch 78-li2plus-spectroscopy.  This branch owns observables               *)
+(*   #2  2S(1/2)-2P(1/2) Lamb shift in Li(2+)                                              *)
+(*   #3  2P(3/2)-2P(1/2) fine-structure splitting in Li(2+)   <- PRIMARY (Z-axis test)     *)
+(*                                                                                          *)
+(* Distinct from Self-Energy branch's r_e_Li2plus_joint_fit.wl (do not duplicate).         *)
+(*                                                                                          *)
+(* FRAMEWORK PREDICTION STRUCTURE (per 10_CrossComparison.md S2, confirmed iter-2):        *)
+(*   Fine structure is a SPIN-ORBIT observable => linear in (g_s/-2)  =>  n_FS = 1.         *)
+(*   dE_FS^framework(Z) = (g_s/-2)^1 * dE_FS^leadingDirac(Z),                               *)
+(*   with g_s = g_r (r_e/r_0); at the Z=1 triangulated r_e/r_0 = 0.4994205099128317        *)
+(*   (PR #62 joint best fit) g_s = -2.00231930... by construction.                          *)
+(*                                                                                          *)
+(* HONEST SCOPE (inherited from BS-S14.2 + 10_CrossComparison S2):                          *)
+(*   The "agreement at triangulated r_e" is BACK-FIT SELF-CONSISTENCY, not an              *)
+(*   independent corroboration: the triangulated r_e is by construction the value          *)
+(*   giving the measured g_s, and (g_s/-2)*E_leading is identical to textbook QED's         *)
+(*   leading-g_s formula.  The Z-axis question this branch tests is whether the SAME        *)
+(*   (Z=1-triangulated, universal) cutoff [reading (Z-i)] reproduces the Z=3 Li(2+) FS,     *)
+(*   or whether a framework-internal Z-scaled cutoff [reading (Z-ii)] is required.          *)
+(*                                                                                          *)
+(* Wolfram MCP gotchas (CLAUDE.md): single-line cells; 'ee' not 'e'; 'potV' not 'V'.        *)
+(*                                                                                          *)
+(* Author: Trey Morris with Claude Opus 4.7 (1M context).  Date: 2026-05-27.  Substantive AI. *)
+(* <!-- TODO: human reviews and fills in -- confirms the n_FS=1 spin-orbit scaling, the     *)
+(*      Z^4 leading-Dirac scale (~887 GHz at Z=3, NOT the brief's draft 7.4 GHz figure),    *)
+(*      and the (Z-i)/(Z-ii) cutoff-reading framing for the Z-axis discriminator. -->       *)
+
+(* ---------------------------------------------------------------------------------------- *)
+(* CELL 1 -- Observable #3, leading-Dirac scale at Z=3 (infinite-nuclear-mass).             *)
+(*   dE_FS(2P3/2 - 2P1/2) = m_e c^2 (Z alpha)^4 / 32.                                        *)
+(*   Sanity: at Z=1 must reproduce the BS-S14.2 leading value ~10949 MHz.                    *)
+(*   At Z=3 (Z^4 = 81) must give ~887 GHz -- this fixes the correct order of magnitude and  *)
+(*   SUPERSEDES the brief's suspect ~7.4 GHz / 7367 MHz draft figures (flagged iter-1).      *)
+(* Constants: m_e c^2 = 510998.95 eV (CODATA), h = 4.135667696e-15 eV s, alpha = 1/137.035999084. *)
+
+ClearAll[mec2eV, hh, alpha, ZZ, dEfsLeading]; mec2eV = 510998.95; hh = 4.135667696*10^-15; alpha = 1/137.035999084; dEfsLeading[ZZ_] := mec2eV*(ZZ*alpha)^4/32/hh/10^6;
+Print["Z=1 leading Dirac FS = ", dEfsLeading[1], " MHz  (expect ~10949, BS-S14.2 sanity)"];
+Print["Z=3 leading Dirac FS = ", dEfsLeading[3], " MHz  (expect ~886800 ~= 887 GHz; refutes brief 7.4 GHz)"];
+Print["Z^4 ratio check = ", dEfsLeading[3]/dEfsLeading[1], "  (expect 81)"];

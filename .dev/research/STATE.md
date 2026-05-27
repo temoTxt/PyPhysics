@@ -52,3 +52,16 @@
 - **Outcome-matrix:** #3 not yet determinable (Z=3 prediction not yet computed). #2 trending **A** (✅ by inheritance under universal cutoff, $r_e$-independent ⇒ (Z-i)=(Z-ii)).
 - **(Z-i)/(Z-ii):** #2 — **no divergence** (Lamb shift $r_e$-independent, source-confirmed). #3 — leading Dirac $Z^4$ shared; potential divergence only in the anomalous-g cutoff treatment (not yet computed).
 - **Status:** READY.
+
+## Iteration 3 — 2026-05-27 — scaffold r_e_Li2plus_spectroscopy.wl + cell 1 (Z=3 leading Dirac FS)
+
+**Step taken:** created new notebook `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Li2plus_spectroscopy.wl` (this branch's notebook; distinct from Self-Energy's `r_e_Li2plus_joint_fit.wl`). Crocco-compliant header (substantive AI, author line, `<!-- TODO human review -->`), records the $n_{FS}=1$ scaling + back-fit honesty scope + (Z-i)/(Z-ii) framing. **Cell 1 written** (single-line, `ee`/`potV` gotchas respected): $\Delta E_{FS}(Z) = m_e c^2 (Z\alpha)^4/32$ with sanity Z=1→~10949 MHz and Z=3→~887 GHz prediction, plus $Z^4$ ratio check.
+
+**Hand-computed expected values (to be MCP-verified next iter):** constants $m_ec^2=510998.95$ eV, $h=4.135667696\times10^{-15}$ eV·s, $\alpha=1/137.035999084$ ⇒ Z=1: $\approx 10\,949$ MHz (matches BS-§14.2 ✓); Z=3: $\approx 886\,800$ MHz $= 886.8$ GHz; ratio $=81$ ✓. **This confirms the iter-1 flag: the brief's 7.4 GHz / 7,367 MHz Z=3 figures are wrong by ~2 orders of magnitude; the leading-Dirac Li²⁺ 2P FS scale is ~887 GHz.**
+
+**Queued next:** execute cell 1 via Wolfram MCP (`mcp__wolfram__WolframLanguageEvaluator`) to verify the three printed values; record "Result ✅" inline in the notebook. Then add cell 2 = framework prediction $\Delta E_{FS}^{\rm fw}(Z{=}3)=(g_s/-2)\times\Delta E_{\rm leading}(Z{=}3)$ at $g_s=-2.00231930$ (Z-i universal cutoff) and compute the anomalous offset at Z=3.
+
+- **Current observable focus:** #3 fine structure (primary).
+- **Outcome-matrix:** #3 not yet determinable (need measurement provenance + framework value). #2 trending **A**.
+- **(Z-i)/(Z-ii):** unchanged — #2 no divergence; #3 divergence (if any) only via anomalous-g cutoff, not yet computed. NOTE: a measurement value for Li²⁺ 2P FS is still UNRESOLVED — brief's 7,367 MHz refuted by $Z^4$ scaling; literature provenance lookup still required before #3 verdict (do not adopt brief figure).
+- **Status:** READY.
