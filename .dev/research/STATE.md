@@ -155,3 +155,33 @@ Final Z-scan: **Z = {2, 3, 6, 8, 14, 20}** — all absolute, well-distributed. �
 - **Next:** look up + record ²⁸Si¹³⁺ (Z=14) absolute g-factor with full provenance. Brief value $1.995\,348\,958\,7(5)$; **verify the source** (brief cites "Sturm 2013 *PRL* **110**, 263002" and also "Köhler 2016 *Nat. Comm.* **7**, 10246" — determine the correct primary; note Sturm 2011 *PRL* **107**, 023002 is the original Si¹³⁺ paper).
 - **Outcome-matrix tentative:** **C** (A excluded; B needs an internal $(Z\alpha)^2$ derivation the framework lacks).
 - **Status:** READY (3/6 ions catalogued: He⁺ Z=2 ✅, C⁵⁺ Z=6 ✅, O⁷⁺ Z=8 ✅; remaining Si¹³⁺ Z=14, Ca¹⁹⁺ Z=20 + Li²⁺ Z=3 import).
+
+## Iteration 7 — 2026-05-27 — ²⁸Si¹³⁺ (Z=14) g-factor + provenance fix (ion 4/6)
+
+**Step taken:** Looked up and recorded the ²⁸Si¹³⁺ absolute bound-electron g-factor (queued from iter 6). Web search confirmed value + resolved the source attribution.
+
+**⚠ Brief-table source correction (provenance):** The brief assigns Si¹³⁺ to "Sturm 2013 *PRL* **110**, 263002" — the **correct primary is Sturm et al., *PRL* 107, 023002 (2011)** (the same paper the brief had wrongly attributed to C⁵⁺ in iter 6). Net: the brief swapped/mis-cited both C⁵⁺ and Si¹³⁺ sources; both now corrected (C⁵⁺ → Nature 506 2014; Si¹³⁺ → PRL 107 2011).
+
+**²⁸Si¹³⁺ (Z=14) — recorded value:**
+- **Experimental:** $g_e^{\rm bound}(^{28}{\rm Si}^{13+}) = 1.995\,348\,958\,7(5)_{\rm stat}(3)(8)_{\rm sys}$ → combined $\sigma \approx 10\times10^{-10}$, i.e. $1.9953489587(10)$ (relative $\sim5\times10^{-10}$; 10 significant digits).
+- **Theory (BS-QED, 2-loop):** $g_e^{\rm theo} = 1.995\,348\,958\,0(17)$ (excellent agreement; "most stringent test of BS-QED" at the time).
+- **Source:** S. Sturm, A. Wagner, B. Schabinger, J. Zatorski, Z. Harman, W. Quint, G. Werth, C. H. Keitel, K. Blaum, *"g Factor of Hydrogenlike ²⁸Si¹³⁺,"* **Phys. Rev. Lett. 107, 023002 (2011)**. DOI: **10.1103/PhysRevLett.107.023002**.
+
+**Framework-relevant derived quantities (Wolfram-verify at joint-fit step):**
+- $a_e^{\rm bound}(Z{=}14) = (g-2)/2 = \mathbf{-0.002\,325\,520\,65}$ — **NEGATIVE**: at Z=14 the binding term $-\tfrac13(Z\alpha)^2 \approx -7.43\times10^{-3}$ exceeds the free anomaly $+1.16\times10^{-3}$, so $g<2$.
+- (Z-ii) back-fit estimate: $r_e^{(Z=14)}/r_0 = (2-a)/(2(2+a)) \approx 0.501\,164$ — **>0.5**, matching the iter-5/6 projection exactly. **The measured-data back-fit confirms the curve crosses 0.5** (at the Z where binding cancels the free anomaly, $g=2 \Leftrightarrow r_e/r_0=1/2$, near Z≈8–9).
+
+**Updated Z-trend table (4 absolute points + free):**
+| Z | source | $g_e^{\rm bound}$ | $a_e^{\rm bound}=(g-2)/2$ | back-fit $r_e^{(Z)}/r_0$ (est.) |
+|---|---|---|---|---|
+| 1 (free) | CODATA | 2.00231930 | +0.00115965 | 0.499420510 |
+| 2 | Schneider22 | 2.00217742 | +0.00108871 | ≈0.499456 |
+| 6 | Sturm14 | 2.00104159 | +0.00052080 | ≈0.499739 |
+| 8 | Verdú04 | 2.00004703 | +0.00002351 | ≈0.499994 |
+| 14 | Sturm11 | 1.99534896 | −0.00232552 | ≈0.501164 |
+| 20 (pending) | (lookup) | ≈1.989 | (neg, larger) | (>0.5018) |
+
+- **Current ion focus:** ²⁸Si¹³⁺ (Z=14) — done.
+- **Next:** look up + record ⁴⁰Ca¹⁹⁺ (Z=20) absolute g-factor + uncertainty + DOI (brief cites "Glazov 2019 / Köhler-Langes 2018"; verify the primary measurement — likely Köhler-Langes/Sturm/Vogel; note theory by Glazov et al.).
+- **Outcome-matrix tentative:** **C** (A excluded — measured data now span $g$=1.9953→2.0022, a $4.7\times10^{-3}$ spread vs the (Z-i) single-value prediction; B needs an internal $(Z\alpha)^2$ derivation the framework lacks).
+- **Status:** READY (4/6 ions catalogued: He⁺ Z=2 ✅, C⁵⁺ Z=6 ✅, O⁷⁺ Z=8 ✅, Si¹³⁺ Z=14 ✅; remaining Ca¹⁹⁺ Z=20 + Li²⁺ Z=3 import).
