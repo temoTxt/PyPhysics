@@ -83,6 +83,81 @@ ClearAll[alf, m, capLambda]; deltaMOverM = (3 alf/(4 Pi)) (Log[capLambda^2/m^2] 
 (*   heuristic delta m/m: 0.0204294                                            *)
 (*   natural 1-loop coupling alf/(4 Pi): 0.000580705                           *)
 (*   ratio heuristic / natural: ~35.2                                          *)
+
+
+(* ========================================================================== *)
+(* Cell 2 — Dual framework: solving g_r(r_e) = -2(1+a_e) for r_e/r_0          *)
+(* ========================================================================== *)
+(*                                                                            *)
+(* The (III.22) g-factor formula in DRQM I reads                               *)
+(*   g_r(x) = 2 [1 - 4/(2 x + 1)],   x = r/r0                                  *)
+(* with limit g_r(1/2) = -2 (tree Dirac, r = r0/2).                            *)
+(*                                                                            *)
+(* The experimental electron g-factor is g_e^expt = -2 (1 + a_e^expt) with    *)
+(* a_e^expt = 0.00115965218059 (CODATA-2018).  At one-loop QED, Schwinger     *)
+(* (1948) computed a_e^(1) = alpha/(2 pi) from the vertex correction.  At     *)
+(* two-loop, Sommerfeld–Petermann (1958) gave a_e^(2) = -0.328478 (alpha/pi)^2.*)
+(*                                                                            *)
+(* HYPOTHESIS (ii) for the dual framework (per iter-3 STATE.md):              *)
+(* the proper-time one-loop vertex correction reproduces the standard QED     *)
+(* Schwinger anomaly identically (photon propagator unchanged; all dual       *)
+(* structure absorbed into the matter-side (II.3) "potential-in-the-mass"    *)
+(* kernel, which at one-loop is formulation-independent).                     *)
+(*                                                                            *)
+(* The derivation is then:                                                     *)
+(*   1. Compute a_e^(1) = alpha/(2 pi) in the dual framework  (= textbook,    *)
+(*      under hypothesis ii — vertex correction is unchanged).                *)
+(*   2. Insert into (III.22): solve g_r(r_e/r0) = -2(1 + a_e^(1)) for r_e/r0. *)
+(*   3. The closed-form solution is                                            *)
+(*          r_e/r0  =  (2 - alpha/(2 pi)) / (4 + alpha/pi)                    *)
+(*      — exactly the Schwinger closed-form referenced in issue #64.          *)
+
+ClearAll[alf, ae1, x, gr]; ae1 = alf/(2 Pi); gr[xVal_] := 2 (1 - 4/(2 xVal + 1)); soln = Solve[gr[x] == -2 (1 + ae1), x][[1]]; reOverR0OneLoop = x /. soln; Print["Cell 2 — Dual framework one-loop r_e/r_0:"]; Print["  symbolic: r_e/r_0 = ", Simplify[reOverR0OneLoop]]; Print["  closed-form check (matches (2-alpha/(2pi))/(4+alpha/pi)): ", FullSimplify[reOverR0OneLoop - (2 - ae1)/(2 (2 + ae1))]]; Print["  numerical (alpha=1/137.036), 18-digit: ", InputForm[N[reOverR0OneLoop /. alf -> 1/137.036, 18]]];
+
+(* Expected output  (✅ confirmed by Wolfram MCP, 2026-05-26):                *)
+(*   symbolic r_e/r_0 = -(alf - 4 Pi)/(2 alf + 8 Pi)                          *)
+(*   closed-form check: 0                                                      *)
+(*   numerical, 18-digit: 0.4994196321598656                                   *)
+
+
+(* ========================================================================== *)
+(* Cell 3 — Comparison to triangulated target and higher-loop refinement     *)
+(* ========================================================================== *)
+(*                                                                            *)
+(* TARGET: r_e/r_0 = 0.4994205099128317 (PR #62 triangulated, sigma = 2.5e-13)*)
+(*                                                                            *)
+(* The 1-loop closed-form sits BELOW the triangulated target by ~8.78e-7.    *)
+(* Including the 2-loop Sommerfeld–Petermann correction                       *)
+(*   a_e^(2) = -0.328478 (alpha/pi)^2                                         *)
+(* into the cutoff formula                                                    *)
+(*   r_e/r_0 = (2 - a_e) / (2 (2 + a_e))                                      *)
+(* with a_e = a_e^(1) + a_e^(2), shifts the prediction.                       *)
+
+ClearAll[alf, ae1, ae2, aeTotal, reOverR0]; ae1 = alf/(2 Pi); ae2 = -0.328478 (alf/Pi)^2; aeTotal[order_] := Switch[order, 1, ae1, 2, ae1 + ae2]; reOverR0[order_] := (2 - aeTotal[order])/(2 (2 + aeTotal[order])); triang = 0.4994205099128317; alphaVal = 1/137.036; Print["Cell 3 — Comparison with triangulated target r_e/r_0 = ", triang, ":"]; Print["  Dirac tree (a_e=0):           r_e/r_0 = 1/2 = 0.5,                residual = ", InputForm[0.5 - triang]]; Print["  1-loop Schwinger:             r_e/r_0 = ", InputForm[N[reOverR0[1] /. alf -> alphaVal, 18]], ",  residual = ", InputForm[N[(reOverR0[1] /. alf -> alphaVal) - triang, 18]]]; Print["  2-loop (Sommerfeld a_e^(2)):  r_e/r_0 = ", InputForm[N[reOverR0[2] /. alf -> alphaVal, 18]], ",  residual = ", InputForm[N[(reOverR0[2] /. alf -> alphaVal) - triang, 18]]]; Print["  precision-floor improvement: 1-loop residual / 2-loop residual = ", InputForm[N[((reOverR0[1] /. alf -> alphaVal) - triang) / ((reOverR0[2] /. alf -> alphaVal) - triang), 5]]];
+
+(* Expected output  (✅ confirmed by Wolfram MCP, 2026-05-26):                *)
+(*   Dirac tree:        r_e/r_0 = 0.5,                  residual = 5.79e-4   *)
+(*   1-loop Schwinger:  r_e/r_0 = 0.4994196321598656,   residual = -8.78e-7  *)
+(*   2-loop Sommerfeld: r_e/r_0 = 0.4994205172822769,   residual = +7.37e-9  *)
+(*   1-loop/2-loop ratio: ~-119, ie. 2-loop closer by ~120x                  *)
+(*                                                                            *)
+(* OUTCOME-MATRIX (per master #67):                                            *)
+(*   Branch B confirmed at 1-loop: Schwinger closed-form reproduced.          *)
+(*   Branch A *strongly* signalled at 2-loop: residual ~7e-9, three orders   *)
+(*   of magnitude below 1-loop residual; full-precision (sigma=2.5e-13)      *)
+(*   requires extending to 3-loop and beyond (a_e^(3) = 1.181241 (alpha/pi)^3).*)
+
+
+(* ========================================================================== *)
+(* Cell 4 — Full precision: 3-loop and beyond                                  *)
+(* ========================================================================== *)
+
+ClearAll[alf, ae1, ae2, ae3, ae4, aeTotal, reOverR0]; ae1 = alf/(2 Pi); ae2 = -0.328478965579193 (alf/Pi)^2; ae3 = 1.181241456587 (alf/Pi)^3; ae4 = -1.91245 (alf/Pi)^4; aeTotal[order_] := Switch[order, 1, ae1, 2, ae1 + ae2, 3, ae1 + ae2 + ae3, 4, ae1 + ae2 + ae3 + ae4]; reOverR0[order_] := (2 - aeTotal[order])/(2 (2 + aeTotal[order])); triang = 0.4994205099128317; alphaVal = 1/137.035999084; Print["Cell 4 — Higher-loop convergence (using CODATA alpha = 1/137.035999084):"]; Do[Print["  ", order, "-loop QED: r_e/r_0 = ", InputForm[N[reOverR0[order] /. alf -> alphaVal, 18]], ",  residual = ", InputForm[N[(reOverR0[order] /. alf -> alphaVal) - triang, 18]]], {order, 1, 4}]; aeCODATA = 0.00115965218059; reCODATA = (2 - aeCODATA)/(2 (2 + aeCODATA)); Print["  CODATA a_e (full): r_e/r_0 = ", InputForm[N[reCODATA, 18]], ",  residual = ", InputForm[N[reCODATA - triang, 18]]];
+
+(* Expected output: 4-loop residual should be < 1e-12, comparable to        *)
+(* triangulation precision floor (sigma = 2.5e-13).  CODATA a_e (which       *)
+(* includes electroweak + hadronic + 5-loop QED) should reproduce triang to  *)
+(* its full precision.                                                       *)
 (*                                                                            *)
 (* The Λ ↔ proper-time-cutoff correspondence:                                 *)
 (*   ssMin = 1/Λ², so Log(Λ²/m²) = -Log(m² ssMin) = Log(1/(m² ssMin)).        *)
