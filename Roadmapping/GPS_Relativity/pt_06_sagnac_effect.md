@@ -30,7 +30,7 @@ A subtle point: the "satellite's `b`" is the framework's effective speed of ligh
 | `c` | `299 792 458 m/s` | speed of light in vacuum |
 | `b_recv` (ground receiver) | `c (1 + 1.20 × 10⁻¹²)` | rotation gives `u_recv ≤ 465 m/s` |
 | `A_E` (max projected area) | `8.47 × 10¹³ m²` | satellite-ground triangle, max |
-| `2ω⊕/c²` (standard coefficient) | `1.624 × 10⁻²¹ s/m²` | matches `2ω⊕/b²` to `~10⁻¹²` |
+| `2ω⊕/c²` (standard coefficient) | `1.623 × 10⁻²¹ s/m²` | matches `2ω⊕/b²` to `~10⁻¹²` |
 
 The PT correction relative to standard is `(c²/b²) − 1 = −u²/b² ≈ −1.2 × 10⁻¹²` at the receiver — meaning the PT Sagnac is *smaller* than standard by 0.000 000 17 ns at maximum — far below GPS noise floor.
 
@@ -58,25 +58,25 @@ $$|\Delta t_{\rm Sagnac}|_{\rm max} \;=\; \frac{2 \omega_\oplus A_{E,\,\max}}{b^
 
 With `b_recv² = c²(1 + 1.20 × 10⁻¹²)` and `A_{E,max} = 8.47 × 10¹³ m²`:
 
-$$|\Delta t_{\rm Sagnac,\,PT}|_{\rm max} \;=\; \frac{1.624 \times 10^{-21}}{1 + 1.20 \times 10^{-12}} \times 8.47 \times 10^{13} \;\approx\; 1.375 \times 10^{-7}\ {\rm s} \;\approx\; \boxed{\;137\ {\rm ns}.\;}$$
+$$|\Delta t_{\rm Sagnac,\,PT}|_{\rm max} \;=\; \frac{1.623 \times 10^{-21}}{1 + 1.20 \times 10^{-12}} \times 8.47 \times 10^{13} \;\approx\; 1.374 \times 10^{-7}\ {\rm s} \;\approx\; \boxed{\;137\ {\rm ns}.\;}$$
 
-The PT prediction is `137.000 000 000 000 16 ns` (the `16` in the 16th decimal place is the `u²/c²` correction); the standard is `137 ns`. The difference is `~10⁻²² s` — operationally invisible.
+The PT prediction differs from the standard `137.447 ns` by `~3.3 × 10⁻¹⁰ ns` (the `u_recv²/c²` correction); operationally invisible at any conceivable GPS clock-stability floor.
 
 ## 5. Wolfram MCP check
 
 ```wolfram
-cc=299792458; om=7.2921151467*^-5; RR=6378137; aGPS=26560000; Amax=aGPS RR/2; vRecv = om RR; bRecv = Sqrt[cc^2 + vRecv^2]; PT = 2 om Amax / bRecv^2; std = 2 om Amax / cc^2; Print["PT Sagnac max (s) = ", N[PT, 14]]; Print["std Sagnac max (s) = ", N[std, 14]]; Print["PT - std (s) = ", ScientificForm[N[PT - std, 8]]]; Print["PT - std (ns) = ", ScientificForm[N[(PT - std) 1*^9, 8]]]; Print["max Sagnac ns = ", N[PT 1*^9, 8]]
+ClearAll[cc,om,RR,aGPS,Amax,vRecv,bRecv,PT,std]; cc=299792458; om=7.2921151467*^-5; RR=6378137; aGPS=26560000; Amax=aGPS RR/2; vRecv=om RR; bRecv=Sqrt[cc^2 + vRecv^2]; PT=2 om Amax/bRecv^2; std=2 om Amax/cc^2; Print["std Sagnac max (s) = ", ScientificForm[N[std, 14]]]; Print["PT Sagnac max (s) = ", ScientificForm[N[PT, 14]]]; Print["PT - std (s) = ", ScientificForm[N[PT - std, 8]]]; Print["PT - std (ns) = ", ScientificForm[N[(PT - std) 1*^9, 8]]]; Print["max Sagnac (ns) = ", N[PT 1*^9, 8]]
 ```
 
 **Result:**
 ```
-PT Sagnac max (s) = 1.3758732×10⁻⁷
-std Sagnac max (s) = 1.3758732×10⁻⁷
-PT - std (s) = -1.6562×10⁻¹⁹
-PT - std (ns) = -1.6562×10⁻¹⁰
-max Sagnac ns = 137.587
+std Sagnac max (s) = 1.3744661×10⁻⁷
+PT Sagnac max (s) = 1.3744661×10⁻⁷
+PT - std (s) = -3.30793×10⁻¹⁹
+PT - std (ns) = -3.30793×10⁻¹⁰
+max Sagnac (ns) = 137.4466
 ```
-✅ matches standard. PT correction relative to standard is `~10⁻¹⁰ ns` (operationally invisible).
+✅ matches standard. PT correction relative to standard is `~3 × 10⁻¹⁰ ns` (operationally invisible).
 
 ## 5b. GPS-precision-limit equivalence to standard
 
