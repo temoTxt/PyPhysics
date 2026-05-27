@@ -163,3 +163,16 @@
 - **Status:** READY.
 
 **Sources (iter-8):** Riis et al., *Phys. Rev. A* **49**, 207 (1994) — Li⁺ (2-electron) Lamb shift/HFS [journals.aps.org/pra/abstract/10.1103/PhysRevA.49.207].
+
+## Iteration 9 — 2026-05-27 — DRAFT #3 fine-structure section in 12_Li2plus_Spectroscopy.md
+
+**Step taken:** created `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/12_Li2plus_Spectroscopy.md` (this branch's output doc) with: header + issue/scope framing, **species-scope warning** (hydrogenic Li²⁺ ≠ neutral Li ≠ He-like Li⁺), results table, and the **full §12.3 #3 fine-structure section** — measurement context, leading-Dirac table (Z=1 10,949 ✓ / Z=3 886,892 MHz, ratio 81), framework prediction $(g_s/-2)\times E_{\rm leading}$ = **887,920 MHz**, the (Z-i)≡(Z-ii) resolution via §III.D's Z-independent cutoff, the weak-Z-discriminator reframe, the bound-state-QED sub-MHz caveat, measurement-provenance disposition (no direct hydrogenic-Li²⁺ 2P-FS precision experiment; compare vs theoretical ~888 GHz), **verdict ✅ outcome A** (back-fit self-consistency, not independent corroboration), + Crocco `<!-- TODO human review -->` block. Did NOT touch 11/13 (other branches).
+
+**#3 is now fully DOCUMENTED with a verdict.** One stop-criterion observable complete.
+
+**Queued next:** draft **§12.2 #2 Lamb shift** section in `12_Li2plus_Spectroscopy.md` (brief, weak discriminator): measurement Schiffer et al. PRL 74, 2188 (1995) $\Delta E_{2S-2P}(^7\text{Li}^{2+})=62\,765(21)$ MHz; framework Z-scaled Bethe-estimate ≈ 62,729 MHz (apply BS-§19/§20 with Z-scaled Bethe log per brief); $r_e$-independent ⇒ (Z-i)≡(Z-ii); verdict ✅-by-inheritance / reproduction-not-endorsement (per `10_CrossComparison.md` §3) at framework precision floor (~250 MHz at Z=3 ≫ 21 MHz measurement σ). Optionally add a notebook cell for the Z=3 Lamb-shift Bethe-log estimate. Then add the **overall branch verdict** to the results table + a closing summary, and the loop's stop criterion (both #2+#3 documented with verdicts) is MET.
+
+- **Current observable focus:** transitioning #3→#2 (documentation).
+- **Outcome-matrix:** **#3 → A (DOCUMENTED, verdict ✅).** **#2 → A (pending draft).**
+- **(Z-i)/(Z-ii):** RESOLVED — no divergence (unchanged).
+- **Status:** READY.
