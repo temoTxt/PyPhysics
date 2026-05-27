@@ -130,3 +130,24 @@
 - **(Z-i)/(Z-ii):** (Z-i) = 29 804 MHz, branch A (structural). (Z-ii) not asserted by framework; hypothetical-only.
 - **Measurement provenance:** comparator = Pachucki/Patkóš/Yerokhin 2023 (arXiv:2309.00436) Table VII (QED theory from exp. Li⁺); exact digit pending human PDF extraction. Li-7: I=3/2, μ_I=+3.256427 μ_N (NUBASE/CODATA).
 - **Status:** READY.
+
+## Iteration 7 — 2026-05-27 — add Cell 5: standard-QED point-nucleus comparator + residual table numbers (MCP-verified)
+
+**What advanced:** Extended `r_e_Li2plus_hyperfine.wl` with **Cell 5** (standard-QED point-nucleus comparator) and verified it via Wolfram MCP. This gives the residual-table numbers the doc needs:
+
+| Quantity | Value (MHz) | Note |
+|---|---|---|
+| Framework leading-Fermi × g_s (Z-i, minimal) | **29 803.6** | matches campaign H methodology (leading only) |
+| + relativistic Dirac factor `1/[γ(2γ−1)]`, γ=√(1−(Zα)²) | +0.072% | framework inherits Dirac (BS-§14.1) |
+| + reduced-mass ratio³ (⁷Li nucleus vs proton) | +0.140% | standard kinematic |
+| **Standard-QED point-nucleus comparator** (leading+rel+redmass+g_s) | **29 866.8** | = framework with same corrections, by construction |
+| Pachucki 2023 Table VII (incl. Bohr–Weisskopf) | _[human PDF extract]_ | external high-precision; nuclear-structure REDUCES by ~0.5–1% |
+
+- **residual framework(minimal) − standard-QED comparator = −63.2 MHz (−0.21%)** — the gap is the relativistic + reduced-mass corrections the minimal leading route omits. **Both are r_e-INDEPENDENT**, so the residual does **not** bear on the branch-A verdict (exact analog of the H 21-cm leading-vs-full gap).
+- Bohr–Weisskopf nuclear-structure: out of scope (issue #78), recorded as a framework-floor caveat (~−0.5–1%).
+
+- **Current observable focus:** #4 Li-7 1s hyperfine.
+- **OUTCOME-MATRIX BRANCH: A** (unchanged) — universal cutoff reproduces standard-QED Li²⁺ HFS at the leading-g_s/Bethe-estimate floor; structural self-consistency (g_s enhancement Z-independent), not independent corroboration.
+- **Next (final substantive step):** draft the #4 per-observable section in `Bethe_Salpeter/13_Li2plus_Hyperfine.md` — measurement provenance (no direct exp; Pachucki comparator), framework prediction (29 804 MHz minimal / 29 867 MHz with standard corrections), the residual table above, the I=3/2 angular-structure derivation, the branch-A verdict + structural-self-consistency caveat + Bohr–Weisskopf floor caveat, Crocco substantive-AI tags + `<!-- TODO: human reviews and fills in -->` blocks (incl. the exact Pachucki digit). **This completes the done-criteria → STOP after the doc has the verdict.**
+- **(Z-i)/(Z-ii):** (Z-i) firm (29 804 minimal / 29 867 with std corrections). (Z-ii) hypothetical-only (framework asserts universal cutoff).
+- **Status:** READY (doc draft is the terminal step).

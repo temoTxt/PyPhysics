@@ -64,3 +64,18 @@ ClearAll[gsTri, gsFactor, dnuLiFramework, dnuLiCrossCheck]; gsTri = -2.002319304
 (* I.S eigenvalue = (1/2)[F(F+1) - I(I+1) - S(S+1)].                           *)
 (* Splitting (F=2 <-> F=1) in units of the hyperfine constant a = a*(I+1/2).   *)
 ClearAll[isEig, spinI, spinS, fUpper, fLower, splitInA]; spinI = 3/2; spinS = 1/2; isEig[ff_] := (1/2)*(ff*(ff+1) - spinI*(spinI+1) - spinS*(spinS+1)); fUpper = 2; fLower = 1; splitInA = isEig[fUpper] - isEig[fLower]; Print["Cell4: I.S(F=2)=", isEig[fUpper], " I.S(F=1)=", isEig[fLower], " ; F=2<->1 splitting = ", splitInA, " * a  (= (I+1/2) a = 2a, the headline interval)"];
+
+
+(* ---- Cell 5: standard-QED point-nucleus comparator (residual table) ------- *)
+(* The framework's MINIMAL leading-Fermi*g_s prediction (Cell 3, 29 804 MHz)   *)
+(* omits two standard, r_e-INDEPENDENT corrections that the full Dirac         *)
+(* hydrogenic solution carries (and which the dual-Dirac FW inherits, BS-S14.1):*)
+(*   - relativistic (Breit/Dirac) factor relFactor = 1/[gamma(2 gamma-1)],     *)
+(*     gamma = Sqrt[1-(Z alpha)^2]  -> +0.072% at Z=3.                          *)
+(*   - reduced-mass ratio^3 (Li-7 nucleus vs proton) -> +0.140%.               *)
+(* Adding both (still point-nucleus, no Bohr-Weisskopf) gives the standard-QED *)
+(* comparator. Bohr-Weisskopf nuclear structure is OUT OF SCOPE (issue #78) and *)
+(* would REDUCE the value by ~0.5-1% (framework-floor caveat in the doc).       *)
+(* The residual framework(minimal) - comparator is NOT r_e-dependent, so it     *)
+(* does NOT bear on the branch-A verdict.                                       *)
+ClearAll[zAlpha, gammaRel, relFactor, redMassH, redMassLi, redRatio3, dnuRelGs2, dnuStdQED, residualMinimal]; zAlpha = zCharge*alphaFS; gammaRel = Sqrt[1 - zAlpha^2]; relFactor = 1/(gammaRel*(2*gammaRel - 1)); redMassH = 1/(1 + 1/1836.15267343); redMassLi = 1/(1 + 1/12791.0); redRatio3 = (redMassLi/redMassH)^3; dnuRelGs2 = dnuLiTextbook*relFactor*redRatio3; dnuStdQED = dnuRelGs2*gsFactor; residualMinimal = dnuLiFramework - dnuStdQED; Print["Cell5: relFactor=", relFactor, " redRatio3=", redRatio3, " ; standard-QED point-nucleus comparator = ", dnuStdQED, " MHz ; framework(minimal) - comparator = ", residualMinimal, " MHz (r_e-INDEPENDENT, below leading-Fermi floor)"];
