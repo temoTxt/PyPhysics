@@ -107,3 +107,15 @@
 - **Measurement provenance recorded this iteration:** brief #1 value (2.0000251707, "Sturm 2014") ⇒ Wolfram shows it is a Z≈8 value and Sturm 2014 is the ¹²C⁵⁺ paper — **mis-attributed, do not use**. Framework prediction g_bound(⁷Li²⁺) = 2.00200 recorded in notebook Section 1.
 - **Next:** draft the per-observable §1 section in `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/11_Li2plus_HydrogenicIon.md` (new doc) — create the doc skeleton (chapter header + cross-comparison table + the four result-section stubs), then write the #1 g-factor result section: framework prediction 2.00200 (Wolfram-cited), the binding-vs-anomaly decomposition, and the measurement-provenance BLOCKED note. Use the BS-§N template; `<!-- TODO: human reviews -->` blocks per Crocco.
 - **Status:** READY.
+
+## Iteration 6 — 2026-05-27 — create 11_Li2plus_HydrogenicIon.md + draft #1 section
+
+**Advanced:** Created `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/11_Li2plus_HydrogenicIon.md` (new chapter doc): header (issue #78 framing), the **⭐ gating structural section** (cutoff is Z-invariant; (Z-i) correct; Branch B ruled out; A/C tension recurs from lepton axis), a 5-row results table, the **fully-drafted §Li-1 g-factor result** (As measured / QED Z-expansion / framework prediction / Wolfram MCP check / 🔴 provenance-BLOCKED / verdict, with Crocco TODO blocks), and stubs for §Li-2/§Li-3/§Li-4/§Li-5. Mirrors the BS-§N template and the `10_CrossComparison.md` honest-framing voice.
+
+- **§Li-1 content locked:** framework prediction `g_bound(⁷Li²⁺) ≈ 2.00200` (Wolfram-cited from notebook Section 1); binding `−3.20×10⁻⁴` (genuine Z-dependence, formulation-independent) + anomaly `+2.3193×10⁻³` (Z-universal cutoff). Comparison BLOCKED — brief's measurement mis-attributed.
+- **Current observable focus:** #1 g-factor — prediction + doc section complete; measurement-side BLOCKED.
+- **Outcome-matrix:** unchanged — **trending A, B ruled out structurally**; #1 A-vs-C resolution waits on a valid measurement.
+- **(Z-i)/(Z-ii) differences:** none for #1 prediction (cutoff Z-invariant).
+- **Measurement provenance recorded this iteration:** §Li-1 records the #1 mis-attribution (Z≈8 value; Sturm 2014 = ¹²C⁵⁺ paper); #2 Schiffer 1995 62,765(21) MHz logged as the one clean valid measurement; #3/#4 provenance notes carried into stubs.
+- **Next:** draft §Li-2 (Lamb shift) — the cleanest computable comparison (valid Schiffer 1995 measurement). Extend notebook Section 2: compute the framework Bethe-estimate Lamb-shift prediction at Z=3 by scaling the Z=1 ~1016 MHz Bethe-estimate via (Zα)⁴/n³ with the shrinking Bethe-log, compare to 62,765 MHz; record that this is reproduction-by-construction (weak discriminator). Wolfram-verify the Z⁴ × Bethe-log scaling numerically.
+- **Status:** READY.
