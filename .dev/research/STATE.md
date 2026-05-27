@@ -323,6 +323,36 @@ The empirical-test path's substantive content is fully exercised:
 
 If the user invokes the loop again, the natural next-most-substantive step would be to extend the §III.D verification-doc append with an iter-5 paragraph capturing the cross-particle non-universality result.
 
+## Iteration 6 — 2026-05-26 — propagated iter-5 cross-particle result into the canonical write-ups
+
+### What advanced
+
+Consolidated the iter-5 muon cross-check into the two canonical verification documents:
+
+1. **`Dual_Relativistic_Quantum_Mechanics_I.md` §III.D Schwinger-identification subsection.** Inserted a new paragraph "Cross-particle test (muon, iter-5 addendum)" before the verdict, citing the FNAL Muon $g-2$ Collaboration final 2023 result (Aguillard et al., *Phys. Rev. D* **108**, 092009), the per-particle back-fit cutoffs $r_e/r_0^e = 0.499\,420\,509\,913$ vs $r_\mu/r_0^\mu = 0.499\,417\,379\,350$, the falsification statistic ($\Delta r = 3.13\times10^{-6}$, $\sim 57$k$\sigma_{a_\mu}$ in muon measurement units), and the constraint it places on any future closed-form derivation under #54 (must be particle-mass-dependent). Updated the verdict paragraph to reflect the now-three-step structural argument and the narrower B-route. The "iter 1–3" loop iteration log reference was updated to "iter 1–5".
+
+2. **`FINDINGS_for_author_review.md` Finding 2.** Appended a "Candidate-3 update — 2026-05-26" paragraph summarising the entire iter-1-through-iter-5 arc: the closed-form/KK+LR+KF $10^{-11}$ numerical agreement (iter 2), the back-fit-forcing structural caveat (iter 3), the §III.D-no-closed-form derivational finding (iter 3), the cross-particle universal-closed-form falsification (iter 5), and the verdict outcome **C-as-published** with outcome B narrowed to particle-mass-dependent derivations under #54. Updated the human-acceptance TODO block to add point (g) covering this update.
+
+Neither write-up changes the substantive verdict; both extend the canonical surface area for the human reviewer.
+
+### Outcome-matrix branch
+
+Unchanged: **C-as-published** with the now-three-step argument fully reflected in both the verification doc and the findings doc.
+
+### Status
+
+**HALT (final, reaffirmed v2).** All five canonical artifacts now consistently reflect the empirical-test path's verdict:
+
+1. `r_e_schwinger_residual_test.wl` — Sections 1–9 (iter 2 + iter 5).
+2. `Dual_Relativistic_Quantum_Mechanics_I.md` §III.D Schwinger-identification subsection (iter 4 + iter 6 cross-particle paragraph).
+3. `FINDINGS_for_author_review.md` Finding 2 Candidate-3 update (iter 6).
+4. `.dev/research/STATE.md` iteration log (iters 0–6).
+5. Tepper-queue entry (iter 3 → refined iter 5 → unchanged iter 6).
+
+The empirical-test path is fully exercised. No further substantive iteration is available without bleeding into Candidate 1/2 territory (first-principles derivation, which is explicitly out-of-scope per issue #66) or pursuing speculative non-derived framework predictions for type-(b) observables (1S–2S, antiprotonic He, muonic-H Lamb shift) that the published Bethe–Salpeter campaign has not derived.
+
+No ScheduleWakeup. Orchestrator: lift the Tepper question, review the three write-ups, and decide whether the verdict marker on Finding 2 should change before or after Tepper response.
+
 ## Questions for Tepper (queue)
 
 1. **(2026-05-26, iter 3 — refined from iter 2, unchanged by iter 5)** The DRQM-I §III.D derivation (Eqs. III.18–III.23) produces the framework's $g$-factor formula $g_r(r) = 2[1 - 4r_0/(2r+r_0)]$ and the limit checks $g_r(r_0/2) = -2$ and $g_r(r\to 0) = -6$, but leaves $r_e/r_0$ as an empirical parameter to be fit (per your 2026-05-25 guidance, the published value was obtained by a uni-observable numerical search against $g_s^{\text{meas}}$). The triangulated value $r_e/r_0 = 0.499\,420\,509\,912\,83$ from PR #62 (Pass B joint fit across the six $g_s$-dependent observables) matches the closed-form Schwinger one-loop value $(2 - \alpha/(2\pi))/(4 + \alpha/\pi) = 0.499\,419\,632\,156\,99$ to $8.78 \times 10^{-7}$ in $r$, equivalently $3.51 \times 10^{-6}$ in $g_e$ — which numerically equals the all-orders-QED-beyond-one-loop content of measured $g_e$ to ~$10^{-11}$ (Karplus–Kroll + Laporta–Remiddi + Kinoshita–Fukuda; verified by Wolfram MCP in `r_e_schwinger_residual_test.wl`). However, iter 3 finds that this $10^{-11}$ agreement is *algebraically forced* by the back-fit ($r$ chosen so $g_r(r) = g_e^{\text{meas}}$), not evidence of intentional Schwinger encoding. **Iter 5 (2026-05-26) additionally finds** that the per-particle back-fit cutoff for the muon (from $a_\mu^{\text{exp}}$, FNAL 2023) is $r_\mu/r_0^\mu = 0.499\,417\,379\,350$, differing from the electron's by $3.13 \times 10^{-6}$ — equivalent to $\sim 57$kσ in muon-measurement units. So any closed-form derivation in $\alpha$ alone (i.e., universal across leptons) is empirically ruled out; a successful closed-form derivation must produce a particle-mass-dependent cutoff. **Question:** is there an in-progress or planned first-principles rederivation of $r_e/r_0$ from the dual-Dirac renormalisation prescription (per the issue #54 framing) that produces a closed-form expression, and if so, does it have particle-mass dependence (consistent with the cross-particle data) or is it pure-$\alpha$ (in which case the iter-5 cross-particle test would falsify it)? If yes-with-mass-dependence and reproduces both $a_e$ and $a_\mu$ at the precision of their measurements, Finding 2 closes ✅ at outcome B; if pure-$\alpha$, the derivation contradicts the FNAL muon data; if no derivation in progress, outcome C-as-published stands.
