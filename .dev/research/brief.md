@@ -52,7 +52,7 @@ Each `/loop` iteration does **one** substantive step:
    - Compute the joint $\chi^2$ at Z=3 once all four predictions are in; report Li²⁺-optimal $r_e/r_0$ and compare to Z=1 triangulated.
 3. Append a dated entry to `STATE.md` (ISO timestamp) recording: what advanced, what's queued next, current observable focus (#1/#2/#3/#4), and any BLOCKED state.
 4. `git add` changed files explicitly. New commit only (no `--amend`). Push to this branch.
-5. Self-pace next iteration via ScheduleWakeup (1200–1800s for substantive math; 60–270s for cache-warm continuations).
+5. Self-pace next iteration via ScheduleWakeup — **aggressive cadence: 60–180s** (cache-warm; favor 60s the runtime floor unless the next step is explicitly idle-pending; the user has requested fastest viable iteration).
 6. Stop the loop (omit ScheduleWakeup) only when:
    - All four observables have results + a Z-axis verdict is recorded in STATE.md, **or**
    - A hard BLOCKED state is recorded (e.g., a framework formula's Z-extension is genuinely ambiguous and needs Tepper input).
