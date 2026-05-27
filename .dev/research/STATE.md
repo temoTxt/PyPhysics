@@ -32,3 +32,24 @@
 - **Next:** look up + record the precise ³He⁺ (Z=2) bound-electron g-factor measurement value with full DOI/year provenance (brief table lists $2.000\,008\,021(15)$, Hoffmann 1989 / Köhler 2015 update — verify which is the current best and its DOI). Enter it into the Z-scan table in STATE.md; per-ion section in `14_HydrogenicIon_Zscan.md` to follow once 2+ values are in hand.
 - **Outcome-matrix tentative:** leaning **C** by analogy to PR #70 lepton-axis (particle-specific through $a_\ell$ → Z-specific through $a_e(Z\alpha)$), but **A** is the clean falsifiable test and remains open until data are fitted. Not yet determinable.
 - **Status:** READY (1 source-of-record doc read; 0/5 ions catalogued).
+
+## Iteration 2 — 2026-05-27 — ³He⁺ (Z=2) g-factor measurement + provenance (ion 1/5)
+
+**Step taken:** Looked up and recorded the precise ³He⁺ bound-electron g-factor with full provenance (one-ion measurement step). Verified via web search against the primary literature.
+
+**⚠ Brief-table correction:** `brief.md` listed `2.000 008 021(15)` for ³He⁺ — this is a **transcription error** (unphysical: implies a binding shift of $\sim2\times10^{-3}$ off the free-electron value, but the He⁺ Breit/Dirac binding shift is only $-\tfrac13(Z\alpha)^2 \approx -7.1\times10^{-5}$, giving $|g|\approx2.00218$, not $2.000008$). Corrected value below. The brief's "Hoffmann 1989 / Köhler 2015" pointer is also superseded — the definitive direct measurement is Schneider 2022.
+
+**³He⁺ (Z=2) — recorded value:**
+- **Experimental:** $g_e^{\rm exp}(^3{\rm He}^+) = -2.002\,177\,415\,79(34)_{\rm stat}(30)_{\rm sys}$ → combined $\sigma = 45\times10^{-11}$, i.e. $-2.00217741579(45)$.
+- **Theory (bound-state QED):** $g_e^{\rm theo} = -2.002\,177\,416\,252\,23(39)$ (exp–theory agree at $\sim5\times10^{-10}$).
+- **Source:** A. Schneider, B. Sikora, S. Dickopf, M. Müller, N. S. Oreshkina, A. Rischka, I. A. Valuev, S. Ulmer, J. Walz, Z. Harman, C. H. Keitel, A. Mooser, K. Blaum, *"Direct measurement of the ³He⁺ magnetic moments,"* **Nature 606, 878–883 (2022)**. DOI: **10.1038/s41586-022-04761-7**. (First direct high-precision Penning-trap measurement; ~10× better than prior indirect results.)
+
+**Framework-relevant derived quantities (to be Wolfram-verified at the per-ion / joint-fit step):**
+- $a_e^{\rm bound}(Z{=}2) = (|g_e|-2)/2 = 0.001\,088\,707\,895$ — note this is **smaller** than free-electron $a_e = 0.001\,159\,652\,18$, by the binding correction $-\tfrac13(Z\alpha)^2$ ($(Z\alpha)^2 = 2.130\times10^{-4}$ at Z=2).
+- (Z-ii) back-fit estimate: $r_e^{(Z=2)}/r_0 = (2-a)/(2(2+a)) \approx 0.499\,456$ (hand estimate; **must verify in `r_e_Zscan_fit.wl`**), vs Z=1 triangulated $0.499\,420\,510$ — an **upward drift of $\sim3.5\times10^{-5}$**.
+- **Direction of evidence:** the back-fit $r_e^{(Z)}/r_0$ rises with Z because bound-state QED *reduces* the effective anomaly. This is the QED-bound-state $a_e(Z\alpha)$ inheritance signature — consistent with Outcome **C** (per-Z inheritance, no framework-internal Z-derivation), or **B** if the drift fits a clean $a + b(Z\alpha)^2$ form (it should, since the leading binding term is exactly $-\tfrac13(Z\alpha)^2$).
+
+- **Current ion focus:** ³He⁺ (Z=2) — done.
+- **Next:** look up + record ⁹Be³⁺ (Z=4) bound-electron g-factor with DOI/year provenance (likely a Mainz/MPIK Penning-trap result; verify the current best value + source). Per the brief, "(verify in iter 1)" — no value pre-listed, so this needs a genuine lookup.
+- **Outcome-matrix tentative:** **C-leaning** (with B as a live possibility given the clean $-\tfrac13(Z\alpha)^2$ leading term); A appears disfavoured already given the Z=2 drift, but not falsified until the joint χ² is run.
+- **Status:** READY (1/5+ ions catalogued: ³He⁺ Z=2 ✅; Li²⁺ Z=3 to be imported from #78).
