@@ -254,3 +254,25 @@ Final Z-scan: **Z = {2, 3, 6, 8, 14, 20}** — all absolute, well-distributed. �
 - **Next:** **execute the notebook cells via Wolfram MCP** (S1→S5), record the actual outputs inline as `(* Result: ... *)` in `r_e_Zscan_fit.wl`, and confirm/correct the hand estimates — especially S3 χ² (expect ≫ N_ions → A rejected) and the S4 linear-fit intercept + slope. Debug any cell that errors.
 - **Outcome-matrix tentative:** **C** (pending the MCP-confirmed χ² and form-fit).
 - **Status:** READY (notebook scaffolded; 5 ions catalogued; joint fit pending MCP execution).
+
+## Iteration 11 — 2026-05-27 — EXECUTED joint χ² + Z-scaling fit (Wolfram MCP) — headline result
+
+**Step taken:** Ran all cells of `r_e_Zscan_fit.wl` via Wolfram MCP. Recorded actual outputs inline in the notebook (replacing the EXPECTED block with an MCP-RESULTS block). All hand estimates confirmed.
+
+**MCP results (5 ions, Z={2,6,8,14,50}):**
+- **S1 sanity:** `gr[1/2]=-2` exact; `|gr[xUniversal]|=2.00231930436256` ✅.
+- **S2 back-fit** $x^{(Z)}=r_e^{(Z)}/r_0$: {0.49945594, 0.49973967, 0.49998824, 0.50116411, 0.52287087} (matches iter 2–9 hand estimates to all shown digits).
+- **S3 (Z-i) UNIVERSAL-cutoff test:** prediction fixed at 2.00231930436256 ∀Z; per-ion residuals {−1.4e-4 … −9.2e-2}; σ-counts up to **−9.2×10⁷**; **χ² = 1.028×10¹⁶** (5 ions, 0 free params). → **OUTCOME A DECISIVELY REJECTED.**
+- **S4 (Z-ii) Z-scaling form-fit** of $x^{(Z)}$ vs $(Z\alpha)^2$:
+  - linear: $x = 0.4993835903 + 0.17639313\,(Z\alpha)^2$
+  - quadratic: $x = 0.4994206084 + 0.16627568\,(Z\alpha)^2 + 0.07415407\,(Z\alpha)^4$
+  - **Two striking facts:** (1) the **quadratic intercept $c_0 = 0.4994206084$ recovers `xUniversal` = 0.4994205099 (the Z=1 triangulated / free-electron cutoff) to $9.8\times10^{-8}$** — i.e. the Z-scan back-fit extrapolates cleanly to the independently-determined Z=1 value as $Z\to0$. (2) the **quadratic slope $c_2 = 0.16627568 \approx 1/6 = 0.16666667$** (to $2.3\times10^{-3}$) — exactly the QED leading-coefficient prediction, since $dx/d(Z\alpha)^2 = \tfrac{dx}{da}\cdot\tfrac{da}{d(Z\alpha)^2} = (-\tfrac12)(-\tfrac13) = +\tfrac16$ at $a\approx0$.
+
+**Z-axis VERDICT (preliminary, to be written into 14_HydrogenicIon_Zscan.md):**
+- **A excluded** at χ²∼10¹⁶ over Z=2–50.
+- **C** (not B): the (Z-ii) back-fit follows $x = c_0 + c_2(Z\alpha)^2 + c_4(Z\alpha)^4$ with $c_0$=free-electron cutoff and $c_2$=QED's 1/6. The clean $(Z\alpha)^2$ form is a property of **QED's** bound-state $g(Z\alpha)=2[1-\tfrac13(Z\alpha)^2-\ldots]$ inherited by the inversion — the framework supplies only $g_r[x]$ and leaves each state's cutoff free; the $-\tfrac13$ coefficient is QED's, not the dual framework's. **This extends PR #70's lepton-axis verdict ("particle-specific through $a_\ell$") to the Z-axis ("Z-specific through $a_e^{\rm bound}(Z\alpha)$").**
+
+- **Current ion focus:** joint fit — DONE (executed + recorded).
+- **Next:** draft `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/14_HydrogenicIon_Zscan.md` — per-ion sections (5 ions w/ full provenance), the (Z-i)/(Z-ii) tables, the joint-fit result, the Z-axis verdict (Outcome C), the honest-scope + Crocco substantive-AI human-acceptance block, and the wikilinks to DRQM I §III.D / FINDINGS Finding 2 / PR #70. (Then: append FINDINGS Finding-2 multi-Z update; then STOP — done-criteria will be met.)
+- **Outcome-matrix:** **C** (confirmed by MCP: A rejected; B requires an internal $(Z\alpha)^2$ derivation the framework lacks; the back-fit inherits QED bound-state structure).
+- **Status:** READY — **joint χ² + Z-scaling fit REPORTED ✅; Z-axis verdict (C) recorded ✅; ≥5 ions ✅.** Remaining for done-criteria: write 14_HydrogenicIon_Zscan.md + FINDINGS update (documentation of the above).
