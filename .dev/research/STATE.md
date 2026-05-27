@@ -69,3 +69,31 @@
 - **Next:** look up + record the precise ²⁰Ne⁹⁺ (Z=10) bound-electron g-factor absolute value + uncertainty + DOI (Sailer 2022). Note: that paper's headline is a *difference/isotope-shift* measurement — confirm whether it reports an absolute ²⁰Ne⁹⁺ g-factor or whether the absolute value must be sourced from the companion theory/earlier work; record provenance accordingly.
 - **Outcome-matrix tentative:** **C-leaning** (B live), unchanged from iter 2.
 - **Status:** READY (1/5+ ions catalogued; revised target Z = {2, 3, 6, 10, 14, 20}; Be³⁺ dropped, Ne⁹⁺ substituted).
+
+## Iteration 4 — 2026-05-27 — ²⁰Ne⁹⁺ resolved: differential-only → finalize 6-ion absolute set Z={2,3,6,8,14,20}
+
+**Step taken:** Looked up the ²⁰Ne⁹⁺ (Z=10) absolute bound-electron g-factor (queued from iter 3). Two web searches. Finding forces an ion-set decision.
+
+**Finding — Sailer 2022 is a *difference* measurement; no usable absolute ²⁰Ne⁹⁺ g-factor:**
+- Sailer et al., *Nature* **606**, 479 (2022), DOI 10.1038/s41586-022-04807-w, measures the **isotope-shift difference** $g(^{20}\mathrm{Ne}^{9+}) - g(^{22}\mathrm{Ne}^{9+})$ to $5.6\times10^{-13}$ via the coupled-ion / common-magnetron-orbit method. That precision is *differential* — it cancels the common magnetic-field systematic. The **absolute** individual g-factors are limited by field calibration and are **not published at a precision useful as an absolute Z-scan anchor**.
+- Consequence: Ne⁹⁺ cannot serve the (Z-ii) per-Z back-fit, which requires an absolute measured $g_e^{\rm bound}(Z)$ to invert $r_e^{(Z)}/r_0 = (2-a)/(2(2+a))$. **Drop ²⁰Ne⁹⁺** as a back-fit anchor.
+
+**Decision (substantive — ion set now FINAL):** Use the six hydrogenic ions with **published absolute** Penning-trap bound-electron g-factors:
+
+| Ion | Z | Absolute g status | Source (to transcribe with full provenance) |
+|---|---|---|---|
+| ³He⁺ | 2 | ✅ recorded (iter 2) | Schneider 2022, Nature 606, 878 |
+| ⁷Li²⁺ | 3 | import from #78 | (Self-Energy branch supplies) |
+| ¹²C⁵⁺ | 6 | pending transcribe | Sturm 2011, PRL 107, 023002 (brief table) |
+| ¹⁶O⁷⁺ | 8 | **new — substitute for Ne⁹⁺** | Verdú et al. 2004, PRL 92, 093002 |
+| ²⁸Si¹³⁺ | 14 | pending transcribe | Sturm 2013, PRL 110, 263002 (brief table) |
+| ⁴⁰Ca¹⁹⁺ | 20 | pending lookup | Köhler-Langes/Sturm 2016 |
+
+Final Z-scan: **Z = {2, 3, 6, 8, 14, 20}** — all absolute, well-distributed. ¹⁶O⁷⁺ (Z=8) replaces the dropped Ne⁹⁺ for mid-Z coverage; it has a clean absolute measurement (Verdú 2004) and bridges the C⁵⁺(6)–Si¹³⁺(14) gap.
+
+**Rationale note for the writeup:** the differential-vs-absolute distinction is itself relevant to the framework test — the (Z-ii) back-fit is a per-ion *absolute* inversion, so only absolute measurements qualify. (The Sailer isotope-shift result tests nuclear-recoil QED, orthogonal to the cutoff-radius question here.)
+
+- **Current ion focus:** Ne⁹⁺ (resolved → dropped, differential-only); O⁷⁺ queued.
+- **Next:** look up + record the ¹⁶O⁷⁺ (Z=8) absolute bound-electron g-factor + uncertainty + DOI (Verdú, Djekić, Stahl, Valenzuela, Vogel, Werth, Beier, Kluge, Quint, PRL 92, 093002 (2004), "Electronic g Factor of Hydrogenlike Oxygen ¹⁶O⁷⁺").
+- **Outcome-matrix tentative:** **C-leaning** (B live), unchanged.
+- **Status:** READY (1/6 ions catalogued with absolute values; ion set FINAL at Z={2,3,6,8,14,20}).
