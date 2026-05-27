@@ -33,3 +33,22 @@
 - **Outcome-matrix:** not yet determinable (gathering apparatus; H baseline is back-fit self-consistency, which leans the universality question toward needing the Z=3 datapoint to discriminate A/B/C).
 - **(Z-i)/(Z-ii):** universal-cutoff r_e/r_0 = 0.4994205099128317 recorded; Z-scaled (Z-ii) reading not yet constructed.
 - **Status:** READY.
+
+## Iteration 2 — 2026-05-27 — read source-of-record §2 (10_CrossComparison.md §2) — n=1 confirmed + out-of-sample insight
+
+**What advanced:** Read `Bethe_Salpeter/10_CrossComparison.md` (campaign-closing cross-comparison). Two load-bearing facts captured:
+
+1. **n=1 confirmed for hyperfine.** §2 states the scaling polynomial `f_i(g_s)` is "**linear for spin–orbit and Fermi contact contributions**; quadratic for two-fermion spin–spin contributions (positronium ortho-para)." Hyperfine (Fermi contact) → **n=1**, matching the brief and BS-§22.1. So Li²⁺ 1s HFS prediction = `(g_s/-2)^1 × (textbook Fermi-contact leading term at Z=3, I=3/2)`.
+
+2. **The six-observable fit is back-fit self-consistency, NOT independent corroboration** (§1, §2 of CrossComparison, stated repeatedly). The triangulated `r_e/r_0 = 0.4994205099128317` is *defined* as the joint-best-fit value across six **Z=1-ish** g_s-dependent observables (H fine structure, H 21-cm, He ³P, He M1, positronium, muonium — all Z≤2 electron-bound-to-light-nucleus). `g_s = -2.00231930…` is substituted *by construction*.
+
+**→ Substantive consequence for this branch (the discriminator):** Li²⁺ 1s HFS at **Z=3 is OUT-OF-SAMPLE** — it was *not* in the six-observable joint fit. Evaluating it at the *same universal* `r_e/r_0 = 0.4994205099128317` is therefore a genuine out-of-sample test, unlike the six in-sample observables which match by construction. This sharpens the outcome-matrix:
+   - **(Z-i) universal cutoff:** g_s = -2.00231930 for all Z → Li²⁺ HFS = (g_s/-2)×textbook_Li. If this reproduces measurement at framework precision → **branch A**.
+   - **(Z-ii) Z-scaled cutoff:** if the cutoff (hence g_s) runs with the Z=3 field strength, the multiplier differs → if a Z-scaled cutoff with framework-internal derivation is needed → **branch B**; if Li²⁺ needs its own per-Z back-fit → **branch C**.
+   - Note: at n=1 the g_s correction is only +0.116%, so the dominant Z=3 physics is in the *textbook* Fermi-contact scaling (Z³, nuclear g_I, reduced mass). The r_e discriminating power lives in whether that +0.116% (and its possible Z-running) survives against the measurement precision.
+
+- **Current observable focus:** #4 Li-7 1s hyperfine.
+- **Next:** look up + record the exact current-best Li²⁺ 1s HFS measurement (value + DOI/year — Beckmann 1974 *Z. Phys.* 270, 173 baseline ~12 732 MHz; check for modern refinement) and the Li-7 nuclear moment μ_I / g_I with CODATA/NUBASE provenance. These are the inputs the Wolfram prediction cell needs. Then scaffold `r_e_Li2plus_hyperfine.wl`.
+- **Outcome-matrix:** still not determinable (no numeric prediction yet), but now framed: Li²⁺ is the campaign's first **out-of-sample** g_s-dependent test → it can actually discriminate A vs B vs C, unlike the six in-sample observables.
+- **(Z-i)/(Z-ii):** (Z-i) universal value fixed (g_s=-2.00231930). (Z-ii) Z-scaled reading: needs a model for how r_e runs with Z — flagged as a potential Tepper-input point (branch D risk) if the framework has no internal Z-running prescription.
+- **Status:** READY.
