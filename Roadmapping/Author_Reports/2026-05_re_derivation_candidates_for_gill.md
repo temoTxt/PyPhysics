@@ -7,9 +7,9 @@ subject: "Four candidate starting points for deriving r_e from the dual-Dirac fr
 
 # Candidates for a first-principles derivation of $r_e/r_0$ — for Tepper Gill
 
-**Date:** 2026-05-26.
+**Date:** 2026-05-26 (revised 2026-05-26 with two waves of overnight progress on all three candidates).
 **From:** Trey Morris (with Claude Opus 4.7).
-**Re:** Follow-up to the 2026-05-26 triangulation note ([`Roadmapping/Author_Reports/2026-05_re_triangulation_followup_for_gill.md`](2026-05_re_triangulation_followup_for_gill.md)); Scope 1 of [issue #54](https://github.com/temoTxt/PyPhysics/issues/54).
+**Re:** Follow-up to the 2026-05-26 triangulation note ([`Roadmapping/Author_Reports/2026-05_re_triangulation_followup_for_gill.md`](2026-05_re_triangulation_followup_for_gill.md)); Scope 1 of [issue #54](https://github.com/temoTxt/PyPhysics/issues/54). The *Progress update* section reports findings from three parallel research branches (issues [#64](https://github.com/temoTxt/PyPhysics/issues/64), [#65](https://github.com/temoTxt/PyPhysics/issues/65), [#66](https://github.com/temoTxt/PyPhysics/issues/66) under master [#67](https://github.com/temoTxt/PyPhysics/issues/67)). Two of the three branches have now reached definitive verdicts: **Candidate 2 halted at Outcome D** (the published §III.D NR-expansion is structurally inadequate to pin $r_e$ at any scale where the expansion is valid), and **Candidate 3 halted at Outcome C-as-published** (the closed-form Schwinger match is *algebraically forced* by the back-fit definition of the triangulated cutoff, not evidence of intentional encoding). Candidate 1 is live, scaffolded, and on a clear next-step plan.
 
 ---
 
@@ -59,10 +59,74 @@ We did not see this identification in the published DRQM I §III.D text. If it i
 
 ---
 
+## Progress update (2026-05-26 PM) — three parallel research branches
+
+Since the morning version of this note went out, three parallel research branches (issues [#64](https://github.com/temoTxt/PyPhysics/issues/64), [#65](https://github.com/temoTxt/PyPhysics/issues/65), [#66](https://github.com/temoTxt/PyPhysics/issues/66) under master [#67](https://github.com/temoTxt/PyPhysics/issues/67)) have begun attempting the three candidates. Per Crocco compliance the work below is *substantive AI* with `<!-- TODO: human reviews and fills in -->` markers throughout the per-branch state logs; the headline findings are summarised here for your morning read. Full per-iteration state logs (math, Wolfram MCP outputs, blockers) are committed under `.dev/research/STATE.md` on each branch.
+
+### Candidate 1 (Proper-time self-energy, [#64](https://github.com/temoTxt/PyPhysics/issues/64)) — *live; conceptual re-framing of $r_e$ + baseline scaffolded*
+
+Four iterations: read DRQM I §II–III, *The Classical Electron Problem*, and the Bethe–Salpeter Lamb-shift document; scaffolded `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_self_energy.wl` with Cell 1 (baseline standard-QED on-shell $\delta m/m = (3\alpha/(4\pi))[\log(\Lambda^2/m^2) + 1/2]$, Bjorken–Drell Eq. 10.59, verified by Wolfram MCP).
+
+The headline finding is **conceptual rather than computational**: the existing Lamb-shift calculation uses the textbook non-relativistic Bethe (1947) UV cutoff $K \sim mc^2 \Leftrightarrow \lambda_C = \hbar/(mc)$, while the triangulated $r_e \sim r_0/2 = (\alpha/2)\lambda_C$ — **parametrically smaller than the Bethe cutoff by $\alpha/2 \approx 3.65\times 10^{-3}$**. So $r_e$ is not a UV-loop cutoff at all; it sits at the *Coulomb-binding* scale, not the Compton scale. Physically, at $r = r_0/2$, the Coulomb potential $|V_0| = 2mc^2$ — exactly the pair-production threshold. The natural re-reading: $r_e$ marks the radius inside which the bound-state wavefunction picks up virtual $e^+ e^-$ contributions and the §III.D small-component elimination $\psi_2 = c(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\psi_1/(\lambda - V_0 + mc^2)$ stops being a valid approximation.
+
+Technical direction: the (II.3) "potential-in-the-mass" form is the cleanest kernel — no $V\boldsymbol\alpha\!\cdot\!\boldsymbol\pi/(mc)$ or $\boldsymbol\alpha\!\cdot\!\nabla V/(mc)$ pieces (those arise from operator non-commutativity in the (II.1) Dirac form), so the kernel reduces to Pauli kinetic + $V^2/(2mc^2)$.
+
+**Heuristic sanity check (iter 4).** The naive identification $\Lambda = \hbar/(r_e c)$ at $r_e/r_0 = 0.5$ gives $\log(\Lambda^2/m^2) = 11.23$ and $\delta m/m = 2.04\times 10^{-2}$, vs the natural one-loop coupling $\alpha/(4\pi) = 5.81\times 10^{-4}$ — a $35\times$ overestimate. Two *distinguishable* resolutions queued for Cells 2–3: **(i)** the framework supplies $\Lambda \sim \hbar/(b\,r_e)$ with $b > c$ for bound states (suppresses the log), or **(ii)** the Bethe-log replacement $\log(K/\langle\Delta E\rangle)$ at fixed photon-loop measure (sum-over-states log, parametrically smaller). Distinguishable because (i) shifts $r_e/r_0$ via $\log(b/c)$ at fixed $\langle p^2\rangle$, while (ii) shifts $r_e/r_0$ via the Bethe-log replacement at fixed photon-loop measure. **Branch status: live, on plan. Outcome-matrix branch still open; Cells 2–3 expected to discriminate (i)/(ii) and produce a numerical $r_e/r_0$.**
+
+### Candidate 2 (Variational route, [#65](https://github.com/temoTxt/PyPhysics/issues/65)) — *HALTED at Outcome D: the published NR-expansion $K_D$ is structurally inadequate to pin $r_e$*
+
+Four iterations enumerated seven closure conditions (only the mass-renormalisation condition #7 was both *framework-internal* and *potentially of sufficient precision*), then pursued it under the textbook working hypothesis $\Delta E_{\rm bind}^{\rm framework} = \langle V_0\rangle$, $\Delta E_{\rm SE}^{\rm framework} = 0$, with trial $\psi_1 = N e^{-r/aa}$ on cutoff-domain $[r_e, \infty)$. The closure equation (Wolfram MCP, dimensionless $\hat{a} = aa/r_0$, $\hat{r}_e = r_e/r_0$):
+
+$$E_{\rm dim}(\hat{a}, \hat{r}_e) \;=\; \frac{1}{2\alpha^2 \hat{a}^2} \;-\; \frac{\hat{a} + 2\hat{r}_e - 1}{\hat{a}^2 + 2\hat{a}\hat{r}_e + 2\hat{r}_e^2} \;=\; 0.$$
+
+The diagnostic table (Wolfram MCP, $\alpha = 1/137.035999$) shows the **structural inadequacy**:
+
+| Regime | $\hat{a}$ | $\hat{r}_e$ | $E_{\rm dim}$ | Verdict |
+|---|---|---|---|---|
+| Electron-radius scale | $1$ | $0.5$ | $+9389.0$ | Kinetic dominates by 4 orders; **NR expansion invalid** |
+| Bohr scale | $1/\alpha^2 \approx 18\,778$ | $0.5$ | $-2.662\times 10^{-5}$ | Matches $-\alpha^2/2$; **cutoff invisible** |
+| Bohr scale, no cutoff | $1/\alpha^2$ | $0$ | $-2.662\times 10^{-5}$ | Identical to $\hat{r}_e = 0.5$ to 10 sig figs |
+
+At the cutoff scale, both expansion parameters of (III.4) — $V_0/(mc^2)$ and $\hbar/(mc\,r)$ — are $O(1)$, so the expansion is invalid. At the Bohr scale where the expansion *is* valid, the trial mass-density $r^2 e^{-2r/aa}$ peaks at $r \sim aa \sim 18\,000 r_0$, suppressing the cutoff coupling by $\alpha^2$. **There is no scale at which both (a) the NR expansion is valid AND (b) the cutoff couples meaningfully to the closure**, so the published expanded $K_D$ cannot pin $r_e$. **Branch HALTED, Outcome D, BLOCKED.** Two specific clarifications would unblock: (1) a framework-internal $\Delta E_{\rm SE}^{\rm framework}(r_e)$ at the cutoff scale, or (2) redirect to the *un-expanded* full $H_D$ under a radial-cutoff regulator (a 5–10 iteration arc, distinct from Route X as defined; not initiated without author endorsement). See Question 2 below.
+
+### Candidate 3 (Closed-form Schwinger, [#66](https://github.com/temoTxt/PyPhysics/issues/66)) — *HALTED at Outcome C-as-published: the KK + LR + KF residual match is algebraically forced by the back-fit, not evidence of intentional encoding*
+
+Four iterations executed the empirical-test path. At 20-digit Wolfram precision with $\alpha = 7.297\,352\,569\,3 \times 10^{-3}$:
+
+| Quantity | Value |
+|---|---|
+| $r_e/r_0$ closed-form $(2-\alpha/(2\pi))/(4+\alpha/\pi)$ | $0.499\,419\,632\,156\,99$ |
+| $r_e/r_0$ triangulated (PR #62) | $0.499\,420\,509\,912\,83$ |
+| $\Delta g_e^{\rm obs} = g_e^{\rm meas} - g_e^{\rm Schwinger}$ | $+3.5151 \times 10^{-6}$ |
+| Karplus–Kroll two-loop $+2 C_2 (\alpha/\pi)^2$, $C_2 = 0.328\,478\,965\,579$ | $+3.5446 \times 10^{-6}$ |
+| Laporta–Remiddi three-loop $-2 C_3 (\alpha/\pi)^3$, $C_3 = 1.181\,241\,456\,587$ | $-2.961 \times 10^{-8}$ |
+| Kinoshita-Fukuda four-loop $+2 C_4 (\alpha/\pi)^4$, $C_4 \approx 1.9106$ | $+1.1 \times 10^{-10}$ |
+| Sum (KK + LR + KF) | $+3.51511 \times 10^{-6}$ |
+| Residual: $\Delta g_e^{\rm obs} - \Delta g_e^{\rm pred,\,all}$ | $-9.7 \times 10^{-12}$ |
+
+**The verdict.** Iter 3 read DRQM I §III.D Eqs. (III.18)–(III.23) line-by-line and confirmed that **the as-published §III.D derivation does *not* produce $r_e/r_0$ as a closed form in $\alpha$**: Eq. (III.22)'s numerical value $r_e = 0.499857150068631 \cdot r_0$ is presented as an empirical fact (the uni-observable numerical search you confirmed on 2026-05-25), not derived. Consequently the $10^{-11}$ agreement above is **algebraically forced** by the back-fit definition of $r_e^{\rm triang}$: any cutoff satisfying $g_r(r) = g_e^{\rm meas}$ will, when subtracted from the closed-form one-loop value, yield via $dg_r/dr$ propagation a $\Delta g_e$ identical to the all-orders-QED-beyond-one-loop content of measured $g_e$ — i.e., to KK + LR + KF. The KK-consistency observation is *necessary* but *not sufficient* for intentional encoding, and the as-published apparatus does not supply the sufficient piece.
+
+**Branch HALTED, Outcome C-as-published. Finding 2 stays ⚠ CHARACTERISED.** The canonical record is now committed as a new subsection of [`Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md`](../Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md) §III.D ("Schwinger identification — empirical residual test"). Path to outcome B (intentional Schwinger encoding $\Rightarrow$ Finding 2 ✅) now passes solely through a first-principles rederivation that *produces* the closed-form as a derived identity — i.e., through Candidate 1 if it lands on the closed form, or through a sub-route of Candidate 2 if author input redirects to the un-expanded full $H_D$.
+
+### Consolidated questions for you
+
+After this overnight run, two questions remain load-bearing (the third has been resolved by the iter-3 §III.D line-by-line read). Even one answer accelerates the remaining live branch:
+
+1. **(Candidate 1, live branch)** Does the framework specify a proper-time photon propagator form? Two natural candidates surface: (i) Schwinger proper-time with $b$ replacing $c$ in the dispersion, $k^2 = (\omega/b)^2 - \mathbf{k}^2$; (ii) standard Feynman propagator with the $b/c$ conversion absorbed into the source coupling rather than the propagator. The two give different numerical $r_e/r_0$ at the same order in $\alpha$, and the iter-4 sanity check shows the difference is at the $\log(b/c)$ level — discriminable.
+2. **(Candidate 2, HALTED → unblocking)** The published expanded $K_D$ of (III.4) is structurally inadequate to pin $r_e$, as the diagnostic table above shows. Two unblocking moves: **(2a)** does the framework specify a $\Delta E_{\rm SE}^{\rm framework}(r_e)$ at the cutoff scale that we should have been carrying in $\langle K_D\rangle = m_e c^2 + \Delta E_{\rm bind} + \Delta E_{\rm SE}$? Or **(2b)** is the variational determination intended to operate on the *un-expanded* full $H_D$ under a radial-cutoff regulator (radial-Dirac eigenvalue problem on $r \in [r_e, \infty)$) rather than the expanded $K_D$ of (III.4)? The un-expanded route is a 5–10 iteration arc we have not begun without your endorsement.
+
+The original Question 3 from earlier today (does §III.D derive $r_e/r_0$ as a closed form in $\alpha$?) was answered by the iter-3 line-by-line read: **as published, §III.D does not derive a closed form** — the numerical value is an empirical input from your uni-observable numerical search. The remaining open piece on the closed-form-encoding question is whether an in-progress or planned rederivation (per Candidate 1, or a redirected Candidate 2) would *produce* the closed form. That is now the substantive thread for the master tracker #67.
+
+<!-- TODO: human reviews and fills in -->
+
+---
+
 ## Closing — how this thread sits
 
 We expect the most likely outcome, given your 2026-05-25 guidance and the campaign's posture, is that none of these three candidates rises above the triangulated cutoff in usefulness for the campaign's current scope. The triangulated value is empirically well-constrained at the framework's precision floor (the joint-fit consistency across six manifestations of the $(g_s/-2)^n \times \text{textbook}$ scaling), agrees with measurement at that floor, and is sufficient for the campaign's downstream work without a first-principles derivation behind it. The Scope 1 thread is therefore non-urgent — it remains open as a "would-be-nice-to-have" for future framework development, not as a load-bearing item. Candidate 3's Schwinger closed-form identification — if it is intentional in the framework's construction — may already be the answer.
 
 If one of the three candidates does look natural to you, we would be glad to pursue it via Mathematica symbolic calculation with your guidance on the framework's internal logic. If none of them looks natural, the triangulated value stands as the campaign's $r_e$ disposition and Scope 1 can be closed without a derivation. Either way, our position is that the triangulation has confirmed the $(g_s/-2)^n \times \text{textbook}$ structure is self-consistent under a single cutoff at the framework's precision floor; that is the campaign's current honest-scope position on the $r_e$ question.
+
+The *Progress update* above adds three substantive pieces of physical content on top of the morning version. First, the **re-framing of $r_e$** from "UV cutoff" to "Coulomb-binding scale at the pair-production threshold" (Candidate 1) — a statement about what $r_e$ *is* in the framework's small-component-elimination apparatus, independent of which derivation route eventually settles its first-principles status, and worth your read even if Scope 1 closes without a derivation. Second, the **structural inadequacy of the published expanded $K_D$ for variational $r_e$ determination** (Candidate 2 → Outcome D) — at no scale do (a) the validity of the (III.4) NR expansion and (b) meaningful coupling of the cutoff to the closure equation coexist. Third, the **algebraically-forced character of the Schwinger closed-form agreement** (Candidate 3 → Outcome C-as-published) — the $10^{-11}$ KK + LR + KF residual match is necessary but not sufficient for intentional encoding, and the as-published §III.D does not provide the sufficient piece. The disposition of Scope 1 now turns on the live Candidate 1 branch (and on whether Candidate 2 redirects to the un-expanded full-$H_D$ arc with your endorsement).
 
 — Trey
