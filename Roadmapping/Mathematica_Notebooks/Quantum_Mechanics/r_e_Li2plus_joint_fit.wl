@@ -101,12 +101,28 @@ betheBracket[zz_, cc_] := Log[1/(zz*aa)^2] + cc;   (* Z^4 prefactor x [log(1/(Z 
 (*   with the standard residual; not an independent corroboration.                                 *)
 
 (* ============================================================================================ *)
-(* Section 3 -- Observable #3: 2P_3/2 - 2P_1/2 fine structure of Li2+    [STUB -- next iters]    *)
+(* Section 3 -- Observable #3: 2P_3/2 - 2P_1/2 fine structure of Li2+    [VERIFIED 2026-05-27]   *)
 (* ============================================================================================ *)
-(* Z-scaling: pure Z^4, delta E = m_e c^2 (Z alpha)^4 / 32 at n=2 -> ~887 GHz at Z=3.            *)
-(*   GENUINE r_e discriminator via anomalous correction ((g_s-2)/2) delta E_leading.              *)
-(*   PROVENANCE: brief's "~7367 MHz (Bayfield/Riis era)" is the wrong ion (helium-like Li+,       *)
-(*   2 3P intervals), NOT hydrogenic Li2+ (~887 GHz).  Source a real hydrogenic measurement.      *)
+(* SUBSTANTIVE CHOICE.  Leading Dirac delta E = m_e c^2 (Z alpha)^4 / 32 at n=2 (pure Z^4, no    *)
+(*   Bethe-log).  Anomalous correction ((g_s-2)/2) delta E_leading = a_e * delta E_leading, with  *)
+(*   a_e from the Z-universal cutoff.  GENUINE r_e discriminator in PRINCIPLE, but since the       *)
+(*   cutoff is Z-invariant (gating result) the (Z-i) and (Z-ii) readings coincide.                *)
+
+fsMHz[zz_] := mec2eV*(zz*aa)^4/32*eV2MHz;   (* leading Dirac 2P_3/2-2P_1/2, MHz *)
+
+(* Run:                                                                                           *)
+(*   Print["leading Dirac 2P FS (Z=3) = ", fsMHz[3], " MHz"];                                     *)
+(*   anomLi = ae*fsMHz[3]; Print["anomalous correction = ", anomLi, " MHz"];                      *)
+(*   Print["FRAMEWORK Li2+ 2P FS total = ", fsMHz[3] + anomLi, " MHz"];                           *)
+
+(* RESULT (Wolfram MCP, 2026-05-27):                                                              *)
+(*   leading Dirac 2P FS (Z=1) = 10 949 MHz  (matches BS-14.2)                                    *)
+(*   leading Dirac 2P FS (Z=3) = 886 892 MHz = 886.89 GHz  (ratio exactly Z^4 = 81)              *)
+(*   anomalous correction      = 1 028.5 MHz  (a_e x leading, Z-universal cutoff)                 *)
+(*   FRAMEWORK Li2+ 2P FS      = 887 920 MHz = 887.92 GHz                                          *)
+(*   PROVENANCE: brief's "~7367 MHz (Bayfield/Riis era)" is the WRONG ion (helium-like Li+ 2 3P  *)
+(*   intervals), NOT hydrogenic Li2+ (~888 GHz).  #3 comparison is prediction-without-valid-      *)
+(*   measurement until a genuine hydrogenic 7Li2+ 2P fine-structure measurement is sourced.        *)
 
 (* ============================================================================================ *)
 (* Section 4 -- Observable #4: Li-7 1s hyperfine splitting               [STUB -- next iters]    *)

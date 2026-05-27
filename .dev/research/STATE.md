@@ -132,3 +132,17 @@
 - **Measurement provenance recorded this iteration:** #2 = Schiffer 1995 *PRL* **74** 2188, 62,765(21) MHz — VALID, the clean comparison.
 - **Next:** draft §Li-3 (fine structure). Extend notebook Section 3: compute leading-Dirac Li²⁺ 2P₃/₂–2P₁/₂ = m_e c²(Zα)⁴/32 at Z=3 (≈887 GHz, Wolfram-verify) + the anomalous correction ((g_s−2)/2)·ΔE_leading at the Z-universal cutoff (≈1028 MHz). Record the 🔴 measurement-provenance issue (brief's 7367 MHz is helium-like Li⁺, not hydrogenic Li²⁺) → #3 comparison likely prediction-without-valid-measurement, candidate BLOCKED. Then §Li-4 hyperfine, then §Li-5 joint χ²/verdict.
 - **Status:** READY.
+
+## Iteration 8 — 2026-05-27 — compute + draft §Li-3 fine structure (Wolfram-verified)
+
+**Advanced:** Extended notebook Section 3 (fixed a units slip — eV2MHz already gives MHz, no extra /10⁶) and drafted the full §Li-3 result section + results-table row.
+
+- **Wolfram-verified (2026-05-27):** leading Dirac 2P₃/₂–2P₁/₂ = m_e c²(Zα)⁴/32: Z=1 = 10,949 MHz (matches BS-§14.2); **Z=3 = 886,892 MHz = 886.89 GHz** (ratio exactly Z⁴=81, pure power law, no Bethe-log). Anomalous correction a_e × leading = 1,028.5 MHz. **Framework Li²⁺ 2P FS total = 887,920 MHz = 887.92 GHz.**
+- **🔴 #3 provenance CONFIRMED:** brief's "~7367 MHz" is *smaller* than hydrogen's 10,969 MHz — impossible under Z⁴ (must be ~81× larger). It is helium-like Li⁺ (two-electron 2³P intervals, Riis measured Li⁺), not hydrogenic Li²⁺. **#3 comparison BLOCKED** (prediction-without-valid-measurement).
+- **Verdict #3:** prediction ✅ (887.92 GHz); comparison BLOCKED. (Z-i)=(Z-ii) (cutoff Z-invariant — even though #3 is an r_e-engaging observable in principle, the readings coincide).
+- **Current observable focus:** #3 fine structure — prediction complete; measurement BLOCKED.
+- **Outcome-matrix:** **trending A, B ruled out.** #2 ✅ (clean); #1 ✅ pred / BLOCKED meas; #3 ✅ pred / BLOCKED meas; #4 pending. Pattern emerging: **two of the three r_e-engaging observables (#1, #3) have BLOCKED measurements** due to brief mis-provenance — the only clean comparison so far is the weak-discriminator #2.
+- **(Z-i)/(Z-ii) differences:** none anywhere (cutoff Z-invariant by gating result); (Z-ii) is "not derivable" throughout.
+- **Measurement provenance recorded this iteration:** #3 brief value (7367 MHz) = helium-like Li⁺, DISCARD; framework prediction 887.92 GHz recorded.
+- **Next:** draft §Li-4 (hyperfine). Extend notebook Section 4: compute the Z³-scaled ⁷Li²⁺ 1s Fermi-contact prediction (Z³ contact density × ⁷Li nuclear factors: I=3/2, μ≈3.2564 μ_N, g_I≈2.171, reduced mass) × the (g_s/−2)=1.00116 anomaly factor; Wolfram-verify against the known ⁷Li²⁺ 1s HFS ≈11.8 GHz; reconcile brief's ~12.7 GHz/Beckmann-1974 source. Then §Li-5: joint χ² + Z-axis verdict (with all four predictions in) → STOP criterion likely met (verdict recordable; #1/#3 measurement-BLOCKED noted for Tepper).
+- **Status:** READY.

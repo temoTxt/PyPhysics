@@ -26,7 +26,7 @@ This is the structural opposite of the lepton axis. On the lepton axis ([PR #70]
 |---|---|---|---|---|
 | [§Li-1 — bound g-factor](#result-li-1--bound-electron-g-factor-of-li2-z3) | #1 g-factor | binding `(Zα)²` + anomaly | **prediction drafted; measurement BLOCKED** | headline; only non-back-fit Z-test |
 | [§Li-2 — Lamb shift](#result-li-2--lamb-shift-of-li2-z3) | #2 2S–2P | `Z⁴` × shrinking Bethe-log | **✅ at Bethe-estimate floor** | weak discriminator (g=2-symmetric) |
-| §Li-3 — fine structure | #3 2P₃/₂–2P₁/₂ | pure `Z⁴` | stub | genuine `r_e` discriminator; measurement provenance flagged |
+| [§Li-3 — fine structure](#result-li-3--fine-structure-of-li2-z3) | #3 2P₃/₂–2P₁/₂ | pure `Z⁴` | **prediction ✅; measurement BLOCKED** | wrong-ion in brief; ~887.92 GHz predicted |
 | §Li-4 — hyperfine | #4 ⁷Li 1s HFS | `Z³` × nuclear | stub | genuine `r_e` discriminator |
 | §Li-5 — Z-axis verdict | joint χ² | — | stub | cutoff Z-universal / scaled / back-fit |
 
@@ -103,9 +103,42 @@ Result: framework Li²⁺ Bethe-estimate ≈ 60 282 MHz (residual −2 483 MHz, 
 
 <!-- TODO: human reviews and fills in — confirms (a) the Schiffer 1995 measurement is the correct #2 target, (b) the framework Bethe-estimate prediction ~60 282 MHz with ~4% residual is the right reproduction-by-construction number, and (c) the weak-discriminator framing (r_e below the precision floor at Z=3) is faithfully recorded. -->
 
-### Result §Li-3 — 2P₃/₂–2P₁/₂ fine structure of Li²⁺ (Z=3) — *stub*
+### Result §Li-3 — 2P₃/₂–2P₁/₂ fine structure of Li²⁺ (Z=3) <a id="result-li-3--fine-structure-of-li2-z3"></a>
 
-*To be drafted.* Z-scaling: pure `Z⁴`, `ΔE = m_e c²(Zα)⁴/32` at n=2 ⇒ ~`887` GHz at Z=3. Genuine `r_e` discriminator via `((g_s−2)/2)·ΔE_leading`. **Provenance flag:** the brief's "~7367 MHz (Bayfield/Riis era)" is the wrong ion (helium-like Li⁺ 2³P intervals), not hydrogenic Li²⁺ (~887 GHz); a real hydrogenic measurement must be sourced.
+**Source:** Sommerfeld–Dirac fine-structure formula via [BS-§14.2](03_FineStructure.md); anomaly from DRQM I §III.D. *Substantive AI.*
+
+**As measured:** *(no valid measurement — see provenance).* The brief cited "~`7367` MHz (Bayfield/Riis era)." **This is the wrong ion** (see provenance note); a genuine hydrogenic ⁷Li²⁺ 2P fine-structure measurement (~`888` GHz scale) has not been sourced.
+
+**QED Z-expansion:** the Sommerfeld–Dirac 2P₃/₂–2P₁/₂ splitting is `ΔE_{FS} = m_e c²(Zα)⁴/(2n⁴) = m_e c²(Zα)⁴/32` at `n=2` — a **pure `Z⁴`** power law with **no Bethe-log** (cleaner than the Lamb shift). The anomalous-moment correction is `ΔE_{anom} = ((g_s−2)/2)·ΔE_{leading} = a_e·ΔE_{leading}`.
+
+**Framework prediction:** leading Dirac is formulation-independent (dual-Dirac FW reduction, [BS-§14.1](03_FineStructure.md)); the anomalous correction uses `a_e` from the **Z-universal cutoff**.
+
+- **(Z-i) / (Z-ii):** **identical** — although #3 is a genuine `r_e`-engaging observable *in principle*, the cutoff is Z-invariant (gating result), so the anomaly piece is the same Z=1 `a_e` at Z=3. No reading difference.
+
+**Wolfram MCP check** (`r_e_Li2plus_joint_fit.wl` Section 3, 2026-05-27):
+
+```text
+fsMHz[zz_] := mec2eV*(zz*aa)^4/32*eV2MHz;
+Print["leading Dirac 2P FS (Z=3) = ", fsMHz[3]];   (* 886 892 MHz = 886.89 GHz, ratio = Z^4 = 81 *)
+anomLi = ae*fsMHz[3];                                (* 1028.5 MHz *)
+Print["FRAMEWORK total = ", fsMHz[3] + anomLi];     (* 887 920 MHz = 887.92 GHz *)
+Result: framework Li²⁺ 2P FS = 887 920 MHz (886 892 leading + 1 028 anomalous) ✅
+```
+
+**🔴 Measurement-provenance finding.** The brief's "~`7367` MHz (Bayfield/Riis era)" is **smaller** than even the hydrogen value (`10 969` MHz), which is impossible under `Z⁴` scaling (the hydrogenic Li²⁺ splitting must be `~81×` larger, ≈ `888` GHz). The `7367` MHz figure refers to **helium-like Li⁺** (the two-electron `2³P` fine-structure intervals; Riis et al. measured Li⁺, not Li²⁺), not the hydrogenic single-electron Li²⁺ this branch targets. **The framework prediction (`887.92` GHz) is well-defined, but no valid hydrogenic measurement is available** — #3 is a **prediction-without-comparison** pending a sourced measurement (Tepper clarification requested).
+
+**Numerical comparison:**
+
+| Source | `ΔE_{FS}(2P₃/₂–2P₁/₂, ⁷Li²⁺)` | Note |
+|---|---|---|
+| Leading Dirac (`m_e c²(Zα)⁴/32`) | `886 892` MHz | formulation-independent |
+| + anomalous (`a_e × leading`) | `+1 028` MHz | Z-universal cutoff |
+| **Framework total** | **`887 920` MHz (`887.92` GHz)** | prediction |
+| Brief's "~7367 MHz" | — | **wrong ion (helium-like Li⁺), discard** |
+
+**Verdict:** prediction ✅ (Wolfram-verified, `887.92` GHz); comparison **BLOCKED** pending a genuine hydrogenic ⁷Li²⁺ 2P fine-structure measurement. As with #1, the cutoff does not actually distinguish readings (Z-invariant), so even a valid measurement would test back-fit self-consistency, not discrimination from standard QED.
+
+<!-- TODO: human reviews and fills in — confirms (a) the framework prediction 887.92 GHz, (b) the provenance finding that the brief's ~7367 MHz is helium-like Li⁺ not hydrogenic Li²⁺, and (c) whether a valid hydrogenic ⁷Li²⁺ 2P fine-structure measurement exists. -->
 
 ### Result §Li-4 — ⁷Li 1s hyperfine splitting (Z=3) — *stub*
 
