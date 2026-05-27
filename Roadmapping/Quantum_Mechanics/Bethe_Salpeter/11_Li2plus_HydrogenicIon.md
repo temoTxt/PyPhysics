@@ -28,7 +28,7 @@ This is the structural opposite of the lepton axis. On the lepton axis ([PR #70]
 | [§Li-2 — Lamb shift](#result-li-2--lamb-shift-of-li2-z3) | #2 2S–2P | `Z⁴` × shrinking Bethe-log | **✅ at Bethe-estimate floor** | weak discriminator (g=2-symmetric) |
 | [§Li-3 — fine structure](#result-li-3--fine-structure-of-li2-z3) | #3 2P₃/₂–2P₁/₂ | pure `Z⁴` | **prediction ✅; measurement BLOCKED** | wrong-ion in brief; ~887.92 GHz predicted |
 | [§Li-4 — hyperfine](#result-li-4--hyperfine-of-li2-z3) | #4 ⁷Li 1s HFS | `Z³` × nuclear | **prediction ✅; measurement BLOCKED** | brief value off 2.35×; ~29.85 GHz predicted |
-| §Li-5 — Z-axis verdict | joint χ² | — | stub | cutoff Z-universal / scaled / back-fit |
+| [§Li-5 — Z-axis verdict](#result-li-5--z-axis-verdict) | joint χ² | — | **Branch A; B excluded** | cutoff Z-universal by construction |
 
 ---
 
@@ -179,6 +179,29 @@ Result: 3He+ check = 8656.7 MHz (known 8665.6 MHz, 0.1% — method validated) �
 
 ---
 
-### §Li-5 — Z-axis verdict — *stub*
+### §Li-5 — Z-axis verdict <a id="result-li-5--z-axis-verdict"></a>
 
-*To be drafted once #2–#4 predictions are in.* Expected disposition from the gating result: **Branch A with the back-fit caveat** — the cutoff is Z-universal by the framework's algebra (Branch B excluded), and the predictions that have valid measurements reproduce them at the framework precision floor. The Z-axis adds the structural confirmation that the lepton-axis A/C tension recurs unchanged: where the framework reduces to textbook QM (binding, Bethe-log, Fermi contact), it gives textbook predictions at every Z; the anomaly back-fit is Z-stable because `a_e` is a Z-independent free-electron property.
+**Source:** synthesis of §§Li-1–Li-4 + the gating structural result. *Substantive AI.*
+
+**Summary of the four predictions** (all Wolfram-verified; companion notebook Sections 1–4):
+
+| # | Observable | Z-scaling | Framework prediction | Valid measurement? |
+|---|---|---|---|---|
+| 1 | bound g-factor | binding `(Zα)²` + anomaly | `g = 2.00200` | **no** — brief value is a Z≈8 number |
+| 2 | 2S–2P Lamb shift | `Z⁴` × shrinking Bethe-log | `60 282` MHz | **yes** — `62 765(21)` MHz ✅ (~4% residual) |
+| 3 | 2P fine structure | pure `Z⁴` | `887.92` GHz | **no** — brief value is helium-like Li⁺ |
+| 4 | ⁷Li 1s hyperfine | `Z³` × nuclear | `29.85` GHz | **no** — brief value off `2.35×` |
+
+**Joint χ² at Z=3 — not meaningfully computable.** A joint fit for a Li²⁺-optimal `r_e/r_0` requires observables that both (a) engage the cutoff and (b) have valid measurements. Of the four: #2 has a valid measurement but **does not engage the cutoff** (`g=2`-symmetric, weak discriminator); #1/#3/#4 engage the cutoff but **lack valid measurements** in the brief (three mis-provenanced values — see §§Li-1/Li-3/Li-4). The intersection is empty, so no Z=3 joint optimum can be extracted. This is a **measurement-sourcing limitation, not a framework limitation** — all four framework predictions are computed and verified.
+
+**Z-axis verdict — Branch A (cutoff Z-universal); Branch B ruled out structurally; A-vs-C indistinguishable.**
+
+1. **The cutoff is Z-universal — Branch A — and this is forced by the framework's own algebra, not fitted.** The (III.22) closed form `r_e/r_0 = (2−a_e)/(2(2+a_e))` depends only on the free-electron anomaly `a_e` and `r_0 = e²/(m_e c²)`, neither of which depends on `Z`. The same electron radiates at every `Z`, so `r_e/r_0` is identical at `Z=1` and `Z=3`. **Branch B (a derivable Z-scaling) is excluded** because no `Z` appears anywhere in the cutoff structure.
+
+2. **Li²⁺ adds no new empirical constraint on the cutoff** (answering the brief's cross-particle cross-check). The lepton-axis muon test ([PR #70](https://github.com/temoTxt/PyPhysics/pull/70)) was a *meaningful* constraint (`>57`kσ exclusion of lepton-universality) **because changing the particle changes `a_ℓ` and `r_0^ℓ`** — there was something to constrain. Changing `Z` changes *neither* `a_e` *nor* `r_0`, so the Z-axis is **structurally incapable of constraining the cutoff** the way the lepton axis did. There is no "Li²⁺ value of `r_e/r_0`" distinct from the electron's; the question is answered before any measurement is taken.
+
+3. **A-vs-C remains indistinguishable, exactly as on the lepton axis.** The one clean comparison (#2 Lamb shift) reproduces measurement by construction *without engaging the cutoff*; the three cutoff-engaging observables have no valid measurements. So Li²⁺ cannot discriminate "the framework's cutoff has independent content" (A) from "the cutoff is a Z-stable back-fit with no content distinct from textbook QED" (C). Where the framework reduces to textbook QM (Dirac binding, Bethe-log self-energy, Fermi contact), it gives textbook predictions at every `Z`; the anomaly back-fit is Z-stable precisely because `a_e` is a Z-independent free-electron property.
+
+**Bottom line:** the framework's cutoff is **Z-universal by construction** (Branch A, Branch B excluded). The Z-axis confirms — rather than independently tests — the lepton-axis finding: the dimensionless cutoff is a property of the *electron* (via `a_e`), invariant under nuclear charge. The strongest honest statement is structural, not empirical: *Li²⁺ cannot add a cutoff constraint because there is no Z-dependence in the cutoff to constrain.* Completing the empirical comparisons for #1/#3/#4 requires correctly-sourced hydrogenic ⁷Li²⁺ measurements (flagged for author/orchestrator follow-up).
+
+<!-- TODO: human reviews and fills in — confirms (a) the Z-universal (Branch A) verdict with Branch B structurally excluded, (b) the finding that Li²⁺ adds no new cutoff constraint (the Z-axis is structurally unlike the lepton axis), (c) the A-vs-C indistinguishability, and (d) the meta-finding that three of the brief's four measurement values are mis-provenanced and need re-sourcing. -->
