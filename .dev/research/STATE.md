@@ -74,3 +74,20 @@
 - **Outcome-matrix:** still not determinable, but the test is now reframed: **comparator is QED-theory (Pachucki 2023), not direct measurement** — record as a verdict caveat. Out-of-sample A/B/C discrimination still holds (Z=3 not in the six-observable fit).
 - **(Z-i)/(Z-ii):** unchanged from iter 2.
 - **Status:** READY.
+
+## Iteration 4 — 2026-05-27 — scaffold `r_e_Li2plus_hyperfine.wl` (Fermi-contact apparatus, Z=3 + I=3/2)
+
+**What advanced:** Created `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Li2plus_hyperfine.wl` (new, distinct from other branches' notebooks). Four single-line MCP-ready cells (Wolfram gotchas obeyed — no bare `V`/`e`, descriptive symbols, `;`-joined):
+
+- **Cell 1 — H 1s sanity:** `dnu_H = (4/3) gP (me/Mp) alpha^4 (me c²/h)`, gP=5.5856946; expect ~1418–1421 MHz (reproduces the 21-cm baseline).
+- **Cell 2 — Li/H scaling ratio (the substantive core):** textbook splitting `dnu ~ mu_I(2I+1)/(2I) Z³`, so `dnu_Li/dnu_H = [muLi(2ILi+1)/(2ILi)]/[muP(2IP+1)/(2IP)] × Z³`. Hand-computed: nucFactorLi = 3.256427×(4/3) = 4.3419; nucFactorP = 2.79285×2 = 5.5857; ratio 0.7773 × 27 = **20.99**; × 1420.4058 MHz → **textbook Li²⁺ 1s HFS ≈ 29 810 MHz ≈ 29.8 GHz** (g_s=-2 baseline).
+- **Cell 3 — framework (g_s/-2)¹ correction:** gsTri=-2.00231930436 at r_e/r_0=0.4994205099128317 → factor 1.001160 → **framework prediction ≈ 29 845 MHz**.
+- **Cell 4 — I=3/2 angular structure (substantive-AI tag):** S=1/2⊗I=3/2 → F=1,2; I·S eigenvalues F=2:+3/4, F=1:−5/4; headline F=2↔1 interval = 2a = (I+½)a. This is the explicit I=1/2→3/2 extension of BS-§22's machinery.
+
+**Discrepancy resolved (analytically, pending MCP confirm):** the brief's seed **12 732 MHz is NOT the hydrogenic Li²⁺ value** — the Fermi-contact scaling unambiguously gives ~29.8 GHz. 12 732 MHz is a different Li system (Li⁺ 1s2s³S₁ or neutral-Li manifold). Recorded.
+
+- **Current observable focus:** #4 Li-7 1s hyperfine.
+- **Next:** execute Cells 1–4 via Wolfram MCP to get exact numerics (confirm H sanity ~1420 MHz, textbook ~29.8 GHz, framework ~29.85 GHz, angular factor = 2a). Then fetch Pachucki 2023 Table VII for the exact QED-theory comparator to compute the residual.
+- **Outcome-matrix:** still not finalized (need MCP exact value + Pachucki comparator), but provisional reading: since the (g_s/-2) correction is only +0.116% and the cutoff is held universal (Z-i), if the framework's 29.85 GHz matches Pachucki's QED comparator within the textbook-leading-g_s floor → **branch A** (universal cutoff survives the out-of-sample Z=3 test). Confirm next iters.
+- **(Z-i)/(Z-ii):** (Z-i) prediction now numerically pinned (~29 845 MHz). (Z-ii) Z-scaled reading still needs a framework Z-running prescription — branch-D risk persists if absent.
+- **Status:** READY.
