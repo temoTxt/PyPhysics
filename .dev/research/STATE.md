@@ -146,3 +146,18 @@
 - **Measurement provenance recorded this iteration:** #3 brief value (7367 MHz) = helium-like Li⁺, DISCARD; framework prediction 887.92 GHz recorded.
 - **Next:** draft §Li-4 (hyperfine). Extend notebook Section 4: compute the Z³-scaled ⁷Li²⁺ 1s Fermi-contact prediction (Z³ contact density × ⁷Li nuclear factors: I=3/2, μ≈3.2564 μ_N, g_I≈2.171, reduced mass) × the (g_s/−2)=1.00116 anomaly factor; Wolfram-verify against the known ⁷Li²⁺ 1s HFS ≈11.8 GHz; reconcile brief's ~12.7 GHz/Beckmann-1974 source. Then §Li-5: joint χ² + Z-axis verdict (with all four predictions in) → STOP criterion likely met (verdict recordable; #1/#3 measurement-BLOCKED noted for Tepper).
 - **Status:** READY.
+
+## Iteration 9 — 2026-05-27 — compute + draft §Li-4 hyperfine (Wolfram-verified, ³He⁺-validated)
+
+**Advanced:** Extended notebook Section 4 and drafted the full §Li-4 result section + results-table row. **All four observable predictions are now computed and Wolfram-verified.**
+
+- **Wolfram-verified (2026-05-27):** scaling method `Z³ × μ_I(2I+1)/(2I)` **validated on ³He⁺** (predicts 8656.7 MHz vs known 8665.6 MHz, 0.1%). Nuclear+spin factor ratio ⁷Li/H = 0.7773. **Framework ⁷Li²⁺ 1s HFS = 29,811 MHz (leading) → 29,846 MHz (×anomaly) = 29.85 GHz.**
+- **🔴 #4 provenance finding (THIRD bad brief value):** brief's "~12.7 GHz (Beckmann 1974)" is off by **2.35×** from the ³He⁺-validated prediction (29.85 GHz). Beckmann 1974 is a nuclear-moment paper, not a Li²⁺ HFS measurement. #4 comparison BLOCKED pending a valid measurement.
+- **Verdict #4:** prediction ✅ (29.85 GHz, ³He⁺-validated); comparison BLOCKED. (Z-i)=(Z-ii) (cutoff Z-invariant).
+- **⚠ META-FINDING (load-bearing for the orchestrator/Tepper):** **three of the brief's four measurement values are mis-provenanced** — #1 (Z≈8 value, Sturm 2014 = ¹²C⁵⁺ paper), #3 (helium-like Li⁺ wrong ion), #4 (off 2.35×, Beckmann is nuclear-moment paper). Only **#2 (Schiffer 1995, 62,765 MHz) is a valid measurement.** The four framework PREDICTIONS are all computed and Wolfram-verified; the empirical COMPARISONS are blocked for #1/#3/#4 by the brief's measurement sourcing, not by any framework limitation.
+- **Current observable focus:** #4 hyperfine — prediction complete; measurement BLOCKED. **All four observables now checked (predictions in).**
+- **Outcome-matrix:** **A trending, B ruled out structurally.** #2 ✅ clean (Branch A). #1/#3/#4 predictions ✅ but comparisons measurement-BLOCKED.
+- **(Z-i)/(Z-ii) differences:** none anywhere — cutoff Z-invariant by gating result; (Z-ii) not derivable. This is the Z-axis verdict in nuce.
+- **Measurement provenance recorded this iteration:** #4 brief value (12.7 GHz, Beckmann 1974) = off 2.35×, suspect; framework 29.85 GHz (³He⁺-validated) recorded. Predictions summary: #1 g=2.00200, #2 Lamb 60,282 MHz, #3 FS 887.92 GHz, #4 HFS 29.85 GHz.
+- **Next (final substantive iteration):** §Li-5 — write the Z-axis verdict + joint-χ² discussion in `11_Li2plus_HydrogenicIon.md` and notebook Section 5: record that the joint χ² at Z=3 cannot be meaningfully computed (3 of 4 measurements invalid), but the **structural Z-axis verdict is firm: cutoff is Z-universal (Branch A), Branch B ruled out by the framework's algebra, A-vs-C indistinguishable (same as lepton axis #70) because the only clean comparison (#2) is a weak g=2-symmetric discriminator**. Then append the FINDINGS Finding-2 Z-extension update. After §Li-5 + FINDINGS update + verdict → **STOP criteria met** (all four checked + Z-axis verdict recorded; #1/#3/#4 measurement-sourcing flagged for Tepper/orchestrator).
+- **Status:** READY (entering final verdict iteration).

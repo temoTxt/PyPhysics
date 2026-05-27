@@ -125,11 +125,29 @@ fsMHz[zz_] := mec2eV*(zz*aa)^4/32*eV2MHz;   (* leading Dirac 2P_3/2-2P_1/2, MHz 
 (*   measurement until a genuine hydrogenic 7Li2+ 2P fine-structure measurement is sourced.        *)
 
 (* ============================================================================================ *)
-(* Section 4 -- Observable #4: Li-7 1s hyperfine splitting               [STUB -- next iters]    *)
+(* Section 4 -- Observable #4: Li-7 1s hyperfine splitting               [VERIFIED 2026-05-27]   *)
 (* ============================================================================================ *)
-(* Z-scaling: Z^3 (contact density) x nuclear factors.  7Li: I=3/2, mu ~ 3.2564 mu_N,           *)
-(*   g_I = mu/I ~ 2.171.  GENUINE r_e discriminator (Fermi contact linear in g_s).               *)
-(*   Brief target ~12.7 GHz (Beckmann 1974) order-of-magnitude OK (known 7Li2+ 1s HFS ~11.8 GHz).*)
+(* SUBSTANTIVE CHOICE.  Scale the H 1s HFS by Z^3 (contact density) x nuclear+spin factor        *)
+(*   f = mu_I (2I+1)/(2I), then x the anomaly factor (g_s/-2) from the Z-universal cutoff.        *)
+(*   METHOD VALIDATED on 3He+ (predicts 8656.7 MHz vs known 8665.6 MHz, 0.1%).                    *)
+
+nuH = 1420.405751768;  (* H 1s HFS, MHz (NIST 2020) *)
+muP = 2.792847351;     (* proton moment, mu_N *)
+fHF[muI_, ii_] := muI*(2*ii + 1)/(2*ii);   (* nuclear+spin factor *)
+
+(* Run:                                                                                           *)
+(*   fH = fHF[muP, 1/2];                                                                          *)
+(*   nuHe = 2^3*(fHF[2.127625, 1/2]/fH)*nuH;  Print["3He+ check = ", nuHe];  (* 8656.7 vs 8665.6 *)*)
+(*   nuLi = 3^3*(fHF[3.256427, 3/2]/fH)*nuH;  Print["7Li2+ leading = ", nuLi];                    *)
+(*   Print["7Li2+ x anomaly = ", nuLi*1.00116];                                                   *)
+
+(* RESULT (Wolfram MCP, 2026-05-27):                                                              *)
+(*   3He+ validation        = 8656.7 MHz  (known 8665.6 MHz, 0.1% -- method good)                 *)
+(*   nuclear+spin ratio Li/H = 0.7773                                                             *)
+(*   FRAMEWORK 7Li2+ 1s HFS = 29 811 MHz (leading, g_s=-2) -> 29 846 MHz x anomaly = 29.85 GHz   *)
+(*   PROVENANCE: brief's "~12.7 GHz (Beckmann 1974)" is off by 2.35x from the 3He+-validated      *)
+(*   Z^3 scaling (29.8 GHz).  Beckmann 1974 is a nuclear-moment paper; the 12.7 GHz figure is     *)
+(*   inconsistent with hydrogenic 7Li2+.  #4 comparison needs a valid measurement sourced.         *)
 
 (* ============================================================================================ *)
 (* Section 5 -- Joint chi^2 at Z=3                                       [STUB -- final iter]    *)

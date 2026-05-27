@@ -27,7 +27,7 @@ This is the structural opposite of the lepton axis. On the lepton axis ([PR #70]
 | [§Li-1 — bound g-factor](#result-li-1--bound-electron-g-factor-of-li2-z3) | #1 g-factor | binding `(Zα)²` + anomaly | **prediction drafted; measurement BLOCKED** | headline; only non-back-fit Z-test |
 | [§Li-2 — Lamb shift](#result-li-2--lamb-shift-of-li2-z3) | #2 2S–2P | `Z⁴` × shrinking Bethe-log | **✅ at Bethe-estimate floor** | weak discriminator (g=2-symmetric) |
 | [§Li-3 — fine structure](#result-li-3--fine-structure-of-li2-z3) | #3 2P₃/₂–2P₁/₂ | pure `Z⁴` | **prediction ✅; measurement BLOCKED** | wrong-ion in brief; ~887.92 GHz predicted |
-| §Li-4 — hyperfine | #4 ⁷Li 1s HFS | `Z³` × nuclear | stub | genuine `r_e` discriminator |
+| [§Li-4 — hyperfine](#result-li-4--hyperfine-of-li2-z3) | #4 ⁷Li 1s HFS | `Z³` × nuclear | **prediction ✅; measurement BLOCKED** | brief value off 2.35×; ~29.85 GHz predicted |
 | §Li-5 — Z-axis verdict | joint χ² | — | stub | cutoff Z-universal / scaled / back-fit |
 
 ---
@@ -140,9 +140,42 @@ Result: framework Li²⁺ 2P FS = 887 920 MHz (886 892 leading + 1 028 anomalous
 
 <!-- TODO: human reviews and fills in — confirms (a) the framework prediction 887.92 GHz, (b) the provenance finding that the brief's ~7367 MHz is helium-like Li⁺ not hydrogenic Li²⁺, and (c) whether a valid hydrogenic ⁷Li²⁺ 2P fine-structure measurement exists. -->
 
-### Result §Li-4 — ⁷Li 1s hyperfine splitting (Z=3) — *stub*
+### Result §Li-4 — ⁷Li 1s hyperfine splitting (Z=3) <a id="result-li-4--hyperfine-of-li2-z3"></a>
 
-*To be drafted.* Z-scaling: `Z³` (contact density) × nuclear factors. ⁷Li: `I=3/2`, `μ ≈ 3.2564 μ_N`, `g_I ≈ 2.171`. Genuine `r_e` discriminator (Fermi contact linear in g_s). Brief target ~`12.7` GHz (Beckmann 1974) order-of-magnitude consistent (known ⁷Li²⁺ 1s HFS ≈ 11.8 GHz); exact value/source to be verified.
+**Source:** Fermi (1930) contact term via [BS-§22.1](06_Hyperfine.md); ⁷Li nuclear data. *Substantive AI.*
+
+**As measured:** *(provenance suspect — see below).* The brief cited "~`12.7` GHz (Beckmann 1974)." A `³He⁺`-validated scaling shows the hydrogenic ⁷Li²⁺ 1s HFS should be ~`29.8` GHz; the brief value is off by `2.35×`.
+
+**QED Z-expansion:** the 1s Fermi-contact hyperfine splitting scales as `Z³` (contact density `|ψ(0)|² ∝ (Z/a₀)³`) times the nuclear+spin factor `f = μ_I·(2I+1)/(2I)`. For the F=I+½ ↔ F=I−½ interval, `ΔE_{HF} = A(I+½)` with `A ∝ μ_I/I`, so `ΔE_{HF} ∝ Z³·μ_I·(2I+1)/(2I)`. ⁷Li: `I=3/2`, `μ_I = 3.2564 μ_N`.
+
+**Framework prediction:** scale the hydrogen value `1420.4` MHz by `Z³` and the nuclear factor, then by the anomaly factor `(g_s/−2) = 1.00116` from the **Z-universal cutoff**.
+
+- **(Z-i) / (Z-ii):** **identical** — like #3, #4 engages `r_e` linearly in principle, but the Z-invariant cutoff makes both readings coincide.
+
+**Wolfram MCP check** (`r_e_Li2plus_joint_fit.wl` Section 4, 2026-05-27):
+
+```text
+fHF[muI_, ii_] := muI*(2*ii+1)/(2*ii);
+nuHe = 2^3*(fHF[2.127625,1/2]/fHF[2.792847,1/2])*1420.4;   (* 3He+ validation *)
+nuLi = 3^3*(fHF[3.256427,3/2]/fHF[2.792847,1/2])*1420.4;
+Result: 3He+ check = 8656.7 MHz (known 8665.6 MHz, 0.1% — method validated) ✅
+        7Li²⁺ leading = 29 811 MHz; × anomaly (1.00116) = 29 846 MHz = 29.85 GHz
+```
+
+**🔴 Measurement-provenance finding.** The `³He⁺` cross-check validates the `Z³ × nuclear-factor` scaling to `0.1%` (`8656.7` vs known `8665.6` MHz), so the framework ⁷Li²⁺ prediction (`~29.85` GHz) is reliable. The brief's "~`12.7` GHz (Beckmann 1974)" is off by a factor `2.35` and is **inconsistent** with hydrogenic ⁷Li²⁺; Beckmann 1974 is a nuclear-magnetic-moment paper, not a Li²⁺ HFS measurement. **#4's measurement provenance is suspect** — a valid hydrogenic ⁷Li²⁺ 1s HFS measurement must be sourced before the comparison can be completed.
+
+**Numerical comparison:**
+
+| Source | `ΔE_{HF}(1s, ⁷Li²⁺)` | Note |
+|---|---|---|
+| ³He⁺ method validation | `8656.7` MHz | vs known `8665.6` MHz (`0.1%`) ✅ |
+| Framework leading (`g_s=−2`) | `29 811` MHz | `Z³ × nuclear factor` |
+| Framework × anomaly | `29 846` MHz (`29.85` GHz) | Z-universal cutoff |
+| Brief's "~12.7 GHz" | — | **off by 2.35×, discard** |
+
+**Verdict:** prediction ✅ (Wolfram-verified, ³He⁺-validated, `~29.85` GHz); comparison **BLOCKED** pending a valid hydrogenic ⁷Li²⁺ 1s HFS measurement. As with #1/#3, the Z-invariant cutoff means even a valid measurement tests back-fit self-consistency, not discrimination.
+
+<!-- TODO: human reviews and fills in — confirms (a) the ³He⁺-validated framework prediction ~29.85 GHz for ⁷Li²⁺, (b) the provenance finding that the brief's ~12.7 GHz is off by 2.35× and Beckmann 1974 is a nuclear-moment paper, and (c) whether a valid hydrogenic ⁷Li²⁺ 1s HFS measurement exists. -->
 
 ---
 
