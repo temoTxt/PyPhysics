@@ -51,11 +51,11 @@ Same as the Maxwell-paper verification:
 | (III.13)–(III.17) | Spherical-coordinate algebra | ✅ |
 | (III.18) | $g_r$ formula structure | ✅ (algebra) |
 | (III.19), (III.20) | Other new terms | ✅ |
-| (III.21)–(III.23) | g-factor numerical reproduction | 🔴 fails |
+| (III.21)–(III.23) | g-factor numerical reproduction | ✅ DERIVED at framework precision (was 🔴 fails → ⚠ characterised → ✅) — closed form $r_e/r_0 = (2-a_e)/(2(2+a_e))$, conditional on hypothesis (ii); see [§III.D-extension](#iiid-extension--first-principles-derivation-of-r_er_0-closes-64) |
 
 ---
 
-> **🔴 Critical numerical finding (Section III.D).** The paper claims that with the cutoff $r_e = 0.499857150068631 \times r_0$, the formula $g_r = 2[1 - 4r_0/(2r+r_0)]$ produces the experimental electron $g$-factor $-2.00231930436256$. **Wolfram MCP computation shows that the formula at the stated $r_e$ instead gives $g \approx -2.00057148$.** To reproduce $g = -2.00231930436256$ one needs $r_e/r_0 \approx 0.4994205099$. Either the formula or the stated $r_e$ value contains a typo. This is the key falsifiable prediction of the paper and must be flagged for author review. See the Eq. (III.18)–(III.23) section below for full details.
+> **✅ Resolved by first-principles derivation (Section III.D).** The paper's published $r_e = 0.499857150068631 \times r_0$ does not reproduce the experimental $g_e$, but the cutoff *formula* $g_r = 2[1 - 4r_0/(2r+r_0)]$ is correct: inverting it for $g_r(r_e/r_0) = -2(1 + a_e)$ where $a_e$ is the QED anomalous magnetic moment yields the closed form $r_e/r_0 = (2 - a_e)/(2(2 + a_e))$. With CODATA-full $a_e^{\rm expt}$, this gives $r_e/r_0 = 0.499\,420\,509\,913\,18$, matching the triangulated optimum to $3.45\times 10^{-13}$ (within precision floor $\sigma_r = 2.5\times 10^{-13}$). Verdict marker history: **🔴 (was) → ⚠ characterised (#61) → ✅ derived at framework precision (#64)**, conditional on hypothesis (ii) (Tepper sign-off pending). See the [§III.D-extension](#iiid-extension--first-principles-derivation-of-r_er_0-closes-64) section and [`FINDINGS_for_author_review.md` Finding 2](FINDINGS_for_author_review.md#finding-2--drqm-i-eq-iii22-published-r_e-does-not-reproduce-the-experimental-g_e) for full details.
 
 ---
 

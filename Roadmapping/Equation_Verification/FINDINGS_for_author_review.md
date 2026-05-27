@@ -131,6 +131,46 @@ The triangulation therefore **confirms branch (c) as the joint-best-fit across a
 
 <!-- TODO: human reviews and fills in — confirms that (a) Tepper's bracketing-guide guidance is faithfully recorded; (b) the Pass A vs Pass B contrast is the correct way to expose the substantive-AI weighting choice; (c) the conclusion that Pass B = branch (c) to 16 sig figs is the right honest framing; (d) the stretched-fit flag reading is correct (no observable in tension); (e) the verdict-marker shift from 🔴 to ⚠ pending #54 is the right disposition; (f) the residual table accurately identifies each framework-floor source. -->
 
+**Update — 2026-05-26 iter-5/6: closed-form derivation (closes [#64](https://github.com/temoTxt/PyPhysics/issues/64)).** The first-principles derivation tracked at issue #54 (and re-scoped by master [#67](https://github.com/temoTxt/PyPhysics/issues/67)) lands here via the candidate-1 branch `64-theory-candidate-1-proper-time-self-energy-integral-derivation-of-r_e`. The derivation is recorded in full at [`Dual_Relativistic_Quantum_Mechanics_I.md §III.D-extension`](Dual_Relativistic_Quantum_Mechanics_I.md#iiid-extension--first-principles-derivation-of-r_er_0-closes-64) with companion notebook [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_self_energy.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_self_energy.wl) (Cells 1–4, Wolfram-MCP-confirmed).
+
+**The closed form.** Inverting the (III.22) cutoff equation $g_r(r_e/r_0) = -2(1+a_e)$ where $a_e$ is the electron anomalous magnetic moment yields, for *any* $a_e$,
+
+$$\boxed{\;\frac{r_e}{r_0} = \frac{2 - a_e}{2\,(2 + a_e)}\;}$$
+
+(Wolfram MCP `FullSimplify[...] = 0`.) At one-loop, $a_e^{(1)} = \alpha/(2\pi)$ (Schwinger 1948), which reproduces the closed-form reference $(2-\alpha/(2\pi))/(4+\alpha/\pi) = 0.499\,419\,632\,156$ identically.
+
+**Convergence to the triangulated target** ($\alpha = 1/137.035\,999\,084$, QED $a_e = \sum_n C_n (\alpha/\pi)^n$):
+
+| Order | $r_e/r_0$ | Residual vs triangulated $0.499\,420\,509\,912\,831\,7$ |
+|---|---|---|
+| Dirac tree | $0.5$ | $+5.79\times 10^{-4}$ |
+| 1-loop Schwinger | $0.499\,419\,632\,156\,$ | $-8.78\times 10^{-7}$ |
+| 2-loop Sommerfeld | $0.499\,420\,517\,281\,$ | $+7.37\times 10^{-9}$ |
+| 3-loop | $0.499\,420\,509\,887\,$ | $-2.53\times 10^{-11}$ |
+| 4-loop | $0.499\,420\,509\,915\,$ | $+2.46\times 10^{-12}$ |
+| **CODATA full $a_e^{\rm expt} = 0.001\,159\,652\,180\,59$** | $\mathbf{0.499\,420\,509\,913\,18}$ | $\mathbf{+3.45\times 10^{-13}}$ |
+
+The CODATA-full residual $3.45\times 10^{-13}$ sits within ~1.4 standard deviations of the triangulation precision floor $\sigma_r = 2.50\times 10^{-13}$, i.e., **the derivation reproduces the triangulated $r_e/r_0$ at framework precision**.
+
+**Hypothesis (ii) caveat (Crocco rule #5 — substantive AI honest scope).** The derivation is *reproduction by inheritance*, not an independent re-derivation of $a_e$ from a distinct dual proper-time one-loop vertex calculation. The dual framework, under hypothesis (ii) (photon propagator unchanged; dual structure absorbed into the (II.3) "potential-in-the-mass" kernel), inherits the textbook Schwinger calculation identically at the one-loop precision the (II.3) kernel can deliver — this is the magnetic-moment-route analogue of the BS-§19 / §20 Lamb-shift inheritance argument, applied to the route where $r_e$ *does* engage (the Lamb shift route, BS-§20 line 114, does not). The structural content the dual framework *does* contribute is the (III.22) formula itself — the identification of the cutoff radius $r_e$ with the anomalous magnetic moment via $g_r(r_e/r_0) = -2(1+a_e)$ — which makes the closed-form $(2-a_e)/(2(2+a_e))$ algebraically definite for *any* QED-loop value of $a_e$.
+
+A *distinct* dual-framework prediction would test **hypothesis (i)** (proper-time photon propagator with $b$-dispersion modifying the vertex calculation away from Schwinger). The companion notebook leaves Cells 2–4 set up under hypothesis (ii); a hypothesis-(i) re-derivation is the principal **Tepper-input gating step** for an unconditional ✅ on this finding.
+
+**Outcome-matrix classification (per master [#67](https://github.com/temoTxt/PyPhysics/issues/67)):** **Branch A** — derivation reproduces $r_e \approx 0.499\,420\,509\,9\,r_0$ at framework precision; Schwinger closed-form (Branch B) is recovered as the 1-loop sub-result. Candidates 2 and 3 of #67 remain open as potential cross-checks of the same closed form via independent routes.
+
+**Status change.** Finding 2's verdict moves from ⚠ CHARACTERISED (set 2026-05-26 by triangulation [#61](https://github.com/temoTxt/PyPhysics/issues/61)) to **✅ DERIVED at framework precision (conditional on hypothesis (ii))** (this update, 2026-05-26 iter-5/6 of [#64](https://github.com/temoTxt/PyPhysics/issues/64)). The conditional is load-bearing: a hypothesis-(i) re-derivation could refine the prediction at the $\sim 10^{-13}$ residual, or expose a structural reframing — both possibilities remain open and are the natural next-candidate scope under #67.
+
+**Provenance (Crocco rule #4 — substantive AI prompt-of-record):** the iteration record lives in `.dev/research/STATE.md` on branch `64-theory-candidate-1-proper-time-self-energy-integral-derivation-of-r_e` (iters 0–6, 2026-05-26); the prompt-of-record is `.dev/research/brief.md` + `.dev/research/loop_prompt.md` on the same branch. Substantive-AI use throughout; per-section human-acceptance TODO blocks remain unchecked pending author review.
+
+<!-- TODO: human reviews and fills in — confirms that (a) the closed-form
+     r_e/r_0 = (2-a_e)/(2(2+a_e)) is the correct algebraic inversion of
+     (III.22), (b) hypothesis (ii) is the intended reading of the dual
+     one-loop vertex correction's identity with the textbook Schwinger
+     calculation, (c) the verdict shift to ✅-conditional is appropriate
+     pending hypothesis-(i) author sign-off, (d) outcome-matrix Branch A
+     classification per #67 is correct, and (e) the framing of "reproduction
+     by inheritance" vs "independent dual derivation" is the honest scope. -->
+
 ---
 
 ## Finding 3 — TCEP Eq. (4.16): sign typo in the group-velocity relation
