@@ -52,3 +52,25 @@
 - **Outcome-matrix:** still not determinable (no numeric prediction yet), but now framed: Li²⁺ is the campaign's first **out-of-sample** g_s-dependent test → it can actually discriminate A vs B vs C, unlike the six in-sample observables.
 - **(Z-i)/(Z-ii):** (Z-i) universal value fixed (g_s=-2.00231930). (Z-ii) Z-scaled reading: needs a model for how r_e runs with Z — flagged as a potential Tepper-input point (branch D risk) if the framework has no internal Z-running prescription.
 - **Status:** READY.
+
+## Iteration 3 — 2026-05-27 — measurement + nuclear-moment provenance lookup (WebSearch)
+
+**What advanced:** WebSearch for the Li²⁺ 1s HFS measurement + Li-7 nuclear moments. Two provenance findings, one of them materially affecting the verdict structure:
+
+1. **⚠ No direct experimental ⁷Li²⁺ (hydrogenic, Z=3) 1s HFS measurement exists.** Per Pachucki, Patkóš, Yerokhin et al., *Hyperfine splitting in ⁶,⁷Li⁺* (arXiv:2309.00436, 2023): the Li²⁺ HFS "prediction is derived from the sum of theoretical [QED] contributions and the **experimental Li⁺** value; the uncertainty of the Li²⁺ prediction comes exclusively from the uncertainty of the experimental Li⁺ HFS." So the authoritative **comparator is a QED-theory value** (their Table VII), not a direct measurement. → This *changes the test*: the framework's verdict is "match to the QED-theory comparator" (weaker than a direct-measurement match, but still a real out-of-sample check at Z=3).
+   - **Authoritative comparator source:** Pachucki et al., arXiv:2309.00436, Table VII (Li²⁺ 1s HFS). To extract the exact value next iter.
+   - Historical/early ref: Beckmann, Boeklen, Elke 1974, *Z. Phys.* **270**, 173 (the brief's seed) — but this is the **Li / Li⁺ atomic-beam** HFS work, *not* the hydrogenic Li²⁺ 1s value.
+
+2. **⚠ Brief's "~12 732 MHz" seed value is suspect.** A rough Fermi-contact scaling from H's 1420.4 MHz — `Δν_Li²⁺ ≈ Δν_H × Z³ × (g_I^{Li}/g_I^{p}) × (angular)`:
+   - `Z³ = 27`; `g_I^{Li-7} = μ_I/I = 3.256427/1.5 = 2.1709 μ_N`; `g_I^{p} = 2.79285/0.5 = 5.5857 μ_N` → ratio 0.3887.
+   - H splitting = A_H·(I+½) = A_H·1; Li-7 splitting (F=2↔1) = A_Li·(I+½) = A_Li·2 (interval rule).
+   - → `A_Li/A_H = 0.3887 × 27 = 10.49`; `Δν_Li²⁺ ≈ 10.49 × 1420.4 × 2 ≈ 29 800 MHz ≈ 30 GHz` (pre reduced-mass/relativistic corrections).
+   - This is ~2.3× the brief's 12 732 MHz. The 12 732 figure is most likely a *different* Li system (Li⁺ 1s2s³S₁ or neutral). **Resolve next iter** via Pachucki Table VII + the Wolfram computation.
+
+3. **Li-7 nuclear data (provenance):** I=3/2; μ_I = +3.256427 μ_N (NUBASE/CODATA); g_I (=μ_I/I) = 2.1709. Confirm exact CODATA digits when value enters the notebook.
+
+- **Current observable focus:** #4 Li-7 1s hyperfine.
+- **Next:** scaffold `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Li2plus_hyperfine.wl` with (a) the hydrogenic Fermi-contact closed form, (b) the H 1420.4 MHz reproduction as a sanity cell, (c) the Z=3 + I=3/2 scaling cell — which simultaneously *computes the textbook comparator* and resolves the 12 732-vs-30 000 MHz discrepancy. Header to carry the Crocco substantive-AI tag for the I=1/2→3/2 extension.
+- **Outcome-matrix:** still not determinable, but the test is now reframed: **comparator is QED-theory (Pachucki 2023), not direct measurement** — record as a verdict caveat. Out-of-sample A/B/C discrimination still holds (Z=3 not in the six-observable fit).
+- **(Z-i)/(Z-ii):** unchanged from iter 2.
+- **Status:** READY.
