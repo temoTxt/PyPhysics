@@ -51,11 +51,11 @@ Same as the Maxwell-paper verification:
 | (III.13)–(III.17) | Spherical-coordinate algebra | ✅ |
 | (III.18) | $g_r$ formula structure | ✅ (algebra) |
 | (III.19), (III.20) | Other new terms | ✅ |
-| (III.21)–(III.23) | g-factor numerical reproduction | ✅ DERIVED at framework precision (was 🔴 fails → ⚠ characterised → ✅) — closed form $r_e/r_0 = (2-a_e)/(2(2+a_e))$, conditional on hypothesis (ii); see [§III.D-extension](#iiid-extension--first-principles-derivation-of-r_er_0-closes-64) |
+| (III.21)–(III.23) | g-factor numerical reproduction | ⚠/✅ at hypothesis-(ii) framework precision (was 🔴 fails → ⚠ characterised → ⚠/✅-conditional) — closed form $r_e/r_0 = (2-a_e)/(2(2+a_e))$ via QED-inheritance of $a_e(\alpha)$; unconditional ✅ pending [#75](https://github.com/temoTxt/PyPhysics/issues/75) (hypothesis (i) author input); see [§III.D-extension](#iiid-extension--first-principles-derivation-of-r_er_0-closes-64) |
 
 ---
 
-> **✅ Resolved by first-principles derivation (Section III.D).** The paper's published $r_e = 0.499857150068631 \times r_0$ does not reproduce the experimental $g_e$, but the cutoff *formula* $g_r = 2[1 - 4r_0/(2r+r_0)]$ is correct: inverting it for $g_r(r_e/r_0) = -2(1 + a_e)$ where $a_e$ is the QED anomalous magnetic moment yields the closed form $r_e/r_0 = (2 - a_e)/(2(2 + a_e))$. With CODATA-full $a_e^{\rm expt}$, this gives $r_e/r_0 = 0.499\,420\,509\,913\,18$, matching the triangulated optimum to $3.45\times 10^{-13}$ (within precision floor $\sigma_r = 2.5\times 10^{-13}$). Verdict marker history: **🔴 (was) → ⚠ characterised (#61) → ✅ derived at framework precision (#64)**, conditional on hypothesis (ii) (Tepper sign-off pending). See the [§III.D-extension](#iiid-extension--first-principles-derivation-of-r_er_0-closes-64) section and [`FINDINGS_for_author_review.md` Finding 2](FINDINGS_for_author_review.md#finding-2--drqm-i-eq-iii22-published-r_e-does-not-reproduce-the-experimental-g_e) for full details.
+> **⚠/✅-conditional resolved by closed-form algebraic inversion (Section III.D).** The paper's published $r_e = 0.499857150068631 \times r_0$ does not reproduce the experimental $g_e$, but the cutoff *formula* $g_r = 2[1 - 4r_0/(2r+r_0)]$ is correct: inverting it for $g_r(r_e/r_0) = -2(1 + a_e)$ where $a_e$ is the QED anomalous magnetic moment yields the closed form $r_e/r_0 = (2 - a_e)/(2(2 + a_e))$. With CODATA-full $a_e^{\rm expt}$, this gives $r_e/r_0 = 0.499\,420\,509\,913\,18$, matching the triangulated optimum to $3.45\times 10^{-13}$ (within precision floor $\sigma_r = 2.5\times 10^{-13}$). **Honest scope:** this is *reproduction-by-inheritance* under hypothesis (ii) (QED supplies $a_e(\alpha)$; the framework supplies the (III.22) cutoff–anomaly identification and the algebraic inversion); it is not an independent dual-framework derivation of $a_e$. The §III.D Schwinger identification subsection from [PR #70](https://github.com/temoTxt/PyPhysics/pull/70) characterises the same algebraic operation as the back-fit identity from the Candidate-3 perspective; both subsections together give the full picture. Verdict marker history: **🔴 (was) → ⚠ characterised (#61) → ⚠/✅ at hypothesis-(ii) framework precision (#64, this PR)**. **Unconditional ✅** requires hypothesis-(i) re-derivation (proper-time photon propagator + bound-state propagator + mass-renormalisation prescription at the cutoff), tracked in [issue #75](https://github.com/temoTxt/PyPhysics/issues/75). See the [§III.D-extension](#iiid-extension--first-principles-derivation-of-r_er_0-closes-64) section and [`FINDINGS_for_author_review.md` Finding 2](FINDINGS_for_author_review.md#finding-2--drqm-i-eq-iii22-published-r_e-does-not-reproduce-the-experimental-g_e) for full details.
 
 ---
 
@@ -514,16 +514,27 @@ Print["  required r_e/r_0 = ", InputForm[x /. First @ Solve[gr[x] == -2.00231930
 
 **Substantive AI** (Crocco rule #1; prompt-of-record: `.dev/research/brief.md` + `.dev/research/STATE.md` iter-1 through iter-5).
 
-<!-- TODO: human reviews and fills in — confirms (a) hypothesis (ii) is the
-     correct identification of the dual one-loop vertex correction with the
-     standard QED Schwinger calculation (i.e., the proper-time photon
-     propagator's modifications cancel at the (II.3)-kernel level), and
-     (b) the closed-form r_e/r_0 = (2-a_e)/(2(2+a_e)) below is interpreted
-     as *reproduction by inheritance* in the same sense as the BS-§19
-     Lamb-shift inheritance, not as an independent derivation of a_e from
-     the dual one-loop vertex calculation. -->
+#### Scope and limitations (front-loaded honest-scope statement)
 
-#### Derivation in one line
+The "derivation" below is a **closed-form algebraic re-expression** of the framework's existing g-formula (III.22), evaluated at QED's anomalous magnetic moment $a_e(\alpha)$. It is not an independent dual-framework computation of $a_e$ from a proper-time one-loop self-energy diagram. Specifically:
+
+- The closed form $r_e/r_0 = (2 - a_e)/(2(2 + a_e))$ is the algebraic inverse of $g_r(r) = -2(1 + a_e)$. It is **structurally the same operation** as the back-fit identity that the §III.D Schwinger identification subsection above (from [PR #70](https://github.com/temoTxt/PyPhysics/pull/70) / Candidate 3) explicitly identifies as the algebraically-forced consequence of fixing $r_e$ to reproduce $g_e^{\rm meas}$.
+- The closed form is in terms of $a_e$ — an **empirical input** from CODATA, or equivalently, QED's loop expansion $a_e(\alpha) = \alpha/(2\pi) - 0.328\ldots(\alpha/\pi)^2 + \ldots$ The dual-Dirac structural constants ($b$-factor, projection-operator coefficients) do **not** appear in the closed form; only the integers $2$ and $4$. Issue [#64](https://github.com/temoTxt/PyPhysics/issues/64)'s acceptance criterion *"closed-form expression in $\alpha$ + structural constants"* is satisfied only by inheriting QED's $a_e(\alpha)$.
+- The "convergence to triangulated target" table below reflects **QED's match to measurement** propagated through the algebraic inversion — not a property the dual framework derives independently.
+- An *independent* dual-framework derivation that produces $a_e$ from framework-internal dynamics (the "hypothesis (i)" route — proper-time photon propagator with $b$-dispersion) has **not been performed in the codebase**. The published Bethe–Salpeter campaign explicitly defers the full proper-time one-loop QED calculation (BS-§19 line 54). The three framework specifications needed to attempt it are tracked in [issue #75](https://github.com/temoTxt/PyPhysics/issues/75) (author-engagement; pending Tepper input).
+
+The closed form is therefore best read as **reproduction-by-inheritance under hypothesis (ii)** — the magnetic-moment-route analogue of the BS-§19 Lamb-shift inheritance argument, applied to the route where the cutoff $r_e$ actually engages. The verdict marker below reflects this honest scope.
+
+<!-- TODO: human reviews and fills in — confirms (a) the front-loaded
+     Scope-and-limitations paragraph captures the honest-scope position
+     without underclaiming the structural content the dual framework does
+     contribute (the (III.22) formula identifying r_e with a_e via the
+     g-factor route), (b) the cross-link to the just-merged Candidate-3
+     §III.D Schwinger identification subsection is appropriate (the two
+     subsections together give the full picture), and (c) the hypothesis-(ii)
+     framing is consistent with how it appears throughout DRQM I §III.D. -->
+
+#### Derivation in one line (algebraic inversion of the g-formula at QED's $a_e$)
 
 Insert the QED anomalous magnetic moment $a_e$ into the (III.22) cutoff equation $g_r(r_e/r_0) = -2(1 + a_e)$ and invert:
 
@@ -550,6 +561,16 @@ With $\alpha = 1/137.035\,999\,084$ and the standard QED $a_e$ expansion $a_e = 
 
 The CODATA-full residual $3.45\times 10^{-13}$ is **within** the triangulation precision floor $\sigma_r = 2.50\times 10^{-13}$ established in [PR #62](https://github.com/temoTxt/PyPhysics/pull/62) (the residual is comparable to the floor, within ~1.4 standard deviations).
 
+**Reading of the convergence table.** The successive rows show the algebraic inversion of the g-formula at successive QED loop orders of $a_e(\alpha)$ — equivalently, what $r_e/r_0$ the framework's g-formula would imply if the input anomalous moment came from $n$-loop QED. The convergence is therefore a property of **QED's loop expansion of $a_e$** rather than a property the dual framework derives. The dual-framework structural content is the (III.22) formula itself (encoding the cutoff–anomaly correspondence); the numerical fidelity to CODATA $a_e^{\rm expt}$ is inherited from QED's match to measurement, not produced independently.
+
+#### Particle-universality cross-check (consistent with [PR #70](https://github.com/temoTxt/PyPhysics/pull/70) iter-5)
+
+Applied to the muon with $a_\mu^{\rm exp} = 116\,592\,059(22) \times 10^{-11}$ (Aguillard et al., *Phys. Rev. D* **108**, 092009 (2023), FNAL Muon $g-2$ 2023), the same closed form gives
+
+$$\frac{r_\mu}{r_0^\mu} \;=\; \frac{2 - a_\mu^{\rm exp}}{2\,(2 + a_\mu^{\rm exp})} \;=\; 0.499\,417\,379\,350,$$
+
+identical (by construction) to the per-particle back-fit recorded in [PR #70](https://github.com/temoTxt/PyPhysics/pull/70)'s iter-5 cross-particle test. The electron–muon discrepancy $r_\mu/r_0^\mu - r_e/r_0^e = -3.13 \times 10^{-6}$ reflects the mass-dependent QED, hadronic, and electroweak content of $a_\mu$ that is absent from $a_e$. The closed form is therefore **universal in form but particle-specific in numerical value through $a_\ell$** — consistent with #70's constraint that "any universal closed-form $r/r_0 = f(\alpha)$ in $\alpha$ alone is empirically ruled out at $> 57$kσ." The closed form here is *not* a function of $\alpha$ alone; it is a function of $a_\ell(\alpha, m_\ell, \text{hadronic}, \ldots)$ with the QED + non-QED content of $a_\ell$ supplied externally.
+
 #### Derivational chain (hypothesis (ii) — see iter-3 / iter-5 STATE.md)
 
 1. **The (III.22) formula encodes $a_e$ as a cutoff radius.** $g_r(x) = 2[1 - 4/(2x + 1)]$ at $x = r_e/r_0$ gives $g_r(r_e/r_0) = -2(1 + a_e)$ by definition of $a_e \equiv -(g_e + 2)/2 = (|g_e| - 2)/2$.
@@ -565,15 +586,23 @@ A *distinct* dual-framework derivation would test hypothesis (i) (proper-time ph
 
 #### Verdict — Eqs. (III.21)–(III.23) marker update
 
-The marker shifts from **⚠ CHARACTERISED** (set on 2026-05-26 after triangulation [#61](https://github.com/temoTxt/PyPhysics/issues/61)) to **✅ DERIVED at framework precision** (this section, 2026-05-26 iter-5 of [#64](https://github.com/temoTxt/PyPhysics/issues/64)) **under hypothesis (ii)**. The conditional is load-bearing: the verdict relies on the dual one-loop vertex correction equaling the QED Schwinger calculation — a claim that holds at the precision the (II.3) kernel can deliver but has not been independently re-derived from the dual proper-time photon propagator. Author-review of hypothesis (ii) is the gating step for an unconditional ✅.
+The marker shifts from **⚠ CHARACTERISED** (set on 2026-05-26 after triangulation [#61](https://github.com/temoTxt/PyPhysics/issues/61)) to **⚠/✅ at hypothesis-(ii) framework precision** (this section, 2026-05-26 iter-5 of [#64](https://github.com/temoTxt/PyPhysics/issues/64)): the closed-form $r_e/r_0 = (2 - a_e)/(2(2 + a_e))$ reproduces the triangulated value at framework precision **conditional on hypothesis (ii)** (the dual one-loop vertex correction equals the textbook QED Schwinger calculation identically; this is reproduction-by-inheritance, not an independent dual derivation of $a_e$ — see Scope and limitations above). An **unconditional ✅** requires Tepper input on the three framework specifications tracked in [issue #75](https://github.com/temoTxt/PyPhysics/issues/75) (proper-time photon propagator, bound-state propagator, mass-renormalisation prescription at the cutoff) and the corresponding hypothesis-(i) re-derivation that produces $a_e$ from framework-internal dynamics.
 
-**Outcome-matrix classification (per master [#67](https://github.com/temoTxt/PyPhysics/issues/67)):** **Branch A** — derivation reproduces $r_e \approx 0.499\,420\,509\,9\,r_0$ at framework precision; Schwinger closed-form (Branch B) is recovered as the 1-loop sub-result.
+**Outcome-matrix classification (per master [#67](https://github.com/temoTxt/PyPhysics/issues/67)):** **Branch B-with-QED-inheritance generalisation**, conditional on author endorsement of hypothesis (ii). Branch B (Schwinger one-loop closed form $(2 - \alpha/(2\pi))/(4 + \alpha/\pi)$) is recovered exactly at 1-loop $a_e^{(1)} = \alpha/(2\pi)$; the higher-loop and CODATA-full convergence to the triangulated value is the same operation generalised by QED's all-orders $a_e(\alpha)$. The framework's structural content is the (III.22) formula identifying $r_e$ with $a_e$ via the g-factor route; the numerical fidelity to the triangulated $r_e$ is inherited from QED. **Branch A** (derivation that produces the triangulated $r_e$ from framework-internal dynamics without QED-inheritance) remains open and is the principal task gated on [#75](https://github.com/temoTxt/PyPhysics/issues/75).
 
-<!-- TODO: human reviews and fills in — confirms (a) the verdict shift
-     from ⚠ to ✅ (conditional on hypothesis (ii)) is the correct framing,
-     (b) the honest-scope paragraph captures the "reproduction by
-     inheritance" caveat without overselling, and (c) the outcome-matrix
-     Branch A classification per #67 is correct. -->
+<!-- TODO: human reviews and fills in — confirms (a) the verdict marker
+     "⚠/✅ at hypothesis-(ii) framework precision" is the correct
+     conservative framing (✅ unconditional reserved for hypothesis-(i)
+     confirmation per #75), (b) the outcome-matrix re-classification
+     from Branch A to "Branch B with QED-inheritance generalisation,
+     conditional" is consistent with the devil's-advocate review on
+     PR #72, and (c) the cross-link to #75 is the right gating reference
+     for what would upgrade the verdict to unconditional ✅. -->
+
+#### Revision history of this subsection
+
+- **2026-05-26 iter-5 (PR [#72](https://github.com/temoTxt/PyPhysics/pull/72) original):** introduced the closed form $(2-a_e)/(2(2+a_e))$ and the convergence table; classified as Branch A ✅ DERIVED.
+- **2026-05-26 PM (PR [#72](https://github.com/temoTxt/PyPhysics/pull/72) revision addressing the devil's-advocate review):** added front-loaded Scope-and-limitations paragraph; added particle-universality cross-check; softened verdict marker to ⚠/✅ at hypothesis-(ii) framework precision; reclassified outcome from Branch A to Branch-B-with-QED-inheritance-generalisation conditional on author endorsement; cross-linked to [#75](https://github.com/temoTxt/PyPhysics/issues/75) as the gating issue for unconditional ✅.
 
 ---
 
