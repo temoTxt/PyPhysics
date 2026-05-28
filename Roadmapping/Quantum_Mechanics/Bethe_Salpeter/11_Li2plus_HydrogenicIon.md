@@ -204,4 +204,32 @@ Result: 3He+ check = 8656.7 MHz (known 8665.6 MHz, 0.1% — method validated) �
 
 **Bottom line:** the framework's cutoff is **Z-universal by construction** (Branch A, Branch B excluded). The Z-axis confirms — rather than independently tests — the lepton-axis finding: the dimensionless cutoff is a property of the *electron* (via `a_e`), invariant under nuclear charge. The strongest honest statement is structural, not empirical: *Li²⁺ cannot add a cutoff constraint because there is no Z-dependence in the cutoff to constrain.* Completing the empirical comparisons for #1/#3/#4 requires correctly-sourced hydrogenic ⁷Li²⁺ measurements (flagged for author/orchestrator follow-up).
 
+#### Cross-PR reconciliation with [PR #87](https://github.com/temoTxt/PyPhysics/pull/87) (hydrogenic-ion Z-scan, issue [#82](https://github.com/temoTxt/PyPhysics/issues/82)) — *steel-man revision 2026-05-27*
+
+This branch's "Branch A by construction" finding rests on the *structural* observation that no $Z$ appears in the framework's cutoff formula. **The parallel hydrogenic-ion Z-scan (PR [#87](https://github.com/temoTxt/PyPhysics/pull/87)) supplies the empirical complement** — bound-electron g-factor measurements at $Z \in \{2, 6, 8, 14\}$ from Schneider 2022 (³He⁺), Sturm 2011 (¹²C⁵⁺), Verdú 2004 (¹⁶O⁷⁺), Sturm 2013 (²⁸Si¹³⁺).
+
+| $Z$ | Measured $g_e^{\rm bound}$ | Framework (Z-i) prediction | Residual |
+|---|---|---|---|
+| 1 (free) | $-2.00231930$ | $-2.00231930$ | 0 (triangulated) |
+| 2 | $-2.00217742$ | $-2.00231930$ | $1.4\times 10^{-4}$ |
+| 6 | $-2.00104159$ | $-2.00231930$ | $1.3\times 10^{-3}$ |
+| 8 | $-2.00004703$ | $-2.00231930$ | $2.3\times 10^{-3}$ |
+| 14 | $-1.99534896$ | $-2.00231930$ | $7.0\times 10^{-3}$ |
+
+The Z-invariant (Z-i) prediction gives residuals of $10^{-4}$ to $10^{-3}$ against measured $|g_e^{\rm bound}|$ — **$10^5$ to $10^7\,\sigma$** in measurement units ($\sigma \sim 10^{-9}$–$10^{-11}$).
+
+**Reconciliation.** The two verdicts are not contradictory once carefully framed:
+
+- **Branch A is the framework's stated position** — the published §III.D apparatus has no $Z$ in the cutoff, so it predicts a $Z$-invariant $g_e^{\rm bound}$. This branch's "Branch A by construction" finding is correct as a statement about the framework's *apparatus*.
+- **Branch C is the operationally correct verdict** — the multi-Z data refutes the $Z$-invariant prediction at $10^5$–$10^7\,\sigma$. The back-fit $r_e^{(Z)}/r_0$ values inherit QED's bound-state structure $a_e^{\rm bound}(Z\alpha) = a_e^{\rm free} - \tfrac{1}{3}(Z\alpha)^2 + \mathcal{O}((Z\alpha)^4)$ per-Z, with **no framework-internal derivation** of the $(Z\alpha)^2$ binding coefficient.
+- **Same verdict shape as the lepton axis** ([PR #70](https://github.com/temoTxt/PyPhysics/pull/70)): the published apparatus says the cutoff is universal-in-X (across leptons / across Z); the data shows the cutoff is *X-specific through* the QED anomalous moment $a_\ell$ or $a_e^{\rm bound}(Z\alpha)$. **The framework's apparatus is Z-trivial; that is exactly the structural shape that produces Branch C operationally.**
+
+**The "Li²⁺ adds no new constraint" framing is therefore too modest.** The framework's apparatus is empirically inadequate for $Z > 1$ precision predictions; the multi-Z g-factor scan exposes a $10^5$–$10^7\,\sigma$ gap that the framework's published structure has no mechanism to close. The honest Z-axis verdict shifts:
+
+- **Branch A** (framework's stated position): confirmed structurally.
+- **Branch C** (operationally correct): confirmed empirically by PR [#87](https://github.com/temoTxt/PyPhysics/pull/87)'s data.
+- The two coexist because they describe different things — the *apparatus* is Z-trivial (A); the *empirical comparison* requires per-Z bound-state QED inheritance (C). Closing the gap to a derived Branch B is the open question for [#75](https://github.com/temoTxt/PyPhysics/issues/75) (framework specs, Tepper engagement).
+
+<!-- TODO: human reviews and fills in — confirms (a) the cross-PR reconciliation framing (Branch A structurally + Branch C operationally is the honest joint verdict), (b) the residual table from #87 is faithfully captured, (c) the parallel to PR #70's lepton-axis verdict, and (d) the link to #75 as the open derivational question. -->
+
 <!-- TODO: human reviews and fills in — confirms (a) the Z-universal (Branch A) verdict with Branch B structurally excluded, (b) the finding that Li²⁺ adds no new cutoff constraint (the Z-axis is structurally unlike the lepton axis), (c) the A-vs-C indistinguishability, and (d) the meta-finding that three of the brief's four measurement values are mis-provenanced and need re-sourcing. -->
