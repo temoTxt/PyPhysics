@@ -16,15 +16,17 @@ The paper's algebra reproduces ✅ via Wolfram MCP; the numerical perihelion adv
 | Full dual `Δφ_d` | **37.79″** | **−12.1%** | **−12.1%** |
 | Approximate dual `Δφ_{d₁}` | **37.79″** | **−12.1%** | **−12.1%** |
 | Standard GR `6πGM/[c²a(1−e²)]` | 42.99″ | +0.0% (reference) | (reference) |
-| **Observed** (Le Verrier residual) | **≈ 43″** | (reference) | +0.02% |
+| **Observed** (modern residual; Newcomb–Clemence reduction) | **≈ 43″** | (reference) | +0.02% |
 
-**Headline finding.** The paper highlights Corda's `44.39″/century` as the framework's match to observation, but Corda's value is the *reduced-mass-only* Newtonian effect `πm/M`, **not** the framework's structural gravitational prediction. The framework's own full dual prediction is 37.79″/century — about 12% below observed and with the *opposite sign* of relativistic correction compared to GR.
+**Headline finding.** The paper highlights Corda's `44.39″/century` as the framework's match to observation, but Corda's value is the *reduced-mass-only* Newtonian effect `πm/M`, not the framework's structural gravitational prediction. The framework's own full dual prediction is **`+37.79″/century`** — a *positive* forward perihelion advance, about 12% below observed. The framework's prediction *does* advance the perihelion; it just does so by less than GR and observation indicate.
 
-Decomposition of the framework's full dual:
+Decomposition of the framework's full dual (one of several choices; the framework itself does not separate the prediction this way):
 
 - Reduced-mass (Corda) contribution: `+44.66″/century`
-- Relativistic contribution from the `(1 − GM/(c²r))` factor in Eq. (h4): **`−6.87″/century`** (note: *negative* — the framework's modified gravity is *weaker* at small `r`, producing perihelion *recession*, not advance)
-- Net: `+44.66 − 6.87 = +37.79″/century`
+- Contribution from the `(1 − GM/(c²r))` factor in Eq. (h4): **`−6.87″/century`** (this *individual contribution* is negative because the factor *reduces* the gravitational attraction — but it adds to the larger positive reduced-mass contribution to give a positive net)
+- Net: `+44.66 − 6.87 = +37.79″/century` (positive forward advance)
+
+The `(1 − GM/(c²r))`-induced contribution has the *opposite sign* from GR's `+42.99″/century` *purely-relativistic* contribution — meaning the framework's relativistic correction *subtracts* from the reduced-mass advance rather than adding to it as GR does. But the *total* framework prediction (`+37.79″`) is positive perihelion advance, not recession.
 
 This is a substantive finding for the GPS author report's open question Q1; see [`04_findings_and_GPS_Q1.md`](04_findings_and_GPS_Q1.md).
 
@@ -73,4 +75,12 @@ All Wolfram MCP blocks follow the `ClearAll` discipline established in the GPS c
 
 ## Honest limits
 
-This campaign reproduces standard Mercury perihelion math (a 19th-century calculation refined by Einstein 1915) and compares it against the framework's predictions; the value to the repository is the explicit Wolfram-MCP verification of each step and the per-prediction breakdown. **The negative finding** — that the framework's full dual prediction under-predicts the observed Mercury perihelion advance by 12% and has the wrong sign of relativistic correction — is reported as a structural feature of the framework's modified-gravity proposal in this paper, *not* as a critique of the framework as a whole. The framework may have other proposals for the gravitational extension (Q1 lists four hypotheses considered in the GPS campaign); this paper tests *one* such extension, and the result is informative regardless of direction.
+This campaign reproduces standard Mercury perihelion math (a 19th-century calculation refined by Einstein 1915) and compares it against the framework's predictions; the value to the repository is the explicit Wolfram-MCP verification of each step and the per-prediction breakdown.
+
+**The finding** is that the framework's full dual prediction (`+37.79″/century`) under-predicts the observed Mercury perihelion advance (`≈43″/century`) by `~12%`. This is *not* a precision-level rule-out: the paper's text claims only that Corda's value "well approximates" GR and the observed value (i.e., few-percent agreement), and a 12% disagreement between the framework's structural prediction and observation is consistent with that level of claimed precision but does not improve on it.
+
+**The result is also subject to a two-body vs N-body caveat.** The 43″ observational residual is computed by *subtracting* Newtonian planetary perturbations (~531″/century from other planets on Mercury) from the total observed precession (~5600″/century). The subtraction assumes Newtonian gravity for the perturbing planets. If the framework's modified Newtonian gravity (with the `(1 − GM/(c²r))` factor) is applied consistently to *all* planetary perturbations on Mercury, the residual would change by a comparable amount to the framework's two-body correction itself. A consistent test of the framework would require running its modified gravity through the full N-body calculation — which this campaign has not done.
+
+**Interpretive caveat.** The paper's `V²/(2mc²)` term was originally verified in the DRQM I (II.3) "potential-in-the-mass" kernel where `V` is an *EM* potential (between charged particles). Whether the same kernel is intended to apply when `V` is a *gravitational* potential is an interpretive choice the paper makes but does not justify from first principles. The author may intend the EM-only reading and consider the Mercury application a *separate* proposal; the result tests this specific substitution, not the kernel itself.
+
+The framework may have other proposals for the gravitational extension (Q1 of the GPS author report lists four metric-based hypotheses; this paper proposes a categorically different kind of answer — modified Newtonian dynamics on flat space, with no curved-spacetime apparatus). This paper tests *one* such extension and finds it does not reach precision-level agreement with Mercury observation; the result is informative for the author's decision about which gravitational extension to develop further.

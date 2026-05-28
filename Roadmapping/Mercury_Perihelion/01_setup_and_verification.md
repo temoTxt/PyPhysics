@@ -35,6 +35,8 @@ ClearAll[r, cc, mm, GG, MM, potV, KK, gradV, accel]; KK[r_] = potV[r] + potV[r]^
 
 ## 3. Eq. (h4) — two-body equations of motion under gravity
 
+**Interpretive caveat (load-bearing).** The `V²/(2mc²)` term in `K` was originally verified in the DRQM I (II.3) "potential-in-the-mass" kernel where `V` is an *EM* potential (electron–nucleus Coulomb, etc.). The paper's substitution `V = −GMm/r` extends this kernel from EM to *gravity*. Whether the framework intends the kernel to apply to gravitational `V` is an interpretive choice the paper makes but does not justify from first principles. The author may intend the EM-only reading and consider the Mercury application (this paper's gravitational substitution) a *separate* proposal that should stand or fall on its own. The Mercury result tests this specific substitution; it does not test the kernel itself, which is verified ✅ in its EM context. This is flagged again in [`04_findings_and_GPS_Q1.md`](04_findings_and_GPS_Q1.md) as a question for the author.
+
 Apply Eq. (h3) with `V = −GMm/r` (gravitational potential between Sun mass `M` and test particle Mercury mass `m`):
 
 $$\nabla V \;=\; \frac{\partial V}{\partial r}\,\hat{\mathbf{e}}_r \;=\; +\frac{GMm}{r^2}\,\hat{\mathbf{e}}_r, \qquad \frac{V}{mc^2} \;=\; -\frac{GM}{c^2 r}.$$
@@ -63,9 +65,9 @@ The `(1 − GM/(c²r))` factor is *less than 1* for finite `r`. Two consequences
 
 The first consequence is the load-bearing input to the perihelion calculation; the second is structurally interesting but not Mercury-relevant.
 
-**Sign-of-correction note.** Standard GR's perihelion advance comes from an extra *attractive* `1/r³` term in the effective potential (the `3GM·L²/(c²r³)` term from the Schwarzschild geodesic). The framework's Eq. (h4) gives the *opposite* sign of relativistic correction — the `(1 − GM/(c²r))` factor *reduces* the `1/r²` attraction. This sign difference becomes load-bearing in [`03_numerical_predictions.md` §3](03_numerical_predictions.md) where the framework's full dual under-predicts the perihelion advance and (under the natural interpretation) predicts the wrong sign.
+**Sign-of-correction note.** Standard GR's perihelion advance comes from an extra *attractive* `1/r³` term in the effective potential (the `3GM·L²/(c²r³)` term from the Schwarzschild geodesic). The framework's Eq. (h4) gives the *opposite* sign of relativistic correction — the `(1 − GM/(c²r))` factor *reduces* the `1/r²` attraction, rather than adding to it. This means the framework's `(1 − GM/(c²r))`-induced *contribution* to the perihelion shift has the opposite sign from GR's relativistic contribution. The framework's *total* prediction (after combining with the reduced-mass term) is still a positive forward perihelion advance (`+37.79″/century`, see [`03_numerical_predictions.md`](03_numerical_predictions.md)), just smaller in magnitude than GR's and observation's; the framework does not predict perihelion recession.
 
-<!-- TODO: human reviews and fills in — confirms the "wrong sign of relativistic correction" reading is the correct interpretation of the (1 − GM/(c²r)) factor's mechanism. The paper does not explicitly compare its prediction's sign convention to GR's perihelion-advance sign; the comparison is the campaign's contribution. -->
+<!-- TODO: human reviews and fills in — confirms the framework's `(1 − GM/(c²r))` factor's opposite-sign contribution to the perihelion shift is the correct reading of the mechanism, and confirms the qualifier "the framework's total prediction is still positive forward advance" accurately represents the framework's prediction. The paper does not explicitly compare its prediction's sign convention to GR's perihelion-advance sign; the comparison is the campaign's contribution. -->
 
 ## 5. Verdict
 

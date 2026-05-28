@@ -46,15 +46,19 @@ The paper's §2 concludes by computing three perihelion-advance predictions for 
 | Full dual `Δφ_d` | **`37.79″`** | framework's structural prediction |
 | Approximate dual `Δφ_{d₁}` | `37.79″` (matches full dual to 4 sig figs) | first-order Taylor of full dual |
 | Standard GR `6πGM/[c²a(1−e²)]` | `42.99″` | reproduces observed to `<0.1%` |
-| Observed (Le Verrier residual) | `≈ 43″` | reference |
+| Observed (modern residual; Newcomb–Clemence reduction) | `≈ 43″` | reference (N-body-derived; see ⚠ note below) |
 
-**Finding (⚠):** The paper's Corda value (`44.39–44.66″`) is the *reduced-mass* contribution `πm/M` from the `(1+m/M)^(1/2)` factor in Eq. (h8) — a Newtonian effect that is already absorbed into Le Verrier's planetary-perturbation analysis. **The framework's structural prediction including the relativistic factor `(1 − G(M²+m²)/((M+m)c²r₀))^(1/2)` is `37.79″/century`**, which is `12%` below observed.
+**Finding (⚠):** The paper's Corda value (`44.39–44.66″`) is the *reduced-mass* contribution `πm/M` from the `(1+m/M)^(1/2)` factor in Eq. (h8) — a Newtonian effect that is already absorbed into the modern planetary-perturbation analysis (Newcomb 1898; Clemence 1947). **The framework's structural prediction including the relativistic factor `(1 − G(M²+m²)/((M+m)c²r₀))^(1/2)` is `+37.79″/century`** — a *positive* forward perihelion advance, but `12%` below observed.
 
-Decomposition: framework full-dual = reduced-mass `+44.66″` + framework relativistic correction `−6.87″` = `+37.79″`. The framework's relativistic correction has the **opposite sign** from GR's `+42.99″`.
+Decomposition (one of several choices): framework full-dual = reduced-mass `+44.66″` + framework's `(1 − GM/(c²r))`-induced contribution `−6.87″` = `+37.79″`. The framework's `(1 − GM/(c²r))`-induced *contribution* has the **opposite sign** from GR's `+42.99″` *relativistic contribution* — but the framework's *total* prediction (`+37.79″`) is positive forward advance, not perihelion recession.
 
-The paper's headline claim that "44.39″/century well-approximates 42.98″" is therefore technically true for the Corda value but *not* for the framework's structural prediction.
+The paper's headline claim that "`44.39″/century` well-approximates `42.98″`" is therefore technically true for the Corda value but *not* for the framework's structural prediction including the modified-gravity correction. ⚠ caveats on this finding:
 
-This finding cross-references the open question Q1 in [`../Author_Reports/2026-05_gps_relativity_summary_for_gill.md`](../Author_Reports/2026-05_gps_relativity_summary_for_gill.md) §5 about the framework's correct curved-spacetime extension; see [`../Mercury_Perihelion/04_findings_and_GPS_Q1.md`](../Mercury_Perihelion/04_findings_and_GPS_Q1.md) for the full discussion.
+- The observed `43″` residual is *N-body-derived* (subtraction of Newtonian planetary perturbations from total Mercury precession). The framework's modified gravity would change those perturbations too; a consistent test would require running the framework's modified gravity through the full N-body solar system, which this campaign has not done.
+- The paper's text claims only that the prediction "well approximates" observation (few-percent agreement); a 12% disagreement is at the edge of that claim and does not strictly rule the extension out at the paper's own claimed precision.
+- The framework's `V²/(2mc²)` kernel was verified ✅ in its *EM* context (DRQM I (II.3)); whether the kernel is intended to apply to *gravitational* `V` is an interpretive choice the paper makes that the author may want to confirm or amend.
+
+This finding cross-references the open question Q1 in [`../Author_Reports/2026-05_gps_relativity_summary_for_gill.md`](../Author_Reports/2026-05_gps_relativity_summary_for_gill.md) §5 about the framework's correct gravitational extension; see [`../Mercury_Perihelion/04_findings_and_GPS_Q1.md`](../Mercury_Perihelion/04_findings_and_GPS_Q1.md) for the full discussion including the three interpretive questions in §4 of that doc.
 
 <!-- TODO: human reviews and fills in — confirms whether this numerical finding should be promoted into FINDINGS_for_author_review.md as a Finding 4. The algebraic verification is complete (✅ all 13 equations); the question for the author is whether the framework's intended Mercury prediction is Corda's reduced-mass value (which agrees with observation at the 3-4% level) or the full-dual structural value (which disagrees by 12% and has the wrong sign of relativistic correction). -->
 

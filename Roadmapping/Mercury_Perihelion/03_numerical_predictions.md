@@ -68,9 +68,15 @@ ClearAll[Msun, mMerc, aMerc, eMerc, Torb, GG, cc, orbitsPerCentury, radToArcsec]
 | Full dual `Δφ_d` | `4.41 × 10⁻⁷` | **37.79″** | **`−12.1%`** | **`−12.1%`** |
 | Approximate dual `Δφ_{d₁}` | `4.41 × 10⁻⁷` | **37.79″** | **`−12.1%`** | **`−12.1%`** |
 | Standard GR | `5.02 × 10⁻⁷` | **42.99″** | `+0.0%` | (reference) |
-| **Observed** (Le Verrier residual) | — | **`≈ 43″`** | (reference) | `+0.02%` |
+| **Observed** (modern residual; Newcomb–Clemence reduction) | — | **`≈ 43″`** | (reference) | `+0.02%` |
 
-Standard GR reproduces observed to `≈ 0.05%` — the canonical Einstein 1915 result.
+Standard GR reproduces observed to `≈ 0.05%` — the canonical Einstein 1915 result. (Historical note: the modern `~43″` residual is from Newcomb (1898) and Clemence (1947) reductions, refined throughout the 20th century. Le Verrier's original 1859 figure was `~38″`; attributing the modern number to Le Verrier is historically loose. Modern values e.g. Will, *Theory and Experiment in Gravitational Physics* (2018) §7.)
+
+### 4a. Two-body vs N-body caveat (load-bearing)
+
+The 43″ residual is computed by *subtracting* Newtonian planetary perturbations (~531″/century from other planets on Mercury) from the total observed precession (~5600″/century). The subtraction assumes *Newtonian* gravity for the perturbing planets' effect on Mercury. The framework's modified Newtonian gravity (with the `(1 − GM/(c²r))` factor) would change the planetary perturbations too — by an amount comparable to the framework's two-body Sun-Mercury correction, since each planet–Mercury pair carries a similar relative-`GM/(c²r)` factor.
+
+A consistent test of the framework's gravitational extension would require running its modified gravity through the *full N-body* planetary calculation, then computing the residual. This campaign performs only the two-body Sun-Mercury calculation and compares against the *N-body-derived* residual. The two are not directly comparable at the precision the 12% disagreement claims. **The honest reading is therefore: at the two-body level the framework under-predicts by 12%, and a consistent N-body test could shift this in either direction by a comparable amount.**
 
 ## 5. Decomposition of the framework's full-dual prediction
 
@@ -84,7 +90,7 @@ For Mercury:
 | Framework's relativistic correction (`−πGM/(c²r₀)`) | **`−6.87″`** |
 | **Net framework prediction `Δφ_d`** | **`+37.79″`** |
 
-**The framework's relativistic correction has the *opposite sign* from GR's `+42.99″/century`** and is about ~6× smaller in magnitude.
+**The framework's `(1 − GM/(c²r))`-induced contribution has the *opposite sign* from GR's `+42.99″/century` relativistic contribution** and is about ~6× smaller in magnitude. Note this is a statement about the *contribution* — the framework's *total* prediction `Δφ_d = +37.79″/century` is positive (forward perihelion advance); the framework does not predict perihelion recession.
 
 This is the load-bearing numerical finding of the campaign. The paper's headline claim that "44.39″/century well-approximates 42.98″ and observed 43″" is true only for the Corda value, which is the *reduced-mass-only* Newtonian effect — **not** the framework's structural prediction including the `(1 − GM/(c²r))` correction from Eq. (h4).
 
@@ -100,4 +106,4 @@ The paper quotes `Δφ_c = 44.39″/century`; our computation gives `44.66″`. 
 
 ## 8. Verdict
 
-✅ Numerical computation reproduces the paper's claimed values for all three predictions (Corda value within `0.6%`; full and approximate dual exact to printed precision). ⚠ The framework's full-dual prediction (`37.79″/century`) under-predicts observed Mercury perihelion advance by `12%` and has the opposite sign of relativistic correction compared to GR. Headline finding flagged for the GPS author report's open question Q1 — see [`04_findings_and_GPS_Q1.md`](04_findings_and_GPS_Q1.md).
+✅ Numerical computation reproduces the paper's claimed values for all three predictions (Corda value within `0.6%`; full and approximate dual exact to printed precision). ⚠ The framework's full-dual prediction (`+37.79″/century`, positive forward advance) under-predicts the *N-body-derived* observed Mercury perihelion residual (`≈43″/century`) by `~12%`. The framework's `(1 − GM/(c²r))`-induced contribution has the opposite sign from GR's relativistic contribution, though the framework's total prediction is positive. *Caveats:* the two-body vs N-body comparison is not direct (see §4a), and the paper claims only "well approximates" precision; the `12%` disagreement does not strictly rule the extension out at the paper's own claimed precision level. Headline finding flagged for the GPS author report's open question Q1 — see [`04_findings_and_GPS_Q1.md`](04_findings_and_GPS_Q1.md).
