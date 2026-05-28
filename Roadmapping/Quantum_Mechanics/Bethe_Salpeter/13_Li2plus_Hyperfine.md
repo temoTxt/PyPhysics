@@ -84,3 +84,32 @@ Residual (framework minimal − standard-QED point-nucleus) $= -63$ MHz ($-0.21\
 <!-- TODO: human reviews and fills in — confirms (a) the branch-A assignment with the structural-self-consistency caveat (g_s enhancement is Z-independent, identical to textbook QED) is the correct honest disposition, mirroring the H 21-cm verdict; (b) the (Z-ii) Z-running reading is correctly identified as NOT the framework's stated claim; (c) the Bohr–Weisskopf/quadrupole floor caveat is faithfully scoped out per issue #78; and (d) the framework prediction 29 804 MHz (minimal) / 29 867 MHz (with standard corrections) is the value to contribute to the joint-χ² fit. -->
 
 **Notes for author review.** No direct ⁷Li²⁺ 1s HFS measurement exists; the comparison is against QED theory (Pachucki et al. 2023). The dual-theory framework predicts $\approx 29.8$ GHz, reproducing the standard-QED point-nucleus value by construction (both apply the same universal $g_s$ and the same Dirac/Fermi structure). This is the hyperfine consequence of the same `r_e` finding recorded in [`FINDINGS_for_author_review.md` Finding 2](../../Equation_Verification/FINDINGS_for_author_review.md), now exercised out-of-sample at Z=3 — where it remains a self-consistency statement, since the $r_e$-dependent $g_s$ enhancement does not vary with Z under the framework's universal-cutoff stance.
+
+---
+
+### Cross-PR reconciliation with [PR #87](https://github.com/temoTxt/PyPhysics/pull/87) (hydrogenic-ion Z-scan, issue [#82](https://github.com/temoTxt/PyPhysics/issues/82)) — *steel-man revision 2026-05-27*
+
+The "Branch A by structural self-consistency" verdict above assumes the framework's universal cutoff means $g_s = -2.00231930$ is the right multiplier *at every Z*. The parallel hydrogenic-ion g-factor scan ([PR #87](https://github.com/temoTxt/PyPhysics/pull/87)) shows this assumption fails empirically.
+
+**The Z-scan data the structural argument needs to confront:**
+
+| $Z$ | Source | Measured $g_e^{\rm bound}$ |
+|---|---|---|
+| 1 (free) | CODATA | $-2.00231930$ |
+| 2 (³He⁺) | Schneider 2022 | $-2.00217742(45)$ |
+| 6 (¹²C⁵⁺) | Sturm 2011 | $-2.00104159$ |
+| 8 (¹⁶O⁷⁺) | Verdú 2004 | $-2.00004703(46)$ |
+
+The bound-electron $g_s$ at Z=2 is already $-2.00218$, not $-2.00232$. **For Li²⁺ at Z=3, the bound-electron $g_s$ is $\sim -2.00210$** (interpolating the $-(Z\alpha)^2/3$ binding correction). The framework's HFS prediction uses $-2.00232$ — i.e., the framework's $0.116\%$ enhancement is ~$0.011$ percentage-points too large in $|g_s|$ at Z=3.
+
+**Concrete effect on #4:** the framework's 29,804 MHz minimal prediction uses $(g_s/-2) = 1.00116$. The Z=3 bound-electron value gives $(g_s/-2) \approx 1.00105$. The framework's prediction is therefore ~$3$ MHz too high compared to what bound-state QED would predict for Li²⁺'s actual $g_e^{\rm bound}$. This is far below the Bohr–Weisskopf nuclear-structure floor ($\sim 0.5$–$1\%$ ≈ 150–300 MHz), so it doesn't shift the verdict — but it does mean the "by construction" framing is more honest as "by construction at the Bethe-estimate floor; below that floor, the framework's $g_s$ is empirically wrong at every Z > 1."
+
+**Reconciliation.** The verdicts are mutually consistent under proper framing:
+
+- **Branch A is the framework's stated position** — universal cutoff, identical $g_s$ at every Z; reproduces standard-QED point-nucleus HFS at the leading-$g_s$ floor.
+- **Branch C is what high-precision Z=3 data would force** — the bound-state $g_s$ at Z=3 differs from the free-electron value by $\sim 10^{-4}$, which is below the BW floor for #4 but above the Bethe-estimate floor for the underlying $r_e$-engagement.
+- **Same verdict shape as the lepton axis** ([PR #70](https://github.com/temoTxt/PyPhysics/pull/70)): apparatus is X-trivial (A); data requires X-specific inheritance from QED (C).
+
+**Sharpened verdict.** "Branch A by structural self-consistency" is **correct as a statement about the framework's apparatus**; it is **not** an independent Z=3 discrimination, and the $g_s$-Z-invariance assumption it relies on is empirically falsified at Z=2 (Schneider 2022) and would fail at Z=3 if a high-precision Li²⁺ HFS measurement were available. The "agreement by construction at the Bethe-estimate floor" framing remains honest because the framework's apparatus precision doesn't extend below where the Z-mismatch shows up — but the *reason* it works is that the framework's apparatus is structurally too coarse to expose its own Z-blindness on this observable.
+
+<!-- TODO: human reviews and fills in — confirms (a) the cross-PR reconciliation framing (Branch A structurally + Branch C operationally is the honest joint verdict), (b) the concrete Z=3 g_s-mismatch effect on #4 (~3 MHz, below BW floor but indicative), (c) the parallel to PR #70's lepton-axis verdict, and (d) the sharpened verdict prose that distinguishes "framework's apparatus says A" from "data requires C." -->
