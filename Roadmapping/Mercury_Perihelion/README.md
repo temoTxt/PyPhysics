@@ -44,7 +44,7 @@ This is a substantive finding for the GPS author report's open question Q1; see 
 | 04 | [`04_findings_and_GPS_Q1.md`](04_findings_and_GPS_Q1.md) | Honest scoping + cross-reference to GPS Q1 | ✅ flagged |
 | 05 | [`05_nbody_orbital_mechanics.md`](05_nbody_orbital_mechanics.md) | Proper eccentric-orbit apsidal-angle calc (`−1/6` of GR, exact) + N-body quantification + "1/6 factor" / Van Flandern connection | ✅ **the decisive result** |
 
-Verification doc with per-equation entries: [`../Equation_Verification/Dual_Newtonian_Theory.md`](../Equation_Verification/Dual_Newtonian_Theory.md).
+Verification doc with per-equation entries: [`../Equation_Verification/Dual_Newtonian_Theory.md`](../Equation_Verification/Dual_Newtonian_Theory.md). Companion Mathematica notebook (runnable, all 6 cells): [`../Mathematica_Notebooks/Mercury_Perihelion/perihelion_advance.wl`](../Mathematica_Notebooks/Mercury_Perihelion/perihelion_advance.wl).
 
 ## Conventions
 

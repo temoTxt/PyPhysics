@@ -1,6 +1,7 @@
 # 05 — Proper orbital mechanics + the N-body question: can the framework reach the full 43″?
 
 **Status:** ✅ Wolfram-MCP verified (exact + numerical).
+**Companion notebook:** [`../Mathematica_Notebooks/Mercury_Perihelion/perihelion_advance.wl`](../Mathematica_Notebooks/Mercury_Perihelion/perihelion_advance.wl) — 6 cells (Eq. h3, Eq. h4, exact −1/6 apsidal-angle ratio, Mercury numerics, independent orbit integration confirming retrograde sign, N-body scaling). Runs in Mathematica or `wolframscript`.
 **Motivating question** (from the devil's advocate review of [PR #83](https://github.com/temoTxt/PyPhysics/pull/83)): the observed `43″/century` is an *N-body-derived* residual; the paper's two-body calculation isn't directly comparable. Does a proper N-body / eccentric-orbit treatment of the framework's force law close the 12% gap to observation?
 
 **Answer: no.** Two independent reasons, both decisive:
