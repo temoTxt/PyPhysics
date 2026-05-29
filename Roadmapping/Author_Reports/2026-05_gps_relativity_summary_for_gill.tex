@@ -73,7 +73,7 @@
 proper-time companion, and open questions for a curved-spacetime
 extension}
 \author{Trey Morris with Claude Opus 4.7}
-\date{2026-05-27}
+\date{2026-05-28}
 
 \begin{document}
 \maketitle
@@ -314,31 +314,33 @@ approach with no curved-spacetime apparatus --- a \emph{separate kind}
 of answer rather than a 5th item in the same list. \textbf{We worked the
 Mercury-perihelion test of this approach}
 (\href{../Mercury_Perihelion/}{\texttt{Roadmapping/Mercury\_Perihelion/}}
-campaign): all algebra verifies {[}OK{]} via Wolfram MCP, and the
-numerical prediction is \(\Delta\varphi_d = +37.79''\)/century --- a
-\emph{positive} forward perihelion advance, \(12\%\) below the observed
-\(\approx 43''\)/century. The framework's \((1 - GM/(c^2r))\)-induced
-\emph{contribution} to the shift has opposite sign from GR's
-\(+42.99''\) \emph{relativistic contribution}, though the framework's
-\emph{total} prediction is still positive (the framework does not
-predict perihelion recession). Three caveats prevent reading this as a
-strict rule-out: (a) the paper claims only that its prediction ``well
-approximates'' observation, which is consistent with the 12\% gap rather
-than ruled out by it; (b) the observed \(43''\) is a
-\emph{two-body-vs-N-body} comparison since the residual is computed
-assuming Newtonian gravity for other planets' perturbations on Mercury,
-and the framework's modified gravity would change those perturbations
-too; (c) whether the \(V^2/(2mc^2)\) kernel is intended to apply to
-gravitational \(V\) at all (rather than only EM \texttt{V} where it was
-originally verified) is an interpretive question for the author. The
-four metric extensions in Q1 above remain open and untested.
-Per-equation verification is recorded in
+campaign): all algebra verifies {[}OK{]} via Wolfram MCP. The paper's
+circular-orbit heuristic gives \(+37.79''\)/century, but a \emph{proper
+eccentric-orbit apsidal-angle calculation} (the right tool, since
+perihelion advance is intrinsically about eccentric orbits) gives the
+framework's genuine perihelion advance as \textbf{exactly
+\(-\tfrac{1}{6}\) of GR}: \(-7.17''\)/century vs GR's \(+42.99''\) ---
+opposite sign, one-sixth magnitude. This is the classic ``1/6 factor''
+of a force-law-only modification that lacks GR's spatial-metric
+curvature, and it connects to the Van Flandern reference also attached
+to issue \href{https://github.com/temoTxt/PyPhysics/issues/81}{\#81}.
+Critically, \textbf{the N-body refinement cannot close this gap}: the
+framework's relativistic factor \(GM/(c^2r)\) scales with the attracting
+mass, so planetary perturbations contribute
+\(\sim 10^{-4}\)--\(10^{-5}\) of the Sun-Mercury term (\(\sim 10^{-3}\)
+arcsec/century summed) --- three to four orders of magnitude too small.
+The discrepancy is therefore \emph{structural} (sign + factor of 6), not
+a numerical near-miss that a more careful calculation might rescue. The
+flat-space modified-Newtonian extension is ruled out for Mercury by this
+structural argument. (Interpretive caveat: whether the \(V^2/(2mc^2)\)
+kernel --- verified in its EM context --- is intended to apply to
+gravitational \(V\) at all is a question for you; but even granting the
+most charitable reading, the \(-1/6\) factor cannot be reconciled with
+observed \(+43''\).) The four metric extensions in Q1 above remain open
+and untested. Verification in
 \href{../Equation_Verification/Dual_Newtonian_Theory.md}{\texttt{Equation\_Verification/Dual\_Newtonian\_Theory.md}};
-the Mercury computation is in
-\href{../Mercury_Perihelion/03_numerical_predictions.md}{\texttt{Mercury\_Perihelion/03\_numerical\_predictions.md}};
-the three interpretive questions are in
-\href{../Mercury_Perihelion/04_findings_and_GPS_Q1.md}{\texttt{Mercury\_Perihelion/04\_findings\_and\_GPS\_Q1.md}
-§4}.
+the decisive orbital-mechanics calculation is in
+\href{../Mercury_Perihelion/05_nbody_orbital_mechanics.md}{\texttt{Mercury\_Perihelion/05\_nbody\_orbital\_mechanics.md}}.
 \end{quote}
 
 \textbf{Q2. How does \(\mathbf{u} \cdot \mathbf{a}\) transform under the

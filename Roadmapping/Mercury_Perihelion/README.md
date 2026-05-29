@@ -12,13 +12,17 @@ The paper's algebra reproduces ✅ via Wolfram MCP; the numerical perihelion adv
 
 | Prediction | Δφ per century | vs observed (43″/century) | vs GR (42.99″/century) |
 |---|---|---|---|
-| Corda `Δφ_c = πm/M` | **44.66″** | +3.9% | +3.9% |
-| Full dual `Δφ_d` | **37.79″** | **−12.1%** | **−12.1%** |
-| Approximate dual `Δφ_{d₁}` | **37.79″** | **−12.1%** | **−12.1%** |
+| Corda `Δφ_c = πm/M` (reduced-mass; *not* a real precession) | 44.66″ | +3.9% | +3.9% |
+| Paper full dual `Δφ_d` (circular-orbit heuristic) | 37.79″ | −12.1% | −12.1% |
+| **Framework, proper eccentric-orbit calculation** ([doc 05](05_nbody_orbital_mechanics.md)) | **−7.17″** | **wrong sign** | **−1/6 exactly** |
 | Standard GR `6πGM/[c²a(1−e²)]` | 42.99″ | +0.0% (reference) | (reference) |
 | **Observed** (modern residual; Newcomb–Clemence reduction) | **≈ 43″** | (reference) | +0.02% |
 
-**Headline finding.** The paper highlights Corda's `44.39″/century` as the framework's match to observation, but Corda's value is the *reduced-mass-only* Newtonian effect `πm/M`, not the framework's structural gravitational prediction. The framework's own full dual prediction is **`+37.79″/century`** — a *positive* forward perihelion advance, about 12% below observed. The framework's prediction *does* advance the perihelion; it just does so by less than GR and observation indicate.
+The **proper orbital-mechanics row** is the load-bearing one: the paper's `+37.79″` comes from a circular-orbit heuristic that conflates orbital-frequency change with ellipse precession. The genuine perihelion advance of the framework's force law, computed via the apsidal angle for an eccentric orbit, is `−7.17″/century` — exactly `−1/6` of GR. See [doc 05](05_nbody_orbital_mechanics.md).
+
+**Headline finding (sharpened in [doc 05](05_nbody_orbital_mechanics.md)).** A *proper orbital-mechanics* calculation (eccentric orbit, apsidal angle — not the paper's circular-orbit heuristic) shows the framework's force law `a = −(GM/r²)(1 − GM/(c²r))·ê_r` gives a genuine perihelion advance of **exactly `−1/6` of GR** — opposite sign, one-sixth magnitude: `−7.17″/century` vs GR's `+42.99″`. This is the classic "1/6 factor" of a force-law-only modification that lacks GR's spatial-metric curvature. **The N-body refinement cannot close this**: planetary perturbations contribute framework relativistic corrections `~10⁻⁴–10⁻⁵` of the Sun-Mercury term (the relativistic factor `GM/(c²r)` scales with the attracting mass, and the planets are light). The earlier "12% gap" framing (doc 03, from the paper's circular-orbit `+37.79″`) is superseded by this structural result: the discrepancy is not a numerical near-miss but a sign-and-factor-of-6 structural difference.
+
+The paper's headline `44.39″/century` (Corda's `πm/M`) is the *reduced-mass period correction*, which causes **no** perihelion precession for a closed two-body ellipse — it is not a genuine perihelion advance at all (see [doc 05 §1](05_nbody_orbital_mechanics.md)).
 
 Decomposition of the framework's full dual (one of several choices; the framework itself does not separate the prediction this way):
 
@@ -36,8 +40,9 @@ This is a substantive finding for the GPS author report's open question Q1; see 
 |---|---|---|---|
 | 01 | [`01_setup_and_verification.md`](01_setup_and_verification.md) | Paper's `K = π²/(2m) + mc² + V + V²/(2mc²)` → Eq. (h3) → Eq. (h4) chain | ✅ all Wolfram-MCP verified |
 | 02 | [`02_orbital_dynamics.md`](02_orbital_dynamics.md) | Eqs. (h5)–(h8) (orbital speed, period, angular velocity) | ✅ all Wolfram-MCP verified |
-| 03 | [`03_numerical_predictions.md`](03_numerical_predictions.md) | Numerical Δφ for Mercury under all three predictions + GR + observed | ✅ computed |
+| 03 | [`03_numerical_predictions.md`](03_numerical_predictions.md) | Numerical Δφ for Mercury under all three paper predictions + GR + observed (paper's circular-orbit heuristic) | ✅ computed |
 | 04 | [`04_findings_and_GPS_Q1.md`](04_findings_and_GPS_Q1.md) | Honest scoping + cross-reference to GPS Q1 | ✅ flagged |
+| 05 | [`05_nbody_orbital_mechanics.md`](05_nbody_orbital_mechanics.md) | Proper eccentric-orbit apsidal-angle calc (`−1/6` of GR, exact) + N-body quantification + "1/6 factor" / Van Flandern connection | ✅ **the decisive result** |
 
 Verification doc with per-equation entries: [`../Equation_Verification/Dual_Newtonian_Theory.md`](../Equation_Verification/Dual_Newtonian_Theory.md).
 
