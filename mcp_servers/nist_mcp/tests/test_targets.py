@@ -15,3 +15,9 @@ def test_targets_curated_and_cited():
         assert "curated" in t["source"].lower()
         assert t["unit"] == "MHz"
         assert t["value"] is not None
+
+
+def test_positronium_and_muonium_present():
+    quantities = " ".join(t["quantity"].lower() for t in targets.list_dirac_targets())
+    assert "positronium" in quantities
+    assert "muonium" in quantities

@@ -13,6 +13,11 @@ cites the primary precision-spectroscopy literature). ``reference`` points back
 to that document rather than to invented author-year citations; the electron
 g-factor is delegated to ``get_constant`` (CODATA) and is intentionally absent
 here.
+
+Positronium and muonium are curated here too: they are exotic atoms absent from
+the NIST ASD, and the PDG machine-readable API (the ``pdg`` package) carries no
+muonium/positronium entries either, so their hyperfine splittings are only
+available from PDG review text / primary literature.
 """
 
 _DOC = "Roadmapping/Quantum_Mechanics/Bethe_Salpeter/10_CrossComparison.md"
@@ -48,6 +53,22 @@ DIRAC_TARGETS = [
         "uncertainty": None,
         "unit": "MHz",
         "source": "curated (Bethe-Salpeter cross-comparison; precision spectroscopy)",
+        "reference": _DOC,
+    },
+    {
+        "quantity": "positronium 1S ortho-para hyperfine splitting",
+        "value": 203389.0,
+        "uncertainty": 2.0,
+        "unit": "MHz",
+        "source": "curated (Bethe-Salpeter cross-comparison; PDG / primary literature)",
+        "reference": _DOC,
+    },
+    {
+        "quantity": "muonium 1S hyperfine splitting",
+        "value": 4463.302776,
+        "uncertainty": 0.000051,
+        "unit": "MHz",
+        "source": "curated (Bethe-Salpeter cross-comparison; PDG / primary literature)",
         "reference": _DOC,
     },
 ]
