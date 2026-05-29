@@ -2,6 +2,9 @@
   "mcpServers": {
     "pyphysics": {
       "command": "pyphysics-mcp"
+    },
+    "nist": {
+      "command": "nist-mcp"
     }
   }
 }

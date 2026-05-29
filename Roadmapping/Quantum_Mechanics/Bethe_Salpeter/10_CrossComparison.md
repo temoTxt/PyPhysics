@@ -58,14 +58,16 @@ The campaign's experimental status, honestly framed: *of 28 recorded results, 20
 
 The table therefore is **one calculation** (a `(g_{s}/-2)^{n}\,\times\,\text{textbook}` substitution at the triangulated `r_{e}`) repeated for six different `g_{s}`-dependent observables, not six independent tests of an underlying parameter. The campaign's load-bearing quantitative result, honestly stated, is:
 
-| Observable | Framework prediction at triangulated `r_e` | Measurement | Residual | Source of residual |
-|---|---|---|---|---|
-| Electron `g_{s}` (Finding 2 itself) | `-2.00231930` | `-2.00231930…` (CODATA) | `0` | matches by construction |
-| Hydrogen `2P₃/₂–2P₁/₂` (PR C) | `~10\,962` MHz | `10\,969.13(10)` MHz | `~7` MHz | Bethe-estimate floor (recoil + 2-loop) |
-| Hydrogen 1S hyperfine (PR F) | `~1\,420.04` MHz | `1\,420.405\,751\,768(2)` MHz | `~0.4` MHz | sub-leading QED (α/π corrections + recoil + nuclear-structure) |
-| Helium `^{3}P₀-^{3}P_{1}` (PR I) | `~29\,616.95` MHz | `29\,616.952` MHz | `~kHz` | full QED residual *(provisional — spin-spin/spin-orbit recombination not derived in PR I)* |
-| Positronium ortho-para (PR I) | `~203\,389` MHz | `203\,389(2)` MHz | matches at Bethe precision | positronium-specific QED *(provisional — absorbing correction not derived in PR I)* |
-| Muonium hyperfine (PR I) | `~4\,463.4` MHz | `4\,463.302\,776(51)` MHz | `~0.1` MHz | sub-leading QED |
+| Observable | Framework prediction at triangulated `r_e` | Measurement | Residual | Source of residual | NIST MCP cross-check (issue #90) |
+|---|---|---|---|---|---|
+| Electron `g_{s}` (Finding 2 itself) | `-2.00231930` | `-2.00231930…` (CODATA) | `0` | matches by construction | `-2.00231930436256(35)` — CODATA 2018, `get_constant` |
+| Hydrogen `2P₃/₂–2P₁/₂` (PR C) | `~10\,962` MHz | `10\,969.13(10)` MHz | `~7` MHz | Bethe-estimate floor (recoil + 2-loop) | `10\,969.049(15)` MHz — ASD levels, **theoretical/Ritz**, `get_levels` |
+| Hydrogen 1S hyperfine (PR F) | `~1\,420.04` MHz | `1\,420.405\,751\,768(2)` MHz | `~0.4` MHz | sub-leading QED (α/π corrections + recoil + nuclear-structure) | not in ASD at this precision (measured value) |
+| Helium `^{3}P₀-^{3}P_{1}` (PR I) | `~29\,616.95` MHz | `29\,616.952` MHz | `~kHz` | full QED residual *(provisional — spin-spin/spin-orbit recombination not derived in PR I)* | not derived via MCP (ASD He I levels exist; interval not auto-extracted) |
+| Positronium ortho-para (PR I) | `~203\,389` MHz | `203\,389(2)` MHz | matches at Bethe precision | positronium-specific QED *(provisional — absorbing correction not derived in PR I)* | not on NIST (exotic atom; PDG / primary literature) |
+| Muonium hyperfine (PR I) | `~4\,463.4` MHz | `4\,463.302\,776(51)` MHz | `~0.1` MHz | sub-leading QED | not on NIST (exotic atom; PDG / primary literature) |
+
+**On the `NIST MCP cross-check` column (provenance, pragmatic per Crocco §1).** This column was populated programmatically via the `nist` MCP server ([issue #90](https://github.com/temoTxt/PyPhysics/issues/90), [`mcp_servers/nist_mcp/`](../../../mcp_servers/nist_mcp/)) on 2026-05-29; it is a retrieval cross-check, **not** a replacement for the `Measurement` column. Two honest caveats are load-bearing: (1) only the electron `g_{s}` is sourced from an authoritative independent reference (CODATA-2018 via `scipy.constants`); (2) the hydrogen `2P₃/₂–2P₁/₂` entry is the **theoretical/Ritz** level difference tabulated in the NIST ASD (`82\,259.2850014 − 82258.9191133` cm⁻¹, converted at `c`), not an independent measurement — it must not be read as corroborating the framework, and it differs from the measured `10\,969.13(10)` MHz by `~0.08` MHz. The MHz/sub-MHz splittings for hyperfine, helium `^{3}P`, positronium, and muonium are **not** carried by ASD at this precision and are deliberately left blank rather than back-filled with theoretical surrogates. <!-- TODO: human reviews and fills in — confirms the MCP cross-check column is correctly framed as a retrieval aid (g_s from CODATA; H fine structure as ASD-theoretical, not measurement), and that leaving the non-ASD splittings blank is the right honest choice rather than substituting theoretical values into a measurement comparison -->
 
 **The pattern is consistent — *and consistent by construction.*** All six observables share the same `(g_{s}/-2)^{n}` scaling, and the triangulated `r_{e}` is by construction the joint-best-fit value across all six. The "six observables consistent" pattern is therefore a single-fact pattern (single-parameter joint fit) repeated six times, not six independent corroborations. Per-observable residual table including the full Pass A vs Pass B objective-function contrast: [`FINDINGS_for_author_review.md` Finding 2 update](../../Equation_Verification/FINDINGS_for_author_review.md#finding-2--drqm-i-eq-iii22-published-r_e-does-not-reproduce-the-experimental-g_e).
 
