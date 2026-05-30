@@ -9,8 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 117 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 117 pending · 🔴 0 unavailable
-
+**Summary**: 122 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 120 pending · 🔴 1 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -104,6 +103,8 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[pais1986_inward_bound]] | 1986 | 1948-1965 | retrospective | ⚪ pending | — |
 | [[schweber1994_qed_and_men]] | 1994 | 1948-1965 | retrospective | ⚪ pending | — |
 | [[tinkham1996_superconductivity]] | 1996 | 1948-1965 | retrospective | ⚪ pending | — |
+| [[bethe1977_one_two_electron_atoms]] | 1977 | 1948-present | retrospective | 🟡 acquired (local only) | — |
+| [[ashby2003_relativity_in_gps]] | 2003 | 1965-present | retrospective | ⚪ pending | — |
 | [[sagnac1913_effect]] | 1913 | forward | primary | ⚪ pending | — |
 | [[schwarzschild1916]] | 1916 | forward | primary | ⚪ pending | — |
 | [[aston1922_mass_defect]] | 1920 | forward | primary | ⚪ pending | — |
@@ -131,5 +132,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[arute2019_quantum_supremacy]] | 2019 | forward | primary | ⚪ pending | — |
 | [[krantz2019_circuit_qed]] | 2019 | forward | retrospective | ⚪ pending | — |
 | [[pirandola2020_qkd_review]] | 2020 | forward | retrospective | ⚪ pending | — |
+| [[codata2018_constants]] | 2021 | forward | retrospective | ⚪ pending | `../../Historical_Papers/Retrospective/codata2018_constants.pdf` |
 | [[nif2022_ignition]] | 2024 | forward | primary | ⚪ pending | — |
+| [[nist_asd_2024]] | 2024 | forward | retrospective | 🔴 unavailable | — |
 <!-- AUTO-TABLE-END -->

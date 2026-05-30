@@ -1,6 +1,6 @@
 """Offline tests for get_constant (no network)."""
 
-from nist_mcp.tools import codata
+from precision_data_mcp.nist.tools import codata
 
 SCHEMA = {"quantity", "value", "uncertainty", "unit", "source", "reference"}
 

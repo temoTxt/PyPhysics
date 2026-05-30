@@ -3,8 +3,8 @@
     "pyphysics": {
       "command": "pyphysics-mcp"
     },
-    "nist": {
-      "command": "nist-mcp"
+    "precision_data": {
+      "command": "precision-data-mcp"
     }
   }
 }
