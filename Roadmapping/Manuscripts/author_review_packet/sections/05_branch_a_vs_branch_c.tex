@@ -1,0 +1,93 @@
+\section{Branch A vs.~Branch C --- the tension presented without endorsement}
+\label{sec:branch-a-vs-c}
+
+Four open PRs against \texttt{main} make verdicts about $r_e/r_0$ that need
+reconciliation, and the reconciliation is exactly what this packet asks the
+senior author to provide.
+
+\paragraph{Branch A (Z-universal cutoff) --- PRs \#84, \#85, \#86.}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item Reads (III.22)'s closed form $r_e/r_0 = (2 - a_e)/(2(2 + a_e))$ as
+        $Z$-independent: $a_e$ is the free-electron anomaly,
+        $r_0 = e^2/(m_e c^2)$ depends only on electron mass.
+  \item ``The radiating particle is the same electron at every $Z$, so
+        $r_e/r_0$ is identical at $Z=1$ and $Z=3$.''
+        (\texttt{r\_e\_Li2plus\_joint\_fit.wl}, gating result.)
+  \item Verdict: \textbf{Branch A by construction}; Branch~B
+        (framework-derivable $Z$-scaling) ruled out structurally.
+  \item Empirical context: three of four Li$^{2+}$ comparisons are
+        🔴~\textbf{BLOCKED} (mis-provenanced brief measurements ---
+        \S\ref{sec:mis-provenance-audit}), so PRs~\#84/\#85/\#86
+        cannot compute cross-$Z$ residuals.
+\end{itemize}
+
+\paragraph{Branch C (per-$Z$ QED inheritance) --- PR \#87.}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item Supplies the cross-$Z$ residual table at $Z = 2, 6, 8, 14, 50$ using
+        valid measurements.
+  \item Tests (Z-i) universal cutoff: $\chi^2 = 1.0\times 10^{16}$
+        $\Rightarrow$ \textbf{Outcome A decisively rejected}.
+  \item Per-$Z$ back-fit $x^{(Z)}$ follows
+        $x = c_0 + c_2 (Z\alpha)^2 + c_4 (Z\alpha)^4$ with
+        $c_0 = x_{\rm univ}$, $c_2 \approx 1/6$ (QED's bound-state coefficient).
+  \item Verdict: \textbf{Outcome C} --- $Z$-specific cutoff through
+        QED-inheritance. ``The verdict shape is Branch~C, not Branch~A.''
+        (PR \#87 body, verbatim.)
+\end{itemize}
+
+\paragraph{The non-contradiction reading (substantive AI synthesis).}
+The two verdicts can both be honest readings of different things. The
+algebra of (III.22), taken literally, has no $Z$ in the coefficients ---
+Branch~A is correct as an algebraic statement \emph{about the formula}.
+The empirical data across $Z$ rejects fixing a single $x$ value across all
+$Z$ --- Branch~C is correct as an empirical statement \emph{about the
+fitted cutoff in nature}.
+
+The synthesis: \emph{the framework's apparatus supplies the (III.22) formula
+$g_r(x)$ and leaves each state's cutoff free per~(III.23); the apparatus
+does not internally derive the binding coefficient $-(Z\alpha)^2/3$. So the
+framework, as published, is consistent with Branch~A (its formula has no
+$Z$) and the empirical $r_e^{(Z)}/r_0$ inherits QED's bound-state structure
+when fit ion-by-ion. The framework's content here is the (III.22)
+identification of the cutoff with the anomaly via the $g_r(x)$ formula, not
+a derived prediction of $a_e^{\rm bound}(Z\alpha)$.}
+
+\paragraph{Implication for the campaign-closing statement.}
+The reading above does not change the honest-scope statement (zero of 28
+results constitute independent corroboration distinct from textbook QM); it
+sharpens \emph{why}: the (III.22) cutoff--anomaly identification is the
+framework's contribution; the empirical $a_e^{\rm bound}(Z\alpha)$ curve is
+QED's. Both readings agree that the framework does not internally derive
+the binding coefficient. The disagreement is about how to label the
+resulting verdict ---
+``Branch~A by construction'' (algebraic, Li$^{2+}$-branches) vs.~
+``Branch~C QED-inheritance'' (empirical, Z-scan).
+The label choice does not change any prediction or honest-scope statement;
+it changes what \texttt{10\_CrossComparison.md}~\S1 should say going forward
+about the $r_e$ resolution's \emph{character}.
+
+\paragraph{Verdict question for the senior author.}
+Both verdicts on \texttt{FINDINGS\_for\_author\_review.md} Finding~2 must
+land on \texttt{main} consistently, and the sequencing of merges across the
+four BS PRs depends on which label the senior author endorses:
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item \textbf{If Branch~A by construction is preferred:} PR~\#87's
+        $\chi^2 = 10^{16}$ result needs to be re-framed in the merged text
+        as ``the per-$Z$ back-fit cutoff curve is QED-inherited; the
+        (III.22) algebra produces the universal $r_e/r_0 = x_{\rm univ}$ as
+        the $Z\to 0$ limit, and the inheritance curve is empirical content
+        outside the framework's algebraic apparatus.''
+  \item \textbf{If Branch~C QED-inheritance is preferred:} PRs~\#84/\#85/\#86's
+        ``Branch~A by construction'' verdicts need to be qualified as
+        ``algebra-correct but not the framework-final verdict; the
+        empirical inheritance per~(III.23) is the operative reading.''
+\end{itemize}
+
+\authorreview{This is the central reconciliation question of the packet.
+Which label is the framework's intended verdict, and how should
+\texttt{10\_CrossComparison.md}~\S1 read going forward?}
+
+\paragraph{This packet takes no position.}
+Both readings are presented above as honestly as we know how to. The
+adjudication belongs to the senior author and is exactly what
+\S\ref{sec:questions-for-tepper} asks for.

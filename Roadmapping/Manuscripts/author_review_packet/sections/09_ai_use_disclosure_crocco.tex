@@ -1,0 +1,90 @@
+\section{AI-use disclosure (Crocco \S5)}
+\label{sec:ai-use-disclosure}
+
+Per
+\href{https://doi.org/10.1177/15344843261445531}{Crocco, Rasdi \& Garavan
+(2026), \emph{Responsible AI in Non-Empirical Research}}, and the repo's
+implementation in
+\texttt{Roadmapping/Tooling/CROCCO\_COMPLIANCE.md}, this packet was generated
+with explicit AI involvement that is disclosed below in two categories.
+
+\paragraph{Pragmatic AI uses (formatting, transcription, retrieval).}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item Wolfram-MCP symbolic verification of each load-bearing equation in
+        the source \texttt{.wl} notebooks. Inline \texttt{Wolfram-MCP}
+        confirmation markers throughout the equations sections record the
+        date of each cell's run. The \texttt{.wl} notebooks themselves are
+        committed under
+        \texttt{Roadmapping/Mathematica\_Notebooks/Quantum\_Mechanics/}.
+  \item CODATA, NIST ASD, and PDG data retrieval via the \texttt{nist}~MCP
+        server (issue~\#90, PR~\#91, \cite{nist_mcp_pr91}) for the
+        cross-comparison column.
+  \item Bibliography stub scaffolding via
+        \texttt{Roadmapping/History/Bibliography/scaffold\_bib\_note.py}
+        and \texttt{build\_bibtex.py}.
+  \item Translation of source \texttt{.wl} notebook cells to LaTeX equation
+        blocks (no derivation content changed; faithful transcription).
+\end{itemize}
+
+\paragraph{Substantive AI uses (synthesis, framing, prose drafting).}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item Drafting of the packet's prose under explicit human direction.
+        Prompt-of-record: \texttt{prompts/implementation\_prompt.md}.
+  \item Selection of which load-bearing equations to surface in each
+        \texttt{equations/} \texttt{.tex} block (the cells judged most
+        relevant to the senior author's verdict question, not every cell of
+        every notebook).
+  \item The Branch~A vs.~Branch~C synthesis in
+        \S\ref{sec:branch-a-vs-c} (``the algebra is correct as a statement
+        about the formula; the empirical residual rejects Outcome~A;
+        Outcome~C is the consistent residual''). This is a substantive
+        interpretive move and is explicitly flagged.
+  \item The outcome-matrix mapping in
+        \S\ref{sec:open-theoretical-question} (A excluded by Z-scan,
+        B excluded structurally, C the consistent residual, D unlikely
+        without revising (III.22)).
+  \item Selection of the six closing questions in
+        \S\ref{sec:questions-for-tepper} from the larger pool of open
+        questions inherited from the four BS PR bodies, the master \#67
+        outcome-matrix issue, the FINDINGS~Finding~2 verdict trajectory,
+        and the open theoretical issues (\#54, \#75).
+\end{itemize}
+
+\paragraph{Substantive AI not present in this packet.}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item No new physics derivations are introduced. Every equation in the
+        \texttt{equations/} sections is transcribed from a committed
+        \texttt{.wl} notebook with its Wolfram-MCP confirmation preserved.
+  \item No verdict on Branch~A vs.~Branch~C is announced by the packet;
+        adjudication is deferred to the senior author per the closing
+        question list.
+  \item No abstract claim is made that the packet itself adjudicates the
+        $r_e/r_0$ story. The packet's purpose is to surface the
+        already-recorded findings in the form (PDF, LaTeX equations) the
+        senior author actually reads.
+\end{itemize}
+
+\paragraph{Cross-references to repo Crocco infrastructure.}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item Compliance framework:
+        \texttt{Roadmapping/Tooling/CROCCO\_COMPLIANCE.md}.
+  \item Substantive prompts directory:
+        \texttt{Roadmapping/Tooling/\_prompts/}.
+  \item Packet-specific prompt-of-record:
+        \texttt{author\_review\_packet/prompts/implementation\_prompt.md}.
+\end{itemize}
+
+\paragraph{What the senior author should read against this disclosure.}
+The packet's prose is AI-drafted; the equations are AI-transcribed from
+human-authored \texttt{.wl} notebooks; the verdicts and the
+honest-scope statements are human-authored and preserved verbatim. Any
+substantive interpretive move (Branch~A vs.~Branch~C synthesis, outcome-matrix
+mapping, closing-question selection) is flagged inline with
+\textcolor{blue!60!black}{[ai-drafted: ...]} and surfaced explicitly in this
+section for transparent review.
+
+\authorreview{Please confirm the Crocco-compliance disclosure above accurately
+covers the AI involvement in this packet, and that the substantive
+interpretive moves listed are correctly distinguished from the pragmatic
+transcription tasks. Any addition or correction should land here before
+journal submission.}

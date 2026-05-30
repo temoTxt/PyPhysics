@@ -1,0 +1,95 @@
+\section{Questions for Tepper}
+\label{sec:questions-for-tepper}
+
+\begin{enumerate}[leftmargin=*,label=Q\arabic*.]
+
+\item \textbf{Z-scan dataset validity (PR \#87).}
+Are the five Z-scan ions and their measured bound-electron $g$-factors valid
+as a cross-$Z$ comparison set?
+$^3$He$^+$~Schneider 2022 \emph{Nature} 606, 878;
+$^{12}$C$^{5+}$~Sturm 2014 \emph{Nature} 506, 467;
+$^{16}$O$^{7+}$~Verd\'u 2004 \emph{PRL} 92, 093002;
+$^{28}$Si$^{13+}$~Sturm 2013 \emph{PRL} 110, 263002 (note: PR cites Sturm 2011
+\emph{PRL} 107, 023002 for $^{28}$Si$^{13+}$ ---
+\authorreview{please confirm which Sturm paper is the right citation});
+$^{118}$Sn$^{49+}$~Morgner 2023 \emph{Nature} 622, 53.
+If yes, the Z-scan dataset is sound and the (Z-i) universal-cutoff
+hypothesis is empirically dead at $\chi^2 \approx 10^{16}$.
+
+\item \textbf{Reading of Eq.~(III.23).}
+PR~\#87 reads (III.22) as $Z$-independent and (III.23) as state-by-state
+freedom (the cutoff is left free per state, no algorithmic $Z$-coupling).
+PRs~\#84/\#85/\#86 read the same equations as fixing Branch~A
+($Z$-universal cutoff by construction).
+\emph{What is the framework's intended position on the cutoff freedom in
+(III.23)?}
+
+\item \textbf{Branch C as ``QED-inheritance'' --- acceptable framework position?}
+The Z-scan's empirical $x^{(Z)}$ curve follows
+$x = c_0 + c_2(Z\alpha)^2 + c_4(Z\alpha)^4$ with $c_2 \approx 1/6$, exactly
+QED's bound-state coefficient. The framework's apparatus does not derive
+$1/6$; the back-fit inherits it from the empirical
+$a_e^{\rm bound}(Z\alpha)$ supplied to the inversion.
+\emph{Is ``the framework borrows bound-state QED's $a_e(Z\alpha)$ rather
+than deriving the binding correction itself'' an acceptable framework
+position, or does it amount to admitting the framework does not deliver a
+distinct $Z$-curve?}
+
+\item \textbf{Finding 2 verdict status.}
+\texttt{FINDINGS\_for\_author\_review.md} Finding~2 currently sits at
+$\mathbin{\hbox{\color{yellow!90!black}\(\bullet\)}}/
+\mathbin{\hbox{\color{green!60!black}\(\bullet\)}}$
+at hypothesis-(ii) framework precision (per the \#64 update). Unconditional
+$\mathbin{\hbox{\color{green!60!black}\(\bullet\)}}$ awaits the hypothesis-(i)
+re-derivation in issue~\#75.
+\emph{If Branch~A is empirically dead (per PR~\#87) and the consistent
+reading is Branch~C QED-inheritance, does Finding~2's verdict need to be
+downgraded from
+$\mathbin{\hbox{\color{yellow!90!black}\(\bullet\)}}/
+\mathbin{\hbox{\color{green!60!black}\(\bullet\)}}$
+back to $\mathbin{\hbox{\color{red}\(\bullet\)}}$~flagged
+until issue~\#54 resolves under the Branch~C reading?}
+Or does the Branch~C reading already constitute the resolution?
+
+\item \textbf{Mis-provenanced Li$^{2+}$ measurements.}
+Three of four Li$^{2+}$ measurements in the original brief were
+mis-provenanced (\S\ref{sec:mis-provenance-audit}): brief's
+$g_{\rm bound}(^7$Li$^{2+}) = 2.0000251707$ is a $Z\!\sim\!8$ value (Sturm 2014
+measured $^{12}$C$^{5+}$); brief's $7367$~MHz 2P~FS is helium-like Li$^+$
+(2-electron), not hydrogenic Li$^{2+}$ (whose value scales as
+$Z^4 \cdot 10{,}949 \approx 887$~GHz); brief's $\sim 12.7$~GHz HFS cites
+Beckmann~1974, a nuclear-moment paper not a Li$^{2+}$ HFS measurement.
+\emph{Do you know of valid published hydrogenic $^7$Li$^{2+}$ measurements
+for any of these three (PRs~\#84 and \#86 logged that none were located in
+targeted search)?}
+
+\item \textbf{Triangulated $r_e/r_0 = 0.4994205099128317$.}
+Per your 2026-05-25 author guidance, the as-published $r_e$ in DRQM~I
+Eq.~(III.22) was a uni-observable numerical search against $g_s$, not a
+derived quantity. PR~\#62's triangulation refines that to the joint
+best-fit across all six $g_s$-dependent observables at Pass~B weighting,
+matching branch~(c) to 16 sig figs.
+\emph{Does the triangulated joint-fit value at $Z=1$ stand as a
+calibration, even if Branch~A is empirically dead (per PR~\#87) and the
+value is not $Z$-universal?}
+
+\item \textbf{Closed-form $r_e/r_0 = (2 - a_e)/(2(2 + a_e))$ ---
+hypothesis (i) or (ii)?}
+The closed-form algebraic inversion (\texttt{DRQM~I~\S III.D-extension})
+matches the triangulated value to $3.45\times 10^{-13}$ under hypothesis~(ii)
+(QED supplies $a_e(\alpha)$; framework supplies the cutoff--anomaly
+identification + the inversion). Under hypothesis~(i) (issue~\#75), the
+proper-time one-loop vertex would need to be computed within the framework
+to reproduce $\alpha/(2\pi)$ independently.
+\emph{Is hypothesis (ii) the framework's intended position for the
+closed-form result, or is hypothesis (i) (issue \#75) required to constitute
+a derivation \emph{within} the framework?}
+
+\end{enumerate}
+
+\bigskip
+
+\noindent\textit{Please leave your responses in line in this document, or
+add a comment on issue~\#93 with the answers. The four BS PRs
+(\#84/\#85/\#86/\#87) will be merged in the order your answers direct;
+\texttt{10\_CrossComparison.md}~\S1 will be updated to match.}
