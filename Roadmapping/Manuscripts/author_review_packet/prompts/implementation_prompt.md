@@ -12,6 +12,9 @@ Per the [Crocco-compliance policy](../../../Tooling/CROCCO_COMPLIANCE.md): subst
 ## User-authored instruction sequence (verbatim, in temporal order)
 
 1. *(after triage of #93)*: "now implement the plan"
+2. *(after first build)*: "Can you add in a section that works through the derivation starting from the Dual Dirac Equation to how you calcualte the specific results for each"
+
+   → Added [`sections/02a_derivation_chain.tex`](../sections/02a_derivation_chain.tex): a faithful transcription of DRQM I §§II-III's chain (Eq. (II.1) Dual Dirac → (II.3) cleanest form → (III.1)-(III.10) Dirac eigenvalue split + Pauli identity → (III.7) cutoff approximation → (III.18)-(III.20) three new terms → (III.21)-(III.22) g_r(r) formula → closed-form §III.D-extension r_e/r_0 = (2-a_e)/(2(2+a_e))). From g_r(r), shows how each observable's prediction reduces to (g_s/-2)^n × textbook-leading with n ∈ {0,1,2}, drawing on `Bethe_Salpeter/{03_FineStructure,05_LambShift,06_Hyperfine}.md`. Substantive moves explicitly flagged: subset selection (which cells to surface), and the per-observable n_i summary table.
 
 That's the entire user prompt for this implementation. The "plan" referenced is the triaged plan committed at [`.dev/tasks/93_Tepper_Review_PDF_BS_Equations_r_e_Findings.md`](../../../../.dev/tasks/93_Tepper_Review_PDF_BS_Equations_r_e_Findings.md), which Claude generated under the `/triage-ticket 93` skill earlier in the same session, against issue #93's body.
 

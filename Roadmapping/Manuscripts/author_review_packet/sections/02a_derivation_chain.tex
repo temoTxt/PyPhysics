@@ -1,0 +1,404 @@
+\section{From the Dual Dirac Equation to each observable's prediction}
+\label{sec:derivation-chain}
+
+\noindent\textit{This section transcribes the derivation chain from
+\texttt{Roadmapping/Equation\_Verification/Dual\_Relativistic\_Quantum\_Mechanics\_I.md}
+(DRQM~I, \S\S II--III) and the per-PR Bethe--Salpeter section docs
+(\texttt{01\_NonRelHydrogen.md}, \texttt{03\_FineStructure.md},
+\texttt{05\_LambShift.md}, \texttt{06\_Hyperfine.md}). No new physics is
+introduced; the chain is presented in the form the senior author actually
+reads (PDF with LaTeX equations, not Mathematica notebook).
+The substantive-AI selection is which subset of the chain to surface for a
+review pass; the equations themselves are transcribed verbatim from
+DRQM~I.}
+
+\subsection{The proper-time canonical form}
+
+DRQM~I introduces three dual relativistic wave equations, all of the form
+\begin{equation}
+\label{eq:dual-K-form}
+i\hbar\,\frac{\partial\Psi}{\partial\tau} \;=\; K\,\Psi,\qquad
+K \;=\; \frac{H^2}{2 m c^2} \;+\; \frac{m c^2}{2},\qquad
+H \in \{H_{\rm Dirac},\;H_{\rm sqrt(1)},\;H_{\rm sqrt(2)}\}.
+\end{equation}
+The three are distinguished by which $H$ is substituted into~\eqref{eq:dual-K-form}.
+
+\subsection{The Dual Dirac Equation, Eq.~(II.1)}
+
+With $H_{\rm Dirac} = c\,\boldsymbol\alpha\!\cdot\!\boldsymbol\pi
++ \beta m c^2 + V$ and $\boldsymbol\pi = \mathbf{p} - e\mathbf{A}/c$, the
+Dual Dirac Equation is
+\begin{equation}
+\label{eq:II1-dual-dirac}
+\begin{aligned}
+i\hbar\,\frac{\partial\Psi}{\partial\tau} = \Bigg\{&\,
+   \frac{\boldsymbol\pi^2}{2m}
+ + \beta V
+ + m c^2
+ - \frac{e\hbar\,\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2 m c} \\
+&{}+ \frac{V\,\boldsymbol\alpha\!\cdot\!\boldsymbol\pi}{m c}
+ - \frac{i \hbar\,\boldsymbol\alpha\!\cdot\!\nabla V}{2 m c}
+ + \frac{V^2}{2 m c^2}\,
+\Bigg\}\Psi.
+\end{aligned}
+\end{equation}
+\wolframcheck{\texttt{FullSimplify} of $K_{\rm Dirac} - (\text{II.1})$ returns
+$0$ (DRQM~I~\S II.1 ✅, 2026-05-11).}
+
+\subsection{The cleanest form: Eq.~(II.3)}
+
+Eq.~(II.3) (DRQM~I~\S II.3) takes
+$H_{\rm sqrt(2)} = \beta\sqrt{c^2\boldsymbol\pi^2
+- e c \hbar\,\boldsymbol\Sigma\!\cdot\!\mathbf{B}
++ (m c^2 + \beta V)^2}$
+and yields
+\begin{equation}
+\label{eq:II3-clean}
+i\hbar\,\frac{\partial\Psi}{\partial\tau} \;=\;
+\left\{\frac{\boldsymbol\pi^2}{2 m}
+ + \beta V
+ + m c^2
+ - \frac{e\hbar\,\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2 m c}
+ + \frac{V^2}{2 m c^2}\right\}\Psi.
+\end{equation}
+
+\paragraph{Why this is structurally clean.}
+Unlike~(II.1) and~(II.2), Eq.~(II.3) is scalar-only at the operator level
+(apart from the trivial $\beta V$ term). Three commutations together
+($[\beta, \boldsymbol\pi] = [\beta, \boldsymbol\Sigma] = [\beta, V] = 0$,
+plus $\beta^2 = 1$) collapse the radicand without leaving operator-valued
+cross terms. Eq.~(II.3) reads exactly like a Pauli-style wave equation with
+a single relativistic correction $V^2/(2 m c^2)$, and in the
+$V \to 0$ limit reduces cleanly to the Pauli equation plus a rest-energy
+constant. \wolframcheck{(II.3) verified 2026-05-11; see
+\S\ref{sec:eq-bs-s3}.}
+
+\subsection{Dirac eigenvalue problem and the spinor split}
+
+Section III recasts the Dirac equation as an eigenvalue problem with
+$\Psi = [\psi_1, \psi_2]^t$:
+\begin{align}
+\label{eq:III1}
+(\lambda - V - m c^2)\,\psi_1 &= c\,(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\,\psi_2,\\
+(\lambda - V + m c^2)\,\psi_2 &= c\,(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\,\psi_1.
+\nonumber
+\end{align}
+Solving the second for $\psi_2$:
+\begin{equation}
+\label{eq:III2}
+\psi_2 \;=\; c\,\bigl[\,\lambda - V_0 + m c^2\,\bigr]^{-1}\,
+            (\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\,\psi_1
+\qquad\text{(III.2).}
+\end{equation}
+
+\subsection{From $H_D^2$ to the cutoff approximation}
+
+Writing $H_D = H_0 + V_0$ with $H_0 = c\,\boldsymbol\alpha\!\cdot\!\boldsymbol\pi
++ \beta m c^2$ and using $\{\boldsymbol\alpha, \beta\} = 0$ together with the
+Dirac identity
+$(\boldsymbol\alpha\!\cdot\!\boldsymbol\pi)^2 = \boldsymbol\pi^2
+- (e\hbar/c)\,\boldsymbol\Sigma\!\cdot\!\mathbf{B}$:
+\begin{equation}
+H_D^2 \;=\; H_0^2 + V_0^2 + \{H_0, V_0\},\qquad
+H_0^2 \;=\; c^2 \boldsymbol\pi^2 - e \hbar c\,\boldsymbol\Sigma\!\cdot\!\mathbf{B}
++ m^2 c^4.
+\end{equation}
+Divide by $2 m c^2$, add $m c^2/2$, define
+$V := \{H_0, V_0\}/(2 m c^2)$:
+\begin{equation}
+\label{eq:III3-KD}
+K_D \;=\; \frac{\boldsymbol\pi^2}{2 m}
+        + V
+        - \frac{e\hbar\,\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2 m c}
+        + m c^2
+        + \frac{V_0^2}{2 m c^2}\qquad\text{(III.3).}
+\end{equation}
+
+\paragraph{The chain-rule step in (III.6).}
+Substituting~\eqref{eq:III2} into the $\psi_1$~equation produces a
+non-trivial chain-rule term because $\boldsymbol\sigma\!\cdot\!\boldsymbol\pi$
+does not commute with $1/(\lambda - V_0 + m c^2)$:
+\begin{equation}
+\label{eq:III6-chain}
+(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\!\left[
+\frac{(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\,\psi_1}
+     {\lambda - V_0 + m c^2}\right]
+=
+\frac{(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)^2\,\psi_1}
+     {\lambda - V_0 + m c^2}
++
+\frac{-i\hbar\,\boldsymbol\sigma\!\cdot\!\nabla V_0}
+     {(\lambda - V_0 + m c^2)^2}\,
+(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\,\psi_1.
+\end{equation}
+The second term is the source of $(V_0/m)\,(\boldsymbol\sigma\!\cdot\!\mathbf{p}V_0)
+(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)/(\lambda - V_0 + m c^2)^2\,\psi$
+in DRQM~I line~261.
+
+\paragraph{Cutoff approximation (III.7).}
+Approximating $\lambda - V_0 + m c^2 \approx 2 m c^2 + e^2/r$ for the
+Coulomb potential $V_0 = -e^2/r$ (binding energy $\sim 10^{-5}\,m c^2$ is
+dropped) and using $r_0 = e^2/(m c^2)$:
+\begin{equation}
+\label{eq:III7}
+\psi_2 \;\approx\; \frac{c\,(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)}
+                       {2 m c^2\!\left(1 + r_0/(2 r)\right)}\,\psi_1.
+\end{equation}
+
+\subsection{The three ``new'' terms (III.18)--(III.20)}
+
+After the Pauli identity collapse and the spherical-coordinate algebra
+(DRQM~I Eqs.~(III.9)--(III.17)), three contributions appear in the
+approximated eigenvalue equation~(III.8) that are not present in the
+non-relativistic Schr\"odinger problem:
+\begin{align}
+\label{eq:III18-spin-mag}
+\text{(III.18)}\quad
+&-\Bigl[\,1 - \frac{4\,r_0}{2 r + r_0}\,\Bigr]
+   \frac{e\hbar\,\boldsymbol\sigma\!\cdot\!\mathbf{B}}{2 m c}
+   \qquad\textit{(spin--magnetic, cutoff-modified)} \\
+\label{eq:III19-hyperfine-square}
+\text{(III.19)}\quad
+&\,2 r_0\,\mu_p^2\,|\mathbf{s}_p|^2\!
+  \left[\,1 - \frac{4 e \hbar^2}{m c\,(2 r + r_0)}\,\right]
+  \frac{\sin^2\theta}{r^4}
+   \qquad\textit{(square of nuclear-dipole field)} \\
+\label{eq:III20-hyperfine-cross}
+\text{(III.20)}\quad
+&-\frac{2 e\,r_0\,\hbar\,\mu_p\,|\mathbf{s}_p|}
+       {m c\,(2 r + r_0)}\!
+   \left[\,1 + \frac{4\,r_0}{2 r + r_0}\,\right]
+   \frac{\sin\theta\,(\boldsymbol\sigma\!\cdot\!\mathbf{e}_\theta)}{r^3}
+   \qquad\textit{(electron-nuclear cross term)}
+\end{align}
+\eqref{eq:III18-spin-mag} is the source of the modified $g$-factor;
+\eqref{eq:III19-hyperfine-square}--\eqref{eq:III20-hyperfine-cross} are the
+hyperfine pieces.
+
+\subsection{The $g$-factor formula (III.21)--(III.22)}
+
+Reading off the Zeeman coefficient from~\eqref{eq:III18-spin-mag} with
+$\mathbf{s} = \hbar\boldsymbol\sigma/2$:
+\begin{equation}
+\label{eq:III21-anomalous-Ham}
+H_a \;=\; 2\Bigl[\,1 - \frac{4\,r_0}{2 r + r_0}\,\Bigr]\,
+         \mu_B\,\mathbf{s}\!\cdot\!\mathbf{B}\qquad\text{(III.21)},
+\end{equation}
+identifying the gyromagnetic ratio
+\begin{equation}
+\label{eq:III22-gr}
+\boxed{\;g_r(x) \;=\; 2\Bigl[\,1 - \frac{4}{2 x + 1}\,\Bigr],
+\qquad x \equiv r / r_0\;}\qquad\text{(III.22)}.
+\end{equation}
+Limit checks: $g_r(1/2) = -2$ (tree-Dirac), $g_r(x\to 0) = -6$.
+For muon and proton, Eq.~(III.23) writes the analogue with
+$r_0^\mu, r_0^p$ but leaves the cutoff values
+$r_\mu, r_p$ as separate, numerically-unspecified parameters.
+
+\paragraph{The closed-form algebraic inversion (\S III.D-extension).}
+Inverting~\eqref{eq:III22-gr} for $g_r(x) = -2(1 + a_e)$ with $a_e$ the
+electron anomalous magnetic moment, and solving algebraically:
+\begin{equation}
+\label{eq:rE-closed-form}
+\boxed{\;\frac{r_e}{r_0} \;=\; \frac{2 - a_e}{2\,(2 + a_e)}\;}
+\end{equation}
+With CODATA-full $a_e^{\rm expt}$ this reproduces the triangulated
+$r_e/r_0 = 0.499\,420\,509\,9128\dots$ to $3.45\times 10^{-13}$ (within the
+precision floor $\sigma_r = 2.5\times 10^{-13}$); see
+\S\ref{sec:eq-self-energy} and \S\ref{sec:z1-triangulation}. The
+honest framing of~\eqref{eq:rE-closed-form} is
+\emph{reproduction-by-inheritance under hypothesis~(ii)} (QED supplies
+$a_e(\alpha)$; the framework supplies the cutoff--anomaly identification +
+the algebraic inversion). Unconditional ✅ requires hypothesis-(i),
+issue~\#75.
+
+\subsection{From $g_r(r)$ to each observable}
+\label{sec:from-gr-to-observables}
+
+The campaign's six $g_s$-dependent precision observables each have a
+prediction of the form
+\begin{equation}
+\label{eq:gs-n-textbook}
+\mathcal{O}_i^{\rm framework}
+\;=\; \left(\frac{g_s}{-2}\right)^{n_i}\!\!\!\cdot\;\mathcal{O}_i^{\rm textbook\,leading}
+\qquad n_i \in \{1, 2\}
+\end{equation}
+with $g_s = g_r(r_e/r_0)$ from~\eqref{eq:III22-gr}, evaluated at the
+triangulated cutoff. The $n_i$ exponents are determined by the operator
+structure of each observable; the textbook leading term carries the rest
+of the physics (kinematics, multipole structure, Bethe logs).
+
+\subsubsection{Electron $g_s$ ($n=1$, directly from $g_r$)}
+
+Set $r = r_e$ in~\eqref{eq:III22-gr}: the framework's prediction is
+$g_s = g_r(r_e/r_0)$ directly. The triangulated $r_e/r_0$ is by construction
+the value at which $g_s = -2.00231930\dots$ matches CODATA-2018, so the
+match is exact by Pass-B fit construction
+(\S\ref{sec:eq-triangulation}).
+
+\subsubsection{Hydrogen $2P_{3/2}{-}2P_{1/2}$ fine structure ($n_{\rm FS}=1$)}
+
+The Sommerfeld--Dirac formula gives the leading fine-structure splitting
+\begin{equation}
+\label{eq:fs-leading}
+\Delta E_{\rm FS}^{\rm leading}(2P_{3/2}{-}2P_{1/2})
+\;=\; \frac{m_e c^2\,(Z\alpha)^4}{32}\,(\text{angular factor})
+\;\approx\; 10\,949\;\text{MHz at }Z=1.
+\end{equation}
+Spin--orbit is linear in $g_s$ (it enters via the $\mathbf{L}\!\cdot\!\mathbf{S}$
+Lande factor in the Pauli/FW reduction of the dual Dirac equation,
+BS~\S14.1), so $n_{\rm FS} = 1$:
+\begin{equation}
+\Delta E_{\rm FS}^{\rm framework}
+\;=\; \frac{g_s}{-2}\,\Delta E_{\rm FS}^{\rm leading}
+\;\approx\; 1.00115965 \cdot 10\,949
+\;\approx\; 10\,962\;\text{MHz},
+\end{equation}
+with the framework anomalous correction $+12.7$~MHz on top of the leading
+$10\,949$~MHz. Remaining $\sim 7$ MHz vs.~measured $10\,969.13(10)$ MHz is
+recoil + two-loop, at the Bethe-estimate precision floor
+(see \S\ref{sec:eq-li2plus-spectroscopy} for the $Z^4$ Li$^{2+}$ extension).
+
+\subsubsection{Hydrogen 1S hyperfine (21-cm line, $n_{\rm HFS}=1$)}
+
+The Fermi (1930) contact term gives the leading 1S hyperfine Hamiltonian
+\begin{equation}
+\label{eq:hfs-fermi}
+H_{\rm HF}
+\;=\; \frac{8\pi}{3}\,g_p\,\mu_N\,g_s\,\mu_B\,
+       \delta^3(\mathbf{r})\,\mathbf{I}\!\cdot\!\mathbf{S},
+\end{equation}
+with $\langle 1S | \delta^3(\mathbf{r}) | 1S \rangle = 1/(\pi a_0^3)$,
+producing the splitting
+\begin{equation}
+\Delta E_{\rm HF}^{\rm leading}(1S_{1/2})
+\;=\; \frac{4}{3}\,g_p\,\frac{m_e}{M_p}\,\alpha^4\,m_e c^2
+\;\approx\; 1\,418.4\;\text{MHz}\qquad(\text{at }g_s = -2).
+\end{equation}
+Hyperfine is \emph{linear} in $g_s$ ($n_{\rm HFS} = 1$, since the contact
+term carries a single electron spin):
+\begin{equation}
+\Delta E_{\rm HF}^{\rm framework}
+\;=\; \frac{g_s}{-2}\,\Delta E_{\rm HF}^{\rm leading}
+\;\approx\; 1.00115965\cdot 1\,418.4
+\;\approx\; 1\,420.04\;\text{MHz}.
+\end{equation}
+Residual vs.~measured $1\,420.405\,751\,768(2)$ MHz is $\sim 0.4$ MHz ---
+sub-leading QED ($\alpha/\pi$ + recoil + nuclear structure),
+$r_e$-independent, at the Bethe-estimate floor (BS-\S22.1).
+
+\subsubsection{Lamb shift $2S_{1/2}{-}2P_{1/2}$ --- formulation-independent ($n = 0$)}
+
+The Lamb shift escapes the $(g_s/{-}2)^n$ family. Bethe's (1947)
+mass-renormalisation argument writes the self-energy shift
+\begin{equation}
+\label{eq:bethe-1947}
+\Delta E_n^{\rm SE}
+\;=\; \frac{2\alpha}{3\pi m^2 c^2}
+   \sum_m |\langle m | \mathbf{p} | n \rangle|^2\,
+         (E_m - E_n)\,
+         \ln\!\frac{K}{|E_m - E_n|},
+\end{equation}
+where $K$ is a non-relativistic UV cutoff. Under the proper-time
+formulation:
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item matrix elements $|\langle m | \mathbf{p} | n\rangle|^2$ are
+        formulation-independent (BS-\S8);
+  \item energy denominators $E_m - E_n$ are formulation-independent
+        (BS-\S4);
+  \item the Bethe-log structure $\ln(K/|E_m - E_n|)$ is non-relativistic in
+        origin and inherits the same UV cutoff;
+  \item the mass-renormalisation subtraction is formulation-independent at
+        the order Bethe needed.
+\end{itemize}
+Therefore $\Delta E_{2S}^{\rm SE,\,proper-time} \approx 1\,040$ MHz is
+\emph{identical} to the standard Bethe-estimate prediction at the precision
+the route delivers. Adding the vacuum-polarisation shift ($-27$~MHz at 2S,
+BS-\S21) and recombining gives $\sim 1\,013$ MHz at the Bethe-estimate
+floor vs.~measured $1\,057.845(9)$ MHz; the $\sim 42$ MHz residual is the
+gap to the full one-loop QED calculation, which the campaign does not
+produce (BS-\S20).
+$g_s$ does not enter the leading Bethe-log contribution
+($\mathbf{p}\!\cdot\!\mathbf{p}$, not $\mathbf{s}\!\cdot\!\mathbf{B}$), so
+$n_{\rm Lamb} = 0$ in~\eqref{eq:gs-n-textbook}.
+
+\subsubsection{Helium ${}^3P_J$ fine structure ($n_{\rm He} = 1$)}
+
+Two-electron spin--orbit + spin--spin recombination in the helium triplet
+2P states produces the ${}^3P_0$--${}^3P_1$ interval. The leading
+Bethe--Salpeter (1957) treatment gives a $(Z\alpha)^4$ scale modulated by
+two-body recoil + correlation factors; spin--orbit is linear in $g_s$, so
+$n_{\rm He} = 1$. Predicted framework value
+$\sim 29\,616.95$ MHz vs.~measured $29\,616.952$ MHz at the kHz level,
+provisional residual after spin--spin/spin--orbit recombination (BS-\S72).
+
+\subsubsection{Positronium ortho--para ($n_{\rm Ps} = 2$)}
+
+The $1{}^3S_1$--$1{}^1S_0$ ortho--para splitting in positronium ($e^+ e^-$)
+involves a contact term \emph{quadratic} in the electron magnetic moment
+(both leptons carry an anomalous moment that enters via the
+two-fermion spin--spin coupling), giving $n_{\rm Ps} = 2$:
+\begin{equation}
+\Delta E_{\rm Ps}^{\rm framework}
+\;=\; \left(\frac{g_s}{-2}\right)^{2}\!\cdot\Delta E_{\rm Ps}^{\rm textbook\,leading}
+\;\approx\; (1.00115965)^2 \cdot 203\,389\;\text{MHz}.
+\end{equation}
+Per \texttt{10\_CrossComparison.md}~\S2, agreement is at Bethe precision;
+positronium-specific QED (the annihilation contribution) is provisional in
+the campaign (BS-\S80).
+
+\subsubsection{Muonium hyperfine ($n_\mu = 1$)}
+
+Muonium ($\mu^+ e^-$) replaces the proton in~\eqref{eq:hfs-fermi} with an
+anti-muon. The Fermi-contact framework carries through with proton
+$\to$ anti-muon kinematics; spin--orbit / Fermi contact is linear in
+$g_s$, $n_\mu = 1$:
+\begin{equation}
+\Delta E_{\mu\rm{HFS}}^{\rm framework}
+\;\approx\; \frac{g_s}{-2}\cdot 4\,458.2\;\text{MHz}
+\;\approx\; 4\,463.4\;\text{MHz},
+\end{equation}
+vs.~measured $4\,463.302\,776(51)$ MHz: $\sim 0.1$ MHz residual at the
+sub-leading-QED floor (BS-\S80).
+
+\subsection{Summary of $n_i$ exponents and observable map}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{lll}
+\toprule
+Observable                              & $n_i$ in $(g_s/{-}2)^{n_i}$ & Operator structure \\
+\midrule
+electron $g_s$                          & 1 (direct)   & $g_r(r_e/r_0)$ itself, Eq.~\eqref{eq:III22-gr} \\
+H $2P_{3/2}{-}2P_{1/2}$                 & 1            & spin--orbit, $\mathbf{L}\!\cdot\!\mathbf{S}$ \\
+H 1S hyperfine                          & 1            & Fermi contact, $\delta^3(\mathbf{r})\,\mathbf{I}\!\cdot\!\mathbf{S}$ \\
+He ${}^3P_0{-}^3P_1$                    & 1            & two-body spin--orbit (post-recombination) \\
+positronium ortho--para                 & 2            & two-fermion spin--spin contact (both leptons) \\
+muonium hyperfine                       & 1            & Fermi contact, $e^- \mu^+$ \\
+H Lamb shift $2S{-}2P$                  & 0            & formulation-independent self-energy (Bethe 1947) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{What the chain establishes (and does not).}
+Once~\eqref{eq:III22-gr} is in hand and the triangulated $r_e/r_0$ is
+fixed by Pass-B joint fit (\S\ref{sec:z1-triangulation}), each
+$g_s$-dependent observable evaluates as $(g_s/{-2})^{n_i}$ $\times$ its textbook
+leading term --- a single back-fit applied six times rather than six
+independent corroborations
+(\texttt{10\_CrossComparison.md}~\S2; \S\ref{sec:findings-per-observable}).
+The Lamb shift escapes the family entirely because the leading Bethe-log
+self-energy is $g_s$-symmetric. The chain's content is the (III.22)
+cutoff--anomaly identification; the empirical $a_e^{\rm bound}(Z\alpha)$
+curve across the Z-scan is QED's, per the
+\hyperref[sec:branch-a-vs-branch-c]{Branch~A vs.~Branch~C} reading.
+
+\authorreview{This section transcribes the derivation chain you already
+laid out in DRQM~I \S\S II--III. The substantive AI selections are:
+(1)~which subset of (III.5)--(III.20) to surface in the PDF (the chain-rule
+step in (III.6), the cutoff approximation in (III.7), and the three
+(III.18)--(III.20) ``new terms'' are kept; the spherical-coordinate
+algebra (III.11)--(III.17) is summarised); (2)~the per-observable $n_i$
+column in the summary table (drawn from the BS section docs but consolidated
+here for the first time in one place). Please confirm both choices
+match your intent for a Tepper-review presentation.}
