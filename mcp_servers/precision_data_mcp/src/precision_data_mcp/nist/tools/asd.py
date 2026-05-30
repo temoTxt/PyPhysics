@@ -17,7 +17,7 @@ import urllib.parse
 
 import requests
 
-from nist_mcp.cache import cache_get, cache_put
+from precision_data_mcp.nist.cache import cache_get, cache_put
 
 LANDING_PAGE = "https://www.nist.gov/pml/atomic-spectra-database"
 LEVELS_URL = "https://physics.nist.gov/cgi-bin/ASD/energy1.pl"

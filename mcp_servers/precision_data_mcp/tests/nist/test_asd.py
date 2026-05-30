@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from nist_mcp.tools import asd
+from precision_data_mcp.nist.tools import asd
 
 FIX = Path(__file__).parent / "fixtures"
 SCHEMA = {"quantity", "value", "uncertainty", "unit", "source", "reference"}

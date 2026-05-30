@@ -1,7 +1,7 @@
 """Offline test guarding the scope boundary: the precision splittings are curated
 and cited, never silently re-routed through ASD."""
 
-from nist_mcp.tools import targets
+from precision_data_mcp.nist.tools import targets
 
 SCHEMA = {"quantity", "value", "uncertainty", "unit", "source", "reference"}
 
