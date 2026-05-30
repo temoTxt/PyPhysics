@@ -7,10 +7,13 @@
 (\texttt{01\_NonRelHydrogen.md}, \texttt{03\_FineStructure.md},
 \texttt{05\_LambShift.md}, \texttt{06\_Hyperfine.md}). No new physics is
 introduced; the chain is presented in the form the senior author actually
-reads (PDF with LaTeX equations, not Mathematica notebook).
-The substantive-AI selection is which subset of the chain to surface for a
-review pass; the equations themselves are transcribed verbatim from
-DRQM~I.}
+reads (PDF with LaTeX equations, not Mathematica notebook). Every
+numbered DRQM~I equation from (II.1) through (III.22) that carries a
+typeset form in the verification doc is surfaced below for fine-grain
+review, in order. Equations DRQM~I records structurally rather than
+typesetting (the intermediate (III.11)--(III.16) spherical-coordinate steps)
+are noted honestly as such; their three load-bearing
+results~(III.17-equivalent) are displayed.}
 
 \subsection{The proper-time canonical form}
 
@@ -114,28 +117,53 @@ K_D \;=\; \frac{\boldsymbol\pi^2}{2 m}
         + \frac{V_0^2}{2 m c^2}\qquad\text{(III.3).}
 \end{equation}
 
-\paragraph{The chain-rule step in (III.6).}
-Substituting~\eqref{eq:III2} into the $\psi_1$~equation produces a
-non-trivial chain-rule term because $\boldsymbol\sigma\!\cdot\!\boldsymbol\pi$
-does not commute with $1/(\lambda - V_0 + m c^2)$:
+\paragraph{Eq.~(III.4) --- $K_D$ with the shorthand $V$ expanded.}
+Use $[\boldsymbol\alpha\!\cdot\!\boldsymbol\pi, V_0] = -i\hbar\,\boldsymbol\alpha\!\cdot\!\nabla V_0$
+and $\{\beta, V_0\} = 2\beta V_0$ to expand
+$V = \{H_0, V_0\}/(2 m c^2)$:
+\begin{equation}
+\label{eq:III4}
+E\,\Psi \;=\; \Bigg\{
+   \frac{\boldsymbol\pi^2}{2 m}
+ + \beta V_0
+ + m c^2
+ - \frac{e\hbar\,\boldsymbol\Sigma\!\cdot\!\mathbf{B}}{2 m c}
+ + \frac{V_0\,\boldsymbol\alpha\!\cdot\!\boldsymbol\pi}{m c}
+ - \frac{i\hbar\,\boldsymbol\alpha\!\cdot\!\nabla V_0}{2 m c}
+ + \frac{V_0^2}{2 m c^2}\,
+\Bigg\}\Psi.
+\end{equation}
+\wolframcheck{Same expansion as (II.1) with $V \to V_0$; residual $0$
+(DRQM~I~\S III.4, 2026-05-11).}
+
+\paragraph{Eqs.~(III.5)--(III.6) --- upper/lower spinor split.}
+Block-decompose~\eqref{eq:III4} into separate $\psi_1$ and $\psi_2$
+equations. The $\psi_2$ equation is solved as~\eqref{eq:III2}. Substituting
+into the $\psi_1$ equation produces a non-trivial chain-rule term because
+$\boldsymbol\sigma\!\cdot\!\boldsymbol\pi$ does not commute with
+$1/(\lambda - V_0 + m c^2)$:
 \begin{equation}
 \label{eq:III6-chain}
 (\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\!\left[
 \frac{(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\,\psi_1}
      {\lambda - V_0 + m c^2}\right]
-=
+\;=\;
 \frac{(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)^2\,\psi_1}
      {\lambda - V_0 + m c^2}
-+
+\;+\;
 \frac{-i\hbar\,\boldsymbol\sigma\!\cdot\!\nabla V_0}
      {(\lambda - V_0 + m c^2)^2}\,
 (\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)\,\psi_1.
 \end{equation}
-The second term is the source of $(V_0/m)\,(\boldsymbol\sigma\!\cdot\!\mathbf{p}V_0)
+The second piece of~\eqref{eq:III6-chain} (using
+$\mathbf{p} = -i\hbar\nabla$, so $\boldsymbol\sigma\!\cdot\!\mathbf{p}\,V_0
+= -i\hbar\,\boldsymbol\sigma\!\cdot\!\nabla V_0$) is the source of the
+$(V_0/m)\,(\boldsymbol\sigma\!\cdot\!\mathbf{p}V_0)
 (\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)/(\lambda - V_0 + m c^2)^2\,\psi$
-in DRQM~I line~261.
+term in DRQM~I line~261. The result is the $\psi_1$-only eigenvalue
+equation (III.6).
 
-\paragraph{Cutoff approximation (III.7).}
+\paragraph{Eq.~(III.7) --- cutoff approximation.}
 Approximating $\lambda - V_0 + m c^2 \approx 2 m c^2 + e^2/r$ for the
 Coulomb potential $V_0 = -e^2/r$ (binding energy $\sim 10^{-5}\,m c^2$ is
 dropped) and using $r_0 = e^2/(m c^2)$:
@@ -145,12 +173,99 @@ dropped) and using $r_0 = e^2/(m c^2)$:
                        {2 m c^2\!\left(1 + r_0/(2 r)\right)}\,\psi_1.
 \end{equation}
 
+\paragraph{Eq.~(III.8) --- approximated eigenvalue equation.}
+Substituting~\eqref{eq:III7} into the $\psi_1$~equation from~(III.6) ---
+i.e.~replacing every occurrence of $(\lambda - V_0 + m c^2)$ in (III.6) by
+$2 m c^2\bigl(1 + r_0/(2 r)\bigr)$:
+\begin{equation}
+\label{eq:III8}
+\begin{aligned}
+\Bigl\{\frac{\boldsymbol\pi^2}{2m} + V_0 + \frac{V_0^2}{2 m c^2}
+ - \frac{e\hbar\,\boldsymbol\sigma\!\cdot\!\mathbf{B}}{2 m c}
+ + \frac{V_0\,(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)^2}{2 m^2 c^2\!\left(1 + r_0/(2r)\right)}
+   \\[2pt]
+{}- \frac{V_0\,(\boldsymbol\sigma\!\cdot\!\mathbf{p}\,V_0)\,(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)/m}
+       {[\,2 m c^2(1 + r_0/(2r))\,]^2}
+\Bigr\}\,\psi_1 \;=\; (E - m c^2)\,\psi_1.
+\end{aligned}
+\end{equation}
+This is the approximated $\psi_1$-only eigenvalue equation that DRQM~I
+(III.18)--(III.20) then collect into three identifiable Schr\"odinger-beyond
+contributions.
+
+\subsection{Eqs.~(III.9)--(III.10) --- Pauli identity}
+
+The general Pauli identity (Sakurai Eq.~3.2.39):
+\begin{equation}
+\label{eq:III9-pauli}
+(\boldsymbol\sigma\!\cdot\!\mathbf{X})(\boldsymbol\sigma\!\cdot\!\mathbf{Y})
+\;=\; \mathbf{X}\!\cdot\!\mathbf{Y}
+   \;+\; i\,\boldsymbol\sigma\!\cdot\!(\mathbf{X}\times\mathbf{Y})
+\qquad\text{(III.9).}
+\end{equation}
+Specialising to $\mathbf{X} = \mathbf{Y} = \boldsymbol\pi$ with
+$\boldsymbol\pi = \mathbf{p} - e\mathbf{A}/c$ and the gauge-field commutator
+$[\pi_i, \pi_j] = i e\hbar\,\epsilon_{ijk} B_k/c$ (so
+$\boldsymbol\pi\times\boldsymbol\pi = (i e\hbar/c)\mathbf{B}$):
+\begin{equation}
+\label{eq:III10-sigmapi-sq}
+(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)^2
+\;=\; \boldsymbol\pi^2 \;-\; \frac{e\hbar}{c}\,\boldsymbol\sigma\!\cdot\!\mathbf{B}
+\qquad\text{(III.10).}
+\end{equation}
+\wolframcheck{\texttt{Simplify}$[\boldsymbol\pi^2 + i\cdot(i e\hbar/c)\boldsymbol\sigma\!\cdot\!\mathbf{B}]$
+returns the (III.10) RHS (DRQM~I~\S III.10, ✅).}
+
+\subsection{Eqs.~(III.11)--(III.17) --- spherical-coordinate algebra}
+
+Expand $(-i\hbar\,\boldsymbol\sigma\!\cdot\!\nabla V_0)(\boldsymbol\sigma\!\cdot\!\boldsymbol\pi)$
+in spherical polar coordinates with the Coulomb scalar potential
+$V_0 = -e^2/r$ and the proton dipole vector potential
+$\mathbf{A} = (\boldsymbol\mu_p \times \mathbf{r})/r^3$. DRQM~I records the
+chain across seven equations (III.11)--(III.17); the three load-bearing
+results that the chain delivers (DRQM~I lines 329, 333, 338) are:
+\begin{align}
+\label{eq:III-spherical-1}
+-i\hbar\,\nabla V_0\!\cdot\!\mathbf{p}
+\;&=\; \frac{e^2 \hbar^2}{r^2}\,\frac{\partial}{\partial r},
+&& \text{(scalar piece; $\sim$ velocity-radial coupling)} \\[2pt]
+\label{eq:III-spherical-2}
+\hbar\,\boldsymbol\sigma\!\cdot\!(\nabla V_0 \times \mathbf{p})
+\;&=\; -\frac{e^2 \hbar}{r^3}\,\boldsymbol\sigma\!\cdot\!\mathbf{L},
+&& \text{(spin--orbit emergence; }\mathbf{L} = \mathbf{r}\times\mathbf{p}\text{)} \\[2pt]
+\label{eq:III-spherical-3}
+-\frac{e\hbar}{c}\,\boldsymbol\sigma\!\cdot\!(\nabla V_0 \times \mathbf{A})
+\;&=\; -\frac{e\hbar}{c}\cdot\frac{e^2}{r^4}\,
+       2\,\mu_p\,|\mathbf{s}_p|\,\sin\theta\,
+       (\boldsymbol\sigma\!\cdot\!\mathbf{e}_\theta).
+&& \text{(electron-nuclear cross term)}
+\end{align}
+\eqref{eq:III-spherical-1} is the radial scalar piece (contributes to
+relativistic kinetic + Darwin once the Pauli/FW reduction is taken);
+\eqref{eq:III-spherical-2} is the standard spin--orbit emergence
+$\boldsymbol\sigma\!\cdot\!\mathbf{L}/r^3$;
+\eqref{eq:III-spherical-3} is the electron--proton dipole--dipole
+contribution with explicit angular dependence
+$\sin\theta\,(\boldsymbol\sigma\!\cdot\!\mathbf{e}_\theta)$.
+
+\paragraph{Note on intermediate (III.11)--(III.16).}
+DRQM~I records the spherical-coordinate chain across seven numbered
+equations (III.11)--(III.17), but only the three load-bearing results
+above carry forward to (III.18)--(III.20); the intermediate equations
+(III.11)--(III.16) are the standard vector-calculus identities for
+$\nabla(1/r)$, $\nabla V_0\!\cdot\!\mathbf{p}$, the cross-product
+$\nabla V_0 \times \mathbf{p}$, and the same with $\mathbf{p}\to\mathbf{A}$
+(proton vector potential), each evaluated in $(\hat r, \hat\theta, \hat\phi)$
+basis. They appear in DRQM~I lines~297--339; the verification doc summary
+records them as ``standard spherical-coordinate vector calculus, algebra
+is mechanical.''
+
 \subsection{The three ``new'' terms (III.18)--(III.20)}
 
-After the Pauli identity collapse and the spherical-coordinate algebra
-(DRQM~I Eqs.~(III.9)--(III.17)), three contributions appear in the
-approximated eigenvalue equation~(III.8) that are not present in the
-non-relativistic Schr\"odinger problem:
+Collecting~\eqref{eq:III-spherical-1}--\eqref{eq:III-spherical-3} together
+with the Pauli-identity collapse~\eqref{eq:III10-sigmapi-sq} in the
+approximated eigenvalue equation~\eqref{eq:III8}, three contributions
+appear that are absent from the non-relativistic Schr\"odinger problem:
 \begin{align}
 \label{eq:III18-spin-mag}
 \text{(III.18)}\quad
@@ -394,11 +509,13 @@ curve across the Z-scan is QED's, per the
 \hyperref[sec:branch-a-vs-branch-c]{Branch~A vs.~Branch~C} reading.
 
 \authorreview{This section transcribes the derivation chain you already
-laid out in DRQM~I \S\S II--III. The substantive AI selections are:
-(1)~which subset of (III.5)--(III.20) to surface in the PDF (the chain-rule
-step in (III.6), the cutoff approximation in (III.7), and the three
-(III.18)--(III.20) ``new terms'' are kept; the spherical-coordinate
-algebra (III.11)--(III.17) is summarised); (2)~the per-observable $n_i$
-column in the summary table (drawn from the BS section docs but consolidated
-here for the first time in one place). Please confirm both choices
-match your intent for a Tepper-review presentation.}
+laid out in DRQM~I \S\S II--III, with every typeset numbered equation from
+(II.1) through (III.22) surfaced for fine-grain review per your
+2026-05-30 instruction. The intermediate (III.11)--(III.16)
+spherical-coordinate-algebra equations are noted as ``mechanical
+vector-calculus'' per the verification doc's own characterisation and not
+re-derived here; their three load-bearing
+outputs~\eqref{eq:III-spherical-1}--\eqref{eq:III-spherical-3} are
+displayed. The per-observable $n_i$ summary table is a synthesis move
+(drawn from the BS section docs but consolidated here for the first time in
+one place) and is endorsed per your 2026-05-30 sign-off.}
