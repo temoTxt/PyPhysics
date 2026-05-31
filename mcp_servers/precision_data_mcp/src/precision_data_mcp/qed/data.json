@@ -10,6 +10,16 @@
     "H": {
       "_aliases": ["hydrogen", "H I", "hydrogen-1"],
       "description": "Hydrogen — atomic hydrogen, 1S/2S/2P/... bound-state QED precision data",
+      "fine_structure": {
+        "2P3/2-2P1/2": {
+          "value": 10969.13,
+          "uncertainty": 0.10,
+          "unit": "MHz",
+          "source": "hagley1994_h_fine_structure",
+          "value_class": "experimental",
+          "_note": "Hagley-Pipkin 1994 Phys. Rev. Lett. 72, 1172. Canonical precision-spectroscopy extraction of the 2P fine-structure interval via direct 2P_3/2 - 2S_1/2 RF spectroscopy at 9911.117(40) MHz combined with the Lamb shift. The 10969.13(10) MHz value seeded here matches the value transcribed in nist.list_dirac_targets and 10_CrossComparison.md's measurement column. Specific digits should be verified against the published paper before human_reviewed: true."
+        }
+      },
       "lamb_shifts": {
         "2S1/2-2P1/2": {
           "values": [
@@ -42,6 +52,14 @@
           "source": "essen1957_h_hyperfine",
           "value_class": "experimental",
           "_note": "21-cm hydrogen hyperfine line, Essen et al. 1957 maser measurement; later refinements push uncertainty to sub-mHz."
+        },
+        "2s2S1/2": {
+          "value": 177.566850,
+          "uncertainty": 0.000010,
+          "unit": "MHz",
+          "source": "heberle1956_h_2s_hyperfine",
+          "value_class": "experimental",
+          "_note": "H 2S_1/2 hyperfine splitting; the value the Gill 'Analytic Representation of The Dirac Equation' paper cites (line 257) as 0.177566850(10) GHz sourced from Mizushima's 1970 textbook (which transcribes Heberle-Reich-Kusch 1956 Phys. Rev. 101, 612 and subsequent refinements). The scaling 177.5/1420.4 ~ 1/8 reflects the standard wavefunction-density factor between 1S and 2S hyperfine. More recent precision measurement: Kolachevsky-Khabarova-Berkeland-Hänsch 2009 Phys. Rev. A 79, 062505 at 177.5568343(67) MHz. Specific digits should be verified against the published paper before human_reviewed: true."
         }
       },
       "transitions": {

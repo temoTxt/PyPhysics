@@ -96,6 +96,24 @@ def get_lamb_shift(species: str, transition: str, method: str | None = None) -> 
     return _stamp(entry, tool_name="qed.get_lamb_shift", args=args_base, source_revision=src_rev)
 
 
+def get_fine_structure(species: str, transition: str) -> dict:
+    """Fine-structure splitting value for a given species + transition.
+
+    Sibling tool to ``get_lamb_shift`` / ``get_hyperfine`` for the specific class
+    of fine-structure-interval observables (e.g. H ``"2P3/2-2P1/2"`` at 10969.13(10)
+    MHz; useful when the splitting is the precision-spectroscopy observable rather
+    than a Lamb shift or hyperfine).
+    """
+    db = _load()
+    src_rev = db["$source_revision"]
+    canonical, info = _resolve_species(species)
+    fs = info.get("fine_structure", {})
+    if transition not in fs:
+        raise KeyError(f"no fine-structure data for species={canonical!r}, transition={transition!r}; known: {sorted(fs.keys())}")
+    args = {"species": species, "transition": transition}
+    return _stamp(fs[transition], tool_name="qed.get_fine_structure", args=args, source_revision=src_rev)
+
+
 def get_hyperfine(species: str, level: str) -> dict:
     """Hyperfine-splitting value (e.g. ``H``, ``"1s2S1/2"``; ``positronium``, ``"1s_ortho_para"``)."""
     db = _load()
@@ -147,6 +165,7 @@ def list_observables(species: str) -> dict:
         "species": canonical,
         "lamb_shifts": sorted(info.get("lamb_shifts", {}).keys()),
         "hyperfine": sorted(info.get("hyperfine", {}).keys()),
+        "fine_structure": sorted(info.get("fine_structure", {}).keys()),
         "g_factor_bound_electron": sorted(info.get("g_factor_bound_electron", {}).keys()),
         "transitions": sorted(info.get("transitions", {}).keys()),
     }

@@ -168,6 +168,16 @@ def qed_get_lamb_shift(species: str, transition: str, method: str | None = None)
     return qed_lookup.get_lamb_shift(species, transition, method=method)
 
 
+@mcp.tool(name="qed.get_fine_structure")
+def qed_get_fine_structure(species: str, transition: str) -> dict:
+    """Fine-structure splitting value for a given species + transition.
+
+    Examples:
+        qed.get_fine_structure("H", "2P3/2-2P1/2")  # Hagley-Pipkin 1994 10969.13(10) MHz
+    """
+    return qed_lookup.get_fine_structure(species, transition)
+
+
 @mcp.tool(name="qed.get_hyperfine")
 def qed_get_hyperfine(species: str, level: str) -> dict:
     """Hyperfine-splitting value for a given species + level.

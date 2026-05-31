@@ -124,6 +124,42 @@ class TestProvenance:
         assert a["cache_key"] != b["cache_key"]
 
 
+class TestHydrogenDiracPaperGap:
+    """Issue #110 — close the Dirac-paper audit gap. The H 2S hyperfine (the one
+    numerical H value cited in the Gill Dirac paper) and H 2P3/2-2P1/2 fine-structure
+    (used in the cross-comparison table) are now retrievable as experimental."""
+
+    def test_h_2s_hyperfine_safe(self):
+        r = lookup.get_hyperfine("H", "2s2S1/2")
+        _assert_record(r)
+        assert r["source"] == "heberle1956_h_2s_hyperfine"
+        assert r["value_class"] == "experimental"
+        assert r["safe_for_model_verification"] is True
+        # Matches Gill Dirac paper's cited value 0.177566850(10) GHz = 177.566850(10) MHz
+        assert r["value"] == pytest.approx(177.566850, rel=1e-6)
+        assert r["unit"] == "MHz"
+
+    def test_h_2p_fine_structure_safe(self):
+        r = lookup.get_fine_structure("H", "2P3/2-2P1/2")
+        _assert_record(r)
+        assert r["source"] == "hagley1994_h_fine_structure"
+        assert r["value_class"] == "experimental"
+        assert r["safe_for_model_verification"] is True
+        # Matches 10_CrossComparison.md measurement column
+        assert r["value"] == pytest.approx(10969.13, rel=1e-4)
+        assert r["unit"] == "MHz"
+
+    def test_unknown_fine_structure_raises(self):
+        with pytest.raises(KeyError):
+            lookup.get_fine_structure("H", "99P-100D")
+
+    def test_list_observables_includes_fine_structure(self):
+        o = lookup.list_observables("H")
+        assert "fine_structure" in o
+        assert "2P3/2-2P1/2" in o["fine_structure"]
+        assert "2s2S1/2" in o["hyperfine"]
+
+
 class TestHydrogenPrecisionSpectroscopyExtension:
     """Issue #108: new H transitions seeded in qed/data.json's species.H.transitions."""
 

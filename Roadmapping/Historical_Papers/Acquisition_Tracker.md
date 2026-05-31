@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 144 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 142 pending · 🔴 1 unavailable
+**Summary**: 146 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 144 pending · 🔴 1 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -110,6 +110,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[aston1922_mass_defect]] | 1920 | forward | primary | ⚪ pending | — |
 | [[eddington1920_stellar_fusion]] | 1920 | forward | primary | ⚪ pending | — |
 | [[bethe1939_ppchain]] | 1939 | forward | primary | ⚪ pending | — |
+| [[heberle1956_h_2s_hyperfine]] | 1956 | forward | retrospective | ⚪ pending | — |
 | [[essen1957_h_hyperfine]] | 1957 | forward | retrospective | ⚪ pending | — |
 | [[lawson1957_criterion]] | 1957 | forward | primary | ⚪ pending | — |
 | [[misner_thorne_wheeler1973]] | 1973 | forward | retrospective | ⚪ pending | — |
@@ -121,6 +122,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[deutsch1985_quantum_turing]] | 1985 | forward | primary | ⚪ pending | — |
 | [[smith_christodoulidis1985_slr]] | 1985 | forward | primary | ⚪ pending | — |
 | [[ekert1991_qkd]] | 1991 | forward | primary | ⚪ pending | — |
+| [[hagley1994_h_fine_structure]] | 1994 | forward | retrospective | ⚪ pending | — |
 | [[shor1994_factoring]] | 1994 | forward | primary | ⚪ pending | — |
 | [[grover1996_search]] | 1996 | forward | primary | ⚪ pending | — |
 | [[parkinson1996_gps_theory]] | 1996 | forward | primary | ⚪ pending | — |
