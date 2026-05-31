@@ -1,0 +1,120 @@
+{
+  "$schema_version": "0.1.0",
+  "$source_revision": {
+    "data_revision": "2026-05-30",
+    "retrieved_at": "2026-05-30T00:00:00Z",
+    "seeded_by_hand": true,
+    "_note": "Initial seed for issue #97 — covers the species the Bethe-Salpeter (#50) and hydrogenic-Z-scan (#82) campaigns actively cite. Adding species/observables is mechanical follow-up PRs via the refresh-log workflow."
+  },
+  "species": {
+    "H": {
+      "_aliases": ["hydrogen", "H I", "hydrogen-1"],
+      "description": "Hydrogen — atomic hydrogen, 1S/2S/2P/... bound-state QED precision data",
+      "lamb_shifts": {
+        "2S1/2-2P1/2": {
+          "value": 1057.845,
+          "uncertainty": 0.009,
+          "unit": "MHz",
+          "source": "codata2018_constants",
+          "_note": "Classical hydrogen Lamb shift. Original measurement Lamb-Retherford 1947 at ~1000 MHz; CODATA-2018 evaluation derived from Lundeen-Pipkin 1986 and subsequent refinements."
+        }
+      },
+      "hyperfine": {
+        "1s2S1/2": {
+          "value": 1420.405751768,
+          "uncertainty": 0.000000002,
+          "unit": "MHz",
+          "source": "essen1957_h_hyperfine",
+          "_note": "The 21-cm hydrogen hyperfine line, foundational for radio astronomy. Essen et al. 1957 maser measurement; later refinements push uncertainty to sub-mHz."
+        }
+      },
+      "transitions": {
+        "1S-2S": {
+          "value": 2466061413187035,
+          "uncertainty": 10,
+          "unit": "Hz",
+          "source": "parthey2011_h_1s2s",
+          "_note": "Parthey-Matveev-Alnis-Bernhardt-Beyer-Hansch et al. 2011 absolute frequency measurement of the H 1S-2S two-photon transition. ~4e-15 fractional uncertainty."
+        }
+      }
+    },
+    "muonic_H": {
+      "_aliases": ["muonic hydrogen", "muH"],
+      "description": "Muonic hydrogen — bound state of proton + muon (replaces electron with muon)",
+      "lamb_shifts": {
+        "2S1/2-2P3/2": {
+          "value": 49881.88,
+          "uncertainty": 0.76,
+          "unit": "GHz",
+          "source": "pohl2010_muonic_hydrogen",
+          "_note": "Pohl et al. 2010 Nature 466, 213. Muonic-hydrogen Lamb-shift measurement that triggered the proton-radius puzzle: yields rp ~ 0.84 fm, ~5 sigma from the electron-spectroscopy / electron-scattering values then in use."
+        }
+      }
+    },
+    "muonium": {
+      "_aliases": ["Mu"],
+      "description": "Muonium — bound state of mu+ and e- (electron orbiting an anti-muon, no nucleus)",
+      "hyperfine": {
+        "1s2S1/2": {
+          "value": 4463.302776,
+          "uncertainty": 0.000051,
+          "unit": "MHz",
+          "source": "liu1999_muonium_hyperfine",
+          "_note": "Liu et al. 1999 Phys. Rev. Lett. 82, 711. The muonium ground-state hyperfine interval is one of the most precisely measured purely-leptonic bound-state observables; its agreement with theory is a benchmark test of bound-state QED free of nuclear-structure uncertainties."
+        }
+      }
+    },
+    "positronium": {
+      "_aliases": ["Ps", "e+e-"],
+      "description": "Positronium — bound state of e+ and e- (pure leptonic, no hadronic uncertainties)",
+      "hyperfine": {
+        "1s_ortho_para": {
+          "value": 203389,
+          "uncertainty": 2,
+          "unit": "MHz",
+          "source": "ishida2014_positronium",
+          "_note": "Para-ortho splitting of 1S positronium. Ishida-Suehara-Namba et al. 2014 measurement at ~10 ppm. Precision test of bound-state QED in a system free of nuclear contributions."
+        }
+      }
+    },
+    "Si XIV": {
+      "_aliases": ["Si13+", "silicon-13+", "hydrogenic-silicon"],
+      "description": "Hydrogenic silicon ion (Si^13+, one electron bound to Z=14 nucleus). Z-scan target of issue #82.",
+      "g_factor_bound_electron": {
+        "1s2S1/2": {
+          "value": 1.9953395931,
+          "uncertainty": 0.0000000006,
+          "unit": "dimensionless",
+          "source": "sturm2013_si13_g_factor",
+          "_note": "Sturm-Kohler-Wolf-Werth et al. 2013 Phys. Rev. Lett. 107, 023002 (and follow-ups). Bound-electron g-factor measurement in hydrogenic Si^13+ at fractional uncertainty ~3e-10. Hydrogenic-Z-scan target of issue #82."
+        }
+      }
+    },
+    "Li III": {
+      "_aliases": ["Li2+", "lithium-2+", "hydrogenic-lithium"],
+      "description": "Hydrogenic lithium ion (Li^2+, one electron bound to Z=3 nucleus). Issue #78 target.",
+      "hyperfine": {
+        "1s2S1/2": {
+          "value": 11890.018,
+          "uncertainty": 0.002,
+          "unit": "MHz",
+          "source": "beckert2007_li2_hyperfine",
+          "_note": "Beckert et al. 2007 Phys. Rev. Lett. 98, 233003 (ESR-storage-ring measurement). The hydrogenic Li2+ ground-state hyperfine interval, used as test of bound-state QED + nuclear-structure contributions."
+        }
+      }
+    },
+    "He II": {
+      "_aliases": ["He+", "helium-1+", "hydrogenic-helium"],
+      "description": "Hydrogenic helium ion (He+, one electron bound to Z=2 nucleus).",
+      "g_factor_bound_electron": {
+        "1s2S1/2": {
+          "value": 1.9999857940,
+          "uncertainty": 0.0000000010,
+          "unit": "dimensionless",
+          "source": "kohler2016_he_g_factor",
+          "_note": "Kohler et al. 2016 Phys. Rev. Lett. 117, 053001. Bound-electron g-factor measurement in hydrogenic He+ at fractional uncertainty ~5e-10."
+        }
+      }
+    }
+  }
+}
