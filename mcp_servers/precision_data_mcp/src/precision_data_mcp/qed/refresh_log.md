@@ -31,3 +31,23 @@ Subsequent entries will track:
 - Additional species added by follow-up PRs (Be IV, B V, C VI, ... for the full hydrogenic Z-scan; multi-electron species beyond hydrogenic).
 - Additional observables added by follow-up PRs (more Lamb-shift transitions, hyperfine splittings of higher-n states, etc.).
 - Deprecation of `nist.list_dirac_targets` once the qed.* path is fully validated as the canonical access for bound-state QED precision data.
+
+## 2026-05-31 — hydrogen precision-spectroscopy seed extension (issue #108)
+
+- **Cause:** User-driven gap: post safety-flag enforcement (PR #107), hydrogen experimental coverage in qed.* was only 3 quantities (1S hyperfine, 1S-2S, the codata_adjusted Lamb shift). Issue [#108](https://github.com/temoTxt/PyPhysics/issues/108) added the canonical Hänsch / Pohl / Beyer / Fleurbaey / Lundeen suite of directly-measured H transitions.
+- **Schema impact:** `species.H.lamb_shifts.2S1/2-2P1/2` becomes multi-value. `qed.get_lamb_shift()` now takes an optional `method` arg and returns either the full `{"values": [...]}` list (when method=None) or the single matching record (when method is specified). Mirrors the `nuclear.get_charge_radius()` pattern.
+- **New entries seeded (5 directly-measured H transitions):**
+  - `species.H.lamb_shifts.2S1/2-2P1/2` (multi-value): Lundeen-Pipkin 1981 direct RF measurement added alongside the existing CODATA entry. Numerical values match (by historical construction); the safety flag differs.
+  - `species.H.transitions.1S-2S_H-D_isotope_shift`: Parthey 2010 H/D isotope shift, 670994334.606(15) kHz.
+  - `species.H.transitions.1S-3S`: Fleurbaey 2018 two-photon spectroscopy, 2922743278671.5(2.6) kHz.
+  - `species.H.transitions.2S-4P1/2`: Beyer 2017 MPQ measurement, 616520152720.3(2.3) kHz.
+  - `species.H.transitions.2S-8S1/2`: de Beauvoir 1997 LKB measurement, 770649350012(9) kHz.
+- **Bib stubs scaffolded (4 new):**
+  - `lundeen1981_2s2p_microwave`
+  - `parthey2010_h_d_isotope_shift`
+  - `beyer2017_2s4p`
+  - `debeauvoir1997_2s_8s_8d`
+  (`fleurbaey2018_1s_3s_spectroscopy` already existed from issue #98.)
+- **Numerical-value caveat:** the specific digits seeded above use canonical values quoted from each primary source as cited in the existing precision-spectroscopy literature, but should be **cross-checked against the published paper** by a human before flipping each bib stub's `human_reviewed: true`. The `_note` field on each entry records this.
+- **Tests added:** 7 new tests in `test_lookup.py::TestHydrogenPrecisionSpectroscopyExtension` + 3 in `TestHydrogen` for the multi-value handling. Cross-namespace `test_safety_contract.py::TestQedSafetyContract::test_h_lamb_shift_multivalue_each_carries_contract` updated for the schema change. All 93 pass + 1 expected network-skip.
+- **Out of scope (recorded for follow-up):** 2S-4P3/2 companion (Beyer 2017 measured both fine-structure components); 2S-6S/6D (Bourzeix 1996 series); 2S-8D (de Beauvoir 1997 companion); 2S-12D (Yost et al.); derived experimentally-anchored level energies via fit. Each is a small follow-up extension.

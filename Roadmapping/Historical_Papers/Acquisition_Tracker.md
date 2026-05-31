@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 140 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 138 pending · 🔴 1 unavailable
+**Summary**: 144 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 142 pending · 🔴 1 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -114,6 +114,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[lawson1957_criterion]] | 1957 | forward | primary | ⚪ pending | — |
 | [[misner_thorne_wheeler1973]] | 1973 | forward | retrospective | ⚪ pending | — |
 | [[vessot1980_gravity_probe_a]] | 1980 | forward | primary | ⚪ pending | — |
+| [[lundeen1981_2s2p_microwave]] | 1981 | forward | retrospective | ⚪ pending | — |
 | [[feynman1982_simulating_physics]] | 1982 | forward | primary | ⚪ pending | — |
 | [[bennett_brassard1984_bb84]] | 1984 | forward | primary | ⚪ pending | — |
 | [[wald1984_gr]] | 1984 | forward | retrospective | ⚪ pending | — |
@@ -123,6 +124,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[shor1994_factoring]] | 1994 | forward | primary | ⚪ pending | — |
 | [[grover1996_search]] | 1996 | forward | primary | ⚪ pending | — |
 | [[parkinson1996_gps_theory]] | 1996 | forward | primary | ⚪ pending | — |
+| [[debeauvoir1997_2s_8s_8d]] | 1997 | forward | retrospective | ⚪ pending | — |
 | [[liu1999_muonium_hyperfine]] | 1999 | forward | retrospective | ⚪ pending | — |
 | [[beckert2007_li2_hyperfine]] | 2000 | forward | retrospective | ⚪ pending | — |
 | [[nielsen_chuang2000_quantum_computation]] | 2000 | forward | retrospective | ⚪ pending | — |
@@ -130,6 +132,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[kitaev2003_topological]] | 2003 | forward | primary | ⚪ pending | — |
 | [[atzeni_meyertervehn2004_inertial]] | 2004 | forward | retrospective | ⚪ pending | — |
 | [[bernauer2010_a1_mainz]] | 2010 | forward | retrospective | ⚪ pending | — |
+| [[parthey2010_h_d_isotope_shift]] | 2010 | forward | retrospective | ⚪ pending | — |
 | [[pohl2010_muonic_hydrogen]] | 2010 | forward | retrospective | ⚪ pending | — |
 | [[parthey2011_h_1s2s]] | 2011 | forward | retrospective | ⚪ pending | — |
 | [[sturm2013_si13_g_factor]] | 2011 | forward | retrospective | ⚪ pending | — |
@@ -137,6 +140,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[ishida2014_positronium]] | 2014 | forward | retrospective | ⚪ pending | — |
 | [[kohler2016_he_g_factor]] | 2016 | forward | retrospective | ⚪ pending | — |
 | [[pohl2016_muonic_deuterium]] | 2016 | forward | retrospective | ⚪ pending | — |
+| [[beyer2017_2s4p]] | 2017 | forward | retrospective | ⚪ pending | — |
 | [[liao2018_micius_satellite]] | 2017 | forward | primary | ⚪ pending | — |
 | [[fleurbaey2018_1s_3s_spectroscopy]] | 2018 | forward | retrospective | ⚪ pending | — |
 | [[preskill2018_nisq]] | 2018 | forward | retrospective | ⚪ pending | — |

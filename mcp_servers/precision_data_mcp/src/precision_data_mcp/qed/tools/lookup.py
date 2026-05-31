@@ -61,16 +61,39 @@ def _resolve_species(species: str) -> tuple[str, dict]:
     raise KeyError(f"unknown QED species: {species!r}; known: {sorted(species_map.keys())}")
 
 
-def get_lamb_shift(species: str, transition: str) -> dict:
-    """Lamb-shift value for a given species + transition (e.g. ``H``, ``"2S1/2-2P1/2"``)."""
+def get_lamb_shift(species: str, transition: str, method: str | None = None) -> dict:
+    """Lamb-shift value for a given species + transition (e.g. ``H``, ``"2S1/2-2P1/2"``).
+
+    Multi-source entries (e.g. H 2S1/2-2P1/2 has both a CODATA-2018 adjusted value
+    and the direct Lundeen-Pipkin 1981 RF measurement) follow the umbrella's
+    disagreement-representation rule: when ``method=None`` returns all values as
+    a list; otherwise returns the single matching value. Use the ``method`` arg
+    or filter on ``safe_for_model_verification`` to pick the experimental anchor.
+    """
     db = _load()
     src_rev = db["$source_revision"]
     canonical, info = _resolve_species(species)
     shifts = info.get("lamb_shifts", {})
     if transition not in shifts:
         raise KeyError(f"no Lamb-shift data for species={canonical!r}, transition={transition!r}; known transitions: {sorted(shifts.keys())}")
-    args = {"species": species, "transition": transition}
-    return _stamp(shifts[transition], tool_name="qed.get_lamb_shift", args=args, source_revision=src_rev)
+    entry = shifts[transition]
+    args_base = {"species": species, "transition": transition, "method": method}
+
+    if "values" in entry:
+        candidates = entry["values"]
+        if method is not None:
+            for rec in candidates:
+                if rec.get("method") == method:
+                    return _stamp(rec, tool_name="qed.get_lamb_shift", args=args_base, source_revision=src_rev)
+            raise KeyError(f"no Lamb-shift method {method!r} for species={canonical!r}, transition={transition!r}; known methods: {[r.get('method') for r in candidates]}")
+        return {
+            "species": canonical,
+            "transition": transition,
+            "values": [_stamp(r, tool_name="qed.get_lamb_shift", args={"species": species, "transition": transition, "method": r.get("method")}, source_revision=src_rev) for r in candidates],
+            "_note": entry.get("_note"),
+        }
+
+    return _stamp(entry, tool_name="qed.get_lamb_shift", args=args_base, source_revision=src_rev)
 
 
 def get_hyperfine(species: str, level: str) -> dict:
