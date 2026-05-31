@@ -19,6 +19,8 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+from precision_data_mcp.safety import apply_safety_contract
+
 _DATA_PATH = Path(__file__).resolve().parent.parent / "data.json"
 
 
@@ -33,12 +35,12 @@ def _cache_key(tool_name: str, args: dict) -> str:
 
 
 def _stamp(record: dict, *, tool_name: str, args: dict, source_revision: dict) -> dict:
-    """Decorate a raw seed record with retrieved_at + cache_key + source_revision."""
+    """Decorate a raw seed record with retrieved_at + cache_key + source_revision + safety contract."""
     out = dict(record)
     out["retrieved_at"] = source_revision.get("retrieved_at", datetime.now(timezone.utc).isoformat())
     out["cache_key"] = _cache_key(tool_name, args)
     out["source_revision"] = {"pdg_edition": source_revision.get("pdg_edition", "unknown")}
-    return out
+    return apply_safety_contract(out)
 
 
 def _stamp_field(value_record: dict | None, *, tool_name: str, args: dict, source_revision: dict) -> dict | None:

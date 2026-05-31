@@ -18,12 +18,21 @@ import urllib.parse
 import requests
 
 from precision_data_mcp.nist.cache import cache_get, cache_put
+from precision_data_mcp.safety import apply_safety_contract
 
 LANDING_PAGE = "https://www.nist.gov/pml/atomic-spectra-database"
 LEVELS_URL = "https://physics.nist.gov/cgi-bin/ASD/energy1.pl"
 LINES_URL = "https://physics.nist.gov/cgi-bin/ASD/lines1.pl"
 USER_AGENT = "PyPhysics-nist-mcp/0.1 (research; github.com/temoTxt/PyPhysics)"
 TIMEOUT = 30
+
+
+# Per the NIST ASD documentation cited in issue #90, hydrogen-isoelectronic-sequence
+# levels in ASD are theoretical/Ritz values rather than independent measurements. We
+# tag those species' level retrievals as theoretical_ritz_value so the umbrella's
+# safety contract makes the distinction visible to agents and humans. Other species'
+# ASD levels are measured.
+_RITZ_ONLY_LEVEL_SPECIES = {"H I", "H II"}
 
 
 # ───── query parameter builders ─────
@@ -89,19 +98,21 @@ def _to_float(s: str | None) -> float | None:
 
 # ───── record mapping ─────
 
-def _level_record(row: dict) -> dict:
+def _level_record(row: dict, *, species: str) -> dict:
     conf = row.get("Configuration", "")
     term = row.get("Term", "")
     j = row.get("J", "")
     label = " ".join(p for p in (conf, term, j) if p)
-    return {
+    value_class = "theoretical_ritz_value" if species in _RITZ_ONLY_LEVEL_SPECIES else "experimental"
+    return apply_safety_contract({
         "quantity": f"energy level {label}".strip(),
         "value": _to_float(row.get("Level (cm-1)")),
         "uncertainty": _to_float(row.get("Uncertainty (cm-1)")),
         "unit": "cm^-1",
         "source": "NIST ASD (levels)",
         "reference": LANDING_PAGE,
-    }
+        "value_class": value_class,
+    })
 
 
 def _wl_columns(header: list[str]) -> tuple[str | None, str | None]:
@@ -123,20 +134,23 @@ def _transition_record(row: dict, obs_col, ritz_col, ref_col) -> dict:
     ritz = _to_float(row.get(ritz_col)) if ritz_col else None
     if obs is not None:
         value, unc, kind, medium = obs, _to_float(row.get("unc_obs_wl")), "observed", _medium(obs_col)
+        value_class = "experimental"
     else:
         value, unc, kind, medium = ritz, _to_float(row.get("unc_ritz_wl")), "ritz", _medium(ritz_col)
+        value_class = "theoretical_ritz_value"
     conf_i, term_i = row.get("conf_i", ""), row.get("term_i", "")
     conf_k, term_k = row.get("conf_k", ""), row.get("term_k", "")
     label = f"{conf_i} {term_i} - {conf_k} {term_k}".strip()
     ref = row.get(ref_col) if ref_col else ""
-    return {
+    return apply_safety_contract({
         "quantity": f"{kind} wavelength {label}".strip(),
         "value": value,
         "uncertainty": unc,
         "unit": f"nm ({medium})",
         "source": "NIST ASD (lines)",
         "reference": ref or LANDING_PAGE,
-    }
+        "value_class": value_class,
+    })
 
 
 def _transition_records(text: str) -> list[dict]:
@@ -171,7 +185,7 @@ def get_levels(species: str, refresh: bool = False, ttl: float | None = None) ->
     base = {"source": "NIST ASD (levels)", "query": {"species": species, "endpoint": LEVELS_URL}}
     if err:
         return {**base, "results": [], "error": err}
-    results = [r for r in (_level_record(r) for r in _parse_tsv(payload["text"])) if r["value"] is not None]
+    results = [r for r in (_level_record(r, species=species) for r in _parse_tsv(payload["text"])) if r["value"] is not None]
     return {**base, "results": results}
 
 

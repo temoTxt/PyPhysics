@@ -17,6 +17,8 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+from precision_data_mcp.safety import apply_safety_contract
+
 _DATA_PATH = Path(__file__).resolve().parent.parent / "data.json"
 
 
@@ -35,7 +37,7 @@ def _stamp(record: dict, *, tool_name: str, args: dict, source_revision: dict) -
     out["retrieved_at"] = source_revision.get("retrieved_at", datetime.now(timezone.utc).isoformat())
     out["cache_key"] = _cache_key(tool_name, args)
     out["source_revision"] = {"data_revision": source_revision.get("data_revision", "unknown")}
-    return out
+    return apply_safety_contract(out)
 
 
 def _resolve_species(species: str) -> tuple[str, dict]:

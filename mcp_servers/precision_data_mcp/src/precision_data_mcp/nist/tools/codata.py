@@ -9,6 +9,8 @@ rather than letting a silent version bump change the numbers.
 import scipy
 import scipy.constants as sc
 
+from precision_data_mcp.safety import apply_safety_contract
+
 _CUU_URL = "https://physics.nist.gov/cuu/Constants/"
 
 
@@ -30,14 +32,15 @@ def codata_release() -> str:
 
 def _record(key: str) -> dict:
     value, unit, uncertainty = sc.physical_constants[key]
-    return {
+    return apply_safety_contract({
         "quantity": key,
         "value": value,
         "uncertainty": uncertainty,
         "unit": unit or "dimensionless",
         "source": codata_release(),
         "reference": _CUU_URL,
-    }
+        "value_class": "codata_adjusted",
+    })
 
 
 def get_constant(name: str) -> dict:

@@ -2,7 +2,7 @@
 
 from precision_data_mcp.nist.tools import codata
 
-SCHEMA = {"quantity", "value", "uncertainty", "unit", "source", "reference"}
+SCHEMA = {"quantity", "value", "uncertainty", "unit", "source", "reference", "value_class", "safe_for_model_verification"}
 
 
 def test_electron_g_factor_ok():
@@ -13,6 +13,15 @@ def test_electron_g_factor_ok():
     assert rec["value"] != 0
     assert "CODATA" in rec["source"]
     assert rec["uncertainty"] is not None
+
+
+def test_codata_values_flagged_as_unsafe_for_model_verification():
+    """CODATA values combine experimental + theoretical inputs — must be flagged."""
+    rec = codata.get_constant("electron g factor")["match"]
+    assert rec["value_class"] == "codata_adjusted"
+    assert rec["safe_for_model_verification"] is False
+    assert "warning" in rec
+    assert "CODATA" in rec["warning"]
 
 
 def test_source_reports_codata_release():

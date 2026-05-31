@@ -18,7 +18,15 @@ Positronium and muonium are curated here too: they are exotic atoms absent from
 the NIST ASD, and the PDG machine-readable API (the ``pdg`` package) carries no
 muonium/positronium entries either, so their hyperfine splittings are only
 available from PDG review text / primary literature.
+
+Per the umbrella safety-flag enforcement, every record carries ``value_class``
++ derived ``safe_for_model_verification`` per ``precision_data_mcp.safety``.
+The Lamb shift here is ``codata_adjusted`` (CODATA-2018 combines experiment +
+theory); the other five are direct experimental measurements transcribed from
+their primary-source maser / spectroscopy papers.
 """
+
+from precision_data_mcp.safety import apply_safety_contract
 
 _DOC = "Roadmapping/Quantum_Mechanics/Bethe_Salpeter/10_CrossComparison.md"
 
@@ -30,6 +38,7 @@ DIRAC_TARGETS = [
         "unit": "MHz",
         "source": "curated (Bethe-Salpeter cross-comparison; precision spectroscopy)",
         "reference": _DOC,
+        "value_class": "experimental",
     },
     {
         "quantity": "hydrogen 2S_1/2 - 2P_1/2 Lamb shift",
@@ -38,6 +47,7 @@ DIRAC_TARGETS = [
         "unit": "MHz",
         "source": "curated (Bethe-Salpeter cross-comparison; precision spectroscopy)",
         "reference": _DOC,
+        "value_class": "codata_adjusted",
     },
     {
         "quantity": "hydrogen 1S hyperfine splitting (21 cm)",
@@ -46,6 +56,7 @@ DIRAC_TARGETS = [
         "unit": "MHz",
         "source": "curated (Bethe-Salpeter cross-comparison; hydrogen maser)",
         "reference": _DOC,
+        "value_class": "experimental",
     },
     {
         "quantity": "helium 3P_0 - 3P_1 fine-structure interval",
@@ -54,6 +65,7 @@ DIRAC_TARGETS = [
         "unit": "MHz",
         "source": "curated (Bethe-Salpeter cross-comparison; precision spectroscopy)",
         "reference": _DOC,
+        "value_class": "experimental",
     },
     {
         "quantity": "positronium 1S ortho-para hyperfine splitting",
@@ -62,6 +74,7 @@ DIRAC_TARGETS = [
         "unit": "MHz",
         "source": "curated (Bethe-Salpeter cross-comparison; PDG / primary literature)",
         "reference": _DOC,
+        "value_class": "experimental",
     },
     {
         "quantity": "muonium 1S hyperfine splitting",
@@ -70,10 +83,11 @@ DIRAC_TARGETS = [
         "unit": "MHz",
         "source": "curated (Bethe-Salpeter cross-comparison; PDG / primary literature)",
         "reference": _DOC,
+        "value_class": "experimental",
     },
 ]
 
 
 def list_dirac_targets() -> list[dict]:
-    """Return the curated Dirac-exploration target values (copies, in shared schema)."""
-    return [dict(t) for t in DIRAC_TARGETS]
+    """Return the curated Dirac-exploration target values, each safety-decorated."""
+    return [apply_safety_contract(dict(t)) for t in DIRAC_TARGETS]
