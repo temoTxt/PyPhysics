@@ -1,6 +1,16 @@
 # §§19–21 — Lamb shift ⭐ PR E headline (acceptance criterion 3)
 
-**PR E.** The 2S₁/₂–2P₁/₂ splitting in hydrogen — the Lamb shift, measured to ~9 significant figures at `1057.845(9)` MHz (CODATA-2018, derived from Lundeen & Pipkin 1986 and subsequent refinements) — is the radiative correction beyond the Sommerfeld–Dirac fine structure of PR C. Bethe (1947) supplied the first quantitative estimate using mass-renormalisation arguments, recovering most of the measured value with a *non-relativistic* treatment of the electron self-energy. Three results.
+**PR E.** The 2S₁/₂–2P₁/₂ splitting in hydrogen — the Lamb shift, measured to ~9 significant figures at `1057.845(9)` MHz (CODATA-2018, derived from Lundeen & Pipkin 1986 and subsequent refinements; [[codata2018_constants]]) — is the radiative correction beyond the Sommerfeld–Dirac fine structure of PR C. Bethe (1947) supplied the first quantitative estimate using mass-renormalisation arguments, recovering most of the measured value with a *non-relativistic* treatment of the electron self-energy. Three results.
+
+**Programmatic access to the measured value** (per umbrella issue [#92](https://github.com/temoTxt/PyPhysics/issues/92) Crocco-rule-3 citation-verification discipline): the measured Lamb-shift value cited throughout this document is now retrievable via the `qed.*` namespace of [`precision_data_mcp`](../../../mcp_servers/precision_data_mcp/):
+
+```python
+qed.get_lamb_shift("H", "2S1/2-2P1/2")
+# -> {"value": 1057.845, "uncertainty": 0.009, "unit": "MHz",
+#     "source": "codata2018_constants", "retrieved_at": ..., "cache_key": ...}
+```
+
+Every retrieval carries the umbrella's six-field contract (`value`, `uncertainty`, `unit`, `source`, `retrieved_at`, `cache_key`); `source` is a bib-stub `cite_key` resolving against [`Roadmapping/History/Bibliography/`](../../History/Bibliography/). When precision updates land (a higher-precision modern measurement supersedes CODATA-2018), the [`qed/refresh_log.md`](../../../mcp_servers/precision_data_mcp/src/precision_data_mcp/qed/refresh_log.md) records the diff and downstream consumers update by re-running with `refresh=True`. This document is the [#97](https://github.com/temoTxt/PyPhysics/issues/97) sub-issue's load-bearing demonstrator that the `qed.*` lookup path works end-to-end for the campaign's most-cited bound-state QED observable.
 
 PR E is the campaign's **second precision-comparable pivot** and the **third acceptance criterion of issue #50**. Its load-bearing claim is that the proper-time formulation supplies a structurally consistent route to the Lamb shift via the radiation-reaction structure of [`The_Classical_Electron_Problem.md`](../../Equation_Verification/The_Classical_Electron_Problem.md), reproducing the leading Bethe (1947) log-Bethe estimate, with the same numerical agreement Bethe's original calculation supplied.
 

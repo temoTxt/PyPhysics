@@ -35,6 +35,7 @@ from mcp.server.fastmcp import FastMCP
 
 from precision_data_mcp.nist.tools import asd, codata, targets
 from precision_data_mcp.pdg.tools import lookup as pdg_lookup
+from precision_data_mcp.qed.tools import lookup as qed_lookup
 
 mcp = FastMCP("precision_data")
 
@@ -144,8 +145,68 @@ def pdg_list_particles() -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
+# qed.* namespace (issue #97 — bound-state QED precision observables)
+# ---------------------------------------------------------------------------
+
+
+@mcp.tool(name="qed.get_lamb_shift")
+def qed_get_lamb_shift(species: str, transition: str) -> dict:
+    """Lamb-shift value for a given species + transition.
+
+    Examples:
+        qed.get_lamb_shift("H", "2S1/2-2P1/2")  # hydrogen 1057.845(9) MHz
+        qed.get_lamb_shift("muonic_H", "2S1/2-2P3/2")  # the proton-radius-puzzle trigger
+    """
+    return qed_lookup.get_lamb_shift(species, transition)
+
+
+@mcp.tool(name="qed.get_hyperfine")
+def qed_get_hyperfine(species: str, level: str) -> dict:
+    """Hyperfine-splitting value for a given species + level.
+
+    Examples:
+        qed.get_hyperfine("H", "1s2S1/2")              # 1420.405... MHz (21-cm)
+        qed.get_hyperfine("muonium", "1s2S1/2")        # 4463.302... MHz
+        qed.get_hyperfine("positronium", "1s_ortho_para")  # ~203389 MHz
+    """
+    return qed_lookup.get_hyperfine(species, level)
+
+
+@mcp.tool(name="qed.get_g_factor")
+def qed_get_g_factor(species: str, electron_state: str) -> dict:
+    """Bound-electron g-factor for a hydrogenic-ion electron state.
+
+    Examples:
+        qed.get_g_factor("Si XIV", "1s2S1/2")  # Sturm et al. 2013 — issue #82 target
+        qed.get_g_factor("He II", "1s2S1/2")   # Kohler et al. 2016
+    """
+    return qed_lookup.get_g_factor(species, electron_state)
+
+
+@mcp.tool(name="qed.get_transition_precision")
+def qed_get_transition_precision(species: str, transition: str) -> dict:
+    """High-precision transition frequency.
+
+    Examples:
+        qed.get_transition_precision("H", "1S-2S")  # Hänsch et al. 2011 absolute frequency
+    """
+    return qed_lookup.get_transition_precision(species, transition)
+
+
+@mcp.tool(name="qed.list_species")
+def qed_list_species() -> list[dict]:
+    """Enumerate seeded species (H, He II, Li III, Si XIV, muonic_H, muonium, positronium)."""
+    return qed_lookup.list_species()
+
+
+@mcp.tool(name="qed.list_observables")
+def qed_list_observables(species: str) -> dict:
+    """For a given species, list which observables are curated (Lamb shifts / hyperfine / g-factor / transitions)."""
+    return qed_lookup.list_observables(species)
+
+
+# ---------------------------------------------------------------------------
 # Future namespaces — to be registered when their sub-issues land:
-#   qed.*     (issue #97)
 #   nuclear.* + flag.*  (issue #98)
 # ---------------------------------------------------------------------------
 

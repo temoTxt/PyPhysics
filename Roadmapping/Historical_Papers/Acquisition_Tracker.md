@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 127 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 125 pending · 🔴 1 unavailable
+**Summary**: 135 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 133 pending · 🔴 1 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -110,6 +110,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[aston1922_mass_defect]] | 1920 | forward | primary | ⚪ pending | — |
 | [[eddington1920_stellar_fusion]] | 1920 | forward | primary | ⚪ pending | — |
 | [[bethe1939_ppchain]] | 1939 | forward | primary | ⚪ pending | — |
+| [[essen1957_h_hyperfine]] | 1957 | forward | retrospective | ⚪ pending | — |
 | [[lawson1957_criterion]] | 1957 | forward | primary | ⚪ pending | — |
 | [[misner_thorne_wheeler1973]] | 1973 | forward | retrospective | ⚪ pending | — |
 | [[vessot1980_gravity_probe_a]] | 1980 | forward | primary | ⚪ pending | — |
@@ -122,11 +123,18 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[shor1994_factoring]] | 1994 | forward | primary | ⚪ pending | — |
 | [[grover1996_search]] | 1996 | forward | primary | ⚪ pending | — |
 | [[parkinson1996_gps_theory]] | 1996 | forward | primary | ⚪ pending | — |
+| [[liu1999_muonium_hyperfine]] | 1999 | forward | retrospective | ⚪ pending | — |
+| [[beckert2007_li2_hyperfine]] | 2000 | forward | retrospective | ⚪ pending | — |
 | [[nielsen_chuang2000_quantum_computation]] | 2000 | forward | retrospective | ⚪ pending | — |
 | [[ashby2003_gps_relativity]] | 2003 | forward | primary | ⚪ pending | — |
 | [[kitaev2003_topological]] | 2003 | forward | primary | ⚪ pending | — |
 | [[atzeni_meyertervehn2004_inertial]] | 2004 | forward | retrospective | ⚪ pending | — |
+| [[pohl2010_muonic_hydrogen]] | 2010 | forward | retrospective | ⚪ pending | — |
+| [[parthey2011_h_1s2s]] | 2011 | forward | retrospective | ⚪ pending | — |
+| [[sturm2013_si13_g_factor]] | 2011 | forward | retrospective | ⚪ pending | — |
 | [[wesson2011_tokamaks]] | 2011 | forward | retrospective | ⚪ pending | — |
+| [[ishida2014_positronium]] | 2014 | forward | retrospective | ⚪ pending | — |
+| [[kohler2016_he_g_factor]] | 2016 | forward | retrospective | ⚪ pending | — |
 | [[liao2018_micius_satellite]] | 2017 | forward | primary | ⚪ pending | — |
 | [[preskill2018_nisq]] | 2018 | forward | retrospective | ⚪ pending | — |
 | [[arute2019_quantum_supremacy]] | 2019 | forward | primary | ⚪ pending | — |
