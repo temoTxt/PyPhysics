@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 122 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 120 pending · 🔴 1 unavailable
+**Summary**: 127 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 125 pending · 🔴 1 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -132,7 +132,12 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[arute2019_quantum_supremacy]] | 2019 | forward | primary | ⚪ pending | — |
 | [[krantz2019_circuit_qed]] | 2019 | forward | retrospective | ⚪ pending | — |
 | [[pirandola2020_qkd_review]] | 2020 | forward | retrospective | ⚪ pending | — |
+| [[theory_initiative_2020]] | 2020 | forward | retrospective | ⚪ pending | — |
+| [[bmw2021_lattice_qcd]] | 2021 | forward | retrospective | ⚪ pending | — |
 | [[codata2018_constants]] | 2021 | forward | retrospective | ⚪ pending | `../../Historical_Papers/Retrospective/codata2018_constants.pdf` |
+| [[fan2023_electron_g_factor]] | 2023 | forward | retrospective | ⚪ pending | — |
+| [[fermilab_e989_2023]] | 2023 | forward | retrospective | ⚪ pending | — |
 | [[nif2022_ignition]] | 2024 | forward | primary | ⚪ pending | — |
 | [[nist_asd_2024]] | 2024 | forward | retrospective | 🔴 unavailable | — |
+| [[pdg2024_review]] | 2024 | forward | retrospective | ⚪ pending | — |
 <!-- AUTO-TABLE-END -->

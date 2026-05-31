@@ -1,0 +1,114 @@
+{
+  "$schema_version": "0.1.0",
+  "$source_revision": {
+    "pdg_edition": "2024",
+    "retrieved_at": "2026-05-30T00:00:00Z",
+    "seeded_by_hand": true,
+    "_note": "Initial seed for issue #96 — adding particles is mechanical follow-up PRs."
+  },
+  "particles": {
+    "11": {
+      "name": "electron",
+      "symbol": "e-",
+      "mass": {"value": 0.51099895069, "uncertainty": 1.6e-10, "unit": "MeV/c^2", "source": "codata2018_constants"},
+      "lifetime": {"value": null, "uncertainty": null, "unit": "s", "source": "pdg2024_review", "_note": "stable; PDG lower bound on lifetime > 6.6e28 yr"},
+      "charge": {"value": -1, "unit": "e", "source": "pdg2024_review"},
+      "spin": {"value": 0.5, "unit": "hbar", "source": "pdg2024_review"}
+    },
+    "13": {
+      "name": "muon",
+      "symbol": "mu-",
+      "mass": {"value": 105.6583755, "uncertainty": 2.3e-6, "unit": "MeV/c^2", "source": "pdg2024_review"},
+      "lifetime": {"value": 2.1969811e-6, "uncertainty": 2.2e-12, "unit": "s", "source": "pdg2024_review"},
+      "charge": {"value": -1, "unit": "e", "source": "pdg2024_review"},
+      "spin": {"value": 0.5, "unit": "hbar", "source": "pdg2024_review"}
+    },
+    "15": {
+      "name": "tau",
+      "symbol": "tau-",
+      "mass": {"value": 1776.86, "uncertainty": 0.12, "unit": "MeV/c^2", "source": "pdg2024_review"},
+      "lifetime": {"value": 2.903e-13, "uncertainty": 5e-16, "unit": "s", "source": "pdg2024_review"},
+      "charge": {"value": -1, "unit": "e", "source": "pdg2024_review"},
+      "spin": {"value": 0.5, "unit": "hbar", "source": "pdg2024_review"}
+    },
+    "2212": {
+      "name": "proton",
+      "symbol": "p+",
+      "mass": {"value": 938.27208816, "uncertainty": 0.00000029, "unit": "MeV/c^2", "source": "codata2018_constants"},
+      "lifetime": {"value": null, "uncertainty": null, "unit": "s", "source": "pdg2024_review", "_note": "stable; PDG lower bound depends on decay channel"},
+      "charge": {"value": 1, "unit": "e", "source": "pdg2024_review"},
+      "spin": {"value": 0.5, "unit": "hbar", "source": "pdg2024_review"}
+    },
+    "2112": {
+      "name": "neutron",
+      "symbol": "n",
+      "mass": {"value": 939.56542194, "uncertainty": 0.00000048, "unit": "MeV/c^2", "source": "codata2018_constants"},
+      "lifetime": {
+        "values": [
+          {"value": 877.75, "uncertainty": 0.28, "unit": "s", "source": "pdg2024_review", "method": "ultracold_neutron_bottle"},
+          {"value": 887.7, "uncertainty": 1.2, "unit": "s", "source": "pdg2024_review", "method": "beam_measurement"}
+        ],
+        "_note": "Neutron-lifetime puzzle: bottle vs beam measurements disagree at the ~4 sigma level. PDG's own world average is ~878.4(5) s but the underlying data is split; the umbrella's disagreement-representation rule (issue #92 §5) returns all values explicitly."
+      },
+      "charge": {"value": 0, "unit": "e", "source": "pdg2024_review"},
+      "spin": {"value": 0.5, "unit": "hbar", "source": "pdg2024_review"}
+    },
+    "211": {
+      "name": "pion+",
+      "symbol": "pi+",
+      "mass": {"value": 139.57039, "uncertainty": 0.00018, "unit": "MeV/c^2", "source": "pdg2024_review"},
+      "lifetime": {"value": 2.6033e-8, "uncertainty": 5e-12, "unit": "s", "source": "pdg2024_review"},
+      "charge": {"value": 1, "unit": "e", "source": "pdg2024_review"},
+      "spin": {"value": 0, "unit": "hbar", "source": "pdg2024_review"}
+    },
+    "321": {
+      "name": "kaon+",
+      "symbol": "K+",
+      "mass": {"value": 493.677, "uncertainty": 0.013, "unit": "MeV/c^2", "source": "pdg2024_review"},
+      "lifetime": {"value": 1.2380e-8, "uncertainty": 2e-12, "unit": "s", "source": "pdg2024_review"},
+      "charge": {"value": 1, "unit": "e", "source": "pdg2024_review"},
+      "spin": {"value": 0, "unit": "hbar", "source": "pdg2024_review"}
+    },
+    "24": {
+      "name": "W boson",
+      "symbol": "W+",
+      "mass": {"value": 80.3692, "uncertainty": 0.0133, "unit": "GeV/c^2", "source": "pdg2024_review"},
+      "lifetime": {"value": null, "uncertainty": null, "unit": "s", "source": "pdg2024_review", "_note": "Width 2.085(42) GeV preferred to lifetime."},
+      "charge": {"value": 1, "unit": "e", "source": "pdg2024_review"},
+      "spin": {"value": 1, "unit": "hbar", "source": "pdg2024_review"}
+    },
+    "23": {
+      "name": "Z boson",
+      "symbol": "Z0",
+      "mass": {"value": 91.1880, "uncertainty": 0.0020, "unit": "GeV/c^2", "source": "pdg2024_review"},
+      "charge": {"value": 0, "unit": "e", "source": "pdg2024_review"},
+      "spin": {"value": 1, "unit": "hbar", "source": "pdg2024_review"}
+    },
+    "25": {
+      "name": "Higgs boson",
+      "symbol": "H0",
+      "mass": {"value": 125.20, "uncertainty": 0.11, "unit": "GeV/c^2", "source": "pdg2024_review"},
+      "charge": {"value": 0, "unit": "e", "source": "pdg2024_review"},
+      "spin": {"value": 0, "unit": "hbar", "source": "pdg2024_review"}
+    }
+  },
+  "anomalies": {
+    "11": {
+      "particle": "electron",
+      "values": [
+        {"value": 1.15965218059e-3, "uncertainty": 1.3e-13, "unit": "dimensionless", "source": "fan2023_electron_g_factor", "method": "Penning_trap_measurement"},
+        {"value": 1.15965218059e-3, "uncertainty": 7.7e-14, "unit": "dimensionless", "source": "codata2018_constants", "method": "Standard_Model_prediction"}
+      ],
+      "_note": "Electron a_e = (g_s - 2)/2. Experimental and SM prediction agree at sub-ppt level — no anomaly."
+    },
+    "13": {
+      "particle": "muon",
+      "values": [
+        {"value": 1.16592059e-3, "uncertainty": 2.2e-10, "unit": "dimensionless", "source": "fermilab_e989_2023", "method": "BNL_E821_plus_Fermilab_E989_combined"},
+        {"value": 1.16591783e-3, "uncertainty": 4.3e-10, "unit": "dimensionless", "source": "bmw2021_lattice_qcd", "method": "lattice_QCD_hadronic_vacuum_polarisation"},
+        {"value": 1.16591810e-3, "uncertainty": 4.3e-10, "unit": "dimensionless", "source": "theory_initiative_2020", "method": "data_driven_dispersive_HVP"}
+      ],
+      "_note": "Muon a_mu = (g_mu - 2)/2. As of 2024 the Fermilab E989 + BNL E821 combined experimental value disagrees with the Theory Initiative 2020 data-driven SM prediction at ~5 sigma, BUT agrees with the BMW lattice-QCD calculation at <1 sigma. The umbrella's disagreement-representation rule (issue #92 §5) returns all three explicitly. As of 2025 the new Theory Initiative update is expected to reduce the tension; track via refresh_log.md when it lands."
+    }
+  }
+}

@@ -34,6 +34,7 @@ caching + refresh schema.
 from mcp.server.fastmcp import FastMCP
 
 from precision_data_mcp.nist.tools import asd, codata, targets
+from precision_data_mcp.pdg.tools import lookup as pdg_lookup
 
 mcp = FastMCP("precision_data")
 
@@ -103,8 +104,47 @@ def nist_list_dirac_targets() -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
+# pdg.* namespace (issue #96 — Particle Data Group reference values)
+# ---------------------------------------------------------------------------
+
+
+@mcp.tool(name="pdg.get_particle")
+def pdg_get_particle(particle_id: str) -> dict:
+    """PDG mass, lifetime, charge, and spin for a particle.
+
+    Multi-value fields (e.g. the neutron lifetime under the bottle-vs-beam
+    puzzle) return a ``{"values": [...]}`` list per the umbrella's
+    disagreement-representation rule rather than an averaged single value.
+
+    Args:
+        particle_id: PDG MCID (e.g. "11" for electron, "13" for muon) or
+            a particle name / symbol ("electron", "mu-", "proton", "p+").
+    """
+    return pdg_lookup.get_particle(particle_id)
+
+
+@mcp.tool(name="pdg.get_anomaly")
+def pdg_get_anomaly(particle_id: str) -> dict:
+    """Anomalous magnetic moment for a particle.
+
+    The muon a_mu entry surfaces the canonical Fermilab-E989 vs Theory-Initiative
+    vs BMW-lattice-QCD disagreement explicitly as a ``values`` list.
+
+    Args:
+        particle_id: PDG MCID or particle name / symbol; currently only
+            leptons (electron MCID 11, muon MCID 13) have curated anomaly data.
+    """
+    return pdg_lookup.get_anomaly(particle_id)
+
+
+@mcp.tool(name="pdg.list_particles")
+def pdg_list_particles() -> list[dict]:
+    """Enumerate seeded particles with their MCIDs / names / symbols."""
+    return pdg_lookup.list_particles()
+
+
+# ---------------------------------------------------------------------------
 # Future namespaces — to be registered when their sub-issues land:
-#   pdg.*     (issue #96)
 #   qed.*     (issue #97)
 #   nuclear.* + flag.*  (issue #98)
 # ---------------------------------------------------------------------------
