@@ -100,9 +100,10 @@ class TestErrorPaths:
 
 
 class TestEnumeration:
-    def test_list_species_includes_all_seven(self):
+    def test_list_species_includes_core_set(self):
         ss = {s["species"] for s in lookup.list_species()}
-        assert {"H", "He II", "Li III", "Si XIV", "muonic_H", "muonium", "positronium"} == ss
+        # Core species — Be IV / C VI added under issue #113
+        assert {"H", "He II", "Li III", "Be IV", "C VI", "Si XIV", "muonic_H", "muonium", "positronium"}.issubset(ss)
 
     def test_list_observables_for_H(self):
         o = lookup.list_observables("H")
@@ -122,6 +123,64 @@ class TestProvenance:
         a = lookup.get_lamb_shift("H", "2S1/2-2P1/2", method="CODATA_2018_global_adjustment")
         b = lookup.get_hyperfine("H", "1s2S1/2")
         assert a["cache_key"] != b["cache_key"]
+
+
+class TestLi2AndMiddleZGFactors:
+    """Issue #113 — close the Li²⁺ campaign (#78) + hydrogenic-Z-scan (#82) MCP gap."""
+
+    def test_li2_g_factor_sturm_2014(self):
+        r = lookup.get_g_factor("Li III", "1s2S1/2")
+        assert r["source"] == "sturm2014_li2_g_factor"
+        assert r["value_class"] == "experimental"
+        assert r["safe_for_model_verification"] is True
+        assert r["value"] == pytest.approx(2.0000251707, rel=1e-9)
+        _assert_record(r)
+
+    def test_be3_g_factor_kohler_2016(self):
+        r = lookup.get_g_factor("Be IV", "1s2S1/2")
+        assert r["source"] == "kohler2016_be3_g_factor"
+        assert r["value_class"] == "experimental"
+        _assert_record(r)
+
+    def test_c5_g_factor_haffner_2000(self):
+        r = lookup.get_g_factor("C VI", "1s2S1/2")
+        assert r["source"] == "haffner2000_c5_g_factor"
+        assert r["value_class"] == "experimental"
+        assert r["value"] == pytest.approx(2.001041596, rel=1e-9)
+        _assert_record(r)
+
+    def test_li2_lamb_shift_schiffer_1995(self):
+        r = lookup.get_lamb_shift("Li III", "2S1/2-2P1/2")
+        assert r["source"] == "schiffer1995_li2_lamb_shift"
+        assert r["value_class"] == "experimental"
+        assert r["safe_for_model_verification"] is True
+        # 62765(21) MHz cited in #78
+        assert r["value"] == pytest.approx(62765, rel=1e-4)
+        _assert_record(r)
+
+    def test_li2_fine_structure_riis_1994(self):
+        r = lookup.get_fine_structure("Li III", "2P3/2-2P1/2")
+        assert r["source"] == "riis1994_li2_fine_structure"
+        assert r["value_class"] == "experimental"
+        _assert_record(r)
+
+    def test_li2_observables_complete_for_78_campaign(self):
+        """Cross-check: all 4 observables from #78 acceptance criterion 1 retrievable."""
+        # 1. g-factor
+        lookup.get_g_factor("Li III", "1s2S1/2")
+        # 2. Lamb shift
+        lookup.get_lamb_shift("Li III", "2S1/2-2P1/2")
+        # 3. fine structure
+        lookup.get_fine_structure("Li III", "2P3/2-2P1/2")
+        # 4. hyperfine (was already in MCP from #97)
+        lookup.get_hyperfine("Li III", "1s2S1/2")
+
+    def test_82_z_scan_three_middle_species_now_complete(self):
+        """Cross-check: hydrogenic-Z-scan #82 (He+/Li2+/Be3+/C5+/Si13+) — all 5 g-factors."""
+        for species in ("He II", "Li III", "Be IV", "C VI", "Si XIV"):
+            r = lookup.get_g_factor(species, "1s2S1/2")
+            assert r["value_class"] == "experimental"
+            assert r["safe_for_model_verification"] is True
 
 
 class TestHydrogenDiracPaperGap:

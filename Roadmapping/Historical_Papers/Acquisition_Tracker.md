@@ -9,7 +9,7 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 146 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 144 pending · 🔴 1 unavailable
+**Summary**: 151 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 149 pending · 🔴 1 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
@@ -123,12 +123,15 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[smith_christodoulidis1985_slr]] | 1985 | forward | primary | ⚪ pending | — |
 | [[ekert1991_qkd]] | 1991 | forward | primary | ⚪ pending | — |
 | [[hagley1994_h_fine_structure]] | 1994 | forward | retrospective | ⚪ pending | — |
+| [[riis1994_li2_fine_structure]] | 1994 | forward | retrospective | ⚪ pending | — |
 | [[shor1994_factoring]] | 1994 | forward | primary | ⚪ pending | — |
+| [[schiffer1995_li2_lamb_shift]] | 1995 | forward | retrospective | ⚪ pending | — |
 | [[grover1996_search]] | 1996 | forward | primary | ⚪ pending | — |
 | [[parkinson1996_gps_theory]] | 1996 | forward | primary | ⚪ pending | — |
 | [[debeauvoir1997_2s_8s_8d]] | 1997 | forward | retrospective | ⚪ pending | — |
 | [[liu1999_muonium_hyperfine]] | 1999 | forward | retrospective | ⚪ pending | — |
 | [[beckert2007_li2_hyperfine]] | 2000 | forward | retrospective | ⚪ pending | — |
+| [[haffner2000_c5_g_factor]] | 2000 | forward | retrospective | ⚪ pending | — |
 | [[nielsen_chuang2000_quantum_computation]] | 2000 | forward | retrospective | ⚪ pending | — |
 | [[ashby2003_gps_relativity]] | 2003 | forward | primary | ⚪ pending | — |
 | [[kitaev2003_topological]] | 2003 | forward | primary | ⚪ pending | — |
@@ -140,6 +143,8 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[sturm2013_si13_g_factor]] | 2011 | forward | retrospective | ⚪ pending | — |
 | [[wesson2011_tokamaks]] | 2011 | forward | retrospective | ⚪ pending | — |
 | [[ishida2014_positronium]] | 2014 | forward | retrospective | ⚪ pending | — |
+| [[sturm2014_li2_g_factor]] | 2014 | forward | retrospective | ⚪ pending | — |
+| [[kohler2016_be3_g_factor]] | 2016 | forward | retrospective | ⚪ pending | — |
 | [[kohler2016_he_g_factor]] | 2016 | forward | retrospective | ⚪ pending | — |
 | [[pohl2016_muonic_deuterium]] | 2016 | forward | retrospective | ⚪ pending | — |
 | [[beyer2017_2s4p]] | 2017 | forward | retrospective | ⚪ pending | — |

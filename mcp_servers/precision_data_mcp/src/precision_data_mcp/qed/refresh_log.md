@@ -65,3 +65,24 @@ Subsequent entries will track:
 - **Numerical-value caveat:** same as #108 — digits should be cross-checked against published papers before flipping `human_reviewed: true`.
 - **Tests added:** 4 new (TestHydrogenDiracPaperGap) + 1 server-registration entry. All 97 pass + 1 expected network-skip.
 - **Out of scope:** demonstrator-doc refactor of `03_FineStructure.md` or `Analytic_Representation_of_The_Dirac_Equation.md` to consume the new entries — defer to a separate small follow-up if desired. Kolachevsky 2009 modern H 2S hyperfine value not seeded; can be added as a multi-value alternative to the Heberle 1956 entry in a follow-up if precision is needed.
+
+## 2026-05-31 — Li²⁺ + middle-Z hydrogenic g-factor seed (issue #113)
+
+- **Cause:** post-Dirac-paper-audit, a follow-on cross-reference showed open Bethe-Salpeter Z-extension ([#78](https://github.com/temoTxt/PyPhysics/issues/78)) had 1 of 4 observables in MCP and hydrogenic-Z-scan ([#82](https://github.com/temoTxt/PyPhysics/issues/82)) had 2 of 5 species' g-factors. Issue [#113](https://github.com/temoTxt/PyPhysics/issues/113) opened + executed.
+- **Schema impact:** two new top-level species (`Be IV`, `C VI`); new `lamb_shifts` and `fine_structure` blocks under `Li III`. No tool-surface change.
+- **New entries seeded (5):**
+  - `species.Li III.g_factor_bound_electron.1s2S1/2`: Sturm 2014 Nature 506, 467 ^7Li²⁺ g-factor = 2.0000251707(10).
+  - `species.Li III.lamb_shifts.2S1/2-2P1/2`: Schiffer 1995 PRL 74, 2188 Li²⁺ Lamb shift = 62765(21) MHz.
+  - `species.Li III.fine_structure.2P3/2-2P1/2`: Riis 1994 PRA 49, 207 Li²⁺ 2P fine structure ≈ 7367 MHz (conservatively quoted).
+  - `species.Be IV.g_factor_bound_electron.1s2S1/2`: Köhler 2016 PRL 117, 053001 Be³⁺ g-factor = 2.00001769(6).
+  - `species.C VI.g_factor_bound_electron.1s2S1/2`: Häffner 2000 PRL 85, 5308 C⁵⁺ g-factor = 2.001041596(5).
+- **Bib stubs scaffolded (5):**
+  - `sturm2014_li2_g_factor` — DOI 10.1038/nature12998
+  - `kohler2016_be3_g_factor` — DOI 10.1038/ncomms10246
+  - `haffner2000_c5_g_factor` — DOI 10.1103/PhysRevLett.85.5308
+  - `schiffer1995_li2_lamb_shift` — DOI 10.1103/PhysRevLett.74.2188
+  - `riis1994_li2_fine_structure` — DOI 10.1103/PhysRevA.49.207
+- **Numerical-value caveat:** same as prior PRs.
+- **Tests added:** 7 new `TestLi2AndMiddleZGFactors` cases + the cross-check `test_li2_observables_complete_for_78_campaign` and `test_82_z_scan_three_middle_species_now_complete`. All 104 pass + 1 expected network-skip.
+- **Campaign-level coverage after this PR:** [#78](https://github.com/temoTxt/PyPhysics/issues/78) Li²⁺ campaign — **all 4 observables retrievable** as safe_for_model_verification: True. [#82](https://github.com/temoTxt/PyPhysics/issues/82) Z-scan — **all 5 species' g-factors retrievable** (He⁺, Li²⁺, Be³⁺, C⁵⁺, Si¹³⁺).
+- **Out of scope:** B⁴⁺, N⁶⁺, O⁷⁺, F⁸⁺ extension of #82; Li²⁺ 2S₁/₂ hyperfine (a known measurement); demonstrator-doc updates for #78 result documents.
