@@ -1,0 +1,303 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Proper-time theory applied to IBM-quantum coherence: a microwave-coupling angle/shape research arc},
+  pdfauthor={Trey Morris with Claude Opus 4.7},
+  pdfsubject={White paper proposing a three-phase research arc applying
+Gill's dual / proper-time framework to transmon-qubit coherence on IBM
+Quantum hardware, with a falsifiable Phase-B prediction tied to
+microwave-coupling angle/shape modulation of the proper-time Maxwell
+dissipative term},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Proper-time theory applied to IBM-quantum coherence: a
+microwave-coupling angle/shape research arc}
+\author{Trey Morris with Claude Opus 4.7}
+\date{2026-05-31}
+
+\begin{document}
+\maketitle
+
+\hypertarget{proper-time-theory-on-ibm-quantum-coherence-microwave-coupling-angleshape-focus}{%
+\section{Proper-time theory on IBM quantum coherence ---
+microwave-coupling angle/shape
+focus}\label{proper-time-theory-on-ibm-quantum-coherence-microwave-coupling-angleshape-focus}}
+
+\textbf{Date:} 2026-05-31. \textbf{From:} Trey Morris (with Claude Opus
+4.7). \textbf{Re:} Three-phase research arc proposal; audience default
+\emph{internal-campaign planning} (see Asks). Tracks against
+\href{https://github.com/temoTxt/PyPhysics/issues/103}{issue \#103}.
+Builds on the dual Maxwell verification (Eq. (4), see
+\href{../Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md\#L188}{\texttt{Two\_Mathematically\_Equivalent\_Versions\_of\_Maxwells\_Equations.md}})
+and the precision-atomic campaigns
+\href{https://github.com/temoTxt/PyPhysics/issues/50}{\#50},
+\href{https://github.com/temoTxt/PyPhysics/issues/78}{\#78},
+\href{https://github.com/temoTxt/PyPhysics/issues/82}{\#82}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{page-1-the-apparatus-side-hook}{%
+\subsection{Page 1 --- the apparatus-side
+hook}\label{page-1-the-apparatus-side-hook}}
+
+\textbf{What is known apparatus-side.} Gill's proper-time formulation
+produces a dual Maxwell wave equation, verified as Eq. (4) of
+\href{../Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md\#L188}{\texttt{Two\_Mathematically\_Equivalent\_Versions\_of\_Maxwells\_Equations.md}},
+that differs from the textbook form by a single first-derivative term.
+The verification doc records the discriminating statement at
+\href{../Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md\#L232}{line
+232}: Eq. (4) reproduces the standard wave equation under \(c\to b\),
+\(t\to\tau\), \(\mathbf{w}\to\mathbf{u}\), \textbf{plus} an extra
+dissipative term whose coefficient is
+\(-(\mathbf{u}\!\cdot\!\mathbf{a})/b^4\) in front of
+\(\partial_\tau\mathbf{E}\) (or \(\partial_\tau\mathbf{B}\)). The same
+structure resurfaces as the third term of the modified
+Liénard\(\,\)--\(\,\)Wiechert fields at
+\href{../Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md\#L332}{line
+332}: \emph{``the third term is new and tied to the dissipative
+coefficient \((\mathbf{u}\!\cdot\!\mathbf{a})/b^4\).''} The term
+vanishes identically when \(\mathbf{a}=\mathbf{0}\) (source
+unaccelerated) and inherits an angular dependence through
+\(\mathbf{u}\!\cdot\!\mathbf{a}=|\mathbf{u}||\mathbf{a}|\cos\theta\) and
+a temporal/shape dependence through \(\mathbf{a}(\tau)\). This is the
+\emph{only} structural deviation Gill's classical-field theory makes
+from textbook Maxwell at this order; every other dual modification is a
+\(c\to b\) substitution or a kinematic re-parametrisation.
+
+\textbf{Why it might bear on transmon-qubit coherence.} A transmon-qubit
+gate operation drives a Cooper-pair condensate with a shaped microwave
+pulse \(A(\tau)\) along a specific drive axis \(\hat{\mathbf{d}}\), so
+the source is \emph{accelerated by construction} during gate operations
+and the framework's extra term \emph{can} contribute. The substantive
+open question --- the core of Phase A --- is which condensate kinematic
+quantity plays the role of \(\mathbf{u}\)/\(\mathbf{a}\) in a transmon:
+candidate identifications include (i) the supercurrent velocity
+\(\mathbf{u}_s\propto\nabla\varphi\) from the phase gradient, (ii) the
+AC-Josephson velocity at the drive frequency, or (iii) the
+time-derivative of the Cooper-pair dipole moment. The three give
+different effect-size estimates: at Cooper-pair drift speed
+\(\beta^4 \lesssim 10^{-30}\) (unmeasurable), at Fermi speed
+\(\beta^4 \sim 10^{-12}\) (below current \(T_2\) floor by \(\sim 6\)
+orders), at AC-Josephson speed it depends on drive amplitude.
+\textbf{Falsifiable hypothesis (Phase B):} shaping the microwave
+coupling to minimise \((\mathbf{u}\!\cdot\!\mathbf{a})/b^4\) should
+produce an angle/shape signature \emph{distinct from} the standard
+Abraham\(\,\)--\(\,\)Lorentz\(\,\)--\(\,\)Dirac radiation-reaction term
+(\(\propto\dot{\mathbf{a}}\)); the two are in-principle separable by
+varying \(\theta\) at fixed \(\dot{\mathbf{a}}\), and any measured angle
+dependence not accounted for by ALD is a falsifier in the direction of
+(or against) the framework.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{page-2-three-phase-research-arc}{%
+\subsection{Page 2 --- three-phase research
+arc}\label{page-2-three-phase-research-arc}}
+
+\textbf{Phase A \(-\) apparatus mapping.} Derive the dissipative-term
+contribution to the transmon-qubit effective drive Hamiltonian (or
+equivalent Lindblad operator) starting from Eq. (4), \emph{after}
+committing to one of the three candidate \(\mathbf{u}\)/\(\mathbf{a}\)
+identifications above (or a fourth proposed by Tepper). Acceptance: a
+closed-form (or numerical-but-tractable) expression for the noise
+contribution as a function of \(\theta\) and \(A(\tau)\) with explicit
+\(b\to c\) and \(\beta\to 0\) limits, validated numerically against a
+no-framework baseline via \texttt{qiskit-dynamics} (the \texttt{Solver}
+integrates the Lindblad equation under the envelope \(A(\tau)\) entered
+as a time-dependent \texttt{Signal}), and a numeric \(\Delta T_2/T_2\)
+at IBM Heron's nominal drive parameters (anharmonicity \(\sim 300\) MHz,
+\(t_g\sim 30\) ns). \textbf{Null-result-most-likely closure:} if
+\(\Delta T_2/T_2 < 10^{-3}\) at the highest computable order, or the
+contribution factorises into the standard ALD account with no residual
+angle dependence separable from \(\dot{\mathbf{a}}\), the program closes
+honestly at Phase A.
+
+\textbf{Phase B \(-\) concrete predictions.} Conditional on Phase A
+producing a nonzero residual, specify drive angles and pulse-shape
+envelopes where the dissipative-term contribution is maximised
+vs.~minimised at fixed drive amplitude. Acceptance: at least one
+explicit prediction of the form \emph{``varying \(\theta\) from \(0\) to
+\(\pi/2\) at fixed amplitude \(A_0\) and gate time \(t_g\) changes the
+framework-predicted \(T_2\) contribution by \(\Delta T_2 = \ldots\),
+with a sign,''} with the predicted effect size compared against
+state-of-the-art transmon \(T_2\) (\(\sim 100\)--\(300~\mu\)s on IBM
+Eagle/Heron) and against the current IBM-pulse-control angular
+resolution.
+
+\textbf{Phase C \(-\) IBM Quantum test.} Specify the IBM Quantum Network
+resources: a single high-coherence transmon on Eagle- or Heron-class
+hardware; DRAG/cosine pulse-shape control; angular control via the
+standard IQ-modulation plane. Pre-flight in simulation via
+\texttt{qiskit-aer} \texttt{NoiseModel.from\_backend()} augmented with a
+custom Lindblad channel for the framework's term (equivalently,
+\texttt{qiskit\_dynamics.backend.DynamicsBackend} carrying the same
+operator); on-hardware execution via \texttt{qiskit-ibm-runtime}
+\texttt{Sampler} under \texttt{qiskit-experiments}
+\texttt{T2Hahn}/\texttt{T2Ramsey} protocols, with custom drive shapes
+via \texttt{qiskit.pulse} \emph{if} pulse-level access is provisioned
+(otherwise gate-level DRAG-coefficient sweeps). The discriminating
+observable is the \emph{angle} dependence at fixed DD sequence, not raw
+\(T_2\) --- CPMG/Uhrig suppress low-frequency dephasing and would mask
+any framework contribution with overlapping spectral support, so the
+framework's signature is measured as a residual after subtracting
+matched-DD baselines. Acceptance verdicts: {[}OK{]} framework predicts
+the measured angle/shape residual within the campaign's precision,
+{[}warn{]} framework matches at precision floor only (consistent but not
+discriminating), {[}X{]} framework refuted by absence of the predicted
+signature at the predicted sensitivity.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{page-3-methods-asks-honest-scope}{%
+\subsection{Page 3 --- methods, asks, honest
+scope}\label{page-3-methods-asks-honest-scope}}
+
+\textbf{Methods (incremental vs.~standard).} The table below names what
+is already standard practice for transmon-coherence extension, alongside
+what the framework would \emph{additionally} prescribe \emph{if} Phase A
+succeeds.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Standard transmon-coherence technique
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+What the framework adds (if Phase A succeeds)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+DRAG-optimised pulse shaping (leakage suppression) &
+Angle/shape-modulated drive minimising
+\((\mathbf{u}\!\cdot\!\mathbf{a})/b^4\) at fixed leakage. \\
+Dynamical decoupling (CPMG / Uhrig / DCG) & Proper-time-spaced CPMG; DCG
+variants minimising \(\int (\mathbf{u}\!\cdot\!\mathbf{a})/b^4\,d\tau\)
+at fixed fidelity. \\
+Numerical baseline (\texttt{qiskit-aer} +
+\texttt{NoiseModel.from\_backend()}) & Same noise model with a custom
+Lindblad channel from the Phase-A operator, sim-only
+\(\Delta T_2(\theta)\). \\
+\end{longtable}
+
+\textbf{Modeling + encoding pre-flight (Qiskit).} End-to-end laptop
+simulation analogue before any IBM credit is burned: Phase A in
+\texttt{qiskit-dynamics} (Lindblad \texttt{Solver} driven by \(A(\tau)\)
+as a \texttt{Signal}); Phase B as a swept-\(\theta\) batch on
+\texttt{qiskit-aer} producing the predicted \(T_2(\theta)\) ratio that
+hardware will reproduce or refute; Phase C via the noise-augmented
+\texttt{Aer}/\texttt{DynamicsBackend} under the same
+\texttt{qiskit-experiments} protocol as the hardware run.
+Encoding-sequence candidates worth flagging in parallel:
+proper-time-spaced CPMG (inter-pulse interval set in \(\tau\), sensitive
+to \(b/c\) at the precision floor), and DCG variants whose envelope
+minimises the framework's angle/shape integral at matched gate fidelity.
+
+\textbf{Asks (audience-dependent).} Default audience at draft-time is
+\emph{internal-campaign planning}; the four candidate audiences listed
+in \href{https://github.com/temoTxt/PyPhysics/issues/103}{issue \#103}
+(Audience options section) are equally compatible with the body above.
+Asks under the default audience: (a) Trey's sign-off on the
+apparatus-mapping move on Page 1; (b) a superconducting-qubit theorist
+for Phase-A vetting (identification of Cooper-pair
+\(\mathbf{u}\)/\(\mathbf{a}\) in the transmon charge basis); (c)
+optionally Tepper Gill or one of his students for the framework-internal
+Wolfram-MCP derivation of the Phase-A expression; (d) IBM Quantum
+Network compute time scoped only after Phase B produces a concrete
+prediction worth burning calibration on. Cross-linked to the
+framework-specs thread
+\href{https://github.com/temoTxt/PyPhysics/issues/75}{\#75} and the open
+proper-time one-loop frontier
+\href{https://github.com/temoTxt/PyPhysics/issues/55}{\#55}.
+
+\textbf{Honest scope (load-bearing).} This white paper proposes a
+\emph{falsifiable research arc}. It does not claim a \emph{derived
+prediction}. The framework's existing validation (Bethe-Salpeter
+\href{https://github.com/temoTxt/PyPhysics/issues/50}{\#50}; Li
+\(^{2+}\) Z-extension
+\href{https://github.com/temoTxt/PyPhysics/issues/78}{\#78}; hydrogenic
+g-factor Z-scan
+\href{https://github.com/temoTxt/PyPhysics/issues/82}{\#82} with Outcome
+C --- cutoff has no Z-dependence and the framework inherits QED's
+bound-state structure) is at a precision at which the framework
+reproduces textbook QED \emph{by construction}. Extending from bound
+electrons in atoms to a superconducting transmon-qubit condensed-matter
+device is a substantive conceptual leap, and the most likely outcome at
+Phase A is \emph{null} under the explicit threshold above. In that case
+the program closes honestly at Phase A and the campaign records the
+closure as the framework's terminal-verdict for condensed-matter
+applicability. The paper's value is in \textbf{specifying a falsifiable
+test that does not currently exist in the campaign's repertoire} --- the
+test is worth specifying whether or not the framework wins it, because
+at present no condensed-matter prediction of the framework is on the
+books at all.
+
+--- Trey
+
+\end{document}
