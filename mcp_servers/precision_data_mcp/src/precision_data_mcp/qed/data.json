@@ -1,10 +1,10 @@
 {
   "$schema_version": "0.2.0",
   "$source_revision": {
-    "data_revision": "2026-05-31",
+    "data_revision": "2026-05-31-h-spectroscopy",
     "retrieved_at": "2026-05-31T00:00:00Z",
     "seeded_by_hand": true,
-    "_note": "0.2.0 schema bump: every value entry now carries a value_class field per the umbrella safety-flag enforcement PR. Adding species/observables is mechanical follow-up PRs via the refresh-log workflow."
+    "_note": "0.2.0 schema bump: every value entry now carries a value_class field per the umbrella safety-flag enforcement PR. 2026-05-31-h-spectroscopy revision: hydrogen-spectroscopy seed extension per issue #108 — adds 5 directly-measured H transitions (Lundeen-Pipkin 1981 RF, Parthey 2010 1S-2S H-D isotope shift, Fleurbaey 2018 1S-3S, Beyer 2017 2S-4P1/2, de Beauvoir 1997 2S-8S1/2). Numeric values use the canonical figures published in each primary source; specific digits should be cross-checked against the published paper by a human before flipping the corresponding bib stub's human_reviewed flag."
   },
   "species": {
     "H": {
@@ -12,12 +12,26 @@
       "description": "Hydrogen — atomic hydrogen, 1S/2S/2P/... bound-state QED precision data",
       "lamb_shifts": {
         "2S1/2-2P1/2": {
-          "value": 1057.845,
-          "uncertainty": 0.009,
-          "unit": "MHz",
-          "source": "codata2018_constants",
-          "value_class": "codata_adjusted",
-          "_note": "CODATA-2018 evaluation. Combines experimental measurements (Lundeen-Pipkin 1981 RF; modern hydrogen-spectroscopy data) with theoretical inputs. NOT a single direct measurement — see safety.py."
+          "values": [
+            {
+              "value": 1057.845,
+              "uncertainty": 0.009,
+              "unit": "MHz",
+              "source": "codata2018_constants",
+              "value_class": "codata_adjusted",
+              "method": "CODATA_2018_global_adjustment",
+              "_note": "CODATA-2018 global adjustment. Combines experimental measurements with one-loop QED theoretical inputs."
+            },
+            {
+              "value": 1057.845,
+              "uncertainty": 0.009,
+              "unit": "MHz",
+              "source": "lundeen1981_2s2p_microwave",
+              "value_class": "experimental",
+              "method": "direct_microwave_RF_between_2S_and_2P",
+              "_note": "Lundeen-Pipkin 1981 Phys. Rev. Lett. 46, 232. Direct microwave-RF measurement of the 2S_1/2-2P_1/2 splitting at ~10 kHz precision; the canonical direct experimental Lamb shift. The numerical value matches the CODATA-2018 average above (the agreement is by historical construction — CODATA uses this measurement as input). Both surfaced per umbrella §5 disagreement-representation rule: consumers choosing the experimental anchor for model verification should use this one (safe_for_model_verification: True), not the CODATA one."
+            }
+          ]
         }
       },
       "hyperfine": {
@@ -38,6 +52,38 @@
           "source": "parthey2011_h_1s2s",
           "value_class": "experimental",
           "_note": "Parthey-Matveev-Alnis-Bernhardt-Beyer-Hansch et al. 2011 absolute frequency measurement of the H 1S-2S two-photon transition; ~4e-15 fractional uncertainty."
+        },
+        "1S-2S_H-D_isotope_shift": {
+          "value": 670994334.606,
+          "uncertainty": 0.015,
+          "unit": "kHz",
+          "source": "parthey2010_h_d_isotope_shift",
+          "value_class": "experimental",
+          "_note": "Parthey-Matveev-Alnis-Pohl-Udem-Holzwarth-Hansch 2010 Phys. Rev. Lett. 104, 233001. H 1S-2S minus D 1S-2S; constrains the proton-deuteron charge-radius difference. Specific digits should be verified against the published paper."
+        },
+        "1S-3S": {
+          "value": 2922743278671.5,
+          "uncertainty": 2.6,
+          "unit": "kHz",
+          "source": "fleurbaey2018_1s_3s_spectroscopy",
+          "value_class": "experimental",
+          "_note": "Fleurbaey-Galtier-Thomas-Bonnaud-Julien-Biraben-Nez-Abgrall-Guena 2018 Phys. Rev. Lett. 120, 183001. H 1S-3S two-photon spectroscopy at LKB; consistent with muonic-H proton-radius value (contradicts pre-puzzle CODATA average). Specific digits should be verified against the published paper."
+        },
+        "2S-4P1/2": {
+          "value": 616520152720.3,
+          "uncertainty": 2.3,
+          "unit": "kHz",
+          "source": "beyer2017_2s4p",
+          "value_class": "experimental",
+          "_note": "Beyer-Maisenbacher-Khabarova-Yost-Matveev-Pohl-Hansch et al. 2017 Science 358, 79. H 2S_1/2-4P_1/2 transition measured at MPQ; also yields the proton charge radius consistent with the muonic-H value. Specific digits should be verified against the published paper; companion 2S-4P3/2 transition deferred to follow-up."
+        },
+        "2S-8S1/2": {
+          "value": 770649350012,
+          "uncertainty": 9,
+          "unit": "kHz",
+          "source": "debeauvoir1997_2s_8s_8d",
+          "value_class": "experimental",
+          "_note": "de Beauvoir-Schwob-Acef-Jozefowski-Hilico-Nez-Julien-Clairon-Biraben 1997 Phys. Rev. Lett. 78, 440 (and Eur. Phys. J. D 1, 227, 1998). H 2S-8S/8D two-photon spectroscopy at LKB, foundational for the Rydberg-constant determination. Listed entry is 2S_1/2-8S_1/2; the 8D transitions exist in the same measurement set and should be added in a follow-up. Specific digits should be verified against the published paper."
         }
       }
     },

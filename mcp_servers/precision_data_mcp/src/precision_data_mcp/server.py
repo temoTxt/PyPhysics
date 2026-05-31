@@ -152,14 +152,20 @@ def pdg_list_particles() -> list[dict]:
 
 
 @mcp.tool(name="qed.get_lamb_shift")
-def qed_get_lamb_shift(species: str, transition: str) -> dict:
+def qed_get_lamb_shift(species: str, transition: str, method: str | None = None) -> dict:
     """Lamb-shift value for a given species + transition.
 
+    Multi-source entries (H 2S1/2-2P1/2 has both a CODATA adjusted value and the
+    direct Lundeen-Pipkin 1981 RF measurement) follow the umbrella's disagreement-
+    representation rule. Pass ``method`` to disambiguate or filter the returned
+    ``values`` list on ``safe_for_model_verification``.
+
     Examples:
-        qed.get_lamb_shift("H", "2S1/2-2P1/2")  # hydrogen 1057.845(9) MHz
-        qed.get_lamb_shift("muonic_H", "2S1/2-2P3/2")  # the proton-radius-puzzle trigger
+        qed.get_lamb_shift("H", "2S1/2-2P1/2")  # returns both CODATA + direct RF
+        qed.get_lamb_shift("H", "2S1/2-2P1/2", method="direct_microwave_RF_between_2S_and_2P")
+        qed.get_lamb_shift("muonic_H", "2S1/2-2P3/2")  # proton-radius-puzzle trigger
     """
-    return qed_lookup.get_lamb_shift(species, transition)
+    return qed_lookup.get_lamb_shift(species, transition, method=method)
 
 
 @mcp.tool(name="qed.get_hyperfine")

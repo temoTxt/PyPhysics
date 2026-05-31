@@ -29,11 +29,15 @@ def _assert_contract(record: dict):
 
 
 class TestQedSafetyContract:
-    def test_h_lamb_shift_unsafe_codata(self):
+    def test_h_lamb_shift_multivalue_each_carries_contract(self):
+        """Per issue #108: H Lamb shift is multi-value (CODATA + Lundeen direct RF)."""
         r = qed_lookup.get_lamb_shift("H", "2S1/2-2P1/2")
-        _assert_contract(r)
-        assert r["safe_for_model_verification"] is False
-        assert r["value_class"] == "codata_adjusted"
+        for v in r["values"]:
+            _assert_contract(v)
+        # CODATA entry unsafe, Lundeen entry safe — both surfaced
+        classes = {v["value_class"] for v in r["values"]}
+        assert "codata_adjusted" in classes
+        assert "experimental" in classes
 
     def test_h_hyperfine_safe_experimental(self):
         r = qed_lookup.get_hyperfine("H", "1s2S1/2")

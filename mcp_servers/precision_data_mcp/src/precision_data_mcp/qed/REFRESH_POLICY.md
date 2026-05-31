@@ -12,7 +12,7 @@ Unlike PDG (which has a JSON API) and NIST ASD (which has tabular HTML), bound-s
 
 | Species | Observables seeded | Primary sources cited |
 |---|---|---|
-| H | 2S1/2-2P1/2 Lamb shift; 1s2S1/2 hyperfine (21-cm); 1S-2S transition | `codata2018_constants`, `essen1957_h_hyperfine`, `parthey2011_h_1s2s` |
+| H | 2S1/2-2P1/2 Lamb shift (multi-value: CODATA + Lundeen direct RF); 1s2S1/2 hyperfine (21-cm); 1S-2S transition; 1S-2S H/D isotope shift; 1S-3S; 2S-4P1/2; 2S-8S1/2 | `codata2018_constants`, `lundeen1981_2s2p_microwave`, `essen1957_h_hyperfine`, `parthey2011_h_1s2s`, `parthey2010_h_d_isotope_shift`, `fleurbaey2018_1s_3s_spectroscopy`, `beyer2017_2s4p`, `debeauvoir1997_2s_8s_8d` |
 | He II (He⁺) | 1s2S1/2 bound-electron g-factor | `kohler2016_he_g_factor` |
 | Li III (Li²⁺) | 1s2S1/2 hyperfine | `beckert2007_li2_hyperfine` |
 | Si XIV (Si¹³⁺) | 1s2S1/2 bound-electron g-factor | `sturm2013_si13_g_factor` (issue #82 target) |
