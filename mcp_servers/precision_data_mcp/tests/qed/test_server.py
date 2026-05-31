@@ -9,6 +9,7 @@ EXPECTED_QED_TOOLS = {
     "qed.get_lamb_shift",
     "qed.get_hyperfine",
     "qed.get_g_factor",
+    "qed.get_fine_structure",
     "qed.get_transition_precision",
     "qed.list_species",
     "qed.list_observables",

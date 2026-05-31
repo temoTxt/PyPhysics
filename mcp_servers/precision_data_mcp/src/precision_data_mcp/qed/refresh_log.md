@@ -51,3 +51,17 @@ Subsequent entries will track:
 - **Numerical-value caveat:** the specific digits seeded above use canonical values quoted from each primary source as cited in the existing precision-spectroscopy literature, but should be **cross-checked against the published paper** by a human before flipping each bib stub's `human_reviewed: true`. The `_note` field on each entry records this.
 - **Tests added:** 7 new tests in `test_lookup.py::TestHydrogenPrecisionSpectroscopyExtension` + 3 in `TestHydrogen` for the multi-value handling. Cross-namespace `test_safety_contract.py::TestQedSafetyContract::test_h_lamb_shift_multivalue_each_carries_contract` updated for the schema change. All 93 pass + 1 expected network-skip.
 - **Out of scope (recorded for follow-up):** 2S-4P3/2 companion (Beyer 2017 measured both fine-structure components); 2S-6S/6D (Bourzeix 1996 series); 2S-8D (de Beauvoir 1997 companion); 2S-12D (Yost et al.); derived experimentally-anchored level energies via fit. Each is a small follow-up extension.
+
+## 2026-05-31 — close Dirac-paper audit gap (issue #110)
+
+- **Cause:** Dirac-paper audit (user-requested) found that the single numerical H value cited in the original Gill *"Analytic Representation of The Dirac Equation"* paper — the H 2S₁/₂ hyperfine splitting at 0.177566850(10) GHz, sourced from Mizushima 1970 → Heberle-Reich-Kusch 1956 — was not retrievable via `qed.*`. The H 2P3/2-2P1/2 fine-structure interval (cited in `10_CrossComparison.md`) was only retrievable via `nist.list_dirac_targets`, not via the canonical `qed.*` path.
+- **Schema impact:** new top-level block `species.H.fine_structure` mirroring the existing `lamb_shifts` / `hyperfine` / `transitions` blocks. New tool `qed.get_fine_structure(species, transition)` sibling to `get_lamb_shift` / `get_hyperfine` / `get_transition_precision`. `qed.list_observables(species)` extended to include `fine_structure` array.
+- **New entries seeded (2):**
+  - `species.H.hyperfine.2s2S1/2`: Heberle-Reich-Kusch 1956 H 2S hyperfine, 177.566850(10) MHz.
+  - `species.H.fine_structure.2P3/2-2P1/2`: Hagley-Pipkin 1994 H 2P fine-structure interval, 10969.13(10) MHz.
+- **Bib stubs scaffolded (2):**
+  - `heberle1956_h_2s_hyperfine` — DOI 10.1103/PhysRev.101.612
+  - `hagley1994_h_fine_structure` — DOI 10.1103/PhysRevLett.72.1172
+- **Numerical-value caveat:** same as #108 — digits should be cross-checked against published papers before flipping `human_reviewed: true`.
+- **Tests added:** 4 new (TestHydrogenDiracPaperGap) + 1 server-registration entry. All 97 pass + 1 expected network-skip.
+- **Out of scope:** demonstrator-doc refactor of `03_FineStructure.md` or `Analytic_Representation_of_The_Dirac_Equation.md` to consume the new entries — defer to a separate small follow-up if desired. Kolachevsky 2009 modern H 2S hyperfine value not seeded; can be added as a multi-value alternative to the Heberle 1956 entry in a follow-up if precision is needed.
