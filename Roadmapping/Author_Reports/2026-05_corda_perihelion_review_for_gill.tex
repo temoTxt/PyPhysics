@@ -20,6 +20,8 @@
 \usepackage{lmodern}
 \ifPDFTeX\else
   % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setmonofont[]{DejaVu Sans Mono}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -144,12 +146,12 @@ You indicated that the perihelion derivation in your \emph{Relativistic
 Newtonian Theory} paper takes Corda's framework as its starting point.
 This report checks Corda's math and physical intuition end-to-end so you
 can adjudicate whether the framework's intended Mercury prediction is
-the Corda-style \texttt{pim/M\ +\ relativistic\ correction} template
-(the chain analysed in PR
+the Corda-style \texttt{πm/M\ +\ relativistic\ correction} template (the
+chain analysed in PR
 \href{https://github.com/temoTxt/PyPhysics/pull/83}{\#83} giving
 \texttt{+37.79\textquotesingle{}\textquotesingle{}/century}) or the
 proper apsidal-angle calculation of the modified force law (PR \#83 doc
-05 giving \texttt{-7.17\textquotesingle{}\textquotesingle{}/century}).
+05 giving \texttt{−7.17\textquotesingle{}\textquotesingle{}/century}).
 
 Per CLAUDE.md author-review convention, the findings below are surfaced
 for your verdict --- not announced as corrections. Every algebraic claim
@@ -189,28 +191,27 @@ Result
 \bottomrule\noalign{}
 \endlastfoot
 §1 & Introduction, GR perihelion & Eq. (1):
-\texttt{Deltaphi\_GR\ =\ 24pi\^{}3\ a\^{}2\ /\ {[}T\_0\^{}2\ c\^{}2\ (1-e\^{}2){]}\ =\ 3pi\ r\_g\ /\ {[}a(1-e\^{}2){]}}
+\texttt{Δφ\_GR\ =\ 24π³\ a²\ /\ {[}T₀²\ c²\ (1−e²){]}\ =\ 3π\ r\_g\ /\ {[}a(1−e²){]}}
 & \texttt{42.99\textquotesingle{}\textquotesingle{}/c} for Mercury \\
 §2 & ``Circular orbit'' Newtonian back-reaction & Eq. (20):
-\texttt{Deltaphi\ =\ pim/M} &
+\texttt{Δφ\ =\ πm/M} &
 \texttt{44.66\textquotesingle{}\textquotesingle{}/c} (Approach 1) \\
 §3 & Harmonic-oscillator / apsidal-angle & Eq. (31):
-\texttt{phi\_0\ =\ 2pi{[}3\ +\ F\textquotesingle{}(r)r/F(r){]}\^{}(-1/2)}
-& same \texttt{44.66\textquotesingle{}\textquotesingle{}/c} (Approach
+\texttt{φ₀\ =\ 2π{[}3\ +\ F\textquotesingle{}(r)r/F(r){]}\^{}(−1/2)} &
+same \texttt{44.66\textquotesingle{}\textquotesingle{}/c} (Approach
 2) \\
 §4 & Reduced-mass Kepler & Eq. (57):
-\texttt{T\ =\ T\_0\ (1+m/M)\^{}(-1/2)} & same
+\texttt{T\ =\ T₀\ (1+m/M)\^{}(−1/2)} & same
 \texttt{44.66\textquotesingle{}\textquotesingle{}/c} (Approach 3) \\
-§5 & Breakdown of \texttt{pim/M} for Venus / Earth & (numerical only) &
-\texttt{30x} and \texttt{51x} too large \\
+§5 & Breakdown of \texttt{πm/M} for Venus / Earth & (numerical only) &
+\texttt{30×} and \texttt{51×} too large \\
 §6 & Gravitational time dilation & Eq. (67):
-\texttt{Deltaphi\_F\ =\ (5pi/2)\ r\_g/r\_0} &
+\texttt{Δφ\_F\ =\ (5π/2)\ r\_g/r₀} &
 \texttt{34.31\textquotesingle{}\textquotesingle{}/c} (TD-only) \\
 §7 & Rotational (Langevin) time dilation & Eq. (72):
-\texttt{tau\ \textasciitilde{}=\ (1\ -\ 1/2\ r\^{}2omega\^{}2/c\^{}2)\ t}
-& (intermediate) \\
+\texttt{τ\ ≈\ (1\ −\ ½\ r²ω²/c²)\ t} & (intermediate) \\
 §8 & Combined gravitational + rotational TD & Eq. (77):
-\texttt{Deltaphi\_F\ =\ 3pi\ r\_g/r\_0} &
+\texttt{Δφ\_F\ =\ 3π\ r\_g/r₀} &
 \texttt{41.17\textquotesingle{}\textquotesingle{}/c} (matches e=0 GR) \\
 §9 & Conclusion: ``Newtonian + corrections matches GR'' & --- & --- \\
 \end{longtable}
@@ -296,14 +297,14 @@ F\hat u_r = -\frac{G(M+m)m}{r_0^2}\hat u_r     \qquad (13)
 relative-acceleration result. The same \texttt{G(M+m)} shows up in
 textbook reduced-mass treatments (Goldstein §3.1, MTW §25). What
 \texttt{(M+m)} captures is the kinematic fact that the \emph{relative}
-acceleration of Mercury w.r.t. the Sun is bigger than \texttt{GM/r\^{}2}
-by the factor \texttt{(M+m)/M\ =\ 1\ +\ m/M}.
+acceleration of Mercury w.r.t. the Sun is bigger than \texttt{GM/r²} by
+the factor \texttt{(M+m)/M\ =\ 1\ +\ m/M}.
 
 \textbf{Physical intuition status {[}for Tepper:{]}} what is being
 computed here is the \textbf{relative} acceleration in the
 centre-of-mass frame, not a ``Sun-fixed'' force on Mercury. The standard
 reduced-mass two-body decomposition replaces the two-body problem with a
-one-body problem for a reduced-mass particle \texttt{mu\ =\ Mm/(M+m)}
+one-body problem for a reduced-mass particle \texttt{μ\ =\ Mm/(M+m)}
 orbiting a fixed centre at \texttt{M\ +\ m}. Corda's Eq. (12) is
 correct, but the interpretation in §2 (that this constitutes a
 ``perturbation'' to Mercury's force) muddles the standard story.
@@ -358,31 +359,31 @@ advance''}\label{eqs.-1820-angular-velocity-and-perihelion-advance}}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{Series}\OperatorTok{[}\DecValTok{2} \FunctionTok{Pi} \FunctionTok{Sqrt}\OperatorTok{[}\DecValTok{1} \SpecialCharTok{+} \FunctionTok{x}\OperatorTok{]} \SpecialCharTok{{-}} \DecValTok{2} \FunctionTok{Pi}\OperatorTok{,} \OperatorTok{\{}\FunctionTok{x}\OperatorTok{,} \DecValTok{0}\OperatorTok{,} \DecValTok{2}\OperatorTok{\}]}
-\CommentTok{(* Result: Pi x {-} Pi x\^{}2/4 + O[x]\^{}3  [OK] leading term is pi m/M *)}
+\CommentTok{(* Result: Pi x {-} Pi x\^{}2/4 + O[x]\^{}3  [OK] leading term is π m/M *)}
 \end{Highlighting}
 \end{Shaded}
 
 \textbf{Algebra {[}OK{]}.} Numerically for Mercury
-(\texttt{m/M\ =\ 1.66\ x\ 10\^{}-\^{}7}):
-\texttt{Deltaphi\ =\ 5.21\ x\ 10\^{}-\^{}7\ rad/orbit\ x\ 415.2\ orbits/century\ x\ (180.3600/pi)}
+(\texttt{m/M\ =\ 1.66\ ×\ 10⁻⁷}):
+\texttt{Δφ\ =\ 5.21\ ×\ 10⁻⁷\ rad/orbit\ ×\ 415.2\ orbits/century\ ×\ (180·3600/π)}
 \texttt{=\ 44.66\textquotesingle{}\textquotesingle{}/century}.
 Wolfram-verified.
 
 \textbf{{[}X{]} Physical-intuition status {[}for Tepper:{]}} here is the
 load-bearing critique. \textbf{What Eq. (20) computes is the angle
 Mercury sweeps in the unperturbed period \texttt{T\_0} at the perturbed
-angular velocity \texttt{omega}.} That is not a perihelion advance. The
+angular velocity \texttt{ω}.} That is not a perihelion advance. The
 perihelion advance is the angular rotation of the orbit's major axis
 between successive perihelia --- a property of the shape of the orbit,
 not of the period or angular velocity.
 
 For an inverse-square force the orbit is a closed ellipse (Bertrand's
 theorem), so the angle between successive perihelia is exactly
-\texttt{2pi}, \textbf{regardless of \texttt{T} and \texttt{omega}}.
-Changing \texttt{G} from \texttt{GM} to \texttt{G(M+m)} rescales the
-orbital speed and period but leaves the orbit a closed ellipse. The
-\texttt{pim/M} quantity Corda computes is a real kinematic effect, but
-it is not the perihelion-advance quantity. The §3 derivation makes this
+\texttt{2π}, \textbf{regardless of \texttt{T} and \texttt{ω}}. Changing
+\texttt{G} from \texttt{GM} to \texttt{G(M+m)} rescales the orbital
+speed and period but leaves the orbit a closed ellipse. The
+\texttt{πm/M} quantity Corda computes is a real kinematic effect, but it
+is not the perihelion-advance quantity. The §3 derivation makes this
 completely explicit --- see §2.7 below.
 
 \hypertarget{eqs.-2131-cordas-own-apsidal-angle-formalism-3-of-paper}{%
@@ -403,7 +404,7 @@ J_0 = m r^2 \omega_0                                              \qquad (22)
 F_{c0}(r) = m\left(\ddot r - \frac{J_0^2}{m^2 r^3}\right)         \qquad (23)
 \] \[
 F_{c0}(r_0) = -\frac{J_0^2}{m r_0^3}                              \qquad (24)
-\] After perturbing \texttt{x\ =\ r\ -\ r\_0} and series-expanding: \[
+\] After perturbing \texttt{x\ =\ r\ −\ r\_0} and series-expanding: \[
 \ddot x + m^{-1}\!\left[-\frac{3 F_{c0}(r_0)}{r_0} - F'_{c0}(r_0)\right] x = 0  \qquad (27)
 \] \[
 T_0 = 2\pi\!\left(\frac{m}{-\,3 F_{c0}(r_0)/r_0 - F'_{c0}(r_0)}\right)^{1/2}  \qquad (28)
@@ -413,7 +414,7 @@ T_0 = 2\pi\!\left(\frac{m}{-\,3 F_{c0}(r_0)/r_0 - F'_{c0}(r_0)}\right)^{1/2}  \q
 \boxed{\;\varphi_0 = 2\pi\left[\,3 + \frac{F'_{c0}(r_0)\,r_0}{F_{c0}(r_0)}\,\right]^{-1/2}\;}  \qquad (31)
 \]
 
-\textbf{Wolfram MCP for \texttt{F\ =\ -k/r\^{}2}:}
+\textbf{Wolfram MCP for \texttt{F\ =\ −k/r²}:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -422,17 +423,17 @@ T_0 = 2\pi\!\left(\frac{m}{-\,3 F_{c0}(r_0)/r_0 - F'_{c0}(r_0)}\right)^{1/2}  \q
 \NormalTok{ratio }\ExtensionTok{=}\NormalTok{ (Fc\textquotesingle{}}\OperatorTok{[}\FunctionTok{r}\OperatorTok{]} \FunctionTok{r}\SpecialCharTok{/}\NormalTok{Fc}\OperatorTok{[}\FunctionTok{r}\OperatorTok{]}\NormalTok{) }\OtherTok{/.} \FunctionTok{r} \OtherTok{{-}\textgreater{}}\NormalTok{ r0;}
 \NormalTok{phi0  }\ExtensionTok{=} \DecValTok{2} \FunctionTok{Pi} \SpecialCharTok{/} \FunctionTok{Sqrt}\OperatorTok{[}\DecValTok{3} \SpecialCharTok{+}\NormalTok{ ratio}\OperatorTok{]}\NormalTok{;}
 \OperatorTok{\{}\FunctionTok{Simplify}\OperatorTok{[}\NormalTok{ratio}\OperatorTok{],} \FunctionTok{Simplify}\OperatorTok{[}\NormalTok{phi0}\OperatorTok{]\}}
-\CommentTok{(* Result: \{{-}2, 2 Pi\}  [OK] For inverse{-}square: F\textquotesingle{}r/F = {-}2, phi\_0 = 2pi, NO PRECESSION *)}
+\CommentTok{(* Result: \{{-}2, 2 Pi\}  [OK] For inverse{-}square: F\textquotesingle{}r/F = −2, φ\_0 = 2π, NO PRECESSION *)}
 \end{Highlighting}
 \end{Shaded}
 
 \textbf{Algebra {[}OK{]} --- and this contradicts §2.} Corda derives the
 apsidal-angle formula from scratch (Eq. 31), specialises to
 inverse-square in his own text (line right after Eq. 31: \emph{``by
-setting F\_\{c0\} = F\_G in Eq. (31)\ldots{} one finds phi\_0 = 2pi,
-which is exactly Eq. (7)''}), and explicitly notes that this is the
+setting F\_\{c0\} = F\_G in Eq. (31)\ldots{} one finds φ\_0 = 2π, which
+is exactly Eq. (7)''}), and explicitly notes that this is the
 closed-orbit result. \textbf{For an inverse-square force, the apsidal
-angle is 2pi, the orbit is closed, and there is no precession.} Verified
+angle is 2π, the orbit is closed, and there is no precession.} Verified
 by Wolfram MCP
 (\href{https://en.wikipedia.org/wiki/Bertrand\%27s_theorem}{Bertrand's
 theorem} at work).
@@ -474,18 +475,17 @@ depends \emph{only} on the ratio \texttt{F\textquotesingle{}/F}. The Eq.
 \texttt{F\_\{c0\}} leaves \texttt{F\textquotesingle{}/F} unchanged.
 Therefore the apsidal angle for the rescaled force
 \texttt{F\_c\ =\ (1+m/M)\ F\_\{c0\}} is \emph{the same} as for the
-unscaled force \texttt{F\_\{c0\}} --- which is \texttt{2pi} (Eq. 31 with
-\texttt{F\_\{c0\}\ =\ F\_G\ =\ -k/r\^{}2}). \textbf{The ``perturbed''
-force still gives a closed orbit. No precession.}
+unscaled force \texttt{F\_\{c0\}} --- which is \texttt{2π} (Eq. 31 with
+\texttt{F\_\{c0\}\ =\ F\_G\ =\ −k/r²}). \textbf{The ``perturbed'' force
+still gives a closed orbit. No precession.}
 
 Corda's subsequent Eqs. (38)--(41) derive
-\texttt{T\ =\ T\_0(1+m/M)\^{}(-1/2)} again from the period formula (28),
-then \texttt{omega\ =\ omega\_0(1+m/M)\^{}(1/2)}, then
-\texttt{phi\ =\ omega\ T\_0\ \textasciitilde{}=\ 2pi(1\ +\ m/(2M))} ---
-the same \texttt{pim/M} as §2. \textbf{But this is exactly the §2
-mistake repeated: a period change rephrased as a ``perihelion
-advance.''} Corda's own Eq. (31), applied to his own Eq. (32) force,
-\emph{contradicts} the §3 conclusion.
+\texttt{T\ =\ T\_0(1+m/M)\^{}(−1/2)} again from the period formula (28),
+then \texttt{ω\ =\ ω\_0(1+m/M)\^{}(1/2)}, then
+\texttt{φ\ =\ ω\ T\_0\ ≈\ 2π(1\ +\ m/(2M))} --- the same \texttt{πm/M}
+as §2. \textbf{But this is exactly the §2 mistake repeated: a period
+change rephrased as a ``perihelion advance.''} Corda's own Eq. (31),
+applied to his own Eq. (32) force, \emph{contradicts} the §3 conclusion.
 
 \hypertarget{eqs.-4257-reduced-mass-kepler-derivation}{%
 \subsubsection{§2.8 Eqs. (42)--(57) --- reduced-mass Kepler
@@ -506,20 +506,19 @@ T = T_0 (1 + m/M)^{-1/2}                                           \qquad (57)
 \]
 
 \textbf{Algebra {[}OK{]}} --- standard textbook treatment (Goldstein
-§3.7, MTW §25). Lands at the same \texttt{T\ =\ T\_0(1+m/M)\^{}(-1/2)}
+§3.7, MTW §25). Lands at the same \texttt{T\ =\ T\_0(1+m/M)\^{}(−1/2)}
 as Eqs. (17) and (39).
 
 \textbf{Physical-intuition status {[}for Tepper:{]}} §4's derivation is
 impeccable as a derivation of the \emph{period correction} due to the
 two-body kinematics. That's what the reduced-mass treatment gives. But
-Corda then writes Eq. (59)
-\texttt{phi\ =\ omegaT\_0\ \textasciitilde{}=\ 2pi(1\ +\ m/(2M))} and
+Corda then writes Eq. (59) \texttt{φ\ =\ ωT\_0\ ≈\ 2π(1\ +\ m/(2M))} and
 calls the excess a ``perihelion advance'' --- same conflation as §2.7.
 
-\hypertarget{numerical-summary-of-cordas-three-approaches-234-all-give-the-same-deltaphi}{%
+\hypertarget{numerical-summary-of-cordas-three-approaches-234-all-give-the-same-ux3b4ux3c6}{%
 \subsubsection{§2.9 Numerical summary of Corda's three approaches
 (§2/§3/§4 all give the same
-Deltaphi)}\label{numerical-summary-of-cordas-three-approaches-234-all-give-the-same-deltaphi}}
+Δφ)}\label{numerical-summary-of-cordas-three-approaches-234-all-give-the-same-ux3b4ux3c6}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -529,11 +528,11 @@ Deltaphi)}\label{numerical-summary-of-cordas-three-approaches-234-all-give-the-s
 \NormalTok{orbitsPerCentury }\ExtensionTok{=} \DecValTok{100} \SpecialCharTok{*} \FloatTok{365.25} \SpecialCharTok{*} \FloatTok{86400.} \SpecialCharTok{/}\NormalTok{ Torb;}
 \NormalTok{radToArcsec }\ExtensionTok{=} \DecValTok{180}\SpecialCharTok{/}\FunctionTok{Pi} \SpecialCharTok{*} \FloatTok{3600.}\NormalTok{;}
 \NormalTok{dphiNewton }\ExtensionTok{=} \FunctionTok{Pi}\NormalTok{ mMerc }\SpecialCharTok{/}\NormalTok{ Msun;}
-\FunctionTok{Print}\OperatorTok{[}\StringTok{"Deltaphi = pim/M per orbit  = "}\OperatorTok{,} \FunctionTok{N}\OperatorTok{[}\NormalTok{dphiNewton}\OperatorTok{],} \StringTok{" rad"}\OperatorTok{]}\NormalTok{;}
-\FunctionTok{Print}\OperatorTok{[}\StringTok{"Deltaphi = pim/M per century = "}\OperatorTok{,} \FunctionTok{N}\OperatorTok{[}\NormalTok{dphiNewton }\SpecialCharTok{*}\NormalTok{ orbitsPerCentury }\SpecialCharTok{*}\NormalTok{ radToArcsec}\OperatorTok{],} \StringTok{" arcsec"}\OperatorTok{]}\NormalTok{;}
+\FunctionTok{Print}\OperatorTok{[}\StringTok{"Δφ = πm/M per orbit  = "}\OperatorTok{,} \FunctionTok{N}\OperatorTok{[}\NormalTok{dphiNewton}\OperatorTok{],} \StringTok{" rad"}\OperatorTok{]}\NormalTok{;}
+\FunctionTok{Print}\OperatorTok{[}\StringTok{"Δφ = πm/M per century = "}\OperatorTok{,} \FunctionTok{N}\OperatorTok{[}\NormalTok{dphiNewton }\SpecialCharTok{*}\NormalTok{ orbitsPerCentury }\SpecialCharTok{*}\NormalTok{ radToArcsec}\OperatorTok{],} \StringTok{" arcsec"}\OperatorTok{]}\NormalTok{;}
 \CommentTok{(* Result:                                                                       *)}
-\CommentTok{(*   Deltaphi = pim/M per orbit  = 5.21424x10\^{}{-}\^{}7 rad                                     *)}
-\CommentTok{(*   Deltaphi = pim/M per century = 44.6557 arcsec  \textless{}{-} Corda\textquotesingle{}s reported 44.39\textquotesingle{}\textquotesingle{}/c        *)}
+\CommentTok{(*   Δφ = πm/M per orbit  = 5.21424×10⁻⁷ rad                                     *)}
+\CommentTok{(*   Δφ = πm/M per century = 44.6557 arcsec  ← Corda\textquotesingle{}s reported 44.39\textquotesingle{}\textquotesingle{}/c        *)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -546,7 +545,7 @@ a perihelion advance.**
 \subsubsection{§2.10 §5 --- Breakdown for Venus and Earth (the paper's
 self-refutation)}\label{breakdown-for-venus-and-earth-the-papers-self-refutation}}
 
-Corda himself shows the \texttt{pim/M} formula fails for non-Mercury
+Corda himself shows the \texttt{πm/M} formula fails for non-Mercury
 planets:
 
 \begin{Shaded}
@@ -559,28 +558,28 @@ planets:
 \OperatorTok{\{}\StringTok{"Venus"}\OperatorTok{,}  \FunctionTok{N}\OperatorTok{[}\FunctionTok{Pi}\NormalTok{ mVenus}\SpecialCharTok{/}\NormalTok{Msun }\SpecialCharTok{*}\NormalTok{ orbitsVenus }\SpecialCharTok{*}\NormalTok{ radToArcsec}\OperatorTok{],} \StringTok{"vs observed 8.62\textquotesingle{}\textquotesingle{}/c"}\OperatorTok{\}}
 \OperatorTok{\{}\StringTok{"Earth"}\OperatorTok{,}  \FunctionTok{N}\OperatorTok{[}\FunctionTok{Pi}\NormalTok{ mEarth}\SpecialCharTok{/}\NormalTok{Msun }\SpecialCharTok{*}\NormalTok{ orbitsEarth }\SpecialCharTok{*}\NormalTok{ radToArcsec}\OperatorTok{],} \StringTok{"vs observed 3.83\textquotesingle{}\textquotesingle{}/c"}\OperatorTok{\}}
 \CommentTok{(* Results:                                                                      *)}
-\CommentTok{(*   Venus  formula prediction: 257.91 \textquotesingle{}\textquotesingle{}/c   vs observed  8.62\textquotesingle{}\textquotesingle{}/c  {-}\textgreater{}  30x too big *)}
-\CommentTok{(*   Earth  formula prediction: 194.50 \textquotesingle{}\textquotesingle{}/c   vs observed  3.83\textquotesingle{}\textquotesingle{}/c  {-}\textgreater{}  51x too big *)}
+\CommentTok{(*   Venus  formula prediction: 257.91 \textquotesingle{}\textquotesingle{}/c   vs observed  8.62\textquotesingle{}\textquotesingle{}/c  →  30× too big *)}
+\CommentTok{(*   Earth  formula prediction: 194.50 \textquotesingle{}\textquotesingle{}/c   vs observed  3.83\textquotesingle{}\textquotesingle{}/c  →  51× too big *)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule\noalign{}
-Planet & \texttt{pim/M} (Corda's formula) & Observed residual &
+Planet & \texttt{πm/M} (Corda's formula) & Observed residual &
 Discrepancy \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 Mercury & \texttt{44.66\textquotesingle{}\textquotesingle{}/c} &
-\texttt{\textasciitilde{}=\ 43\textquotesingle{}\textquotesingle{}/c} &
-{[}OK{]} 1.04x \textless- ``agreement'' \\
+\texttt{≈\ 43\textquotesingle{}\textquotesingle{}/c} & {[}OK{]} 1.04× ←
+``agreement'' \\
 Venus & \texttt{257.91\textquotesingle{}\textquotesingle{}/c} &
-\texttt{\textasciitilde{}=\ 8.62\textquotesingle{}\textquotesingle{}/c}
-& {[}X{]} \textbf{30x too big} \\
+\texttt{≈\ 8.62\textquotesingle{}\textquotesingle{}/c} & {[}X{]}
+\textbf{30× too big} \\
 Earth & \texttt{194.50\textquotesingle{}\textquotesingle{}/c} &
-\texttt{\textasciitilde{}=\ 3.83\textquotesingle{}\textquotesingle{}/c}
-& {[}X{]} \textbf{51x too big} \\
+\texttt{≈\ 3.83\textquotesingle{}\textquotesingle{}/c} & {[}X{]}
+\textbf{51× too big} \\
 \end{longtable}
 
 \textbf{A formula that's right by 4\% for one planet and wrong by
@@ -589,9 +588,8 @@ numerical coincidence at one particular \texttt{m/M} value.} Corda
 himself acknowledges the breakdown (§5) but rationalises it with n-body
 effects (``Venus has Mercury as an interior planet''), which does not
 explain why a strictly two-body formula would be valid for one two-body
-system and invalid for others. \textbf{The honest reading:
-\texttt{pim/M} is not the perihelion advance for any planet, including
-Mercury.}
+system and invalid for others. \textbf{The honest reading: \texttt{πm/M}
+is not the perihelion advance for any planet, including Mercury.}
 
 \hypertarget{eqs.-6067-gravitational-time-dilation}{%
 \subsubsection{§2.11 Eqs. (60)--(67) --- gravitational time
@@ -606,27 +604,25 @@ ds^2 = \left(1 - \frac{2GM}{r c^2}\right)(c\,dt)^2
                                                                    \qquad (61)
 \] \[
 t_g = \sqrt{1 - r_g/r_0}\, t_l \;\approx\; \left(1 - \tfrac{1}{2}\tfrac{r_g}{r_0}\right) t_l   \qquad (62)
-\] where \texttt{r\_g\ =\ 2GM/c\^{}2} is the Sun's gravitational radius
-(\texttt{\textasciitilde{}=\ 2.95\ km}). Corda also asserts a
-corresponding radial-distance contraction:
-\texttt{r\_0\ -\textgreater{}\ r\_0(1\ -\ 1/2\ r\_g/r\_0)} (Eq. 63),
-arguing from \texttt{r\ =\ ct}.
+\] where \texttt{r\_g\ =\ 2GM/c²} is the Sun's gravitational radius
+(\texttt{≈\ 2.95\ km}). Corda also asserts a corresponding
+radial-distance contraction: \texttt{r₀\ →\ r₀(1\ −\ ½\ r\_g/r₀)} (Eq.
+63), arguing from \texttt{r\ =\ ct}.
 
 \textbf{{[}partial{]} Physical-intuition status {[}for Tepper:{]}} the
 time-dilation factor (Eq. 62) is standard GR weak-field. The
 radial-distance contraction in Eq. (63) is unusual --- in isotropic
 coordinates the radial coordinate \texttt{r} of a point at Schwarzschild
-radius \texttt{R} is
-\texttt{r\ \textasciitilde{}=\ R(1\ -\ GM/(c\^{}2R))} (a small
+radius \texttt{R} is \texttt{r\ ≈\ R(1\ −\ GM/(c²R))} (a small
 isotropic-to-areal coordinate shift), so there \emph{is} a
-\texttt{1/2\ r\_g/r\_0} correction when comparing isotropic to areal
-radial coordinates, but treating this as ``the CNO sees a different
-distance because \texttt{r\ =\ ct}'' is non-standard. Worth flagging but
-the final-result coefficient in Eq. (67) is unaffected to first order.
+\texttt{½\ r\_g/r₀} correction when comparing isotropic to areal radial
+coordinates, but treating this as ``the CNO sees a different distance
+because \texttt{r\ =\ ct}'' is non-standard. Worth flagging but the
+final-result coefficient in Eq. (67) is unaffected to first order.
 
 Substituting Eq. (63) into Eq. (17): \[
 T_F = \frac{2\pi r_0^{3/2}\left(1 - \tfrac{1}{2}\tfrac{r_g}{r_0}\right)^{3/2}(1 + m/M)^{-1/2}}{\sqrt{GM}}  \qquad (64)
-\] Computing \texttt{omega\_F\ =\ 2pi/T\_F}: \[
+\] Computing \texttt{ω\_F\ =\ 2π/T\_F}: \[
 \omega_F \simeq \omega\left(1 - \tfrac{1}{2}\tfrac{r_g}{r_0}\right)^{-3/2}\!\left(1 + \tfrac{1}{2}\tfrac{r_g}{r_0}\right)   \qquad (65)
 \] \[
 \varphi_F \simeq 2\pi\left(1 + \tfrac{5}{4}\tfrac{r_g}{r_0}\right)   \qquad (66)
@@ -639,7 +635,7 @@ T_F = \frac{2\pi r_0^{3/2}\left(1 - \tfrac{1}{2}\tfrac{r_g}{r_0}\right)^{3/2}(1 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{Series}\OperatorTok{[}\DecValTok{2} \FunctionTok{Pi}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{x}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)}\SpecialCharTok{\^{}}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{3}\SpecialCharTok{/}\DecValTok{2}\NormalTok{) (}\DecValTok{1} \SpecialCharTok{+} \FunctionTok{x}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)}\OperatorTok{,} \OperatorTok{\{}\FunctionTok{x}\OperatorTok{,} \DecValTok{0}\OperatorTok{,} \DecValTok{1}\OperatorTok{\}]}
-\CommentTok{(* Result: 2 Pi + (5 Pi/2) x + O[x]\^{}2   [OK] leading is (5/2)pi r\_g/r\_0 *)}
+\CommentTok{(* Result: 2 Pi + (5 Pi/2) x + O[x]\^{}2   [OK] leading is (5/2)π r\_g/r\_0 *)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -659,7 +655,7 @@ ds^2 = c^2 dt^2 - dr^2 - r^2 d\phi^2 - dz^2                       \qquad (68)
 ds^2 = \left(1 - \tfrac{r^2\omega^2}{c^2}\right)c^2 dt^2 - 2\omega r^2 d\phi' dt' - dr^2 - r^2 d\phi'^2 - dz'^2   \qquad (70)
 \] \[
 d\tau = \sqrt{1 - r^2\omega^2/c^2}\,dt \;\simeq\; \left(1 - \tfrac{1}{2}\tfrac{r^2\omega^2}{c^2}\right) dt   \qquad (71)
-\] At \texttt{r\ =\ r\_0}, \texttt{omega\ =\ omega\_0}: \[
+\] At \texttt{r\ =\ r\_0}, \texttt{ω\ =\ ω\_0}: \[
 \tau \simeq \left(1 - \tfrac{1}{2}\tfrac{r_0^2\omega_0^2}{c^2}\right) t   \qquad (72)
 \]
 
@@ -700,14 +696,14 @@ T_T = T_0 (1 + m/M)^{-1/2}\,(1 - \tfrac{1}{2} r_g/r_0)^2           \qquad (74)
 rotational factor as \texttt{(1\ -\ r\_g/(2r\_0))\^{}\{+1/2\}}, which
 would give a leading coefficient of \texttt{1} (not \texttt{3/2}).
 Reading instead as \texttt{(1\ -\ r\_g/(2r\_0))\^{}\{-1/2\}} (consistent
-with \texttt{omega\ =\ 2pi/T} and the
+with \texttt{ω\ =\ 2π/T} and the
 \texttt{T\_T\ =\ T\_F\ (1\ -\ r\_g/(2r\_0))\^{}\{1/2\}} substitution)
 recovers the \texttt{3/2}. Either Eq. (75) in the paper has a typo or
 the converted markdown does. The final Eq. (77) is correct and matches
 the standard PPN gravitational-redshift + Doppler combination.
 \end{quote}
 
-\textbf{Wolfram MCP Taylor check (assuming \texttt{-1/2}):}
+\textbf{Wolfram MCP Taylor check (assuming \texttt{−1/2}):}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -725,12 +721,12 @@ GR}\label{comparison-of-cordas-eq.-77-to-standard-gr}}
 Standard GR (Schwarzschild geodesic, MTW §40.5): \[
 \Delta\varphi_{\rm GR} = \frac{6\pi GM}{c^2 a (1-e^2)} = \frac{3\pi r_g}{a(1-e^2)}
 \] For Mercury (\texttt{e\ =\ 0.20563},
-\texttt{1\ -\ e\^{}2\ \textasciitilde{}=\ 0.9577}):
-\texttt{Deltaphi\_GR\ =\ 42.99\textquotesingle{}\textquotesingle{}/century}.
+\texttt{1\ -\ e\^{}2\ ≈\ 0.9577}):
+\texttt{Δφ\_GR\ =\ 42.99\textquotesingle{}\textquotesingle{}/century}.
 
 For the \textbf{circular} limit (\texttt{e\ =\ 0}, \texttt{a\ =\ r\_0}):
-\texttt{Deltaphi\_GR\ =\ 3pi\ r\_g/r\_0}. \textbf{Corda's Eq. (77)
-reproduces the circular-orbit limit of GR.}
+\texttt{Δφ\_GR\ =\ 3π\ r\_g/r\_0}. \textbf{Corda's Eq. (77) reproduces
+the circular-orbit limit of GR.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -739,17 +735,17 @@ reproduces the circular-orbit limit of GR.}
 \NormalTok{eMerc }\ExtensionTok{=} \FloatTok{0.20563}\NormalTok{; cc }\ExtensionTok{=} \FloatTok{299792458.}\NormalTok{; rg }\ExtensionTok{=} \DecValTok{2}\NormalTok{ GG Msun }\SpecialCharTok{/}\NormalTok{ cc}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{;}
 \NormalTok{orbitsPerCentury }\ExtensionTok{=} \DecValTok{100} \SpecialCharTok{*} \FloatTok{365.25} \SpecialCharTok{*} \FloatTok{86400.} \SpecialCharTok{/}\NormalTok{ (}\FloatTok{87.969} \SpecialCharTok{*} \FloatTok{86400.}\NormalTok{);}
 \NormalTok{radToArcsec }\ExtensionTok{=} \DecValTok{180}\SpecialCharTok{/}\FunctionTok{Pi} \SpecialCharTok{*} \FloatTok{3600.}\NormalTok{;}
-\OperatorTok{\{}\StringTok{"Corda §8 (3pi r\_g/a, circular)"}\OperatorTok{,}  \DecValTok{3} \FunctionTok{Pi}\NormalTok{ rg}\SpecialCharTok{/}\NormalTok{aMerc }\SpecialCharTok{*}\NormalTok{ orbitsPerCentury }\SpecialCharTok{*}\NormalTok{ radToArcsec}\OperatorTok{,}
- \StringTok{"GR Mercury  (3pi r\_g/[a(1{-}e\^{}2)])"}\OperatorTok{,} \DecValTok{3} \FunctionTok{Pi}\NormalTok{ rg}\SpecialCharTok{/}\NormalTok{(aMerc (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ eMerc}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)) }\SpecialCharTok{*}\NormalTok{ orbitsPerCentury }\SpecialCharTok{*}\NormalTok{ radToArcsec}\OperatorTok{\}}
+\OperatorTok{\{}\StringTok{"Corda §8 (3π r\_g/a, circular)"}\OperatorTok{,}  \DecValTok{3} \FunctionTok{Pi}\NormalTok{ rg}\SpecialCharTok{/}\NormalTok{aMerc }\SpecialCharTok{*}\NormalTok{ orbitsPerCentury }\SpecialCharTok{*}\NormalTok{ radToArcsec}\OperatorTok{,}
+ \StringTok{"GR Mercury  (3π r\_g/[a(1{-}e²)])"}\OperatorTok{,} \DecValTok{3} \FunctionTok{Pi}\NormalTok{ rg}\SpecialCharTok{/}\NormalTok{(aMerc (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ eMerc}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)) }\SpecialCharTok{*}\NormalTok{ orbitsPerCentury }\SpecialCharTok{*}\NormalTok{ radToArcsec}\OperatorTok{\}}
 \CommentTok{(* Results:                                                                  *)}
 \CommentTok{(*   Corda §8 circular:  41.17\textquotesingle{}\textquotesingle{}/c                                            *)}
 \CommentTok{(*   GR Mercury (e=0.21): 42.99\textquotesingle{}\textquotesingle{}/c                                           *)}
 \end{Highlighting}
 \end{Shaded}
 
-Corda's §§6--8 derivation is missing the \texttt{1/(1-e\^{}2)}
-eccentricity factor. For Mercury this is a \texttt{4.4\%} shortfall
-(\texttt{-1.82\textquotesingle{}\textquotesingle{}/century}).
+Corda's §§6--8 derivation is missing the \texttt{1/(1-e²)} eccentricity
+factor. For Mercury this is a \texttt{4.4\%} shortfall
+(\texttt{−1.82\textquotesingle{}\textquotesingle{}/century}).
 \textbf{{[}for Tepper:{]}} this discrepancy is significant for Mercury
 specifically because of its high eccentricity; for Venus and Earth (more
 circular) the discrepancy shrinks. A true derivation of the GR result
@@ -769,35 +765,35 @@ findings}\label{the-load-bearing-critique-three-findings}}
 
 Corda's apsidal-angle formula (Eq. 31), applied to \emph{any}
 inverse-square force --- including the \texttt{(1+m/M)}-rescaled version
-of Eq. (32) --- gives \texttt{phi\_0\ =\ 2pi} exactly: -
-\texttt{F\ =\ -k/r\^{}2} =\textgreater{}
-\texttt{F\textquotesingle{}(r)\ r\ /\ F(r)\ =\ -2} =\textgreater{}
-\texttt{phi\_0\ =\ 2pi/sqrt(3\ -\ 2)\ =\ 2pi}. {[}OK{]} -
-\texttt{F\ =\ (1+m/M)(-k/r\^{}2)} =\textgreater{} same
-\texttt{F\textquotesingle{}/F\ =\ -2/r} =\textgreater{} same
-\texttt{phi\_0\ =\ 2pi}. {[}OK{]}
+of Eq. (32) --- gives \texttt{φ\_0\ =\ 2π} exactly: -
+\texttt{F\ =\ −k/r²} ⇒
+\texttt{F\textquotesingle{}(r)\ r\ /\ F(r)\ =\ −2} ⇒
+\texttt{φ\_0\ =\ 2π/√(3\ −\ 2)\ =\ 2π}. {[}OK{]} -
+\texttt{F\ =\ (1+m/M)(−k/r²)} ⇒ same
+\texttt{F\textquotesingle{}/F\ =\ −2/r} ⇒ same \texttt{φ\_0\ =\ 2π}.
+{[}OK{]}
 
 This is Bertrand's theorem: of all central potentials, \emph{only}
-\texttt{1/r} (Kepler / Newton) and \texttt{r\^{}2} (harmonic) give
-closed bound orbits universally. Inverse-square forces (Newton's
-gravity, Eq. 9) produce closed ellipses with no precession at any energy
-or angular momentum. Constant rescaling of an inverse-square force does
-not change this --- it just changes the orbital period.
+\texttt{1/r} (Kepler / Newton) and \texttt{r²} (harmonic) give closed
+bound orbits universally. Inverse-square forces (Newton's gravity, Eq.
+9) produce closed ellipses with no precession at any energy or angular
+momentum. Constant rescaling of an inverse-square force does not change
+this --- it just changes the orbital period.
 
-\textbf{Therefore Eq. (20)'s \texttt{Deltaphi\ =\ pim/M} is not an
-apsidal precession.} It is the angle by which Mercury's \emph{position}
-differs from \texttt{2pi} when measured at time \texttt{T\_0} (the
-unperturbed period) under the perturbed angular velocity \texttt{omega}.
-After the true perturbed period \texttt{T\ =\ T\_0(1+m/M)\^{}(-1/2)} has
-elapsed, Mercury has swept exactly \texttt{2pi} again and returned to
-perihelion. \textbf{No precession.}
+\textbf{Therefore Eq. (20)'s \texttt{Δφ\ =\ πm/M} is not an apsidal
+precession.} It is the angle by which Mercury's \emph{position} differs
+from \texttt{2π} when measured at time \texttt{T\_0} (the unperturbed
+period) under the perturbed angular velocity \texttt{ω}. After the true
+perturbed period \texttt{T\ =\ T\_0(1+m/M)\^{}(−1/2)} has elapsed,
+Mercury has swept exactly \texttt{2π} again and returned to perihelion.
+\textbf{No precession.}
 
 \hypertarget{finding-2-empirics-driven.-the-5-self-refutation}{%
 \subsubsection{Finding 2 (empirics-driven). The §5
 self-refutation}\label{finding-2-empirics-driven.-the-5-self-refutation}}
 
-Applying Corda's own formula
-\texttt{Deltaphi\ =\ pim/M\ x\ (orbits/century)} to Venus and Earth:
+Applying Corda's own formula \texttt{Δφ\ =\ πm/M\ ×\ (orbits/century)}
+to Venus and Earth:
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
@@ -808,7 +804,7 @@ Applying Corda's own formula
 \begin{minipage}[b]{\linewidth}\raggedright
 Planet
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\texttt{m\ x\ orbits/c\ x\ radToArcsec\ /\ Msun\ x\ pi}
+\texttt{m\ ×\ orbits/c\ ×\ radToArcsec\ /\ Msun\ ×\ π}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Observed
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -822,40 +818,39 @@ Mercury & \texttt{44.66\textquotesingle{}\textquotesingle{}/c} &
 \texttt{43\textquotesingle{}\textquotesingle{}/c} & {[}OK{]} \\
 Venus & \texttt{257.91\textquotesingle{}\textquotesingle{}/c} &
 \texttt{8.62\textquotesingle{}\textquotesingle{}/c} & {[}X{]}
-\textbf{\texttt{30x}} \\
+\textbf{\texttt{30×}} \\
 Earth & \texttt{194.50\textquotesingle{}\textquotesingle{}/c} &
 \texttt{3.83\textquotesingle{}\textquotesingle{}/c} & {[}X{]}
-\textbf{\texttt{51x}} \\
+\textbf{\texttt{51×}} \\
 \end{longtable}
 
 Corda's response (``n-body effects, Mercury has no interior planets'')
-doesn't work as a defence: - The formula \texttt{Deltaphi\ =\ pim/M}
-makes no reference to n-body effects. - The derivation in §§2/3/4 is
-strictly two-body throughout (no interior planets enter). - If the
-formula were the correct two-body result, it would apply to any two-body
-sub-problem and the n-body corrections would be smaller perturbations
---- not corrections of \texttt{factor\ 30–50}.
+doesn't work as a defence: - The formula \texttt{Δφ\ =\ πm/M} makes no
+reference to n-body effects. - The derivation in §§2/3/4 is strictly
+two-body throughout (no interior planets enter). - If the formula were
+the correct two-body result, it would apply to any two-body sub-problem
+and the n-body corrections would be smaller perturbations --- not
+corrections of \texttt{factor\ 30–50}.
 
 \textbf{{[}for Tepper:{]}} the strongest available evidence that
-\texttt{pim/M} is not the correct two-body perihelion advance is that
-the formula is empirically wrong for every planet other than Mercury.
-The Mercury ``agreement'' is coincidence at
-\texttt{m/M\ \textasciitilde{}=\ 1.66\ x\ 10\^{}-\^{}7} happening to
-give a number near \texttt{43\textquotesingle{}\textquotesingle{}/c}
-once multiplied by Mercury's \texttt{415.2\ orbits/century}. Venus and
-Earth have different \texttt{(m/M,\ orbits/c)} products and give wildly
-wrong predictions.
+\texttt{πm/M} is not the correct two-body perihelion advance is that the
+formula is empirically wrong for every planet other than Mercury. The
+Mercury ``agreement'' is coincidence at \texttt{m/M\ ≈\ 1.66\ ×\ 10⁻⁷}
+happening to give a number near
+\texttt{43\textquotesingle{}\textquotesingle{}/c} once multiplied by
+Mercury's \texttt{415.2\ orbits/century}. Venus and Earth have different
+\texttt{(m/M,\ orbits/c)} products and give wildly wrong predictions.
 
 \hypertarget{finding-3-formal-derivation-driven.-68-reproduce-only-the-e0-gr-limit}{%
 \subsubsection{Finding 3 (formal-derivation-driven). §§6--8 reproduce
 only the e=0 GR
 limit}\label{finding-3-formal-derivation-driven.-68-reproduce-only-the-e0-gr-limit}}
 
-Corda's Eq. (77) \texttt{Deltaphi\_F\ =\ 3pi\ r\_g/r\_0} is correct
-algebra (modulo the §2.13 typo) but recovers only the circular-orbit
-limit of the true GR result \texttt{3pi\ r\_g/{[}a(1-e\^{}2){]}}. For
-Mercury (e = 0.21) this is a 4.4\% shortfall
-(\texttt{-1.82\textquotesingle{}\textquotesingle{}/century}).
+Corda's Eq. (77) \texttt{Δφ\_F\ =\ 3π\ r\_g/r\_0} is correct algebra
+(modulo the §2.13 typo) but recovers only the circular-orbit limit of
+the true GR result \texttt{3π\ r\_g/{[}a(1−e²){]}}. For Mercury (e =
+0.21) this is a 4.4\% shortfall
+(\texttt{−1.82\textquotesingle{}\textquotesingle{}/century}).
 
 \textbf{{[}for Tepper:{]}} §§6--8 is a real first-order GR derivation
 route; what it gets right is the ``PPN sum of gravitational + Doppler
@@ -863,15 +858,15 @@ time dilation'' result, which is well-known in GR pedagogy. What it
 doesn't capture is the eccentricity dependence, which makes it
 numerically equivalent to GR only for nearly-circular orbits. For
 Mercury, the eccentricity correction matters; for Venus and Earth
-(smaller \texttt{e}), \texttt{3pi\ r\_g/a} is much closer to the full GR
+(smaller \texttt{e}), \texttt{3π\ r\_g/a} is much closer to the full GR
 answer.
 
 \textbf{The two §§6--8 results work in their domain.} The trouble is
 purely the combination with §§2--4. Corda writes (§9) that ``Newtonian +
 corrections matches GR.'' The honest reading: §§6--8 \emph{alone}
 matches GR (in the circular limit); §§2--4 contribute a fictitious
-\texttt{pim/M} that doesn't correspond to a real precession; the two
-together don't add up to GR --- the \texttt{pim/M} is just spurious.
+\texttt{πm/M} that doesn't correspond to a real precession; the two
+together don't add up to GR --- the \texttt{πm/M} is just spurious.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -881,8 +876,7 @@ together don't add up to GR --- the \texttt{pim/M} is just spurious.
 Theory}}{§4. Implication for Tepper's Relativistic Newtonian Theory}}\label{implication-for-teppers-relativistic-newtonian-theory}}
 
 Gill's \emph{Relativistic Newtonian Theory} extends Corda's framework by
-adding the dual-theory \texttt{(1\ +\ V/(mc\^{}2))} factor to the force
-law:
+adding the dual-theory \texttt{(1\ +\ V/(mc²))} factor to the force law:
 
 \[
 a_m = -\frac{GM}{r^2}\left(1 - \frac{GM}{c^2 r}\right)\hat u_r   \qquad (\text{Eq. h4})
@@ -930,22 +924,21 @@ Source
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Reduced-mass \texttt{pim/M} &
+Reduced-mass \texttt{πm/M} &
 \texttt{+44.66\textquotesingle{}\textquotesingle{}/c} & Corda §§2--4
 (\textbf{not a real precession}) \\
-Framework relativistic correction \texttt{-piGM/(c\^{}2\ r\_0)} &
-\textbf{\texttt{-6.87\textquotesingle{}\textquotesingle{}/c}} & wrong
+Framework relativistic correction \texttt{−πGM/(c²\ r\_0)} &
+\textbf{\texttt{−6.87\textquotesingle{}\textquotesingle{}/c}} & wrong
 sign vs.~GR's \texttt{+42.99\textquotesingle{}\textquotesingle{}/c} \\
-Net \texttt{Deltaphi\_d} &
+Net \texttt{Δφ\_d} &
 \textbf{\texttt{+37.79\textquotesingle{}\textquotesingle{}/c}} & sum,
-vs.~observed
-\texttt{\textasciitilde{}=\ 43\textquotesingle{}\textquotesingle{}/c} \\
+vs.~observed \texttt{≈\ 43\textquotesingle{}\textquotesingle{}/c} \\
 \end{longtable}
 
 The 12\% shortfall (\texttt{+37.79\textquotesingle{}\textquotesingle{}}
 vs \texttt{+43\textquotesingle{}\textquotesingle{}}) was interpreted in
 PR \#83 as a near-miss. \textbf{Under the present analysis, this is a
-coincidence on top of a coincidence}: \texttt{pim/M} is fictitious, and
+coincidence on top of a coincidence}: \texttt{πm/M} is fictitious, and
 the relativistic correction has the wrong sign.
 
 \hypertarget{what-pr-83-doc-05-computed-apsidal-angle-the-genuine-answer}{%
@@ -978,9 +971,9 @@ PPN parameter analysis.)
 The N-body refinement cannot close this gap: planetary perturbations
 contribute framework relativistic corrections at
 \texttt{\textasciitilde{}10\^{}\{-4\}–10\^{}\{-5\}} of the Sun--Mercury
-term (since \texttt{GM/(c\^{}2r)} scales with the attracting mass and
-the other planets are light). The
-\texttt{-7.17\textquotesingle{}\textquotesingle{}/century} is the
+term (since \texttt{GM/(c²r)} scales with the attracting mass and the
+other planets are light). The
+\texttt{−7.17\textquotesingle{}\textquotesingle{}/century} is the
 framework's structural prediction for the eccentric two-body case,
 computed via the same apparatus (apsidal angle) Corda himself uses.
 
@@ -988,9 +981,9 @@ computed via the same apparatus (apsidal angle) Corda himself uses.
 \subsubsection{§4.3 The recommendation {[}for
 Tepper{]}}\label{the-recommendation-for-tepper}}
 
-The Corda-style \texttt{pim/M\ +\ relativistic\ correction} template
-that \emph{Relativistic Newtonian Theory} inherits should be replaced by
-the apsidal-angle calculation as the framework's genuine perihelion
+The Corda-style \texttt{πm/M\ +\ relativistic\ correction} template that
+\emph{Relativistic Newtonian Theory} inherits should be replaced by the
+apsidal-angle calculation as the framework's genuine perihelion
 prediction. The relevant numbers:
 
 \begin{longtable}[]{@{}
@@ -1013,7 +1006,7 @@ Corda-style heuristic (PR \#83 doc 03) &
 \texttt{+37.79\textquotesingle{}\textquotesingle{}/century} & numerical
 near-miss; structurally fictitious \\
 Apsidal-angle (PR \#83 doc 05) &
-\texttt{-7.17\textquotesingle{}\textquotesingle{}/century} & genuine
+\texttt{−7.17\textquotesingle{}\textquotesingle{}/century} & genuine
 precession of modified force law \\
 Standard GR &
 \texttt{+42.99\textquotesingle{}\textquotesingle{}/century} & observed
@@ -1023,9 +1016,9 @@ Standard GR &
 If the framework's intended Mercury prediction is the apsidal-angle
 result, the verdict is: \textbf{wrong sign, \texttt{1/6} magnitude}.
 This is the structural signature of any modified-Newtonian gravity that
-adds a \texttt{(1\ +\ V/(mc\^{}2))}-style factor to the force without
+adds a \texttt{(1\ +\ V/(mc²))}-style factor to the force without
 modifying the spatial metric. The 12\% near-miss in PR \#83 doc 03 is an
-artefact of taking Corda's \texttt{pim/M} heuristic as the baseline.
+artefact of taking Corda's \texttt{πm/M} heuristic as the baseline.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1041,20 +1034,20 @@ Six questions for your verdict, drawn from the analysis above:
   \textbf{Bertrand's theorem applicability.} Do you agree that Eq. (31)
   applied to an inverse-square force (including the
   \texttt{(1+m/M)}-rescaled version of Eq. 32) gives
-  \texttt{phi\_0\ =\ 2pi}, i.e.\textasciitilde no apsidal precession?
-  This is the load-bearing critique of §§2--4. If you read Bertrand
+  \texttt{φ\_0\ =\ 2π}, i.e.\textasciitilde no apsidal precession? This
+  is the load-bearing critique of §§2--4. If you read Bertrand
   differently or identify a step in Eq. (31)'s derivation that doesn't
   apply, please flag.
 \item
-  \textbf{Period vs.~precession.} Do you agree that the \texttt{pim/M}
-  in Corda's Eqs. (19)--(20) is computing the angle Mercury sweeps in
-  the \emph{unperturbed} period \texttt{T\_0} at the \emph{perturbed}
-  angular velocity \texttt{omega} --- not the rotation of the orbit's
-  major axis between successive perihelia? This is the conceptual
-  distinction that determines whether \emph{Relativistic Newtonian
-  Theory} inherits a fictitious baseline.
+  \textbf{Period vs.~precession.} Do you agree that the \texttt{πm/M} in
+  Corda's Eqs. (19)--(20) is computing the angle Mercury sweeps in the
+  \emph{unperturbed} period \texttt{T\_0} at the \emph{perturbed}
+  angular velocity \texttt{ω} --- not the rotation of the orbit's major
+  axis between successive perihelia? This is the conceptual distinction
+  that determines whether \emph{Relativistic Newtonian Theory} inherits
+  a fictitious baseline.
 \item
-  \textbf{§5 self-refutation.} The same \texttt{pim/M} formula gives
+  \textbf{§5 self-refutation.} The same \texttt{πm/M} formula gives
   \texttt{Venus\ 258\textquotesingle{}\textquotesingle{}/c} and
   \texttt{Earth\ 195\textquotesingle{}\textquotesingle{}/c} vs.~observed
   \texttt{8.6\textquotesingle{}\textquotesingle{}/c} and
@@ -1063,27 +1056,27 @@ Six questions for your verdict, drawn from the analysis above:
   failure mean the formula is not a perihelion advance? (PR \#83's
   reading is the latter; we'd like your reading recorded.)
 \item
-  \textbf{§§6--8 vs.~eccentricity.} Corda's \texttt{3pi\ r\_g/r\_0}
-  reproduces the e=0 GR limit and misses \texttt{1/(1-e\^{}2)}. For
-  Mercury this is a 4.4\% shortfall. Do you read §§6--8 as a valid
-  pedagogical derivation of the circular-orbit GR result (PPN sum of
-  gravitational + Doppler TD), or as a complete GR derivation? The
-  distinction matters for whether the eccentricity correction needs to
-  be added to the framework's prediction.
+  \textbf{§§6--8 vs.~eccentricity.} Corda's \texttt{3π\ r\_g/r\_0}
+  reproduces the e=0 GR limit and misses \texttt{1/(1−e²)}. For Mercury
+  this is a 4.4\% shortfall. Do you read §§6--8 as a valid pedagogical
+  derivation of the circular-orbit GR result (PPN sum of gravitational +
+  Doppler TD), or as a complete GR derivation? The distinction matters
+  for whether the eccentricity correction needs to be added to the
+  framework's prediction.
 \item
   \textbf{The apsidal-angle calculation for Gill's force law.} PR \#83
   doc 05's apsidal-angle result
-  \texttt{-7.17\textquotesingle{}\textquotesingle{}/century}
-  (\texttt{-1/6} of GR exactly) for the framework's force law
-  \texttt{a\ =\ -(GM/r\^{}2)(1\ -\ GM/(c\^{}2r)).ê\_r} is the proper
-  answer to ``what does Gill's modified Newton predict for Mercury?''.
-  Do you read this as the framework's intended prediction, or is the
-  Corda-style heuristic
+  \texttt{−7.17\textquotesingle{}\textquotesingle{}/century}
+  (\texttt{−1/6} of GR exactly) for the framework's force law
+  \texttt{a\ =\ −(GM/r²)(1\ −\ GM/(c²r))·ê\_r} is the proper answer to
+  ``what does Gill's modified Newton predict for Mercury?''. Do you read
+  this as the framework's intended prediction, or is the Corda-style
+  heuristic
   (\texttt{+37.79\textquotesingle{}\textquotesingle{}/century})
   intended?
 \item
   \textbf{The \texttt{1/6} structural signature.} PR \#83 doc 05
-  identifies \texttt{-1/6} of GR as the classic signature of a
+  identifies \texttt{−1/6} of GR as the classic signature of a
   force-law-only modification of Newton without spatial-metric
   curvature. Does this match your understanding of what
   \emph{Relativistic Newtonian Theory} delivers, or does the framework
@@ -1093,7 +1086,7 @@ Six questions for your verdict, drawn from the analysis above:
 The answers to these six adjudicate whether \emph{Relativistic Newtonian
 Theory}'s Mercury prediction is
 \texttt{+37.79\textquotesingle{}\textquotesingle{}/century} (Corda
-template), \texttt{-7.17\textquotesingle{}\textquotesingle{}/century}
+template), \texttt{−7.17\textquotesingle{}\textquotesingle{}/century}
 (apsidal-angle), or something else.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -1111,10 +1104,10 @@ claim}\label{honest-framing-what-this-report-does-and-does-not-claim}}
   Corda's algebra is mostly correct (specifically: Eqs. 17, 20, 31, 37,
   67, 77 are all Wolfram-MCP verified).
 \item
-  Corda's §§2--4 result \texttt{Deltaphi\ =\ pim/M} is \emph{not} a
-  perihelion advance --- it is a period-and-angular-velocity rescaling
-  that does not change the apsidal angle of a closed inverse-square
-  orbit. This is verified via Corda's own Eq. (31).
+  Corda's §§2--4 result \texttt{Δφ\ =\ πm/M} is \emph{not} a perihelion
+  advance --- it is a period-and-angular-velocity rescaling that does
+  not change the apsidal angle of a closed inverse-square orbit. This is
+  verified via Corda's own Eq. (31).
 \item
   The §5 numerical breakdown for Venus and Earth is empirical evidence
   that the formula is not a real perihelion advance.
@@ -1123,13 +1116,13 @@ claim}\label{honest-framing-what-this-report-does-and-does-not-claim}}
 \item
   \emph{Relativistic Newtonian Theory}'s
   \texttt{+37.79\textquotesingle{}\textquotesingle{}/century} prediction
-  inherits the Corda framing's fictitious \texttt{pim/M} baseline plus a
+  inherits the Corda framing's fictitious \texttt{πm/M} baseline plus a
   wrong-sign relativistic correction.
 \item
   The framework's \emph{genuine} perihelion prediction, computed via the
   apsidal-angle formula on the modified force law, is
-  \texttt{-7.17\textquotesingle{}\textquotesingle{}/century}
-  (\texttt{-1/6} of GR).
+  \texttt{−7.17\textquotesingle{}\textquotesingle{}/century}
+  (\texttt{−1/6} of GR).
 \end{itemize}
 
 \hypertarget{what-this-report-does-not-claim}{%
@@ -1202,7 +1195,7 @@ and is held pending your reading.
     \href{../Mercury_Perihelion/README.md}{\texttt{Roadmapping/Mercury\_Perihelion/README.md}}
   \item
     \href{../Mercury_Perihelion/05_nbody_orbital_mechanics.md}{\texttt{Roadmapping/Mercury\_Perihelion/05\_nbody\_orbital\_mechanics.md}}
-    (apsidal-angle calculation; the \texttt{-1/6} of GR result)
+    (apsidal-angle calculation; the \texttt{−1/6} of GR result)
   \end{itemize}
 \item
   \textbf{GPS author report Q1 (curved-spacetime extension question)}:
