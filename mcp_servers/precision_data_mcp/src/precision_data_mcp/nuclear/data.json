@@ -1,0 +1,74 @@
+{
+  "$schema_version": "0.1.0",
+  "$source_revision": {
+    "data_revision": "2026-05-30",
+    "retrieved_at": "2026-05-30T00:00:00Z",
+    "seeded_by_hand": true,
+    "_note": "Initial seed for issue #98. The proton-radius puzzle is the load-bearing disagreement-representation demonstrator."
+  },
+  "nuclei": {
+    "p": {
+      "_aliases": ["proton", "p+", "1H+"],
+      "description": "Proton — bound nucleon, Z=1, A=1",
+      "charge_radius": {
+        "values": [
+          {"value": 0.84087, "uncertainty": 0.00039, "unit": "fm", "source": "pohl2010_muonic_hydrogen", "method": "muonic_hydrogen_spectroscopy", "_note": "Pohl et al. 2010 Nature 466, 213. The measurement that triggered the proton-radius puzzle."},
+          {"value": 0.879, "uncertainty": 0.008, "unit": "fm", "source": "bernauer2010_a1_mainz", "method": "electron_scattering", "_note": "Bernauer et al. 2010 A1 Collaboration Mainz electron-proton elastic scattering measurement."},
+          {"value": 0.877, "uncertainty": 0.007, "unit": "fm", "source": "codata2018_constants", "method": "CODATA_2018_pre_muonic_average", "_note": "CODATA-2018 recommended value, weighted average of pre-muonic-puzzle hydrogen-spectroscopy + electron-scattering data."},
+          {"value": 0.833, "uncertainty": 0.010, "unit": "fm", "source": "fleurbaey2018_1s_3s_spectroscopy", "method": "1S-3S_spectroscopy", "_note": "Fleurbaey et al. 2018 Phys. Rev. Lett. 120, 183001. H 1S-3S two-photon spectroscopy yields a value consistent with muonic H, contradicting the prior CODATA average."},
+          {"value": 0.831, "uncertainty": 0.014, "unit": "fm", "source": "xiong2019_prad", "method": "PRad_electron_scattering", "_note": "Xiong et al. (PRad Collaboration) 2019 Nature 575, 147. Low-Q^2 electron scattering at JLab; agrees with muonic H within uncertainty."}
+        ],
+        "_note": "Proton-radius puzzle: muonic H spectroscopy + recent low-Q^2 e-scattering + H 1S-3S yield rp ~ 0.84 fm; older A1 Mainz e-scattering + CODATA-2018 pre-puzzle yield rp ~ 0.88 fm. Disagreement at the ~5 sigma level is itself physics — the umbrella's disagreement-representation rule (#92 §5) surfaces all values rather than averaging them away."
+      },
+      "magnetic_moment": {
+        "value": 2.79284734463,
+        "uncertainty": 0.00000000082,
+        "unit": "mu_N",
+        "source": "codata2018_constants",
+        "_note": "Proton magnetic moment in units of nuclear magnetons mu_N = e*hbar/(2*m_p*c)."
+      }
+    },
+    "n": {
+      "_aliases": ["neutron"],
+      "description": "Neutron — Z=0, A=1; mean charge radius (rms) deduced from electron-scattering form factor",
+      "charge_radius": {
+        "value": null,
+        "uncertainty": null,
+        "unit": "fm",
+        "source": "pdg2024_review",
+        "_note": "Neutron is electrically neutral overall; its mean-square charge radius <r^2>_n is -0.1161(22) fm^2. Listed here as null because a single 'radius' value is not a clean observable; see <r^2>_n below."
+      },
+      "mean_square_charge_radius": {
+        "value": -0.1161,
+        "uncertainty": 0.0022,
+        "unit": "fm^2",
+        "source": "pdg2024_review",
+        "_note": "<r^2>_n = -0.1161(22) fm^2. The negative sign reflects that the negative-charge cloud (one d quark) extends farther on average than the positive (two u quarks)."
+      },
+      "magnetic_moment": {
+        "value": -1.91304273,
+        "uncertainty": 0.00000045,
+        "unit": "mu_N",
+        "source": "codata2018_constants",
+        "_note": "Neutron magnetic moment."
+      }
+    },
+    "d": {
+      "_aliases": ["deuteron", "2H+"],
+      "description": "Deuteron — bound state of one proton + one neutron, Z=1, A=2",
+      "charge_radius": {
+        "values": [
+          {"value": 2.12562, "uncertainty": 0.00078, "unit": "fm", "source": "pohl2016_muonic_deuterium", "method": "muonic_deuterium_spectroscopy", "_note": "Pohl et al. 2016 Science 353, 669. Analogous to proton-radius puzzle; muonic D yields r_d ~ 2.126 fm."},
+          {"value": 2.12771, "uncertainty": 0.00022, "unit": "fm", "source": "codata2018_constants", "method": "CODATA_2018_deuterium_spectroscopy", "_note": "CODATA-2018 recommended value, derived from H/D isotope-shift spectroscopy."}
+        ],
+        "_note": "Deuteron-radius puzzle analogue to proton-radius puzzle. Tension at the ~3 sigma level depending on which measurements are included."
+      },
+      "magnetic_moment": {
+        "value": 0.857438230,
+        "uncertainty": 0.000000024,
+        "unit": "mu_N",
+        "source": "codata2018_constants"
+      }
+    }
+  }
+}

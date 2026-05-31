@@ -1,0 +1,58 @@
+{
+  "$schema_version": "0.1.0",
+  "$source_revision": {
+    "flag_edition": "2024",
+    "retrieved_at": "2026-05-30T00:00:00Z",
+    "seeded_by_hand": true,
+    "_note": "Initial seed for issue #98. Values transcribed from the FLAG 2024 (Eur. Phys. J. C 84) report's N_f=2+1+1 averages. Adding more quantities is mechanical follow-up PRs."
+  },
+  "quantities": {
+    "m_pi_charged": {
+      "description": "Charged pion mass (FLAG-tabulated lattice-QCD reference)",
+      "value": 139.57039,
+      "uncertainty": 0.00018,
+      "unit": "MeV/c^2",
+      "source": "flag2024_averages",
+      "_note": "FLAG quotes the PDG-experimental value for the pion mass directly as a fundamental input rather than as a lattice-derived quantity; this entry reproduces it for namespace completeness."
+    },
+    "f_pi": {
+      "description": "Charged pion decay constant",
+      "value": 130.2,
+      "uncertainty": 0.8,
+      "unit": "MeV",
+      "source": "flag2024_averages",
+      "_note": "FLAG 2024 N_f=2+1+1 average. Convention f_pi = 130.2(8) MeV (sqrt(2)*F_pi normalisation where F_pi ~ 92 MeV)."
+    },
+    "f_K": {
+      "description": "Charged kaon decay constant",
+      "value": 155.7,
+      "uncertainty": 0.7,
+      "unit": "MeV",
+      "source": "flag2024_averages",
+      "_note": "FLAG 2024 N_f=2+1+1 average."
+    },
+    "f_K_over_f_pi": {
+      "description": "Ratio of kaon to pion decay constants (better-known than either separately due to cancellation of systematics)",
+      "value": 1.1932,
+      "uncertainty": 0.0019,
+      "unit": "dimensionless",
+      "source": "flag2024_averages"
+    },
+    "g_A": {
+      "description": "Nucleon axial-vector charge from lattice QCD",
+      "value": 1.246,
+      "uncertainty": 0.028,
+      "unit": "dimensionless",
+      "source": "flag2024_averages",
+      "_note": "FLAG 2024 N_f=2+1+1 average. The experimental value from neutron beta decay is g_A = 1.2754(13), so the lattice value sits within 1 sigma of experiment but with substantially larger uncertainty — both are reported here for verification consumers; experimental value lives in nuclear.* namespace."
+    },
+    "sigma_piN": {
+      "description": "Pion-nucleon sigma term (light-quark contribution to nucleon mass)",
+      "value": 53,
+      "uncertainty": 9,
+      "unit": "MeV",
+      "source": "flag2024_averages",
+      "_note": "FLAG 2024 N_f=2+1+1 lattice value. Disagrees with the phenomenological (pionic-atom) extraction (~59 MeV) at marginal significance; reflective of an ongoing tension in the hadronic-input community."
+    }
+  }
+}

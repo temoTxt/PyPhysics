@@ -36,6 +36,8 @@ from mcp.server.fastmcp import FastMCP
 from precision_data_mcp.nist.tools import asd, codata, targets
 from precision_data_mcp.pdg.tools import lookup as pdg_lookup
 from precision_data_mcp.qed.tools import lookup as qed_lookup
+from precision_data_mcp.nuclear.tools import lookup as nuclear_lookup
+from precision_data_mcp.flag.tools import lookup as flag_lookup
 
 mcp = FastMCP("precision_data")
 
@@ -206,8 +208,59 @@ def qed_list_observables(species: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Future namespaces — to be registered when their sub-issues land:
-#   nuclear.* + flag.*  (issue #98)
+# nuclear.* namespace (issue #98 — nuclear / particle structure observables)
+# ---------------------------------------------------------------------------
+
+
+@mcp.tool(name="nuclear.get_charge_radius")
+def nuclear_get_charge_radius(nucleus: str, method: str | None = None) -> dict:
+    """Charge-radius value(s) for a nucleus.
+
+    The proton-radius puzzle is the canonical demonstrator of the umbrella's
+    disagreement-representation rule: ``nuclear.get_charge_radius("proton")``
+    returns ALL values (muonic-H, electron-scattering, 1S-3S, PRad, CODATA-pre-puzzle)
+    with method labels, never an averaged "best" value.
+
+    Args:
+        nucleus: ``p``/``proton``, ``n``/``neutron``, ``d``/``deuteron``, ...
+        method: optional method label to select a single value when disambiguation is desired.
+    """
+    return nuclear_lookup.get_charge_radius(nucleus, method=method)
+
+
+@mcp.tool(name="nuclear.get_magnetic_moment")
+def nuclear_get_magnetic_moment(nucleus: str) -> dict:
+    """Nuclear magnetic moment in units of nuclear magnetons."""
+    return nuclear_lookup.get_magnetic_moment(nucleus)
+
+
+@mcp.tool(name="nuclear.list_nuclei")
+def nuclear_list_nuclei() -> list[dict]:
+    """Enumerate seeded nuclei."""
+    return nuclear_lookup.list_nuclei()
+
+
+# ---------------------------------------------------------------------------
+# flag.* namespace (issue #98 — FLAG lattice-QCD averages)
+# ---------------------------------------------------------------------------
+
+
+@mcp.tool(name="flag.get_quantity")
+def flag_get_quantity(quantity_id: str) -> dict:
+    """FLAG-averaged lattice-QCD quantity (e.g. ``f_pi``, ``g_A``, ``sigma_piN``)."""
+    return flag_lookup.get_quantity(quantity_id)
+
+
+@mcp.tool(name="flag.list_quantities")
+def flag_list_quantities() -> list[dict]:
+    """Enumerate seeded FLAG quantities."""
+    return flag_lookup.list_quantities()
+
+
+# ---------------------------------------------------------------------------
+# Future namespaces — deferred per umbrella #92 §Deferred:
+#   astro.*   — GPS clocks, Mercury perihelion, GP-B, Hulse-Taylor, LIGO
+#   cosmo.*   — H_0, CMB, Planck params, BBN
 # ---------------------------------------------------------------------------
 
 
