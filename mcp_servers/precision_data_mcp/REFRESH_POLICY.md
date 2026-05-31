@@ -4,13 +4,27 @@ This file defines the **shared schema** all per-namespace refresh policies exten
 
 Established as part of issue [#92](https://github.com/temoTxt/PyPhysics/issues/92) §Resolved-decisions #6 and the [#99](https://github.com/temoTxt/PyPhysics/issues/99) foundation PR.
 
-## 1. The five guarantees every namespace must satisfy
+## 1. The six guarantees every namespace must satisfy
 
-1. **Every returned value carries `{value, uncertainty, unit, source, retrieved_at, cache_key}`.** The `source` field is a `cite_key` from `Roadmapping/History/Bibliography/`. Free-form URLs / DOIs / verbal descriptions in `source` are forbidden — they bypass Crocco-rule-3 citation verification.
+1. **Every returned value carries `{value, uncertainty, unit, source, retrieved_at, cache_key, value_class, safe_for_model_verification}`.** The `source` field is a `cite_key` from `Roadmapping/History/Bibliography/`. Free-form URLs / DOIs / verbal descriptions in `source` are forbidden — they bypass Crocco-rule-3 citation verification.
 2. **Cache by default; `refresh=True` opt-in.** No tool may make a live external request unless the caller explicitly passes `refresh=True` or the on-disk cache has no entry for the requested `cache_key`. Cached snapshots remain valid indefinitely; staleness is surfaced at the metadata layer, never silently corrected.
 3. **Cached snapshots are flat JSON files under `mcp_servers/precision_data_mcp/<namespace>/cache/`.** No SQLite, no YAML registry, no database backend. The flat-JSON-per-namespace convention matches the existing pattern from `nist_mcp/targets.py` and keeps cache diffs auditable in git for reproducibility.
 4. **Disagreement representation is preserved.** When a quantity has multiple authoritative values from competing methods or independent measurements (proton-radius puzzle, Hubble tension, muon g-2 lattice-vs-experiment), the tool returns *all* values with their `method` / `source` labels — never an averaged "best" value that hides the disagreement.
 5. **Bibliography stubs accompany every cited primary source.** A `cite_key` returned in a `source` field must correspond to an existing file under `Roadmapping/History/Bibliography/{Primary,Retrospective}/`. New sources require scaffolding via `scaffold_bib_note.py` as part of the namespace's PR — citations are never fabricated.
+6. **Theoretical-vs-experimental status is explicit.** Every value carries a `value_class` field placing it on the experimental-vs-theoretical spectrum, plus a derived `safe_for_model_verification` boolean. When unsafe, a `warning` field is auto-attached. Consumers (verification documents, agents) must refuse to use a value with `safe_for_model_verification == False` as the experimental anchor when comparing theoretical predictions — such values are theory comparators only. The taxonomy and the implementation live at [`src/precision_data_mcp/safety.py`](src/precision_data_mcp/safety.py).
+
+### Value-class taxonomy (guarantee 6 detail)
+
+| value_class | safe_for_model_verification | Meaning |
+|---|---|---|
+| `experimental` | **True** | Single-source direct experimental measurement (e.g. Pohl 2010 muonic-H Lamb shift) |
+| `experimental_world_average` | **True** | PDG / equivalent average of multiple independent measurements (e.g. muon mass) |
+| `definitional` | **True** | Convention not a measurement target (e.g. electron charge = -1e, spin = 1/2) |
+| `codata_adjusted` | **False** | CODATA combines experimental + theoretical inputs; do NOT use as anchor for QED / SM tests |
+| `theoretical_lattice_qcd` | **False** | Lattice-QCD calculation (FLAG, BMW); theory comparator only |
+| `theoretical_sm_prediction` | **False** | Perturbative or data-driven SM prediction (Theory Initiative a_mu); theory comparator only |
+| `theoretical_ritz_value` | **False** | Computed from Rydberg formula + theoretical quantum defects (NIST ASD hydrogen levels); not a measurement |
+| `theoretical_calculation` | **False** | Generic theoretical-calculation catch-all; theory comparator only |
 
 ## 2. Cache file layout
 
