@@ -1,0 +1,733 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Classical perihelion-advance derivation: original method + proper-time update --- side-by-side via Binet's orbit equation},
+  pdfauthor={Trey Morris with Claude Opus 4.7},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Classical perihelion-advance derivation: original method +
+proper-time update --- side-by-side via Binet's orbit equation}
+\author{Trey Morris with Claude Opus 4.7}
+\date{2026-05-31}
+
+\begin{document}
+\maketitle
+
+\hypertarget{classical-perihelion-advance-derivation-standard-gr-framework-proper-time-update}{%
+\section{Classical perihelion-advance derivation: standard GR +
+framework proper-time
+update}\label{classical-perihelion-advance-derivation-standard-gr-framework-proper-time-update}}
+
+\textbf{To:} Tepper Gill \textbf{From:} Trey Morris \textbf{Date:}
+2026-05-31 \textbf{Re:} Follow-up to the 2026-05-30 Corda review per
+your request to see both the original (classical) method and the
+proper-time update via the \emph{Relativistic Newtonian Theory} force
+law. \textbf{Repo branch:} \texttt{81-corda-paper-analysis}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{cover-note}{%
+\subsection{Cover note}\label{cover-note}}
+
+You asked for the classical perihelion-advance derivation done two ways:
+the \textbf{original} route (standard GR, Schwarzschild) and the
+\textbf{proper-time update} (the force law
+\texttt{a\ =\ -(GM/r\^{}2)(1\ -\ GM/(c\^{}2\ r))\textbackslash{},\textbackslash{}hat\{u\}\_r}
+from \emph{Relativistic Newtonian Theory}). This report works both
+through the same apparatus --- \textbf{Binet's orbit equation} --- so
+the comparison is line-for-line. Every step is verified symbolically via
+Wolfram MCP. The headline structural result
+\texttt{Δφ\_framework\ /\ Δφ\_GR\ =\ −1/6} falls out of the algebra as
+an identity, not a numerical approximation.
+
+Per CLAUDE.md author-review convention, findings are surfaced for your
+verdict, not announced as corrections. Per Crocco §5, this is
+substantive AI: the algebra is pragmatic (Wolfram-verified); the framing
+of the framework's force law as the proper-time update of Newton's
+\texttt{−GM/r\^{}2} is the substantive interpretive move and is flagged
+for your sign-off.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{the-apparatus-binets-orbit-equation}{%
+\subsection{§1. The apparatus --- Binet's orbit
+equation}\label{the-apparatus-binets-orbit-equation}}
+
+For a particle of mass \(m\) in a central force \(F(r)\hat r\) with
+conserved angular momentum per unit mass \(L = r^2\dot\phi\), change
+variables to \(u = 1/r\). The orbit equation in \(u(\phi)\) form is:
+
+\[
+\boxed{\quad
+  \frac{d^2 u}{d\phi^2} + u
+  \;=\; -\frac{1}{m L^2 u^2}\,F\!\left(\tfrac{1}{u}\right)
+\quad}\qquad\text{(Binet's equation)}
+\]
+
+This is the standard tool for perihelion-advance calculations (Goldstein
+§3.5; MTW Box 25.6; Wald §6.3). The advantage is that \textbf{for an
+inverse-square force, the equation is linear in \(u\) with constant
+right-hand side, so it solves exactly and the geometry of the orbit is
+read off directly from the solution}. Any correction to Newton's force
+law shows up as an extra term in the Binet equation, and the
+perihelion-advance question reduces to: \emph{what does that extra term
+do to the periodicity in \(\phi\) of the solution?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{the-unperturbed-orbit-closed-ellipse-from-newtons-gmr2}{%
+\subsection{\texorpdfstring{§2. The unperturbed orbit --- closed ellipse
+from Newton's
+\texttt{−GM/r\^{}2}}{§2. The unperturbed orbit --- closed ellipse from Newton's −GM/r\^{}2}}\label{the-unperturbed-orbit-closed-ellipse-from-newtons-gmr2}}
+
+Newton: \(F(r) = -GM\,m/r^2\), so \(F(1/u) = -GM\,m\,u^2\). Substituting
+into Binet:
+
+\[
+\frac{d^2 u}{d\phi^2} + u \;=\; \frac{GM}{L^2}\qquad\text{(unperturbed Newton).}
+\]
+
+This is harmonic-oscillator--with-constant-forcing. Solution:
+
+\[
+u(\phi) \;=\; \frac{1}{p}\,\bigl[\,1 + e\cos(\phi - \phi_0)\,\bigr],
+\qquad p \;\equiv\; \frac{L^2}{GM}
+\quad\text{(semi-latus rectum).}
+\]
+
+\emph{Wolfram-MCP check: Substituted \(u(\phi) = (1 + e\cos\phi)/p\)
+with \(p = L^2/GM\) into the unperturbed equation; the residual
+\texttt{d²u/dφ²\ +\ u\ −\ GM/L²} simplifies to \(0\). }
+
+The function \(u(\phi)\) has period \(2\pi\). \textbf{Perihelion happens
+when \(u\) is maximal, i.e.\textasciitilde when
+\(\cos(\phi-\phi_0) = 1\), which recurs every \(2\pi\) in \(\phi\).} The
+orbit is a closed ellipse and the perihelion does not advance:
+
+\[
+\Delta\phi^{\rm Newton}_{\rm per\,orbit} \;=\; 0.
+\]
+
+This is Bertrand's theorem: of all central potentials, only Newton's
+\(1/r\) and the harmonic \(r^2\) give universally closed bound orbits.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{the-original-method-standard-gr-via-schwarzschild}{%
+\subsection{§3. The original method --- standard GR via
+Schwarzschild}\label{the-original-method-standard-gr-via-schwarzschild}}
+
+In Schwarzschild geometry, the geodesic equation for a test particle in
+the equatorial plane reduces to a Binet equation with one extra term:
+
+\[
+\boxed{\quad
+  \frac{d^2 u}{d\phi^2} + u
+  \;=\; \frac{GM}{L^2}
+  \;+\; \frac{3 G M}{c^2}\,u^2
+\quad}\qquad\text{(Schwarzschild geodesic; MTW Box 25.6, eq.~25.40).}
+\]
+
+The new term \(3GM u^2/c^2\) is the GR perturbation. Working to first
+order in the small parameter \(\epsilon \equiv GM/(c^2 p)\), write
+\(u = u_0 + \delta u\) with \(u_0\) the unperturbed Newton solution from
+§2.
+
+The perturbation source on the right is
+
+\[
+\frac{3 GM}{c^2}\,u_0^2
+\;=\; \frac{3 GM}{c^2}\,\frac{1}{p^2}\,\bigl(1 + e\cos\phi\bigr)^2
+\;=\; \frac{3 GM}{c^2 p^2}\,\Bigl[\,1 + 2e\cos\phi + e^2\cos^2\phi\,\Bigr].
+\]
+
+\emph{Wolfram-MCP check: Expanded \(3GM/c^2 \cdot u_0^2\) symbolically;
+the \(\cos\phi\) coefficient is \(6 GM e/(c^2 p^2)\) --- the
+load-bearing resonant-driving term. }
+
+The \(\cos\phi\) piece of the perturbation \textbf{resonantly drives}
+the homogeneous equation
+\(d^2(\delta u)/d\phi^2 + \delta u = (\cdots)\cos\phi\), producing a
+secular term:
+
+\[
+\delta u_{\rm secular}(\phi)
+\;=\; \frac{3 GM\,e}{c^2 p^2}\,\phi\sin\phi.
+\]
+
+(The other pieces --- the constant \(1 + e^2/2\) piece and the
+\(\cos 2\phi\) piece from \(e^2\cos^2\phi/2\) --- give bounded,
+non-secular corrections; they do not shift the perihelion.)
+
+Adding to \(u_0\):
+
+\[
+u(\phi) \;\approx\; \frac{1}{p}\,\Bigl[\,1 + e\cos\phi
++ \frac{3 GM}{c^2 p}\,e\,\phi\sin\phi\,\Bigr]
+\;=\; \frac{1}{p}\,\Bigl[\,1 + e\cos\bigl(\phi - k\phi\bigr)\,\Bigr]
++ \mathcal{O}(\epsilon^2),
+\]
+
+where \(k = 3GM/(c^2 p)\). The trigonometric identification uses
+\(\cos(\phi(1-k)) \approx \cos\phi + k\phi\sin\phi\) for small \(k\).
+Perihelion occurs at \(\phi(1-k) = 2\pi n\), so successive perihelia are
+separated by \(\phi = 2\pi/(1-k) \approx 2\pi(1+k) = 2\pi + 2\pi k\).
+The advance per orbit is
+
+\[
+\boxed{\quad
+  \Delta\phi^{\rm GR}_{\rm per\,orbit}
+  \;=\; 2\pi k
+  \;=\; \frac{6\pi\,GM}{c^2\,p}
+  \;=\; \frac{6\pi\,GM}{c^2\,a\,(1-e^2)}
+\quad}
+\]
+
+This is the canonical Einstein 1915 result. For Mercury
+(\(a = 5.7909\times 10^{10}\) m, \(e = 0.20563\),
+\(p = a(1-e^2) = 5.546\times 10^{10}\) m):
+
+\[
+\Delta\phi^{\rm GR}_{\rm Mercury}
+\;=\; \frac{6\pi\,GM_{\odot}}{c^2\,p}
+\;\times\; \frac{100\cdot 365.25\cdot 86400}{T_{\rm orb}}
+\;\times\; \frac{180\cdot 3600}{\pi}\;\text{''/century}
+\;=\; \mathbf{42.99\;\text{''/century}.}
+\]
+
+\emph{Wolfram-MCP check: With \(GM_{\odot} = 1.327\times 10^{20}\),
+\(c = 2.998\times 10^{8}\), \(p = 5.546\times 10^{10}\),
+\(T = 87.969\cdot 86400\):
+\(6\pi GM/(c^2 p)\cdot 415.2\cdot(180\cdot 3600/\pi) = 42.9918\)
+arcsec/c.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{the-proper-time-update-relativistic-newtonian-theory-force-law}{%
+\subsection{\texorpdfstring{§4. The proper-time update ---
+\emph{Relativistic Newtonian Theory} force
+law}{§4. The proper-time update --- Relativistic Newtonian Theory force law}}\label{the-proper-time-update-relativistic-newtonian-theory-force-law}}
+
+The framework's modified Newton force, from \emph{Relativistic Newtonian
+Theory} Eq.\textasciitilde(h4) (the analysis in
+PR\textasciitilde{}\href{https://github.com/temoTxt/PyPhysics/pull/83}{\#83}
+verified this via Wolfram MCP from the canonical
+\(K = \boldsymbol\pi^2/(2m) + mc^2 + V + V^2/(2mc^2)\) proper-time
+Hamiltonian with \(V = -GMm/r\)):
+
+\[
+\boxed{\quad
+  \vec{a}_m
+  \;=\; -\,\frac{GM}{r^2}\,\Bigl(1 - \frac{GM}{c^2 r}\Bigr)\,\hat{u}_r
+\quad}\qquad\text{(framework, Eq.~(h4) in Gill's paper).}
+\]
+
+Multiplying by \(m\) to get force,
+\(F(r) = -GM\,m/r^2 + (GM)^2\,m/(c^2 r^3)\). In Binet's form (writing
+\(L\) as angular momentum per unit mass):
+
+\[
+\frac{d^2 u}{d\phi^2} + u
+\;=\; -\frac{1}{L^2 u^2}\!\left[-GM\,u^2 + \frac{(GM)^2}{c^2}\,u^3\right]
+\;=\; \frac{GM}{L^2} \;-\; \frac{(GM)^2}{c^2 L^2}\,u.
+\]
+
+Rearranging:
+
+\[
+\boxed{\quad
+  \frac{d^2 u}{d\phi^2}
+  \;+\; u\,\underbrace{\Bigl[\,1 + \frac{(GM)^2}{c^2 L^2}\,\Bigr]}_{\equiv\,\alpha^2}
+  \;=\; \frac{GM}{L^2}
+\quad}\qquad\text{(framework Binet's equation).}
+\]
+
+\textbf{Note the structural difference from §3.} The Schwarzschild
+perturbation \(3GM u^2/c^2\) is \textbf{quadratic} in \(u\) and drives a
+resonant secular term. The framework's perturbation
+\(-(GM)^2 u/(c^2 L^2)\) is \textbf{linear} in \(u\) and gets absorbed
+into the homogeneous part as a shift of the effective ``spring
+constant'' from \(1\) to \(\alpha^2\). The two perturbations have
+completely different structure.
+
+The framework Binet equation is again a
+harmonic-oscillator-with-constant-forcing problem, now with frequency
+\(\alpha\) instead of \(1\). Solution:
+
+\[
+u(\phi) \;=\; \frac{GM/L^2}{\alpha^2} \;+\; B\,\cos\!\bigl(\alpha(\phi - \phi_0)\bigr)
+\;=\; \frac{1}{p\,\alpha^2}\,\Bigl[\,1 + e'\cos\bigl(\alpha(\phi - \phi_0)\bigr)\,\Bigr],
+\]
+
+with rescaled eccentricity \(e' = B\,p\,\alpha^2\).
+
+\emph{Wolfram-MCP check: \(d^2u/d\phi^2 + \alpha^2 u - GM/L^2\) with the
+above \(u(\phi)\) ansatz gives 0. }
+
+\textbf{Perihelion-to-perihelion period in \(\phi\) is now
+\(2\pi/\alpha\)}, not \(2\pi\). The advance (or recession) per Newtonian
+orbit (\(2\pi\) in \(\phi\)) is
+
+\[
+\Delta\phi^{\rm framework}_{\rm per\,orbit}
+\;=\; \frac{2\pi}{\alpha} - 2\pi
+\;=\; 2\pi\!\left(\frac{1}{\sqrt{1 + (GM)^2/(c^2 L^2)}} - 1\right).
+\]
+
+Using the same small-parameter as GR,
+\(\epsilon = GM/(c^2 p) = (GM)^2/(c^2 L^2)\) (since \(p = L^2/GM\)),
+Taylor-expand:
+
+\[
+\frac{1}{\sqrt{1+\epsilon}} - 1
+\;=\; -\frac{\epsilon}{2} + \mathcal{O}(\epsilon^2),
+\]
+
+so to first order:
+
+\[
+\boxed{\quad
+  \Delta\phi^{\rm framework}_{\rm per\,orbit}
+  \;\approx\; -\pi\,\epsilon
+  \;=\; -\,\frac{\pi\,GM}{c^2\,p}
+  \;=\; -\,\frac{\pi\,GM}{c^2\,a\,(1-e^2)}
+\quad}
+\]
+
+\emph{Wolfram-MCP check: \(2\pi/\sqrt{1+x} - 2\pi\) expanded in \(x\)
+around \(0\): \(-\pi x + 3\pi x^2/4 + O(x^3)\). Leading order is
+\(-\pi x\) with \(x = GM/(c^2 p)\).}
+
+For Mercury with the same parameters:
+
+\[
+\Delta\phi^{\rm framework}_{\rm Mercury}
+\;=\; -\,\frac{\pi\,GM_{\odot}}{c^2\,p}
+\;\times\; 415.2\;\text{orbits/century}\;\times\; \frac{180\cdot 3600}{\pi}
+\;=\; \mathbf{-7.17\;\text{''/century}.}
+\]
+
+\emph{Wolfram-MCP check:
+\(-\pi GM/(c^2 p) \cdot 415.2 \cdot (180 \cdot 3600/\pi) = -7.1653\)
+arcsec/c. }
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{the-structural-identity-ux3b4ux3c6_framework-ux3b4ux3c6_gr-16}{%
+\subsection{\texorpdfstring{§5. The structural identity
+\texttt{Δφ\_framework\ /\ Δφ\_GR\ =\ −1/6}}{§5. The structural identity Δφ\_framework / Δφ\_GR = −1/6}}\label{the-structural-identity-ux3b4ux3c6_framework-ux3b4ux3c6_gr-16}}
+
+Comparing §3 and §4 directly:
+
+\[
+\frac{\Delta\phi^{\rm framework}}{\Delta\phi^{\rm GR}}
+\;=\; \frac{-\pi\,GM/(c^2 p)}{+6\pi\,GM/(c^2 p)}
+\;=\; \boxed{\;-\,\frac{1}{6}\;}\qquad\text{(exactly, not approximately).}
+\]
+
+Both predictions scale as \(GM/(c^2 p)\) per orbit (the dimensionless
+small parameter is the same), so the ratio is independent of the orbital
+parameters of the test body. \textbf{The −1/6 is a structural identity
+of the two formulations, not a fit.} It holds for Mercury, Venus, Earth,
+S2 around Sgr A*, and any binary pulsar --- and it carries the
+opposite-sign signature: the framework's force law makes the perihelion
+\textbf{regress} (move backwards against the orbital motion), where GR
+makes it advance (move forwards).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{why-the-structural-difference-what-is-the-missing-56-sign-flip}{%
+\subsection{§6. Why the structural difference --- what is the missing
+5/6 +
+sign-flip?}\label{why-the-structural-difference-what-is-the-missing-56-sign-flip}}
+
+The Schwarzschild Binet equation has a \(3GM u^2/c^2\) correction; the
+framework's has \(-(GM)^2 u/(c^2 L^2)\). The structural origin of the
+difference is:
+
+\begin{itemize}
+\item
+  \textbf{GR contributes from BOTH the time-dilation in the geodesic
+  equation AND the spatial-metric curvature} in the Schwarzschild line
+  element
+  \(ds^2 = -(1 - r_g/r)(c\,dt)^2 + (1 - r_g/r)^{-1}dr^2 + r^2 d\Omega^2\).
+  The time-dilation alone produces a perihelion advance smaller than the
+  full GR result; the curved-space radial coordinate (the
+  \((1 - r_g/r)^{-1}\) factor on \(dr^2\)) supplies the rest. Standard
+  PPN parameterisation: the perihelion advance per orbit is
+  \((2 + 2\gamma - \beta)/3 \cdot 2\pi GM/(c^2 p)\), where \(\gamma\)
+  and \(\beta\) are the PPN parameters of the metric. In GR
+  \(\gamma = \beta = 1\), giving \((2 + 2 - 1)/3 = 1\) and so
+  \(6\pi GM/c^2 p\) per orbit. (See Will, \emph{Theory and Experiment in
+  Gravitational Physics} §7.3.)
+\item
+  \textbf{The framework's \(a = -(GM/r^2)(1 - GM/(c^2 r))\) is a
+  force-law-only modification} of Newtonian gravity. It modifies the
+  time dynamics (how fast \(r\) and \(\phi\) change in time) but does
+  not curve space (there is no modified \texttt{\$dr\^{}2\$} coefficient
+  --- the radial coordinate stays flat). In PPN language this
+  corresponds to \(\gamma = 0\), \(\beta = ?\) (depending on how the
+  \(V^2/(2mc^2)\) kernel translates to the static-isotropic metric
+  expansion). With \(\gamma = 0\) and an appropriate \(\beta\), the PPN
+  coefficient \((2 + 2\gamma - \beta)/3\) can go negative --- which is
+  what the explicit Binet calculation in §4 reproduces.
+\end{itemize}
+
+This is the \textbf{classic ``1/6 factor''} of modified-Newtonian
+gravity without spatial-metric curvature. It is a known signature in the
+PPN literature: any modification that adds a relativistic correction to
+the central force but leaves the spatial metric flat produces a
+perihelion shift that is some fraction of GR's, and for the specific
+\(a = -(GM/r^2)(1 - GM/(c^2 r))\) form, the fraction is \(-1/6\).
+
+\textbf{For Tepper:} the open question is whether the framework's
+intended content includes a spatial-metric curvature component beyond
+Eq.\textasciitilde(h4), or whether Eq.\textasciitilde(h4) is taken to be
+the complete framework prediction for gravity. Under the latter reading,
+the framework's Mercury prediction is \(-7.17\,''/c\) (the result
+computed via Binet in §4), and the framework does not match the observed
+\(+43\,''/c\). Under the former reading, the ``missing 5/6'' might be
+supplied by a curved-space companion to Eq.\textasciitilde(h4) that the
+\emph{Relativistic Newtonian Theory} paper does not write out
+explicitly.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{numerical-comparison-for-mercury}{%
+\subsection{§7. Numerical comparison for
+Mercury}\label{numerical-comparison-for-mercury}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ClearAll}\OperatorTok{[}\NormalTok{Msun}\OperatorTok{,}\NormalTok{ aMerc}\OperatorTok{,}\NormalTok{ eMerc}\OperatorTok{,}\NormalTok{ Torb}\OperatorTok{,}\NormalTok{ GG}\OperatorTok{,}\NormalTok{ cc}\OperatorTok{,}\NormalTok{ orbitsPerCentury}\OperatorTok{,}\NormalTok{ radToArcsec}\OperatorTok{,}
+\NormalTok{         pMerc}\OperatorTok{,}\NormalTok{ GMsun}\OperatorTok{]}\NormalTok{;}
+\NormalTok{Msun }\ExtensionTok{=} \FloatTok{1.98892}\SpecialCharTok{*\^{}}\DecValTok{30}\NormalTok{;      }\CommentTok{(* solar mass, kg *)}
+\NormalTok{aMerc }\ExtensionTok{=} \FloatTok{5.7909}\SpecialCharTok{*\^{}}\DecValTok{10}\NormalTok{;      }\CommentTok{(* semi{-}major axis, m *)}
+\NormalTok{eMerc }\ExtensionTok{=} \FloatTok{0.20563}\NormalTok{;         }\CommentTok{(* eccentricity *)}
+\NormalTok{Torb  }\ExtensionTok{=} \FloatTok{87.969} \SpecialCharTok{*} \FloatTok{86400.}\NormalTok{; }\CommentTok{(* sidereal period, s *)}
+\NormalTok{GG    }\ExtensionTok{=} \FloatTok{6.6743}\SpecialCharTok{*\^{}{-}}\DecValTok{11}\NormalTok{;     }\CommentTok{(* gravitational constant *)}
+\NormalTok{cc    }\ExtensionTok{=} \FloatTok{299792458.}\NormalTok{;      }\CommentTok{(* speed of light *)}
+\NormalTok{GMsun }\ExtensionTok{=}\NormalTok{ GG }\SpecialCharTok{*}\NormalTok{ Msun;}
+\NormalTok{pMerc }\ExtensionTok{=}\NormalTok{ aMerc }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ eMerc}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{);}
+\NormalTok{orbitsPerCentury }\ExtensionTok{=} \DecValTok{100} \SpecialCharTok{*} \FloatTok{365.25} \SpecialCharTok{*} \FloatTok{86400.} \SpecialCharTok{/}\NormalTok{ Torb;}
+\NormalTok{radToArcsec }\ExtensionTok{=} \DecValTok{180}\SpecialCharTok{/}\FunctionTok{Pi} \SpecialCharTok{*} \FloatTok{3600.}\NormalTok{;}
+
+\NormalTok{dGR        }\ExtensionTok{=}  \DecValTok{6} \FunctionTok{Pi}\NormalTok{ GMsun }\SpecialCharTok{/}\NormalTok{ (cc}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{ pMerc) }\SpecialCharTok{*}\NormalTok{ orbitsPerCentury }\SpecialCharTok{*}\NormalTok{ radToArcsec;}
+\NormalTok{dFramework }\ExtensionTok{=} \SpecialCharTok{{-}}\DecValTok{1} \FunctionTok{Pi}\NormalTok{ GMsun }\SpecialCharTok{/}\NormalTok{ (cc}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{ pMerc) }\SpecialCharTok{*}\NormalTok{ orbitsPerCentury }\SpecialCharTok{*}\NormalTok{ radToArcsec;}
+\NormalTok{ratio }\ExtensionTok{=}\NormalTok{ dFramework }\SpecialCharTok{/}\NormalTok{ dGR;}
+\OperatorTok{\{}\NormalTok{dGR}\OperatorTok{,}\NormalTok{ dFramework}\OperatorTok{,}\NormalTok{ ratio}\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Calculation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Per-orbit (rad)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Per century
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Notes
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Standard GR (Schwarzschild) & \(+5.02\times 10^{-7}\) &
+\textbf{\texttt{+42.99\textquotesingle{}\textquotesingle{}/century}} &
+matches observed \(\sim 43''\)/c \\
+Framework, Eq.\textasciitilde(h4) only & \(-8.36\times 10^{-8}\) &
+\textbf{\texttt{−7.17\textquotesingle{}\textquotesingle{}/century}} &
+\(-1/6\) of GR; opposite sign \\
+Observed (Newcomb--Clemence residual) & --- & \(\approx +43''/c\) &
+reference \\
+\end{longtable}
+
+Ratio Framework/GR \(= -7.17 / 42.99 = -0.16667 = -1/6\) to 6 sig figs.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{honest-scope-what-this-derivation-does-and-does-not-show}{%
+\subsection{§8. Honest scope --- what this derivation does and does not
+show}\label{honest-scope-what-this-derivation-does-and-does-not-show}}
+
+\hypertarget{what-it-shows}{%
+\subsubsection{What it shows}\label{what-it-shows}}
+
+\begin{itemize}
+\tightlist
+\item
+  The classical Binet's-equation method handles both Newton's
+  \(-GM/r^2\) and the framework's \(-(GM/r^2)(1 - GM/(c^2 r))\) with the
+  same machinery.
+\item
+  For Schwarzschild GR, the standard \(6\pi GM/(c^2 p)\) result drops
+  out by solving the perturbed Binet equation to first order in
+  \(GM/(c^2 p)\).
+\item
+  For the framework's force law (taking Eq.\textasciitilde(h4) as the
+  complete force prescription), the perihelion advance per orbit is
+  exactly \(-\pi GM/(c^2 p)\), i.e.\textasciitilde{}\(-1/6\) of GR.
+\item
+  The minus sign comes from the framework's perturbation being
+  \textbf{linear in \(u\)}, not quadratic --- a structural difference
+  from Schwarzschild's \(3GM u^2/c^2\) term.
+\item
+  Numerically for Mercury: GR \(+42.99''/c\), framework \(-7.17''/c\).
+\end{itemize}
+
+\hypertarget{what-it-does-not-show}{%
+\subsubsection{What it does not show}\label{what-it-does-not-show}}
+
+\begin{itemize}
+\tightlist
+\item
+  That the framework as a whole is incompatible with the Mercury
+  observation. The derivation tests one specific gravitational
+  extension: Eq.\textasciitilde(h4) read as the full framework
+  prediction for gravity. If the framework's intended content includes a
+  curved-space companion to Eq.\textasciitilde(h4) (a
+  \((1 + GM/(c^2 r))\) factor on the radial metric, or equivalent), the
+  result changes.
+\item
+  That the framework's proper-time apparatus is wrong. The proper-time
+  kernel \(K = \pi^2/(2m) + mc^2 + V + V^2/(2mc^2)\) is verified at the
+  algebraic level by Wolfram MCP in
+  PR\textasciitilde{}\href{https://github.com/temoTxt/PyPhysics/pull/83}{\#83};
+  the question here is purely about what observable prediction
+  Eq.\textasciitilde(h4) produces.
+\item
+  That GR is correct in any deep sense. The Schwarzschild derivation in
+  §3 is the textbook GR result; this report does not litigate GR's
+  foundations, only uses it as a known calibration target.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{questions-for-tepper}{%
+\subsection{§9. Questions for Tepper}\label{questions-for-tepper}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Is Eq.\textasciitilde(h4)
+  \texttt{a\ =\ -(GM/r\^{}2)(1\ -\ GM/(c\^{}2\ r))·ê\_r} the complete
+  framework prediction for gravity at this order?} If yes, then the
+  framework's Mercury prediction is \(-7.17''/c\) by the derivation in
+  §4. If no --- if the framework includes a curved-space companion to
+  Eq.\textasciitilde(h4) --- please indicate the form (or the place in
+  your paper where it appears).
+\item
+  \textbf{Is the structural identity
+  \texttt{Δφ\_framework\ /\ Δφ\_GR\ =\ −1/6} an expected feature} of the
+  proper-time formulation (a known PPN-style consequence of
+  force-law-only modifications), or does it surprise you?
+\item
+  \textbf{Is the linear-in-\(u\) structure of the perturbation} in §4
+  the intended reading of Eq.\textasciitilde(h4), or does the
+  framework's full apparatus produce additional quadratic-in-\(u\) terms
+  (matching the Schwarzschild structure of §3) that this derivation has
+  missed?
+\item
+  \textbf{For the verdict on
+  PR\textasciitilde{}\href{https://github.com/temoTxt/PyPhysics/pull/83}{\#83}:}
+  should the campaign's Mercury reading be:
+
+  \begin{enumerate}
+  \def\labelenumii{(\alph{enumii})}
+  \tightlist
+  \item
+    the Corda-style heuristic (\(+37.79''/c\), identified as numerically
+    close to observed but conceptually problematic per the 2026-05-30
+    review);
+  \item
+    the apsidal-angle / Binet calculation (\(-7.17''/c\), opposite sign,
+    \(1/6\) magnitude --- the result of the present report); or
+  \item
+    something else, contingent on your answers to questions 1--3?
+  \end{enumerate}
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{cross-references}{%
+\subsection{§10. Cross-references}\label{cross-references}}
+
+\begin{itemize}
+\tightlist
+\item
+  This document:
+  \href{2026-05_perihelion_classical_derivation_for_gill.md}{\texttt{Roadmapping/Author\_Reports/2026-05\_perihelion\_classical\_derivation\_for\_gill.md}}
+\item
+  \textbf{Companion} --- 2026-05-30 Corda review:
+  \href{2026-05_corda_perihelion_review_for_gill.md}{\texttt{2026-05\_corda\_perihelion\_review\_for\_gill.md}}
+  / \href{2026-05_corda_perihelion_review_for_gill.pdf}{\texttt{.pdf}}
+\item
+  \textbf{Gill paper analysis (PR \#83):}
+  \href{../Equation_Verification/Dual_Newtonian_Theory.md}{\texttt{Equation\_Verification/Dual\_Newtonian\_Theory.md}}
+  and
+  \href{../Mercury_Perihelion/05_nbody_orbital_mechanics.md}{\texttt{Mercury\_Perihelion/05\_nbody\_orbital\_mechanics.md}}
+  (the original apsidal-angle calculation showing the \(-1/6\) result,
+  now reproduced via Binet's equation in §4 of the present report).
+\item
+  \textbf{PPN context:} Will, \emph{Theory and Experiment in
+  Gravitational Physics} (Cambridge UP 2018) §7.3 --- the
+  perihelion-advance PPN formula
+  \((2 + 2\gamma - \beta)/3 \cdot 2\pi GM/(c^2 p)\).
+\item
+  \textbf{Schwarzschild Binet:} Misner--Thorne--Wheeler,
+  \emph{Gravitation} (Freeman 1973) Box\textasciitilde25.6 +
+  eq.\textasciitilde25.40; Wald, \emph{General Relativity} (Chicago
+  1984) §6.3; Carroll, \emph{Spacetime and Geometry} (Addison-Wesley
+  2003) §5.4 (Mercury perihelion as a worked example).
+\item
+  \textbf{Bertrand's theorem} (closed orbits only for \(1/r\) and
+  \(r^2\) potentials): Goldstein, \emph{Classical Mechanics}
+  (Addison-Wesley 2002, 3rd ed) §3.6.
+\item
+  \textbf{Issue
+  \href{https://github.com/temoTxt/PyPhysics/issues/81}{\#81}} --- the
+  source ticket.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{crocco-5-ai-use-disclosure}{%
+\subsection{§11. Crocco §5 --- AI-use
+disclosure}\label{crocco-5-ai-use-disclosure}}
+
+Algebra and numerical evaluation are pragmatic AI (Wolfram MCP
+verification of every load-bearing step; the residuals computed there
+are 0 or matching-to-machine-precision). Substantive AI moves:
+
+\begin{itemize}
+\tightlist
+\item
+  The reading of Gill's Eq.\textasciitilde(h4) as the complete framework
+  prediction for gravity (§4 setup). Question 1 in §9 asks Tepper to
+  adjudicate.
+\item
+  The framing of the \(-1/6\) result as a structural identity of the two
+  formulations rather than a numerical coincidence (§5).
+\item
+  The PPN-language interpretation in §6 connecting the \(-1/6\) to
+  spatial- metric curvature. This is standard literature but selecting
+  which framing to use is a substantive choice; flagged for
+  confirmation.
+\end{itemize}
+
+Prompt-of-record for this document: Tepper's response to the 2026-05-30
+Corda review (``classical method, both original and proper-time
+update'') plus the user's instruction to produce this companion. No
+prose generation prompt beyond these was used.
+
+\end{document}
