@@ -1,3 +1,7 @@
+---
+title: "Corda (2021) 'The secret of planets' perihelion between Newton and Einstein' — math + physical-intuition check for the *Relativistic Newtonian Theory* foundations"
+---
+
 # Author-review report: Corda (2021) "The secret of planets' perihelion between Newton and Einstein" — math + physical-intuition check
 
 **To:** Tepper Gill (DRQM I + *Relativistic Newtonian Theory* senior author)

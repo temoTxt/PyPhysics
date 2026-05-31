@@ -29,8 +29,8 @@ set -euo pipefail
 # ----------------------------------------------------------------------
 # Configuration
 
-PAGE_MIN=3
-PAGE_MAX=7
+PAGE_MIN="${PAGE_MIN:-3}"            # override with PAGE_MIN=N
+PAGE_MAX="${PAGE_MAX:-7}"            # override with PAGE_MAX=N (long verification reports)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PINNED_DATE="${REPORT_DATE:-$(date -u +%Y-%m-%d)}"   # override with REPORT_DATE=YYYY-MM-DD
 
@@ -84,7 +84,16 @@ perl -CSD -0777 -pe '
   s/\x{2705}/[OK]/g;        # U+2705 white heavy check mark
   s/\x{26A0}/[warn]/g;      # U+26A0 warning sign
   s/\x{1F534}/[X]/g;        # U+1F534 large red circle
+  s/\x{1F7E1}/[partial]/g;  # U+1F7E1 large yellow circle
   s/\x{274C}/[X]/g;         # U+274C cross mark
+  # Primes (arcsec / arcmin marks); use \x27 (ASCII apostrophe) hex escape so the
+  # replacement does not break out of the surrounding bash single quote.
+  s/\x{2032}/\x27/g;        # U+2032 PRIME (arcmin)
+  s/\x{2033}/\x27\x27/g;    # U+2033 DOUBLE PRIME (arcsec)
+  s/\x{2034}/\x27\x27\x27/g;# U+2034 TRIPLE PRIME
+  # Logical implication / arrows
+  s/\x{21D2}/=>/g;          # U+21D2 RIGHTWARDS DOUBLE ARROW (⇒)
+  s/\x{21D0}/<=/g;          # U+21D0 LEFTWARDS DOUBLE ARROW (⇐)
   # Superscripts -> ASCII ^N (renders as literal ^N in \texttt{} contexts, OK)
   s/\x{2070}/^0/g; s/\x{00B9}/^1/g; s/\x{00B2}/^2/g; s/\x{00B3}/^3/g;
   s/\x{2074}/^4/g; s/\x{2075}/^5/g; s/\x{2076}/^6/g; s/\x{2077}/^7/g;
