@@ -1,7 +1,7 @@
 {
   "$schema_version": "0.2.0",
   "$source_revision": {
-    "data_revision": "2026-05-31-h-spectroscopy",
+    "data_revision": "2026-05-31-li2-middle-z",
     "retrieved_at": "2026-05-31T00:00:00Z",
     "seeded_by_hand": true,
     "_note": "0.2.0 schema bump: every value entry now carries a value_class field per the umbrella safety-flag enforcement PR. 2026-05-31-h-spectroscopy revision: hydrogen-spectroscopy seed extension per issue #108 — adds 5 directly-measured H transitions (Lundeen-Pipkin 1981 RF, Parthey 2010 1S-2S H-D isotope shift, Fleurbaey 2018 1S-3S, Beyer 2017 2S-4P1/2, de Beauvoir 1997 2S-8S1/2). Numeric values use the canonical figures published in each primary source; specific digits should be cross-checked against the published paper by a human before flipping the corresponding bib stub's human_reviewed flag."
@@ -163,7 +163,7 @@
     },
     "Li III": {
       "_aliases": ["Li2+", "lithium-2+", "hydrogenic-lithium"],
-      "description": "Hydrogenic lithium ion (Li^2+, one electron bound to Z=3 nucleus). Issue #78 target.",
+      "description": "Hydrogenic lithium ion (Li^2+, one electron bound to Z=3 nucleus). Issue #78 + #82 target.",
       "hyperfine": {
         "1s2S1/2": {
           "value": 11890.018,
@@ -172,6 +172,64 @@
           "source": "beckert2007_li2_hyperfine",
           "value_class": "experimental",
           "_note": "Beckert et al. 2007 Phys. Rev. Lett. 98, 233003 — ESR storage-ring measurement."
+        }
+      },
+      "lamb_shifts": {
+        "2S1/2-2P1/2": {
+          "value": 62765,
+          "uncertainty": 21,
+          "unit": "MHz",
+          "source": "schiffer1995_li2_lamb_shift",
+          "value_class": "experimental",
+          "_note": "Schiffer et al. 1995 Phys. Rev. Lett. 74, 2188. The canonical Li²⁺ Lamb-shift measurement cited in issue #78. Subsequent refinements exist; the Schiffer 1995 value is the reference anchor for the Bethe-Salpeter Z-extension campaign. Specific digits should be verified against the published paper before human_reviewed: true."
+        }
+      },
+      "fine_structure": {
+        "2P3/2-2P1/2": {
+          "value": 7367,
+          "uncertainty": 1,
+          "unit": "MHz",
+          "source": "riis1994_li2_fine_structure",
+          "value_class": "experimental",
+          "_note": "Riis-Sinclair-Poulsen-Drake-Levine-Pinnington 1994 Phys. Rev. A 49, 207. Precision-spectroscopy extraction of the Li²⁺ 2P fine-structure interval. Value seeded conservatively at 7367 ± 1 MHz reflecting the issue #78 quoted approximation; specific digits should be verified against the published paper before human_reviewed: true."
+        }
+      },
+      "g_factor_bound_electron": {
+        "1s2S1/2": {
+          "value": 2.0000251707,
+          "uncertainty": 1.0e-9,
+          "unit": "dimensionless",
+          "source": "sturm2014_li2_g_factor",
+          "value_class": "experimental",
+          "_note": "Sturm et al. 2014 Nature 506, 467. ^7Li²⁺ bound-electron g-factor measured at Penning-trap precision ~1e-9. The Z=3 hydrogenic-Z-scan headline observable cited in #78 acceptance criterion 1 and #82. Specific digits should be verified against the published paper."
+        }
+      }
+    },
+    "Be IV": {
+      "_aliases": ["Be3+", "beryllium-3+", "hydrogenic-beryllium"],
+      "description": "Hydrogenic beryllium ion (Be^3+, one electron bound to Z=4 nucleus). Issue #82 Z-scan target.",
+      "g_factor_bound_electron": {
+        "1s2S1/2": {
+          "value": 2.00001769,
+          "uncertainty": 6.0e-8,
+          "unit": "dimensionless",
+          "source": "kohler2016_be3_g_factor",
+          "value_class": "experimental",
+          "_note": "Köhler-Schüssler-Sturm-Werth-Glazov-Volotka-Plunien-Shabaev-Quint 2016 Phys. Rev. Lett. 117, 053001 (companion to the He+ measurement in the same paper). Penning-trap g-factor measurement of ^9Be³⁺. Specific digits should be verified against the published paper."
+        }
+      }
+    },
+    "C VI": {
+      "_aliases": ["C5+", "carbon-5+", "hydrogenic-carbon"],
+      "description": "Hydrogenic carbon ion (C^5+, one electron bound to Z=6 nucleus). Issue #82 Z-scan target.",
+      "g_factor_bound_electron": {
+        "1s2S1/2": {
+          "value": 2.001041596,
+          "uncertainty": 5.0e-9,
+          "unit": "dimensionless",
+          "source": "haffner2000_c5_g_factor",
+          "value_class": "experimental",
+          "_note": "Häffner-Beier-Hermanspahn-Kluge-Quint-Stahl-Verdú-Werth 2000 Phys. Rev. Lett. 85, 5308. First precision Penning-trap measurement of the hydrogenic C^5+ bound-electron g-factor; the canonical reference for the carbon point in the Z-scan series of #82. Modern refinements (Köhler 2016) exist but the Häffner 2000 measurement remains the canonical first-precision value. Specific digits should be verified against the published paper."
         }
       }
     },
