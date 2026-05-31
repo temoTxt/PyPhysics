@@ -248,25 +248,13 @@ flags the physical-intuition status.
 \subsubsection{§2.1 Eqs. (3)--(5) --- circular-orbit Newton baseline (no
 back-reaction)}\label{eqs.-35-circular-orbit-newton-baseline-no-back-reaction}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}frac\{GMm\}\{r\_0\^{}2\} = \textbackslash{}frac\{m v\_0\^{}2\}\{r\_0\}     \textbackslash{}qquad (3)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{v\_0 = \textbackslash{}sqrt\{GM/r\_0\}                          \textbackslash{}qquad (4)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{T\_0 = \textbackslash{}frac\{2\textbackslash{}pi r\_0\}\{v\_0\} = \textbackslash{}frac\{2\textbackslash{}pi r\_0\^{}\{3/2\}\}\{\textbackslash{}sqrt\{GM\}\}  \textbackslash{}qquad (5)}
-\end{Highlighting}
-\end{Shaded}
-
-Standard textbook (Newton + centripetal). {[}OK{]} Algebraically
+\[
+\frac{GMm}{r_0^2} = \frac{m v_0^2}{r_0}     \qquad (3)
+\] \[
+v_0 = \sqrt{GM/r_0}                          \qquad (4)
+\] \[
+T_0 = \frac{2\pi r_0}{v_0} = \frac{2\pi r_0^{3/2}}{\sqrt{GM}}  \qquad (5)
+\] Standard textbook (Newton + centripetal). {[}OK{]} Algebraically
 correct. Physical content: Mercury orbits a stationary Sun. Standard.
 
 \hypertarget{eq.-67-newtonian-angular-velocity-and-unperturbed-angle}{%
@@ -274,19 +262,11 @@ correct. Physical content: Mercury orbits a stationary Sun. Standard.
 unperturbed
 angle}\label{eq.-67-newtonian-angular-velocity-and-unperturbed-angle}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}omega\_0 = 2\textbackslash{}pi / T\_0                         \textbackslash{}qquad (6)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}varphi\_0 = \textbackslash{}omega\_0 T\_0 = 2\textbackslash{}pi               \textbackslash{}qquad (7)}
-\end{Highlighting}
-\end{Shaded}
-
-Definitionally correct. {[}OK{]}
+\[
+\omega_0 = 2\pi / T_0                         \qquad (6)
+\] \[
+\varphi_0 = \omega_0 T_0 = 2\pi               \qquad (7)
+\] Definitionally correct. {[}OK{]}
 
 \hypertarget{eqs.-813-the-substitution-that-drives-cordas-2-result}{%
 \subsubsection{\texorpdfstring{§2.3 Eqs. (8)--(13) --- the
@@ -297,45 +277,22 @@ Corda's \emph{core substitution}: replace \texttt{M} in Eq. (3) with
 \texttt{M\ +\ m} because the Sun-centred observer sees Mercury's
 reaction force on the Sun too.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}frac\{G(M+m)m\}\{r\_0\^{}2\} = \textbackslash{}frac\{m v\^{}2\}\{r\_0\}     \textbackslash{}qquad (8)}
-\end{Highlighting}
-\end{Shaded}
+\[
+\frac{G(M+m)m}{r_0^2} = \frac{m v^2}{r_0}     \qquad (8)
+\] He justifies this by writing the Newton's-third-law pair (Eqs.
+9--13):
 
-He justifies this by writing the Newton's-third-law pair (Eqs. 9--13):
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}vec F\_G = \textbackslash{}frac\{GMm\}\{r\_0\^{}2\}\textbackslash{}hat u\_r           \textbackslash{}qquad (9)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{M a\_s\textbackslash{}hat u\_r = \textbackslash{}frac\{GMm\}\{r\_0\^{}2\}\textbackslash{}hat u\_r \textbackslash{};\textbackslash{}Rightarrow\textbackslash{}; a\_s = \textbackslash{}frac\{Gm\}\{r\_0\^{}2\}  \textbackslash{}qquad (10)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{m a\_m\textbackslash{}hat u\_r = {-}\textbackslash{}frac\{GMm\}\{r\_0\^{}2\}\textbackslash{}hat u\_r \textbackslash{};\textbackslash{}Rightarrow\textbackslash{}; a\_m = {-}\textbackslash{}frac\{GM\}\{r\_0\^{}2\}  \textbackslash{}qquad (11)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{a\textbackslash{}hat u\_r \textbackslash{}equiv a\_m {-} a\_s = {-}\textbackslash{}frac\{G(M+m)\}\{r\_0\^{}2\}\textbackslash{}hat u\_r  \textbackslash{}qquad (12)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{F\textbackslash{}hat u\_r = {-}\textbackslash{}frac\{G(M+m)m\}\{r\_0\^{}2\}\textbackslash{}hat u\_r     \textbackslash{}qquad (13)}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Algebra {[}OK{]}} --- this is the standard two-body
+\[
+\vec F_G = \frac{GMm}{r_0^2}\hat u_r           \qquad (9)
+\] \[
+M a_s\hat u_r = \frac{GMm}{r_0^2}\hat u_r \;\Rightarrow\; a_s = \frac{Gm}{r_0^2}  \qquad (10)
+\] \[
+m a_m\hat u_r = -\frac{GMm}{r_0^2}\hat u_r \;\Rightarrow\; a_m = -\frac{GM}{r_0^2}  \qquad (11)
+\] \[
+a\hat u_r \equiv a_m - a_s = -\frac{G(M+m)}{r_0^2}\hat u_r  \qquad (12)
+\] \[
+F\hat u_r = -\frac{G(M+m)m}{r_0^2}\hat u_r     \qquad (13)
+\] \textbf{Algebra {[}OK{]}} --- this is the standard two-body
 relative-acceleration result. The same \texttt{G(M+m)} shows up in
 textbook reduced-mass treatments (Goldstein §3.1, MTW §25). What
 \texttt{(M+m)} captures is the kinematic fact that the \emph{relative}
@@ -355,29 +312,15 @@ correct, but the interpretation in §2 (that this constitutes a
 \subsubsection{§2.4 Eqs. (14)--(17) --- perturbed velocity and
 period}\label{eqs.-1417-perturbed-velocity-and-period}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{v = \textbackslash{}sqrt\{G(M+m)/r\_0\}                          \textbackslash{}qquad (14)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{T = \textbackslash{}frac\{2\textbackslash{}pi r\_0\}\{v\} = \textbackslash{}frac\{2\textbackslash{}pi r\_0\^{}\{3/2\}\}\{\textbackslash{}sqrt\{G(M+m)\}\}  \textbackslash{}qquad (15)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{(M+m)\^{}\{{-}1/2\} = M\^{}\{{-}1/2\}\textbackslash{},(1 + m/M)\^{}\{{-}1/2\}      \textbackslash{}qquad (16)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{T = T\_0\textbackslash{},(1 + m/M)\^{}\{{-}1/2\}                      \textbackslash{}qquad (17)}
-\end{Highlighting}
-\end{Shaded}
+\[
+v = \sqrt{G(M+m)/r_0}                          \qquad (14)
+\] \[
+T = \frac{2\pi r_0}{v} = \frac{2\pi r_0^{3/2}}{\sqrt{G(M+m)}}  \qquad (15)
+\] \[
+(M+m)^{-1/2} = M^{-1/2}\,(1 + m/M)^{-1/2}      \qquad (16)
+\] \[
+T = T_0\,(1 + m/M)^{-1/2}                      \qquad (17)
+\]
 
 \textbf{Wolfram MCP check:}
 
@@ -402,23 +345,13 @@ effective gravitational constant in the one-body problem is
 ``perihelion
 advance''}\label{eqs.-1820-angular-velocity-and-perihelion-advance}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}omega = \textbackslash{}omega\_0\textbackslash{},(1 + m/M)\^{}\{1/2\}             \textbackslash{}qquad (18)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}varphi = \textbackslash{}omega T\_0 = 2\textbackslash{}pi\textbackslash{},(1 + m/M)\^{}\{1/2\} \textbackslash{}simeq 2\textbackslash{}pi\textbackslash{},(1 + m/(2M))  \textbackslash{}qquad (19)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}boxed\{\textbackslash{};\textbackslash{}Delta\textbackslash{}varphi = \textbackslash{}varphi {-} \textbackslash{}varphi\_0 \textbackslash{}simeq \textbackslash{}pi m / M\textbackslash{};\}  \textbackslash{}qquad (20)}
-\end{Highlighting}
-\end{Shaded}
+\[
+\omega = \omega_0\,(1 + m/M)^{1/2}             \qquad (18)
+\] \[
+\varphi = \omega T_0 = 2\pi\,(1 + m/M)^{1/2} \simeq 2\pi\,(1 + m/(2M))  \qquad (19)
+\] \[
+\boxed{\;\Delta\varphi = \varphi - \varphi_0 \simeq \pi m / M\;}  \qquad (20)
+\]
 
 \textbf{Wolfram MCP Taylor check:}
 
@@ -462,57 +395,23 @@ imposes angular-momentum conservation, Taylor-expands around
 \texttt{r\_0}, and arrives at the \textbf{classical Bertrand-style
 apsidal angle}:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{F\_\{c0\}(r) = m\textbackslash{}left(\textbackslash{}ddot r {-} \textbackslash{}omega\_0\^{}2 r\textbackslash{}right)                  \textbackslash{}qquad (21)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{J\_0 = m r\^{}2 \textbackslash{}omega\_0                                              \textbackslash{}qquad (22)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{F\_\{c0\}(r) = m\textbackslash{}left(\textbackslash{}ddot r {-} \textbackslash{}frac\{J\_0\^{}2\}\{m\^{}2 r\^{}3\}\textbackslash{}right)         \textbackslash{}qquad (23)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{F\_\{c0\}(r\_0) = {-}\textbackslash{}frac\{J\_0\^{}2\}\{m r\_0\^{}3\}                              \textbackslash{}qquad (24)}
-\end{Highlighting}
-\end{Shaded}
-
-After perturbing \texttt{x\ =\ r\ -\ r\_0} and series-expanding:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}ddot x + m\^{}\{{-}1\}\textbackslash{}!\textbackslash{}left[{-}\textbackslash{}frac\{3 F\_\{c0\}(r\_0)\}\{r\_0\} {-} F\textquotesingle{}\_\{c0\}(r\_0)\textbackslash{}right] x = 0  \textbackslash{}qquad (27)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{T\_0 = 2\textbackslash{}pi\textbackslash{}!\textbackslash{}left(\textbackslash{}frac\{m\}\{{-}\textbackslash{},3 F\_\{c0\}(r\_0)/r\_0 {-} F\textquotesingle{}\_\{c0\}(r\_0)\}\textbackslash{}right)\^{}\{1/2\}  \textbackslash{}qquad (28)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}frac\{\textbackslash{}varphi\_0\}\{2\} = \textbackslash{}pi\textbackslash{}!\textbackslash{}left(\textbackslash{}frac\{m\}\{{-}3F\_\{c0\}/r\_0 {-} F\textquotesingle{}\_\{c0\}\}\textbackslash{}right)\^{}\{1/2\}\textbackslash{}!\textbackslash{}frac\{J\_0\}\{m r\_0\^{}2\}  \textbackslash{}qquad (29)}
-\end{Highlighting}
-\end{Shaded}
-
-Using Eqs. (24) and (29):
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}boxed\{\textbackslash{};\textbackslash{}varphi\_0 = 2\textbackslash{}pi\textbackslash{}left[\textbackslash{},3 + \textbackslash{}frac\{F\textquotesingle{}\_\{c0\}(r\_0)\textbackslash{},r\_0\}\{F\_\{c0\}(r\_0)\}\textbackslash{},\textbackslash{}right]\^{}\{{-}1/2\}\textbackslash{};\}  \textbackslash{}qquad (31)}
-\end{Highlighting}
-\end{Shaded}
+\[
+F_{c0}(r) = m\left(\ddot r - \omega_0^2 r\right)                  \qquad (21)
+\] \[
+J_0 = m r^2 \omega_0                                              \qquad (22)
+\] \[
+F_{c0}(r) = m\left(\ddot r - \frac{J_0^2}{m^2 r^3}\right)         \qquad (23)
+\] \[
+F_{c0}(r_0) = -\frac{J_0^2}{m r_0^3}                              \qquad (24)
+\] After perturbing \texttt{x\ =\ r\ -\ r\_0} and series-expanding: \[
+\ddot x + m^{-1}\!\left[-\frac{3 F_{c0}(r_0)}{r_0} - F'_{c0}(r_0)\right] x = 0  \qquad (27)
+\] \[
+T_0 = 2\pi\!\left(\frac{m}{-\,3 F_{c0}(r_0)/r_0 - F'_{c0}(r_0)}\right)^{1/2}  \qquad (28)
+\] \[
+\frac{\varphi_0}{2} = \pi\!\left(\frac{m}{-3F_{c0}/r_0 - F'_{c0}}\right)^{1/2}\!\frac{J_0}{m r_0^2}  \qquad (29)
+\] Using Eqs. (24) and (29): \[
+\boxed{\;\varphi_0 = 2\pi\left[\,3 + \frac{F'_{c0}(r_0)\,r_0}{F_{c0}(r_0)}\,\right]^{-1/2}\;}  \qquad (31)
+\]
 
 \textbf{Wolfram MCP for \texttt{F\ =\ -k/r\^{}2}:}
 
@@ -543,41 +442,19 @@ theorem} at work).
 (1+m/M) force}\label{eqs.-3241-cordas-promotion-to-the-1mm-force}}
 
 To extend Eq. (31)'s apsidal-angle calculation to the reduced-mass case,
-Corda makes the substitution:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{F\_\{c0\}(r) \textbackslash{};\textbackslash{}to\textbackslash{}; F\_c(r) = \textbackslash{}left(1 + \textbackslash{}frac\{m\}\{M\}\textbackslash{}right) F\_\{c0\}(r)  \textbackslash{}qquad (32)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}omega\_0 \textbackslash{}to \textbackslash{}omega                                                \textbackslash{}qquad (33)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{J\_0 \textbackslash{}to J = m r\^{}2 \textbackslash{}omega                                           \textbackslash{}qquad (34)}
-\end{Highlighting}
-\end{Shaded}
-
-This is meant to mirror the §2 substitution
+Corda makes the substitution: \[
+F_{c0}(r) \;\to\; F_c(r) = \left(1 + \frac{m}{M}\right) F_{c0}(r)  \qquad (32)
+\] \[
+\omega_0 \to \omega                                                \qquad (33)
+\] \[
+J_0 \to J = m r^2 \omega                                           \qquad (34)
+\] This is meant to mirror the §2 substitution
 \texttt{M\ \textbackslash{}to\ M+m} inside the central force law. He
-then writes:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{F\textquotesingle{}\_c(r\_0) = \textbackslash{}left(1 + \textbackslash{}frac\{m\}\{M\}\textbackslash{}right) F\textquotesingle{}\_\{c0\}(r\_0)              \textbackslash{}qquad (36)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}boxed\{\textbackslash{};\textbackslash{}frac\{F\textquotesingle{}\_c(r\_0)\}\{F\_c(r\_0)\} \textbackslash{};=\textbackslash{}; \textbackslash{}frac\{F\textquotesingle{}\_\{c0\}(r\_0)\}\{F\_\{c0\}(r\_0)\}\textbackslash{};\}  \textbackslash{}qquad (37)}
-\end{Highlighting}
-\end{Shaded}
+then writes: \[
+F'_c(r_0) = \left(1 + \frac{m}{M}\right) F'_{c0}(r_0)              \qquad (36)
+\] \[
+\boxed{\;\frac{F'_c(r_0)}{F_c(r_0)} \;=\; \frac{F'_{c0}(r_0)}{F_{c0}(r_0)}\;}  \qquad (37)
+\]
 
 \textbf{Wolfram MCP check:}
 
@@ -615,38 +492,18 @@ advance.''} Corda's own Eq. (31), applied to his own Eq. (32) force,
 derivation}\label{eqs.-4257-reduced-mass-kepler-derivation}}
 
 Corda's §4 (``Third Kepler's law'') works out the standard
-centre-of-mass + reduced-mass two-body decomposition:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}vec R = \textbackslash{}frac\{m\textbackslash{}vec r\_m + M\textbackslash{}vec r\_M\}\{M + m\},\textbackslash{}qquad}
-\NormalTok{\textbackslash{}vec r = \textbackslash{}vec r\_m {-} \textbackslash{}vec r\_M                                       \textbackslash{}qquad (43)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{J = \textbackslash{}mu r\^{}2 \textbackslash{}omega = 2\textbackslash{}mu\textbackslash{},\textbackslash{}dot A                                  \textbackslash{}qquad (45)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{T = 2\textbackslash{}pi\textbackslash{}!\textbackslash{}sqrt\{\textbackslash{}frac\{a\^{}3\}\{G M\_T\}\},\textbackslash{}quad M\_T = M + m              \textbackslash{}qquad (53)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}frac\{a\^{}3\}\{T\^{}2\} = \textbackslash{}frac\{G(M+m)\}\{4\textbackslash{}pi\^{}2\}                            \textbackslash{}qquad (54)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{T = T\_0 (1 + m/M)\^{}\{{-}1/2\}                                           \textbackslash{}qquad (57)}
-\end{Highlighting}
-\end{Shaded}
+centre-of-mass + reduced-mass two-body decomposition: \[
+\vec R = \frac{m\vec r_m + M\vec r_M}{M + m},\qquad
+\vec r = \vec r_m - \vec r_M                                       \qquad (43)
+\] \[
+J = \mu r^2 \omega = 2\mu\,\dot A                                  \qquad (45)
+\] \[
+T = 2\pi\!\sqrt{\frac{a^3}{G M_T}},\quad M_T = M + m              \qquad (53)
+\] \[
+\frac{a^3}{T^2} = \frac{G(M+m)}{4\pi^2}                            \qquad (54)
+\] \[
+T = T_0 (1 + m/M)^{-1/2}                                           \qquad (57)
+\]
 
 \textbf{Algebra {[}OK{]}} --- standard textbook treatment (Goldstein
 §3.7, MTW §25). Lands at the same \texttt{T\ =\ T\_0(1+m/M)\^{}(-1/2)}
@@ -741,31 +598,15 @@ Mercury.}
 dilation}\label{eqs.-6067-gravitational-time-dilation}}
 
 Corda's §6 applies Schwarzschild weak-field corrections. Standard
-relations:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{t\_g = \textbackslash{}sqrt\{g\_\{00\}(r\_0)\}\textbackslash{}, t\_l                                     \textbackslash{}qquad (60)}
-\end{Highlighting}
-\end{Shaded}
-
-Isotropic-coordinate weak-field Schwarzschild line element:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{ds\^{}2 = \textbackslash{}left(1 {-} \textbackslash{}frac\{2GM\}\{r c\^{}2\}\textbackslash{}right)(c\textbackslash{},dt)\^{}2}
-\NormalTok{       {-} \textbackslash{}left(1 + \textbackslash{}frac\{2GM\}\{r c\^{}2\}\textbackslash{}right)(dr\^{}2 + r\^{}2 d\textbackslash{}theta\^{}2 + r\^{}2 \textbackslash{}sin\^{}2\textbackslash{}theta\textbackslash{},d\textbackslash{}phi\^{}2)}
-\NormalTok{                                                                   \textbackslash{}qquad (61)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{t\_g = \textbackslash{}sqrt\{1 {-} r\_g/r\_0\}\textbackslash{}, t\_l \textbackslash{};\textbackslash{}approx\textbackslash{}; \textbackslash{}left(1 {-} \textbackslash{}tfrac\{1\}\{2\}\textbackslash{}tfrac\{r\_g\}\{r\_0\}\textbackslash{}right) t\_l   \textbackslash{}qquad (62)}
-\end{Highlighting}
-\end{Shaded}
-
-where \texttt{r\_g\ =\ 2GM/c\^{}2} is the Sun's gravitational radius
+relations: \[
+t_g = \sqrt{g_{00}(r_0)}\, t_l                                     \qquad (60)
+\] Isotropic-coordinate weak-field Schwarzschild line element: \[
+ds^2 = \left(1 - \frac{2GM}{r c^2}\right)(c\,dt)^2
+       - \left(1 + \frac{2GM}{r c^2}\right)(dr^2 + r^2 d\theta^2 + r^2 \sin^2\theta\,d\phi^2)
+                                                                   \qquad (61)
+\] \[
+t_g = \sqrt{1 - r_g/r_0}\, t_l \;\approx\; \left(1 - \tfrac{1}{2}\tfrac{r_g}{r_0}\right) t_l   \qquad (62)
+\] where \texttt{r\_g\ =\ 2GM/c\^{}2} is the Sun's gravitational radius
 (\texttt{\textasciitilde{}=\ 2.95\ km}). Corda also asserts a
 corresponding radial-distance contraction:
 \texttt{r\_0\ -\textgreater{}\ r\_0(1\ -\ 1/2\ r\_g/r\_0)} (Eq. 63),
@@ -783,33 +624,15 @@ radial coordinates, but treating this as ``the CNO sees a different
 distance because \texttt{r\ =\ ct}'' is non-standard. Worth flagging but
 the final-result coefficient in Eq. (67) is unaffected to first order.
 
-Substituting Eq. (63) into Eq. (17):
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{T\_F = \textbackslash{}frac\{2\textbackslash{}pi r\_0\^{}\{3/2\}\textbackslash{}left(1 {-} \textbackslash{}tfrac\{1\}\{2\}\textbackslash{}tfrac\{r\_g\}\{r\_0\}\textbackslash{}right)\^{}\{3/2\}(1 + m/M)\^{}\{{-}1/2\}\}\{\textbackslash{}sqrt\{GM\}\}  \textbackslash{}qquad (64)}
-\end{Highlighting}
-\end{Shaded}
-
-Computing \texttt{omega\_F\ =\ 2pi/T\_F}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}omega\_F \textbackslash{}simeq \textbackslash{}omega\textbackslash{}left(1 {-} \textbackslash{}tfrac\{1\}\{2\}\textbackslash{}tfrac\{r\_g\}\{r\_0\}\textbackslash{}right)\^{}\{{-}3/2\}\textbackslash{}!\textbackslash{}left(1 + \textbackslash{}tfrac\{1\}\{2\}\textbackslash{}tfrac\{r\_g\}\{r\_0\}\textbackslash{}right)   \textbackslash{}qquad (65)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}varphi\_F \textbackslash{}simeq 2\textbackslash{}pi\textbackslash{}left(1 + \textbackslash{}tfrac\{5\}\{4\}\textbackslash{}tfrac\{r\_g\}\{r\_0\}\textbackslash{}right)   \textbackslash{}qquad (66)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}boxed\{\textbackslash{};\textbackslash{}Delta\textbackslash{}varphi\_F \textbackslash{};\textbackslash{}simeq\textbackslash{}; \textbackslash{}tfrac\{5\textbackslash{}pi\}\{2\}\textbackslash{},\textbackslash{}tfrac\{r\_g\}\{r\_0\}\textbackslash{};\}  \textbackslash{}qquad (67)}
-\end{Highlighting}
-\end{Shaded}
+Substituting Eq. (63) into Eq. (17): \[
+T_F = \frac{2\pi r_0^{3/2}\left(1 - \tfrac{1}{2}\tfrac{r_g}{r_0}\right)^{3/2}(1 + m/M)^{-1/2}}{\sqrt{GM}}  \qquad (64)
+\] Computing \texttt{omega\_F\ =\ 2pi/T\_F}: \[
+\omega_F \simeq \omega\left(1 - \tfrac{1}{2}\tfrac{r_g}{r_0}\right)^{-3/2}\!\left(1 + \tfrac{1}{2}\tfrac{r_g}{r_0}\right)   \qquad (65)
+\] \[
+\varphi_F \simeq 2\pi\left(1 + \tfrac{5}{4}\tfrac{r_g}{r_0}\right)   \qquad (66)
+\] \[
+\boxed{\;\Delta\varphi_F \;\simeq\; \tfrac{5\pi}{2}\,\tfrac{r_g}{r_0}\;}  \qquad (67)
+\]
 
 \textbf{Wolfram MCP Taylor check:}
 
@@ -828,39 +651,17 @@ roughly two-thirds of the GR answer.
 (Langevin)}\label{eqs.-6872-rotational-time-dilation-langevin}}
 
 Standard SR derivation of the Langevin line element for a rotating
-frame:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{ds\^{}2 = c\^{}2 dt\^{}2 {-} dr\^{}2 {-} r\^{}2 d\textbackslash{}phi\^{}2 {-} dz\^{}2                       \textbackslash{}qquad (68)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}phi = \textbackslash{}phi\textquotesingle{} + \textbackslash{}omega t\textquotesingle{}                                           \textbackslash{}qquad (69)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{ds\^{}2 = \textbackslash{}left(1 {-} \textbackslash{}tfrac\{r\^{}2\textbackslash{}omega\^{}2\}\{c\^{}2\}\textbackslash{}right)c\^{}2 dt\^{}2 {-} 2\textbackslash{}omega r\^{}2 d\textbackslash{}phi\textquotesingle{} dt\textquotesingle{} {-} dr\^{}2 {-} r\^{}2 d\textbackslash{}phi\textquotesingle{}\^{}2 {-} dz\textquotesingle{}\^{}2   \textbackslash{}qquad (70)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{d\textbackslash{}tau = \textbackslash{}sqrt\{1 {-} r\^{}2\textbackslash{}omega\^{}2/c\^{}2\}\textbackslash{},dt \textbackslash{};\textbackslash{}simeq\textbackslash{}; \textbackslash{}left(1 {-} \textbackslash{}tfrac\{1\}\{2\}\textbackslash{}tfrac\{r\^{}2\textbackslash{}omega\^{}2\}\{c\^{}2\}\textbackslash{}right) dt   \textbackslash{}qquad (71)}
-\end{Highlighting}
-\end{Shaded}
-
-At \texttt{r\ =\ r\_0}, \texttt{omega\ =\ omega\_0}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}tau \textbackslash{}simeq \textbackslash{}left(1 {-} \textbackslash{}tfrac\{1\}\{2\}\textbackslash{}tfrac\{r\_0\^{}2\textbackslash{}omega\_0\^{}2\}\{c\^{}2\}\textbackslash{}right) t   \textbackslash{}qquad (72)}
-\end{Highlighting}
-\end{Shaded}
+frame: \[
+ds^2 = c^2 dt^2 - dr^2 - r^2 d\phi^2 - dz^2                       \qquad (68)
+\] \[
+\phi = \phi' + \omega t'                                           \qquad (69)
+\] \[
+ds^2 = \left(1 - \tfrac{r^2\omega^2}{c^2}\right)c^2 dt^2 - 2\omega r^2 d\phi' dt' - dr^2 - r^2 d\phi'^2 - dz'^2   \qquad (70)
+\] \[
+d\tau = \sqrt{1 - r^2\omega^2/c^2}\,dt \;\simeq\; \left(1 - \tfrac{1}{2}\tfrac{r^2\omega^2}{c^2}\right) dt   \qquad (71)
+\] At \texttt{r\ =\ r\_0}, \texttt{omega\ =\ omega\_0}: \[
+\tau \simeq \left(1 - \tfrac{1}{2}\tfrac{r_0^2\omega_0^2}{c^2}\right) t   \qquad (72)
+\]
 
 \textbf{Algebra {[}OK{]}} --- textbook special relativity.
 \textbf{Physical-intuition status:} Corda invokes Einstein's Equivalence
@@ -879,42 +680,20 @@ combination.
 correction}\label{eqs.-7377-combined-correction}}
 
 Using Eqs. (5)--(6) to express the rotational TD in terms of
-\texttt{r\_g}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}tau = \textbackslash{}sqrt\{1 {-} \textbackslash{}tfrac\{1\}\{2\}\textbackslash{}tfrac\{r\_g\}\{r\_0\}\}\textbackslash{}, t}
-\NormalTok{     \textbackslash{}simeq \textbackslash{}left(1 {-} \textbackslash{}tfrac\{1\}\{4\}\textbackslash{}tfrac\{r\_g\}\{r\_0\}\textbackslash{}right) t        \textbackslash{}qquad (73)}
-\end{Highlighting}
-\end{Shaded}
-
-The CNO replaces
+\texttt{r\_g}: \[
+\tau = \sqrt{1 - \tfrac{1}{2}\tfrac{r_g}{r_0}}\, t
+     \simeq \left(1 - \tfrac{1}{4}\tfrac{r_g}{r_0}\right) t        \qquad (73)
+\] The CNO replaces
 \texttt{T\_F\ \textbackslash{}to\ T\_T\ =\ T\_F\ (1\ -\ \textbackslash{}tfrac\{1\}\{2\}\ r\_g/r\_0)\^{}\{1/2\}}
-and:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{T\_T = T\_0 (1 + m/M)\^{}\{{-}1/2\}\textbackslash{},(1 {-} \textbackslash{}tfrac\{1\}\{2\} r\_g/r\_0)\^{}2           \textbackslash{}qquad (74)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}omega\_F = 2\textbackslash{}pi/T\_T \textbackslash{}simeq \textbackslash{}omega\textbackslash{},(1 {-} \textbackslash{}tfrac\{1\}\{2\} r\_g/r\_0)\^{}\{{-}2\} \textbackslash{}simeq \textbackslash{}omega\textbackslash{},(1 + \textbackslash{}tfrac\{3\}\{2\}\textbackslash{}, r\_g/r\_0)   \textbackslash{}qquad (75)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}varphi\_F = \textbackslash{}omega\_F T\_0 (1 {-} m/(2M)) \textbackslash{}simeq 2\textbackslash{}pi\textbackslash{}left(1 + \textbackslash{}tfrac\{3\}\{2\}\textbackslash{},\textbackslash{}tfrac\{r\_g\}\{r\_0\}\textbackslash{}right)  \textbackslash{}qquad (76)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}boxed\{\textbackslash{};\textbackslash{}Delta\textbackslash{}varphi\_F \textbackslash{};\textbackslash{}simeq\textbackslash{}; 3\textbackslash{}pi\textbackslash{},\textbackslash{}tfrac\{r\_g\}\{r\_0\}\textbackslash{};\}  \textbackslash{}qquad (77)}
-\end{Highlighting}
-\end{Shaded}
+and: \[
+T_T = T_0 (1 + m/M)^{-1/2}\,(1 - \tfrac{1}{2} r_g/r_0)^2           \qquad (74)
+\] \[
+\omega_F = 2\pi/T_T \simeq \omega\,(1 - \tfrac{1}{2} r_g/r_0)^{-2} \simeq \omega\,(1 + \tfrac{3}{2}\, r_g/r_0)   \qquad (75)
+\] \[
+\varphi_F = \omega_F T_0 (1 - m/(2M)) \simeq 2\pi\left(1 + \tfrac{3}{2}\,\tfrac{r_g}{r_0}\right)  \qquad (76)
+\] \[
+\boxed{\;\Delta\varphi_F \;\simeq\; 3\pi\,\tfrac{r_g}{r_0}\;}  \qquad (77)
+\]
 
 \begin{quote}
 \textbf{OCR/marker-pdf note.} The conversion of Eq. (75) shows the last
@@ -943,15 +722,9 @@ the standard PPN gravitational-redshift + Doppler combination.
 \subsubsection{§2.14 Comparison of Corda's Eq. (77) to standard
 GR}\label{comparison-of-cordas-eq.-77-to-standard-gr}}
 
-Standard GR (Schwarzschild geodesic, MTW §40.5):
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}Delta\textbackslash{}varphi\_\{\textbackslash{}rm GR\} = \textbackslash{}frac\{6\textbackslash{}pi GM\}\{c\^{}2 a (1{-}e\^{}2)\} = \textbackslash{}frac\{3\textbackslash{}pi r\_g\}\{a(1{-}e\^{}2)\}}
-\end{Highlighting}
-\end{Shaded}
-
-For Mercury (\texttt{e\ =\ 0.20563},
+Standard GR (Schwarzschild geodesic, MTW §40.5): \[
+\Delta\varphi_{\rm GR} = \frac{6\pi GM}{c^2 a (1-e^2)} = \frac{3\pi r_g}{a(1-e^2)}
+\] For Mercury (\texttt{e\ =\ 0.20563},
 \texttt{1\ -\ e\^{}2\ \textasciitilde{}=\ 0.9577}):
 \texttt{Deltaphi\_GR\ =\ 42.99\textquotesingle{}\textquotesingle{}/century}.
 
@@ -1111,11 +884,9 @@ Gill's \emph{Relativistic Newtonian Theory} extends Corda's framework by
 adding the dual-theory \texttt{(1\ +\ V/(mc\^{}2))} factor to the force
 law:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{a\_m = {-}\textbackslash{}frac\{GM\}\{r\^{}2\}\textbackslash{}left(1 {-} \textbackslash{}frac\{GM\}\{c\^{}2 r\}\textbackslash{}right)\textbackslash{}hat u\_r   \textbackslash{}qquad (\textbackslash{}text\{Eq. h4\})}
-\end{Highlighting}
-\end{Shaded}
+\[
+a_m = -\frac{GM}{r^2}\left(1 - \frac{GM}{c^2 r}\right)\hat u_r   \qquad (\text{Eq. h4})
+\]
 
 (transcribed from PR
 \href{https://github.com/temoTxt/PyPhysics/pull/83}{\#83}'s
@@ -1130,20 +901,16 @@ PR \#83
 \href{../Mercury_Perihelion/03_numerical_predictions.md}{\texttt{03\_numerical\_predictions.md}}
 followed Corda's heuristic:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}Delta\textbackslash{}varphi\_d = 2\textbackslash{}pi\textbackslash{}!\textbackslash{}left[\textbackslash{}left(1 + \textbackslash{}tfrac\{m\}\{M\}\textbackslash{}right)}
-\NormalTok{                  \textbackslash{}left(1 {-} \textbackslash{}tfrac\{G(M\^{}2 + m\^{}2)\}\{(M+m) c\^{}2 r\_0\}\textbackslash{}right)\textbackslash{}right]\^{}\{1/2\} {-} 2\textbackslash{}pi}
-\end{Highlighting}
-\end{Shaded}
+\[
+\Delta\varphi_d = 2\pi\!\left[\left(1 + \tfrac{m}{M}\right)
+                  \left(1 - \tfrac{G(M^2 + m^2)}{(M+m) c^2 r_0}\right)\right]^{1/2} - 2\pi
+\]
 
 with first-order Taylor expansion:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}Delta\textbackslash{}varphi\_\{d\_1\} \textbackslash{};\textbackslash{}simeq\textbackslash{}; 2\textbackslash{}pi\textbackslash{}!\textbackslash{}left[\textbackslash{}frac\{m\}\{2M\} {-} \textbackslash{}frac\{GM(1+m/M)\}\{2 c\^{}2 r\_0\}\textbackslash{}right]}
-\end{Highlighting}
-\end{Shaded}
+\[
+\Delta\varphi_{d_1} \;\simeq\; 2\pi\!\left[\frac{m}{2M} - \frac{GM(1+m/M)}{2 c^2 r_0}\right]
+\]
 
 This decomposes as:
 
@@ -1190,21 +957,17 @@ answer)}\label{what-pr-83-doc-05-computed-apsidal-angle-the-genuine-answer}}
 applied Corda's \emph{own} apsidal-angle formula (Eq. 31) to Gill's
 modified force law:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{F(r) = {-}\textbackslash{}frac\{GMm\}\{r\^{}2\}\textbackslash{}left(1 {-} \textbackslash{}frac\{GM\}\{c\^{}2 r\}\textbackslash{}right)}
-\end{Highlighting}
-\end{Shaded}
+\[
+F(r) = -\frac{GMm}{r^2}\left(1 - \frac{GM}{c^2 r}\right)
+\]
 
 The apsidal-angle formula gives a precession per orbit that is:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textbackslash{}boxed\{\textbackslash{};\textbackslash{}Delta\textbackslash{}varphi\_\{\textbackslash{}rm framework\}\^{}\{\textbackslash{}rm genuine\}}
-\NormalTok{       \textbackslash{};=\textbackslash{}; {-}\textbackslash{}frac\{1\}\{6\}\textbackslash{},\textbackslash{}Delta\textbackslash{}varphi\_\{\textbackslash{}rm GR\}}
-\NormalTok{       \textbackslash{};=\textbackslash{}; {-}7.17\textbackslash{},\textbackslash{}text\{\textquotesingle{}\textquotesingle{}/century\}\textbackslash{};\}}
-\end{Highlighting}
-\end{Shaded}
+\[
+\boxed{\;\Delta\varphi_{\rm framework}^{\rm genuine}
+       \;=\; -\frac{1}{6}\,\Delta\varphi_{\rm GR}
+       \;=\; -7.17\,\text{''/century}\;}
+\]
 
 \textbf{Opposite sign, one-sixth magnitude of GR exactly.} This is the
 famous ``1/6 factor'' of a force-law-only modification of Newtonian

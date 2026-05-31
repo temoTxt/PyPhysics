@@ -75,26 +75,26 @@ the physical-intuition status.
 
 ### §2.1 Eqs. (3)–(5) — circular-orbit Newton baseline (no back-reaction)
 
-```math
+$$
 \frac{GMm}{r_0^2} = \frac{m v_0^2}{r_0}     \qquad (3)
-```
-```math
+$$
+$$
 v_0 = \sqrt{GM/r_0}                          \qquad (4)
-```
-```math
+$$
+$$
 T_0 = \frac{2\pi r_0}{v_0} = \frac{2\pi r_0^{3/2}}{\sqrt{GM}}  \qquad (5)
-```
+$$
 Standard textbook (Newton + centripetal). ✅ Algebraically correct.
 Physical content: Mercury orbits a stationary Sun. Standard.
 
 ### §2.2 Eq. (6)–(7) — Newtonian angular velocity and unperturbed angle
 
-```math
+$$
 \omega_0 = 2\pi / T_0                         \qquad (6)
-```
-```math
+$$
+$$
 \varphi_0 = \omega_0 T_0 = 2\pi               \qquad (7)
-```
+$$
 Definitionally correct. ✅
 
 ### §2.3 Eqs. (8)–(13) — the **substitution** that drives Corda's §2 result
@@ -102,26 +102,26 @@ Definitionally correct. ✅
 Corda's *core substitution*: replace `M` in Eq. (3) with `M + m` because the
 Sun-centred observer sees Mercury's reaction force on the Sun too.
 
-```math
+$$
 \frac{G(M+m)m}{r_0^2} = \frac{m v^2}{r_0}     \qquad (8)
-```
+$$
 He justifies this by writing the Newton's-third-law pair (Eqs. 9–13):
 
-```math
+$$
 \vec F_G = \frac{GMm}{r_0^2}\hat u_r           \qquad (9)
-```
-```math
+$$
+$$
 M a_s\hat u_r = \frac{GMm}{r_0^2}\hat u_r \;\Rightarrow\; a_s = \frac{Gm}{r_0^2}  \qquad (10)
-```
-```math
+$$
+$$
 m a_m\hat u_r = -\frac{GMm}{r_0^2}\hat u_r \;\Rightarrow\; a_m = -\frac{GM}{r_0^2}  \qquad (11)
-```
-```math
+$$
+$$
 a\hat u_r \equiv a_m - a_s = -\frac{G(M+m)}{r_0^2}\hat u_r  \qquad (12)
-```
-```math
+$$
+$$
 F\hat u_r = -\frac{G(M+m)m}{r_0^2}\hat u_r     \qquad (13)
-```
+$$
 **Algebra ✅** — this is the standard two-body relative-acceleration result.
 The same `G(M+m)` shows up in textbook reduced-mass treatments (Goldstein
 §3.1, MTW §25). What `(M+m)` captures is the kinematic fact that the
@@ -138,18 +138,18 @@ to Mercury's force) muddles the standard story.
 
 ### §2.4 Eqs. (14)–(17) — perturbed velocity and period
 
-```math
+$$
 v = \sqrt{G(M+m)/r_0}                          \qquad (14)
-```
-```math
+$$
+$$
 T = \frac{2\pi r_0}{v} = \frac{2\pi r_0^{3/2}}{\sqrt{G(M+m)}}  \qquad (15)
-```
-```math
+$$
+$$
 (M+m)^{-1/2} = M^{-1/2}\,(1 + m/M)^{-1/2}      \qquad (16)
-```
-```math
+$$
+$$
 T = T_0\,(1 + m/M)^{-1/2}                      \qquad (17)
-```
+$$
 
 **Wolfram MCP check:**
 ```mathematica
@@ -167,15 +167,15 @@ kinematic effect on the **sidereal period**.
 
 ### §2.5 Eqs. (18)–(20) — angular velocity and "perihelion advance"
 
-```math
+$$
 \omega = \omega_0\,(1 + m/M)^{1/2}             \qquad (18)
-```
-```math
+$$
+$$
 \varphi = \omega T_0 = 2\pi\,(1 + m/M)^{1/2} \simeq 2\pi\,(1 + m/(2M))  \qquad (19)
-```
-```math
+$$
+$$
 \boxed{\;\Delta\varphi = \varphi - \varphi_0 \simeq \pi m / M\;}  \qquad (20)
-```
+$$
 
 **Wolfram MCP Taylor check:**
 ```mathematica
@@ -208,32 +208,32 @@ Following Price & Rush (1979), Corda writes the radial equation,
 imposes angular-momentum conservation, Taylor-expands around `r_0`, and
 arrives at the **classical Bertrand-style apsidal angle**:
 
-```math
+$$
 F_{c0}(r) = m\left(\ddot r - \omega_0^2 r\right)                  \qquad (21)
-```
-```math
+$$
+$$
 J_0 = m r^2 \omega_0                                              \qquad (22)
-```
-```math
+$$
+$$
 F_{c0}(r) = m\left(\ddot r - \frac{J_0^2}{m^2 r^3}\right)         \qquad (23)
-```
-```math
+$$
+$$
 F_{c0}(r_0) = -\frac{J_0^2}{m r_0^3}                              \qquad (24)
-```
+$$
 After perturbing `x = r − r_0` and series-expanding:
-```math
+$$
 \ddot x + m^{-1}\!\left[-\frac{3 F_{c0}(r_0)}{r_0} - F'_{c0}(r_0)\right] x = 0  \qquad (27)
-```
-```math
+$$
+$$
 T_0 = 2\pi\!\left(\frac{m}{-\,3 F_{c0}(r_0)/r_0 - F'_{c0}(r_0)}\right)^{1/2}  \qquad (28)
-```
-```math
+$$
+$$
 \frac{\varphi_0}{2} = \pi\!\left(\frac{m}{-3F_{c0}/r_0 - F'_{c0}}\right)^{1/2}\!\frac{J_0}{m r_0^2}  \qquad (29)
-```
+$$
 Using Eqs. (24) and (29):
-```math
+$$
 \boxed{\;\varphi_0 = 2\pi\left[\,3 + \frac{F'_{c0}(r_0)\,r_0}{F_{c0}(r_0)}\,\right]^{-1/2}\;}  \qquad (31)
-```
+$$
 
 **Wolfram MCP for `F = −k/r²`:**
 ```mathematica
@@ -258,23 +258,23 @@ work).
 
 To extend Eq. (31)'s apsidal-angle calculation to the reduced-mass case,
 Corda makes the substitution:
-```math
+$$
 F_{c0}(r) \;\to\; F_c(r) = \left(1 + \frac{m}{M}\right) F_{c0}(r)  \qquad (32)
-```
-```math
+$$
+$$
 \omega_0 \to \omega                                                \qquad (33)
-```
-```math
+$$
+$$
 J_0 \to J = m r^2 \omega                                           \qquad (34)
-```
+$$
 This is meant to mirror the §2 substitution `M \to M+m` inside the central
 force law. He then writes:
-```math
+$$
 F'_c(r_0) = \left(1 + \frac{m}{M}\right) F'_{c0}(r_0)              \qquad (36)
-```
-```math
+$$
+$$
 \boxed{\;\frac{F'_c(r_0)}{F_c(r_0)} \;=\; \frac{F'_{c0}(r_0)}{F_{c0}(r_0)}\;}  \qquad (37)
-```
+$$
 
 **Wolfram MCP check:**
 ```mathematica
@@ -303,22 +303,22 @@ advance."** Corda's own Eq. (31), applied to his own Eq. (32) force,
 
 Corda's §4 ("Third Kepler's law") works out the standard centre-of-mass +
 reduced-mass two-body decomposition:
-```math
+$$
 \vec R = \frac{m\vec r_m + M\vec r_M}{M + m},\qquad
 \vec r = \vec r_m - \vec r_M                                       \qquad (43)
-```
-```math
+$$
+$$
 J = \mu r^2 \omega = 2\mu\,\dot A                                  \qquad (45)
-```
-```math
+$$
+$$
 T = 2\pi\!\sqrt{\frac{a^3}{G M_T}},\quad M_T = M + m              \qquad (53)
-```
-```math
+$$
+$$
 \frac{a^3}{T^2} = \frac{G(M+m)}{4\pi^2}                            \qquad (54)
-```
-```math
+$$
+$$
 T = T_0 (1 + m/M)^{-1/2}                                           \qquad (57)
-```
+$$
 
 **Algebra ✅** — standard textbook treatment (Goldstein §3.7, MTW §25).
 Lands at the same `T = T_0(1+m/M)^(−1/2)` as Eqs. (17) and (39).
@@ -383,18 +383,18 @@ valid for one two-body system and invalid for others. **The honest reading:
 
 Corda's §6 applies Schwarzschild weak-field corrections.
 Standard relations:
-```math
+$$
 t_g = \sqrt{g_{00}(r_0)}\, t_l                                     \qquad (60)
-```
+$$
 Isotropic-coordinate weak-field Schwarzschild line element:
-```math
+$$
 ds^2 = \left(1 - \frac{2GM}{r c^2}\right)(c\,dt)^2
        - \left(1 + \frac{2GM}{r c^2}\right)(dr^2 + r^2 d\theta^2 + r^2 \sin^2\theta\,d\phi^2)
                                                                    \qquad (61)
-```
-```math
+$$
+$$
 t_g = \sqrt{1 - r_g/r_0}\, t_l \;\approx\; \left(1 - \tfrac{1}{2}\tfrac{r_g}{r_0}\right) t_l   \qquad (62)
-```
+$$
 where `r_g = 2GM/c²` is the Sun's gravitational radius (`≈ 2.95 km`).
 Corda also asserts a corresponding radial-distance contraction:
 `r₀ → r₀(1 − ½ r_g/r₀)` (Eq. 63), arguing from `r = ct`.
@@ -410,19 +410,19 @@ Worth flagging but the final-result coefficient in Eq. (67) is unaffected
 to first order.
 
 Substituting Eq. (63) into Eq. (17):
-```math
+$$
 T_F = \frac{2\pi r_0^{3/2}\left(1 - \tfrac{1}{2}\tfrac{r_g}{r_0}\right)^{3/2}(1 + m/M)^{-1/2}}{\sqrt{GM}}  \qquad (64)
-```
+$$
 Computing `ω_F = 2π/T_F`:
-```math
+$$
 \omega_F \simeq \omega\left(1 - \tfrac{1}{2}\tfrac{r_g}{r_0}\right)^{-3/2}\!\left(1 + \tfrac{1}{2}\tfrac{r_g}{r_0}\right)   \qquad (65)
-```
-```math
+$$
+$$
 \varphi_F \simeq 2\pi\left(1 + \tfrac{5}{4}\tfrac{r_g}{r_0}\right)   \qquad (66)
-```
-```math
+$$
+$$
 \boxed{\;\Delta\varphi_F \;\simeq\; \tfrac{5\pi}{2}\,\tfrac{r_g}{r_0}\;}  \qquad (67)
-```
+$$
 
 **Wolfram MCP Taylor check:**
 ```mathematica
@@ -436,22 +436,22 @@ two-thirds of the GR answer.
 ### §2.12 Eqs. (68)–(72) — rotational time dilation (Langevin)
 
 Standard SR derivation of the Langevin line element for a rotating frame:
-```math
+$$
 ds^2 = c^2 dt^2 - dr^2 - r^2 d\phi^2 - dz^2                       \qquad (68)
-```
-```math
+$$
+$$
 \phi = \phi' + \omega t'                                           \qquad (69)
-```
-```math
+$$
+$$
 ds^2 = \left(1 - \tfrac{r^2\omega^2}{c^2}\right)c^2 dt^2 - 2\omega r^2 d\phi' dt' - dr^2 - r^2 d\phi'^2 - dz'^2   \qquad (70)
-```
-```math
+$$
+$$
 d\tau = \sqrt{1 - r^2\omega^2/c^2}\,dt \;\simeq\; \left(1 - \tfrac{1}{2}\tfrac{r^2\omega^2}{c^2}\right) dt   \qquad (71)
-```
+$$
 At `r = r_0`, `ω = ω_0`:
-```math
+$$
 \tau \simeq \left(1 - \tfrac{1}{2}\tfrac{r_0^2\omega_0^2}{c^2}\right) t   \qquad (72)
-```
+$$
 
 **Algebra ✅** — textbook special relativity.
 **Physical-intuition status:** Corda invokes Einstein's Equivalence Principle
@@ -467,23 +467,23 @@ gravitational-redshift + Doppler combination.
 ### §2.13 Eqs. (73)–(77) — combined correction
 
 Using Eqs. (5)–(6) to express the rotational TD in terms of `r_g`:
-```math
+$$
 \tau = \sqrt{1 - \tfrac{1}{2}\tfrac{r_g}{r_0}}\, t
      \simeq \left(1 - \tfrac{1}{4}\tfrac{r_g}{r_0}\right) t        \qquad (73)
-```
+$$
 The CNO replaces `T_F \to T_T = T_F (1 - \tfrac{1}{2} r_g/r_0)^{1/2}` and:
-```math
+$$
 T_T = T_0 (1 + m/M)^{-1/2}\,(1 - \tfrac{1}{2} r_g/r_0)^2           \qquad (74)
-```
-```math
+$$
+$$
 \omega_F = 2\pi/T_T \simeq \omega\,(1 - \tfrac{1}{2} r_g/r_0)^{-2} \simeq \omega\,(1 + \tfrac{3}{2}\, r_g/r_0)   \qquad (75)
-```
-```math
+$$
+$$
 \varphi_F = \omega_F T_0 (1 - m/(2M)) \simeq 2\pi\left(1 + \tfrac{3}{2}\,\tfrac{r_g}{r_0}\right)  \qquad (76)
-```
-```math
+$$
+$$
 \boxed{\;\Delta\varphi_F \;\simeq\; 3\pi\,\tfrac{r_g}{r_0}\;}  \qquad (77)
-```
+$$
 
 > **OCR/marker-pdf note.** The conversion of Eq. (75) shows the last
 > rotational factor as `(1 - r_g/(2r_0))^{+1/2}`, which would give a leading
@@ -504,9 +504,9 @@ Series[(1 - x/2)^(-3/2) (1 + x/2) (1 - x/2)^(-1/2), {x, 0, 1}]
 ### §2.14 Comparison of Corda's Eq. (77) to standard GR
 
 Standard GR (Schwarzschild geodesic, MTW §40.5):
-```math
+$$
 \Delta\varphi_{\rm GR} = \frac{6\pi GM}{c^2 a (1-e^2)} = \frac{3\pi r_g}{a(1-e^2)}
-```
+$$
 For Mercury (`e = 0.20563`, `1 - e^2 ≈ 0.9577`): `Δφ_GR = 42.99″/century`.
 
 For the **circular** limit (`e = 0`, `a = r_0`): `Δφ_GR = 3π r_g/r_0`.
@@ -615,9 +615,9 @@ spurious.
 Gill's *Relativistic Newtonian Theory* extends Corda's framework by adding
 the dual-theory `(1 + V/(mc²))` factor to the force law:
 
-```math
+$$
 a_m = -\frac{GM}{r^2}\left(1 - \frac{GM}{c^2 r}\right)\hat u_r   \qquad (\text{Eq. h4})
-```
+$$
 
 (transcribed from PR [#83](https://github.com/temoTxt/PyPhysics/pull/83)'s
 [`Equation_Verification/Dual_Newtonian_Theory.md`](../Equation_Verification/Dual_Newtonian_Theory.md);
@@ -628,16 +628,16 @@ all algebra Wolfram-MCP verified).
 PR #83 [`03_numerical_predictions.md`](../Mercury_Perihelion/03_numerical_predictions.md)
 followed Corda's heuristic:
 
-```math
+$$
 \Delta\varphi_d = 2\pi\!\left[\left(1 + \tfrac{m}{M}\right)
                   \left(1 - \tfrac{G(M^2 + m^2)}{(M+m) c^2 r_0}\right)\right]^{1/2} - 2\pi
-```
+$$
 
 with first-order Taylor expansion:
 
-```math
+$$
 \Delta\varphi_{d_1} \;\simeq\; 2\pi\!\left[\frac{m}{2M} - \frac{GM(1+m/M)}{2 c^2 r_0}\right]
-```
+$$
 
 This decomposes as:
 
@@ -658,17 +658,17 @@ the wrong sign.
 applied Corda's *own* apsidal-angle formula (Eq. 31) to Gill's modified
 force law:
 
-```math
+$$
 F(r) = -\frac{GMm}{r^2}\left(1 - \frac{GM}{c^2 r}\right)
-```
+$$
 
 The apsidal-angle formula gives a precession per orbit that is:
 
-```math
+$$
 \boxed{\;\Delta\varphi_{\rm framework}^{\rm genuine}
        \;=\; -\frac{1}{6}\,\Delta\varphi_{\rm GR}
        \;=\; -7.17\,\text{″/century}\;}
-```
+$$
 
 **Opposite sign, one-sixth magnitude of GR exactly.** This is the famous
 "1/6 factor" of a force-law-only modification of Newtonian gravity that

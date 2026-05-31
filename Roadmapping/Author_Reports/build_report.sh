@@ -31,6 +31,11 @@ set -euo pipefail
 
 PAGE_MIN="${PAGE_MIN:-3}"            # override with PAGE_MIN=N
 PAGE_MAX="${PAGE_MAX:-7}"            # override with PAGE_MAX=N (long verification reports)
+PDFENGINE="${PDFENGINE:-pdflatex}"   # override with PDFENGINE=lualatex if you have a complete
+                                     # lualatex install (needs lualatex-math.sty + texlive
+                                     # unicode-math + matching font OTFs). Default pdflatex
+                                     # is reliable but requires the per-character Unicode
+                                     # substitutions below for Greek + math symbols.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PINNED_DATE="${REPORT_DATE:-$(date -u +%Y-%m-%d)}"   # override with REPORT_DATE=YYYY-MM-DD
 
@@ -74,13 +79,16 @@ OUT_PDF="$WORK_DIR/${BASENAME}.pdf"
 # ----------------------------------------------------------------------
 # Step 1: strip HTML comments
 
-echo "[1/5] stripping HTML comments + substituting non-pdflatex unicode..."
-# Strip <!-- ... --> blocks; substitute emoji + Unicode superscripts/subscripts that pdflatex
-# can't render in its default T1 encoding. Math mode unicode (≈, ×, −, →, ⋯) is handled by
-# pandoc's utf8 conversion to LaTeX equivalents.
+echo "[1/5] preprocessing: strip HTML comments + GitHub math fences + Unicode subs..."
+# Strip <!-- ... --> blocks; convert GitHub-style ```math ... ``` fences into
+# pandoc-native $$...$$ display-math; substitute emoji + Greek + math symbols
+# that pdflatex can't render in its default T1 encoding. (If using lualatex via
+# PDFENGINE=lualatex, the Greek/math substitutions are harmless but unnecessary.)
 perl -CSD -0777 -pe '
   s/<!--.*?-->//gs;
-  # Emoji verdicts -> ASCII tags
+  # GitHub-style ```math ... ``` -> pandoc-style $$...$$ display math
+  s/```math\n(.*?)\n```\n/\$\$\n$1\n\$\$\n/sg;
+  # Emoji verdicts -> ASCII tags (no TeX engine renders emoji by default)
   s/\x{2705}/[OK]/g;        # U+2705 white heavy check mark
   s/\x{26A0}/[warn]/g;      # U+26A0 warning sign
   s/\x{1F534}/[X]/g;        # U+1F534 large red circle
@@ -94,7 +102,7 @@ perl -CSD -0777 -pe '
   # Logical implication / arrows
   s/\x{21D2}/=>/g;          # U+21D2 RIGHTWARDS DOUBLE ARROW (⇒)
   s/\x{21D0}/<=/g;          # U+21D0 LEFTWARDS DOUBLE ARROW (⇐)
-  # Superscripts -> ASCII ^N (renders as literal ^N in \texttt{} contexts, OK)
+  # Superscripts -> ASCII ^N
   s/\x{2070}/^0/g; s/\x{00B9}/^1/g; s/\x{00B2}/^2/g; s/\x{00B3}/^3/g;
   s/\x{2074}/^4/g; s/\x{2075}/^5/g; s/\x{2076}/^6/g; s/\x{2077}/^7/g;
   s/\x{2078}/^8/g; s/\x{2079}/^9/g; s/\x{207B}/^-/g;
@@ -102,36 +110,15 @@ perl -CSD -0777 -pe '
   s/\x{2080}/_0/g; s/\x{2081}/_1/g; s/\x{2082}/_2/g; s/\x{2083}/_3/g;
   s/\x{2084}/_4/g; s/\x{2085}/_5/g; s/\x{2086}/_6/g; s/\x{2087}/_7/g;
   s/\x{2088}/_8/g; s/\x{2089}/_9/g;
-  # Math symbols that may appear in verbatim/code spans -> ASCII fallbacks
-  # (in math mode, pandoc already converts these to LaTeX commands; this only
-  # affects \texttt{} contexts where literal Unicode would break pdflatex.)
-  s/\x{2248}/~=/g;          # U+2248 ALMOST EQUAL TO (≈)
-  s/\x{00D7}/x/g;           # U+00D7 MULTIPLICATION SIGN (×)
-  s/\x{2212}/-/g;           # U+2212 MINUS SIGN (−)
-  s/\x{2026}/.../g;         # U+2026 HORIZONTAL ELLIPSIS (…)
-  s/\x{2192}/->/g;          # U+2192 RIGHTWARDS ARROW (→)
-  s/\x{2190}/<-/g;          # U+2190 LEFTWARDS ARROW (←)
-  s/\x{00B7}/./g;           # U+00B7 MIDDLE DOT (·)
-  s/\x{2022}/*/g;           # U+2022 BULLET (•)
-  s/\x{00B1}/+-/g;          # U+00B1 PLUS-MINUS SIGN (±)
-  s/\x{2264}/<=/g;          # U+2264 LESS-THAN OR EQUAL TO (≤)
-  s/\x{2265}/>=/g;          # U+2265 GREATER-THAN OR EQUAL TO (≥)
-  s/\x{2260}/!=/g;          # U+2260 NOT EQUAL TO (≠)
-  s/\x{221A}/sqrt/g;        # U+221A SQUARE ROOT (√)
-  s/\x{221E}/inf/g;         # U+221E INFINITY (∞)
-  s/\x{2202}/d/g;           # U+2202 PARTIAL DIFFERENTIAL (∂)
-  s/\x{222B}/int/g;         # U+222B INTEGRAL (∫)
-  s/\x{2207}/grad/g;        # U+2207 NABLA (∇)
-  s/\x{210F}/hbar/g;        # U+210F PLANCK CONSTANT OVER TWO PI (ℏ)
-  s/\x{2113}/l/g;           # U+2113 SCRIPT SMALL L (ℓ)
-  s/\x{2211}/sum/g;         # U+2211 N-ARY SUMMATION (∑)
-  s/\x{220F}/prod/g;        # U+220F N-ARY PRODUCT (∏)
-  s/\x{27E8}/</g;           # U+27E8 MATHEMATICAL LEFT ANGLE BRACKET (⟨)
-  s/\x{27E9}/>/g;           # U+27E9 MATHEMATICAL RIGHT ANGLE BRACKET (⟩)
-  s/\x{00BD}/1\/2/g;        # U+00BD VULGAR FRACTION ONE HALF (½)
-  s/\x{00BC}/1\/4/g;        # U+00BC VULGAR FRACTION ONE QUARTER (¼)
-  s/\x{00BE}/3\/4/g;        # U+00BE VULGAR FRACTION THREE QUARTERS (¾)
-  # Greek letters in verbatim contexts -> LaTeX-source notation
+  # Math symbols (in verbatim/code spans; in proper $...$ math, pandoc handles them)
+  s/\x{2248}/~=/g; s/\x{00D7}/x/g; s/\x{2212}/-/g; s/\x{2026}/.../g;
+  s/\x{2192}/->/g; s/\x{2190}/<-/g; s/\x{00B7}/./g; s/\x{2022}/*/g;
+  s/\x{00B1}/+-/g; s/\x{2264}/<=/g; s/\x{2265}/>=/g; s/\x{2260}/!=/g;
+  s/\x{221A}/sqrt/g; s/\x{221E}/inf/g; s/\x{2202}/d/g; s/\x{222B}/int/g;
+  s/\x{2207}/grad/g; s/\x{210F}/hbar/g; s/\x{2113}/l/g; s/\x{2211}/sum/g;
+  s/\x{220F}/prod/g; s/\x{27E8}/</g; s/\x{27E9}/>/g;
+  s/\x{00BD}/1\/2/g; s/\x{00BC}/1\/4/g; s/\x{00BE}/3\/4/g;
+  # Greek letters in verbatim/code spans (in proper $...$ math, use \alpha etc.)
   s/\x{03B1}/alpha/g; s/\x{03B2}/beta/g; s/\x{03B3}/gamma/g;
   s/\x{03B4}/delta/g; s/\x{03B5}/epsilon/g; s/\x{03B6}/zeta/g;
   s/\x{03B7}/eta/g; s/\x{03B8}/theta/g; s/\x{03B9}/iota/g;
@@ -146,12 +133,12 @@ perl -CSD -0777 -pe '
 # ----------------------------------------------------------------------
 # Step 2: pandoc → LaTeX
 
-echo "[2/5] pandoc markdown -> LaTeX (pdflatex-target, Unicode-native)..."
+echo "[2/5] pandoc markdown -> LaTeX (target: $PDFENGINE)..."
 pandoc "$OUT_MD" \
   --from markdown+raw_tex+pipe_tables+grid_tables+yaml_metadata_block \
   --to latex \
   --standalone \
-  --pdf-engine=pdflatex \
+  --pdf-engine="$PDFENGINE" \
   --variable=geometry:margin=1in \
   --variable=fontsize:11pt \
   --variable=documentclass:article \
@@ -184,18 +171,18 @@ if grep -qE 'human reviews and fills in' "$OUT_TEX"; then
 fi
 
 # ----------------------------------------------------------------------
-# Step 4: pdflatex twice
+# Step 4: $PDFENGINE twice (for cross-references)
 
-echo "[4/5] pdflatex (pass 1)..."
-(cd "$WORK_DIR" && pdflatex -interaction=nonstopmode -halt-on-error "${BASENAME}.tex" > "${BASENAME}.log1" 2>&1) || {
-  echo "ERROR: pdflatex pass 1 failed. Tail of log:" >&2
+echo "[4/5] $PDFENGINE (pass 1)..."
+(cd "$WORK_DIR" && "$PDFENGINE" -interaction=nonstopmode -halt-on-error "${BASENAME}.tex" > "${BASENAME}.log1" 2>&1) || {
+  echo "ERROR: $PDFENGINE pass 1 failed. Tail of log:" >&2
   tail -30 "$WORK_DIR/${BASENAME}.log1" >&2
   exit 1
 }
 
-echo "[4/5] pdflatex (pass 2)..."
-(cd "$WORK_DIR" && pdflatex -interaction=nonstopmode -halt-on-error "${BASENAME}.tex" > "${BASENAME}.log2" 2>&1) || {
-  echo "ERROR: pdflatex pass 2 failed. Tail of log:" >&2
+echo "[4/5] $PDFENGINE (pass 2)..."
+(cd "$WORK_DIR" && "$PDFENGINE" -interaction=nonstopmode -halt-on-error "${BASENAME}.tex" > "${BASENAME}.log2" 2>&1) || {
+  echo "ERROR: $PDFENGINE pass 2 failed. Tail of log:" >&2
   tail -30 "$WORK_DIR/${BASENAME}.log2" >&2
   exit 1
 }
