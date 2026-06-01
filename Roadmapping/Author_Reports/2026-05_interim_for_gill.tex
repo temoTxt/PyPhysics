@@ -93,12 +93,13 @@ load-bearing question we have for you, namely the resolution of the
 published value of \(r_{e}\). §7 records the secondary errata findings
 and citation questions. §8 closes.
 
-A note on numbering. Tags of the form \texttt{\#NN} in the original
-draft of this report referred to GitHub issues and pull requests in the
-public \texttt{temoTxt/PyPhysics} repository. We have moved every such
-tag into a numbered footnote, together with the file paths and external
-links that the campaign documents cite. The bibliography section at the
-end resolves each footnote.
+A note on numbering. The original draft of this report carried inline
+issue and pull-request tags drawn from the public PyPhysics
+repository\footnote{Public PyPhysics repository,
+  \texttt{github.com/temoTxt/PyPhysics}.}. Every such tag has been moved
+into a numbered footnote. The file paths and external links cited by the
+campaign documents have been moved likewise. The bibliography section at
+the end resolves each footnote.
 
 \hypertarget{papers-and-source-texts-referenced}{%
 \subsection{Papers and source texts
@@ -179,22 +180,29 @@ derivation, a cross-reference to the standard textbook equivalent
 That verification campaign produced three substantive findings flagged
 for author review (§7) and three load-bearing structural results that
 survived the re-derivation cleanly. The verification work then opened
-three downstream campaigns. The first is the Electromagnetism / Jackson
-campaign\footnote{Electromagnetism / Jackson canonical-problems
-  campaign. Issue \#42, \texttt{github.com/temoTxt/PyPhysics/issues/42}.},
-which works through 66 canonical Jackson problems in CGS and SI under
-the proper-time Maxwell formulation, spanning Chapters 1--16. The second
-is the Quantum Mechanics / Griffiths campaign\footnote{Quantum Mechanics
-  / Griffiths canonical-problems campaign. Issue \#49,
-  \texttt{github.com/temoTxt/PyPhysics/issues/49}.}, which works through
-41 canonical Griffiths problems across editions 2 and 3 under the
-proper-time / dual-theory QM formulation, spanning Chapters 1--12. The
-third is the Bethe-Salpeter precision-prediction campaign\footnote{Bethe-Salpeter
-  precision-prediction campaign. Issue \#50,
-  \texttt{github.com/temoTxt/PyPhysics/issues/50}.}, which is the
-precision-experiment counterpart to Griffiths and covers 28 results
+three downstream campaigns.
+
+The first is the Electromagnetism / Jackson campaign\footnote{Electromagnetism
+  / Jackson canonical-problems campaign. Issue \#42,
+  \texttt{github.com/temoTxt/PyPhysics/issues/42}.}. It works through 66
+canonical Jackson problems in CGS and SI under the proper-time Maxwell
+formulation. The problems span Chapters 1--16.
+
+The second is the Quantum Mechanics / Griffiths campaign\footnote{Quantum
+  Mechanics / Griffiths canonical-problems campaign. Issue \#49,
+  \texttt{github.com/temoTxt/PyPhysics/issues/49}.}. It works through 41
+canonical Griffiths problems across editions 2 and 3, under the
+proper-time / dual-theory QM formulation. The problems span Chapters
+1--12.
+
+The third is the Bethe-Salpeter precision-prediction
+campaign\footnote{Bethe-Salpeter precision-prediction campaign. Issue
+  \#50, \texttt{github.com/temoTxt/PyPhysics/issues/50}.}. It is the
+precision-experiment counterpart to Griffiths. It covers 28 results
 across the hydrogen, helium, Lamb-shift, hyperfine, positronium, and
-muonium chapters. The three campaigns are recorded in three pull
+muonium chapters.
+
+The three campaigns are recorded in three pull
 requests\footnote{Electromagnetism per-PR campaign record. PR \#51,
   \texttt{github.com/temoTxt/PyPhysics/pull/51}.}\footnote{Quantum
   Mechanics per-PR campaign record. PR \#52,
@@ -212,12 +220,15 @@ framework, substantive AI work (the kind that shapes what a manuscript
 argues) requires per-paragraph review blocks and a documented
 human-acceptance pass; pragmatic AI work (transcription, Mathematica
 verification, formatting) does not. The present report is substantive AI
-end-to-end. Second, every per-PR document carries an explicit
-honest-framing discipline (the §13 review introduced in the Jackson
-plan) that distinguishes algebraic identities from physical claims,
-conditional predictions from unconditional ones, and within-scope
-verdicts from out-of-scope ones. The Phase 3.5 devil's-advocate pass on
-the present report is the same discipline applied to the report itself.
+end-to-end.
+
+Second, every per-PR document carries an explicit honest-framing
+discipline, introduced as the §13 review in the Jackson plan. The
+discipline separates algebraic identities from physical claims. It
+separates conditional predictions from unconditional ones. It separates
+within-scope verdicts from out-of-scope ones. The Phase 3.5
+devil's-advocate pass on the present report is the same discipline
+applied to the report itself.
 
 \hypertarget{jackson-highlights-initial-results}{%
 \section{§3 Jackson highlights --- initial
@@ -245,10 +256,9 @@ non-relativistic intensity. It contributes at order unity for
 
 Working through Jackson Problem 14.2 under the dual-theory formulation,
 one obtains the explicit angular distribution of the radiation under
-(1). It follows that the formulation predicts a \textbf{longitudinal
-radiation component} in the far field, which the classical
-Liénard-Wiechert theory does not. The classical expression is purely
-transverse in the radiation zone.
+(1). It follows that the formulation predicts a longitudinal radiation
+component in the far field. The classical Liénard-Wiechert expression is
+purely transverse in the radiation zone.
 
 The result is a structural prediction, not yet an empirical claim.
 Indeed, it is (to the extent we have looked) the most natural place to
@@ -270,8 +280,11 @@ third-order in \(\partial_{t}\), \[
 \mathbf{F}_{\rm AL} \;=\; \tfrac{2}{3}\,\frac{e^{2}}{c^{3}}\,\dddot{\mathbf{x}}.
 \tag{2}
 \] The third-order time derivative in (2) is the source of the
-runaway-solution and pre-acceleration pathologies that mar the classical
-theory.
+runaway-solution and pre-acceleration pathologies of the classical
+theory. The proper-time and standard equations of motion are
+mathematically equivalent at the level of particle trajectories, but not
+(what we mean by) physically equivalent at the level of
+radiation-reaction structure.
 
 We observe that the first-order proper-time structure removes both
 pathologies. The equation of motion is first-order in \(\tau\) and
@@ -293,9 +306,9 @@ calculation gives zero. The result is flagged with a tagged comment on
 the Electromagnetism issue\footnote{Cross-verification tag
   (\texttt{@Zorns-Lemmon}) on the Electromagnetism master issue. Issue
   \#42, \texttt{github.com/temoTxt/PyPhysics/issues/42}.} for
-cross-verification. It is not yet checked by a second pair of eyes. The
-campaign's per-PR document records the calculation in full so that the
-result is reproducible.
+cross-verification. An independent re-derivation has not yet been
+performed. The campaign's per-PR document records the calculation in
+full so that the result is reproducible.
 
 \hypertarget{candidate-experiments-what-we-found-to-look-at}{%
 \section{§4 Candidate experiments --- what we found to look
@@ -430,15 +443,14 @@ consequence of the \(r_{e}\) finding propagating through every
 The Bethe-estimate Lamb shift of (5)--(6) is the campaign's clearest
 measurement-level non-falsification at the precision the route can
 deliver. The framework reproduces the same \(\sim 1{,}016\) MHz number
-that the standard QED Bethe-estimate route gives, and the \(\sim 42\)
-MHz residual is shared between the two routes (it is what neither
-captures without a full one-loop calculation). It is not, in the strict
-sense, an endorsement that distinguishes the framework from standard
-QED. The two formulations give the same Bethe-estimate number, and the
-campaign's apparatus cannot push below this precision floor. A
-proper-time one-loop dual-QED calculation is documented as future
-work\footnote{Proper-time one-loop dual-QED Lamb-shift calculation
-  (future work). Issue \#55,
+that the standard QED Bethe-estimate route gives. The \(\sim 42\) MHz
+residual is shared between the two routes; it is what neither captures
+without a full one-loop calculation. The result is not, in the strict
+sense, a discriminator between the framework and standard QED. The two
+formulations give the same Bethe-estimate number. The campaign's
+apparatus cannot push below this precision floor. A proper-time one-loop
+dual-QED calculation is documented as future work\footnote{Proper-time
+  one-loop dual-QED Lamb-shift calculation (future work). Issue \#55,
   \texttt{github.com/temoTxt/PyPhysics/issues/55}.}. The relevant point
 is that the framework does not fail at the Bethe-estimate precision.
 That is the strongest empirical claim the present apparatus supports.
@@ -495,10 +507,11 @@ six-observable table in §5 shows the pattern. Branch (b) consistently
 predicts a \(\sim 10^{-3}\) disagreement; branch (c) consistently agrees
 with measurement at the Bethe-estimate precision floor.
 
-On the hydrogen 1S hyperfine line --- the 21-cm transition, the most
-precisely measured atomic-physics frequency at \(\sim 10^{-12}\)
-relative uncertainty --- branch (b)'s disagreement is of order
-\(\sim 10^{6}\) standard deviations beyond the measurement uncertainty.
+Consider the hydrogen 1S hyperfine line, the 21-cm transition. It is the
+most precisely measured atomic-physics frequency, at \(\sim 10^{-12}\)
+relative uncertainty. On that line, branch (b)'s disagreement is of
+order \(\sim 10^{6}\) standard deviations beyond the measurement
+uncertainty.
 
 We are not asking you to pick the value that best fits the data. The
 campaign's verdict-recording is not a fitting exercise. We are asking
