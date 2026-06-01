@@ -29,7 +29,7 @@ There is, at present, no first-principles derivation of $r_e/r_0$ anywhere in th
 
 This note collects the three candidate starting points we have considered for such a derivation. We give one to three paragraphs on each, describing what the route would look like, what its plausibility appears to be from outside the framework's internal logic, and what would be required to pursue it. A fourth candidate we had initially considered (retrieving a derivation step from the original DRQM I §III.D working notebook that did not make it into the published prose) has been ruled out by your 2026-05-25 author guidance. The original cutoff was a numerical search against $g_s$ alone, with no derivation-step working draft to retrieve.
 
-We are not proposing any of these three. We defer to your judgment on which, if any, is natural for the framework. The thread is non-urgent. The triangulated value already serves as the campaign's current-best-refinement at the framework's precision floor. A first-principles derivation is a would-be-nice-to-have, not a load-bearing item.
+We are not proposing any of these three. We defer to your judgment on which, if any, is natural for the framework. The thread is non-urgent. The triangulated value already serves as the campaign's current-best-refinement at the framework's precision floor. A first-principles derivation would refine the framework's standing, but it is not load-bearing for the campaign's current scope.
 
 ---
 
@@ -39,7 +39,7 @@ The dual theory's distinguishing feature is the proper-time first-order Dirac st
 $$
 (i\gamma^\mu \partial_\mu - m)\psi \;=\; 0 \tag{3}
 $$
-is replaced by a proper-time formulation in which the dynamical variable is $\partial_\tau$ rather than $\partial_t$. The natural place to look for $r_e$ as a derived quantity is the framework's analog of the one-loop electron self-energy diagram. That is the diagram in which a single photon propagator and a single electron propagator close into a loop on the external electron line.
+is replaced by a proper-time formulation in which the dynamical variable is $\partial_\tau$ rather than $\partial_t$. The two are mathematically equivalent but not physically equivalent; the loop-level content therefore need not coincide. The natural place to look for $r_e$ as a derived quantity is the framework's analog of the one-loop electron self-energy diagram. That is the diagram in which a single photon propagator and a single electron propagator close into a loop on the external electron line.
 
 In standard QED, the one-loop self-energy $\Sigma(p)$ carries a UV divergence which is absorbed into mass renormalisation via a counterterm. The cutoff procedure (Pauli–Villars, dimensional regularisation, lattice cutoff) introduces a regulator scale, and in the renormalised expression that scale's dependence cancels modulo the running of $\alpha$. In the dual theory's proper-time formulation, the analog calculation would feature the proper-time propagator and a proper-time photon propagator. The UV behaviour might be qualitatively different from standard QED. It is not obvious that the integral is divergent at all; the proper-time integral's analytic properties could render it finite, or supply a different divergence structure.
 
@@ -75,15 +75,23 @@ obtained by inverting
 $$
 g_r \;=\; 2\Bigl[\,1 \,-\, \frac{4\,r_0}{2r + r_0}\,\Bigr] \tag{7}
 $$
-against the Schwinger one-loop QED anomalous moment $g_e^{(1\text{-loop})} = -2 - \alpha/\pi = -2.002\,322\,819\,465\,7\ldots$ The residual discrepancy between the closed-form $0.499\,419\,632$ of (6) and the triangulated $0.499\,420\,510$ of (1) is exactly the gap between the Schwinger one-loop and the all-orders measured $g_e = -2.002\,319\,304\,362\,5\ldots$ The latter includes the Karplus–Kroll two-loop and higher corrections at $\sim 10^{-6}$ relative. In other words, at one-loop QED precision, the cutoff prescription
+against the Schwinger one-loop QED anomalous moment
 $$
-r_e \;=\; \frac{2 - \alpha/(2\pi)}{4 + \alpha/\pi}\,r_0 \tag{8}
+g_e^{(1\text{-loop})} \;=\; -2 \,-\, \alpha/\pi \;=\; -2.002\,322\,819\,465\,7\ldots \tag{8}
+$$
+The residual discrepancy between the closed-form $0.499\,419\,632$ of (6) and the triangulated $0.499\,420\,510$ of (1) tracks exactly the gap between (8) and the all-orders measured value
+$$
+g_e \;=\; -2.002\,319\,304\,362\,5\ldots \tag{9}
+$$
+The measured value (9) includes the Karplus–Kroll two-loop and higher corrections at $\sim 10^{-6}$ relative to (8). In other words, at one-loop QED precision, the cutoff prescription
+$$
+r_e \;=\; \frac{2 - \alpha/(2\pi)}{4 + \alpha/\pi}\,r_0 \tag{10}
 $$
 is what makes (7) reproduce the Schwinger result exactly.
 
-This is, from outside the framework's internal logic, the cleanest and most natural reading of the cutoff identification. The DRQM I §III.D formula is, at the precision the framework's apparatus delivers, an algebraic re-encoding of the Schwinger one-loop anomalous moment through a particular cutoff substitution. The reason the triangulation across six observables returns essentially the same value as the uni-observable back-fit against $g_s$ alone is that every other observable's prediction follows the scaling (2). Substituting the measured $g_s$ is the same operation whether done once or six times. The measured $g_s$ is, to one-loop QED precision, exactly what the closed-form cutoff (8) is engineered to reproduce.
+This is, from outside the framework's internal logic, the cleanest and most natural reading of the cutoff identification. The DRQM I §III.D formula is, at the precision the framework's apparatus delivers, an algebraic re-encoding of the Schwinger one-loop anomalous moment through a particular cutoff substitution. The reason the triangulation across six observables returns essentially the same value as the uni-observable back-fit against $g_s$ alone is that every other observable's prediction follows the scaling (2). Substituting the measured $g_s$ is the same operation whether done once or six times. The measured $g_s$ is, to one-loop QED precision, exactly what the closed-form cutoff (10) is engineered to reproduce.
 
-On this reading, the first-principles derivation question reduces to: why does the framework specify this particular cutoff prescription? Two sub-questions follow. First, is there a derivation in which the dual-Dirac equation's renormalisation structure produces (8) as the natural mass-renormalisation scale (Candidates 1 or 2 applied at one-loop precision)? Second, is the cutoff a structural constant of the dual representation itself, such that the combination $(2 - \alpha/(2\pi))/(4 + \alpha/\pi)$ comes out of the framework's algebra without reference to QED at all? The first is a one-loop calculation that should be tractable if the framework's renormalisation prescription is fully specified. The second requires identifying the framework-internal origin of an $\alpha$-dependent ratio, which is harder. If the first reading is the natural one, the campaign can attempt the calculation directly. If the second, we would need your guidance on which structural decomposition produces $\alpha$-dependent ratios in the framework.
+On this reading, the first-principles derivation question reduces to: why does the framework specify this particular cutoff prescription? Two sub-questions follow. First, is there a derivation in which the dual-Dirac equation's renormalisation structure produces (10) as the natural mass-renormalisation scale (Candidates 1 or 2 applied at one-loop precision)? Second, is the cutoff a structural constant of the dual representation itself, such that the combination $(2 - \alpha/(2\pi))/(4 + \alpha/\pi)$ comes out of the framework's algebra without reference to QED at all? The first is a one-loop calculation that should be tractable if the framework's renormalisation prescription is fully specified. The second requires identifying the framework-internal origin of an $\alpha$-dependent ratio, which is harder. If the first reading is the natural one, the campaign can attempt the calculation directly. If the second, we would need your guidance on which structural decomposition produces $\alpha$-dependent ratios in the framework.
 
 We did not see this identification in the published DRQM I §III.D text. If it is a known property of the framework, please tell us; that would simplify the disposition considerably. If it is a coincidence at the campaign's precision (the triangulated value happens to be close to the Schwinger closed-form but is not engineered to be), the Karplus–Kroll-level residual is the test. With more precision-spectroscopy observables in the joint fit, the residual should not systematically point at the two-loop QED corrections unless the cutoff genuinely is encoding QED.
 
@@ -97,21 +105,25 @@ Since the morning version of this note went out, three parallel research branche
 
 Four iterations: read DRQM I §II–III, *The Classical Electron Problem*, and the Bethe–Salpeter Lamb-shift document; scaffolded the dedicated notebook[^10] with a baseline cell. The baseline standard-QED on-shell shift,
 $$
-\frac{\delta m}{m} \;=\; \frac{3\alpha}{4\pi}\,\Bigl[\,\log\!\frac{\Lambda^2}{m^2} \,+\, \tfrac{1}{2}\,\Bigr], \tag{9}
+\frac{\delta m}{m} \;=\; \frac{3\alpha}{4\pi}\,\Bigl[\,\log\!\frac{\Lambda^2}{m^2} \,+\, \tfrac{1}{2}\,\Bigr], \tag{11}
 $$
 is the Bjorken–Drell Eq. (10.59) result, verified symbolically.
 
-The headline finding is conceptual rather than computational. The existing Lamb-shift calculation uses the textbook non-relativistic Bethe (1947) UV cutoff $K \sim m c^2$, equivalently $\lambda_C = \hbar/(mc)$, while the triangulated $r_e \sim r_0/2 = (\alpha/2)\,\lambda_C$. Thus $r_e$ is parametrically smaller than the Bethe cutoff by
+The headline finding is conceptual rather than computational. The existing Lamb-shift calculation uses the textbook non-relativistic Bethe (1947) UV cutoff $K \sim m c^2$, equivalently the Compton length $\lambda_C = \hbar/(mc)$. The triangulated $r_e$ sits well below that scale,
 $$
-r_e / \lambda_C \;\sim\; \alpha/2 \;\approx\; 3.65 \times 10^{-3}. \tag{10}
+r_e \;\sim\; r_0/2 \;=\; (\alpha/2)\,\lambda_C, \tag{12}
+$$
+so the parametric separation is
+$$
+r_e / \lambda_C \;\sim\; \alpha/2 \;\approx\; 3.65 \times 10^{-3}. \tag{13}
 $$
 We conclude that $r_e$ is not a UV-loop cutoff at all. It sits at the Coulomb-binding scale, not the Compton scale. Indeed, at $r = r_0/2$,
 $$
-\lvert V_0 \rvert \;=\; 2\,m c^2, \tag{11}
+\lvert V_0 \rvert \;=\; 2\,m c^2, \tag{14}
 $$
 which is exactly the pair-production threshold. The natural re-reading is that $r_e$ marks the radius inside which the bound-state wavefunction picks up virtual $e^+ e^-$ contributions, and inside which the §III.D small-component elimination
 $$
-\psi_2 \;=\; \frac{c\,(\boldsymbol{\sigma}\!\cdot\!\boldsymbol{\pi})\,\psi_1}{\lambda - V_0 + m c^2} \tag{12}
+\psi_2 \;=\; \frac{c\,(\boldsymbol{\sigma}\!\cdot\!\boldsymbol{\pi})\,\psi_1}{\lambda - V_0 + m c^2} \tag{15}
 $$
 stops being a valid approximation.
 
@@ -119,7 +131,7 @@ Technically, the (II.3) "potential-in-the-mass" form is the cleanest kernel. The
 
 A heuristic sanity check at iteration 4 sharpens the discriminator. The naive identification $\Lambda = \hbar/(r_e c)$ at $r_e/r_0 = 0.5$ gives
 $$
-\log(\Lambda^2/m^2) \;=\; 11.23, \qquad \delta m/m \;=\; 2.04 \times 10^{-2}, \tag{13}
+\log(\Lambda^2/m^2) \;=\; 11.23, \qquad \delta m/m \;=\; 2.04 \times 10^{-2}, \tag{16}
 $$
 versus the natural one-loop coupling $\alpha/(4\pi) = 5.81 \times 10^{-4}$ — a $35\times$ overestimate. Two distinguishable resolutions are queued for the next cells. First, the framework may supply $\Lambda \sim \hbar/(b\,r_e)$ with $b > c$ for bound states, suppressing the log. Second, the Bethe-log replacement $\log(K/\langle\Delta E\rangle)$ at fixed photon-loop measure (sum-over-states log) is parametrically smaller. The two are distinguishable. The first shifts $r_e/r_0$ via $\log(b/c)$ at fixed $\langle p^2\rangle$; the second shifts $r_e/r_0$ via the Bethe-log replacement at fixed photon-loop measure. **Status: live, on plan.** The outcome-matrix branch remains open. The next two cells are expected to discriminate the two resolutions and produce a numerical $r_e/r_0$.
 
@@ -127,7 +139,7 @@ versus the natural one-loop coupling $\alpha/(4\pi) = 5.81 \times 10^{-4}$ — a
 
 Four iterations enumerated seven closure conditions. Only the mass-renormalisation condition (closure #7) was both framework-internal and potentially of sufficient precision. We pursued it under the textbook working hypothesis $\Delta E_{\rm bind}^{\rm framework} = \langle V_0\rangle$, $\Delta E_{\rm SE}^{\rm framework} = 0$, with trial $\psi_1 = N e^{-r/aa}$ on the cutoff-restricted domain $[r_e, \infty)$. The closure equation, in the dimensionless variables $\hat{a} = aa/r_0$ and $\hat{r}_e = r_e/r_0$, is
 $$
-E_{\rm dim}(\hat{a}, \hat{r}_e) \;=\; \frac{1}{2\alpha^2 \hat{a}^2} \;-\; \frac{\hat{a} + 2\hat{r}_e - 1}{\hat{a}^2 + 2\hat{a}\hat{r}_e + 2\hat{r}_e^2} \;=\; 0. \tag{14}
+E_{\rm dim}(\hat{a}, \hat{r}_e) \;=\; \frac{1}{2\alpha^2 \hat{a}^2} \;-\; \frac{\hat{a} + 2\hat{r}_e - 1}{\hat{a}^2 + 2\hat{a}\hat{r}_e + 2\hat{r}_e^2} \;=\; 0. \tag{17}
 $$
 
 The diagnostic table at $\alpha = 1/137.035999$ exposes the structural inadequacy.
@@ -165,9 +177,9 @@ After this overnight run, two questions remain load-bearing (the third was resol
 
 1. **(Candidate 1, live branch.)** Does the framework specify a proper-time photon propagator form? Two natural candidates surface. First, a Schwinger proper-time form with $b$ replacing $c$ in the dispersion,
 $$
-k^2 \;=\; (\omega/b)^2 \,-\, \mathbf{k}^2. \tag{15}
+k^2 \;=\; (\omega/b)^2 \,-\, \mathbf{k}^2. \tag{18}
 $$
-Second, the standard Feynman propagator with the $b/c$ conversion absorbed into the source coupling rather than the propagator. The two give different numerical $r_e/r_0$ at the same order in $\alpha$. The iter-4 sanity check (13) shows the difference is at the $\log(b/c)$ level, and hence discriminable.
+Second, the standard Feynman propagator with the $b/c$ conversion absorbed into the source coupling rather than the propagator. The two give different numerical $r_e/r_0$ at the same order in $\alpha$. The iter-4 sanity check (16) shows the difference is at the $\log(b/c)$ level, and hence discriminable.
 
 2. **(Candidate 2, halted, unblocking.)** The published expanded $K_D$ of (III.4) is structurally inadequate to pin $r_e$, as the diagnostic table above shows. Two unblocking moves present themselves. **(2a)** Does the framework specify a $\Delta E_{\rm SE}^{\rm framework}(r_e)$ at the cutoff scale that we should have been carrying in $\langle K_D \rangle = m_e c^2 + \Delta E_{\rm bind} + \Delta E_{\rm SE}$? **(2b)** Is the variational determination intended to operate on the un-expanded full $H_D$ under a radial-cutoff regulator (radial-Dirac eigenvalue problem on $r \in [r_e, \infty)$) rather than the expanded $K_D$ of (III.4)? The un-expanded route is a five- to ten-iteration arc we have not begun without your endorsement.
 
@@ -177,11 +189,11 @@ The original Question 3 from earlier today (does §III.D derive $r_e/r_0$ as a c
 
 ## Closing — how this thread sits
 
-We expect the most likely outcome, given your 2026-05-25 guidance and the campaign's posture, is that none of these three candidates rises above the triangulated cutoff in usefulness for the campaign's current scope. The triangulated value is empirically well-constrained at the framework's precision floor (the joint-fit consistency across six manifestations of the scaling (2)), agrees with measurement at that floor, and is sufficient for the campaign's downstream work without a first-principles derivation behind it. The Scope 1 thread is therefore non-urgent. It remains open as a would-be-nice-to-have for future framework development, not as a load-bearing item. Candidate 3's Schwinger closed-form identification, if intentional in the framework's construction, may already be the answer.
+We expect the most likely outcome, given your 2026-05-25 guidance and the campaign's posture, is that none of these three candidates rises above the triangulated cutoff in usefulness for the campaign's current scope. The triangulated value is empirically well-constrained at the framework's precision floor (the joint-fit consistency across six manifestations of the scaling (2)), agrees with measurement at that floor, and is sufficient for the campaign's downstream work without a first-principles derivation behind it. The Scope 1 thread is therefore non-urgent. It remains open as a refinement target for future framework development, not as a load-bearing item. Candidate 3's Schwinger closed-form identification, if intentional in the framework's construction, may already be the answer.
 
-If one of the three candidates does look natural to you, we would be glad to pursue it via Mathematica symbolic calculation with your guidance on the framework's internal logic. If none of them looks natural, the triangulated value (1) stands as the campaign's $r_e$ disposition and Scope 1 can be closed without a derivation. Either way, our position is that the triangulation has confirmed the structure (2) is self-consistent under a single cutoff at the framework's precision floor; that is the campaign's current honest-scope position on the $r_e$ question.
+If one of the three candidates does look natural to you, we would be glad to pursue it via Mathematica symbolic calculation with your guidance on the framework's internal logic. If none of them looks natural, the triangulated value (1) stands as the campaign's $r_e$ disposition and Scope 1 can be closed without a derivation. Either way, our position is that the triangulation has confirmed the structure (2) is self-consistent under a single cutoff at the framework's precision floor; that is the campaign's current honest-scope position on the $r_e$ question. A first-principles derivation would be a refinement, not a prerequisite.
 
-The Progress update above adds three substantive pieces of physical content on top of the morning version. First, the re-framing of $r_e$ from "UV cutoff" to "Coulomb-binding scale at the pair-production threshold" (Candidate 1) — a statement about what $r_e$ is in the framework's small-component-elimination apparatus, independent of which derivation route eventually settles its first-principles status, and worth your read even if Scope 1 closes without a derivation. Second, the structural inadequacy of the published expanded $K_D$ for variational $r_e$ determination (Candidate 2, Outcome D). At no scale do (a) the validity of the (III.4) NR expansion and (b) meaningful coupling of the cutoff to the closure equation coexist. Third, the algebraically-forced character of the Schwinger closed-form agreement (Candidate 3, Outcome C-as-published). The $10^{-11}$ KK + LR + KF residual match is necessary but not sufficient for intentional encoding, and the as-published §III.D does not provide the sufficient piece. The disposition of Scope 1 now turns on the live Candidate 1 branch (and on whether Candidate 2 redirects to the un-expanded full-$H_D$ arc with your endorsement).
+The Progress update above adds three substantive pieces of physical content beyond the morning version. First, the re-framing of $r_e$ from "UV cutoff" to "Coulomb-binding scale at the pair-production threshold" (Candidate 1) — a statement about what $r_e$ is in the framework's small-component-elimination apparatus, independent of which derivation route eventually settles its first-principles status, and worth your read even if Scope 1 closes without a derivation. Second, the structural inadequacy of the published expanded $K_D$ for variational $r_e$ determination (Candidate 2, Outcome D). At no scale do (a) the validity of the (III.4) NR expansion and (b) meaningful coupling of the cutoff to the closure equation coexist. Third, the algebraically-forced character of the Schwinger closed-form agreement (Candidate 3, Outcome C-as-published). The $10^{-11}$ KK + LR + KF residual match is necessary but not sufficient for intentional encoding, and the as-published §III.D does not provide the sufficient piece. The disposition of Scope 1 now turns on the live Candidate 1 branch (and on whether Candidate 2 redirects to the un-expanded full-$H_D$ arc with your endorsement).
 
 — Trey
 
