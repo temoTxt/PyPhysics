@@ -1,0 +1,92 @@
+\section{First-principles derivation candidate: one-loop self-energy}
+\label{sec:eq-self-energy}
+
+Source:
+\texttt{Mathematica\_Notebooks/Quantum\_Mechanics/r\_e\_derivation\_self\_energy.wl}
+(179 lines, scaffold for issue~\#64). Companion to
+\texttt{Equation\_Verification/Dual\_Relativistic\_Quantum\_Mechanics\_I.md}~\S III.D.
+
+\paragraph{Target.}
+$r_e/r_0 = 0.4994205099128317 \pm 2.5\times 10^{-13}$ (PR~\#62 triangulation).
+
+\paragraph{Cell~1 --- standard QED one-loop on-shell mass shift.}
+Using the Schwinger proper-time representation,
+$i/(A - i\epsilon) = \int_0^\infty ds\, e^{-isA}$, the on-shell mass shift is
+\[
+\frac{\delta m}{m} \;=\; \frac{3 \alpha}{4\pi}
+   \left[\,\ln\!\frac{\Lambda^2}{m^2} \;+\; \frac{1}{2}\,\right]
+\qquad \text{(Bjorken--Drell Eq.~10.59).}
+\]
+At $\alpha = 1/137.036$, $\Lambda/m = 1$ (Bethe NR cutoff):
+$\delta m / m \approx 8.71\times 10^{-4}$.
+\wolframcheck{Confirmed 2026-05-26.}
+
+\paragraph{Cell~2 --- dual framework, one-loop, closed-form inversion.}
+The DRQM~I (III.22) $g$-factor formula reads
+$g_r(x) = 2\bigl[1 - 4/(2x + 1)\bigr]$.
+Setting $g_r(x) = -2(1 + a_e)$ with
+$a_e \to a_e^{(1)} = \alpha/(2\pi)$ (Schwinger 1948) and solving for $x$:
+\[
+\boxed{\;
+  \left.\frac{r_e}{r_0}\right|_{1\text{-loop}}
+  \;=\; \frac{2 - \alpha/(2\pi)}{4 + \alpha/\pi}
+  \;=\; \frac{2 - a_e^{(1)}}{2(2 + a_e^{(1)})}
+\;}
+\]
+\wolframcheck{\texttt{FullSimplify} on $r_e/r_0 - (2 - a_e^{(1)})/(2(2 + a_e^{(1)}))$
+returns $0$.}
+At $\alpha = 1/137.036$, 18-digit: $0.499419632159865\,6$.
+
+\paragraph{Cell~3 --- comparison to triangulated target.}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Order               & $r_e/r_0$               & residual vs.~triangulated \\
+\midrule
+Dirac tree ($a_e=0$) & $0.5$                  & $+5.79\times 10^{-4}$ \\
+1-loop Schwinger    & $0.499419632159865\,6$  & $-8.78\times 10^{-7}$ \\
+2-loop Sommerfeld   & $0.499420517282276\,9$  & $+7.37\times 10^{-9}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+2-loop is closer than 1-loop by a factor $\approx 120$.
+\wolframcheck{Confirmed 2026-05-26.}
+
+\paragraph{Cell~4 --- higher-loop convergence.}
+Including $a_e^{(2)} = -0.328478965579193\,(\alpha/\pi)^2$,
+$a_e^{(3)} = +1.181241456587\,(\alpha/\pi)^3$,
+$a_e^{(4)} = -1.91245\,(\alpha/\pi)^4$, and
+CODATA-full $a_e^{\rm expt} = 0.001\,159\,652\,18\,059$
+into the closed-form cutoff
+$r_e/r_0 = (2 - a_e)/(2(2 + a_e))$
+drives the residual against the triangulated target below
+$10^{-12}$ by 4-loop; CODATA-full reproduces the triangulated value to its full
+precision (precision floor $\sigma = 2.5\times 10^{-13}$).
+
+\paragraph{Hypothesis split (the load-bearing question for Tepper).}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item \textbf{Hypothesis (ii)} --- the dual framework's proper-time one-loop
+        vertex correction \emph{reproduces} the standard-QED Schwinger anomaly
+        identically (photon propagator unchanged; dual structure absorbed into
+        the matter-side (II.3) ``potential-in-the-mass'' kernel which at
+        one-loop is formulation-independent). Under this hypothesis, the
+        closed-form $r_e/r_0 = (2 - a_e)/(2(2 + a_e))$ matches the
+        triangulated value once $a_e$ is supplied by CODATA. This is the
+        \emph{reproduction-by-inheritance} reading.
+  \item \textbf{Hypothesis (i)} --- the dual framework's proper-time one-loop
+        vertex (with the dual photon propagator and bound-state structure)
+        is computed \emph{independently} and shown to reproduce
+        $a_e^{(1)} = \alpha/(2\pi)$. This unconditional reading is tracked in
+        issue~\#75.
+\end{itemize}
+
+\paragraph{Crocco compliance.}
+Cells~1--4 arithmetic is pragmatic AI. The Cell~2 dual-framework hypothesis
+identification (hypothesis (ii)) is substantive AI; the Tepper-blocker is
+which of (i) or (ii) is the framework's intended position. This is the
+principal question carried into the closing list.
+
+\authorreview{The Cell~2 derivation under hypothesis (ii) reproduces the
+Schwinger closed-form; does the dual framework's intended position match
+hypothesis (ii), or does it require hypothesis (i) (an independent
+proper-time vertex computation)? Issue~\#75 tracks the (i) path.}

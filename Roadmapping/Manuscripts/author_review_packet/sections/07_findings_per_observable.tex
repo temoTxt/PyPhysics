@@ -1,0 +1,51 @@
+\section{Six-observable cross-comparison + NIST-MCP provenance audit}
+\label{sec:findings-per-observable}
+
+The campaign's load-bearing quantitative comparison is the
+\texttt{10\_CrossComparison.md}~\S2 six-observable table. The cross-check
+column was added in PR~\#91 (issue~\#90) using the \texttt{nist} MCP
+server~\cite{nist_mcp_pr91}; the column is a per-observable provenance
+audit, not an independent corroboration.
+
+\input{figures/cross_comparison_table}
+
+\paragraph{Reading the table honestly.}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item Only the electron $g_s$ row carries an authoritative independent
+        source: CODATA-2018 via \texttt{scipy.constants}
+        (\texttt{get\_constant}). The MCP-retrieved value matches the
+        measurement column to 16 sig figs.
+  \item The H $2P_{3/2}{-}2P_{1/2}$ row's MCP cross-check is the ASD
+        \emph{theoretical}/Ritz level difference at $\approx 10{,}969.05$ MHz,
+        \emph{not} an independent measurement. It differs from the measured
+        $10{,}969.13(10)$~MHz by $\sim 0.08$~MHz. Do not read this as
+        corroborating the framework.
+  \item The H 1S hyperfine, He $^3P_0{-}^3P_1$, positronium ortho--para,
+        and muonium hyperfine rows are served by the curated
+        \texttt{list\_dirac\_targets} registry --- they restate the
+        measurement column with provenance metadata, but are not independent
+        of it.
+\end{itemize}
+
+\paragraph{Pattern is consistent --- and consistent by construction.}
+All six observables share the same $(g_s/{-}2)^n$ scaling, and the
+triangulated $r_e$ is by construction the joint-best-fit value across all
+six. The ``six observables consistent'' pattern is therefore a single-fact
+pattern (single-parameter joint fit) repeated six times, not six independent
+corroborations.
+
+\paragraph{Honest reading (verbatim from \texttt{10\_CrossComparison.md} \S2).}
+\begin{quotation}
+\noindent\textit{If the dual-theory framework is taken to require a
+single-parameter $r_e$ calibrated against $g_s$, then the triangulated
+$r_e \approx 0.4994205099\,r_0$ is the joint-best-fit value across the
+$g_s$-dependent precision spectroscopy of hydrogen, helium, positronium,
+and muonium. This is a self-consistency statement about parameter-fitting
+within the framework, not an independent experimental discrimination of the
+dual-theory framework from standard QED.}
+\end{quotation}
+
+\authorreview{Is the NIST-MCP cross-check column correctly framed as a
+retrieval / provenance audit (one independent CODATA source, one
+ASD-theoretical cross-check, four curated transcriptions), and not a
+corroboration of the framework?}

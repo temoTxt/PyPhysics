@@ -1,0 +1,90 @@
+\section{Li$^{2+}$ 1s hyperfine, $I=3/2$ angular extension (PR \#86)}
+\label{sec:eq-li2plus-hyperfine}
+
+Source (consumed from branch \texttt{78-li2plus-hyperfine}):
+\texttt{Mathematica\_Notebooks/Quantum\_Mechanics/r\_e\_Li2plus\_hyperfine.wl}
+(81 lines).
+Companion to
+\texttt{Bethe\_Salpeter/13\_Li2plus\_Hyperfine.md}.
+
+\paragraph{Cell~1 --- H 1s leading-Fermi sanity check.}
+\[
+\Delta\nu_H^{\rm leading\,Fermi}
+  = \tfrac{4}{3}\,g_p \,\tfrac{m_e}{M_p}\,\alpha^4\,
+    \tfrac{m_e c^2}{h}
+\]
+with $g_p = 5.5856946893$, $m_e/M_p = 1/1836.15267343$,
+$\alpha = 1/137.035999084$. \wolframcheck{$\Delta\nu_H \approx 1418$--$1421$~MHz
+vs.~measured $1420.4058$~MHz $\Rightarrow$ leading-Fermi baseline confirmed.}
+
+\paragraph{Cell~2 --- Li-7 vs.~H textbook scaling ratio.}
+Contact constant $a \sim (\mu_I/I)\,|\psi(0)|^2 \sim (\mu_I/I)\,Z^3$;
+top-interval splitting $\Delta\nu = a(I + 1/2) \Rightarrow \Delta\nu \sim
+\mu_I (2I+1)/(2I)\,Z^3$.
+\[
+\frac{\Delta\nu_{\rm Li}}{\Delta\nu_H}
+  = \frac{\mu_{\rm Li}(2 I_{\rm Li}+1)/(2 I_{\rm Li})}
+         {\mu_p (2 I_p+1)/(2 I_p)}\;Z^3
+\]
+With $\mu_p = 2.79284734$, $\mu_{\rm Li} = 3.256427$ (nuclear magnetons),
+$I_{\rm Li} = 3/2$, $I_p = 1/2$, $Z = 3$, and scaling the \emph{leading-Fermi}
+H baseline ($1418.4$~MHz per BS-S22.1, \emph{not} the measured value):
+\[
+\Delta\nu_{\rm Li}^{\rm textbook\,(g_s=-2)} \approx 29\,811\;\text{MHz.}
+\]
+\wolframcheck{} The iter-5 methodological fix avoids double-counting the
+anomalous moment ($\sim +34$~MHz) and importing proton-specific
+nuclear-structure corrections.
+
+\paragraph{Cell~3 --- Framework correction at the triangulated $r_e$.}
+Hyperfine is linear in $g_s$ ($n=1$,
+\texttt{10\_CrossComparison.md}~\S2). With
+$g_s^{\rm tri} = -2.00231930436$ at $r_e/r_0 = 0.4994205099128317$:
+\[
+\boxed{\;
+  \Delta\nu_{\rm Li}^{\rm framework}
+    = \frac{g_s^{\rm tri}}{-2}\,\Delta\nu_{\rm Li}^{\rm textbook}
+    \approx 29\,846\;\text{MHz} \approx 29.85\;\text{GHz.}
+\;}
+\]
+
+\paragraph{Cell~4 --- $I = 3/2$ angular structure (substantive AI move).}
+$1s_{1/2}$ ($S=1/2$) coupled to Li-7 $I = 3/2$ gives $F = 1, 2$.
+$\mathbf{I}\!\cdot\!\mathbf{S}$ eigenvalue
+$= \tfrac{1}{2}\bigl[F(F+1) - I(I+1) - S(S+1)\bigr]$:
+\[
+\mathbf{I}\!\cdot\!\mathbf{S}(F=2) = +3/4, \qquad
+\mathbf{I}\!\cdot\!\mathbf{S}(F=1) = -5/4.
+\]
+The $F=2 \leftrightarrow F=1$ splitting
+$= [\mathbf{I}\!\cdot\!\mathbf{S}(F=2) - \mathbf{I}\!\cdot\!\mathbf{S}(F=1)]\,a
+= 2a$ (i.e.~$(I + 1/2) a$, the headline interval).
+\wolframcheck{Module 2026-05-27.}
+
+\paragraph{Cell~5 --- Standard-QED point-nucleus comparator.}
+Add $r_e$-independent corrections the full Dirac hydrogenic solution carries:
+relativistic Breit/Dirac factor $1/[\gamma(2\gamma - 1)]$, $\gamma =
+\sqrt{1 - (Z\alpha)^2}$ ($+0.072\%$ at $Z=3$); reduced-mass ratio${}^3$
+(Li-7 vs.~proton, $+0.140\%$). Standard-QED comparator
+$\approx 29\,867$~MHz. Bohr--Weisskopf nuclear structure is out of scope
+(would reduce by $\sim 0.5$--$1\%$, framework-floor caveat).
+The residual framework(minimal) $-$ comparator is \emph{not} $r_e$-dependent,
+so it does not bear on the Branch~A verdict.
+
+\paragraph{Measurement-provenance caveat.}
+No direct experimental Li$^{2+}$ 1s HFS value exists. The authoritative
+comparator is the QED-theory value of Pachucki, Patkos, Yerokhin et~al.,
+\emph{Hyperfine splitting in $^{6,7}$Li$^+$}, arXiv:2309.00436 (2023),
+Table~VII, which itself uses the experimental Li$^+$ HFS as input.
+
+\paragraph{Verdict (per PR \#86).}
+Branch~A by structural self-consistency: the $+0.116\%$ $(g_s/{-2})$
+enhancement is $Z$-independent and identical to what textbook QED applies at
+every $Z$. The Li$^{2+}$ test is the \emph{same} structural self-consistency
+as the H 21-cm result, not an independent $Z=3$ discrimination.
+
+\authorreview{Confirm (a)~$I = 3/2$ angular factor (the substantive
+modelling move) is the intended interpretation; (b)~the iter-5
+methodological fix (scale the $g_s = -2$ leading-Fermi H baseline, not the
+measured H value) avoids the anomaly double-count; (c)~no direct $^7$Li$^{2+}$
+HFS measurement is known.}
