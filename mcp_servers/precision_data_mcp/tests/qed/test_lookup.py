@@ -50,17 +50,42 @@ class TestHydrogen:
 
 class TestHydrogenicIons:
     def test_si13_g_factor(self):
+        # Re-sourced (#119): Sturm 2011 PRL 107,023002 value; prior seed 1.9953395931 was wrong.
         r = lookup.get_g_factor("Si XIV", "1s2S1/2")
-        assert r["value"] == pytest.approx(1.9953395931, rel=1e-9)
+        assert r["value"] == pytest.approx(1.9953489587, rel=1e-9)
         assert r["source"] == "sturm2013_si13_g_factor"
 
     def test_he_g_factor(self):
+        # Re-sourced (#119): Schneider 2022 3He+ measurement; prior seed 1.999985794 was wrong.
         r = lookup.get_g_factor("He II", "1s2S1/2")
-        assert r["value"] == pytest.approx(1.9999857940, rel=1e-9)
+        assert r["value"] == pytest.approx(2.00217741579, rel=1e-9)
+        assert r["source"] == "schneider2022_he3_g_factor"
 
     def test_li2_hyperfine(self):
         r = lookup.get_hyperfine("Li III", "1s2S1/2")
         assert r["value"] == pytest.approx(11890.018, rel=1e-6)
+
+    def test_o7_g_factor(self):
+        # Added (#82/#127): Verdu 2004 PRL 92,093002 — Z=8 Z-scan point.
+        r = lookup.get_g_factor("O VIII", "1s2S1/2")
+        assert r["value"] == pytest.approx(2.0000470254, rel=1e-9)
+        assert r["source"] == "verdu2004_o7_g_factor"
+        assert r["value_class"] == "experimental"
+        assert r["safe_for_model_verification"] is True
+        _assert_record(r)
+
+    def test_sn49_g_factor(self):
+        # Added (#82/#127): Morgner 2023 Nature 622 — Z=50 high-Z anchor.
+        r = lookup.get_g_factor("Sn L", "1s2S1/2")
+        assert r["value"] == pytest.approx(1.910562059, rel=1e-9)
+        assert r["source"] == "morgner2023_sn49_g_factor"
+        assert r["value_class"] == "experimental"
+        assert r["safe_for_model_verification"] is True
+        _assert_record(r)
+
+    def test_o7_sn49_aliases(self):
+        assert lookup.get_g_factor("O7+", "1s2S1/2")["value"] == pytest.approx(2.0000470254, rel=1e-9)
+        assert lookup.get_g_factor("Sn49+", "1s2S1/2")["value"] == pytest.approx(1.910562059, rel=1e-9)
 
 
 class TestExoticAtoms:
@@ -86,7 +111,7 @@ class TestAliasResolution:
 
     def test_he_plus_alias(self):
         r = lookup.get_g_factor("He+", "1s2S1/2")
-        assert r["value"] == pytest.approx(1.9999857940, rel=1e-9)
+        assert r["value"] == pytest.approx(2.00217741579, rel=1e-9)
 
 
 class TestErrorPaths:
@@ -126,42 +151,55 @@ class TestProvenance:
 
 
 class TestLi2AndMiddleZGFactors:
-    """Issue #113 — close the Li²⁺ campaign (#78) + hydrogenic-Z-scan (#82) MCP gap."""
+    """Issue #113 seeded these; issue #119 re-sourced them after the seed was found
+    corrupt (impossible g-factor values + wrong-DOI / wrong-system citations)."""
 
-    def test_li2_g_factor_sturm_2014(self):
+    def test_li2_g_factor_no_measurement_theory_only(self):
+        # Re-sourced (#119): NO hydrogenic Li2+ g-factor measurement exists; the prior
+        # seed (2.0000251707, "sturm2014" -> a cancer-biology paper) was corrupt. Entry is
+        # now the leading Breit+Schwinger theoretical comparator (unsafe for model verification).
         r = lookup.get_g_factor("Li III", "1s2S1/2")
-        assert r["source"] == "sturm2014_li2_g_factor"
-        assert r["value_class"] == "experimental"
-        assert r["safe_for_model_verification"] is True
-        assert r["value"] == pytest.approx(2.0000251707, rel=1e-9)
+        assert r["source"] == "theory_breit_schwinger_leading"
+        assert r["value_class"] == "theoretical_calculation"
+        assert r["safe_for_model_verification"] is False
+        assert r["value"] == pytest.approx(2.0019997579, rel=1e-9)
         _assert_record(r)
 
-    def test_be3_g_factor_kohler_2016(self):
+    def test_be3_g_factor_no_measurement_theory_only(self):
+        # Re-sourced (#119): no Be3+ g-factor measurement found; prior seed was corrupt.
         r = lookup.get_g_factor("Be IV", "1s2S1/2")
-        assert r["source"] == "kohler2016_be3_g_factor"
-        assert r["value_class"] == "experimental"
+        assert r["source"] == "theory_breit_schwinger_leading"
+        assert r["value_class"] == "theoretical_calculation"
+        assert r["safe_for_model_verification"] is False
         _assert_record(r)
 
     def test_c5_g_factor_haffner_2000(self):
+        # C5+ seed was sound; left unchanged by #119.
         r = lookup.get_g_factor("C VI", "1s2S1/2")
         assert r["source"] == "haffner2000_c5_g_factor"
         assert r["value_class"] == "experimental"
         assert r["value"] == pytest.approx(2.001041596, rel=1e-9)
         _assert_record(r)
 
-    def test_li2_lamb_shift_schiffer_1995(self):
+    def test_li2_lamb_shift_1974(self):
+        # Re-sourced (#119): value 62765(21) MHz is correct, but the citation was wrong
+        # (the "Schiffer 1995 PRL 74,2188" ref is a La3+ giant-dipole-resonance paper).
+        # Corrected to the 1974/75 6Li2+ n=2 Lamb-shift measurement.
         r = lookup.get_lamb_shift("Li III", "2S1/2-2P1/2")
-        assert r["source"] == "schiffer1995_li2_lamb_shift"
+        assert r["source"] == "lithium2plus_n2_lambshift_1974"
         assert r["value_class"] == "experimental"
         assert r["safe_for_model_verification"] is True
-        # 62765(21) MHz cited in #78
         assert r["value"] == pytest.approx(62765, rel=1e-4)
         _assert_record(r)
 
-    def test_li2_fine_structure_riis_1994(self):
+    def test_li2_fine_structure_no_measurement_theory_only(self):
+        # Re-sourced (#119): prior 7367 MHz was a misattributed Li+ (two-electron) 2^3P
+        # interval (Riis 1994), ~120x too small for hydrogenic Li2+. No hydrogenic Li2+ 2P
+        # fine-structure measurement exists; entry is the leading Z^4 Dirac estimate.
         r = lookup.get_fine_structure("Li III", "2P3/2-2P1/2")
-        assert r["source"] == "riis1994_li2_fine_structure"
-        assert r["value_class"] == "experimental"
+        assert r["source"] == "theory_dirac_leading"
+        assert r["value_class"] == "theoretical_calculation"
+        assert r["safe_for_model_verification"] is False
         _assert_record(r)
 
     def test_li2_observables_complete_for_78_campaign(self):
@@ -175,12 +213,17 @@ class TestLi2AndMiddleZGFactors:
         # 4. hyperfine (was already in MCP from #97)
         lookup.get_hyperfine("Li III", "1s2S1/2")
 
-    def test_82_z_scan_three_middle_species_now_complete(self):
-        """Cross-check: hydrogenic-Z-scan #82 (He+/Li2+/Be3+/C5+/Si13+) — all 5 g-factors."""
-        for species in ("He II", "Li III", "Be IV", "C VI", "Si XIV"):
+    def test_82_z_scan_experimental_vs_theory_split(self):
+        """Re-sourced (#119): of the #82 Z-scan species, only He+/C5+/Si13+ have
+        experimental g-factor measurements; Li2+ and Be3+ have none (theory comparators)."""
+        for species in ("He II", "C VI", "Si XIV"):
             r = lookup.get_g_factor(species, "1s2S1/2")
             assert r["value_class"] == "experimental"
             assert r["safe_for_model_verification"] is True
+        for species in ("Li III", "Be IV"):
+            r = lookup.get_g_factor(species, "1s2S1/2")
+            assert r["value_class"] == "theoretical_calculation"
+            assert r["safe_for_model_verification"] is False
 
 
 class TestHydrogenDiracPaperGap:
