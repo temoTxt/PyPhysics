@@ -10,7 +10,7 @@ Following our phone call, we consolidate here the verification work and the thre
 
 The structure is as follows. §2 describes the process. §3 records the three Jackson results we believe will interest you most. §4 lists the two experimental regimes the Jackson work surfaced as candidates for further attention. §5 collects the broader unconditional and conditional results across the four campaigns. §6 carries the single most load-bearing question we have for you, namely the resolution of the published value of $r_{e}$. §7 records the secondary errata findings and citation questions. §8 closes.
 
-A note on numbering. Tags of the form `#NN` in the original draft of this report referred to GitHub issues and pull requests in the public `temoTxt/PyPhysics` repository. We have moved every such tag into a numbered footnote, together with the file paths and external links that the campaign documents cite. The bibliography section at the end resolves each footnote.
+A note on numbering. The original draft of this report carried inline issue and pull-request tags drawn from the public PyPhysics repository[^13]. Every such tag has been moved into a numbered footnote. The file paths and external links cited by the campaign documents have been moved likewise. The bibliography section at the end resolves each footnote.
 
 ## Papers and source texts referenced
 
@@ -33,9 +33,19 @@ The Analytic Dirac venue is left tentative because the converted-PDF metadata do
 
 The work began in May 2026 with a systematic Wolfram-Mathematica re-derivation of every numbered equation in the dual-theory paper corpus. The corpus covers the Maxwell paper, the Analytic Dirac paper, DRQM I, and TCEP. The Banach-space and Navier-Stokes mathematics papers were verified at the load-bearing-results level only. The output is a per-paper verification document[^1] recording each equation as it appears in the paper, a single-line Wolfram check, a step-by-step expanded derivation, a cross-reference to the standard textbook equivalent (Jackson, Sakurai, Goldstein, or Weinberg as applicable), and a verdict.
 
-That verification campaign produced three substantive findings flagged for author review (§7) and three load-bearing structural results that survived the re-derivation cleanly. The verification work then opened three downstream campaigns. The first is the Electromagnetism / Jackson campaign[^2], which works through 66 canonical Jackson problems in CGS and SI under the proper-time Maxwell formulation, spanning Chapters 1–16. The second is the Quantum Mechanics / Griffiths campaign[^3], which works through 41 canonical Griffiths problems across editions 2 and 3 under the proper-time / dual-theory QM formulation, spanning Chapters 1–12. The third is the Bethe-Salpeter precision-prediction campaign[^4], which is the precision-experiment counterpart to Griffiths and covers 28 results across the hydrogen, helium, Lamb-shift, hyperfine, positronium, and muonium chapters. The three campaigns are recorded in three pull requests[^5][^6][^7].
+That verification campaign produced three substantive findings flagged for author review (§7) and three load-bearing structural results that survived the re-derivation cleanly. The verification work then opened three downstream campaigns.
 
-Two discipline choices we wish to flag. First, all AI-assisted work in the repository carries Crocco compliance markers per the *Responsible AI in Non-Empirical Research* framework[^8]. Under that framework, substantive AI work (the kind that shapes what a manuscript argues) requires per-paragraph review blocks and a documented human-acceptance pass; pragmatic AI work (transcription, Mathematica verification, formatting) does not. The present report is substantive AI end-to-end. Second, every per-PR document carries an explicit honest-framing discipline (the §13 review introduced in the Jackson plan) that distinguishes algebraic identities from physical claims, conditional predictions from unconditional ones, and within-scope verdicts from out-of-scope ones. The Phase 3.5 devil's-advocate pass on the present report is the same discipline applied to the report itself.
+The first is the Electromagnetism / Jackson campaign[^2]. It works through 66 canonical Jackson problems in CGS and SI under the proper-time Maxwell formulation. The problems span Chapters 1–16.
+
+The second is the Quantum Mechanics / Griffiths campaign[^3]. It works through 41 canonical Griffiths problems across editions 2 and 3, under the proper-time / dual-theory QM formulation. The problems span Chapters 1–12.
+
+The third is the Bethe-Salpeter precision-prediction campaign[^4]. It is the precision-experiment counterpart to Griffiths. It covers 28 results across the hydrogen, helium, Lamb-shift, hyperfine, positronium, and muonium chapters.
+
+The three campaigns are recorded in three pull requests[^5][^6][^7].
+
+Two discipline choices we wish to flag. First, all AI-assisted work in the repository carries Crocco compliance markers per the *Responsible AI in Non-Empirical Research* framework[^8]. Under that framework, substantive AI work (the kind that shapes what a manuscript argues) requires per-paragraph review blocks and a documented human-acceptance pass; pragmatic AI work (transcription, Mathematica verification, formatting) does not. The present report is substantive AI end-to-end.
+
+Second, every per-PR document carries an explicit honest-framing discipline, introduced as the §13 review in the Jackson plan. The discipline separates algebraic identities from physical claims. It separates conditional predictions from unconditional ones. It separates within-scope verdicts from out-of-scope ones. The Phase 3.5 devil's-advocate pass on the present report is the same discipline applied to the report itself.
 
 # §3 Jackson highlights — initial results
 
@@ -51,7 +61,7 @@ $$
 $$
 which is absent from the classical Liénard-Wiechert expression. The coefficient is suppressed by $(\mathbf{u}\cdot\mathbf{a})/b^{4}$ at non-relativistic intensity. It contributes at order unity for $\mathbf{u}/c \approx 1$.
 
-Working through Jackson Problem 14.2 under the dual-theory formulation, one obtains the explicit angular distribution of the radiation under (1). It follows that the formulation predicts a **longitudinal radiation component** in the far field, which the classical Liénard-Wiechert theory does not. The classical expression is purely transverse in the radiation zone.
+Working through Jackson Problem 14.2 under the dual-theory formulation, one obtains the explicit angular distribution of the radiation under (1). It follows that the formulation predicts a longitudinal radiation component in the far field. The classical Liénard-Wiechert expression is purely transverse in the radiation zone.
 
 The result is a structural prediction, not yet an empirical claim. Indeed, it is (to the extent we have looked) the most natural place to seek an operational signature of the dual-theory radiation theory. The Jackson per-PR document under the Electromagnetism PR[^5] records the algebra and the cross-reference to Eq. (7) of the Maxwell paper.
 
@@ -62,7 +72,7 @@ $$
 \mathbf{F}_{\rm AL} \;=\; \tfrac{2}{3}\,\frac{e^{2}}{c^{3}}\,\dddot{\mathbf{x}}.
 \tag{2}
 $$
-The third-order time derivative in (2) is the source of the runaway-solution and pre-acceleration pathologies that mar the classical theory.
+The third-order time derivative in (2) is the source of the runaway-solution and pre-acceleration pathologies of the classical theory. The proper-time and standard equations of motion are mathematically equivalent at the level of particle trajectories, but not (what we mean by) physically equivalent at the level of radiation-reaction structure.
 
 We observe that the first-order proper-time structure removes both pathologies. The equation of motion is first-order in $\tau$ and therefore does not admit the higher-order spurious solutions. The Jackson Problem 16.1 derivation makes the dissolution claim explicit.
 
@@ -70,7 +80,7 @@ The claim is structural. Whether it also resolves the empirical defects that mot
 
 ## §3.3 Problem 5.13 — a non-zero result we did not anticipate
 
-Working through Jackson's magnetic-moment-of-a-current-loop problem in the proper-time formulation gave a non-zero result, where the classical calculation gives zero. The result is flagged with a tagged comment on the Electromagnetism issue[^9] for cross-verification. It is not yet checked by a second pair of eyes. The campaign's per-PR document records the calculation in full so that the result is reproducible.
+Working through Jackson's magnetic-moment-of-a-current-loop problem in the proper-time formulation gave a non-zero result, where the classical calculation gives zero. The result is flagged with a tagged comment on the Electromagnetism issue[^9] for cross-verification. An independent re-derivation has not yet been performed. The campaign's per-PR document records the calculation in full so that the result is reproducible.
 
 # §4 Candidate experiments — what we found to look at
 
@@ -128,7 +138,7 @@ The remaining results across the Bethe-Salpeter campaign[^4] are *conditional* o
 
 Across all six observables, branch (b) is in $\sim 10^{-3}$ fractional disagreement with measurement, while branch (c) agrees with measurement at the campaign's Bethe-estimate precision floor. The pattern is the consequence of the $r_{e}$ finding propagating through every $g_{s}$-linear and $g_{s}^{2}$-linear observable in the same way.
 
-The Bethe-estimate Lamb shift of (5)–(6) is the campaign's clearest measurement-level non-falsification at the precision the route can deliver. The framework reproduces the same $\sim 1{,}016$ MHz number that the standard QED Bethe-estimate route gives, and the $\sim 42$ MHz residual is shared between the two routes (it is what neither captures without a full one-loop calculation). It is not, in the strict sense, an endorsement that distinguishes the framework from standard QED. The two formulations give the same Bethe-estimate number, and the campaign's apparatus cannot push below this precision floor. A proper-time one-loop dual-QED calculation is documented as future work[^12]. The relevant point is that the framework does not fail at the Bethe-estimate precision. That is the strongest empirical claim the present apparatus supports. The six observables in the table, by contrast, do depend on $r_{e}$ at leading order.
+The Bethe-estimate Lamb shift of (5)–(6) is the campaign's clearest measurement-level non-falsification at the precision the route can deliver. The framework reproduces the same $\sim 1{,}016$ MHz number that the standard QED Bethe-estimate route gives. The $\sim 42$ MHz residual is shared between the two routes; it is what neither captures without a full one-loop calculation. The result is not, in the strict sense, a discriminator between the framework and standard QED. The two formulations give the same Bethe-estimate number. The campaign's apparatus cannot push below this precision floor. A proper-time one-loop dual-QED calculation is documented as future work[^12]. The relevant point is that the framework does not fail at the Bethe-estimate precision. That is the strongest empirical claim the present apparatus supports. The six observables in the table, by contrast, do depend on $r_{e}$ at leading order.
 
 # §6 The $r_{e}$ branch question — the load-bearing ask
 
@@ -172,7 +182,7 @@ so that even small differences in $r_{e}$ correspond to substantial differences 
 
 The value of $r_{e}$ enters every observable that depends on the electron's anomalous magnetic moment. That is every spin-dependent precision observable in atomic and molecular spectroscopy. The six-observable table in §5 shows the pattern. Branch (b) consistently predicts a $\sim 10^{-3}$ disagreement; branch (c) consistently agrees with measurement at the Bethe-estimate precision floor.
 
-On the hydrogen 1S hyperfine line — the 21-cm transition, the most precisely measured atomic-physics frequency at $\sim 10^{-12}$ relative uncertainty — branch (b)'s disagreement is of order $\sim 10^{6}$ standard deviations beyond the measurement uncertainty.
+Consider the hydrogen 1S hyperfine line, the 21-cm transition. It is the most precisely measured atomic-physics frequency, at $\sim 10^{-12}$ relative uncertainty. On that line, branch (b)'s disagreement is of order $\sim 10^{6}$ standard deviations beyond the measurement uncertainty.
 
 We are not asking you to pick the value that best fits the data. The campaign's verdict-recording is not a fitting exercise. We are asking which value the framework intends, so that the campaign can record verdicts as **Pass** or **Refuted** unconditionally rather than carry both branches indefinitely.
 
@@ -260,3 +270,5 @@ Thank you for the phone call and for the opening to send this. The single most u
 [^11]: MeV-bremsstrahlung clinical-linac scoping. Issue #48, `github.com/temoTxt/PyPhysics/issues/48`.
 
 [^12]: Proper-time one-loop dual-QED Lamb-shift calculation (future work). Issue #55, `github.com/temoTxt/PyPhysics/issues/55`.
+
+[^13]: Public PyPhysics repository, `github.com/temoTxt/PyPhysics`.
