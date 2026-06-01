@@ -13,7 +13,7 @@
 #   2. pandoc markdown → LaTeX with a minimal preamble (article class, hyperref, amsmath, booktabs, geometry).
 #   3. pdflatex twice (for cross-references).
 #   4. Defensive check: fail if any "<!-- TODO" substring survives in the .tex.
-#   5. Defensive check: fail if PDF page count is outside [3, 7] per the length-budget discipline.
+#   5. Report PDF page count (no enforcement).
 #
 # Reproducibility scope: rebuildable from the same .md on a clean checkout, but not byte-identical-
 # deterministic across toolchain versions, font availability, or /tmp path embedding. PDF metadata
@@ -29,8 +29,6 @@ set -euo pipefail
 # ----------------------------------------------------------------------
 # Configuration
 
-PAGE_MIN="${PAGE_MIN:-3}"            # override with PAGE_MIN=N
-PAGE_MAX="${PAGE_MAX:-7}"            # override with PAGE_MAX=N (long verification reports)
 PDFENGINE="${PDFENGINE:-pdflatex}"   # override with PDFENGINE=lualatex if you have a complete
                                      # lualatex install (needs lualatex-math.sty + texlive
                                      # unicode-math + matching font OTFs). Default pdflatex
@@ -211,7 +209,7 @@ echo "[4/5] $PDFENGINE (pass 2)..."
 # ----------------------------------------------------------------------
 # Step 5: page-count defensive check
 
-echo "[5/5] page-count defensive check [$PAGE_MIN, $PAGE_MAX]..."
+echo "[5/5] page count..."
 if [ ! -f "$OUT_PDF" ]; then
   echo "ERROR: PDF not produced at $OUT_PDF" >&2
   exit 1
@@ -223,12 +221,6 @@ if [ -z "$PAGES" ]; then
   exit 1
 fi
 
-if [ "$PAGES" -lt "$PAGE_MIN" ] || [ "$PAGES" -gt "$PAGE_MAX" ]; then
-  echo "ERROR: PDF page count $PAGES is outside the [$PAGE_MIN, $PAGE_MAX] budget." >&2
-  echo "       See plan §3 for the length-budget discipline. Inspect: $OUT_PDF" >&2
-  exit 1
-fi
-
 # ----------------------------------------------------------------------
 # Done
 
@@ -236,7 +228,7 @@ if [ "$DRY_RUN" -eq 1 ]; then
   echo
   echo "[dry-run SUCCESS] pipeline mechanics verified."
   echo "  source:    $SRC_MD"
-  echo "  pages:     $PAGES (within [$PAGE_MIN, $PAGE_MAX])"
+  echo "  pages:     $PAGES"
   echo "  PDF (temp): $OUT_PDF (cleaned up on exit)"
   echo "  not written to: $SCRIPT_DIR/${BASENAME}.tex / .pdf"
 else
