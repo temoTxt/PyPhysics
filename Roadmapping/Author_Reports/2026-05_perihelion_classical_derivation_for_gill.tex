@@ -273,12 +273,17 @@ with
 k \;=\; \frac{3\,GM}{c^{2}\,p}. \tag{13}
 \]
 
-The trigonometric identification uses
-\texttt{cos(φ(1\ −\ k))\ ≈\ cos\ φ\ +\ k\ φ\ sin\ φ} for small
-\texttt{k}. Perihelion occurs at \texttt{φ(1\ −\ k)\ =\ 2πn}, and so
-successive perihelia are separated by
-\texttt{φ\ =\ 2π/(1\ −\ k)\ ≈\ 2π(1\ +\ k)\ =\ 2π\ +\ 2π\ k}. The
-advance per orbit is therefore
+The trigonometric identification used in (12) is the small-\texttt{k}
+expansion
+
+\[
+\cos\bigl(\phi\,(1 - k)\bigr) \;\approx\; \cos\phi \;+\; k\,\phi\,\sin\phi. \tag{13a}
+\]
+
+Perihelion occurs at \texttt{φ(1\ −\ k)\ =\ 2πn}. Successive perihelia
+are therefore separated by
+\texttt{φ\ =\ 2π/(1\ −\ k)\ ≈\ 2π(1\ +\ k)\ =\ 2π\ +\ 2π\ k}, and the
+advance per orbit is
 
 \[
 \Delta\phi^{\text{GR}}_{\text{per orbit}}
@@ -287,10 +292,11 @@ advance per orbit is therefore
 \;=\; \frac{6\pi\,GM}{c^{2}\,a\,(1-e^{2})}. \tag{14}
 \]
 
-This is the canonical Einstein 1915 result. Indeed, for Mercury
-(semi-major axis \texttt{a\ =\ 5.7909\ ×\ 10¹⁰} m, eccentricity
-\texttt{e\ =\ 0.20563}, semi-latus rectum
-\texttt{p\ =\ a(1\ −\ e²)\ =\ 5.546\ ×\ 10¹⁰} m) we obtain
+This is the canonical Einstein 1915 result. For Mercury we use the
+standard orbital parameters: semi-major axis
+\texttt{a\ =\ 5.7909\ ×\ 10¹⁰} m, eccentricity \texttt{e\ =\ 0.20563},
+and semi-latus rectum \texttt{p\ =\ a(1\ −\ e²)\ =\ 5.546\ ×\ 10¹⁰} m.
+Indeed, evaluating (14) at these parameters,
 
 \[
 \Delta\phi^{\text{GR}}_{\text{Mercury}}
@@ -455,13 +461,13 @@ Comparing (14) and (25) directly,
 
 Both predictions scale as \texttt{GM/(c²\ p)} per orbit; the
 dimensionless small parameter is the same in (14) and (25). Thus the
-ratio (27) is independent of the orbital parameters of the test body.
-Indeed, \textbf{the −1/6 is a structural identity of the two
-formulations, not a fit.} It holds for Mercury, for Venus, for Earth,
-for S2 around Sgr A\emph{, and for any binary pulsar. It carries an
-opposite-sign signature: the framework's force law makes the perihelion
-}regress* (move backwards against the orbital motion), where general
-relativity makes it \emph{advance} (move forwards).
+ratio (27) is independent of the orbital parameters of the test body. It
+follows that the \texttt{−1/6} is a structural identity of the two
+formulations, not a numerical fit. The same ratio holds for Mercury, for
+Venus, for Earth, for S2 around Sgr A*, and for any binary pulsar. The
+ratio also carries an opposite-sign signature; the framework's force law
+makes the perihelion regress against the orbital motion, while general
+relativity makes it advance.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -512,9 +518,9 @@ in (16) translates to the static-isotropic metric expansion. With
 \texttt{(2\ +\ 2γ\ −\ β)/3} can go negative --- which is what the
 explicit Binet calculation in §4 reproduces.
 
-We observe that this is the classic ``1/6 factor'' of modified-Newtonian
+We observe that this is the \texttt{1/6} factor of modified-Newtonian
 gravity without spatial-metric curvature. It is a known signature in the
-PPN literature: any modification that adds a relativistic correction to
+PPN literature; any modification that adds a relativistic correction to
 the central force but leaves the spatial metric flat produces a
 perihelion shift that is some fraction of the GR result. For the
 specific form (17), the fraction is \texttt{−1/6}.
