@@ -143,7 +143,10 @@ pandoc "$OUT_MD" \
   --to latex \
   --standalone \
   --pdf-engine=pdflatex \
-  --variable=geometry:margin=1in \
+  --variable=geometry:left=1.25in \
+  --variable=geometry:right=1.25in \
+  --variable=geometry:top=1in \
+  --variable=geometry:bottom=1in \
   --variable=fontsize:11pt \
   --variable=documentclass:article \
   --variable=colorlinks:true \

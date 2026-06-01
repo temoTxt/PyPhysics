@@ -4,7 +4,7 @@ author: "Trey Morris with Claude Opus 4.7"
 date: "2026-05-27"
 ---
 
-> **Pre-standard notice (per [#115](https://github.com/temoTxt/PyPhysics/issues/115) + [#117](https://github.com/temoTxt/PyPhysics/issues/117)).** This report was written before the equation-, sentence-, and citation-discipline writing standard was codified. It does not yet comply with [`VOICE_MATCH_GILL.md`](../Tooling/VOICE_MATCH_GILL.md) §3.bis (numbered display equations only), §3.ter (short complete sentences), or §3.quater (numbered footnotes plus a bibliography section). If reissued to a new recipient, it is to be rewritten to the new standard first.
+> **Pre-standard notice (per [#115](https://github.com/temoTxt/PyPhysics/issues/115), [#117](https://github.com/temoTxt/PyPhysics/issues/117), and [#120](https://github.com/temoTxt/PyPhysics/issues/120)).** This report was written before the writing standard was codified. It does not yet comply with [`VOICE_MATCH_GILL.md`](../Tooling/VOICE_MATCH_GILL.md) §3.bis (numbered display equations only), §3.ter (short complete sentences; math does the talking), §3.quater (numbered footnotes plus a bibliography section), or §3.quinquies (no emojis or pseudo-emoji symbols). If reissued to a new recipient, it is to be rewritten to the new standard first.
 
 # §1 Cover note
 
