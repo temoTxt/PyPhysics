@@ -5,6 +5,8 @@ date: "2026-05-26"
 subject: "Three framework-specification questions for hypothesis-(i) first-principles r_e derivation (follow-up to candidates note + overnight progress)"
 ---
 
+> **Pre-standard notice (per [#115](https://github.com/temoTxt/PyPhysics/issues/115)).** This report was written before the equation- and sentence-discipline writing standard was codified. It does not yet comply with [`VOICE_MATCH_GILL.md`](../Tooling/VOICE_MATCH_GILL.md) §3.bis (numbered display equations only) or §3.ter (short complete sentences). If reissued to a new recipient, it is to be rewritten to the new standard first.
+
 # Three framework-specification questions for first-principles $r_e$ derivation — for Tepper Gill
 
 **Date:** 2026-05-26 (PM, after the day's overnight progress runs).
