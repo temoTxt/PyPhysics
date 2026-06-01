@@ -64,6 +64,10 @@ Every sentence in substantive prose must be **short and complete**.
 
 The discipline is not about choppy fragments. It is about making every sentence end with the reader knowing what claim was just made. Gill's long subordinate-clause rhythm is preserved when each clause is itself short and the chain points at a single conclusion.
 
+**The mathematics does most of the talking.** In a substantive prose document, the load-bearing technical claims live in the numbered display equations of §3.bis. The role of the surrounding sentences is to *illustrate* the equation — to name the symbols, to flag the limit, to point at the next step. Sentences that paraphrase what an equation already says, or that try to *replace* an equation with English, are doing the wrong job. A reader who skims the equations alone should still come away with the document's technical narrative; the prose layer adds context and connective tissue, not redundant restatement.
+
+A prose sentence earns its place if removing it would leave the equations less interpretable. A prose sentence that could be cut without losing meaning should be cut.
+
 | Forbidden ("AI dribble") | Required |
 |---|---|
 | "We observe that, given the proper-time Hamiltonian formulation, which differs from the standard Hamiltonian formulation by the algebraic rearrangement of the kinetic-energy term, the resulting equations of motion, when expanded to the appropriate order in `(u/c)²`, reproduce the textbook Sommerfeld–Dirac fine-structure result up to a multiplicative factor that depends on the chosen value of the cutoff `r_e/r_0`." | "We observe that the proper-time Hamiltonian formulation differs from the standard one by an algebraic rearrangement of the kinetic-energy term. Expanding the resulting equations of motion to order `(u/c)²` reproduces the Sommerfeld–Dirac fine-structure result. The reproduction agrees up to a multiplicative factor depending on the cutoff `r_e/r_0`." |
@@ -92,6 +96,23 @@ The bibliography section at the end of each document:
 - For external URLs: bare URL, no rich-text linkification.
 
 Pandoc renders `[^1]` as a real LaTeX footnote, so the discipline survives the `.md` → `.tex` → `.pdf` build pipeline without modification.
+
+## 3.quinquies. No emojis or pseudo-emoji symbols (added per [#120](https://github.com/temoTxt/PyPhysics/issues/120))
+
+Emojis must not appear in any committed `.md`, `.tex`, or `.pdf` release governed by §2. Verdict markers, bullet decorators, and any Unicode glyph in the Emoji block of Unicode are all out.
+
+The reason is concrete. pdflatex cannot render Unicode emoji glyphs in its default T1 encoding. The build pipeline substitutes them to ASCII tags (`[OK]`, `[warn]`, `[X]`). Both renderings read as visual noise. A reader sees a tag, not a claim. The ASCII fallbacks are therefore also out — the rule is on emojis *and* their substitutes.
+
+This rule does **not** restrict:
+
+- Mathematical symbols (≈, ×, −, →, ∂, ∇, ℏ, …). These are the language of physics and pandoc handles them natively in math mode.
+- Greek letters in math mode (α, β, γ, …). Same.
+
+| Forbidden | Required |
+|---|---|
+| "Acceptance verdicts: ✅ predicts residual; ⚠ matches at floor only; 🔴 framework refuted." | "Acceptance verdicts: **Pass** — the framework predicts the residual within the campaign's precision. **Marginal** — the framework matches at precision floor only (consistent but not discriminating). **Refuted** — the framework's predicted signature is absent at the predicted sensitivity." |
+
+The recommended substitution is a short bold label, in line with §3 voice markers and §3.ter sentence-length discipline. The label is a recommendation, not a binding template; authors may choose other text labels that fit the document.
 
 ## 4. Anti-patterns
 
