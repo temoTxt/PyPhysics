@@ -132,7 +132,13 @@ $$
 k \;=\; \frac{3\,GM}{c^{2}\,p}. \tag{13}
 $$
 
-The trigonometric identification uses `cos(φ(1 − k)) ≈ cos φ + k φ sin φ` for small `k`. Perihelion occurs at `φ(1 − k) = 2πn`, and so successive perihelia are separated by `φ = 2π/(1 − k) ≈ 2π(1 + k) = 2π + 2π k`. The advance per orbit is therefore
+The trigonometric identification used in (12) is the small-`k` expansion
+
+$$
+\cos\bigl(\phi\,(1 - k)\bigr) \;\approx\; \cos\phi \;+\; k\,\phi\,\sin\phi. \tag{13a}
+$$
+
+Perihelion occurs at `φ(1 − k) = 2πn`. Successive perihelia are therefore separated by `φ = 2π/(1 − k) ≈ 2π(1 + k) = 2π + 2π k`, and the advance per orbit is
 
 $$
 \Delta\phi^{\text{GR}}_{\text{per orbit}}
@@ -141,7 +147,7 @@ $$
 \;=\; \frac{6\pi\,GM}{c^{2}\,a\,(1-e^{2})}. \tag{14}
 $$
 
-This is the canonical Einstein 1915 result. Indeed, for Mercury (semi-major axis `a = 5.7909 × 10¹⁰` m, eccentricity `e = 0.20563`, semi-latus rectum `p = a(1 − e²) = 5.546 × 10¹⁰` m) we obtain
+This is the canonical Einstein 1915 result. For Mercury we use the standard orbital parameters: semi-major axis `a = 5.7909 × 10¹⁰` m, eccentricity `e = 0.20563`, and semi-latus rectum `p = a(1 − e²) = 5.546 × 10¹⁰` m. Indeed, evaluating (14) at these parameters,
 
 $$
 \Delta\phi^{\text{GR}}_{\text{Mercury}}
@@ -260,7 +266,7 @@ $$
 \;=\; -\,\frac{1}{6}\qquad\text{(exactly, not approximately).} \tag{27}
 $$
 
-Both predictions scale as `GM/(c² p)` per orbit; the dimensionless small parameter is the same in (14) and (25). Thus the ratio (27) is independent of the orbital parameters of the test body. Indeed, **the −1/6 is a structural identity of the two formulations, not a fit.** It holds for Mercury, for Venus, for Earth, for S2 around Sgr A*, and for any binary pulsar. It carries an opposite-sign signature: the framework's force law makes the perihelion *regress* (move backwards against the orbital motion), where general relativity makes it *advance* (move forwards).
+Both predictions scale as `GM/(c² p)` per orbit; the dimensionless small parameter is the same in (14) and (25). Thus the ratio (27) is independent of the orbital parameters of the test body. It follows that the `−1/6` is a structural identity of the two formulations, not a numerical fit. The same ratio holds for Mercury, for Venus, for Earth, for S2 around Sgr A*, and for any binary pulsar. The ratio also carries an opposite-sign signature; the framework's force law makes the perihelion regress against the orbital motion, while general relativity makes it advance.
 
 ---
 
@@ -284,7 +290,7 @@ where `γ` and `β` are the PPN parameters of the metric[^14]. In general relati
 
 The framework's force law (17) is, by contrast, a force-law-only modification of Newtonian gravity. It modifies the time dynamics (how fast `r` and `φ` change in time) but does not curve space; there is no modified `dr²` coefficient, and the radial coordinate stays flat. In PPN language this corresponds to `γ = 0` and a value of `β` determined by the way the `V²/(2mc²)` kernel in (16) translates to the static-isotropic metric expansion. With `γ = 0` and an appropriate `β`, the PPN coefficient `(2 + 2γ − β)/3` can go negative — which is what the explicit Binet calculation in §4 reproduces.
 
-We observe that this is the classic "1/6 factor" of modified-Newtonian gravity without spatial-metric curvature. It is a known signature in the PPN literature: any modification that adds a relativistic correction to the central force but leaves the spatial metric flat produces a perihelion shift that is some fraction of the GR result. For the specific form (17), the fraction is `−1/6`.
+We observe that this is the `1/6` factor of modified-Newtonian gravity without spatial-metric curvature. It is a known signature in the PPN literature; any modification that adds a relativistic correction to the central force but leaves the spatial metric flat produces a perihelion shift that is some fraction of the GR result. For the specific form (17), the fraction is `−1/6`.
 
 The open question, raised for the author's verdict, is whether the framework's intended content includes a spatial-metric curvature component beyond Eq. (17), or whether (17) is taken to be the complete framework prediction for gravity. Under the latter reading, the framework's Mercury prediction is the `−7.17` arcsec/century value computed via Binet in §4, and the framework does not match the observed `≈ +43` arcsec/century. Under the former reading, the missing five-sixths might be supplied by a curved-space companion to (17) that the *Relativistic Newtonian Theory* paper does not write out explicitly.
 
