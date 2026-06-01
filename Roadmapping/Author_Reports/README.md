@@ -39,7 +39,7 @@ The script:
 2. Runs `pandoc` to convert the stripped markdown → LaTeX.
 3. Runs `pdflatex` twice (for cross-references) to produce the PDF.
 4. Defensive check 1: fails the build if any `<!-- TODO` substring is still present in the LaTeX after stripping (catches stripper bugs).
-5. Defensive check 2: fails the build if the PDF page count is outside `[3, 7]` (per the length-budget discipline in the report's plan).
+5. Reports the PDF page count (no enforcement — per-report length is a judgment call).
 
 Use `--dry-run` to exercise the pipeline without committing the PDF:
 
