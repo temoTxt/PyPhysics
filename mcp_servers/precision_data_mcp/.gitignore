@@ -1,0 +1,5 @@
+# Runtime cache directories — created on first tool invocation per namespace
+src/precision_data_mcp/*/cache/
+.venv/
+__pycache__/
+*.egg-info/

@@ -1,0 +1,79 @@
+{
+  "$schema_version": "0.2.0",
+  "$source_revision": {
+    "data_revision": "2026-05-31",
+    "retrieved_at": "2026-05-31T00:00:00Z",
+    "seeded_by_hand": true,
+    "_note": "0.2.0 schema bump: every value entry now carries value_class per umbrella safety-flag enforcement."
+  },
+  "nuclei": {
+    "p": {
+      "_aliases": ["proton", "p+", "1H+"],
+      "description": "Proton — bound nucleon, Z=1, A=1",
+      "charge_radius": {
+        "values": [
+          {"value": 0.84087, "uncertainty": 0.00039, "unit": "fm", "source": "pohl2010_muonic_hydrogen", "value_class": "experimental", "method": "muonic_hydrogen_spectroscopy", "_note": "Pohl et al. 2010 — direct extraction from muonic-H spectroscopy."},
+          {"value": 0.879, "uncertainty": 0.008, "unit": "fm", "source": "bernauer2010_a1_mainz", "value_class": "experimental", "method": "electron_scattering", "_note": "Bernauer 2010 — A1 Mainz e-p elastic scattering."},
+          {"value": 0.877, "uncertainty": 0.007, "unit": "fm", "source": "codata2018_constants", "value_class": "codata_adjusted", "method": "CODATA_2018_pre_muonic_average", "_note": "Weighted CODATA average — NOT a single experimental measurement."},
+          {"value": 0.833, "uncertainty": 0.010, "unit": "fm", "source": "fleurbaey2018_1s_3s_spectroscopy", "value_class": "experimental", "method": "1S-3S_spectroscopy", "_note": "Fleurbaey 2018 — H 1S-3S two-photon spectroscopy."},
+          {"value": 0.831, "uncertainty": 0.014, "unit": "fm", "source": "xiong2019_prad", "value_class": "experimental", "method": "PRad_electron_scattering", "_note": "PRad 2019 — low-Q^2 e-scattering at JLab."}
+        ],
+        "_note": "Proton-radius puzzle. Four direct experimental extractions + one CODATA-adjusted weighted average; disagreement ~5 sigma between the ~0.84 fm and ~0.88 fm clusters."
+      },
+      "magnetic_moment": {
+        "value": 2.79284734463,
+        "uncertainty": 0.00000000082,
+        "unit": "mu_N",
+        "source": "codata2018_constants",
+        "value_class": "codata_adjusted",
+        "_note": "Proton magnetic moment in nuclear magnetons. CODATA-adjusted — not safe for direct model verification of QED proton-structure predictions."
+      }
+    },
+    "n": {
+      "_aliases": ["neutron"],
+      "description": "Neutron — Z=0, A=1; mean charge radius (rms) deduced from electron-scattering form factor",
+      "charge_radius": {
+        "value": null,
+        "uncertainty": null,
+        "unit": "fm",
+        "source": "pdg2024_review",
+        "value_class": "experimental_world_average",
+        "_note": "Neutron is electrically neutral overall; single 'radius' value not well-defined — see mean_square_charge_radius."
+      },
+      "mean_square_charge_radius": {
+        "value": -0.1161,
+        "uncertainty": 0.0022,
+        "unit": "fm^2",
+        "source": "pdg2024_review",
+        "value_class": "experimental_world_average",
+        "_note": "<r^2>_n from PDG world average of e-n / neutron-form-factor measurements."
+      },
+      "magnetic_moment": {
+        "value": -1.91304273,
+        "uncertainty": 0.00000045,
+        "unit": "mu_N",
+        "source": "codata2018_constants",
+        "value_class": "codata_adjusted",
+        "_note": "Neutron magnetic moment, CODATA-adjusted."
+      }
+    },
+    "d": {
+      "_aliases": ["deuteron", "2H+"],
+      "description": "Deuteron — bound state of one proton + one neutron, Z=1, A=2",
+      "charge_radius": {
+        "values": [
+          {"value": 2.12562, "uncertainty": 0.00078, "unit": "fm", "source": "pohl2016_muonic_deuterium", "value_class": "experimental", "method": "muonic_deuterium_spectroscopy", "_note": "Pohl 2016 — analogous to proton puzzle."},
+          {"value": 2.12771, "uncertainty": 0.00022, "unit": "fm", "source": "codata2018_constants", "value_class": "codata_adjusted", "method": "CODATA_2018_deuterium_spectroscopy", "_note": "CODATA-2018 weighted from H/D isotope-shift spectroscopy."}
+        ],
+        "_note": "Deuteron-radius puzzle analogue. Tension ~3 sigma."
+      },
+      "magnetic_moment": {
+        "value": 0.857438230,
+        "uncertainty": 0.000000024,
+        "unit": "mu_N",
+        "source": "codata2018_constants",
+        "value_class": "codata_adjusted"
+      }
+    }
+  }
+}

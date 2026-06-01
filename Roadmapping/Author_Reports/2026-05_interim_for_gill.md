@@ -4,6 +4,8 @@ author: "Trey Morris with Claude Opus 4.7"
 date: "2026-05-25"
 ---
 
+> **Pre-standard notice (per [#115](https://github.com/temoTxt/PyPhysics/issues/115), [#117](https://github.com/temoTxt/PyPhysics/issues/117), and [#120](https://github.com/temoTxt/PyPhysics/issues/120)).** This report was written before the writing standard was codified. It does not yet comply with [`VOICE_MATCH_GILL.md`](../Tooling/VOICE_MATCH_GILL.md) §3.bis (numbered display equations only), §3.ter (short complete sentences; math does the talking), §3.quater (numbered footnotes plus a bibliography section), or §3.quinquies (no emojis or pseudo-emoji symbols). If reissued to a new recipient, it is to be rewritten to the new standard first.
+
 # §1 Cover note
 
 Following our phone call, this report consolidates the verification work and three downstream campaigns since 2026-05-11 into a form that can be read in one sitting. The structure is: how we did the work (§2), what we found in Jackson that we believe will interest you most (§3), the two experimental regimes the Jackson work surfaced as candidates for further attention (§4), the broader unconditional and conditional results across the campaigns (§5), and the single most load-bearing question we have for you (§6 — the resolution of the published $r_e$ value). Secondary errata findings and questions follow in §7. The closing in §8 notes what would help us most to hear back on.
