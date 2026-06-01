@@ -278,6 +278,42 @@
      "_note": "Schneider et al. 2022, Nature 606, 878-883, DOI 10.1038/s41586-022-04761-7 (arXiv:2206.05943). Measured 3He+ bound-electron g-factor g_e = -2.00217741579(34)_stat(30)_sys; magnitude recorded here. RESOURCED 2026-06-01 (refs #119): prior seed 1.999985794 was physically impossible (~2.2e6 sigma off the Breit value) and cited a lithium-like-calcium paper."
     }
    }
+  },
+  "O VIII": {
+   "_aliases": [
+    "O7+",
+    "oxygen-7+",
+    "hydrogenic-oxygen"
+   ],
+   "description": "Hydrogenic oxygen ion (O^7+, one electron bound to Z=8 nucleus). #82 Z-scan point.",
+   "g_factor_bound_electron": {
+    "1s2S1/2": {
+     "value": 2.0000470254,
+     "uncertainty": 4.7e-09,
+     "unit": "dimensionless",
+     "source": "verdu2004_o7_g_factor",
+     "value_class": "experimental",
+     "_note": "Verdu et al. 2004 Phys. Rev. Lett. 92, 093002, DOI 10.1103/PhysRevLett.92.093002. Measured 16O7+ bound-electron g = 2.0000470254(15)(44); combined uncertainty ~4.7e-9. Added 2026-06-01 (refs #82/#127) to complete the hydrogenic Z-scan."
+    }
+   }
+  },
+  "Sn L": {
+   "_aliases": [
+    "Sn49+",
+    "tin-49+",
+    "hydrogenic-tin"
+   ],
+   "description": "Hydrogenic tin ion (Sn^49+, one electron bound to Z=50 nucleus). #82 high-Z anchor.",
+   "g_factor_bound_electron": {
+    "1s2S1/2": {
+     "value": 1.910562059,
+     "uncertainty": 1e-09,
+     "unit": "dimensionless",
+     "source": "morgner2023_sn49_g_factor",
+     "value_class": "experimental",
+     "_note": "Morgner et al. 2023 Nature 622, 53-57, DOI 10.1038/s41586-023-06453-2 (arXiv:2307.06613). Measured 118Sn49+ bound-electron g = 1.910562059(1) at ~0.5 ppb; strongest-field precise g-factor test. Added 2026-06-01 (refs #82/#127) as the high-Z anchor of the Z-scan. At Z=50 the (Zalpha)^2 series is non-perturbative; use the measured value directly."
+    }
+   }
   }
  }
 }

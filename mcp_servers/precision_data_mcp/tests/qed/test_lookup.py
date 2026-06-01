@@ -65,6 +65,28 @@ class TestHydrogenicIons:
         r = lookup.get_hyperfine("Li III", "1s2S1/2")
         assert r["value"] == pytest.approx(11890.018, rel=1e-6)
 
+    def test_o7_g_factor(self):
+        # Added (#82/#127): Verdu 2004 PRL 92,093002 — Z=8 Z-scan point.
+        r = lookup.get_g_factor("O VIII", "1s2S1/2")
+        assert r["value"] == pytest.approx(2.0000470254, rel=1e-9)
+        assert r["source"] == "verdu2004_o7_g_factor"
+        assert r["value_class"] == "experimental"
+        assert r["safe_for_model_verification"] is True
+        _assert_record(r)
+
+    def test_sn49_g_factor(self):
+        # Added (#82/#127): Morgner 2023 Nature 622 — Z=50 high-Z anchor.
+        r = lookup.get_g_factor("Sn L", "1s2S1/2")
+        assert r["value"] == pytest.approx(1.910562059, rel=1e-9)
+        assert r["source"] == "morgner2023_sn49_g_factor"
+        assert r["value_class"] == "experimental"
+        assert r["safe_for_model_verification"] is True
+        _assert_record(r)
+
+    def test_o7_sn49_aliases(self):
+        assert lookup.get_g_factor("O7+", "1s2S1/2")["value"] == pytest.approx(2.0000470254, rel=1e-9)
+        assert lookup.get_g_factor("Sn49+", "1s2S1/2")["value"] == pytest.approx(1.910562059, rel=1e-9)
+
 
 class TestExoticAtoms:
     def test_muonic_hydrogen_lamb_shift(self):
