@@ -42,8 +42,33 @@ author_review_packet/
 └── prompts/           # Crocco-disclosed substantive AI prompts
 ```
 
+## Writing standard
+
+This packet is governed by the same writing standard that governs the
+Author Reports, codified in
+[`Roadmapping/Tooling/VOICE_MATCH_GILL.md`](../../Tooling/VOICE_MATCH_GILL.md):
+
+- **§3.bis** — every load-bearing equation is a numbered display equation.
+  LaTeX `equation` / `align` environments give numbering by default.
+- **§3.ter** — short complete sentences; one claim per sentence; the
+  mathematics does most of the talking.
+- **§3.quater** — numbered footnotes plus a bibliography section; no inline
+  links scattered through paragraphs.
+- **§3.quinquies** — no emojis or pseudo-emoji symbols. Use bold text
+  labels (**Pass** / **Marginal** / **Blocked** / **Refuted**) instead.
+
+Status notes (verdict markers in tables, derivation-chain confirmation
+markers) use bold text labels rather than verdict emoji. Findings recorded
+elsewhere in the repository may still use the emoji vocabulary; the
+packet's transcriptions preserve content but normalise the rendering.
+
+Further prose tightening against §3.ter (cutting paragraphs whose content
+the equations already carry) is tracked as follow-up work and is
+deliberately left out of this packet revision, which focuses on the
+emoji-removal pass and the explicit standard reference.
+
 ## Honest framing — do not soften
 
 - The campaign-closing statement *"Zero of 28 results constitute independent corroboration of the dual theory's content distinct from textbook QM"* is preserved verbatim. Any edit that softens this leaves the honest scope.
 - The Z-scan empirical finding (PR #87) and the Branch A "by construction" reading (PRs #84/#85/#86) are presented in parallel without endorsement; the packet asks Tepper to adjudicate.
-- Finding 2's verdict trajectory `🔴 → ⚠ characterised → ⚠/✅-conditional` (per `FINDINGS_for_author_review.md:209`) is transcribed verbatim, with [issue #75](https://github.com/temoTxt/PyPhysics/issues/75) referenced as the unconditional-✅ hypothesis-(i) path.
+- Finding 2's verdict trajectory `Refuted → Marginal-characterised → Marginal/Pass-conditional` (per `FINDINGS_for_author_review.md:209`) is transcribed verbatim, with [issue #75](https://github.com/temoTxt/PyPhysics/issues/75) referenced as the unconditional-Pass hypothesis-(i) path.
