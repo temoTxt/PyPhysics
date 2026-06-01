@@ -209,7 +209,7 @@ $$
 
 We verify (31) for `F = −k/r²` symbolically in Wolfram[^10]: the ratio `F'(r) r / F(r)` evaluates to `−2`, and the apsidal angle becomes `φ_0 = 2π/√(3 + (−2)) = 2π`. Indeed, for an inverse-square force the apsidal angle is `2π`, the orbit is closed, and there is no precession. This is precisely Bertrand's theorem at work.
 
-The algebra of (21)–(31) is correct, and this conclusion *contradicts* the §2 reading. Corda derives the apsidal-angle formula from scratch (Eq. 31), specialises to inverse-square in his own text (the line directly after Eq. 31 reads "by setting `F_{c0} = F_G` in Eq. (31)… one finds `φ_0 = 2π`, which is exactly Eq. (7)"), and explicitly notes that this is the closed-orbit result. **Pass on algebra; the conflict is with the §2 interpretation.**
+The algebra of (21)–(31) is correct, and this conclusion contradicts the §2 reading. Corda derives the apsidal-angle formula from scratch in his Eq. (31), and specialises immediately afterwards to the inverse-square case `F_{c0} = F_G`. He records there that the apsidal angle reduces to `φ_0 = 2π`, the same value as his own Eq. (7), and notes explicitly that this is the closed-orbit result. **Pass on algebra; the conflict is with the §2 interpretation.**
 
 ### §2.7 Eqs. (32)–(41) — Corda's "promotion" to the `(1 + m/M)` force
 
@@ -495,15 +495,9 @@ It follows that Corda's Eq. (20), `Δφ = πm/M`, is not an apsidal precession. 
 
 ### Finding 2 (empirics-driven). The §5 self-refutation
 
-Applying Corda's own formula `Δφ = π m/M × (orbits/century)` to Venus and Earth gives, from (R4) and (R5):
+Applying Corda's own formula `Δφ = π m/M × (orbits/century)` to Venus and Earth gives the numbers tabulated in §2.10 above; from (R4) and (R5), the formula predicts `257.91` arcsec/century for Venus against the observed `8.62`, and `194.50` arcsec/century for Earth against the observed `3.83`. The Mercury "agreement" of `44.66` against `43` is the lone case in which the formula and the data line up.
 
-| Planet | Formula | Observed | Discrepancy |
-|---|---|---|---|
-| Mercury | `44.66` arcsec/c | `43` arcsec/c | within `4%` |
-| Venus | `257.91` arcsec/c | `8.62` arcsec/c | `30×` too big |
-| Earth | `194.50` arcsec/c | `3.83` arcsec/c | `51×` too big |
-
-Corda's response, that n-body effects are responsible and that Mercury has no interior planets, does not work as a defence. The formula `Δφ = πm/M` makes no reference to n-body effects. The derivation in §§2–4 is strictly two-body throughout (no interior planets enter). If the formula were the correct two-body result, it would apply to any two-body sub-problem, and the n-body corrections would be smaller perturbations — not corrections by a factor of `30` to `50`.
+Corda's response, that n-body effects are responsible and that Mercury has no interior planets, does not work as a defence. The formula `Δφ = πm/M` makes no reference to n-body effects. The derivation in §§2–4 is strictly two-body throughout, with no interior planets entering. If the formula were the correct two-body result, it would apply to any two-body sub-problem, and the n-body corrections would be smaller perturbations rather than discrepancies by a factor of `30` to `50`.
 
 **For the author's verdict.** The strongest available evidence that `πm/M` is not the correct two-body perihelion advance is that the formula is empirically wrong for every planet other than Mercury. The Mercury "agreement" is coincidence: the value `m/M ≈ 1.66 × 10⁻⁷`, multiplied by Mercury's `415.2` orbits/century, happens to give a number near `43` arcsec/century. Venus and Earth have different `(m/M, orbits/century)` products and give wildly wrong predictions. **Refuted.**
 
@@ -572,7 +566,7 @@ $$
 \;=\; -\,7.17\,\text{arcsec/century}. \tag{R13}
 $$
 
-The opposite sign and the one-sixth magnitude of GR are exact, not approximate. This is the famous `1/6` factor of a force-law-only modification of Newtonian gravity that lacks GR's spatial-metric curvature[^21].
+The opposite sign and the one-sixth magnitude of GR are exact, not approximate. This is the well-known `1/6` factor of a force-law-only modification of Newtonian gravity that lacks GR's spatial-metric curvature[^21].
 
 The n-body refinement cannot close this gap. Planetary perturbations contribute framework relativistic corrections at the level of `10⁻⁴` to `10⁻⁵` of the Sun–Mercury term, since `GM/(c² r)` scales with the attracting mass and the other planets are light. The `−7.17` arcsec/century is the framework's structural prediction for the eccentric two-body case, computed via the same apparatus (apsidal angle) Corda himself uses.
 
@@ -586,7 +580,7 @@ The Corda-style `πm/M + relativistic correction` template that *Relativistic Ne
 | Apsidal angle (PR #83 doc 05) | `−7.17` arcsec/century | genuine precession of the modified force law |
 | Standard GR | `+42.99` arcsec/century | observed `≈ 43` arcsec/century |
 
-If the framework's intended Mercury prediction is the apsidal-angle result, the verdict reads **wrong sign, `1/6` magnitude**. This is the structural signature of any modified-Newtonian gravity that adds a `(1 + V/(m c²))`-style factor to the force without modifying the spatial metric. The `12%` near miss recorded in pull request #83 document 03 is an artefact of taking Corda's `πm/M` heuristic as the baseline.
+If the framework's intended Mercury prediction is the apsidal-angle result, the verdict reads: wrong sign and one-sixth of the GR magnitude. This is the structural signature of any modified-Newtonian gravity that adds a `(1 + V/(m c²))`-style factor to the force without modifying the spatial metric. The `12%` near miss recorded in pull request #83 document 03 is an artefact of taking Corda's `πm/M` heuristic as the baseline.
 
 ---
 
