@@ -5,7 +5,7 @@ date: "2026-05-26"
 subject: "Four candidate starting points for deriving r_e from the dual-Dirac framework's internal structure (follow-up to the triangulation note)"
 ---
 
-> **Pre-standard notice (per [#115](https://github.com/temoTxt/PyPhysics/issues/115)).** This report was written before the equation- and sentence-discipline writing standard was codified. It does not yet comply with [`VOICE_MATCH_GILL.md`](../Tooling/VOICE_MATCH_GILL.md) §3.bis (numbered display equations only) or §3.ter (short complete sentences). If reissued to a new recipient, it is to be rewritten to the new standard first.
+> **Pre-standard notice (per [#115](https://github.com/temoTxt/PyPhysics/issues/115) + [#117](https://github.com/temoTxt/PyPhysics/issues/117)).** This report was written before the equation-, sentence-, and citation-discipline writing standard was codified. It does not yet comply with [`VOICE_MATCH_GILL.md`](../Tooling/VOICE_MATCH_GILL.md) §3.bis (numbered display equations only), §3.ter (short complete sentences), or §3.quater (numbered footnotes plus a bibliography section). If reissued to a new recipient, it is to be rewritten to the new standard first.
 
 # Candidates for a first-principles derivation of $r_e/r_0$ — for Tepper Gill
 
