@@ -70,6 +70,29 @@ The discipline is not about choppy fragments. It is about making every sentence 
 
 The forbidden example is one 65-word sentence carrying four distinct claims. The required example is three sentences, each carrying one claim, each readable in a single breath.
 
+## 3.quater. Citation discipline (added per [#117](https://github.com/temoTxt/PyPhysics/issues/117))
+
+Every cross-reference is a **numbered footnote** in the prose and is resolved in a **bibliography section at the end of the document**. This applies to references to repository files, to GitHub issues or pull requests, to external papers, and to verification documents. No inline links. No `#NN` tags scattered through paragraphs. No verbose file paths embedded in sentences.
+
+The reasoning: when citations are footnoted, the prose carries the argument on its own. The reader who skims for the claim sees the claim; the reader who wants the source consults the references list. Gill's published papers follow the same pattern.
+
+| Forbidden | Required |
+|---|---|
+| "The candidates note ([`Roadmapping/Author_Reports/2026-05_re_derivation_candidates_for_gill.md`](../Author_Reports/2026-05_re_derivation_candidates_for_gill.md)) found, in [issue #65](https://github.com/temoTxt/PyPhysics/issues/65) under master [#67](https://github.com/temoTxt/PyPhysics/issues/67), that the published §III.D NR-expansion is structurally inadequate." | "The candidates note[^1] found, in the §III.D investigation[^2], that the published NR-expansion is structurally inadequate.\\n\\n## References\\n[^1]: \`Roadmapping/Author_Reports/2026-05_re_derivation_candidates_for_gill.md\`.\\n[^2]: Issue #65 under master #67 (\`github.com/temoTxt/PyPhysics/issues/65\`)." |
+
+### Bibliography section conventions
+
+The bibliography section at the end of each document:
+
+- Is titled `## References` or `## Bibliography`. Pick one and use it consistently within a document.
+- Lists footnoted items in the order they appear, numbered to match the footnote markers.
+- For repository files: bare path (`Roadmapping/...`), and an optional one-sentence description.
+- For GitHub issues or pull requests: bare number plus the bare URL (`Issue #65, github.com/temoTxt/PyPhysics/issues/65`).
+- For primary-source papers: the existing `cite_key` from `Roadmapping/History/Bibliography/`, optionally with the full citation expanded.
+- For external URLs: bare URL, no rich-text linkification.
+
+Pandoc renders `[^1]` as a real LaTeX footnote, so the discipline survives the `.md` → `.tex` → `.pdf` build pipeline without modification.
+
 ## 4. Anti-patterns
 
 Phrases and rhetorical moves that **do not appear** in Gill's prose and must be removed when content is elevated into per-problem documents:

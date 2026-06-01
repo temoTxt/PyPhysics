@@ -80,18 +80,19 @@ The phases below are the discipline that the plan for `2026-05_interim_for_gill`
 
 **The PDF must not be committed before Phase 4.** Shipping an AI-drafted PDF before a human reviews it would materially violate Crocco §5 substantive-AI compliance (per [`CROCCO_COMPLIANCE.md`](../Tooling/CROCCO_COMPLIANCE.md)) — the human-acceptance pass is where the per-paragraph TODO blocks get resolved, and stripping them before review hides the markers from the reviewer.
 
-## Writing standard (per [#115](https://github.com/temoTxt/PyPhysics/issues/115))
+## Writing standard (per [#115](https://github.com/temoTxt/PyPhysics/issues/115) and [#117](https://github.com/temoTxt/PyPhysics/issues/117))
 
-Every report committed to this folder must conform to the writing standard codified in [`Roadmapping/Tooling/VOICE_MATCH_GILL.md`](../Tooling/VOICE_MATCH_GILL.md), specifically §3.bis (equation discipline) and §3.ter (sentence-length discipline).
+Every report committed to this folder must conform to the writing standard codified in [`Roadmapping/Tooling/VOICE_MATCH_GILL.md`](../Tooling/VOICE_MATCH_GILL.md), specifically §3.bis (equation discipline), §3.ter (sentence-length discipline), and §3.quater (citation discipline).
 
-The two hard requirements:
+The three hard requirements:
 
 1. **Numbered display equations only.** Every result-bearing or label-carrying equation is set as a display equation with a number. Inline math is permitted only for single-symbol references to an already-established quantity. See VOICE_MATCH_GILL.md §3.bis.
 2. **Short complete sentences.** One claim per sentence. No 50-word multi-clause sentences. See VOICE_MATCH_GILL.md §3.ter.
+3. **Numbered footnotes plus a bibliography section.** No inline links, no `#NN` tags scattered through paragraphs, no file paths embedded in sentences. Every cross-reference is a numbered footnote resolved in a `## References` section at the end. See VOICE_MATCH_GILL.md §3.quater.
 
 Reports written before 2026-06-01 carry a status banner at the top of the `.md` flagging their pre-standard status. They are rewritten in follow-up PRs, not left as-is for new recipients.
 
-The Phase 3.5 devil's-advocate self-review (see Phase ordering above) must include an explicit pass-or-fail check against §3.bis and §3.ter. A report that fails the standard does not advance to Phase 4 until rewritten.
+The Phase 3.5 devil's-advocate self-review (see Phase ordering above) must include an explicit pass-or-fail check against §3.bis, §3.ter, and §3.quater. A report that fails any of the three does not advance to Phase 4 until rewritten.
 
 ## Crocco compliance
 
