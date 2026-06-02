@@ -1,0 +1,80 @@
+% Six-observable cross-comparison table, reproduced from
+% Roadmapping/Quantum_Mechanics/Bethe_Salpeter/10_CrossComparison.md §2
+% with the NIST-MCP cross-check column added per PR #91 / issue #90.
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\scriptsize
+\begin{longtable}{p{2.5cm}p{2.0cm}p{2.0cm}p{1.0cm}p{2.5cm}p{2.5cm}}
+\toprule
+\textbf{Observable} & \textbf{Framework prediction at triangulated $r_e$}
+                    & \textbf{Measurement} & \textbf{Residual}
+                    & \textbf{Source of residual}
+                    & \textbf{NIST MCP cross-check (\#90)} \\
+\midrule \endhead
+
+Electron $g_s$
+  (Finding 2 itself)
+  & $-2.00231930$
+  & $-2.00231930\dots$ (CODATA)
+  & $0$
+  & matches by construction
+  & $-2.00231930436256(35)$ \newline CODATA 2018, \texttt{get\_constant} \\
+\midrule
+
+Hydrogen $2P_{3/2}{-}2P_{1/2}$ (PR C)
+  & $\sim 10\,962$ MHz
+  & $10\,969.13(10)$ MHz
+  & $\sim 7$ MHz
+  & Bethe-estimate floor (recoil + 2-loop)
+  & $10\,969.049(15)$ MHz \newline ASD levels, \textbf{theoretical/Ritz},
+    \texttt{get\_levels} \\
+\midrule
+
+Hydrogen 1S hyperfine (PR F)
+  & $\sim 1\,420.04$ MHz
+  & $1\,420.405\,751\,768(2)$ MHz
+  & $\sim 0.4$ MHz
+  & sub-leading QED ($\alpha/\pi$ + recoil + nuclear-structure)
+  & $1\,420.405\,751\,768(2)$ MHz \newline curated,
+    \texttt{list\_dirac\_targets} \\
+\midrule
+
+Helium $^3P_0{-}^3P_1$ (PR I)
+  & $\sim 29\,616.95$ MHz
+  & $29\,616.952$ MHz
+  & $\sim$kHz
+  & full QED residual (provisional --- spin--spin/spin--orbit
+    recombination not derived in PR I)
+  & $29\,616.952$ MHz \newline curated,
+    \texttt{list\_dirac\_targets} \\
+\midrule
+
+Positronium ortho--para (PR I)
+  & $\sim 203\,389$ MHz
+  & $203\,389(2)$ MHz
+  & matches at Bethe precision
+  & positronium-specific QED (provisional --- absorbing correction not
+    derived in PR I)
+  & $203\,389(2)$ MHz \newline curated,
+    \texttt{list\_dirac\_targets} \\
+\midrule
+
+Muonium hyperfine (PR I)
+  & $\sim 4\,463.4$ MHz
+  & $4\,463.302\,776(51)$ MHz
+  & $\sim 0.1$ MHz
+  & sub-leading QED
+  & $4\,463.302\,776(51)$ MHz \newline curated,
+    \texttt{list\_dirac\_targets} \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\noindent\textit{Reading the cross-check column:}
+the electron $g_s$ entry is the only one carrying an authoritative
+independent source (CODATA-2018). The hydrogen 2P fine-structure entry is
+ASD-theoretical (Ritz level difference), not a measurement; it differs from
+the measured value by $\sim 0.08$~MHz. The remaining four entries are
+curated transcriptions of the measurement column from the
+\texttt{list\_dirac\_targets} registry (the \texttt{nist} MCP server, PR~\#91
+/ issue~\#90), with provenance metadata only --- they restate, not corroborate.

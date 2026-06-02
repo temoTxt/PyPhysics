@@ -1,0 +1,84 @@
+\section{Campaign overview --- 28-result inventory}
+\label{sec:campaign-overview}
+
+The Bethe--Salpeter precision-predictions campaign closes in
+\texttt{Roadmapping/Quantum\_Mechanics/Bethe\_Salpeter/10\_CrossComparison.md}.
+The full inventory of 28 results across PRs~A--I is reproduced below
+verbatim from \S1 of that document.
+
+\paragraph{Per-PR result inventory.}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\small
+\begin{longtable}{lllp{5.5cm}}
+\toprule
+PR & Section & Result & Notes \\
+\midrule \endhead
+\textbf{A} & BS-\S 3   & Schr\"odinger equation, operator identity & $K + V_0 = mc^2 + p^2/(2m) + V_0$ exactly (Wolfram-MCP verified) \\
+\textbf{A} & BS-\S 4   & Hydrogen spectrum $E_n$                   & Matches Rydberg $R_\infty$ to all orders in non-rel \\
+\textbf{A} & BS-\S 5   & Bohr radius + radial eigenfunctions        & Identical to textbook \\
+\textbf{A} & BS-\S 6   & $O(4)$ symmetry + degeneracy               & Inherited from Schr\"odinger algebra \\
+\textbf{B} & BS-\S 8   & Dipole matrix elements                     & Operator + wavefunction identity \\
+\textbf{B} & BS-\S 10  & Oscillator strengths + TRK sum rule        & $[r, K] = i\hbar p/m$ survives rest-energy offset \\
+\textbf{B} & BS-\S 13  & Radial integrals + selection rules         & Formulation-independent \\
+\textbf{C}$^\star$ & BS-\S 14.1 & Sommerfeld--Dirac spin--orbit     & Dual-Dirac FW reproduces leading $(Z\alpha)^2$ \\
+\textbf{C}$^\star$ & BS-\S 14.2 & $2P_{3/2}$--$2P_{1/2}$ splitting  & ${-}7$ MHz residual at Bethe-estimate precision \\
+\textbf{C}$^\star$ & BS-\S 14.3 & Relativistic kinetic + Darwin     & Same coefficient in dual Dirac FW \\
+\textbf{D} & BS-\S 15  & Nuclear recoil $\mu/m_e$                   & Two-body kinematic identity \\
+\textbf{D} & BS-\S 17  & $(Z\alpha)^4$ Pauli/FW expansion           & Weyl ordering reproduces textbook \\
+\textbf{D} & BS-\S 18  & Bethe--Salpeter equation                   & Apparatus inherited (ladder approximation) \\
+\textbf{E}$^\star$ & BS-\S 19   & Self-energy (Bethe 1947)          & Matrix elements + energy denominators formulation-independent \\
+\textbf{E}$^\star$ & BS-\S 20   & \textbf{Lamb shift $2S_{1/2}$--$2P_{1/2}$} & $\sim$1016 MHz vs.~1057.845(9) measured; $\sim$42 MHz residual is standard Bethe-estimate gap \\
+\textbf{E}$^\star$ & BS-\S 21   & Uehling vacuum polarisation       & Identical one-loop \\
+\textbf{F}$^\star$ & BS-\S 22.1 & \textbf{H 1S hyperfine (21-cm)}   & ${-}0.4$ MHz residual at Bethe-estimate precision \\
+\textbf{F}$^\star$ & BS-\S 22.2 & Muonium + positronium (deferred)  & (PR I) \\
+\textbf{G} & BS-\S 24  & Photoionisation K-edge                     & Cross-section formulation-independent \\
+\textbf{G} & BS-\S 30  & M1 + E2 multipole transitions              & M1 inherits $(g_s/{-}2)^2 \times$ textbook via $g_s$ \\
+\textbf{G} & BS-\S 35  & Third-term effect on dipole approximation  & Doubly suppressed; below precision floor \\
+\textbf{H} & BS-\S 47  & Helium HF $Z' = 27/16$                     & Variational identity \\
+\textbf{H} & BS-\S 52  & Hylleraas correlation expansion            & ${}^4$He spin-singlet escapes $r_e$ \\
+\textbf{H} & BS-\S 60  & Full helium ground-state energy            & $\sim$6 meV residual \\
+\textbf{I} & BS-\S 64  & Helium singlet--triplet exchange           & Formulation-independent (Fermi statistics) \\
+\textbf{I} & BS-\S 72  & \textbf{Helium $^3P_J$ fine structure}     & $\sim$kHz residual after spin--spin/spin--orbit recombination \\
+\textbf{I} & BS-\S 80  & \textbf{Positronium ortho-para + muonium hyperfine} & Muonium $\sim 0.1$ MHz residual; positronium provisional \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\paragraph{Total: 28 results across 10 PRs.}
+Of these:
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item \textbf{20 unconditional} --- but read this honestly: every one is
+        annotated ``formulation-independent,'' ``operator + wavefunction
+        identity,'' ``identical to textbook,'' ``inherited from Schr\"odinger
+        algebra,'' ``Fermi statistics,'' etc. They are agreement-by-structure:
+        the dual-theory framework's prediction \emph{equals} the textbook
+        prediction because the framework reduces to textbook QM at the level
+        the observable engages.
+  \item \textbf{6 at the triangulated $r_e$} (precision $g_s$-dependent
+        observables) --- all six are computed as
+        $(g_s/{-}2)^n \times (\text{textbook leading term})$ with $n \in
+        \{1, 2\}$. The triangulated $r_e/r_0 = 0.4994205099128317$ substitutes
+        $g_s = -2.00231930\dots$ (the measured value, by which the joint fit
+        defines $r_e$) and gets textbook agreement by construction.
+  \item \textbf{2 at Bethe-estimate precision} (Lamb shift + helium ground
+        state) --- the framework, where its non-relativistic-equivalent piece
+        is exercised, reproduces the textbook Bethe-estimate calculation and
+        inherits its residual against measurement.
+\end{itemize}
+
+\paragraph{Honest scope statement (load-bearing; do not soften).}
+\begin{quotation}
+\noindent\textbf{Zero of 28 results constitute independent corroboration of
+the dual theory's content distinct from textbook QM.} The campaign's value
+is in (i)~tracing where the dual theory does and does not reduce to textbook,
+(ii)~flagging the $r_e$ finding's downstream self-consistency at high
+precision, and (iii)~identifying the future-work direction (proper-time
+one-loop dual-QED) where a \emph{distinct} dual-theory prediction could be
+derived and tested.\\[2pt]
+\hspace*{\fill}--- \texttt{10\_CrossComparison.md} \S1
+\end{quotation}
+
+\authorreview{Please confirm the per-PR result table accurately reproduces
+your reading of the campaign inventory, and that the load-bearing honest
+scope statement is faithfully transcribed.}

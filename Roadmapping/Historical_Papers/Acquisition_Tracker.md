@@ -9,11 +9,26 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 117 entries · 🟢 0 public-PD · 🟡 0 acquired · ⚪ 117 pending · 🔴 0 unavailable
-
+**Summary**: 169 entries · 🟢 0 public-PD · 🟡 3 acquired · ⚪ 165 pending · 🔴 1 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
+| [[euler1744_methodus_inveniendi]] | — | — | primary | ⚪ pending | — |
+| [[jacobi1866_vorlesungen_dynamik]] | — | — | primary | ⚪ pending | — |
+| [[lagrange1788_mecanique_analytique]] | — | — | primary | ⚪ pending | — |
+| [[maupertuis1744_accord_lois]] | — | — | primary | ⚪ pending | — |
+| [[newton1687_principia]] | — | — | primary | ⚪ pending | — |
+| [[stueckelberg1942_remarque_pairs]] | — | — | primary | ⚪ pending | — |
+| [[hamilton1834_general_method]] | 1834 | — | primary | ⚪ pending | — |
+| [[hamilton1835_second_essay]] | 1835 | — | primary | ⚪ pending | — |
+| [[dirac1932_relativistic_qm]] | 1932 | — | primary | ⚪ pending | — |
+| [[dirac1938_classical_electron]] | 1938 | — | primary | ⚪ pending | — |
+| [[feynman1948_path_integral]] | 1948 | — | primary | ⚪ pending | — |
+| [[schwinger1951_gauge_invariance]] | 1951 | — | primary | ⚪ pending | — |
+| [[lithium2plus_n2_lambshift_1974]] | 1974 | — | primary | ⚪ pending | — |
+| [[verdu2004_o7_g_factor]] | 2004 | — | primary | ⚪ pending | — |
+| [[schneider2022_he3_g_factor]] | 2022 | — | primary | ⚪ pending | — |
+| [[morgner2023_sn49_g_factor]] | 2023 | — | primary | ⚪ pending | — |
 | [[volta1800_electricity_contact]] | 1800 | 1800-1860 | primary | ⚪ pending | — |
 | [[ampere1820_action_mutuelle]] | 1820 | 1800-1860 | primary | ⚪ pending | — |
 | [[biot_savart1820_magnetisme_pile]] | 1820 | 1800-1860 | primary | ⚪ pending | — |
@@ -104,32 +119,67 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[pais1986_inward_bound]] | 1986 | 1948-1965 | retrospective | ⚪ pending | — |
 | [[schweber1994_qed_and_men]] | 1994 | 1948-1965 | retrospective | ⚪ pending | — |
 | [[tinkham1996_superconductivity]] | 1996 | 1948-1965 | retrospective | ⚪ pending | — |
+| [[bethe1977_one_two_electron_atoms]] | 1977 | 1948-present | retrospective | 🟡 acquired (local only) | — |
+| [[ashby2003_relativity_in_gps]] | 2003 | 1965-present | retrospective | ⚪ pending | — |
 | [[sagnac1913_effect]] | 1913 | forward | primary | ⚪ pending | — |
 | [[schwarzschild1916]] | 1916 | forward | primary | ⚪ pending | — |
 | [[aston1922_mass_defect]] | 1920 | forward | primary | ⚪ pending | — |
 | [[eddington1920_stellar_fusion]] | 1920 | forward | primary | ⚪ pending | — |
 | [[bethe1939_ppchain]] | 1939 | forward | primary | ⚪ pending | — |
+| [[heberle1956_h_2s_hyperfine]] | 1956 | forward | retrospective | ⚪ pending | — |
+| [[essen1957_h_hyperfine]] | 1957 | forward | retrospective | ⚪ pending | — |
 | [[lawson1957_criterion]] | 1957 | forward | primary | ⚪ pending | — |
 | [[misner_thorne_wheeler1973]] | 1973 | forward | retrospective | ⚪ pending | — |
 | [[vessot1980_gravity_probe_a]] | 1980 | forward | primary | ⚪ pending | — |
+| [[lundeen1981_2s2p_microwave]] | 1981 | forward | retrospective | ⚪ pending | — |
 | [[feynman1982_simulating_physics]] | 1982 | forward | primary | ⚪ pending | — |
 | [[bennett_brassard1984_bb84]] | 1984 | forward | primary | ⚪ pending | — |
 | [[wald1984_gr]] | 1984 | forward | retrospective | ⚪ pending | — |
 | [[deutsch1985_quantum_turing]] | 1985 | forward | primary | ⚪ pending | — |
 | [[smith_christodoulidis1985_slr]] | 1985 | forward | primary | ⚪ pending | — |
 | [[ekert1991_qkd]] | 1991 | forward | primary | ⚪ pending | — |
+| [[hagley1994_h_fine_structure]] | 1994 | forward | retrospective | ⚪ pending | — |
+| [[riis1994_li2_fine_structure]] | 1994 | forward | retrospective | ⚪ pending | — |
 | [[shor1994_factoring]] | 1994 | forward | primary | ⚪ pending | — |
+| [[schiffer1995_li2_lamb_shift]] | 1995 | forward | retrospective | ⚪ pending | — |
 | [[grover1996_search]] | 1996 | forward | primary | ⚪ pending | — |
 | [[parkinson1996_gps_theory]] | 1996 | forward | primary | ⚪ pending | — |
+| [[debeauvoir1997_2s_8s_8d]] | 1997 | forward | retrospective | ⚪ pending | — |
+| [[liu1999_muonium_hyperfine]] | 1999 | forward | retrospective | ⚪ pending | — |
+| [[beckert2007_li2_hyperfine]] | 2000 | forward | retrospective | ⚪ pending | — |
+| [[haffner2000_c5_g_factor]] | 2000 | forward | retrospective | ⚪ pending | — |
 | [[nielsen_chuang2000_quantum_computation]] | 2000 | forward | retrospective | ⚪ pending | — |
 | [[ashby2003_gps_relativity]] | 2003 | forward | primary | ⚪ pending | — |
 | [[kitaev2003_topological]] | 2003 | forward | primary | ⚪ pending | — |
 | [[atzeni_meyertervehn2004_inertial]] | 2004 | forward | retrospective | ⚪ pending | — |
+| [[bernauer2010_a1_mainz]] | 2010 | forward | retrospective | ⚪ pending | — |
+| [[parthey2010_h_d_isotope_shift]] | 2010 | forward | retrospective | ⚪ pending | — |
+| [[pohl2010_muonic_hydrogen]] | 2010 | forward | retrospective | ⚪ pending | — |
+| [[parthey2011_h_1s2s]] | 2011 | forward | retrospective | ⚪ pending | — |
+| [[sturm2013_si13_g_factor]] | 2011 | forward | retrospective | ⚪ pending | — |
 | [[wesson2011_tokamaks]] | 2011 | forward | retrospective | ⚪ pending | — |
+| [[ishida2014_positronium]] | 2014 | forward | retrospective | ⚪ pending | — |
+| [[sturm2014_li2_g_factor]] | 2014 | forward | retrospective | ⚪ pending | — |
+| [[kohler2016_be3_g_factor]] | 2016 | forward | retrospective | ⚪ pending | — |
+| [[kohler2016_he_g_factor]] | 2016 | forward | retrospective | ⚪ pending | — |
+| [[pohl2016_muonic_deuterium]] | 2016 | forward | retrospective | ⚪ pending | — |
+| [[beyer2017_2s4p]] | 2017 | forward | retrospective | ⚪ pending | — |
 | [[liao2018_micius_satellite]] | 2017 | forward | primary | ⚪ pending | — |
+| [[fleurbaey2018_1s_3s_spectroscopy]] | 2018 | forward | retrospective | ⚪ pending | — |
 | [[preskill2018_nisq]] | 2018 | forward | retrospective | ⚪ pending | — |
 | [[arute2019_quantum_supremacy]] | 2019 | forward | primary | ⚪ pending | — |
 | [[krantz2019_circuit_qed]] | 2019 | forward | retrospective | ⚪ pending | — |
+| [[xiong2019_prad]] | 2019 | forward | retrospective | ⚪ pending | — |
 | [[pirandola2020_qkd_review]] | 2020 | forward | retrospective | ⚪ pending | — |
+| [[theory_initiative_2020]] | 2020 | forward | retrospective | ⚪ pending | — |
+| [[bmw2021_lattice_qcd]] | 2021 | forward | retrospective | ⚪ pending | — |
+| [[codata2018_constants]] | 2021 | forward | retrospective | ⚪ pending | `../../Historical_Papers/Retrospective/codata2018_constants.pdf` |
+| [[fan2023_electron_g_factor]] | 2023 | forward | retrospective | ⚪ pending | — |
+| [[fermilab_e989_2023]] | 2023 | forward | retrospective | ⚪ pending | — |
+| [[flag2024_averages]] | 2024 | forward | retrospective | ⚪ pending | — |
 | [[nif2022_ignition]] | 2024 | forward | primary | ⚪ pending | — |
+| [[nist_asd_2024]] | 2024 | forward | retrospective | 🔴 unavailable | — |
+| [[pdg2024_review]] | 2024 | forward | retrospective | ⚪ pending | — |
+| [[cheung2025_strings_from_almost_nothing]] | 2025 | forward | retrospective | 🟡 acquired (local only) | `../../Historical_Papers/Retrospective/arxiv_2508.09246v1_bootstrap_string_amplitudes.pdf` |
+| [[qunigudzinas2026_invariant_geometric_qm]] | 2026 | forward | retrospective | 🟡 acquired (local only) | `../../Historical_Papers/Retrospective/Quantum-Mechanical_Physics_as_Invariant_Geometric_Structure.pdf` |
 <!-- AUTO-TABLE-END -->

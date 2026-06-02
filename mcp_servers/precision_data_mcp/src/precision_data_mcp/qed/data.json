@@ -1,0 +1,319 @@
+{
+ "$schema_version": "0.2.0",
+ "$source_revision": {
+  "data_revision": "2026-06-01-li2-middle-z-resourced",
+  "retrieved_at": "2026-05-31T00:00:00Z",
+  "seeded_by_hand": true,
+  "_note": "Hydrogenic g-factor + Li2+ anchors re-sourced 2026-06-01 (refs #119) after the 2026-05-31 seed was found corrupt: He+/Si13+ g-factor VALUES corrected to the real Schneider-2022 / Sturm-2011 measurements; Li2+ Lamb-shift CITATION corrected (value kept); Li2+ g, Be3+ g, Li2+ fine structure reclassified theoretical_calculation (no measurement exists); Li2+ hyperfine downgraded pending provenance. C5+ (Haffner 2000) unchanged (sound). AI-inserted theory values flagged in-note for human verification."
+ },
+ "species": {
+  "H": {
+   "_aliases": [
+    "hydrogen",
+    "H I",
+    "hydrogen-1"
+   ],
+   "description": "Hydrogen — atomic hydrogen, 1S/2S/2P/... bound-state QED precision data",
+   "fine_structure": {
+    "2P3/2-2P1/2": {
+     "value": 10969.13,
+     "uncertainty": 0.1,
+     "unit": "MHz",
+     "source": "hagley1994_h_fine_structure",
+     "value_class": "experimental",
+     "_note": "Hagley-Pipkin 1994 Phys. Rev. Lett. 72, 1172. Canonical precision-spectroscopy extraction of the 2P fine-structure interval via direct 2P_3/2 - 2S_1/2 RF spectroscopy at 9911.117(40) MHz combined with the Lamb shift. The 10969.13(10) MHz value seeded here matches the value transcribed in nist.list_dirac_targets and 10_CrossComparison.md's measurement column. Specific digits should be verified against the published paper before human_reviewed: true."
+    }
+   },
+   "lamb_shifts": {
+    "2S1/2-2P1/2": {
+     "values": [
+      {
+       "value": 1057.845,
+       "uncertainty": 0.009,
+       "unit": "MHz",
+       "source": "codata2018_constants",
+       "value_class": "codata_adjusted",
+       "method": "CODATA_2018_global_adjustment",
+       "_note": "CODATA-2018 global adjustment. Combines experimental measurements with one-loop QED theoretical inputs."
+      },
+      {
+       "value": 1057.845,
+       "uncertainty": 0.009,
+       "unit": "MHz",
+       "source": "lundeen1981_2s2p_microwave",
+       "value_class": "experimental",
+       "method": "direct_microwave_RF_between_2S_and_2P",
+       "_note": "Lundeen-Pipkin 1981 Phys. Rev. Lett. 46, 232. Direct microwave-RF measurement of the 2S_1/2-2P_1/2 splitting at ~10 kHz precision; the canonical direct experimental Lamb shift. The numerical value matches the CODATA-2018 average above (the agreement is by historical construction — CODATA uses this measurement as input). Both surfaced per umbrella §5 disagreement-representation rule: consumers choosing the experimental anchor for model verification should use this one (safe_for_model_verification: True), not the CODATA one."
+      }
+     ]
+    }
+   },
+   "hyperfine": {
+    "1s2S1/2": {
+     "value": 1420.405751768,
+     "uncertainty": 2e-09,
+     "unit": "MHz",
+     "source": "essen1957_h_hyperfine",
+     "value_class": "experimental",
+     "_note": "21-cm hydrogen hyperfine line, Essen et al. 1957 maser measurement; later refinements push uncertainty to sub-mHz."
+    },
+    "2s2S1/2": {
+     "value": 177.56685,
+     "uncertainty": 1e-05,
+     "unit": "MHz",
+     "source": "heberle1956_h_2s_hyperfine",
+     "value_class": "experimental",
+     "_note": "H 2S_1/2 hyperfine splitting; the value the Gill 'Analytic Representation of The Dirac Equation' paper cites (line 257) as 0.177566850(10) GHz sourced from Mizushima's 1970 textbook (which transcribes Heberle-Reich-Kusch 1956 Phys. Rev. 101, 612 and subsequent refinements). The scaling 177.5/1420.4 ~ 1/8 reflects the standard wavefunction-density factor between 1S and 2S hyperfine. More recent precision measurement: Kolachevsky-Khabarova-Berkeland-Hänsch 2009 Phys. Rev. A 79, 062505 at 177.5568343(67) MHz. Specific digits should be verified against the published paper before human_reviewed: true."
+    }
+   },
+   "transitions": {
+    "1S-2S": {
+     "value": 2466061413187035,
+     "uncertainty": 10,
+     "unit": "Hz",
+     "source": "parthey2011_h_1s2s",
+     "value_class": "experimental",
+     "_note": "Parthey-Matveev-Alnis-Bernhardt-Beyer-Hansch et al. 2011 absolute frequency measurement of the H 1S-2S two-photon transition; ~4e-15 fractional uncertainty."
+    },
+    "1S-2S_H-D_isotope_shift": {
+     "value": 670994334.606,
+     "uncertainty": 0.015,
+     "unit": "kHz",
+     "source": "parthey2010_h_d_isotope_shift",
+     "value_class": "experimental",
+     "_note": "Parthey-Matveev-Alnis-Pohl-Udem-Holzwarth-Hansch 2010 Phys. Rev. Lett. 104, 233001. H 1S-2S minus D 1S-2S; constrains the proton-deuteron charge-radius difference. Specific digits should be verified against the published paper."
+    },
+    "1S-3S": {
+     "value": 2922743278671.5,
+     "uncertainty": 2.6,
+     "unit": "kHz",
+     "source": "fleurbaey2018_1s_3s_spectroscopy",
+     "value_class": "experimental",
+     "_note": "Fleurbaey-Galtier-Thomas-Bonnaud-Julien-Biraben-Nez-Abgrall-Guena 2018 Phys. Rev. Lett. 120, 183001. H 1S-3S two-photon spectroscopy at LKB; consistent with muonic-H proton-radius value (contradicts pre-puzzle CODATA average). Specific digits should be verified against the published paper."
+    },
+    "2S-4P1/2": {
+     "value": 616520152720.3,
+     "uncertainty": 2.3,
+     "unit": "kHz",
+     "source": "beyer2017_2s4p",
+     "value_class": "experimental",
+     "_note": "Beyer-Maisenbacher-Khabarova-Yost-Matveev-Pohl-Hansch et al. 2017 Science 358, 79. H 2S_1/2-4P_1/2 transition measured at MPQ; also yields the proton charge radius consistent with the muonic-H value. Specific digits should be verified against the published paper; companion 2S-4P3/2 transition deferred to follow-up."
+    },
+    "2S-8S1/2": {
+     "value": 770649350012,
+     "uncertainty": 9,
+     "unit": "kHz",
+     "source": "debeauvoir1997_2s_8s_8d",
+     "value_class": "experimental",
+     "_note": "de Beauvoir-Schwob-Acef-Jozefowski-Hilico-Nez-Julien-Clairon-Biraben 1997 Phys. Rev. Lett. 78, 440 (and Eur. Phys. J. D 1, 227, 1998). H 2S-8S/8D two-photon spectroscopy at LKB, foundational for the Rydberg-constant determination. Listed entry is 2S_1/2-8S_1/2; the 8D transitions exist in the same measurement set and should be added in a follow-up. Specific digits should be verified against the published paper."
+    }
+   }
+  },
+  "muonic_H": {
+   "_aliases": [
+    "muonic hydrogen",
+    "muH"
+   ],
+   "description": "Muonic hydrogen — bound state of proton + muon (replaces electron with muon)",
+   "lamb_shifts": {
+    "2S1/2-2P3/2": {
+     "value": 49881.88,
+     "uncertainty": 0.76,
+     "unit": "GHz",
+     "source": "pohl2010_muonic_hydrogen",
+     "value_class": "experimental",
+     "_note": "Pohl et al. 2010 Nature 466, 213. Direct muonic-hydrogen Lamb-shift measurement; triggered the proton-radius puzzle (rp ~ 0.84 fm)."
+    }
+   }
+  },
+  "muonium": {
+   "_aliases": [
+    "Mu"
+   ],
+   "description": "Muonium — bound state of mu+ and e- (electron orbiting an anti-muon, no nucleus)",
+   "hyperfine": {
+    "1s2S1/2": {
+     "value": 4463.302776,
+     "uncertainty": 5.1e-05,
+     "unit": "MHz",
+     "source": "liu1999_muonium_hyperfine",
+     "value_class": "experimental",
+     "_note": "Liu et al. 1999 Phys. Rev. Lett. 82, 711. Muonium ground-state hyperfine interval; benchmark test of bound-state QED free of nuclear-structure uncertainties."
+    }
+   }
+  },
+  "positronium": {
+   "_aliases": [
+    "Ps",
+    "e+e-"
+   ],
+   "description": "Positronium — bound state of e+ and e- (pure leptonic, no hadronic uncertainties)",
+   "hyperfine": {
+    "1s_ortho_para": {
+     "value": 203389,
+     "uncertainty": 2,
+     "unit": "MHz",
+     "source": "ishida2014_positronium",
+     "value_class": "experimental",
+     "_note": "Ishida-Suehara-Namba et al. 2014 measurement at ~10 ppm."
+    }
+   }
+  },
+  "Si XIV": {
+   "_aliases": [
+    "Si13+",
+    "silicon-13+",
+    "hydrogenic-silicon"
+   ],
+   "description": "Hydrogenic silicon ion (Si^13+, one electron bound to Z=14 nucleus). Z-scan target of issue #82.",
+   "g_factor_bound_electron": {
+    "1s2S1/2": {
+     "value": 1.9953489587,
+     "uncertainty": 1e-09,
+     "unit": "dimensionless",
+     "source": "sturm2013_si13_g_factor",
+     "value_class": "experimental",
+     "_note": "Sturm et al. 2011 Phys. Rev. Lett. 107, 023002 (NOTE: paper year is 2011, not 2013; cite_key mislabels the year). Measured g = 1.9953489587(5)(3)(8). RESOURCED 2026-06-01 (refs #119): prior seed 1.9953395931 was wrong by ~9.4e-6 (~1.6e4 sigma)."
+    }
+   }
+  },
+  "Li III": {
+   "_aliases": [
+    "Li2+",
+    "lithium-2+",
+    "hydrogenic-lithium"
+   ],
+   "description": "Hydrogenic lithium ion (Li^2+, one electron bound to Z=3 nucleus). Issue #78 + #82 target.",
+   "hyperfine": {
+    "1s2S1/2": {
+     "value": 11890.018,
+     "uncertainty": 0.002,
+     "unit": "MHz",
+     "source": "li2plus_hyperfine_unverified",
+     "value_class": "theoretical_calculation",
+     "_note": "PROVENANCE UNVERIFIED. No confirmed direct measurement of the 7Li2+ 1s hyperfine splitting was found (literature gives Li+ two-electron HFS and predicts Li2+ from it); the prior beckert2007 citation resolved to a condensed-matter paper. Downgraded to theoretical_calculation 2026-06-01 (refs #119) so it is not used as an experimental anchor. Value retained pending human re-sourcing -- verify."
+    }
+   },
+   "lamb_shifts": {
+    "2S1/2-2P1/2": {
+     "value": 62765,
+     "uncertainty": 21,
+     "unit": "MHz",
+     "source": "lithium2plus_n2_lambshift_1974",
+     "value_class": "experimental",
+     "_note": "6Li2+ n=2 Lamb shift (2S1/2->2P1/2) = 62765(21) MHz, Phys. Rev. Lett. 32, 808 (1974) / Phys. Rev. A 11, 427 (1975), microwave-optical trapping technique. RESOURCED 2026-06-01 (refs #119): value retained (it is correct) but the prior citation 'Schiffer 1995 PRL 74, 2188' was WRONG -- that reference is a La3+ giant dipole resonance paper. Confirm primary-source authors before human_reviewed."
+    }
+   },
+   "fine_structure": {
+    "2P3/2-2P1/2": {
+     "value": 888500,
+     "uncertainty": 5000,
+     "unit": "MHz",
+     "source": "theory_dirac_leading",
+     "value_class": "theoretical_calculation",
+     "_note": "NO precision measurement of the hydrogenic Li2+ (Z=3) 2P3/2-2P1/2 fine-structure interval found. Value is the leading-order Z^4 Dirac estimate (H 10969.13 MHz x 3^4 = 888500 MHz); QED/higher-order corrections ~1%% not included. Use as a theory comparator only. RESOURCED 2026-06-01 (refs #119): prior seed 7367 MHz was ~120x too small -- it was a Li+ (two-electron) 2^3P interval from Riis 1994 PRA 49,207, misattributed to hydrogenic Li2+. THEORY VALUE INSERTED BY AI -- human to verify."
+    }
+   },
+   "g_factor_bound_electron": {
+    "1s2S1/2": {
+     "value": 2.0019997579,
+     "uncertainty": 1e-06,
+     "unit": "dimensionless",
+     "source": "theory_breit_schwinger_leading",
+     "value_class": "theoretical_calculation",
+     "_note": "NO direct high-precision measurement of the hydrogenic Li2+ (Z=3) bound-electron g-factor is known (the measured hydrogenic sequence is 3He+, C5+, O7+, Si13+, Ca19+/20+, Sn49+, Pb81+). Value is the LEADING-ORDER theoretical estimate g = (2/3)[1+2 sqrt(1-(Zalpha)^2)] + 2 a_e (Breit + Schwinger anomaly); higher-order bound-state QED ~1e-7 not included. Use as a theory comparator only. RESOURCED 2026-06-01 (refs #119): prior seed 2.0000251707 was physically impossible and cited a cancer-biology paper. THEORY VALUE INSERTED BY AI -- human to verify."
+    }
+   }
+  },
+  "Be IV": {
+   "_aliases": [
+    "Be3+",
+    "beryllium-3+",
+    "hydrogenic-beryllium"
+   ],
+   "description": "Hydrogenic beryllium ion (Be^3+, one electron bound to Z=4 nucleus). Issue #82 Z-scan target.",
+   "g_factor_bound_electron": {
+    "1s2S1/2": {
+     "value": 2.0017511689,
+     "uncertainty": 2e-06,
+     "unit": "dimensionless",
+     "source": "theory_breit_schwinger_leading",
+     "value_class": "theoretical_calculation",
+     "_note": "NO precision measurement of the hydrogenic Be3+ (Z=4) bound-electron g-factor found as of 2026-06. Value is the leading-order theoretical estimate g = (2/3)[1+2 sqrt(1-(Zalpha)^2)] + 2 a_e. Use as a theory comparator only. RESOURCED 2026-06-01 (refs #119): prior seed 2.00001769 was physically impossible and cited a lithium-like-calcium paper. THEORY VALUE INSERTED BY AI -- human to verify."
+    }
+   }
+  },
+  "C VI": {
+   "_aliases": [
+    "C5+",
+    "carbon-5+",
+    "hydrogenic-carbon"
+   ],
+   "description": "Hydrogenic carbon ion (C^5+, one electron bound to Z=6 nucleus). Issue #82 Z-scan target.",
+   "g_factor_bound_electron": {
+    "1s2S1/2": {
+     "value": 2.001041596,
+     "uncertainty": 5e-09,
+     "unit": "dimensionless",
+     "source": "haffner2000_c5_g_factor",
+     "value_class": "experimental",
+     "_note": "Häffner-Beier-Hermanspahn-Kluge-Quint-Stahl-Verdú-Werth 2000 Phys. Rev. Lett. 85, 5308. First precision Penning-trap measurement of the hydrogenic C^5+ bound-electron g-factor; the canonical reference for the carbon point in the Z-scan series of #82. Modern refinements (Köhler 2016) exist but the Häffner 2000 measurement remains the canonical first-precision value. Specific digits should be verified against the published paper."
+    }
+   }
+  },
+  "He II": {
+   "_aliases": [
+    "He+",
+    "helium-1+",
+    "hydrogenic-helium"
+   ],
+   "description": "Hydrogenic helium ion (He+, one electron bound to Z=2 nucleus).",
+   "g_factor_bound_electron": {
+    "1s2S1/2": {
+     "value": 2.00217741579,
+     "uncertainty": 4.5e-10,
+     "unit": "dimensionless",
+     "source": "schneider2022_he3_g_factor",
+     "value_class": "experimental",
+     "_note": "Schneider et al. 2022, Nature 606, 878-883, DOI 10.1038/s41586-022-04761-7 (arXiv:2206.05943). Measured 3He+ bound-electron g-factor g_e = -2.00217741579(34)_stat(30)_sys; magnitude recorded here. RESOURCED 2026-06-01 (refs #119): prior seed 1.999985794 was physically impossible (~2.2e6 sigma off the Breit value) and cited a lithium-like-calcium paper."
+    }
+   }
+  },
+  "O VIII": {
+   "_aliases": [
+    "O7+",
+    "oxygen-7+",
+    "hydrogenic-oxygen"
+   ],
+   "description": "Hydrogenic oxygen ion (O^7+, one electron bound to Z=8 nucleus). #82 Z-scan point.",
+   "g_factor_bound_electron": {
+    "1s2S1/2": {
+     "value": 2.0000470254,
+     "uncertainty": 4.7e-09,
+     "unit": "dimensionless",
+     "source": "verdu2004_o7_g_factor",
+     "value_class": "experimental",
+     "_note": "Verdu et al. 2004 Phys. Rev. Lett. 92, 093002, DOI 10.1103/PhysRevLett.92.093002. Measured 16O7+ bound-electron g = 2.0000470254(15)(44); combined uncertainty ~4.7e-9. Added 2026-06-01 (refs #82/#127) to complete the hydrogenic Z-scan."
+    }
+   }
+  },
+  "Sn L": {
+   "_aliases": [
+    "Sn49+",
+    "tin-49+",
+    "hydrogenic-tin"
+   ],
+   "description": "Hydrogenic tin ion (Sn^49+, one electron bound to Z=50 nucleus). #82 high-Z anchor.",
+   "g_factor_bound_electron": {
+    "1s2S1/2": {
+     "value": 1.910562059,
+     "uncertainty": 1e-09,
+     "unit": "dimensionless",
+     "source": "morgner2023_sn49_g_factor",
+     "value_class": "experimental",
+     "_note": "Morgner et al. 2023 Nature 622, 53-57, DOI 10.1038/s41586-023-06453-2 (arXiv:2307.06613). Measured 118Sn49+ bound-electron g = 1.910562059(1) at ~0.5 ppb; strongest-field precise g-factor test. Added 2026-06-01 (refs #82/#127) as the high-Z anchor of the Z-scan. At Z=50 the (Zalpha)^2 series is non-perturbative; use the measured value directly."
+    }
+   }
+  }
+ }
+}

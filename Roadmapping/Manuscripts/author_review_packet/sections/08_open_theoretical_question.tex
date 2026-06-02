@@ -1,0 +1,71 @@
+\section{Open theoretical questions --- issues \#54 and \#75}
+\label{sec:open-theoretical-question}
+
+Two open theoretical threads bear directly on Finding~2's unconditional
+$\mathbin{\hbox{\color{green!60!black}\(\bullet\)}}$ verdict.
+
+\paragraph{Issue \#54 --- first-principles derivation of $r_e$ from the
+dual-Dirac renormalisation prescription.}
+The empirical resolution of Finding~2 is settled at the Z=1 triangulated
+$r_e \approx 0.4994205099\,r_0$ per PR~\#62. The theoretical resolution ---
+whether a first-principles derivation from the dual-Dirac renormalisation
+prescription reproduces this cutoff --- remains open.
+
+Under the two readings of (III.22)/(III.23) the packet surfaces:
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item Under \textbf{Branch A by construction}, the framework derivation
+        would need to produce the value $r_e/r_0 = (2 - a_e)/(2(2 + a_e))$
+        with $a_e$ supplied as input (i.e.~derive the formula, leave the
+        anomaly as a parameter).
+  \item Under \textbf{Branch C QED-inheritance}, the framework derivation
+        would need to produce the Z-curve $x^{(Z)} = c_0 + c_2(Z\alpha)^2
+        + c_4(Z\alpha)^4 + \dots$ with $c_2 \approx 1/6$ as a derived
+        coefficient (not inherited from QED).
+\end{itemize}
+The two readings make different demands on what \#54's derivation, if
+pursued, would need to deliver.
+
+\paragraph{Issue \#75 --- hypothesis-(i) proper-time photon-propagator re-derivation.}
+The closed-form $r_e/r_0 = (2 - a_e)/(2(2 + a_e))$ reproduces the
+triangulated value under \emph{hypothesis~(ii)} (QED supplies $a_e(\alpha)$;
+the framework supplies the cutoff--anomaly identification and the algebraic
+inversion). Unconditional $\mathbin{\hbox{\color{green!60!black}\(\bullet\)}}$
+requires \emph{hypothesis~(i)}: the proper-time photon propagator + bound-state
+propagator in the (II.3) Pauli kernel + mass-renormalisation prescription at
+the cutoff, computed within the framework to reproduce
+$a_e^{(1)} = \alpha/(2\pi)$ independently.
+
+The three framework specifications gating the hypothesis-(i) calculation are
+the load-bearing pieces of \#75. Until they are specified, the verdict on
+Finding~2 stays at $\mathbin{\hbox{\color{yellow!90!black}\(\bullet\)}}/
+\mathbin{\hbox{\color{green!60!black}\(\bullet\)}}$
+(at hypothesis-(ii) framework precision).
+
+\paragraph{Outcome-matrix readings (per master \#67).}
+The packet's findings line up with the master outcome matrix:
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item \textbf{Outcome A} (cutoff produces triangulated value directly):
+        excluded at $\chi^2 \sim 10^{16}$ over 5 ions by the Z-scan
+        (PR \#87), unless ``triangulated value'' is read as the Z=1
+        intercept only.
+  \item \textbf{Outcome B} (framework-derivable Z-scaling): ruled out
+        structurally by all four BS PRs (the algebra of (III.22) has no $Z$).
+  \item \textbf{Outcome C} (per-state QED-inheritance, framework leaves
+        cutoff free per (III.23)): the consistent reading once Outcomes~A
+        and~B are excluded. This is the reading the variational notebook
+        (\S\ref{sec:eq-variational}) reaches as ``Outcome~C: framework-internal
+        first-principles $r_e/r_0 = 1/2$ exactly, $\alpha/(2\pi)$ shift is
+        QED-external,'' and that the Z-scan (\S\ref{sec:eq-zscan-fit})
+        confirms empirically.
+  \item \textbf{Outcome D} (framework derivation produces yet a different
+        value): excluded by the algebraic identification in
+        \S\ref{sec:eq-self-energy} unless the framework's (III.22) formula
+        itself is revised.
+\end{itemize}
+
+\authorreview{(1)~Is the outcome-matrix reading above ---
+A excluded by Z-scan, B excluded structurally, C the consistent residual,
+D unlikely without revising (III.22) --- consistent with your reading of the
+campaign? (2)~Does the unconditional-$\checkmark$ path through issue~\#75
+remain the right downstream sequencing for the verdict, or has your reading
+shifted?}

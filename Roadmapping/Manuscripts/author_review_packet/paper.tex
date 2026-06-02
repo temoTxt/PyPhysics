@@ -1,0 +1,48 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{graphicx}
+\usepackage[hidelinks,breaklinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{textcomp}
+
+% Author-review markers.
+\newcommand{\authorreview}[1]{\textcolor{red!70!black}{\textbf{[for Tepper:} #1\textbf{]}}}
+\newcommand{\aidraft}[1]{\textcolor{blue!60!black}{[ai-drafted: #1]}}
+\newcommand{\wolframcheck}[1]{\textcolor{gray}{\small[Wolfram-MCP: #1]}}
+
+\title{Bethe--Salpeter Campaign Equations and the \texorpdfstring{$r_e/r_0$}{r\_e/r\_0} Story\\[0.4em]
+\large An author-review packet for Tepper Gill}
+
+\author{Trey Morris\\[0.2em]
+\small Generated as an author-review packet, not a journal submission.}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\input{sections/00_for_author_review}
+\input{sections/01_abstract}
+\tableofcontents
+\input{sections/02_campaign_overview}
+\input{sections/02a_derivation_chain}
+\input{sections/03_z1_triangulation}
+\input{sections/04_zscan_refinement}
+\input{sections/05_branch_a_vs_branch_c}
+\input{sections/06_mis_provenance_audit}
+\input{sections/07_findings_per_observable}
+\input{sections/08_open_theoretical_question}
+\input{sections/09_ai_use_disclosure_crocco}
+\input{sections/10_questions_for_tepper}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

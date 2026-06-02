@@ -1,0 +1,24 @@
+[project]
+name = "precision-data-mcp"
+version = "0.1.0"
+description = "Umbrella MCP server exposing precision-physics experimental data (NIST ASD + CODATA, PDG, bound-state QED, nuclear, FLAG, astro, cosmo) with value, uncertainty, unit, and source. Tracks issue #92."
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "mcp>=1.0",
+    "scipy>=1.11,<1.14",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+precision-data-mcp = "precision_data_mcp:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/precision_data_mcp"]
