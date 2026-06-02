@@ -28,6 +28,7 @@ When a synth report under [`Roadmapping/Tooling/synth_reports/`](../synth_report
 | [`synth_cluster_claims.md`](synth_cluster_claims.md) | synthesis | **substantive** | `cluster_claims.py` (Phase 4) | draft |
 | [`synth_suggest_cross_refs.md`](synth_suggest_cross_refs.md) | synthesis | **substantive** | `suggest_cross_refs.py` (Phase 4) | draft |
 | [`chapter_qa_review.md`](chapter_qa_review.md) | writing | pragmatic | ad-hoc Claude Code chats | draft |
+| [`evaluate_external_suggestion.md`](evaluate_external_suggestion.md) | synthesis | **substantive** | ad-hoc Claude Code chats responding to collaborator-forwarded papers (issues, discussions) | active |
 
 ## Adding a new prompt
 

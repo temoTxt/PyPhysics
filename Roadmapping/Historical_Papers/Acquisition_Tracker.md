@@ -9,10 +9,26 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 - `pdf_status: unavailable` → no accessible copy found.
 
 <!-- AUTO-TABLE-BEGIN -->
-**Summary**: 151 entries · 🟢 0 public-PD · 🟡 1 acquired · ⚪ 149 pending · 🔴 1 unavailable
+**Summary**: 169 entries · 🟢 0 public-PD · 🟡 3 acquired · ⚪ 165 pending · 🔴 1 unavailable
 
 | Cite-key | Year | Era | Type | PDF status | Path |
 |---|---:|---|---|---|---|
+| [[euler1744_methodus_inveniendi]] | — | — | primary | ⚪ pending | — |
+| [[jacobi1866_vorlesungen_dynamik]] | — | — | primary | ⚪ pending | — |
+| [[lagrange1788_mecanique_analytique]] | — | — | primary | ⚪ pending | — |
+| [[maupertuis1744_accord_lois]] | — | — | primary | ⚪ pending | — |
+| [[newton1687_principia]] | — | — | primary | ⚪ pending | — |
+| [[stueckelberg1942_remarque_pairs]] | — | — | primary | ⚪ pending | — |
+| [[hamilton1834_general_method]] | 1834 | — | primary | ⚪ pending | — |
+| [[hamilton1835_second_essay]] | 1835 | — | primary | ⚪ pending | — |
+| [[dirac1932_relativistic_qm]] | 1932 | — | primary | ⚪ pending | — |
+| [[dirac1938_classical_electron]] | 1938 | — | primary | ⚪ pending | — |
+| [[feynman1948_path_integral]] | 1948 | — | primary | ⚪ pending | — |
+| [[schwinger1951_gauge_invariance]] | 1951 | — | primary | ⚪ pending | — |
+| [[lithium2plus_n2_lambshift_1974]] | 1974 | — | primary | ⚪ pending | — |
+| [[verdu2004_o7_g_factor]] | 2004 | — | primary | ⚪ pending | — |
+| [[schneider2022_he3_g_factor]] | 2022 | — | primary | ⚪ pending | — |
+| [[morgner2023_sn49_g_factor]] | 2023 | — | primary | ⚪ pending | — |
 | [[volta1800_electricity_contact]] | 1800 | 1800-1860 | primary | ⚪ pending | — |
 | [[ampere1820_action_mutuelle]] | 1820 | 1800-1860 | primary | ⚪ pending | — |
 | [[biot_savart1820_magnetisme_pile]] | 1820 | 1800-1860 | primary | ⚪ pending | — |
@@ -164,4 +180,6 @@ Auto-regenerated from `Roadmapping/History/Bibliography/**/*.md` via `update_acq
 | [[nif2022_ignition]] | 2024 | forward | primary | ⚪ pending | — |
 | [[nist_asd_2024]] | 2024 | forward | retrospective | 🔴 unavailable | — |
 | [[pdg2024_review]] | 2024 | forward | retrospective | ⚪ pending | — |
+| [[cheung2025_strings_from_almost_nothing]] | 2025 | forward | retrospective | 🟡 acquired (local only) | `../../Historical_Papers/Retrospective/arxiv_2508.09246v1_bootstrap_string_amplitudes.pdf` |
+| [[qunigudzinas2026_invariant_geometric_qm]] | 2026 | forward | retrospective | 🟡 acquired (local only) | `../../Historical_Papers/Retrospective/Quantum-Mechanical_Physics_as_Invariant_Geometric_Structure.pdf` |
 <!-- AUTO-TABLE-END -->
