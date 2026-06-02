@@ -1,0 +1,10 @@
+# LaTeX build artifacts (paper.pdf is committed; everything else is regenerable).
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz

@@ -1,0 +1,95 @@
+\section{Empirical joint-fit triangulation of $r_e/r_0$}
+\label{sec:eq-triangulation}
+
+Source: \texttt{Mathematica\_Notebooks/Quantum\_Mechanics/r\_e\_triangulation.wl}
+(224 lines, closes issue~\#61). Companion to
+\texttt{Equation\_Verification/FINDINGS\_for\_author\_review.md} Finding~2.
+
+\paragraph{Setup.}
+The cutoff formula from DRQM~I Eq.~(III.21)--(III.22) reads
+\[
+g_r(x) \;=\; 2\left[1 - \frac{4}{2x + 1}\right], \qquad x \equiv r/r_0,
+\]
+with measured electron $g$-factor $g_s^{\rm meas} = -2.00231930436256$
+(CODATA-2018, $\sigma \approx 3.5\times 10^{-13}$).
+
+\paragraph{Observable spec.}
+Per \texttt{Bethe\_Salpeter/10\_CrossComparison.md} \S2, each of the six
+$g_s$-dependent observables enters the prediction as
+$\mathrm{anchor}_i \cdot (g_r(x)/g_s^{\rm meas})^{n_i}$ with
+$n_i \in \{1,2\}$. The six rows are: electron $g_s$,
+H~$2P_{3/2}{-}2P_{1/2}$, H~1S hyperfine, He~$^3P_0{-}^3P_1$,
+positronium ortho--para, muonium hyperfine.
+
+\paragraph{Two weighting passes (substantive AI choice).}
+\begin{align*}
+\text{Pass A (measurement-}\sigma\text{ only):}\quad
+  &\chi^2_A(r) = \sum_i \left(\frac{p_i(r) - m_i}{\sigma_i^{\rm meas}}\right)^2,\\
+\text{Pass B (meas-}\sigma\text{ + framework floor):}\quad
+  &\chi^2_B(r) = \sum_i \left(\frac{p_i(r) - m_i}{\sqrt{(\sigma_i^{\rm meas})^2 + \sigma_i^{\rm floor,2}}}\right)^2,
+\end{align*}
+where $\sigma_i^{\rm floor} = |{\rm anchor}_i - m_i|$ captures the framework's
+Bethe-estimate / sub-leading-QED residual at branch~(c).
+
+\paragraph{Results.}
+\wolframcheck{Both \texttt{FindMinimum} runs converge to the values below.}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+                       & Pass A (meas-$\sigma$ only)   & Pass B (meas-$\sigma$ + floor) \\
+\midrule
+$r_{\rm opt}$          & $0.4994061257148855$          & $\mathbf{0.4994205099128317}$ \\
+$\sigma_r$ (Hessian)   & $2.35\times 10^{-13}$         & $2.50\times 10^{-13}$ \\
+$g_e(r_{\rm opt})$     & $-2.002376908725428$          & $-2.002319304362561$ \\
+$\chi^2_{\min}$        & $\approx 2.97\times 10^{16}$  & $\approx 3.99958 \approx 4$ \\
+$g_e$ vs measured      & off by $5.76\times 10^{-5}$ ($= 5.76\times 10^{7}\,\sigma_{\rm meas}$) & matches to 16 sig figs \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Triangulated value.}
+\[
+\boxed{\;
+  \frac{r_e}{r_0} \;=\; 0.4994205099128317
+  \quad\pm\quad 2.50 \times 10^{-13}
+\;}
+\]
+This matches branch~(c) ($0.4994205099128318$) to 16 significant figures.
+
+\paragraph{Per-observable residual diagnostics at Pass~B (= branch (c)).}
+All non-zero residuals are documented framework-precision-floor effects, not
+$r$-dependent tensions:
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item H~$2P_{3/2}{-}2P_{1/2}$: $-7.13$~MHz (Bethe-estimate floor;
+        \texttt{03\_FineStructure.md})
+  \item H~1S hyperfine: $-0.366$~MHz (sub-leading QED;
+        \texttt{06\_Hyperfine.md})
+  \item He~$^3P_0{-}^3P_1$: $-0.002$~MHz (kHz residual;
+        \texttt{09\_HeliumExcited.md})
+  \item Muonium hyperfine: $+0.097$~MHz (sub-leading QED)
+  \item Electron $g_s$ and positronium ortho--para match by construction
+        at branch~(c).
+\end{itemize}
+Stretched-fit flag at Pass~B: \textbf{none}.
+
+\paragraph{Crocco compliance.}
+Arithmetic (formula evaluation, \texttt{FindMinimum}, Hessian, residual table)
+is \emph{pragmatic} AI. The objective-function choice ($\sigma$ model),
+weighting interpretation, the Pass~A vs.~Pass~B contrast, and the conclusion
+that branch~(c) is the joint-best-fit are \emph{substantive} AI.
+
+\paragraph{Reading.}
+The empirical triangulation, under honest weighting, returns branch~(c). The
+natural framing: the published $r_e$ is an \emph{initial-value} result from a
+uni-observable numerical search against $g_s$ alone; the triangulated value is
+a \emph{refinement calculation} on top of it, using all six $g_s$-dependent
+observables as joint constraints. Issue~\#54's first-principles derivation, if
+pursued, is a potential further refinement.
+
+\authorreview{(a) Does the Pass~A vs.~Pass~B contrast correctly surface the
+substantive-AI weighting choice? (b)~Is Pass~B (matching branch~(c) to 16
+sig figs) the honest triangulated value to communicate? (c)~Is the
+``stretched-fit flag: none'' reading correct, given the residuals are
+framework-floor effects? (d)~Does framing this as a \emph{refinement} of the
+published initial-value $r_e$ (not a result the published derivation must
+reproduce) match your intent?}

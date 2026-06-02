@@ -1,0 +1,1334 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Corda (2021) on the perihelion of planets --- a math and physical-intuition check for the Relativistic Newtonian Theory foundations},
+  pdfauthor={Trey Morris with Claude Opus 4.7},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Corda (2021) on the perihelion of planets --- a math and
+physical-intuition check for the \emph{Relativistic Newtonian Theory}
+foundations}
+\author{Trey Morris with Claude Opus 4.7}
+\date{2026-06-01}
+
+\begin{document}
+\maketitle
+
+\hypertarget{author-review-report-corda-2021-the-secret-of-planets-perihelion-between-newton-and-einstein-a-math-and-physical-intuition-check}{%
+\section{\texorpdfstring{Author-review report: Corda (2021), \emph{The
+secret of planets' perihelion between Newton and Einstein} --- a math
+and physical-intuition
+check}{Author-review report: Corda (2021), The secret of planets' perihelion between Newton and Einstein --- a math and physical-intuition check}}\label{author-review-report-corda-2021-the-secret-of-planets-perihelion-between-newton-and-einstein-a-math-and-physical-intuition-check}}
+
+\textbf{To:} Tepper Gill (DRQM I and \emph{Relativistic Newtonian
+Theory} senior author). \textbf{From:} Trey Morris. \textbf{Date:}
+2026-05-30. \textbf{Re:} Issue \#81\footnote{Issue \#81,
+  \texttt{github.com/temoTxt/PyPhysics/issues/81} --- the source ticket
+  for the Mercury perihelion campaign and for the present report.}, the
+basis for the Mercury perihelion derivation in \emph{Relativistic
+Newtonian Theory}.
+
+\textbf{Source paper under review:} Christian Corda, \emph{Phys. Dark
+Univ.} \textbf{32} (2021) 100834\footnote{C. Corda, \emph{The secret of
+  planets' perihelion between Newton and Einstein}, \emph{Phys. Dark
+  Univ.} \textbf{32} (2021) 100834.
+  \texttt{doi:10.1016/j.dark.2021.100834}.}. The pdf in the repository
+is at
+\texttt{Roadmapping/External\_Papers/Secret\_Corda.pdf}\footnote{Repository
+  pdf at \texttt{Roadmapping/External\_Papers/Secret\_Corda.pdf}.}; the
+marker-pdf conversion is at
+\texttt{Roadmapping/Converted\_Markdown/Secret\_Corda/Secret\_Corda.md}\footnote{Marker-pdf
+  conversion at
+  \texttt{Roadmapping/Converted\_Markdown/Secret\_Corda/Secret\_Corda.md}.}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{cover-note-for-author-review-not-for-journal-submission}{%
+\subsection{Cover note (for author review, not for journal
+submission)}\label{cover-note-for-author-review-not-for-journal-submission}}
+
+The author indicated that the perihelion derivation in
+\emph{Relativistic Newtonian Theory} takes Corda's framework as its
+starting point. The present report checks Corda's algebra and physical
+intuition end-to-end. Its purpose is to let the author adjudicate
+whether the framework's intended Mercury prediction is the Corda-style
+\texttt{πm/M\ +\ relativistic\ correction} template (the chain analysed
+in pull request \#83\footnote{Pull request \#83 on
+  \texttt{github.com/temoTxt/PyPhysics}, the \emph{Relativistic
+  Newtonian Theory} / Mercury perihelion analysis branch. The two
+  relevant per-document references are footnotes {[}\^{}19{]} and
+  {[}\^{}20{]} below.}, giving \texttt{+37.79} arcsec/century) or the
+proper apsidal-angle calculation of the modified force law (document 05
+in that pull request, giving \texttt{−7.17} arcsec/century).
+
+Per author-review convention\footnote{Author-review convention recorded
+  in \texttt{CLAUDE.md} at the repository root (the rule ``frame
+  findings concerning DRQM I as `for author review' rather than
+  corrections''); the convention is applied here.}, the findings below
+are surfaced for the author's verdict; they are not announced as
+corrections. Every algebraic claim is verified symbolically via the
+Wolfram MCP server. Every interpretive claim is flagged as substantive
+AI.
+
+Per Crocco §5\footnote{Crocco compliance framework,
+  \texttt{Roadmapping/Tooling/CROCCO\_COMPLIANCE.md}, §5 on
+  substantive-AI disclosure.} compliance, this is substantive AI. The
+prompt-of-record is the user-instruction sequence on issue \#81 and the
+user's 2026-05-30 instruction to ``write the complete analysis in a
+markdown file for further review by Tepper.'' No prose-generation prompt
+beyond the user's instructions was used.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{the-structure-of-cordas-paper-eight-pages-seventy-seven-numbered-equations}{%
+\subsection{§1. The structure of Corda's paper (eight pages,
+seventy-seven numbered
+equations)}\label{the-structure-of-cordas-paper-eight-pages-seventy-seven-numbered-equations}}
+
+We list the principal load-bearing equations of Corda's paper and the
+result each section produces.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+§
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Topic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Headline equation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Result
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+§1 & Introduction, GR perihelion & Eq. (1):
+\texttt{Δφ\_GR\ =\ 24π³\ a²/{[}T₀²\ c²\ (1−e²){]}\ =\ 3π\ r\_g/{[}a(1−e²){]}}
+& \texttt{42.99} arcsec/century for Mercury \\
+§2 & ``Circular orbit'' Newtonian back-reaction & Eq. (20):
+\texttt{Δφ\ =\ π\ m/M} & \texttt{44.66} arcsec/century (Approach 1) \\
+§3 & Harmonic-oscillator / apsidal-angle & Eq. (31):
+\texttt{φ₀\ =\ 2π\ {[}3\ +\ F\textquotesingle{}(r)r/F(r){]}\^{}(−1/2)} &
+the same \texttt{44.66} arcsec/century (Approach 2) \\
+§4 & Reduced-mass Kepler & Eq. (57):
+\texttt{T\ =\ T₀\ (1\ +\ m/M)\^{}(−1/2)} & the same \texttt{44.66}
+arcsec/century (Approach 3) \\
+§5 & Breakdown of \texttt{πm/M} for Venus and Earth & (numerical only) &
+\texttt{30×} and \texttt{51×} too large \\
+§6 & Gravitational time dilation & Eq. (67):
+\texttt{Δφ\_F\ =\ (5π/2)\ r\_g/r₀} & \texttt{34.31} arcsec/century (TD
+only) \\
+§7 & Rotational (Langevin) time dilation & Eq. (72):
+\texttt{τ\ ≈\ (1\ −\ ½\ r²ω²/c²)\ t} & (intermediate) \\
+§8 & Combined gravitational and rotational TD & Eq. (77):
+\texttt{Δφ\_F\ =\ 3π\ r\_g/r₀} & \texttt{41.17} arcsec/century (matches
+\texttt{e\ =\ 0} GR) \\
+§9 & Conclusion: ``Newtonian plus corrections matches GR'' & --- &
+--- \\
+\end{longtable}
+
+The paper's two thesis claims appear verbatim in §9. The first is that
+it is not correct that Newtonian theory cannot predict the anomalous
+rate of precession of the perihelion of planets' orbits; the real
+problem is instead that a pure Newtonian prediction is too large. The
+second is that the perihelion's precession can be achieved with the same
+precision as general relativity by extending Newtonian gravity through
+the inclusion of gravitational and rotational time-dilation effects.
+
+The math and physical-intuition check below addresses each thesis
+separately.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{every-load-bearing-equation-surfaced-and-verified}{%
+\subsection{§2. Every load-bearing equation surfaced and
+verified}\label{every-load-bearing-equation-surfaced-and-verified}}
+
+We state Corda's equations verbatim (translated from the marker-pdf
+conversion), record the Wolfram-MCP-verified algebra, and flag the
+physical-intuition status. To preserve readability across the seventeen
+equations of Corda's §§2--8, the numbering below is Corda's original;
+our own derived expressions carry our document's numbering and are
+placed in display form.
+
+\hypertarget{eqs.-35-circular-orbit-newton-baseline-no-back-reaction}{%
+\subsubsection{§2.1 Eqs. (3)--(5) --- circular-orbit Newton baseline (no
+back-reaction)}\label{eqs.-35-circular-orbit-newton-baseline-no-back-reaction}}
+
+\[
+\frac{G M m}{r_{0}^{2}} \;=\; \frac{m\,v_{0}^{2}}{r_{0}}, \tag{3}
+\]
+
+\[
+v_{0} \;=\; \sqrt{G M / r_{0}}, \tag{4}
+\]
+
+\[
+T_{0} \;=\; \frac{2\pi\,r_{0}}{v_{0}} \;=\; \frac{2\pi\,r_{0}^{3/2}}{\sqrt{G M}}. \tag{5}
+\]
+
+These are standard textbook expressions (Newton with centripetal
+balance). The algebra is correct. The physical content is that Mercury
+orbits a stationary Sun. \textbf{Pass.}
+
+\hypertarget{eqs.-67-newtonian-angular-velocity-and-unperturbed-angle}{%
+\subsubsection{§2.2 Eqs. (6)--(7) --- Newtonian angular velocity and
+unperturbed
+angle}\label{eqs.-67-newtonian-angular-velocity-and-unperturbed-angle}}
+
+\[
+\omega_{0} \;=\; 2\pi / T_{0}, \tag{6}
+\]
+
+\[
+\varphi_{0} \;=\; \omega_{0}\,T_{0} \;=\; 2\pi. \tag{7}
+\]
+
+These are definitionally correct. \textbf{Pass.}
+
+\hypertarget{eqs.-813-the-substitution-that-drives-cordas-2-result}{%
+\subsubsection{§2.3 Eqs. (8)--(13) --- the substitution that drives
+Corda's §2
+result}\label{eqs.-813-the-substitution-that-drives-cordas-2-result}}
+
+Corda's core substitution is to replace \texttt{M} in (3) with
+\texttt{M\ +\ m}, on the ground that the Sun-centred observer sees
+Mercury's reaction force on the Sun:
+
+\[
+\frac{G(M+m)\,m}{r_{0}^{2}} \;=\; \frac{m\,v^{2}}{r_{0}}. \tag{8}
+\]
+
+He justifies the substitution by writing the Newton's-third-law pair:
+
+\[
+\vec F_{G} \;=\; \frac{G M m}{r_{0}^{2}}\,\hat u_{r}, \tag{9}
+\]
+
+\[
+M\,a_{s}\,\hat u_{r} \;=\; \frac{G M m}{r_{0}^{2}}\,\hat u_{r}
+\;\;\Rightarrow\;\;
+a_{s} \;=\; \frac{G m}{r_{0}^{2}}, \tag{10}
+\]
+
+\[
+m\,a_{m}\,\hat u_{r} \;=\; -\,\frac{G M m}{r_{0}^{2}}\,\hat u_{r}
+\;\;\Rightarrow\;\;
+a_{m} \;=\; -\,\frac{G M}{r_{0}^{2}}, \tag{11}
+\]
+
+\[
+a\,\hat u_{r} \;\equiv\; a_{m} - a_{s} \;=\; -\,\frac{G(M+m)}{r_{0}^{2}}\,\hat u_{r}, \tag{12}
+\]
+
+\[
+F\,\hat u_{r} \;=\; -\,\frac{G(M+m)\,m}{r_{0}^{2}}\,\hat u_{r}. \tag{13}
+\]
+
+The algebra of (8)--(13) is correct. It is the standard two-body
+relative-acceleration result. The same \texttt{G(M\ +\ m)} appears in
+textbook reduced-mass treatments (Goldstein §3.1, MTW §25). What
+\texttt{(M\ +\ m)} captures is the kinematic fact that the
+\emph{relative} acceleration of Mercury with respect to the Sun is
+bigger than \texttt{GM/r²} by the factor
+\texttt{(M\ +\ m)/M\ =\ 1\ +\ m/M}. \textbf{Pass on algebra.}
+
+\textbf{Physical-intuition status, for the author's verdict.} What is
+being computed is the \emph{relative} acceleration in the centre-of-mass
+frame; it is not a Sun-fixed force on Mercury. The standard reduced-mass
+two-body decomposition replaces the two-body problem with a one-body
+problem for a reduced-mass particle \texttt{μ\ =\ Mm/(M\ +\ m)} orbiting
+a fixed centre at \texttt{M\ +\ m}. Corda's Eq. (12) is correct. The
+interpretation in §2, in which the substitution is read as a
+``perturbation'' to Mercury's force, muddles the standard story.
+
+\hypertarget{eqs.-1417-perturbed-velocity-and-period}{%
+\subsubsection{§2.4 Eqs. (14)--(17) --- perturbed velocity and
+period}\label{eqs.-1417-perturbed-velocity-and-period}}
+
+\[
+v \;=\; \sqrt{G(M+m)/r_{0}}, \tag{14}
+\]
+
+\[
+T \;=\; \frac{2\pi\,r_{0}}{v} \;=\; \frac{2\pi\,r_{0}^{3/2}}{\sqrt{G(M+m)}}, \tag{15}
+\]
+
+\[
+(M+m)^{-1/2} \;=\; M^{-1/2}\,(1 + m/M)^{-1/2}, \tag{16}
+\]
+
+\[
+T \;=\; T_{0}\,(1 + m/M)^{-1/2}. \tag{17}
+\]
+
+The algebra of (17) is verified by Wolfram MCP\footnote{Wolfram MCP
+  verification: the residual \texttt{T\ −\ T₀/√(1\ +\ m/M)} for
+  \texttt{T\ =\ 2π\ r₀/v}, \texttt{v\ =\ √(G(M\ +\ m)/r₀)},
+  \texttt{T₀\ =\ 2π\ r₀\^{}(3/2)/√(GM)} simplifies to \texttt{0}.}: the
+residual \texttt{T\ −\ T₀/√(1\ +\ m/M)} simplifies to \texttt{0}. The
+period decreases slightly because the effective gravitational constant
+in the one-body problem is \texttt{G(M\ +\ m)}, not \texttt{GM}. This is
+a real kinematic effect on the sidereal period. \textbf{Pass on
+algebra.}
+
+\hypertarget{eqs.-1820-angular-velocity-and-perihelion-advance}{%
+\subsubsection{§2.5 Eqs. (18)--(20) --- angular velocity and
+``perihelion
+advance''}\label{eqs.-1820-angular-velocity-and-perihelion-advance}}
+
+\[
+\omega \;=\; \omega_{0}\,(1 + m/M)^{1/2}, \tag{18}
+\]
+
+\[
+\varphi \;=\; \omega\,T_{0} \;=\; 2\pi\,(1 + m/M)^{1/2}
+\;\simeq\; 2\pi\,(1 + m/(2M)), \tag{19}
+\]
+
+\[
+\Delta\varphi \;=\; \varphi - \varphi_{0} \;\simeq\; \pi\,m/M. \tag{20}
+\]
+
+The Taylor expansion is verified by Wolfram MCP\footnote{Wolfram MCP
+  verification:
+  \texttt{Series{[}2π\ √(1\ +\ x)\ −\ 2π,\ \{x,\ 0,\ 2\}{]}} returns
+  \texttt{π\ x\ −\ π\ x²/4\ +\ O(x³)}; the leading term is
+  \texttt{π\ m/M}.}:
+\texttt{Series{[}2π\ √(1\ +\ x)\ −\ 2π,\ \{x,\ 0,\ 2\}{]}} returns
+\texttt{π\ x\ −\ π\ x²/4\ +\ O(x³)}, with leading term \texttt{π\ m/M}.
+Numerically for Mercury (\texttt{m/M\ =\ 1.66\ ×\ 10⁻⁷}), one obtains
+
+\[
+\Delta\varphi \;=\; 5.21 \times 10^{-7}\,\text{rad/orbit}
+\;\times\; 415.2\,\text{orbits/century}
+\;\times\; \tfrac{180 \cdot 3600}{\pi}
+\;=\; 44.66\,\text{arcsec/century}. \tag{R1}
+\]
+
+The arithmetic is Wolfram-verified. \textbf{Pass on algebra.}
+
+\textbf{Physical-intuition status, for the author's verdict --- the
+load-bearing critique.} What Eq. (20) computes is the angle Mercury
+sweeps in the \emph{unperturbed} period \texttt{T\_0} at the
+\emph{perturbed} angular velocity \texttt{ω}. This quantity is not a
+perihelion advance. The perihelion advance is the angular rotation of
+the orbit's major axis between successive perihelia. It is a property of
+the \emph{shape} of the orbit, not of the period or angular velocity.
+
+For an inverse-square force, the orbit is a closed ellipse (Bertrand's
+theorem). The angle between successive perihelia is therefore exactly
+\texttt{2π}, irrespective of \texttt{T} and \texttt{ω}. Changing
+\texttt{G} from \texttt{GM} to \texttt{G(M\ +\ m)} rescales the orbital
+speed and the period, but it leaves the orbit a closed ellipse. The
+\texttt{πm/M} quantity computed in (20) is a real kinematic effect; it
+is not the perihelion-advance quantity. The §3 derivation makes this
+explicit; we return to it in §2.7.
+
+\hypertarget{eqs.-2131-cordas-own-apsidal-angle-formalism-the-papers-3}{%
+\subsubsection{§2.6 Eqs. (21)--(31) --- Corda's own apsidal-angle
+formalism (the paper's
+§3)}\label{eqs.-2131-cordas-own-apsidal-angle-formalism-the-papers-3}}
+
+Following Price and Rush (1979), Corda writes the radial equation,
+imposes angular-momentum conservation, Taylor-expands around
+\texttt{r\_0}, and arrives at the classical Bertrand-style apsidal
+angle:
+
+\[
+F_{c0}(r) \;=\; m\,\bigl(\ddot r - \omega_{0}^{2}\,r\bigr), \tag{21}
+\]
+
+\[
+J_{0} \;=\; m\,r^{2}\,\omega_{0}, \tag{22}
+\]
+
+\[
+F_{c0}(r) \;=\; m\,\Bigl(\ddot r \;-\; \frac{J_{0}^{2}}{m^{2}\,r^{3}}\Bigr), \tag{23}
+\]
+
+\[
+F_{c0}(r_{0}) \;=\; -\,\frac{J_{0}^{2}}{m\,r_{0}^{3}}. \tag{24}
+\]
+
+After perturbing \texttt{x\ =\ r\ −\ r\_0} and series-expanding,
+
+\[
+\ddot x \;+\; m^{-1}\!\left[\,-\,\frac{3\,F_{c0}(r_{0})}{r_{0}} \;-\; F'_{c0}(r_{0})\,\right] x \;=\; 0, \tag{27}
+\]
+
+\[
+T_{0} \;=\; 2\pi\!\left(\frac{m}{-\,3\,F_{c0}(r_{0})/r_{0} \;-\; F'_{c0}(r_{0})}\right)^{1/2}, \tag{28}
+\]
+
+\[
+\frac{\varphi_{0}}{2}
+\;=\; \pi\!\left(\frac{m}{-\,3\,F_{c0}/r_{0} \;-\; F'_{c0}}\right)^{1/2}\,\frac{J_{0}}{m\,r_{0}^{2}}. \tag{29}
+\]
+
+Using (24) in (29):
+
+\[
+\varphi_{0}
+\;=\; 2\pi\!\left[\,3 \;+\; \frac{F'_{c0}(r_{0})\,r_{0}}{F_{c0}(r_{0})}\,\right]^{-1/2}. \tag{31}
+\]
+
+We verify (31) for \texttt{F\ =\ −k/r²} symbolically in
+Wolfram\footnote{Wolfram MCP verification: with
+  \texttt{F{[}r{]}\ :=\ −kk/r²}, the ratio
+  \texttt{F\textquotesingle{}(r)\ r\ /\ F(r)} at \texttt{r\ =\ r₀} is
+  \texttt{−2}, and \texttt{φ\_0\ =\ 2π/√(3\ +\ (−2))\ =\ 2π}. The
+  inverse-square force gives no precession.}: the ratio
+\texttt{F\textquotesingle{}(r)\ r\ /\ F(r)} evaluates to \texttt{−2},
+and the apsidal angle becomes \texttt{φ\_0\ =\ 2π/√(3\ +\ (−2))\ =\ 2π}.
+Indeed, for an inverse-square force the apsidal angle is \texttt{2π},
+the orbit is closed, and there is no precession. This is precisely
+Bertrand's theorem at work.
+
+The algebra of (21)--(31) is correct, and this conclusion contradicts
+the §2 reading. Corda derives the apsidal-angle formula from scratch in
+his Eq. (31), and specialises immediately afterwards to the
+inverse-square case \texttt{F\_\{c0\}\ =\ F\_G}. He records there that
+the apsidal angle reduces to \texttt{φ\_0\ =\ 2π}, the same value as his
+own Eq. (7), and notes explicitly that this is the closed-orbit result.
+\textbf{Pass on algebra; the conflict is with the §2 interpretation.}
+
+\hypertarget{eqs.-3241-cordas-promotion-to-the-1-mm-force}{%
+\subsubsection{\texorpdfstring{§2.7 Eqs. (32)--(41) --- Corda's
+``promotion'' to the \texttt{(1\ +\ m/M)}
+force}{§2.7 Eqs. (32)--(41) --- Corda's ``promotion'' to the (1 + m/M) force}}\label{eqs.-3241-cordas-promotion-to-the-1-mm-force}}
+
+To extend the apsidal-angle calculation to the reduced-mass case, Corda
+substitutes the central force law:
+
+\[
+F_{c0}(r) \;\to\; F_{c}(r) \;=\; \Bigl(1 + \frac{m}{M}\Bigr)\,F_{c0}(r), \tag{32}
+\]
+
+\[
+\omega_{0} \;\to\; \omega, \tag{33}
+\]
+
+\[
+J_{0} \;\to\; J \;=\; m\,r^{2}\,\omega. \tag{34}
+\]
+
+This is meant to mirror the §2 substitution \texttt{M\ →\ M\ +\ m}
+inside the central-force law. Then
+
+\[
+F'_{c}(r_{0}) \;=\; \Bigl(1 + \frac{m}{M}\Bigr)\,F'_{c0}(r_{0}), \tag{36}
+\]
+
+\[
+\frac{F'_{c}(r_{0})}{F_{c}(r_{0})}
+\;=\; \frac{F'_{c0}(r_{0})}{F_{c0}(r_{0})}. \tag{37}
+\]
+
+Equation (37) is verified by Wolfram\footnote{Wolfram MCP verification:
+  with \texttt{Fc{[}r{]}\ :=\ (1\ +\ mMerc/Msun)\ Fc0{[}r{]}}, the
+  expression
+  \texttt{Fc\textquotesingle{}(r₀)/Fc(r₀)\ −\ Fc0\textquotesingle{}(r₀)/Fc0(r₀)}
+  simplifies to \texttt{0}.}: the residual
+\texttt{F\textquotesingle{}\_c/F\_c\ −\ F\textquotesingle{}\_\{c0\}/F\_\{c0\}}
+simplifies to \texttt{0}, since the \texttt{(1\ +\ m/M)} factor cancels
+in \texttt{F\textquotesingle{}/F}. \textbf{Pass on algebra.}
+
+Here Corda's own apparatus contradicts his own §2 conclusion. The
+apsidal-angle formula (31) depends \emph{only} on the ratio
+\texttt{F\textquotesingle{}/F}. Equation (37) says that constant
+rescaling of \texttt{F\_\{c0\}} leaves \texttt{F\textquotesingle{}/F}
+unchanged. Therefore the apsidal angle for the rescaled force
+\texttt{F\_c\ =\ (1\ +\ m/M)\textbackslash{},F\_\{c0\}} is the
+\emph{same} as for the unscaled force \texttt{F\_\{c0\}}, which is
+\texttt{2π} (from Eq. 31 with \texttt{F\_\{c0\}\ =\ F\_G\ =\ −k/r²}).
+The ``perturbed'' force still gives a closed orbit. There is no
+precession.
+
+Corda's subsequent Eqs. (38)--(41) derive
+\texttt{T\ =\ T\_0\ (1\ +\ m/M)\^{}(−1/2)} again from the period formula
+(28), then \texttt{ω\ =\ ω\_0\ (1\ +\ m/M)\^{}(1/2)}, then
+\texttt{φ\ =\ ωT\_0\ ≈\ 2π(1\ +\ m/(2M))} --- the same \texttt{πm/M} as
+§2. This is exactly the §2 mistake repeated: a period change rephrased
+as a perihelion advance. Corda's own Eq. (31), applied to his own Eq.
+(32) force, contradicts the §3 conclusion. \textbf{Algebra pass;
+interpretation refuted by the apparatus.}
+
+\hypertarget{eqs.-4257-reduced-mass-kepler-derivation}{%
+\subsubsection{§2.8 Eqs. (42)--(57) --- reduced-mass Kepler
+derivation}\label{eqs.-4257-reduced-mass-kepler-derivation}}
+
+Corda's §4 (``Third Kepler's law'') works through the standard
+centre-of-mass plus reduced-mass two-body decomposition:
+
+\[
+\vec R \;=\; \frac{m\,\vec r_{m} + M\,\vec r_{M}}{M + m},
+\qquad
+\vec r \;=\; \vec r_{m} - \vec r_{M}, \tag{43}
+\]
+
+\[
+J \;=\; \mu\,r^{2}\,\omega \;=\; 2\mu\,\dot A, \tag{45}
+\]
+
+\[
+T \;=\; 2\pi\,\sqrt{\frac{a^{3}}{G\,M_{T}}},
+\qquad
+M_{T} \;=\; M + m, \tag{53}
+\]
+
+\[
+\frac{a^{3}}{T^{2}} \;=\; \frac{G(M+m)}{4\pi^{2}}, \tag{54}
+\]
+
+\[
+T \;=\; T_{0}\,(1 + m/M)^{-1/2}. \tag{57}
+\]
+
+The algebra is correct --- standard textbook treatment (Goldstein §3.7,
+MTW §25). It lands at the same
+\texttt{T\ =\ T\_0\ (1\ +\ m/M)\^{}(−1/2)} as in (17) and as in §2.7's
+(39). \textbf{Pass.}
+
+\textbf{Physical-intuition status, for the author's verdict.} The §4
+derivation is impeccable as a derivation of the period correction due to
+the two-body kinematics. That is what the reduced-mass treatment gives.
+Corda then writes (59), \texttt{φ\ =\ ω\ T\_0\ ≈\ 2π(1\ +\ m/(2M))}, and
+calls the excess a ``perihelion advance'' --- the same conflation as in
+§2.7.
+
+\hypertarget{numerical-summary-the-three-approaches-in-corda-24-all-give-the-same-ux3b4ux3c6}{%
+\subsubsection{\texorpdfstring{§2.9 Numerical summary: the three
+approaches in Corda §§2--4 all give the same
+\texttt{Δφ}}{§2.9 Numerical summary: the three approaches in Corda §§2--4 all give the same Δφ}}\label{numerical-summary-the-three-approaches-in-corda-24-all-give-the-same-ux3b4ux3c6}}
+
+The numerical evaluation is performed\footnote{Wolfram MCP numerical
+  evaluation: with \texttt{GG\ =\ 6.6743\ ×\ 10⁻¹¹},
+  \texttt{Msun\ =\ 1.98892\ ×\ 10³⁰},
+  \texttt{mMerc\ =\ 3.3011\ ×\ 10²³},
+  \texttt{aMerc\ =\ 5.7909\ ×\ 10¹⁰},
+  \texttt{Torb\ =\ 87.969\ ·\ 86400},
+  \texttt{orbitsPerCentury\ =\ 100\ ·\ 365.25\ ·\ 86400\ /\ Torb}, and
+  \texttt{radToArcsec\ =\ 180/π\ ·\ 3600}, the per-orbit value
+  \texttt{π\ mMerc/Msun\ =\ 5.21424\ ×\ 10⁻⁷} rad, and the per-century
+  value
+  \texttt{π\ (mMerc/Msun)\ ·\ orbitsPerCentury\ ·\ radToArcsec\ =\ 44.6557}
+  arcsec/century. Corda's paper reports \texttt{44.39} arcsec/century,
+  within rounding.} with \texttt{G\ =\ 6.6743\ ×\ 10⁻¹¹},
+\texttt{M\_⊙\ =\ 1.98892\ ×\ 10³⁰} kg,
+\texttt{m\_⊙\^{}\{Mercury\}\ =\ 3.3011\ ×\ 10²³} kg,
+\texttt{a\_Mercury\ =\ 5.7909\ ×\ 10¹⁰} m, and
+\texttt{T\_orb\ =\ 87.969\ ·\ 86400} s. With
+\texttt{orbits/century\ =\ 100\ ·\ 365.25\ ·\ 86400\ /\ T\_orb} and
+\texttt{rad\ →\ arcsec\ =\ 180/π\ ·\ 3600}, the quantity
+\texttt{Δφ\ =\ π\ m/M} per orbit becomes
+
+\[
+\Delta\varphi \;=\; \pi\,m/M
+\;=\; 5.21424 \times 10^{-7}\,\text{rad}, \tag{R2}
+\]
+
+and per century becomes
+
+\[
+\Delta\varphi
+\;=\; \pi\,(m/M) \cdot \text{(orbits/century)} \cdot \text{(rad → arcsec)}
+\;=\; 44.66\,\text{arcsec/century}. \tag{R3}
+\]
+
+The arithmetic in (R3) matches Corda's reported \texttt{44.39}
+arcsec/century to within rounding\footnote{Wolfram MCP numerical
+  evaluation: with \texttt{GG\ =\ 6.6743\ ×\ 10⁻¹¹},
+  \texttt{Msun\ =\ 1.98892\ ×\ 10³⁰},
+  \texttt{mMerc\ =\ 3.3011\ ×\ 10²³},
+  \texttt{aMerc\ =\ 5.7909\ ×\ 10¹⁰},
+  \texttt{Torb\ =\ 87.969\ ·\ 86400},
+  \texttt{orbitsPerCentury\ =\ 100\ ·\ 365.25\ ·\ 86400\ /\ Torb}, and
+  \texttt{radToArcsec\ =\ 180/π\ ·\ 3600}, the per-orbit value
+  \texttt{π\ mMerc/Msun\ =\ 5.21424\ ×\ 10⁻⁷} rad, and the per-century
+  value
+  \texttt{π\ (mMerc/Msun)\ ·\ orbitsPerCentury\ ·\ radToArcsec\ =\ 44.6557}
+  arcsec/century. Corda's paper reports \texttt{44.39} arcsec/century,
+  within rounding.}. The numerical match to the observed \texttt{43}
+arcsec/century is correct arithmetic on a quantity that, per §2.6 and
+§2.7, is not a perihelion advance.
+
+\hypertarget{eq.-5-breakdown-for-venus-and-earth-the-papers-self-refutation}{%
+\subsubsection{§2.10 Eq. §5 --- breakdown for Venus and Earth, the
+paper's
+self-refutation}\label{eq.-5-breakdown-for-venus-and-earth-the-papers-self-refutation}}
+
+Corda himself shows that the \texttt{πm/M} formula fails for non-Mercury
+planets. The numerical evaluation\footnote{Wolfram MCP numerical
+  evaluation: with \texttt{mVenus\ =\ 4.87\ ×\ 10²⁴},
+  \texttt{TVenus\ =\ 224.701\ ·\ 86400},
+  \texttt{mEarth\ =\ 5.97\ ×\ 10²⁴},
+  \texttt{TEarth\ =\ 365.256\ ·\ 86400}, the Corda-formula values are
+  \texttt{Venus\ 257.91} arcsec/century and \texttt{Earth\ 194.50}
+  arcsec/century, against the observed \texttt{Venus\ 8.62}
+  arcsec/century and \texttt{Earth\ 3.83} arcsec/century.} gives, with
+\texttt{m\_Venus\ =\ 4.87\ ×\ 10²⁴},
+\texttt{T\_Venus\ =\ 224.701\ ·\ 86400},
+\texttt{m\_Earth\ =\ 5.97\ ×\ 10²⁴}, and
+\texttt{T\_Earth\ =\ 365.256\ ·\ 86400}:
+
+\[
+\Delta\varphi^{\text{Venus}}_{\text{Corda}}
+\;=\; \pi\,(m_{\text{Venus}}/M_{\odot})
+\cdot \text{(orbits/century)}_{\text{Venus}}
+\cdot \text{(rad → arcsec)}
+\;=\; 257.91\,\text{arcsec/century}, \tag{R4}
+\]
+
+\[
+\Delta\varphi^{\text{Earth}}_{\text{Corda}}
+\;=\; \pi\,(m_{\text{Earth}}/M_{\odot})
+\cdot \text{(orbits/century)}_{\text{Earth}}
+\cdot \text{(rad → arcsec)}
+\;=\; 194.50\,\text{arcsec/century}. \tag{R5}
+\]
+
+In summary:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Planet
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\texttt{πm/M} (Corda's formula)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Observed residual
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Discrepancy
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Mercury & \texttt{44.66} arcsec/c & \texttt{≈\ 43} arcsec/c &
+\texttt{1.04×} (the ``agreement'') \\
+Venus & \texttt{257.91} arcsec/c & \texttt{≈\ 8.62} arcsec/c &
+\texttt{30×} too big \\
+Earth & \texttt{194.50} arcsec/c & \texttt{≈\ 3.83} arcsec/c &
+\texttt{51×} too big \\
+\end{longtable}
+
+A formula that is right by \texttt{4\%} for one planet and wrong by
+factors of \texttt{30} and \texttt{50} for the others is not a physics
+result. It is a numerical coincidence at one particular value of
+\texttt{m/M}. Corda acknowledges the breakdown (§5) but rationalises it
+with n-body effects (``Venus has Mercury as an interior planet''). The
+rationalisation does not explain why a strictly two-body formula would
+be valid for one two-body system and invalid for others. The honest
+reading is that \texttt{πm/M} is not the perihelion advance for any
+planet, including Mercury.
+
+\hypertarget{eqs.-6067-gravitational-time-dilation}{%
+\subsubsection{§2.11 Eqs. (60)--(67) --- gravitational time
+dilation}\label{eqs.-6067-gravitational-time-dilation}}
+
+Corda's §6 applies Schwarzschild weak-field corrections. The standard
+relations are
+
+\[
+t_{g} \;=\; \sqrt{g_{00}(r_{0})}\,t_{l}, \tag{60}
+\]
+
+with the isotropic-coordinate weak-field Schwarzschild line element
+
+\[
+ds^{2} \;=\; \Bigl(1 - \frac{2GM}{r\,c^{2}}\Bigr)(c\,dt)^{2}
+\;-\; \Bigl(1 + \frac{2GM}{r\,c^{2}}\Bigr)(dr^{2} + r^{2}\,d\theta^{2} + r^{2}\,\sin^{2}\theta\,d\phi^{2}), \tag{61}
+\]
+
+\[
+t_{g}
+\;=\; \sqrt{1 - r_{g}/r_{0}}\,t_{l}
+\;\approx\; \Bigl(1 - \tfrac{1}{2}\,\tfrac{r_{g}}{r_{0}}\Bigr)\,t_{l}, \tag{62}
+\]
+
+where \texttt{r\_g\ =\ 2GM/c²} is the Sun's gravitational radius
+(\texttt{≈\ 2.95} km). Corda also asserts a corresponding
+radial-distance contraction \texttt{r\_0\ →\ r\_0\ (1\ −\ ½\ r\_g/r\_0)}
+(Eq. 63), arguing from \texttt{r\ =\ c\ t}.
+
+\textbf{Physical-intuition status, for the author's verdict ---
+marginal.} The time-dilation factor (62) is standard GR weak-field. The
+radial-distance contraction in (63) is unusual: in isotropic
+coordinates, the radial coordinate \texttt{r} of a point at
+Schwarzschild radius \texttt{R} is \texttt{r\ ≈\ R(1\ −\ GM/(c²\ R))} (a
+small isotropic-to-areal coordinate shift), so there is a
+\texttt{½\ r\_g/r\_0} correction when comparing isotropic and areal
+radial coordinates; treating this as ``the comoving Newtonian observer
+sees a different distance because \texttt{r\ =\ c\ t}'' is non-standard.
+Worth flagging. The final-result coefficient in (67) is, however,
+unaffected to first order.
+
+Substituting (63) into (17),
+
+\[
+T_{F}
+\;=\; \frac{2\pi\,r_{0}^{3/2}\,\bigl(1 - \tfrac{1}{2}\,\tfrac{r_{g}}{r_{0}}\bigr)^{3/2}\,(1 + m/M)^{-1/2}}{\sqrt{G M}}. \tag{64}
+\]
+
+Computing \texttt{ω\_F\ =\ 2π/T\_F},
+
+\[
+\omega_{F}
+\;\simeq\; \omega\,\bigl(1 - \tfrac{1}{2}\,\tfrac{r_{g}}{r_{0}}\bigr)^{-3/2}\,
+\bigl(1 + \tfrac{1}{2}\,\tfrac{r_{g}}{r_{0}}\bigr), \tag{65}
+\]
+
+\[
+\varphi_{F}
+\;\simeq\; 2\pi\,\bigl(1 + \tfrac{5}{4}\,\tfrac{r_{g}}{r_{0}}\bigr), \tag{66}
+\]
+
+\[
+\Delta\varphi_{F}
+\;\simeq\; \tfrac{5\pi}{2}\,\tfrac{r_{g}}{r_{0}}. \tag{67}
+\]
+
+The leading-order expansion in (66) is verified by Wolfram\footnote{Wolfram
+  MCP verification:
+  \texttt{Series{[}2π\ (1\ −\ x/2)\^{}(−3/2)\ (1\ +\ x/2),\ \{x,\ 0,\ 1\}{]}}
+  returns \texttt{2π\ +\ (5π/2)\ x\ +\ O(x²)}; the leading coefficient
+  is \texttt{(5/2)\ π\ r\_g/r\_0}.}:
+\texttt{Series{[}2π\ (1\ −\ x/2)\^{}(−3/2)\ (1\ +\ x/2),\ \{x,\ 0,\ 1\}{]}}
+returns \texttt{2π\ +\ (5π/2)\ x\ +\ O(x²)}, with leading coefficient
+\texttt{(5/2)\ π\ r\_g/r\_0}. The algebra is correct, conditional on the
+substitution (63). The result (67) is roughly two-thirds of the GR
+answer.
+
+\hypertarget{eqs.-6872-rotational-time-dilation-langevin}{%
+\subsubsection{§2.12 Eqs. (68)--(72) --- rotational time dilation
+(Langevin)}\label{eqs.-6872-rotational-time-dilation-langevin}}
+
+The standard SR derivation of the Langevin line element for a rotating
+frame:
+
+\[
+ds^{2} \;=\; c^{2}\,dt^{2} \;-\; dr^{2} \;-\; r^{2}\,d\phi^{2} \;-\; dz^{2}, \tag{68}
+\]
+
+\[
+\phi \;=\; \phi' + \omega\,t', \tag{69}
+\]
+
+\[
+ds^{2} \;=\; \Bigl(1 - \tfrac{r^{2}\,\omega^{2}}{c^{2}}\Bigr)\,c^{2}\,dt^{2}
+\;-\; 2\omega\,r^{2}\,d\phi'\,dt'
+\;-\; dr^{2} \;-\; r^{2}\,d\phi'^{2}
+\;-\; dz'^{2}, \tag{70}
+\]
+
+\[
+d\tau
+\;=\; \sqrt{1 - r^{2}\,\omega^{2}/c^{2}}\,dt
+\;\simeq\; \Bigl(1 - \tfrac{1}{2}\,\tfrac{r^{2}\,\omega^{2}}{c^{2}}\Bigr)\,dt. \tag{71}
+\]
+
+At \texttt{r\ =\ r\_0}, \texttt{ω\ =\ ω\_0},
+
+\[
+\tau
+\;\simeq\; \Bigl(1 - \tfrac{1}{2}\,\tfrac{r_{0}^{2}\,\omega_{0}^{2}}{c^{2}}\Bigr)\,t. \tag{72}
+\]
+
+The algebra is textbook special relativity. \textbf{Pass.}
+
+\textbf{Physical-intuition status, for the author's verdict.} Corda
+invokes Einstein's Equivalence Principle to argue that the centrifugal
+field in the rotating frame can be treated ``as if'' it were a
+gravitational field. This is the conceptual move that permits the
+additive combination of gravitational and rotational time dilation. The
+application of the EEP here is standard. The relevant question is
+whether the Langevin correction, applied to a Keplerian orbital period,
+is the right way to recover the GR perihelion advance. The result in §8
+suggests that, in the circular limit, it is --- and this matches the
+standard PPN result for the gravitational-redshift plus Doppler
+combination.
+
+\hypertarget{eqs.-7377-the-combined-correction}{%
+\subsubsection{§2.13 Eqs. (73)--(77) --- the combined
+correction}\label{eqs.-7377-the-combined-correction}}
+
+Using (5)--(6) to express the rotational time-dilation in terms of
+\texttt{r\_g}:
+
+\[
+\tau
+\;=\; \sqrt{1 - \tfrac{1}{2}\,\tfrac{r_{g}}{r_{0}}}\,t
+\;\simeq\; \Bigl(1 - \tfrac{1}{4}\,\tfrac{r_{g}}{r_{0}}\Bigr)\,t. \tag{73}
+\]
+
+The comoving Newtonian observer replaces
+\texttt{T\_F\ →\ T\_T\ =\ T\_F\ (1\ −\ ½\ r\_g/r\_0)\^{}\{1/2\}}:
+
+\[
+T_{T} \;=\; T_{0}\,(1 + m/M)^{-1/2}\,\bigl(1 - \tfrac{1}{2}\,r_{g}/r_{0}\bigr)^{2}, \tag{74}
+\]
+
+\[
+\omega_{F}
+\;=\; 2\pi/T_{T}
+\;\simeq\; \omega\,\bigl(1 - \tfrac{1}{2}\,r_{g}/r_{0}\bigr)^{-2}
+\;\simeq\; \omega\,\bigl(1 + \tfrac{3}{2}\,r_{g}/r_{0}\bigr), \tag{75}
+\]
+
+\[
+\varphi_{F}
+\;=\; \omega_{F}\,T_{0}\,(1 - m/(2M))
+\;\simeq\; 2\pi\,\Bigl(1 + \tfrac{3}{2}\,\tfrac{r_{g}}{r_{0}}\Bigr), \tag{76}
+\]
+
+\[
+\Delta\varphi_{F}
+\;\simeq\; 3\pi\,\tfrac{r_{g}}{r_{0}}. \tag{77}
+\]
+
+We flag an OCR / marker-pdf ambiguity. The conversion of Eq. (75) shows
+the last rotational factor as
+\texttt{(1\ −\ r\_g/(2\ r\_0))\^{}\{+1/2\}}, which would give a leading
+coefficient of \texttt{1}, not \texttt{3/2}. Reading instead as
+\texttt{(1\ −\ r\_g/(2\ r\_0))\^{}\{−1/2\}}, consistent with
+\texttt{ω\ =\ 2π/T} and the
+\texttt{T\_T\ =\ T\_F\ (1\ −\ r\_g/(2\ r\_0))\^{}\{1/2\}} substitution,
+recovers the \texttt{3/2}. Either (75) in the paper has a typographical
+error or the converted markdown does. The final equation (77) is correct
+and matches the standard PPN gravitational-redshift plus Doppler
+combination.
+
+The leading-order expansion in (76) is verified by Wolfram\footnote{Wolfram
+  MCP verification under the \texttt{−1/2} reading:
+  \texttt{Series{[}(1\ −\ x/2)\^{}(−3/2)\ (1\ +\ x/2)\ (1\ −\ x/2)\^{}(−1/2),\ \{x,\ 0,\ 1\}{]}}
+  returns \texttt{1\ +\ 3\ x/2\ +\ O(x²)}; the leading coefficient is
+  \texttt{(3/2)\ r\_g/r\_0}.} under the \texttt{−1/2} reading:
+\texttt{Series{[}(1\ −\ x/2)\^{}(−3/2)\ (1\ +\ x/2)\ (1\ −\ x/2)\^{}(−1/2),\ \{x,\ 0,\ 1\}{]}}
+returns \texttt{1\ +\ 3x/2\ +\ O(x²)}, with leading coefficient
+\texttt{(3/2)\ r\_g/r\_0}. \textbf{Pass on algebra, modulo the suspected
+typographical error in (75).}
+
+\hypertarget{comparison-of-cordas-eq.-77-to-standard-gr}{%
+\subsubsection{§2.14 Comparison of Corda's Eq. (77) to standard
+GR}\label{comparison-of-cordas-eq.-77-to-standard-gr}}
+
+The standard GR result, from the Schwarzschild geodesic\footnote{C. W.
+  Misner, K. S. Thorne, and J. A. Wheeler, \emph{Gravitation} (Freeman,
+  1973), §40.5 (the standard Schwarzschild-geodesic derivation of the
+  perihelion advance).}, is
+
+\[
+\Delta\varphi_{\text{GR}}
+\;=\; \frac{6\pi\,GM}{c^{2}\,a\,(1-e^{2})}
+\;=\; \frac{3\pi\,r_{g}}{a\,(1-e^{2})}. \tag{R6}
+\]
+
+For Mercury, with \texttt{e\ =\ 0.20563} and
+\texttt{1\ −\ e²\ ≈\ 0.9577}, the standard result is
+\texttt{Δφ\_GR\ =\ 42.99} arcsec/century. For the circular limit
+(\texttt{e\ =\ 0}, \texttt{a\ =\ r\_0}) the standard result reduces to
+\texttt{3π\ r\_g/r\_0}. We observe that Corda's Eq. (77) reproduces the
+circular-orbit limit of GR. The numerical evaluation\footnote{Wolfram
+  MCP numerical evaluation: with \texttt{aMerc\ =\ 5.7909\ ×\ 10¹⁰},
+  \texttt{eMerc\ =\ 0.20563}, \texttt{cc\ =\ 299792458},
+  \texttt{rg\ =\ 2\ GG\ Msun/cc²},
+  \texttt{orbitsPerCentury\ =\ 100\ ·\ 365.25\ ·\ 86400\ /\ (87.969\ ·\ 86400)},
+  and \texttt{radToArcsec\ =\ 180/π\ ·\ 3600}, the circular-limit value
+  \texttt{3π\ rg/aMerc\ ·\ orbitsPerCentury\ ·\ radToArcsec\ =\ 41.17}
+  arcsec/century, and the full GR value
+  \texttt{3π\ rg/{[}aMerc\ (1\ −\ eMerc²){]}\ ·\ orbitsPerCentury\ ·\ radToArcsec\ =\ 42.99}
+  arcsec/century.} gives
+
+\[
+\Delta\varphi_{\text{Corda §8, circular}}
+\;=\; 3\pi\,r_{g}/a_{\text{Mercury}}\;\cdot\;\text{(orbits/century)}\;\cdot\;\text{(rad → arcsec)}
+\;=\; 41.17\,\text{arcsec/century}, \tag{R7}
+\]
+
+\[
+\Delta\varphi_{\text{GR, Mercury}}
+\;=\; 3\pi\,r_{g}/[\,a_{\text{Mercury}}\,(1 - e_{\text{Mercury}}^{2})\,]\;\cdot\;\text{(orbits/century)}\;\cdot\;\text{(rad → arcsec)}
+\;=\; 42.99\,\text{arcsec/century}. \tag{R8}
+\]
+
+Corda's §§6--8 derivation is missing the \texttt{1/(1\ −\ e²)}
+eccentricity factor. For Mercury this is a \texttt{4.4\%} shortfall
+(\texttt{−1.82} arcsec/century).
+
+\textbf{For the author's verdict.} This discrepancy is significant for
+Mercury specifically because of its high eccentricity. For Venus and
+Earth (more circular), the discrepancy shrinks. A complete derivation of
+the GR result needs the eccentricity from the genuine orbit, for example
+via the apsidal-angle formula or via the relativistic correction to the
+orbit equation.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{the-load-bearing-critique-three-findings}{%
+\subsection{§3. The load-bearing critique --- three
+findings}\label{the-load-bearing-critique-three-findings}}
+
+We surface three findings, in order of weight.
+
+\hypertarget{finding-1-algebra-driven.-bertrands-theorem-rules-out-corda-24}{%
+\subsubsection{Finding 1 (algebra-driven). Bertrand's theorem rules out
+Corda
+§§2--4}\label{finding-1-algebra-driven.-bertrands-theorem-rules-out-corda-24}}
+
+Corda's apsidal-angle formula (Eq. 31), applied to \emph{any}
+inverse-square force --- including the \texttt{(1\ +\ m/M)}-rescaled
+version of Eq. (32) --- gives \texttt{φ\_0\ =\ 2π} exactly. Indeed, for
+\texttt{F\ =\ −k/r²} one has
+\texttt{F\textquotesingle{}(r)\ r\ /\ F(r)\ =\ −2}, and so
+\texttt{φ\_0\ =\ 2π/√(3\ −\ 2)\ =\ 2π}. For
+\texttt{F\ =\ (1\ +\ m/M)(−k/r²)} one has the same
+\texttt{F\textquotesingle{}/F\ =\ −2/r}, and so the same
+\texttt{φ\_0\ =\ 2π}.
+
+This is Bertrand's theorem in action. Of all central potentials, only
+\texttt{1/r} (Kepler, Newton) and \texttt{r²} (harmonic) give
+universally closed bound orbits. Inverse-square forces (Newton's
+gravity, Eq. 9) produce closed ellipses with no precession, at any
+energy or angular momentum. Constant rescaling of an inverse-square
+force does not change this; it just changes the orbital period.
+
+It follows that Corda's Eq. (20), \texttt{Δφ\ =\ πm/M}, is not an
+apsidal precession. It is the angle by which Mercury's position differs
+from \texttt{2π} when measured at time \texttt{T\_0} (the unperturbed
+period) under the perturbed angular velocity \texttt{ω}. After the true
+perturbed period \texttt{T\ =\ T\_0(1\ +\ m/M)\^{}(−1/2)} has elapsed,
+Mercury has swept exactly \texttt{2π} again and has returned to
+perihelion. \textbf{No precession. Refuted.}
+
+\hypertarget{finding-2-empirics-driven.-the-5-self-refutation}{%
+\subsubsection{Finding 2 (empirics-driven). The §5
+self-refutation}\label{finding-2-empirics-driven.-the-5-self-refutation}}
+
+Applying Corda's own formula \texttt{Δφ\ =\ π\ m/M\ ×\ (orbits/century)}
+to Venus and Earth gives the numbers tabulated in §2.10 above; from (R4)
+and (R5), the formula predicts \texttt{257.91} arcsec/century for Venus
+against the observed \texttt{8.62}, and \texttt{194.50} arcsec/century
+for Earth against the observed \texttt{3.83}. The Mercury ``agreement''
+of \texttt{44.66} against \texttt{43} is the lone case in which the
+formula and the data line up.
+
+Corda's response, that n-body effects are responsible and that Mercury
+has no interior planets, does not work as a defence. The formula
+\texttt{Δφ\ =\ πm/M} makes no reference to n-body effects. The
+derivation in §§2--4 is strictly two-body throughout, with no interior
+planets entering. If the formula were the correct two-body result, it
+would apply to any two-body sub-problem, and the n-body corrections
+would be smaller perturbations rather than discrepancies by a factor of
+\texttt{30} to \texttt{50}.
+
+\textbf{For the author's verdict.} The strongest available evidence that
+\texttt{πm/M} is not the correct two-body perihelion advance is that the
+formula is empirically wrong for every planet other than Mercury. The
+Mercury ``agreement'' is coincidence: the value
+\texttt{m/M\ ≈\ 1.66\ ×\ 10⁻⁷}, multiplied by Mercury's \texttt{415.2}
+orbits/century, happens to give a number near \texttt{43}
+arcsec/century. Venus and Earth have different
+\texttt{(m/M,\ orbits/century)} products and give wildly wrong
+predictions. \textbf{Refuted.}
+
+\hypertarget{finding-3-formal-derivation-driven.-68-reproduce-only-the-e-0-gr-limit}{%
+\subsubsection{\texorpdfstring{Finding 3 (formal-derivation-driven).
+§§6--8 reproduce only the \texttt{e\ =\ 0} GR
+limit}{Finding 3 (formal-derivation-driven). §§6--8 reproduce only the e = 0 GR limit}}\label{finding-3-formal-derivation-driven.-68-reproduce-only-the-e-0-gr-limit}}
+
+Corda's Eq. (77), \texttt{Δφ\_F\ =\ 3π\ r\_g/r\_0}, is correct algebra
+(modulo the §2.13 typographical error) but recovers only the
+circular-orbit limit of the true GR result
+\texttt{3π\ r\_g/{[}a\ (1\ −\ e²){]}}. For Mercury (\texttt{e\ =\ 0.21})
+this is a \texttt{4.4\%} shortfall (\texttt{−1.82} arcsec/century).
+
+\textbf{For the author's verdict.} §§6--8 is a real first-order GR
+derivation route. What it gets right is the ``PPN sum of gravitational
+and Doppler time dilation'' result, well known in GR pedagogy. What it
+does not capture is the eccentricity dependence, which makes it
+numerically equivalent to GR only for nearly circular orbits. For
+Mercury the eccentricity correction matters; for Venus and Earth
+(smaller \texttt{e}), the expression \texttt{3π\ r\_g/a} is much closer
+to the full GR answer.
+
+The two §§6--8 results work in their domain. The trouble is purely the
+combination with §§2--4. Corda writes in §9 that ``Newtonian plus
+corrections matches GR.'' The honest reading is that §§6--8 \emph{alone}
+matches GR (in the circular limit); §§2--4 contributes a fictitious
+\texttt{πm/M} that does not correspond to a real precession; and the two
+together do not add up to GR --- the \texttt{πm/M} is simply spurious.
+\textbf{Marginal on §§6--8 by themselves; refuted on the §9 combination
+claim.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{implication-for-relativistic-newtonian-theory}{%
+\subsection{\texorpdfstring{§4. Implication for \emph{Relativistic
+Newtonian
+Theory}}{§4. Implication for Relativistic Newtonian Theory}}\label{implication-for-relativistic-newtonian-theory}}
+
+Gill's \emph{Relativistic Newtonian Theory} extends Corda's framework by
+adding the dual-theory \texttt{(1\ +\ V/(m\ c²))} factor to the force
+law:
+
+\[
+\vec a_{m}
+\;=\; -\,\frac{GM}{r^{2}}\,\Bigl(1 - \frac{GM}{c^{2}\,r}\Bigr)\,\hat u_{r}
+\qquad\text{(framework, Eq. (h4)).}\tag{R9}
+\]
+
+The expression (R9) is transcribed from the pull request \#83
+verification document\footnote{Pull request \#83 verification document
+  \texttt{Roadmapping/Equation\_Verification/Dual\_Newtonian\_Theory.md},
+  on \texttt{github.com/temoTxt/PyPhysics/pull/83}. All algebra in that
+  document is Wolfram-MCP verified.}. All algebra in that document is
+Wolfram-MCP verified.
+
+\hypertarget{what-pull-request-83-computed-corda-style-template}{%
+\subsubsection{§4.1 What pull request \#83 computed (Corda-style
+template)}\label{what-pull-request-83-computed-corda-style-template}}
+
+Document 03 of the pull request\footnote{Pull request \#83 document 03,
+  \texttt{Roadmapping/Mercury\_Perihelion/03\_numerical\_predictions.md},
+  on \texttt{github.com/temoTxt/PyPhysics/pull/83}.} followed Corda's
+heuristic and obtained
+
+\[
+\Delta\varphi_{d}
+\;=\; 2\pi\!\left[\Bigl(1 + \frac{m}{M}\Bigr)
+\Bigl(1 - \frac{G(M^{2} + m^{2})}{(M + m)\,c^{2}\,r_{0}}\Bigr)\right]^{1/2} - 2\pi, \tag{R10}
+\]
+
+with first-order Taylor expansion
+
+\[
+\Delta\varphi_{d_{1}}
+\;\simeq\; 2\pi\!\left[\frac{m}{2 M} - \frac{G M\,(1 + m/M)}{2\,c^{2}\,r_{0}}\right]. \tag{R11}
+\]
+
+The decomposition is
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Contribution
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Source
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Reduced-mass \texttt{π\ m/M} & \texttt{+44.66} arcsec/century & Corda
+§§2--4 (not a real precession) \\
+Framework relativistic correction \texttt{−π\ GM/(c²\ r\_0)} &
+\texttt{−6.87} arcsec/century & wrong sign vs.~the GR \texttt{+42.99}
+arcsec/century \\
+Net \texttt{Δφ\_d} & \texttt{+37.79} arcsec/century & sum, vs.~observed
+\texttt{≈\ 43} arcsec/century \\
+\end{longtable}
+
+The \texttt{12\%} shortfall (\texttt{+37.79} vs.~\texttt{+43}) was
+interpreted in pull request \#83 as a near miss. Under the present
+analysis, this is a coincidence on top of a coincidence: \texttt{πm/M}
+is fictitious, and the relativistic correction has the wrong sign.
+
+\hypertarget{what-pull-request-83-document-05-computed-apsidal-angle-the-genuine-answer}{%
+\subsubsection{§4.2 What pull request \#83 document 05 computed (apsidal
+angle, the genuine
+answer)}\label{what-pull-request-83-document-05-computed-apsidal-angle-the-genuine-answer}}
+
+Document 05 of the pull request\footnote{Pull request \#83 document 05,
+  \texttt{Roadmapping/Mercury\_Perihelion/05\_nbody\_orbital\_mechanics.md},
+  on \texttt{github.com/temoTxt/PyPhysics/pull/83}. The apsidal-angle
+  calculation in that document yields the \texttt{−1/6} of GR result.}
+applies Corda's \emph{own} apsidal-angle formula (Eq. 31) to the
+framework's modified force law,
+
+\[
+F(r) \;=\; -\,\frac{G M m}{r^{2}}\,\Bigl(1 - \frac{GM}{c^{2}\,r}\Bigr), \tag{R12}
+\]
+
+and obtains
+
+\[
+\Delta\varphi^{\text{genuine}}_{\text{framework}}
+\;=\; -\,\frac{1}{6}\,\Delta\varphi_{\text{GR}}
+\;=\; -\,7.17\,\text{arcsec/century}. \tag{R13}
+\]
+
+The opposite sign and the one-sixth magnitude of GR are exact, not
+approximate. This is the well-known \texttt{1/6} factor of a
+force-law-only modification of Newtonian gravity that lacks GR's
+spatial-metric curvature\footnote{C. M. Will, \emph{Theory and
+  Experiment in Gravitational Physics}, 2nd ed.~(Cambridge University
+  Press, 2018), §7.3, on the PPN parameter analysis; see also C. W.
+  Misner, K. S. Thorne, and J. A. Wheeler, \emph{Gravitation} (Freeman,
+  1973), §40.6.}.
+
+The n-body refinement cannot close this gap. Planetary perturbations
+contribute framework relativistic corrections at the level of
+\texttt{10⁻⁴} to \texttt{10⁻⁵} of the Sun--Mercury term, since
+\texttt{GM/(c²\ r)} scales with the attracting mass and the other
+planets are light. The \texttt{−7.17} arcsec/century is the framework's
+structural prediction for the eccentric two-body case, computed via the
+same apparatus (apsidal angle) Corda himself uses.
+
+\hypertarget{the-recommendation-for-the-author}{%
+\subsubsection{§4.3 The recommendation, for the
+author}\label{the-recommendation-for-the-author}}
+
+The Corda-style \texttt{πm/M\ +\ relativistic\ correction} template that
+\emph{Relativistic Newtonian Theory} inherits should be replaced by the
+apsidal-angle calculation as the framework's genuine perihelion
+prediction. The relevant numbers are
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Calculation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Result
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Corda-style heuristic (PR \#83 doc 03) & \texttt{+37.79} arcsec/century
+& numerical near miss; structurally fictitious \\
+Apsidal angle (PR \#83 doc 05) & \texttt{−7.17} arcsec/century & genuine
+precession of the modified force law \\
+Standard GR & \texttt{+42.99} arcsec/century & observed \texttt{≈\ 43}
+arcsec/century \\
+\end{longtable}
+
+If the framework's intended Mercury prediction is the apsidal-angle
+result, the verdict reads: wrong sign and one-sixth of the GR magnitude.
+This is the structural signature of any modified-Newtonian gravity that
+adds a \texttt{(1\ +\ V/(m\ c²))}-style factor to the force without
+modifying the spatial metric. The \texttt{12\%} near miss recorded in
+pull request \#83 document 03 is an artefact of taking Corda's
+\texttt{πm/M} heuristic as the baseline.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{specific-questions-for-the-author}{%
+\subsection{§5. Specific questions for the
+author}\label{specific-questions-for-the-author}}
+
+We list six questions, drawn from the analysis above, in the order they
+fall.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Bertrand's theorem applicability.} Do you agree that Eq. (31),
+  applied to an inverse-square force (including the
+  \texttt{(1\ +\ m/M)}-rescaled version of Eq. 32), gives
+  \texttt{φ\_0\ =\ 2π}, that is, no apsidal precession? This is the
+  load-bearing critique of §§2--4. If you read Bertrand differently, or
+  if you identify a step in the derivation of Eq. (31) that does not
+  apply, please flag it.
+\item
+  \textbf{Period versus precession.} Do you agree that the \texttt{πm/M}
+  quantity in Corda's Eqs. (19)--(20) is the angle Mercury sweeps in the
+  \emph{unperturbed} period \texttt{T\_0} at the \emph{perturbed}
+  angular velocity \texttt{ω}, and not the rotation of the orbit's major
+  axis between successive perihelia? This is the conceptual distinction
+  that determines whether \emph{Relativistic Newtonian Theory} inherits
+  a fictitious baseline.
+\item
+  \textbf{The §5 self-refutation.} The same \texttt{πm/M} formula gives
+  Venus \texttt{258} arcsec/century and Earth \texttt{195}
+  arcsec/century, against the observed \texttt{8.6} and \texttt{3.8}
+  arcsec/century. Is Corda's ``n-body effects'' rationalisation
+  sufficient, or does the empirical failure mean that the formula is not
+  a perihelion advance? Pull request \#83's reading is the latter. We
+  would like your reading recorded.
+\item
+  \textbf{§§6--8 and eccentricity.} Corda's \texttt{3π\ r\_g/r\_0}
+  reproduces the \texttt{e\ =\ 0} GR limit and misses
+  \texttt{1/(1\ −\ e²)}. For Mercury this is a \texttt{4.4\%} shortfall.
+  Do you read §§6--8 as a valid pedagogical derivation of the
+  circular-orbit GR result (the PPN sum of gravitational and Doppler
+  time dilation), or as a complete GR derivation? The distinction
+  matters for whether the eccentricity correction needs to be added to
+  the framework's prediction.
+\item
+  \textbf{The apsidal-angle calculation for Gill's force law.} Document
+  05 of pull request \#83 returns \texttt{−7.17} arcsec/century, that
+  is, \texttt{−1/6} of the GR value, for the framework's force law
+  \texttt{a\ =\ −(GM/r²)(1\ −\ GM/(c²\ r))\ ê\_r}. This is the proper
+  answer to ``what does Gill's modified Newton predict for Mercury?''.
+  Do you read this as the framework's intended prediction, or is the
+  Corda-style heuristic (\texttt{+37.79} arcsec/century) intended?
+\item
+  \textbf{The \texttt{1/6} structural signature.} Pull request \#83
+  document 05 identifies \texttt{−1/6} of GR as the classic signature of
+  a force-law-only modification of Newton without spatial-metric
+  curvature. Does this match your understanding of what
+  \emph{Relativistic Newtonian Theory} delivers, or does the framework
+  include a spatial-metric component that pull request \#83 has missed?
+\end{enumerate}
+
+The answers to these six adjudicate whether \emph{Relativistic Newtonian
+Theory}'s Mercury prediction is \texttt{+37.79} arcsec/century (Corda
+template), \texttt{−7.17} arcsec/century (apsidal angle), or something
+else.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{honest-framing-what-this-report-claims-and-does-not-claim}{%
+\subsection{§6. Honest framing --- what this report claims and does not
+claim}\label{honest-framing-what-this-report-claims-and-does-not-claim}}
+
+\hypertarget{what-this-report-claims}{%
+\subsubsection{What this report claims}\label{what-this-report-claims}}
+
+Corda's algebra is mostly correct; in particular, equations (17), (20),
+(31), (37), (67), and (77) are all Wolfram-MCP verified. Corda's §§2--4
+result \texttt{Δφ\ =\ πm/M} is not a perihelion advance; it is a
+period-and-angular-velocity rescaling that does not change the apsidal
+angle of a closed inverse-square orbit. This is verified via Corda's own
+Eq. (31). The §5 numerical breakdown for Venus and Earth is empirical
+evidence that the formula is not a real perihelion advance. The §§6--8
+derivation reproduces the GR result in the circular-orbit limit only.
+\emph{Relativistic Newtonian Theory}'s \texttt{+37.79} arcsec/century
+prediction inherits the Corda framing's fictitious \texttt{πm/M}
+baseline together with a wrong-sign relativistic correction. The
+framework's genuine perihelion prediction, computed via the
+apsidal-angle formula on the modified force law, is \texttt{−7.17}
+arcsec/century, that is, \texttt{−1/6} of the GR value.
+
+\hypertarget{what-this-report-does-not-claim}{%
+\subsubsection{What this report does not
+claim}\label{what-this-report-does-not-claim}}
+
+The report does not claim that Corda's paper is not a valid published
+work; it is peer-reviewed in \emph{Physics of the Dark Universe} (a
+respectable Elsevier journal), and the findings here concern the
+\emph{interpretation} of correctly derived algebra. The report does not
+claim that \emph{Relativistic Newtonian Theory} as a whole is wrong; the
+Mercury perihelion is one test, and other tests (the four candidate
+curved-spacetime extensions tracked in the GPS author-report
+Q1\footnote{GPS author-report on the curved-spacetime-extension
+  question:
+  \texttt{Roadmapping/Author\_Reports/2026-05\_gps\_relativity\_summary\_for\_gill.md},
+  Q1.}) remain open. The report does not claim that the framework cannot
+deliver a Mercury-matching prediction; the framework may have
+alternative extensions to gravity beyond the one analysed in
+\emph{Relativistic Newtonian Theory}, and this report only addresses the
+specific extension that paper proposes. The report does not claim that
+the apsidal-angle critique is novel; it is straightforward textbook
+orbital mechanics. The novelty here is applying it explicitly to Corda's
+framework and to \emph{Relativistic Newtonian Theory} as an inheritance
+check.
+
+\hypertarget{what-the-report-asks-of-the-author}{%
+\subsubsection{What the report asks of the
+author}\label{what-the-report-asks-of-the-author}}
+
+The report asks for six adjudications (§5 above). The author's verdict
+on these determines what the campaign's Mercury verdict should read; the
+campaign's current pull request \#83 documents both the Corda-style
+heuristic and the apsidal-angle critique, and is held pending the
+author's reading.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{crocco-5-human-acceptance-section}{%
+\subsection{§7. Crocco §5 --- human-acceptance
+section}\label{crocco-5-human-acceptance-section}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{references}{%
+\subsection{References}\label{references}}
+
+\end{document}

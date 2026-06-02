@@ -1,0 +1,86 @@
+\section{Li$^{2+}$ four-observable joint scan (PR \#84)}
+\label{sec:eq-li2plus-joint-fit}
+
+Source (consumed from branch
+\texttt{78-bethe-salpeter-z-extension-li2plus}):
+\texttt{Mathematica\_Notebooks/Quantum\_Mechanics/r\_e\_Li2plus\_joint\_fit.wl}
+(186 lines).
+Companion to
+\texttt{Bethe\_Salpeter/11\_Li2plus\_HydrogenicIon.md}.
+
+\paragraph{Gating structural result.}
+The (III.22) closed form $r_e/r_0 = (2 - a_e)/(2(2 + a_e))$ depends on exactly
+two inputs: the \emph{free}-electron anomaly $a_e$ and
+$r_0 = e^2/(m_e c^2)$. Neither depends on $Z$. The radiating particle is the
+same electron at every $Z$, so $r_e/r_0$ is \emph{identical} at $Z=1$ and
+$Z=3$.
+
+Contrast the lepton axis (PR~\#70): there $r_\mu/r_0^\mu \neq r_e/r_0^e$ at
+$>57{,}000\sigma$ because both $a_\ell$ and $r_0^\ell$ vary with lepton mass.
+On the $Z$ axis, neither varies $\Rightarrow$ the cutoff is $Z$-invariant
+\emph{by the framework's algebra}. Therefore the universal-cutoff reading
+(Z-i) is the framework-correct reading; the $Z$-scaled-cutoff reading (Z-ii)
+is not derivable; outcome-matrix Branch~B is ruled out structurally.
+
+\paragraph{Four predictions at $Z=3$ (all Wolfram-verified).}
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Obs & Quantity                          & Framework & Status \\
+\midrule
+\#1 & bound-electron $g_{\rm bound}(^7$Li$^{2+})$
+   & $2.00200$
+   & \textbf{Blocked} (brief value is $Z\!\sim\!8$, not Li$^{2+}$) \\
+\#2 & 2S--2P Lamb shift (MHz)
+   & $\sim 60\,282$
+   & \textbf{Pass} at Bethe floor vs Schiffer 1995 (62\,765(21) MHz) \\
+\#3 & $2P_{3/2}$--$2P_{1/2}$ FS (MHz)
+   & $887\,920$ ($Z^4$-scaled)
+   & \textbf{Blocked} (brief value is He-like Li$^+$, 7\,367 MHz) \\
+\#4 & $^7$Li 1s hyperfine (MHz)
+   & $29\,846$ ($^3$He$^+$-validated)
+   & \textbf{Blocked} (brief value off $2.35\times$ from $^3$He$^+$-validated scaling) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Observable \#1 --- bound $g$-factor.}
+Dirac 1s binding $g(Z) = (2/3)\bigl[1 + 2\sqrt{1 - (Z\alpha)^2}\bigr]$;
+add free anomaly $2 a_e$ from the $Z$-universal cutoff:
+\[
+g_{\rm bound}(Z) = \tfrac{2}{3}\bigl[1 + 2\sqrt{1 - (Z\alpha)^2}\bigr] + 2 a_e.
+\]
+At $Z=3$, $Z\alpha = 0.0218921$, $g_{\rm bound}(3) \approx 2.00200$.
+
+\paragraph{Observable \#4 --- hyperfine, $^3$He$^+$ method validation.}
+With $f(\mu_I, I) = \mu_I (2I+1)/(2I)$:
+$\nu_{\rm He}^{\rm framework} = 8 \cdot (f/f_H) \cdot \nu_H \approx 8656.7$~MHz
+vs measured $8665.6$~MHz (0.1\% --- method good).
+At $Z=3$, $\nu_{\rm Li}^{\rm leading} = 27 \cdot 0.7773 \cdot 1420.4 \approx
+29\,811$ MHz; with anomaly factor: $\approx 29\,846$ MHz $\approx 29.85$~GHz.
+
+\paragraph{Joint $\chi^2$ at $Z=3$ --- not computable.}
+A Li$^{2+}$-optimal $r_e/r_0$ joint fit needs observables that (a)~engage the
+cutoff and (b)~have a valid measurement.
+Of the four:
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item \#2 has a valid measurement but is $g{=}2$-symmetric $\Rightarrow$ does
+        not engage the cutoff.
+  \item \#1, \#3, \#4 engage the cutoff but lack valid measurements
+        (brief mis-provenanced).
+\end{itemize}
+Intersection is empty. No $Z=3$ joint optimum extractable. Measurement-sourcing
+limitation, not framework limitation.
+
+\paragraph{$Z$-axis verdict (per this notebook).}
+Branch~A (cutoff $Z$-universal) by construction; Branch~B ruled out
+structurally; A vs.~C indistinguishable from Li$^{2+}$ alone (same shape as
+lepton-axis verdict in PR~\#70). The cross-check that adjudicates A vs.~C is
+PR~\#87's $Z$-scan, summarised in \S\ref{sec:eq-zscan-fit}.
+
+\authorreview{Per PR~\#84's human-acceptance block: (a)~confirm
+$Z$-invariance of $r_e/r_0$ from DRQM~I~\S III.D as recorded (cutoff tied to
+$Z$-independent free-electron $a_e$); (b)~confirm \#1 provenance finding
+(brief's $2.0000251707$ is a $Z\!\sim\!8$ value; Sturm 2014 is the $^{12}$C$^{5+}$
+electron-mass paper); (c)~confirm $g_{\rm bound}(^7$Li$^{2+}) \approx 2.00200$
+is the right headline once a genuine $^7$Li$^{2+}$ measurement is sourced.}

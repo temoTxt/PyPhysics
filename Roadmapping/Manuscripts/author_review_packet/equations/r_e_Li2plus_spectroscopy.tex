@@ -1,0 +1,74 @@
+\section{Li$^{2+}$ Lamb shift + fine structure (PR \#85)}
+\label{sec:eq-li2plus-spectroscopy}
+
+Source (consumed from branch \texttt{78-li2plus-spectroscopy}):
+\texttt{Mathematica\_Notebooks/Quantum\_Mechanics/r\_e\_Li2plus\_spectroscopy.wl}
+(93 lines).
+Companion to
+\texttt{Bethe\_Salpeter/12\_Li2plus\_Spectroscopy.md}.
+
+\paragraph{Cell~1 --- Observable \#3 leading-Dirac scale.}
+$\Delta E_{\rm FS}(2P_{3/2}{-}2P_{1/2}) = m_e c^2 (Z\alpha)^4 / 32$.
+With $m_e c^2 = 510{,}998.95$~eV, $\alpha = 1/137.035999084$,
+$h = 4.135667696\times 10^{-15}$~eV$\cdot$s:
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Quantity                                 & Wolfram-verified value \\
+\midrule
+$Z=1$ leading Dirac FS                   & $10{,}949.28$ MHz (sanity vs.~BS-S14.2) \\
+$Z=3$ leading Dirac FS                   & $886{,}892$ MHz $\approx 886.9$ GHz \\
+$Z^4$ ratio                              & $81.000\dots$ (exact) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\wolframcheck{2026-05-27.} The brief's draft figures of $7.4$~GHz /
+$7367$~MHz are off by $\sim 2$~orders of magnitude (those are He-like Li$^+$
+$1s2s$--$1s2p$, not hydrogenic Li$^{2+}$).
+
+\paragraph{Cell~2 --- Framework prediction at $Z=3$ under reading (Z-i).}
+Fine structure is spin--orbit $\Rightarrow$ linear in $g_s/(-2)$, $n_{\rm FS}=1$:
+\[
+\Delta E_{\rm FS}^{\rm fw}(Z) = \frac{g_s}{-2}\,\Delta E_{\rm leading\,Dirac}(Z),
+\qquad g_s = -2.00231930\ldots
+\]
+At $Z=3$ under (Z-i) (universal cutoff):
+\[
+\boxed{\;
+  \Delta E_{\rm FS}^{\rm fw}(Z=3) = 887{,}920\;\text{MHz} \approx 887.92\;\text{GHz}.
+\;}
+\]
+Leading Dirac $886{,}892$ + anomalous offset $+1028$~MHz. Infinite-nuclear-mass;
+$^7$Li reduced-mass + recoil refinement $\approx -0.02\%$ ($-200$~MHz), within
+the Bethe-estimate precision floor.
+
+(Z-ii) Z-scaled cutoff: not derivable; if no framework-internal $Z$-scaling
+emerges, (Z-ii) $\equiv$ (Z-i).
+
+\paragraph{Cell~3 --- Observable \#2 Lamb-shift Z-scaling.}
+Weak discriminator: leading log-Bethe is $g_s$-symmetric $\Rightarrow$
+$r_e$-independent $\Rightarrow$ (Z-i) $\equiv$ (Z-ii). Reproduction not
+endorsement (cf.~\texttt{10\_CrossComparison.md}~\S3). $Z$-scaling
+$= Z^4 \cdot [\text{bracket}(Z)/\text{bracket}(1)]$, bracket$(Z) = \ln(1/(Z\alpha)^2) - L_{\rm B}(2S) + 19/30$, with $L_{\rm B}(2S) \approx 2.812$.
+
+\wolframcheck{}
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+                                              & Value \\
+\midrule
+$Z=3$ Lamb shift (leading-log scaling)        & $\approx 61.1$ GHz \\
+$Z=3$ Lamb shift (brief recipe $59.3\times$)  & $\approx 62.7$ GHz \\
+Schiffer 1995 \emph{PRL} \textbf{74}, 2188 measurement & $62{,}765(21)$ MHz \\
+\bottomrule
+\end{tabular}
+\end{center}
+The $\sim\!1.6$ GHz spread between scaling recipes \emph{is} the Bethe-estimate
+precision floor at $Z=3$, $\gg$ the $21$~MHz measurement $\sigma$. Verdict:
+agreement at framework precision; no $Z$-axis test value ($r_e$-independent).
+
+\authorreview{Confirm (a)~$n_{\rm FS}=1$ spin--orbit scaling, (b)~the
+$Z^4$ leading-Dirac scale ($\sim 887$~GHz at $Z=3$, not the brief's draft
+$7.4$~GHz figure), (c)~the (Z-i)/(Z-ii) cutoff-reading framing for the $Z$-axis
+discriminator, (d)~Schiffer 1995 \emph{PRL} \textbf{74}, 2188 is the
+hydrogenic Li$^{2+}$ $2S_{1/2}$--$2P_{1/2}$ interval.}

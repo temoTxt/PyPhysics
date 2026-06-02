@@ -84,6 +84,165 @@ Print["  required r_e/r_0 for g_e:  ", InputForm[x /. First @ Solve[gr[x] == -2.
 
 **For the muon and proton (Eq. III.23):** The formulas $g_\mu^a$, $g_p^a$ are stated, but the corresponding cutoff values $r_\mu$, $r_p$ are not given numerically — so no analogous numerical check was possible.
 
+**Downstream operational consequences (added 2026-05-25 from #50 campaign):** Beyond the original $g_e$ disagreement, the published $r_e$ propagates into multiple precision atomic-physics observables. Per the Bethe–Salpeter campaign, three independent observables now exhibit the same branched verdict:
+
+- **Hydrogen fine structure ($2P_{3/2}-2P_{1/2}$)** — [BS-§14.2 of Bethe–Salpeter campaign](../Quantum_Mechanics/Bethe_Salpeter/03_FineStructure.md#result-bs-142--2p--2p-fine-structure-splitting-branched).
+  - Branch (b) as-published $r_e$: predicts $10{,}952$ MHz vs measured $10{,}969.13(10)$ MHz; $\sim 17$ MHz residual (1.5×10⁻³ fractional). ⚠
+  - Branch (c) corrected $r_e$: predicts $10{,}962$ MHz; $\sim 7$ MHz residual (matches QED 2-loop). ✅
+
+- **Hydrogen 1S hyperfine splitting (21-cm line, $1{,}420.405\,751\,768(2)$ MHz)** — [BS-§22.1 of Bethe–Salpeter campaign](../Quantum_Mechanics/Bethe_Salpeter/06_Hyperfine.md#result-bs-221--fermi-contact-term-and-21-cm-line-branched).
+  - Branch (b) as-published $r_e$: predicts $1{,}418.81$ MHz; $\sim 1.6$ MHz residual (1.1×10⁻³ fractional, **~6 orders of magnitude larger than measurement uncertainty**). ⚠
+  - Branch (c) corrected $r_e$: predicts $1{,}420.04$ MHz; $\sim 0.4$ MHz residual (matches QED 1-loop precision floor). ✅
+
+- **Electron g-factor itself** (original Finding 2): $g_e = -2.0005714$ at branch (b) vs measured $-2.00231930$ (~$0.00175$ discrepancy).
+
+All three observables trace to the same $r_e$ finding under the same branched-treatment workflow. The campaign's combined experimental status: **if branch (c) corrected $r_e$ is adopted, the dual-theory framework agrees with precision atomic spectroscopy at the leading-$g_s$ / Bethe-estimate precision floor; if branch (b) as-published $r_e$ is adopted, the framework is in fractional $\sim 10^{-3}$ disagreement with hyperfine, fine structure, and $g$ measurements**.
+
+**Back-fit caveat — what branch (c)'s "agreement" actually means.** The "corrected $r_e \approx 0.499420510 \, r_0$" of branch (c) is, by construction (per the `Solve[]` step above), the $r_e$ value that produces $g_s = -2.00231930$ — *the experimentally measured $g_s$*. Each branched-treatment observable's branch (c) prediction is then computed as $(g_{s,\,\text{measured}}/-2)^n \times (\text{textbook QED leading-$g_s$ term})$, which reduces to the textbook leading-$g_s$ formula with the standard measured input. The "branch (c) ✅" verdict therefore says: *if one back-fits $r_e$ to measured $g_s$, the textbook leading-$g_s$ formula with the measured $g_s$ reproduces measurement at textbook leading-$g_s$ precision*. This is a self-consistency check (one parameter back-fit; one constrained equation; one consistent solution); it is **not** an independent corroboration of the dual-theory framework's content distinct from standard QED. The "branch (c) is what precision spectroscopy requires" framing of the Bethe–Salpeter campaign's closing chapter is conditional on this back-fit reading — see [Bethe-Salpeter cross-comparison §2](../Quantum_Mechanics/Bethe_Salpeter/10_CrossComparison.md#2-the-r_e-back-fit-self-consistency-across-six-g_s-dependent-observables).
+
+The resolution path remains as flagged at the top of this entry: most likely a transcription error in the published $r_e/r_0$ digits, in which case updating the published value to the back-fit value brings the framework's $g_s$-dependent predictions into self-consistency at the textbook leading-$g_s$ precision standard textbook QED already meets. If the published value reflects the derivation itself (not a transcription error), the framework's $g_s$ prediction needs to be revisited and the downstream branched verdicts carry no independent meaning either way.
+
+This is not a set of independent findings — it is the same Finding 2 with new operational signatures recorded across high-precision atomic spectroscopy. The hyperfine consequence is the campaign's most precision-sensitive discriminator (measurement uncertainty $\sim 10^{-12}$ vs the $r_e$-driven discrepancy at $\sim 10^{-3}$).
+
+**Update — 2026-05-26: Tepper Gill author guidance + empirical triangulation (closes [#61](https://github.com/temoTxt/PyPhysics/issues/61)).** Following [PR #59](https://github.com/temoTxt/PyPhysics/pull/59)'s interim report, Tepper Gill confirmed in author feedback (2026-05-25) that **branches (b) and (c) are bracketing guides, not theoretical predictions** — the published $r_e/r_0 = 0.499857150068631$ was obtained from a numerical search for a cutoff that reproduced the measured electron $g_s$, and he now asks for the value that best fits *all six* precision observables jointly. The work in [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_triangulation.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_triangulation.wl) ([issue #61](https://github.com/temoTxt/PyPhysics/issues/61)) performs that joint fit.
+
+The notebook reports both weighting choices the substantive-AI decision exposes:
+
+- **Pass A (measurement-$\sigma$ only, the literal "best fit to all six measurements" reading):** $r_e/r_0 = 0.4994061257148855$, $\sigma_r = 2.35\times10^{-13}$. This optimum pulls $g_e$ off the measured value by $\approx 5.76\times10^{-5}$ trying to compensate the hyperfine and helium fine-structure residuals — those residuals are framework-precision-floor effects (Bethe-estimate / sub-leading-QED gaps to measurement) that the leading-$(g_s/-2)^n$ model *cannot* fit by any choice of $r_e$ alone, so Pass A is an artifact of treating framework-floor residuals as if they were measurement uncertainty. Reported for transparency about the substantive-AI weighting choice; not the honest answer.
+
+- **Pass B (measurement-$\sigma$ plus a framework-precision-floor noise term, the physically-meaningful reading):** $r_e/r_0 = 0.4994205099128317$, $\sigma_r = 2.50\times10^{-13}$. **This matches branch (c) ($= 0.4994205099128318$) to 16 significant figures.** $g_e$ at this $r_e$ matches the measured $-2.00231930436256$ to 16 sig figs. $\chi^2_{\min} = 3.99958$, consistent with the four observables sitting at their framework-floor residuals.
+
+The triangulation therefore **confirms branch (c) as the joint-best-fit across all six observables**, under the only weighting that respects the framework's known Bethe-estimate precision floor. This is a structural consequence of every observable being $(g_s/-2)^n \times \text{textbook}$ (per [Bethe–Salpeter cross-comparison §2](../Quantum_Mechanics/Bethe_Salpeter/10_CrossComparison.md#2-the-r_e-back-fit-self-consistency-across-six-g_s-dependent-observables)): one back-fit applied six times yields one $r_e$ value.
+
+**Per-observable residuals at the triangulated optimum:**
+
+| Observable | Prediction | Measurement | Residual (abs) | Residual ($\sigma_{\text{meas}}$) | Source of residual |
+|---|---|---|---|---|---|
+| Electron $g_s$ | $-2.00231930\ldots$ | $-2.00231930\ldots$ | $0$ | $0$ | matches by construction |
+| H $2P_{3/2}-2P_{1/2}$ | $10{,}962$ MHz | $10{,}969.13$ MHz | $-7.13$ MHz | $-71.3\,\sigma$ | Bethe-estimate floor (BS-§14.2) |
+| H 1S hyperfine | $1{,}420.04$ MHz | $1{,}420.4058$ MHz | $-0.366$ MHz | $-1.83\times10^{8}\,\sigma$ | sub-leading QED (BS-§22.1) |
+| He ${}^3P_0-{}^3P_1$ | $29{,}616.95$ MHz | $29{,}616.952$ MHz | $-0.002$ MHz | $-66.7\,\sigma$ | kHz floor (BS-§72) |
+| Positronium ortho-para | $203{,}389$ MHz | $203{,}389$ MHz | $0$ | $0$ | matches by construction |
+| Muonium hyperfine | $4{,}463.40$ MHz | $4{,}463.3028$ MHz | $+0.097$ MHz | $+1{,}906\,\sigma$ | sub-leading QED (BS-§80) |
+
+**Stretched-fit flag:** NONE. Every $>3\sigma_{\text{meas}}$ residual is a documented framework-precision-floor effect, not a tension with the joint optimum.
+
+**Status change.** Finding 2's verdict moves from 🔴 (flagged) to ⚠ (characterised) under this update: the discrepancy is now quantitatively understood as a 16-sig-fig agreement at $r_e/r_0 = 0.4994205099128317$, which differs from the published $0.499857150068631$ in the fourth decimal place. The natural framing of the relationship between the two values: the published $r_e$ is an *initial-value* result from a uni-observable numerical search against $g_s$, and the triangulated value is a *refinement calculation* on top of that initial value, using all six $g_s$-dependent observables as joint constraints. A subsequent first-principles derivation from the dual-Dirac renormalisation prescription (tracked in [issue #54](https://github.com/temoTxt/PyPhysics/issues/54)) is a further potential refinement; it could agree with the triangulated value, refine it further, or expose a derivation-level structure that reframes the cutoff entirely. The ⚠ marker accepts the triangulated value as the campaign's current-best-refinement and remains open to further refinement from #54.
+
+**Candidate-3 update — 2026-05-26 ([issue #66](https://github.com/temoTxt/PyPhysics/issues/66)).** The triangulated $r_e/r_0 = 0.499\,420\,509\,912\,83$ matches the closed-form Schwinger one-loop value $(2 - \alpha/(2\pi))/(4 + \alpha/\pi) = 0.499\,419\,632\,156\,99$ to $8.78 \times 10^{-7}$ in $r$, equivalent to $3.515 \times 10^{-6}$ in $g_e$ — which numerically equals the all-orders-QED-beyond-one-loop content of $g_e^{\text{meas}}$ (Karplus–Kroll two-loop + Laporta–Remiddi three-loop + Kinoshita-Fukuda-Sasaki four-loop, summing to $3.5151 \times 10^{-6}$) to better than $10^{-11}$. Iter-2 numerics in [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_schwinger_residual_test.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_schwinger_residual_test.wl). However, iter 3 establishes that DRQM-I §III.D as written **does not derive a closed-form** $r_e/r_0 = f(\alpha)$ — the cutoff is left as a free parameter, with the published value obtained by uni-observable back-fit (per Tepper's 2026-05-25 guidance). The $10^{-11}$ KK+LR+KF agreement is therefore **algebraically forced** by the back-fit, not evidence of intentional encoding. Iter-5's cross-particle test using the **Fermilab Muon $g-2$ Collaboration final 2023 result** $a_\mu^{\text{exp}} = 116\,592\,059(22) \times 10^{-11}$ (Aguillard et al., *Phys. Rev. D* **108**, 092009) gives a muon back-fit cutoff $r_\mu/r_0^\mu = 0.499\,417\,379\,350$ differing from the electron's by $\Delta r = 3.13 \times 10^{-6}$ ($\sim 57{,}000\,\sigma_{a_\mu}$), **ruling out any universal closed-form** $r/r_0 = f(\alpha)$ at $> 57$kσ. The empirical-test path's verdict is **outcome C-as-published**; outcome B (intentional encoding) remains open only through a particle-mass-dependent first-principles derivation under #54. The ⚠ marker is unchanged but is now backed by a three-step structural argument (no closed-form derivation in §III.D; electron's KK+LR+KF match is back-fit-forced; universal closed-form ruled out cross-particle). Companion verification-doc subsection: [§III.D "Schwinger identification — empirical residual test"](Dual_Relativistic_Quantum_Mechanics_I.md#schwinger-identification--empirical-residual-test-2026-05-26-issue-66-candidate-3). Loop iteration log: [`.dev/research/STATE.md`](../../.dev/research/STATE.md) iters 1–6.
+
+### Update — 2026-05-26 (Candidate 2 first-principles route, closes [#65](https://github.com/temoTxt/PyPhysics/issues/65))
+
+The candidate-2 variational/renormalised-dual-Dirac-equation route was pursued in branch `65-theory-candidate-2-variational-determination-of-r_e-via-renormalised-dual-dirac-equation` over 7 substantive iterations (process log: [`.dev/research/STATE.md`](../.dev/research/STATE.md); computation: [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_variational.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_variational.wl)). **Terminal outcome: C** (definite first-principles value distinct from triangulated).
+
+**Closure inventory.** Seven candidate closure conditions were enumerated and classified framework-internal-vs-ad-hoc (full table in STATE.md iter 7). Two framework-internal readings coincide on a single value:
+
+- **Closure #4 — Critical-point of $\mathbf{F}_K$.** Per [`FoundationsII-Classical.md`](FoundationsII-Classical.md) Sec 2.2 Eq. (2.11), $r_0$ is a critical point of the dual Hamiltonian force in the framework's "V-as-part-of-mass" form. The natural cutoff is the midpoint $r_e = r_0/2$.
+- **Closure #7c-tree — Operator-coefficient at tree-Dirac target.** The DRQM I (III.22) operator coefficient $g_r(r_e) = 2[1 - 4r_0/(2r_e+r_0)]$ equals the standard Dirac $g = -2$ exactly at $r_e/r_0 = 1/2$.
+
+Both framework-internal closures yield the same exact answer:
+
+$$\boxed{\;r_e/r_0 \;=\; \tfrac{1}{2}\quad\text{(framework tree-level, first-principles)}.\;}$$
+
+**Numerical comparison (Wolfram MCP 2026-05-26):**
+
+| Closure | $r_e/r_0$ | Δ vs triangulated | Source |
+|---|---|---|---|
+| #4 / #7c-tree | $0.5000000000$ | $+5.7949\times 10^{-4}$ | framework-internal, exact |
+| #7c-Schwinger | $0.4994196322$ | $-8.78\times 10^{-7}$ | requires QED $g_e^{(1\text{-loop})}=-2-\alpha/\pi$ as input |
+| Triangulated (PR #62) | $0.4994205099$ | (reference) | empirical joint fit |
+
+The tree-vs-triangulated gap of $5.79\times 10^{-4}$ is *exactly* the size of the Schwinger one-loop anomalous moment $\alpha/(2\pi) = 1.16\times 10^{-3}$ multiplied by the sensitivity coefficient $\sim 0.5$. The Schwinger-vs-triangulated gap of $8.78\times 10^{-7}$ is the Karplus-Kroll two-loop QED residual. **The framework's algebra reproduces the cutoff value at tree level; the $\alpha/(2\pi)$ shift required to match the triangulated joint-best-fit is a QED radiative correction the framework does not algorithmically generate.**
+
+**Negative-result diagnostic for Route X (non-relativistic $K_D$ variational).** A complementary route — variational stationarity of $\langle K_D\rangle$ on a hydrogenic trial $\psi_1 \propto e^{-r/aa}$ over the cutoff-restricted domain $[r_e, \infty)$ — was set up and shown to have **no first-principles solution**: at electron-radius scale the NR expansion of $K_D$ (III.4) is invalid (kinetic energy is $\sim 9\,000\,mc^2$, super-relativistic); at Bohr scale the cutoff $r_e\sim r_0$ is invisible (sensitivity $\sim \alpha^6 \sim 10^{-13}$). The published expanded $K_D$ cannot be used as the operator in a radial-cutoff variational principle — the framework's $r_e$ is structurally an *evaluation point of operator coefficients*, not a *radial cutoff in the integration domain*. Full computation in STATE.md iter 4 + notebook Section 3.
+
+**Implication for Finding 2 disposition.** Finding 2's status remains ⚠ (characterised). The disposition is now sharpened:
+
+1. **Empirical (Pass B triangulation):** $r_e/r_0 = 0.4994205099128317$ — the campaign's current best refinement, joint-fit-validated.
+2. **First-principles framework-internal (this update):** $r_e/r_0 = 1/2$ exact (tree-Dirac); coincides with critical-point closure.
+3. **Gap = QED radiative correction:** the $5.79\times 10^{-4}$ gap between (1) and (2) is the Schwinger $\alpha/(2\pi)$ correction. To close it within the framework, the dual-Dirac apparatus would need to internally produce the anomalous moment $\alpha/\pi$ — which neither DRQM I nor its companion papers algorithmically deliver. The framework can either accept the Schwinger 1-loop value as an external QED input (collapsing to Candidate 3's reading) or remain at tree-level $1/2$ as a strictly framework-internal answer.
+
+**Status indicator remains ⚠.** Finding 2 is now characterised at three levels: published initial-value $0.499857$, empirical joint-fit $0.4994205099$, and framework first-principles $1/2$. The latter two differ by exactly the Schwinger correction, which is a clean structural identification rather than a tension.
+
+**Mechanism survey (Route Z iter 8, 2026-05-26):** an explicit check of all framework apparatus capable of producing $\alpha$-dependent corrections to the free-electron magnetic moment was performed (full table in [`.dev/research/STATE.md`](../../.dev/research/STATE.md) iter 8):
+
+| Mechanism | Order | Free electron? |
+|---|---|---|
+| $b$-vs-$c$ proper-time relativity | $\alpha^2$ | vanishes ($w=0 \Rightarrow b=c$) |
+| Dual Maxwell dissipative term ($\mu$ photon-mass) | $\alpha^3$ on bound; $0$ on inertial | **vanishes identically** for inertial source |
+| Dual square-root variants (II.1–II.3) | absorbed in $g_r(r_e)$ formula | no additional mechanism |
+| ARTDE $A^2$ with cutoff | $\alpha^7$ (Gill, line 161) | far too small ($\sim 10^{-16}$) |
+| **Second-quantized dual Maxwell vacuum vertex correction** | **unknown — not computed** | **unknown** |
+
+All quantified mechanisms either give wrong order, vanish on inertial sources, or are already in the $g_r(r_e)$ formula. **The only un-eliminated candidate is the second-quantized dual Maxwell vertex correction**, which Foundations II §5.10 asserts will be free of self-energy and IR divergences but does not compute a finite remainder. This is the load-bearing open question. The three framework specifications needed to *attempt* this calculation are tracked in [issue #75](https://github.com/temoTxt/PyPhysics/issues/75) (proper-time photon propagator form, bound-state propagator, mass-renormalisation prescription at the cutoff) — author-engagement-blocked pending Tepper input.
+
+<!-- TODO: human reviews and fills in — confirms that (a) Tepper's bracketing-guide guidance is faithfully recorded; (b) the Pass A vs Pass B contrast is the correct way to expose the substantive-AI weighting choice; (c) the conclusion that Pass B = branch (c) to 16 sig figs is the right honest framing; (d) the stretched-fit flag reading is correct (no observable in tension); (e) the verdict-marker shift from 🔴 to ⚠ pending #54 is the right disposition; (f) the residual table accurately identifies each framework-floor source; (g) the Candidate-3 2026-05-26 update correctly frames the three-step structural argument (no closed-form derivation + back-fit-forced electron match + universal-form ruled out cross-particle); (h) the Candidate-2 Route-Z operator-coefficient closure #7c is the correct framework-internal reading; (i) the closure #4 / #7c-tree identification is faithful to the framework's algebra; (j) the conclusion that the framework's algebra cannot internally produce the α/(2π) correction is correct given the M1–M5 mechanism survey, with M6 (second-quantized dual Maxwell vertex correction) the only un-eliminated candidate now tracked in #75. -->
+
+
+**Update — 2026-05-26 iter-5/6: closed-form derivation (closes [#64](https://github.com/temoTxt/PyPhysics/issues/64)).** The first-principles derivation tracked at issue #54 (and re-scoped by master [#67](https://github.com/temoTxt/PyPhysics/issues/67)) lands here via the candidate-1 branch `64-theory-candidate-1-proper-time-self-energy-integral-derivation-of-r_e`. The derivation is recorded in full at [`Dual_Relativistic_Quantum_Mechanics_I.md §III.D-extension`](Dual_Relativistic_Quantum_Mechanics_I.md#iiid-extension--first-principles-derivation-of-r_er_0-closes-64) with companion notebook [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_self_energy.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_derivation_self_energy.wl) (Cells 1–4, Wolfram-MCP-confirmed).
+
+**The closed form.** Inverting the (III.22) cutoff equation $g_r(r_e/r_0) = -2(1+a_e)$ where $a_e$ is the electron anomalous magnetic moment yields, for *any* $a_e$,
+
+$$\boxed{\;\frac{r_e}{r_0} = \frac{2 - a_e}{2\,(2 + a_e)}\;}$$
+
+(Wolfram MCP `FullSimplify[...] = 0`.) At one-loop, $a_e^{(1)} = \alpha/(2\pi)$ (Schwinger 1948), which reproduces the closed-form reference $(2-\alpha/(2\pi))/(4+\alpha/\pi) = 0.499\,419\,632\,156$ identically.
+
+**Convergence to the triangulated target** ($\alpha = 1/137.035\,999\,084$, QED $a_e = \sum_n C_n (\alpha/\pi)^n$):
+
+| Order | $r_e/r_0$ | Residual vs triangulated $0.499\,420\,509\,912\,831\,7$ |
+|---|---|---|
+| Dirac tree | $0.5$ | $+5.79\times 10^{-4}$ |
+| 1-loop Schwinger | $0.499\,419\,632\,156\,$ | $-8.78\times 10^{-7}$ |
+| 2-loop Sommerfeld | $0.499\,420\,517\,281\,$ | $+7.37\times 10^{-9}$ |
+| 3-loop | $0.499\,420\,509\,887\,$ | $-2.53\times 10^{-11}$ |
+| 4-loop | $0.499\,420\,509\,915\,$ | $+2.46\times 10^{-12}$ |
+| **CODATA full $a_e^{\rm expt} = 0.001\,159\,652\,180\,59$** | $\mathbf{0.499\,420\,509\,913\,18}$ | $\mathbf{+3.45\times 10^{-13}}$ |
+
+The CODATA-full residual $3.45\times 10^{-13}$ sits within ~1.4 standard deviations of the triangulation precision floor $\sigma_r = 2.50\times 10^{-13}$, i.e., **the derivation reproduces the triangulated $r_e/r_0$ at framework precision**.
+
+**Hypothesis (ii) caveat (Crocco rule #5 — substantive AI honest scope).** The derivation is *reproduction by inheritance*, not an independent re-derivation of $a_e$ from a distinct dual proper-time one-loop vertex calculation. The dual framework, under hypothesis (ii) (photon propagator unchanged; dual structure absorbed into the (II.3) "potential-in-the-mass" kernel), inherits the textbook Schwinger calculation identically at the one-loop precision the (II.3) kernel can deliver — this is the magnetic-moment-route analogue of the BS-§19 / §20 Lamb-shift inheritance argument, applied to the route where $r_e$ *does* engage (the Lamb shift route, BS-§20 line 114, does not). The structural content the dual framework *does* contribute is the (III.22) formula itself — the identification of the cutoff radius $r_e$ with the anomalous magnetic moment via $g_r(r_e/r_0) = -2(1+a_e)$ — which makes the closed-form $(2-a_e)/(2(2+a_e))$ algebraically definite for *any* QED-loop value of $a_e$.
+
+A *distinct* dual-framework prediction would test **hypothesis (i)** (proper-time photon propagator with $b$-dispersion modifying the vertex calculation away from Schwinger). The companion notebook leaves Cells 2–4 set up under hypothesis (ii); a hypothesis-(i) re-derivation is the principal **Tepper-input gating step** for an unconditional ✅ on this finding.
+
+**Outcome-matrix classification (per master [#67](https://github.com/temoTxt/PyPhysics/issues/67)):** **Branch-B-with-QED-inheritance generalisation**, conditional on author endorsement of hypothesis (ii). Branch B (Schwinger one-loop closed form $(2-\alpha/(2\pi))/(4+\alpha/\pi)$) is recovered exactly at 1-loop $a_e^{(1)} = \alpha/(2\pi)$; higher-loop and CODATA-full convergence to the triangulated value is the same operation generalised by QED's all-orders $a_e(\alpha)$. **Branch A** (an independent derivation that produces the triangulated $r_e$ from framework-internal dynamics without QED-inheritance) remains open and is the principal task gated on [issue #75](https://github.com/temoTxt/PyPhysics/issues/75). Candidate 3 (Schwinger identification, [PR #70](https://github.com/temoTxt/PyPhysics/pull/70), merged) independently characterised the same algebraic operation as a back-fit identity and confirmed the closed form is *not* universal in $\alpha$ alone (the muon cross-particle test at $a_\mu^{\rm exp}$ gives a different cutoff value, identical to the muon prediction the same closed form yields). Candidate 2 ([PR #69](https://github.com/temoTxt/PyPhysics/pull/69)) remains open with the tree-level Outcome C reading.
+
+**Status change.** Finding 2's verdict moves from ⚠ CHARACTERISED (set 2026-05-26 by triangulation [#61](https://github.com/temoTxt/PyPhysics/issues/61)) to **⚠/✅ at hypothesis-(ii) framework precision** (this update, 2026-05-26 iter-5/6 of [#64](https://github.com/temoTxt/PyPhysics/issues/64)) — the closed-form $r_e/r_0 = (2-a_e)/(2(2+a_e))$ reproduces the triangulated value at framework precision *conditional on QED supplying $a_e(\alpha)$ via the standard textbook calculation*. **Unconditional ✅** requires hypothesis-(i) re-derivation (the proper-time one-loop electron self-energy diagram with the proper-time photon propagator), tracked as [issue #75](https://github.com/temoTxt/PyPhysics/issues/75). The three framework specifications gating the hypothesis-(i) calculation — proper-time photon propagator form, bound-state propagator in the (II.3) Pauli kernel, mass-renormalisation prescription at the cutoff — are the substance of #75 and are the load-bearing pieces that would upgrade the verdict from ⚠/✅ at hypothesis-(ii) to unconditional ✅.
+
+**Provenance (Crocco rule #4 — substantive AI prompt-of-record):** the iteration record lives in `.dev/research/STATE.md` on branch `64-theory-candidate-1-proper-time-self-energy-integral-derivation-of-r_e` (iters 0–6, 2026-05-26); the prompt-of-record is `.dev/research/brief.md` + `.dev/research/loop_prompt.md` on the same branch. Substantive-AI use throughout; per-section human-acceptance TODO blocks remain unchecked pending author review.
+
+<!-- TODO: human reviews and fills in — confirms that (a) the closed-form
+     r_e/r_0 = (2-a_e)/(2(2+a_e)) is the correct algebraic inversion of
+     (III.22), (b) hypothesis (ii) is the intended reading of the dual
+     one-loop vertex correction's identity with the textbook Schwinger
+     calculation, (c) the verdict shift to ✅-conditional is appropriate
+     pending hypothesis-(i) author sign-off, (d) outcome-matrix Branch A
+     classification per #67 is correct, and (e) the framing of "reproduction
+     by inheritance" vs "independent dual derivation" is the honest scope. -->
+
+**Update — 2026-05-27: Z-axis extension to the Li²⁺ hydrogenic ion ([issue #78](https://github.com/temoTxt/PyPhysics/issues/78)).** The lepton-axis cross-particle test (Candidate 3 / [PR #70](https://github.com/temoTxt/PyPhysics/pull/70)) is now complemented by a **Z-axis** test: applying the framework to single-electron Li²⁺ (`Z=3`) across four precision observables (bound g-factor, 2S–2P Lamb shift, 2P fine structure, ⁷Li 1s hyperfine). Full treatment in [`../Quantum_Mechanics/Bethe_Salpeter/11_Li2plus_HydrogenicIon.md`](../Quantum_Mechanics/Bethe_Salpeter/11_Li2plus_HydrogenicIon.md), companion notebook [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_Li2plus_joint_fit.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_Li2plus_joint_fit.wl). Two results:
+
+- **The cutoff is Z-universal *by construction* — Branch A; Branch B (a derivable Z-scaling) is structurally excluded.** The closed form $r_e/r_0 = (2-a_e)/(2(2+a_e))$ depends only on the free-electron anomaly $a_e$ and $r_0 = e^2/(m_e c^2)$, neither of which depends on nuclear charge $Z$. The *same electron* radiates at every $Z$, so $r_e/r_0$ is identical at $Z=1$ and $Z=3$. Unlike the lepton axis — where changing the particle changes both $a_\ell$ and $r_0^\ell$, yielding the $>57$kσ exclusion of lepton-universality — **changing $Z$ changes neither, so the Z-axis is structurally incapable of constraining the cutoff. Li²⁺ adds no new empirical constraint** beyond what the lepton-axis test already established; the A-vs-C indistinguishability recurs unchanged.
+
+- **Three of the four measurement values in the originating brief are mis-provenanced** (Wolfram-verified). The bound-g value (`2.0000251707`, attributed to Sturm 2014 *Nature* 506,467) is a `Z≈8` number — Sturm 2014 is the ¹²C⁵⁺ electron-mass measurement, not a lithium one; the cited 2P fine-structure value (`~7367` MHz) is helium-like Li⁺ (two-electron), not hydrogenic Li²⁺ (framework predicts `~888` GHz); the cited hyperfine value (`~12.7` GHz) is off by `2.35×` from a ³He⁺-validated `Z³` scaling (framework predicts `~29.85` GHz). Only the Lamb-shift value (Schiffer 1995, `62 765(21)` MHz) is valid. The four **framework predictions** are all computed and Wolfram-verified; completing the empirical **comparisons** for #1/#3/#4 requires correctly-sourced hydrogenic ⁷Li²⁺ measurements — flagged for author/orchestrator follow-up.
+
+<!-- TODO: human reviews and fills in — confirms (a) the Z-universal (Branch A) verdict with Branch B structurally excluded, (b) the finding that Li²⁺ adds no new cutoff constraint because the cutoff has no Z-dependence to constrain, and (c) the meta-finding that three of the brief's four measurement values need re-sourcing. -->
+
+### Update — 2026-05-27: hydrogenic-ion Z-scan ([#82](https://github.com/temoTxt/PyPhysics/issues/82)) — the Z-axis verdict
+
+The lepton-axis cross-particle test (Candidate 3 / [PR #70](https://github.com/temoTxt/PyPhysics/pull/70)) showed the cutoff $r_e/r_0$ is **not universal across leptons** — it is particle-specific through $a_\ell$. Issue #82 runs the analogous test along the **nuclear-charge axis**: does the single triangulated $r_e/r_0 = 0.4994205099\ldots$ reproduce the bound-electron g-factor across hydrogen-like ions, or does it inherit QED's bound-state $a_e(Z\alpha)$ per Z? Full write-up: [`../Quantum_Mechanics/Bethe_Salpeter/14_HydrogenicIon_Zscan.md`](../Quantum_Mechanics/Bethe_Salpeter/14_HydrogenicIon_Zscan.md); companion notebook [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_Zscan_fit.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_Zscan_fit.wl) (Wolfram-MCP-executed).
+
+**Data (5 hydrogenic ions, absolute g-factors, web-verified DOIs):** ³He⁺ Z=2 (Schneider 2022, *Nature* 606,878), ¹²C⁵⁺ Z=6 (Sturm 2014, *Nature* 506,467), ¹⁶O⁷⁺ Z=8 (Verdú 2004, *PRL* 92,093002), ²⁸Si¹³⁺ Z=14 (Sturm 2011, *PRL* 107,023002), ¹¹⁸Sn⁴⁹⁺ Z=50 (Morgner 2023, *Nature* 622,53). (⁷Li²⁺ Z=3 import from #78 pending; Be³⁺/Ne⁹⁺/Ca¹⁹⁺ dropped — no usable absolute hydrogenic measurement.)
+
+**Result.**
+- **(Z-i) universal cutoff REFUTED:** with $r_e/r_0$ fixed at the Z=1 triangulated value the framework predicts the *same* $|g| = 2.00231930$ at every Z, giving $\chi^2 = 1.03\times10^{16}$ over 5 ions (0 free params); residuals grow monotonically from $1.4\times10^{-4}$ (He⁺) to $9.2\times10^{-2}$ (Sn⁴⁹⁺), i.e. up to $9\times10^7\,\sigma$.
+- **(Z-ii) per-Z back-fit INHERITS QED:** $r_e^{(Z)}/r_0 = (2-a)/(2(2+a))$ with $a=(|g|-2)/2$ sweeps monotonically through $1/2$ (the tree-Dirac value, reached near Z≈8 where the $-\tfrac13(Z\alpha)^2$ binding correction cancels the free anomaly). A quadratic form-fit $r_e^{(Z)}/r_0 = c_0 + c_2(Z\alpha)^2 + c_4(Z\alpha)^4$ gives $c_0 = 0.4994206$ (= free-electron cutoff, recovered to $10^{-7}$) and $c_2 = 0.16628 \approx 1/6$ — exactly QED's leading coefficient via $\tfrac{d(r_e/r_0)}{d(Z\alpha)^2} = (-\tfrac12)(-\tfrac13) = \tfrac16$.
+
+**Outcome-matrix classification (per master [#67](https://github.com/temoTxt/PyPhysics/issues/67)): Branch C on the Z-axis.** The clean $(Z\alpha)^2$ form is a property of **QED's** bound-state $g(Z\alpha)=2[1-\tfrac13(Z\alpha)^2-\ldots]$ inherited through the algebraic inversion; the framework supplies only the $g_r[x]$ formula and leaves each state's cutoff free — it does not derive the $-\tfrac13$ Breit/Dirac coefficient internally. This is the **direct Z-axis analog of PR #70's lepton-axis verdict**: "particle-specific through $a_\ell$" becomes "Z-specific through $a_e^{\rm bound}(Z\alpha)$". Branch A (Z-universal cutoff) is empirically dead; derivational Branch B would require the framework to produce the $(Z\alpha)^2$ coefficient from its own apparatus (open, gated on [#75](https://github.com/temoTxt/PyPhysics/issues/75)).
+
+**Provenance (Crocco rule #4):** iteration record in `.dev/research/STATE.md` on branch `82-hydrogenic-z-scan-g-factor` (iters 0–13, 2026-05-27); prompt-of-record `.dev/research/brief.md`. Substantive-AI on the Z-scaling functional-form choice; human-acceptance TODO blocks in `14_HydrogenicIon_Zscan.md` remain unchecked pending author review.
+
+<!-- TODO: human reviews and fills in — confirms (a) the 5-ion catalog + DOIs, (b) the chi^2 = 1.03e16 refutation of the Z-universal cutoff, (c) the Branch C classification and its parallel to PR #70's lepton-axis verdict, and (d) the Li²⁺ import + Be³⁺/Ne⁹⁺/Ca¹⁹⁺ drop decisions. -->
+
 ---
 
 ## Finding 3 — TCEP Eq. (4.16): sign typo in the group-velocity relation

@@ -1,0 +1,93 @@
+\section{Schwinger residual test + muon cross-check (Candidate~3)}
+\label{sec:eq-schwinger-residual}
+
+Source:
+\texttt{Mathematica\_Notebooks/Quantum\_Mechanics/r\_e\_schwinger\_residual\_test.wl}
+(225 lines, scaffold for issue~\#66; Candidate-3 arc).
+
+\paragraph{Test.}
+Does the residual between the triangulated $r_e/r_0 = 0.4994205099128317$
+(PR~\#62) and the closed-form Schwinger 1-loop value
+$(2 - \alpha/(2\pi))/(4 + \alpha/\pi)$ track the higher-order QED corrections
+to $g_e$?
+
+\paragraph{Structural caveat (load-bearing).}
+The triangulated $r_e$ is defined to make $g_r(r) = g_e^{\rm measured}$ to 16
+sig figs (Pass~B fit). Therefore
+$\Delta g_e^{\rm obs} \equiv g_e^{\rm measured} - g_e^{\rm Schwinger}$ is
+\emph{exactly equal by construction} to the all-orders QED contributions
+beyond Schwinger one-loop. The agreement measured in \S4 below is a
+\emph{consistency check} that the triangulated value lies on the all-orders
+QED curve in $r$-space, not an independent test.
+
+\paragraph{Numerics (\S1--4).}
+With $\alpha = 1/137.035999084$ (CODATA 2018):
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity                                            & Value \\
+\midrule
+$\Delta g_e^{\rm obs} = g_e^{\rm meas} - g_e^{\rm Schwinger}$ & $\approx 3.515\times 10^{-6}$ \\
+$\Delta g_e^{\rm pred}$ (KK + LR + KF, 2--4 loop)   & matches $\Delta g_e^{\rm obs}$ to $\sim 5\times 10^{-12}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\wolframcheck{KK $C_2 = 0.328478965579193$, LR $C_3 = 1.181241456587$, KF
+$C_4 \approx 1.9106$; signed sums per
+$\Delta g_e^{(n)} = -2 \cdot a_e^{(n)}$.}
+
+\paragraph{Tentative outcome-matrix branch: B-conditional.}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item \textbf{B-confirmed} iff Tepper indicates the DRQM~I cutoff derivation
+        produces the closed-form $(2 - \alpha/(2\pi))/(4 + \alpha/\pi)$ as an
+        identity (with higher-order QED coming from framework loop
+        corrections not yet derived in the campaign).
+  \item \textbf{A-confirmed} iff the framework's cutoff derivation produces
+        directly the triangulated value $0.4994205099128317$ (requires the
+        cutoff to encode all-orders QED at the derivation level --- suspicious
+        without a derived loop structure).
+  \item \textbf{D-confirmed} iff neither, in which case the closed-form
+        Schwinger match is contingent.
+\end{itemize}
+
+\paragraph{Muon cross-check (\S8) --- breaking the back-fit degeneracy.}
+Applying the same $g_r$ formula to the muon: with FNAL Muon~$g-2$ 2023 final
+$a_\mu^{\rm exp} = 1.16592059\times 10^{-3}$
+($\sigma_{a_\mu} = 2.2\times 10^{-10}$) and
+$a_e^{\rm exp} = 1.15965218073\times 10^{-3}$,
+\[
+\frac{r_e}{r_0^e} - \frac{r_\mu}{r_0^\mu} \;\approx\; 3.13\times 10^{-6}
+\quad\equiv\quad \approx 57{,}000\;\text{muon-}\sigma
+\]
+\wolframcheck{Module evaluated 2026-05-26.}
+
+\paragraph{Universal-closed-form-cutoff hypothesis: ruled out at $\sim 57{,}000\,\sigma$.}
+The per-particle back-fit cutoffs differ by $3\times 10^{-6}$; equivalently
+$a_\mu - a_e = 6.27\times 10^{-6}$ differs from zero at $\sim 28{,}500$
+muon-$\sigma$. \textbf{However, the published DRQM~I does not make a
+universal-cutoff prediction} --- the paper writes (III.23) for the muon and
+proton with $r_\mu$, $r_p$ as separate parameters without numerical values.
+The cross-check rules out any future \emph{closed-form universal} reading
+(e.g.~from issue~\#54) that would predict particle-mass-independent cutoffs.
+
+\paragraph{Implication for Outcome~C.}
+Strengthens C-as-published: the framework's cutoff is necessarily per-particle
+and empirically fit to each particle's measured anomaly; the closed-form
+match for the electron is the back-fit cutoff that reproduces $a_e^{\rm exp}$;
+the same logic applied to the muon would yield
+$r_\mu/r_0^\mu = (2 - \alpha/(2\pi))/(4 + \alpha/\pi) + \delta_\mu$ with
+$\delta_\mu$ from $a_\mu^{\rm exp} - \alpha/(2\pi) \sim 4.5\times 10^{-6}$,
+similar size to the electron's deviation.
+
+\paragraph{Crocco compliance.}
+Numerical evaluation, Wolfram-MCP cell execution, and constant tabulation are
+pragmatic AI. The structural caveat, the interpretation of the residual as
+not-independent, and the formulation of the Tepper-discriminating question
+are substantive AI.
+
+\authorreview{(1)~Does DRQM~I~\S III.D derive a closed-form $r_e/r_0$ in
+$\alpha$, or does it not? (2)~If yes, is the derived form the closed-form
+$(2 - \alpha/(2\pi))/(4 + \alpha/\pi)$ (B-branch) or the triangulated value
+directly (A-branch)? (3)~Is the muon cross-check correctly framed as a
+constraint on \emph{future} closed-form derivations rather than a
+falsification of the framework as written?}
