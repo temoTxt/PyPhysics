@@ -39,7 +39,7 @@ The script:
 2. Runs `pandoc` to convert the stripped markdown → LaTeX.
 3. Runs `pdflatex` twice (for cross-references) to produce the PDF.
 4. Defensive check 1: fails the build if any `<!-- TODO` substring is still present in the LaTeX after stripping (catches stripper bugs).
-5. Defensive check 2: fails the build if the PDF page count is outside `[3, 7]` (per the length-budget discipline in the report's plan).
+5. Reports the PDF page count (no enforcement — per-report length is a judgment call).
 
 Use `--dry-run` to exercise the pipeline without committing the PDF:
 
@@ -79,6 +79,21 @@ The phases below are the discipline that the plan for `2026-05_interim_for_gill`
 | 5 | PR opened that closes the report's tracking issue | yes |
 
 **The PDF must not be committed before Phase 4.** Shipping an AI-drafted PDF before a human reviews it would materially violate Crocco §5 substantive-AI compliance (per [`CROCCO_COMPLIANCE.md`](../Tooling/CROCCO_COMPLIANCE.md)) — the human-acceptance pass is where the per-paragraph TODO blocks get resolved, and stripping them before review hides the markers from the reviewer.
+
+## Writing standard (per [#115](https://github.com/temoTxt/PyPhysics/issues/115), [#117](https://github.com/temoTxt/PyPhysics/issues/117), and [#120](https://github.com/temoTxt/PyPhysics/issues/120))
+
+Every report committed to this folder must conform to the writing standard codified in [`Roadmapping/Tooling/VOICE_MATCH_GILL.md`](../Tooling/VOICE_MATCH_GILL.md), specifically §3.bis (equation discipline), §3.ter (sentence-length discipline), §3.quater (citation discipline), and §3.quinquies (no emojis).
+
+The four hard requirements:
+
+1. **Numbered display equations only.** Every result-bearing or label-carrying equation is set as a display equation with a number. Inline math is permitted only for single-symbol references to an already-established quantity. See VOICE_MATCH_GILL.md §3.bis.
+2. **Short complete sentences.** One claim per sentence. No 50-word multi-clause sentences. See VOICE_MATCH_GILL.md §3.ter.
+3. **Numbered footnotes plus a bibliography section.** No inline links, no `#NN` tags scattered through paragraphs, no file paths embedded in sentences. Every cross-reference is a numbered footnote resolved in a `## References` section at the end. See VOICE_MATCH_GILL.md §3.quater.
+4. **No emojis or pseudo-emoji symbols.** No verdict markers (✅ ⚠ 🔴), no decorative glyphs, no ASCII-tag substitutes (`[OK]`, `[warn]`, `[X]`). Use short bold text labels instead (**Pass**, **Marginal**, **Refuted**). See VOICE_MATCH_GILL.md §3.quinquies.
+
+Reports written before 2026-06-01 carry a status banner at the top of the `.md` flagging their pre-standard status. They are rewritten in follow-up PRs, not left as-is for new recipients.
+
+The Phase 3.5 devil's-advocate self-review (see Phase ordering above) must include an explicit pass-or-fail check against all four subsections. A report that fails any of the four does not advance to Phase 4 until rewritten.
 
 ## Crocco compliance
 

@@ -1,0 +1,64 @@
+{
+  "$schema_version": "0.2.0",
+  "$source_revision": {
+    "flag_edition": "2024",
+    "retrieved_at": "2026-05-31T00:00:00Z",
+    "seeded_by_hand": true,
+    "_note": "0.2.0 schema bump: every entry now carries value_class. All FLAG quantities are theoretical_lattice_qcd (lattice-QCD calculations) — never safe for model verification."
+  },
+  "quantities": {
+    "m_pi_charged": {
+      "description": "Charged pion mass (FLAG-tabulated, but FLAG defers to PDG experimental value)",
+      "value": 139.57039,
+      "uncertainty": 0.00018,
+      "unit": "MeV/c^2",
+      "source": "flag2024_averages",
+      "value_class": "experimental_world_average",
+      "_note": "FLAG quotes the PDG-experimental pion mass as a fundamental input. Underlying source is PDG; reproduced here for namespace completeness."
+    },
+    "f_pi": {
+      "description": "Charged pion decay constant",
+      "value": 130.2,
+      "uncertainty": 0.8,
+      "unit": "MeV",
+      "source": "flag2024_averages",
+      "value_class": "theoretical_lattice_qcd",
+      "_note": "FLAG 2024 N_f=2+1+1 lattice-QCD average."
+    },
+    "f_K": {
+      "description": "Charged kaon decay constant",
+      "value": 155.7,
+      "uncertainty": 0.7,
+      "unit": "MeV",
+      "source": "flag2024_averages",
+      "value_class": "theoretical_lattice_qcd",
+      "_note": "FLAG 2024 N_f=2+1+1 lattice-QCD average."
+    },
+    "f_K_over_f_pi": {
+      "description": "Ratio of kaon to pion decay constants",
+      "value": 1.1932,
+      "uncertainty": 0.0019,
+      "unit": "dimensionless",
+      "source": "flag2024_averages",
+      "value_class": "theoretical_lattice_qcd"
+    },
+    "g_A": {
+      "description": "Nucleon axial-vector charge from lattice QCD",
+      "value": 1.246,
+      "uncertainty": 0.028,
+      "unit": "dimensionless",
+      "source": "flag2024_averages",
+      "value_class": "theoretical_lattice_qcd",
+      "_note": "FLAG 2024 N_f=2+1+1 lattice value. Experimental value from neutron beta decay is g_A=1.2754(13)."
+    },
+    "sigma_piN": {
+      "description": "Pion-nucleon sigma term (light-quark contribution to nucleon mass)",
+      "value": 53,
+      "uncertainty": 9,
+      "unit": "MeV",
+      "source": "flag2024_averages",
+      "value_class": "theoretical_lattice_qcd",
+      "_note": "FLAG 2024 N_f=2+1+1 lattice value. Disagrees with phenomenological extraction (~59 MeV)."
+    }
+  }
+}

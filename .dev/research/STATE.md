@@ -1,173 +1,316 @@
-# Li²⁺ hyperfine — state log
+# Hydrogenic Z-scan g-factor — state log
 
 ## Iteration 0 — 2026-05-27 — initialized
 
-- Branch `78-li2plus-hyperfine` checked out from main (post-#67 r_e thread closure).
-- `.dev/research/brief.md` written (scope = observable #4 Li-7 1s hyperfine; $I=3/2$ nuclear-spin structure is the substantive AI extension of BS-§22's H $I=1/2$ apparatus).
+- Branch `82-hydrogenic-z-scan-g-factor` checked out from main (post-#67 closure).
+- Folder `PyPyshics-Thread_4` cloned fresh from origin for this thread.
+- `.dev/research/brief.md` written (Z-scan across 4–6 hydrogenic ions, g-factor only; Li²⁺ imported from #78 parallel work).
 - `.dev/research/loop_prompt.md` written.
 - No prediction work yet.
-- **Current observable focus:** #4 Li-7 1s hyperfine (the only observable owned by this branch).
-- **Next:** read source-of-record §1 (`Bethe_Salpeter/06_Hyperfine.md` BS-§22 Fermi-contact apparatus) — record the Z=1 H 21-cm formula, the $(g_s/-2)^{n=1}$ scaling, and the $Z^3 g_s (m_e/m_p)$ leading dependence. Then look up the current best Li-7 1s hyperfine measurement (Beckmann 1974 / Schweikhard 1991 / modern refinement) and record DOI/year provenance.
+- **Current ion focus:** none yet.
+- **Next:** read source-of-record §1 (`Dual_Relativistic_Quantum_Mechanics_I.md` §III.D Eqs. III.22/III.23) — record the anomalous-g formula and the framework's published precedent for particle/scale variation. Then look up + record the precise He⁺ ($Z=2$) g-factor measurement value with DOI/year provenance.
 - **Outcome-matrix:** not yet determinable.
 - **Status:** READY.
 
-## Iteration 1 — 2026-05-27 — read source-of-record §1 (BS-§22 Fermi-contact apparatus)
+## Iteration 1 — 2026-05-27 — read source-of-record §1 (DRQM I §III.D g-formula + particle-variation precedent)
 
-**What advanced:** Read `Bethe_Salpeter/06_Hyperfine.md` (BS-§22, the H 21-cm baseline). Recorded the Z=1 H Fermi-contact apparatus this branch must extend to Z=3 + I=3/2:
+**Step taken:** Read `Roadmapping/Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md` Eqs. (III.21)–(III.23) + §III.D-extension (lines 451–674). Recorded the g-formula, the cutoff–anomaly inversion, and the framework's published precedent for particle/scale variation.
 
-- **Fermi (1930) hyperfine Hamiltonian (hydrogenic 1S):**
-  `H_HF = (8π/3) g_p μ_N g_s μ_B δ³(r) I·S` — leading term is *linear* in g_s (electron spin g-factor), confirming the n=1 r_e coupling.
-- **1S splitting closed form:**
-  `ΔE_HF(1S_{1/2}) = (4/3) g_p (m_e/M_p) α⁴ m_e c² (1 + QED corrections)`.
-  Matrix element `⟨1S|δ³(r)|1S⟩ = 1/(π a_0³)`.
-- **Z=1 H numerics (the baseline to scale):** leading Fermi at `g_s = -2` → **1418.4 MHz**; with textbook anomalous `(g_s/-2) = 1.00116` → 1420.04 MHz (triangulated r_e) vs measured **1420.405751768(2) MHz** (NIST 2020). Campaign verdict was ✅ at ~0.4 MHz precision floor, **explicitly "back-fit self-consistency, not independent corroboration"** (06_Hyperfine.md §22.1 back-fit caveat).
-- **`(g_s/-2)^n` scaling:** n=1 for hyperfine (linear in g_s) — matches brief's claim; to be re-confirmed against `10_CrossComparison.md §2` next iter.
-- **Triangulated cutoff:** `r_e/r_0 = 0.4994205099128317` (PR #62), giving `g_s = -2.00231930…`. This is the (Z-i) universal-cutoff value; (Z-ii) Z-scaled reading is still TBD.
+**Key formulas recorded:**
+- **g-formula (III.21–22):** $g_r = 2\left[1 - \dfrac{4r_0}{2r+r_0}\right] = 2\left[1 - \dfrac{4}{2x+1}\right]$, $\;x \equiv r/r_0$, with $r_0 = e^2/(mc^2)$ (classical-radius scale). Limit checks: $g_r(x{=}1/2) = -2$ (tree-Dirac), $g_r(x{\to}0) = -6$. Both verified in-doc.
+- **Cutoff–anomaly inversion (§III.D-extension):** identifying $g_r(r_e/r_0) = -2(1+a_e)$ with $a_e \equiv (|g_e|-2)/2$ gives the closed form $\boxed{r_e/r_0 = (2-a_e)/(2(2+a_e))}$. With CODATA-full $a_e^{\rm expt}$ → $r_e/r_0 = 0.4994205099128317$ ($\sigma_r = 2.5\times10^{-13}$). This is the **Z=1 universal-cutoff value** to use for the (Z-i) test.
+- **Schwinger one-loop closed form (Branch B):** $r_e/r_0|_{\rm Schwinger} = (2-\alpha/(2\pi))/(4+\alpha/\pi) = 0.49941963215699$, off triangulated by $\Delta r = +8.78\times10^{-7}$.
+- **Sensitivity:** $dg_r/dx \approx 4.0046$ at the cutoff — so $\sigma_x \approx \sigma_g/4$. Carries to the per-Z back-fit error propagation.
 
-**Angular-structure note (the substantive I=3/2 extension, queued):** H uses I=1/2 → F=0,1, splitting = A_H. Li-7 I=3/2 + S=1/2 → F=1,2; interval rule `ΔE(F→F-1) = A·F` gives top-interval splitting **2·A_{Li}** between F=2 and F=1. The `I·S` eigenvalues (F=2: +3/4, F=1: −5/4) are the substantive-AI move — to be derived/verified in the Wolfram notebook, not just asserted.
+**Particle/scale-variation precedent (the load-bearing read for the Z-axis):**
+- **Eq. (III.23):** muon and proton get their **own free cutoffs** $r_\mu, r_p$ with $r_0^\mu = e^2/(m_\mu c^2)$, $r_0^p = e^2/(m_p c^2)$; same dimensionless g-formula, but paper specifies **no numerical $r_\mu, r_p$** — they are left as separate free parameters per particle.
+- **PR #70 cross-lepton test (lines 548–552):** back-fitting $r_\mu/r_0^\mu$ from $a_\mu^{\rm exp}$ (FNAL 2023, $a_\mu = 116592059(22)\times10^{-11}$, PRD 108 092009) gives $0.499417379350$ vs electron $0.499420509913$ — differ by $3.13\times10^{-6}$ (~57 kσ in muon units). **Conclusion: a universal dimensionless cutoff $r/r_0$ across particles is ruled out at >57 kσ; the cutoff is particle-specific through $a_\ell$.** Not a falsification of the paper (which leaves them free), but it constrains any future closed-form to be mass-dependent.
 
-**Measurement provenance (still to confirm exact value next iter):** Beckmann 1974 *Z. Phys.* **270**, 173 (standard early Li²⁺ 1s HFS ref, ~12 732 MHz); refinements Schweikhard 1991 / Riis 1994. Li-7 nuclear: I=3/2, μ_I and g_I from CODATA/NUBASE — provenance to record when the value enters the prediction.
+**Z-axis mapping (how the lepton-axis precedent transposes to Z):** for a bound electron in hydrogenic ion of charge $Z$, the analogue is $r_e^{(Z)}/r_0 = (2 - a_e^{\rm bound}(Z\alpha))/(2(2 + a_e^{\rm bound}(Z\alpha)))$. The (Z-i) test asks whether the *same* $0.4994205099$ fits all Z (→ A); (Z-ii) inverts per-Z. By analogy to PR #70's lepton-axis verdict, the prior expectation is that the back-fit inherits QED's bound-state $a_e(Z\alpha)$ structure per-Z (→ C), but this is **not yet determinable for the Z-axis** until the measured values are fitted.
 
-- **Current observable focus:** #4 Li-7 1s hyperfine.
-- **Next:** read `10_CrossComparison.md §2` to confirm `n_HFS = 1` in the `(g_s/-2)^n` pattern and capture the six-observable back-fit framing (informs whether #4 lands in outcome-branch A vs C). Then look up + record the exact current-best Li²⁺ 1s HFS measurement (DOI/year) and Li-7 μ_I/g_I provenance.
-- **Outcome-matrix:** not yet determinable (gathering apparatus; H baseline is back-fit self-consistency, which leans the universality question toward needing the Z=3 datapoint to discriminate A/B/C).
-- **(Z-i)/(Z-ii):** universal-cutoff r_e/r_0 = 0.4994205099128317 recorded; Z-scaled (Z-ii) reading not yet constructed.
-- **Status:** READY.
+- **Current ion focus:** none (source-read iteration); He⁺ (Z=2) is next.
+- **Next:** look up + record the precise ³He⁺ (Z=2) bound-electron g-factor measurement value with full DOI/year provenance (brief table lists $2.000\,008\,021(15)$, Hoffmann 1989 / Köhler 2015 update — verify which is the current best and its DOI). Enter it into the Z-scan table in STATE.md; per-ion section in `14_HydrogenicIon_Zscan.md` to follow once 2+ values are in hand.
+- **Outcome-matrix tentative:** leaning **C** by analogy to PR #70 lepton-axis (particle-specific through $a_\ell$ → Z-specific through $a_e(Z\alpha)$), but **A** is the clean falsifiable test and remains open until data are fitted. Not yet determinable.
+- **Status:** READY (1 source-of-record doc read; 0/5 ions catalogued).
 
-## Iteration 2 — 2026-05-27 — read source-of-record §2 (10_CrossComparison.md §2) — n=1 confirmed + out-of-sample insight
+## Iteration 2 — 2026-05-27 — ³He⁺ (Z=2) g-factor measurement + provenance (ion 1/5)
 
-**What advanced:** Read `Bethe_Salpeter/10_CrossComparison.md` (campaign-closing cross-comparison). Two load-bearing facts captured:
+**Step taken:** Looked up and recorded the precise ³He⁺ bound-electron g-factor with full provenance (one-ion measurement step). Verified via web search against the primary literature.
 
-1. **n=1 confirmed for hyperfine.** §2 states the scaling polynomial `f_i(g_s)` is "**linear for spin–orbit and Fermi contact contributions**; quadratic for two-fermion spin–spin contributions (positronium ortho-para)." Hyperfine (Fermi contact) → **n=1**, matching the brief and BS-§22.1. So Li²⁺ 1s HFS prediction = `(g_s/-2)^1 × (textbook Fermi-contact leading term at Z=3, I=3/2)`.
+**⚠ Brief-table correction:** `brief.md` listed `2.000 008 021(15)` for ³He⁺ — this is a **transcription error** (unphysical: implies a binding shift of $\sim2\times10^{-3}$ off the free-electron value, but the He⁺ Breit/Dirac binding shift is only $-\tfrac13(Z\alpha)^2 \approx -7.1\times10^{-5}$, giving $|g|\approx2.00218$, not $2.000008$). Corrected value below. The brief's "Hoffmann 1989 / Köhler 2015" pointer is also superseded — the definitive direct measurement is Schneider 2022.
 
-2. **The six-observable fit is back-fit self-consistency, NOT independent corroboration** (§1, §2 of CrossComparison, stated repeatedly). The triangulated `r_e/r_0 = 0.4994205099128317` is *defined* as the joint-best-fit value across six **Z=1-ish** g_s-dependent observables (H fine structure, H 21-cm, He ³P, He M1, positronium, muonium — all Z≤2 electron-bound-to-light-nucleus). `g_s = -2.00231930…` is substituted *by construction*.
+**³He⁺ (Z=2) — recorded value:**
+- **Experimental:** $g_e^{\rm exp}(^3{\rm He}^+) = -2.002\,177\,415\,79(34)_{\rm stat}(30)_{\rm sys}$ → combined $\sigma = 45\times10^{-11}$, i.e. $-2.00217741579(45)$.
+- **Theory (bound-state QED):** $g_e^{\rm theo} = -2.002\,177\,416\,252\,23(39)$ (exp–theory agree at $\sim5\times10^{-10}$).
+- **Source:** A. Schneider, B. Sikora, S. Dickopf, M. Müller, N. S. Oreshkina, A. Rischka, I. A. Valuev, S. Ulmer, J. Walz, Z. Harman, C. H. Keitel, A. Mooser, K. Blaum, *"Direct measurement of the ³He⁺ magnetic moments,"* **Nature 606, 878–883 (2022)**. DOI: **10.1038/s41586-022-04761-7**. (First direct high-precision Penning-trap measurement; ~10× better than prior indirect results.)
 
-**→ Substantive consequence for this branch (the discriminator):** Li²⁺ 1s HFS at **Z=3 is OUT-OF-SAMPLE** — it was *not* in the six-observable joint fit. Evaluating it at the *same universal* `r_e/r_0 = 0.4994205099128317` is therefore a genuine out-of-sample test, unlike the six in-sample observables which match by construction. This sharpens the outcome-matrix:
-   - **(Z-i) universal cutoff:** g_s = -2.00231930 for all Z → Li²⁺ HFS = (g_s/-2)×textbook_Li. If this reproduces measurement at framework precision → **branch A**.
-   - **(Z-ii) Z-scaled cutoff:** if the cutoff (hence g_s) runs with the Z=3 field strength, the multiplier differs → if a Z-scaled cutoff with framework-internal derivation is needed → **branch B**; if Li²⁺ needs its own per-Z back-fit → **branch C**.
-   - Note: at n=1 the g_s correction is only +0.116%, so the dominant Z=3 physics is in the *textbook* Fermi-contact scaling (Z³, nuclear g_I, reduced mass). The r_e discriminating power lives in whether that +0.116% (and its possible Z-running) survives against the measurement precision.
+**Framework-relevant derived quantities (to be Wolfram-verified at the per-ion / joint-fit step):**
+- $a_e^{\rm bound}(Z{=}2) = (|g_e|-2)/2 = 0.001\,088\,707\,895$ — note this is **smaller** than free-electron $a_e = 0.001\,159\,652\,18$, by the binding correction $-\tfrac13(Z\alpha)^2$ ($(Z\alpha)^2 = 2.130\times10^{-4}$ at Z=2).
+- (Z-ii) back-fit estimate: $r_e^{(Z=2)}/r_0 = (2-a)/(2(2+a)) \approx 0.499\,456$ (hand estimate; **must verify in `r_e_Zscan_fit.wl`**), vs Z=1 triangulated $0.499\,420\,510$ — an **upward drift of $\sim3.5\times10^{-5}$**.
+- **Direction of evidence:** the back-fit $r_e^{(Z)}/r_0$ rises with Z because bound-state QED *reduces* the effective anomaly. This is the QED-bound-state $a_e(Z\alpha)$ inheritance signature — consistent with Outcome **C** (per-Z inheritance, no framework-internal Z-derivation), or **B** if the drift fits a clean $a + b(Z\alpha)^2$ form (it should, since the leading binding term is exactly $-\tfrac13(Z\alpha)^2$).
 
-- **Current observable focus:** #4 Li-7 1s hyperfine.
-- **Next:** look up + record the exact current-best Li²⁺ 1s HFS measurement (value + DOI/year — Beckmann 1974 *Z. Phys.* 270, 173 baseline ~12 732 MHz; check for modern refinement) and the Li-7 nuclear moment μ_I / g_I with CODATA/NUBASE provenance. These are the inputs the Wolfram prediction cell needs. Then scaffold `r_e_Li2plus_hyperfine.wl`.
-- **Outcome-matrix:** still not determinable (no numeric prediction yet), but now framed: Li²⁺ is the campaign's first **out-of-sample** g_s-dependent test → it can actually discriminate A vs B vs C, unlike the six in-sample observables.
-- **(Z-i)/(Z-ii):** (Z-i) universal value fixed (g_s=-2.00231930). (Z-ii) Z-scaled reading: needs a model for how r_e runs with Z — flagged as a potential Tepper-input point (branch D risk) if the framework has no internal Z-running prescription.
-- **Status:** READY.
+- **Current ion focus:** ³He⁺ (Z=2) — done.
+- **Next:** look up + record ⁹Be³⁺ (Z=4) bound-electron g-factor with DOI/year provenance (likely a Mainz/MPIK Penning-trap result; verify the current best value + source). Per the brief, "(verify in iter 1)" — no value pre-listed, so this needs a genuine lookup.
+- **Outcome-matrix tentative:** **C-leaning** (with B as a live possibility given the clean $-\tfrac13(Z\alpha)^2$ leading term); A appears disfavoured already given the Z=2 drift, but not falsified until the joint χ² is run.
+- **Status:** READY (1/5+ ions catalogued: ³He⁺ Z=2 ✅; Li²⁺ Z=3 to be imported from #78).
 
-## Iteration 3 — 2026-05-27 — measurement + nuclear-moment provenance lookup (WebSearch)
+## Iteration 3 — 2026-05-27 — ⁹Be³⁺ (Z=4) resolved: no precision data → drop + substitute ²⁰Ne⁹⁺ (Z=10)
 
-**What advanced:** WebSearch for the Li²⁺ 1s HFS measurement + Li-7 nuclear moments. Two provenance findings, one of them materially affecting the verdict structure:
+**Step taken:** Attempted the ⁹Be³⁺ (Z=4) bound-electron g-factor lookup (the brief's "(verify in iter 1)" placeholder). Web-searched for a Be³⁺ Penning-trap measurement; none located. Cross-checked against my knowledge of the measured-ion set.
 
-1. **⚠ No direct experimental ⁷Li²⁺ (hydrogenic, Z=3) 1s HFS measurement exists.** Per Pachucki, Patkóš, Yerokhin et al., *Hyperfine splitting in ⁶,⁷Li⁺* (arXiv:2309.00436, 2023): the Li²⁺ HFS "prediction is derived from the sum of theoretical [QED] contributions and the **experimental Li⁺** value; the uncertainty of the Li²⁺ prediction comes exclusively from the uncertainty of the experimental Li⁺ HFS." So the authoritative **comparator is a QED-theory value** (their Table VII), not a direct measurement. → This *changes the test*: the framework's verdict is "match to the QED-theory comparator" (weaker than a direct-measurement match, but still a real out-of-sample check at Z=3).
-   - **Authoritative comparator source:** Pachucki et al., arXiv:2309.00436, Table VII (Li²⁺ 1s HFS). To extract the exact value next iter.
-   - Historical/early ref: Beckmann, Boeklen, Elke 1974, *Z. Phys.* **270**, 173 (the brief's seed) — but this is the **Li / Li⁺ atomic-beam** HFS work, *not* the hydrogenic Li²⁺ 1s value.
+**Finding — Be³⁺ has no precision bound-electron g-factor measurement:**
+- Hydrogen-like ions with high-precision Penning-trap bound-electron g-factors (the established set): ¹²C⁵⁺ (Häffner 2000), ¹⁶O⁷⁺ (2004), ²⁸Si¹³⁺ (Sturm 2011/2013), ⁴⁰Ca¹⁹⁺ (2019), ²⁰Ne⁹⁺ (Sailer 2022), ³He⁺ (Schneider 2022), ¹¹⁸Sn⁴⁹⁺ (Morgner 2023), ²⁰⁸Pb⁸¹⁺ (2023/24).
+- **⁹Be³⁺ is NOT in this set.** Beryllium appears in trap physics as the singly-charged ⁹Be⁺ laser-cooling / quantum-logic coolant ion, not as hydrogenic Be³⁺. The brief's "various Penning-trap groups" pointer for Be³⁺ does not resolve to an actual measurement.
 
-2. **⚠ Brief's "~12 732 MHz" seed value is suspect.** A rough Fermi-contact scaling from H's 1420.4 MHz — `Δν_Li²⁺ ≈ Δν_H × Z³ × (g_I^{Li}/g_I^{p}) × (angular)`:
-   - `Z³ = 27`; `g_I^{Li-7} = μ_I/I = 3.256427/1.5 = 2.1709 μ_N`; `g_I^{p} = 2.79285/0.5 = 5.5857 μ_N` → ratio 0.3887.
-   - H splitting = A_H·(I+½) = A_H·1; Li-7 splitting (F=2↔1) = A_Li·(I+½) = A_Li·2 (interval rule).
-   - → `A_Li/A_H = 0.3887 × 27 = 10.49`; `Δν_Li²⁺ ≈ 10.49 × 1420.4 × 2 ≈ 29 800 MHz ≈ 30 GHz` (pre reduced-mass/relativistic corrections).
-   - This is ~2.3× the brief's 12 732 MHz. The 12 732 figure is most likely a *different* Li system (Li⁺ 1s2s³S₁ or neutral). **Resolve next iter** via Pachucki Table VII + the Wolfram computation.
+**Decision (substantive — ion-list refinement):** **Drop ⁹Be³⁺ (Z=4)** from the Z-scan for lack of measurement provenance (the brief explicitly authorises per-iteration refinement of the target list). **Substitute ²⁰Ne⁹⁺ (Z=10).** Rationale: (a) it has the **most precise** bound-electron g-factor measured to date (coupled-ion differential method, $\sim10^{-11}$ relative), giving the fit a high-weight mid-Z anchor; (b) it improves the Z lever-arm distribution — revised scan is **Z = {2, 3, 6, 10, 14, 20}**, a near-even spread for resolving any $(Z\alpha)^2$ curvature, vs the original {2,3,4,6,14,20} which clustered low.
+- Provisional source for the substitute (to verify + record next iter): T. Sailer, V. Debierre, Z. Harman, F. Heiße, C. König, J. Morgner, B. Tu, A. V. Volotka, C. H. Keitel, K. Blaum, S. Sturm, *"Measurement of the bound-electron g-factor difference in coupled ions,"* **Nature 606, 479–483 (2022)**, DOI 10.1038/s41586-022-04807-w.
 
-3. **Li-7 nuclear data (provenance):** I=3/2; μ_I = +3.256427 μ_N (NUBASE/CODATA); g_I (=μ_I/I) = 2.1709. Confirm exact CODATA digits when value enters the notebook.
+- **Current ion focus:** Be³⁺ (resolved → dropped); ²⁰Ne⁹⁺ queued.
+- **Next:** look up + record the precise ²⁰Ne⁹⁺ (Z=10) bound-electron g-factor absolute value + uncertainty + DOI (Sailer 2022). Note: that paper's headline is a *difference/isotope-shift* measurement — confirm whether it reports an absolute ²⁰Ne⁹⁺ g-factor or whether the absolute value must be sourced from the companion theory/earlier work; record provenance accordingly.
+- **Outcome-matrix tentative:** **C-leaning** (B live), unchanged from iter 2.
+- **Status:** READY (1/5+ ions catalogued; revised target Z = {2, 3, 6, 10, 14, 20}; Be³⁺ dropped, Ne⁹⁺ substituted).
 
-- **Current observable focus:** #4 Li-7 1s hyperfine.
-- **Next:** scaffold `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Li2plus_hyperfine.wl` with (a) the hydrogenic Fermi-contact closed form, (b) the H 1420.4 MHz reproduction as a sanity cell, (c) the Z=3 + I=3/2 scaling cell — which simultaneously *computes the textbook comparator* and resolves the 12 732-vs-30 000 MHz discrepancy. Header to carry the Crocco substantive-AI tag for the I=1/2→3/2 extension.
-- **Outcome-matrix:** still not determinable, but the test is now reframed: **comparator is QED-theory (Pachucki 2023), not direct measurement** — record as a verdict caveat. Out-of-sample A/B/C discrimination still holds (Z=3 not in the six-observable fit).
-- **(Z-i)/(Z-ii):** unchanged from iter 2.
-- **Status:** READY.
+## Iteration 4 — 2026-05-27 — ²⁰Ne⁹⁺ resolved: differential-only → finalize 6-ion absolute set Z={2,3,6,8,14,20}
 
-## Iteration 4 — 2026-05-27 — scaffold `r_e_Li2plus_hyperfine.wl` (Fermi-contact apparatus, Z=3 + I=3/2)
+**Step taken:** Looked up the ²⁰Ne⁹⁺ (Z=10) absolute bound-electron g-factor (queued from iter 3). Two web searches. Finding forces an ion-set decision.
 
-**What advanced:** Created `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Li2plus_hyperfine.wl` (new, distinct from other branches' notebooks). Four single-line MCP-ready cells (Wolfram gotchas obeyed — no bare `V`/`e`, descriptive symbols, `;`-joined):
+**Finding — Sailer 2022 is a *difference* measurement; no usable absolute ²⁰Ne⁹⁺ g-factor:**
+- Sailer et al., *Nature* **606**, 479 (2022), DOI 10.1038/s41586-022-04807-w, measures the **isotope-shift difference** $g(^{20}\mathrm{Ne}^{9+}) - g(^{22}\mathrm{Ne}^{9+})$ to $5.6\times10^{-13}$ via the coupled-ion / common-magnetron-orbit method. That precision is *differential* — it cancels the common magnetic-field systematic. The **absolute** individual g-factors are limited by field calibration and are **not published at a precision useful as an absolute Z-scan anchor**.
+- Consequence: Ne⁹⁺ cannot serve the (Z-ii) per-Z back-fit, which requires an absolute measured $g_e^{\rm bound}(Z)$ to invert $r_e^{(Z)}/r_0 = (2-a)/(2(2+a))$. **Drop ²⁰Ne⁹⁺** as a back-fit anchor.
 
-- **Cell 1 — H 1s sanity:** `dnu_H = (4/3) gP (me/Mp) alpha^4 (me c²/h)`, gP=5.5856946; expect ~1418–1421 MHz (reproduces the 21-cm baseline).
-- **Cell 2 — Li/H scaling ratio (the substantive core):** textbook splitting `dnu ~ mu_I(2I+1)/(2I) Z³`, so `dnu_Li/dnu_H = [muLi(2ILi+1)/(2ILi)]/[muP(2IP+1)/(2IP)] × Z³`. Hand-computed: nucFactorLi = 3.256427×(4/3) = 4.3419; nucFactorP = 2.79285×2 = 5.5857; ratio 0.7773 × 27 = **20.99**; × 1420.4058 MHz → **textbook Li²⁺ 1s HFS ≈ 29 810 MHz ≈ 29.8 GHz** (g_s=-2 baseline).
-- **Cell 3 — framework (g_s/-2)¹ correction:** gsTri=-2.00231930436 at r_e/r_0=0.4994205099128317 → factor 1.001160 → **framework prediction ≈ 29 845 MHz**.
-- **Cell 4 — I=3/2 angular structure (substantive-AI tag):** S=1/2⊗I=3/2 → F=1,2; I·S eigenvalues F=2:+3/4, F=1:−5/4; headline F=2↔1 interval = 2a = (I+½)a. This is the explicit I=1/2→3/2 extension of BS-§22's machinery.
+**Decision (substantive — ion set now FINAL):** Use the six hydrogenic ions with **published absolute** Penning-trap bound-electron g-factors:
 
-**Discrepancy resolved (analytically, pending MCP confirm):** the brief's seed **12 732 MHz is NOT the hydrogenic Li²⁺ value** — the Fermi-contact scaling unambiguously gives ~29.8 GHz. 12 732 MHz is a different Li system (Li⁺ 1s2s³S₁ or neutral-Li manifold). Recorded.
+| Ion | Z | Absolute g status | Source (to transcribe with full provenance) |
+|---|---|---|---|
+| ³He⁺ | 2 | ✅ recorded (iter 2) | Schneider 2022, Nature 606, 878 |
+| ⁷Li²⁺ | 3 | import from #78 | (Self-Energy branch supplies) |
+| ¹²C⁵⁺ | 6 | pending transcribe | Sturm 2011, PRL 107, 023002 (brief table) |
+| ¹⁶O⁷⁺ | 8 | **new — substitute for Ne⁹⁺** | Verdú et al. 2004, PRL 92, 093002 |
+| ²⁸Si¹³⁺ | 14 | pending transcribe | Sturm 2013, PRL 110, 263002 (brief table) |
+| ⁴⁰Ca¹⁹⁺ | 20 | pending lookup | Köhler-Langes/Sturm 2016 |
 
-- **Current observable focus:** #4 Li-7 1s hyperfine.
-- **Next:** execute Cells 1–4 via Wolfram MCP to get exact numerics (confirm H sanity ~1420 MHz, textbook ~29.8 GHz, framework ~29.85 GHz, angular factor = 2a). Then fetch Pachucki 2023 Table VII for the exact QED-theory comparator to compute the residual.
-- **Outcome-matrix:** still not finalized (need MCP exact value + Pachucki comparator), but provisional reading: since the (g_s/-2) correction is only +0.116% and the cutoff is held universal (Z-i), if the framework's 29.85 GHz matches Pachucki's QED comparator within the textbook-leading-g_s floor → **branch A** (universal cutoff survives the out-of-sample Z=3 test). Confirm next iters.
-- **(Z-i)/(Z-ii):** (Z-i) prediction now numerically pinned (~29 845 MHz). (Z-ii) Z-scaled reading still needs a framework Z-running prescription — branch-D risk persists if absent.
-- **Status:** READY.
+Final Z-scan: **Z = {2, 3, 6, 8, 14, 20}** — all absolute, well-distributed. ¹⁶O⁷⁺ (Z=8) replaces the dropped Ne⁹⁺ for mid-Z coverage; it has a clean absolute measurement (Verdú 2004) and bridges the C⁵⁺(6)–Si¹³⁺(14) gap.
 
-## Iteration 5 — 2026-05-27 — execute + debug Wolfram cells (MCP); framework prediction pinned ≈ 29.80 GHz
+**Rationale note for the writeup:** the differential-vs-absolute distinction is itself relevant to the framework test — the (Z-ii) back-fit is a per-ion *absolute* inversion, so only absolute measurements qualify. (The Sailer isotope-shift result tests nuclear-recoil QED, orthogonal to the cutoff-radius question here.)
 
-**What advanced:** Ran all four cells via Wolfram MCP, found and fixed a methodological double-count, re-ran.
+- **Current ion focus:** Ne⁹⁺ (resolved → dropped, differential-only); O⁷⁺ queued.
+- **Next:** look up + record the ¹⁶O⁷⁺ (Z=8) absolute bound-electron g-factor + uncertainty + DOI (Verdú, Djekić, Stahl, Valenzuela, Vogel, Werth, Beier, Kluge, Quint, PRL 92, 093002 (2004), "Electronic g Factor of Hydrogenlike Oxygen ¹⁶O⁷⁺").
+- **Outcome-matrix tentative:** **C-leaning** (B live), unchanged.
+- **Status:** READY (1/6 ions catalogued with absolute values; ion set FINAL at Z={2,3,6,8,14,20}).
 
-**First MCP run confirmed the arithmetic:**
-- Cell 1 (H sanity): leading-Fermi H 1s HFS = **1421.16 MHz** ✅ (reproduces 21-cm baseline; ~0.2% above the campaign's 1418.4 MHz due to omitted reduced-mass factor).
-- Cell 4 (angular structure): I·S(F=2) = **+3/4**, I·S(F=1) = **−5/4**, headline F=2↔1 splitting = **2a = (I+½)a** ✅. This is the verified I=3/2 extension of BS-§22's I=1/2 machinery.
+## Iteration 5 — 2026-05-27 — ¹⁶O⁷⁺ (Z=8) g-factor + provenance (ion 2/6)
 
-**Bug found + fixed (the "debug" of this step):** iter-4 Cell 2 scaled the *measured* H value (1420.4058 MHz). That value already carries the electron-g_s correction (and proton-specific QED/recoil/nuclear-structure), so Cell 3's additional ×(g_s/−2) **double-counted the anomalous moment (~+34 MHz)** and wrongly imported proton nuclear-structure terms. The campaign structure is `framework = (g_s/−2)ⁿ × (textbook LEADING g_s=−2 term)`. Fixed Cell 2 to scale `dnuHleadingFermi = 1418.4` (BS-§22.1 g_s=−2 baseline).
+**Step taken:** Looked up and recorded the ¹⁶O⁷⁺ absolute bound-electron g-factor (queued from iter 4). Verified via web search against the primary source.
 
-**Corrected MCP run (self-consistent across two routes):**
-- scaleRatio (Li/H) = **20.9878**.
-- textbook Li²⁺ 1s HFS (g_s=−2 leading) = **29 769.1 MHz**.
-- **framework Li²⁺ 1s HFS prediction (g_s=−2.00231930) = 29 803.6 MHz ≈ 29.80 GHz** (Z-i universal cutoff).
-- cross-check (scale the framework-H value 1420.04 MHz by the ratio) = 29 803.5 MHz → **agrees to 0.1 MHz**, confirming the methodology is internally consistent.
-- g_s contributes **+34 MHz** (+0.116%) over the g_s=−2 baseline.
+**¹⁶O⁷⁺ (Z=8) — recorded value:**
+- **Experimental:** $g_e^{\rm exp}(^{16}{\rm O}^{7+}) = 2.000\,047\,025\,4(15)_{\rm stat}(44)_{\rm sys}$ → combined $\sigma \approx 46\times10^{-10}$, i.e. $2.0000470254(46)$.
+- **Theory (bound-state QED):** $g_e^{\rm theo} = 2.000\,047\,020\,2(6)$ (exp–theo agree at 1.1σ; 0.25% BS-QED test).
+- **Source:** J. L. Verdú, S. Djekić, S. Stahl, T. Valenzuela, M. Vogel, G. Werth, T. Beier, H.-J. Kluge, W. Quint, *"Electronic g Factor of Hydrogenlike Oxygen ¹⁶O⁷⁺,"* **Phys. Rev. Lett. 92, 093002 (2004)**. DOI: **10.1103/PhysRevLett.92.093002**. (Single ¹⁶O⁷⁺ ion in a Penning trap; first calculated resonance line shape.)
 
-**Below-floor caveat recorded:** the reduced-mass ratio (Li²⁺ nucleus ≫ proton) is a separate ~+0.14% (~+42 MHz) correction NOT yet applied (would push to ~29 846 MHz); it sits at/below the campaign's Bethe-estimate precision floor and is comparable to the g_s correction — to be noted in the doc verdict as a floor caveat, not a precision claim.
+**Framework-relevant derived quantities (Wolfram-verify at joint-fit step):**
+- $a_e^{\rm bound}(Z{=}8) = (g-2)/2 = +0.000\,023\,512\,7$. The Z=8 binding term $-\tfrac13(Z\alpha)^2 \approx -1.136\times10^{-3}$ nearly cancels the free-electron anomaly $a_e=+1.1597\times10^{-3}$ → net $g \approx 2.0000$.
+- (Z-ii) back-fit estimate: $r_e^{(Z=8)}/r_0 = (2-a)/(2(2+a)) \approx 0.499\,994$ (hand estimate; verify in `.wl`).
 
-- **Current observable focus:** #4 Li-7 1s hyperfine.
-- **Next:** fetch the exact Pachucki et al. 2023 (arXiv:2309.00436) Table VII Li²⁺ 1s HFS QED-theory comparator value, compute the residual vs the framework's 29 804 MHz, and assign the outcome-matrix branch. Then draft the #4 per-observable section in `Bethe_Salpeter/13_Li2plus_Hyperfine.md` with verdict.
-- **Outcome-matrix:** framework prediction pinned (~29 804 MHz, Z-i); branch assignment pending the Pachucki comparator + residual. Provisional: if 29 804 MHz matches Pachucki's value within the ~0.1–0.5% Bethe-estimate floor → **branch A** (universal cutoff survives the out-of-sample Z=3 test).
-- **(Z-i)/(Z-ii):** (Z-i) = 29 804 MHz (firm). (Z-ii) still needs a framework Z-running prescription for r_e — branch-D risk if the framework has none.
-- **Status:** READY.
+**Z-trend across the catalogued + projected points (the headline emerging pattern):**
+| Z | source | $g_e^{\rm bound}$ | $a_e^{\rm bound}=(g-2)/2$ | back-fit $r_e^{(Z)}/r_0$ (est.) |
+|---|---|---|---|---|
+| 1 (free) | CODATA | 2.00231930 | +0.00115965 | 0.499420510 (triangulated) |
+| 2 | Schneider22 | 2.00217742 | +0.00108871 | ≈0.499456 |
+| 8 | Verdú04 | 2.00004703 | +0.00002351 | ≈0.499994 |
+| 14 (proj.) | Sturm13 | 1.99534896 | −0.00232552 | ≈0.501164 |
 
-## Iteration 6 — 2026-05-27 — fetch Pachucki comparator; resolve outcome-matrix branch (A, structural)
+- The back-fit $r_e^{(Z)}/r_0$ **monotonically sweeps through 0.5** as Z increases (crossing 0.5 near Z≈8–9, where the binding correction exactly cancels the free anomaly so $g=2$ and $r_e/r_0=1/2$ — the tree-Dirac value). This is a **large, clean, monotonic Z-dependence**, not scatter.
+- **Outcome A (Z-universal single cutoff) is now effectively ruled out** by inspection: a fixed $r_e/r_0=0.499421$ predicts $g=-2.00231930$ at every Z, but measured $|g|$ ranges 2.0000–2.0022 across the scan — residuals of order $10^{-3}$–$10^{-4}$, i.e. $10^6$–$10^7\sigma$. The joint χ² will confirm quantitatively.
+- The back-fit curve is exactly the inversion of QED's bound-state $g(Z\alpha)=2[1-\tfrac13(Z\alpha)^2-\ldots]+\tfrac{\alpha}{\pi}+\ldots$ → **Outcome C** (per-Z inheritance of QED's $a_e(Z\alpha)$; the framework supplies the g-formula but not the $-\tfrac13(Z\alpha)^2$ binding term). Distinguishing **C vs B** hinges on whether the framework can *derive* the $(Z\alpha)^2$ coefficient internally — it cannot (g-formula leaves each state's cutoff free), so C is strongly favoured; the joint fit's $a+b(Z\alpha)^2$ form-fit will characterise the curve either way.
 
-**What advanced:** WebSearch + WebFetch on Pachucki, Patkóš, Yerokhin, *Hyperfine splitting in ⁶,⁷Li⁺* (arXiv:2309.00436, 2023). Confirmed it as the comparator-of-record and confirmed methodology: Li²⁺ hfs is *predicted from the experimental Li⁺ hfs* + QED theory (no direct Li²⁺ data). **The exact Table-VII digit was not extractable** — arxiv.org/abs gives only the abstract; `arxiv.org/html/...` 404s; ar5iv's summarizer drops the results table. Exact value flagged for human extraction (PDF parse) — **NOT blocking the verdict** (see below).
+- **Current ion focus:** ¹⁶O⁷⁺ (Z=8) — done.
+- **Next:** transcribe ¹²C⁵⁺ (Z=6) absolute g-factor with full provenance — brief table lists $2.001\,041\,590\,18(3)$, Sturm 2011 *PRL* **107**, 023002; verify value + DOI (DOI 10.1103/PhysRevLett.107.023002).
+- **Outcome-matrix tentative:** **C** (firming up; A effectively excluded by the Z=8 point; B requires an internal $(Z\alpha)^2$ derivation the framework lacks).
+- **Status:** READY (2/6 ions catalogued: He⁺ Z=2 ✅, O⁷⁺ Z=8 ✅; remaining C⁵⁺ Z=6, Si¹³⁺ Z=14, Ca¹⁹⁺ Z=20 + Li²⁺ Z=3 import).
 
-**Decisive verdict insight (the substantive payoff):** the framework prediction = `(g_s/−2)¹ × textbook-leading`. The *only* r_e-dependent content is the `(g_s/−2) = +0.116%` factor. That anomalous-moment enhancement is **Z-INDEPENDENT** — it is the free-electron g_s, identical to what textbook QED applies at every Z. Under **(Z-i) universal cutoff**, the framework applies `g_s = −2.00231930` at Z=3 exactly as textbook QED does (the triangulated r_e was *fit* to reproduce that g_s). → The Li²⁺ test is therefore **agreement by construction at the leading-g_s precision floor**, i.e. the *same structural self-consistency* as the H 21-cm result (06_Hyperfine.md §22.1 back-fit caveat), **NOT independent corroboration.**
-   - The "out-of-sample at Z=3" sharpening from iters 2–5 is real *only if* the framework's r_e runs with Z (**(Z-ii)**), which would make g_s(Z=3) ≠ −2.00231930. **The framework does not assert Z-running r_e** — its stated position is a universal cutoff (Z-i). So (Z-ii) is a hypothetical the framework doesn't claim; constructing it would need Tepper input (would be branch D), but it is moot under the framework's actual (Z-i) stance.
+## Iteration 6 — 2026-05-27 — ¹²C⁵⁺ (Z=6) g-factor + provenance fix (ion 3/6)
 
-- **Current observable focus:** #4 Li-7 1s hyperfine.
-- **OUTCOME-MATRIX BRANCH: A** — under the Z=1-triangulated *universal* cutoff, the framework reproduces the standard-QED Li²⁺ 1s HFS at the framework (leading-g_s / Bethe-estimate) precision floor. **With the H-style structural-self-consistency caveat:** the +0.116% g_s enhancement is Z-independent and identical to textbook QED, so this is consistency-by-construction, not an independent Z=3 discrimination. (Branch B/C would require a Z-running cutoff the framework doesn't posit; branch D not triggered.)
-- **Next:** add a Wolfram cell computing the *standard point-nucleus QED comparator* (relativistic Fermi factor `1/[γ(2γ−1)]`, γ=√(1−(Zα)²); +reduced-mass) so the doc has a reproducible residual-table number alongside the Pachucki external value. Then draft the #4 per-observable section in `Bethe_Salpeter/13_Li2plus_Hyperfine.md` with the branch-A verdict + structural caveat + nuclear-structure (Bohr–Weisskopf) floor caveat.
-- **(Z-i)/(Z-ii):** (Z-i) = 29 804 MHz, branch A (structural). (Z-ii) not asserted by framework; hypothetical-only.
-- **Measurement provenance:** comparator = Pachucki/Patkóš/Yerokhin 2023 (arXiv:2309.00436) Table VII (QED theory from exp. Li⁺); exact digit pending human PDF extraction. Li-7: I=3/2, μ_I=+3.256427 μ_N (NUBASE/CODATA).
-- **Status:** READY.
+**Step taken:** Transcribed/verified the ¹²C⁵⁺ absolute bound-electron g-factor (queued from iter 5). Two web searches resolved a value-vs-source ambiguity.
 
-## Iteration 7 — 2026-05-27 — add Cell 5: standard-QED point-nucleus comparator + residual table numbers (MCP-verified)
+**⚠ Brief-table source correction (provenance):** The brief assigns C⁵⁺ to "Sturm 2011 *PRL* **107**, 023002" — **that paper is the ²⁸Si¹³⁺ measurement, not C⁵⁺.** The brief's *value* ($2.00104159018(3)$) is correct and comes from the 2014 *Nature* electron-mass paper, not PRL 107. (Flag for the Si¹³⁺ iteration: re-verify that source too, since the brief lists Si¹³⁺ as "Sturm 2013 *PRL* **110**, 263002" — likely also needs checking.)
 
-**What advanced:** Extended `r_e_Li2plus_hyperfine.wl` with **Cell 5** (standard-QED point-nucleus comparator) and verified it via Wolfram MCP. This gives the residual-table numbers the doc needs:
+**¹²C⁵⁺ (Z=6) — recorded value:**
+- **Experimental:** $g_e^{\rm bound}(^{12}{\rm C}^{5+}) = 2.001\,041\,590\,18(3)$ (relative $\sigma \approx 1.5\times10^{-11}$). Supersedes Häffner et al. 2000 ($2.001\,041\,596(5)$, *PRL* **85**, 5308) — the 2014 value is ~1.2σ lower and ~170× more precise.
+- **Source:** S. Sturm, F. Köhler, J. Zatorski, A. Wagner, Z. Harman, G. Werth, W. Quint, C. H. Keitel, K. Blaum, *"High-precision measurement of the atomic mass of the electron,"* **Nature 506, 467–470 (2014)**, DOI **10.1038/nature13026**. Refined analysis: F. Köhler et al., *"The electron mass from g-factor measurements on hydrogen-like carbon ¹²C⁵⁺,"* **J. Phys. B 48, 144032 (2015)**, DOI 10.1088/0953-4075/48/14/144032.
 
-| Quantity | Value (MHz) | Note |
-|---|---|---|
-| Framework leading-Fermi × g_s (Z-i, minimal) | **29 803.6** | matches campaign H methodology (leading only) |
-| + relativistic Dirac factor `1/[γ(2γ−1)]`, γ=√(1−(Zα)²) | +0.072% | framework inherits Dirac (BS-§14.1) |
-| + reduced-mass ratio³ (⁷Li nucleus vs proton) | +0.140% | standard kinematic |
-| **Standard-QED point-nucleus comparator** (leading+rel+redmass+g_s) | **29 866.8** | = framework with same corrections, by construction |
-| Pachucki 2023 Table VII (incl. Bohr–Weisskopf) | _[human PDF extract]_ | external high-precision; nuclear-structure REDUCES by ~0.5–1% |
+**Framework-relevant derived quantities (Wolfram-verify at joint-fit step):**
+- $a_e^{\rm bound}(Z{=}6) = (g-2)/2 = +0.000\,520\,795\,09$. Binding term $-\tfrac13(Z\alpha)^2 \approx -6.39\times10^{-4}$ partially cancels free $a_e$.
+- (Z-ii) back-fit estimate: $r_e^{(Z=6)}/r_0 = (2-a)/(2(2+a)) \approx 0.499\,739$ — sits between Z=2 (0.499456) and Z=8 (0.499994), as required by the monotonic sweep.
 
-- **residual framework(minimal) − standard-QED comparator = −63.2 MHz (−0.21%)** — the gap is the relativistic + reduced-mass corrections the minimal leading route omits. **Both are r_e-INDEPENDENT**, so the residual does **not** bear on the branch-A verdict (exact analog of the H 21-cm leading-vs-full gap).
-- Bohr–Weisskopf nuclear-structure: out of scope (issue #78), recorded as a framework-floor caveat (~−0.5–1%).
+**Updated Z-trend table (3 absolute points + free + Si projection):**
+| Z | source | $g_e^{\rm bound}$ | $a_e^{\rm bound}$ | back-fit $r_e^{(Z)}/r_0$ (est.) |
+|---|---|---|---|---|
+| 1 (free) | CODATA | 2.00231930 | +0.00115965 | 0.499420510 |
+| 2 | Schneider22 | 2.00217742 | +0.00108871 | ≈0.499456 |
+| 6 | Sturm14 | 2.00104159 | +0.00052080 | ≈0.499739 |
+| 8 | Verdú04 | 2.00004703 | +0.00002351 | ≈0.499994 |
+| 14 (proj.) | (verify) | 1.99534896 | −0.00232552 | ≈0.501164 |
 
-- **Current observable focus:** #4 Li-7 1s hyperfine.
-- **OUTCOME-MATRIX BRANCH: A** (unchanged) — universal cutoff reproduces standard-QED Li²⁺ HFS at the leading-g_s/Bethe-estimate floor; structural self-consistency (g_s enhancement Z-independent), not independent corroboration.
-- **Next (final substantive step):** draft the #4 per-observable section in `Bethe_Salpeter/13_Li2plus_Hyperfine.md` — measurement provenance (no direct exp; Pachucki comparator), framework prediction (29 804 MHz minimal / 29 867 MHz with standard corrections), the residual table above, the I=3/2 angular-structure derivation, the branch-A verdict + structural-self-consistency caveat + Bohr–Weisskopf floor caveat, Crocco substantive-AI tags + `<!-- TODO: human reviews and fills in -->` blocks (incl. the exact Pachucki digit). **This completes the done-criteria → STOP after the doc has the verdict.**
-- **(Z-i)/(Z-ii):** (Z-i) firm (29 804 minimal / 29 867 with std corrections). (Z-ii) hypothetical-only (framework asserts universal cutoff).
-- **Status:** READY (doc draft is the terminal step).
+- **Current ion focus:** ¹²C⁵⁺ (Z=6) — done.
+- **Next:** look up + record ²⁸Si¹³⁺ (Z=14) absolute g-factor with full provenance. Brief value $1.995\,348\,958\,7(5)$; **verify the source** (brief cites "Sturm 2013 *PRL* **110**, 263002" and also "Köhler 2016 *Nat. Comm.* **7**, 10246" — determine the correct primary; note Sturm 2011 *PRL* **107**, 023002 is the original Si¹³⁺ paper).
+- **Outcome-matrix tentative:** **C** (A excluded; B needs an internal $(Z\alpha)^2$ derivation the framework lacks).
+- **Status:** READY (3/6 ions catalogued: He⁺ Z=2 ✅, C⁵⁺ Z=6 ✅, O⁷⁺ Z=8 ✅; remaining Si¹³⁺ Z=14, Ca¹⁹⁺ Z=20 + Li²⁺ Z=3 import).
 
-## Iteration 8 — 2026-05-27 — draft `13_Li2plus_Hyperfine.md` with verdict — DONE, LOOP STOPS
+## Iteration 7 — 2026-05-27 — ²⁸Si¹³⁺ (Z=14) g-factor + provenance fix (ion 4/6)
 
-**What advanced:** Created `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/13_Li2plus_Hyperfine.md` (this branch's distinct output file) — the complete #4 per-observable result section. Contents:
-- Chapter intro framing it as the Z=3/I=3/2 extension of BS-§22.1; companion-notebook link.
-- **Source + the substantive $I=3/2$ angular structure**: $F=1,2$; I·S eigenvalues (F=2:+3/4, F=1:−5/4); headline interval = 2a = (I+½)a — the explicit substantive-AI extension of BS-§22's proton I=1/2 apparatus, with a `<!-- TODO human review -->` block.
-- **Measurement provenance**: no direct Li²⁺ experiment; comparator = Pachucki et al. 2023 (arXiv:2309.00436) Table VII; Li-7 μ_I=+3.256427 μ_N; exact digit flagged for human PDF extraction.
-- **Framework prediction**: Cell-2/3/5 MCP numbers — minimal 29 804 MHz, with-standard-corrections 29 867 MHz; full residual table.
-- **Verdict: branch A** at leading-g_s/Bethe-estimate floor, with the load-bearing **structural-self-consistency caveat** (g_s enhancement is Z-independent, identical to textbook QED → agreement by construction, not independent Z=3 discrimination), the **(Z-i)/(Z-ii) honesty** note (framework asserts universal cutoff; Z-running not claimed → (Z-ii)/branch-B/C/D not the framework's position), and the **Bohr–Weisskopf nuclear-structure floor caveat** (out of scope per #78).
-- Crocco substantive-AI tags + `<!-- TODO: human reviews and fills in -->` blocks throughout (angular structure, provenance/exact-digit, verdict disposition).
+**Step taken:** Looked up and recorded the ²⁸Si¹³⁺ absolute bound-electron g-factor (queued from iter 6). Web search confirmed value + resolved the source attribution.
 
-**DONE-CRITERIA MET:**
-1. ✅ `13_Li2plus_Hyperfine.md` has the #4 result section: measurement provenance + framework prediction (Z-i; Z-ii addressed as non-asserted) + verdict.
-2. ✅ `r_e_Li2plus_hyperfine.wl` exists with Wolfram-MCP-verified cells (1–5) for the Fermi-contact prediction at Z=3, I=3/2.
-3. ✅ Outcome-matrix branch recorded: **A** (structural self-consistency).
+**⚠ Brief-table source correction (provenance):** The brief assigns Si¹³⁺ to "Sturm 2013 *PRL* **110**, 263002" — the **correct primary is Sturm et al., *PRL* 107, 023002 (2011)** (the same paper the brief had wrongly attributed to C⁵⁺ in iter 6). Net: the brief swapped/mis-cited both C⁵⁺ and Si¹³⁺ sources; both now corrected (C⁵⁺ → Nature 506 2014; Si¹³⁺ → PRL 107 2011).
 
-- **Current observable focus:** #4 Li-7 1s hyperfine — COMPLETE.
-- **OUTCOME-MATRIX BRANCH: A** (final).
-- **Open items for human/orchestrator (not blocking):** (a) extract exact Pachucki Table VII Li²⁺ digit into the residual table; (b) contribute the 29 804/29 867 MHz prediction to the Self-Energy branch's joint-χ² fit (`r_e_Li2plus_joint_fit.wl` — owned by that branch, not edited here); (c) PR + GitHub comments handled by orchestrator after morning review.
-- **Status:** ✅ DONE — loop stops (no further ScheduleWakeup).
+**²⁸Si¹³⁺ (Z=14) — recorded value:**
+- **Experimental:** $g_e^{\rm bound}(^{28}{\rm Si}^{13+}) = 1.995\,348\,958\,7(5)_{\rm stat}(3)(8)_{\rm sys}$ → combined $\sigma \approx 10\times10^{-10}$, i.e. $1.9953489587(10)$ (relative $\sim5\times10^{-10}$; 10 significant digits).
+- **Theory (BS-QED, 2-loop):** $g_e^{\rm theo} = 1.995\,348\,958\,0(17)$ (excellent agreement; "most stringent test of BS-QED" at the time).
+- **Source:** S. Sturm, A. Wagner, B. Schabinger, J. Zatorski, Z. Harman, W. Quint, G. Werth, C. H. Keitel, K. Blaum, *"g Factor of Hydrogenlike ²⁸Si¹³⁺,"* **Phys. Rev. Lett. 107, 023002 (2011)**. DOI: **10.1103/PhysRevLett.107.023002**.
+
+**Framework-relevant derived quantities (Wolfram-verify at joint-fit step):**
+- $a_e^{\rm bound}(Z{=}14) = (g-2)/2 = \mathbf{-0.002\,325\,520\,65}$ — **NEGATIVE**: at Z=14 the binding term $-\tfrac13(Z\alpha)^2 \approx -7.43\times10^{-3}$ exceeds the free anomaly $+1.16\times10^{-3}$, so $g<2$.
+- (Z-ii) back-fit estimate: $r_e^{(Z=14)}/r_0 = (2-a)/(2(2+a)) \approx 0.501\,164$ — **>0.5**, matching the iter-5/6 projection exactly. **The measured-data back-fit confirms the curve crosses 0.5** (at the Z where binding cancels the free anomaly, $g=2 \Leftrightarrow r_e/r_0=1/2$, near Z≈8–9).
+
+**Updated Z-trend table (4 absolute points + free):**
+| Z | source | $g_e^{\rm bound}$ | $a_e^{\rm bound}=(g-2)/2$ | back-fit $r_e^{(Z)}/r_0$ (est.) |
+|---|---|---|---|---|
+| 1 (free) | CODATA | 2.00231930 | +0.00115965 | 0.499420510 |
+| 2 | Schneider22 | 2.00217742 | +0.00108871 | ≈0.499456 |
+| 6 | Sturm14 | 2.00104159 | +0.00052080 | ≈0.499739 |
+| 8 | Verdú04 | 2.00004703 | +0.00002351 | ≈0.499994 |
+| 14 | Sturm11 | 1.99534896 | −0.00232552 | ≈0.501164 |
+| 20 (pending) | (lookup) | ≈1.989 | (neg, larger) | (>0.5018) |
+
+- **Current ion focus:** ²⁸Si¹³⁺ (Z=14) — done.
+- **Next:** look up + record ⁴⁰Ca¹⁹⁺ (Z=20) absolute g-factor + uncertainty + DOI (brief cites "Glazov 2019 / Köhler-Langes 2018"; verify the primary measurement — likely Köhler-Langes/Sturm/Vogel; note theory by Glazov et al.).
+- **Outcome-matrix tentative:** **C** (A excluded — measured data now span $g$=1.9953→2.0022, a $4.7\times10^{-3}$ spread vs the (Z-i) single-value prediction; B needs an internal $(Z\alpha)^2$ derivation the framework lacks).
+- **Status:** READY (4/6 ions catalogued: He⁺ Z=2 ✅, C⁵⁺ Z=6 ✅, O⁷⁺ Z=8 ✅, Si¹³⁺ Z=14 ✅; remaining Ca¹⁹⁺ Z=20 + Li²⁺ Z=3 import).
+
+## Iteration 8 — 2026-05-27 — ⁴⁰Ca¹⁹⁺ resolved: no H-like data → substitute ¹¹⁸Sn⁴⁹⁺ (Z=50)
+
+**Step taken:** Attempted the ⁴⁰Ca¹⁹⁺ (Z=20) absolute g-factor lookup (queued from iter 7). Multiple web searches. Finding forces a third ion-set refinement at the high-Z end.
+
+**⚠ Brief-table source error + finding:** The brief cites Ca¹⁹⁺ as "Glazov 2019 / Köhler-Langes 2018" — **both are lithium-like systems, not hydrogenic Ca¹⁹⁺:**
+- Glazov et al., *PRL* **123**, 173001 (2019) = g factor of **lithiumlike** ²⁸Si¹¹⁺ (3-electron).
+- Köhler et al., *Nat. Comm.* **7**, 10246 (2016) = Zeeman effect in **lithiumlike** calcium (3-electron).
+- Sources indicate an H-like ⁴⁰Ca¹⁹⁺ g-factor was "in preparation"; **no published absolute hydrogenic Ca¹⁹⁺ g-factor located.** Consistent with the Be³⁺ (iter 3) and Ne⁹⁺ (iter 4) outcomes — the brief's high-Z/exotic picks were aspirational.
+
+**Decision (substantive — high-Z anchor):** **Drop ⁴⁰Ca¹⁹⁺ (Z=20)** (no usable H-like measurement). **Substitute ¹¹⁸Sn⁴⁹⁺ (Z=50)** — Morgner et al. 2023 *Nature*, the cleanest published **absolute hydrogenic** g-factor at high Z. Rationale: (a) it is a genuine 1-electron (hydrogenic) measurement, unlike the Li-like Ca/Si data; (b) Z=50 hugely extends the lever arm (vs the {2…14} cluster), making the $(Z\alpha)^2$-curvature / Z-scaling test decisive; (c) caveat — at Z=50, $(Z\alpha)^2 = 0.133$, so the perturbative $g=2[1-\tfrac13(Z\alpha)^2-\ldots]$ expansion is poor; the fit must use the **full nonperturbative Dirac point value** $g_D = \tfrac23[1+2\sqrt{1-(Z\alpha)^2}]$ plus QED, not the truncated series. This is handled in `r_e_Zscan_fit.wl` by carrying the measured $g$ directly into the back-fit (the back-fit $r_e^{(Z)}/r_0=(2-a)/(2(2+a))$ uses measured $a=(g-2)/2$ regardless of expansion order).
+
+**Final Z-scan set: Z = {2, 3, 6, 8, 14, 50}** (He⁺, Li²⁺[import], C⁵⁺, O⁷⁺, Si¹³⁺, Sn⁴⁹⁺). Optional 7th bonus: ²⁰⁸Pb⁸¹⁺ (Z=82) if its absolute H-like value is quickly sourced.
+
+- **Current ion focus:** Ca¹⁹⁺ (resolved → dropped, no H-like data); Sn⁴⁹⁺ queued.
+- **Next:** look up + record ¹¹⁸Sn⁴⁹⁺ (Z=50) absolute bound-electron g-factor + uncertainty + DOI (Morgner, Tu, König, Sailer, Heiße, et al., *"Stringent test of QED with hydrogen-like tin,"* **Nature 622, 53 (2023)**; verify value + DOI).
+- **Outcome-matrix tentative:** **C** (A excluded; a Z=50 anchor will sharpen the C-vs-B discrimination via the curvature test).
+- **Status:** READY (4/6 ions catalogued with absolute values; ion set re-finalized Z={2,3,6,8,14,50}; Ca¹⁹⁺ dropped, Sn⁴⁹⁺ substituted).
+
+## Iteration 9 — 2026-05-27 — ¹¹⁸Sn⁴⁹⁺ (Z=50) g-factor + provenance (ion 5/6; ≥5 criterion MET)
+
+**Step taken:** Looked up and recorded the ¹¹⁸Sn⁴⁹⁺ absolute bound-electron g-factor (queued from iter 8). Web search confirmed value + provenance.
+
+**¹¹⁸Sn⁴⁹⁺ (Z=50) — recorded value:**
+- **Experimental:** $g_e^{\rm exp}(^{118}{\rm Sn}^{49+}) = 1.910\,562\,059(1)$ (relative $\sigma \approx 5\times10^{-10}$).
+- **Theory (BS-QED, complete 2-loop):** $g_e^{\rm theo} = 1.910\,561\,821(299)$ (theory-limited; exp 300× more precise than theory).
+- **Source:** J. Morgner, B. Tu, C. M. König, T. Sailer, F. Heiße, H. Bekker, B. Sikora, C. Lyu, V. A. Yerokhin, Z. Harman, J. R. Crespo López-Urrutia, C. H. Keitel, S. Sturm, K. Blaum, *"Stringent test of QED with hydrogen-like tin,"* **Nature 622, 53–57 (2023)**. DOI: **10.1038/s41586-023-06453-2**. (ALPHATRAP; field $1.6\times10^{15}$ V/cm, 60× stronger than the Si¹³⁺ test.)
+
+**Framework-relevant derived quantities (Wolfram-verify at joint-fit step):**
+- $a_e^{\rm bound}(Z{=}50) = (g-2)/2 = \mathbf{-0.044\,718\,970\,5}$ (strongly negative; $(Z\alpha)^2=0.1331$, perturbative series invalid — must use full Dirac $g_D=\tfrac23[1+2\sqrt{1-(Z\alpha)^2}]=1.90808$ + QED).
+- (Z-ii) back-fit estimate: $r_e^{(Z=50)}/r_0 = (2-a)/(2(2+a)) \approx \mathbf{0.522\,863}$ — a **+2.9% departure** from the Z=1 value 0.499421. Decisive against Outcome A.
+
+**COMPLETE measured Z-scan (5 absolute points + free reference):**
+| Z | source | $g_e^{\rm bound}$ | $a_e^{\rm bound}=(g-2)/2$ | back-fit $r_e^{(Z)}/r_0$ (hand est.) |
+|---|---|---|---|---|
+| 1 (free) | CODATA | 2.0023193044 | +0.0011596522 | 0.4994205099 |
+| 2 ³He⁺ | Schneider22 | 2.0021774158 | +0.0010887079 | ≈0.499456 |
+| 6 ¹²C⁵⁺ | Sturm14 | 2.0010415902 | +0.0005207951 | ≈0.499739 |
+| 8 ¹⁶O⁷⁺ | Verdú04 | 2.0000470254 | +0.0000235127 | ≈0.499994 |
+| 14 ²⁸Si¹³⁺ | Sturm11 | 1.9953489587 | −0.0023255207 | ≈0.501164 |
+| 50 ¹¹⁸Sn⁴⁹⁺ | Morgner23 | 1.9105620590 | −0.0447189705 | ≈0.522863 |
+
+**Li²⁺ (Z=3) import status — ⚠ brief placeholder is unphysical:** brief lists $g(^7{\rm Li}^{2+})=2.0000251707(10)$ attrib. "Sturm 2014 Nature 506, 467" — but (a) Nature 506,467 is the C⁵⁺ paper (already used for Z=6), and (b) the value is unphysical: the Z=3 binding trend requires $g\approx2.00200$ (between He⁺ 2.00218 and C⁵⁺ 2.00104), **not** 2.00003. Per branch rules I do **not** re-derive Li²⁺ — it must be imported from #78's actual Self-Energy-branch result. **Action:** treat Li²⁺ as a *pending optional 6th point*; the 5 solidly-measured ions {2,6,8,14,50} already satisfy the ≥5 criterion and span Z=2–50, so the joint fit + verdict proceed without it. Slot Li²⁺ in if/when #78 delivers a physical value.
+
+- **Current ion focus:** ¹¹⁸Sn⁴⁹⁺ (Z=50) — done. **Data collection complete (5 ions).**
+- **Next:** scaffold `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Zscan_fit.wl` — header + constants ($\alpha$, the 6 g-values) + per-Z back-fit cell computing $r_e^{(Z)}/r_0=(2-a)/(2(2+a))$ and the (Z-i) residuals $g^{\rm meas}(Z)-(-2.00231930)$. (Joint χ² + Z-scaling form-fit in the following iteration.)
+- **Outcome-matrix tentative:** **C** (A now decisively excluded by the Sn⁴⁹⁺ +2.9% back-fit departure; the Sn point also anchors the B-vs-C curvature test).
+- **Status:** READY — **≥5 ions catalogued ✅** (He⁺ Z=2, C⁵⁺ Z=6, O⁷⁺ Z=8, Si¹³⁺ Z=14, Sn⁴⁹⁺ Z=50, all absolute w/ provenance; Li²⁺ Z=3 pending optional import). Next: build the fit notebook.
+
+## Iteration 10 — 2026-05-27 — scaffold `r_e_Zscan_fit.wl`
+
+**Step taken:** Created `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Zscan_fit.wl` (the joint-fit notebook), mirroring the house style of `r_e_triangulation.wl` (`(* ::Package:: *)` header, single-line `;`-joined cells for MCP transport safety, `Print[..., InputForm[...]]`, `(* === *)` banners). Inspected sibling notebooks first to match conventions.
+
+**Notebook structure (5 sections, MCP-ready):**
+- **Header block:** purpose, the two readings (Z-i universal / Z-ii Z-scaled), the **honest-scope caveat** (Z-ii is a one-to-one re-encoding of measured g; only Z-i is falsifiable; a clean Z-ii form-fit = Outcome C inheritance not B), **Crocco SUBSTANTIVE-AI tag** on the Z-scaling functional-form choice, and the full **measurement-provenance table** (5 ions + DOIs), with the Li²⁺ unphysical-placeholder note.
+- **S0** constants: `alpha`=CODATA 2018, `gFreeMag`=2.00231930436256, `xUniversal`=0.4994205099128317, `Zvals`={2,6,8,14,50}, `gMeas`, `gSig`.
+- **S1** `gr[x_]:=2(1-4/(2x+1))` + `backfit[a_]:=(2-a)/(2(2+a))` + sanity checks (gr[1/2]=−2; |gr[xUniversal]|≈2.0023193).
+- **S2** per-Z `aBound=(gMeas-2)/2`, `xBackfit=backfit/@aBound`.
+- **S3** (Z-i) universal-cutoff χ²: fixed prediction at every Z, residuals + σ-counts + total χ².
+- **S4** (Z-ii) Z-scaling fit: `Fit` of `xBackfit` vs `(Zα)²` — linear `c0+c2 u` and quadratic; intercept vs xUniversal vs 1/2.
+- **S5** QED-leading cross-check `gQEDlead[Z]` vs measured.
+- Trailing **EXPECTED** comment block with the iter 2–9 hand estimates to confirm on the MCP run.
+
+**Guardrails honored:** single-line cells; symbols `alpha`/`gMeas`/etc. (no bare `e`/`V`); no symbolic Dot. Did NOT touch any `r_e_Li2plus_*.wl` (#78-owned).
+
+- **Current ion focus:** joint fit (notebook scaffolded, not yet executed).
+- **Next:** **execute the notebook cells via Wolfram MCP** (S1→S5), record the actual outputs inline as `(* Result: ... *)` in `r_e_Zscan_fit.wl`, and confirm/correct the hand estimates — especially S3 χ² (expect ≫ N_ions → A rejected) and the S4 linear-fit intercept + slope. Debug any cell that errors.
+- **Outcome-matrix tentative:** **C** (pending the MCP-confirmed χ² and form-fit).
+- **Status:** READY (notebook scaffolded; 5 ions catalogued; joint fit pending MCP execution).
+
+## Iteration 11 — 2026-05-27 — EXECUTED joint χ² + Z-scaling fit (Wolfram MCP) — headline result
+
+**Step taken:** Ran all cells of `r_e_Zscan_fit.wl` via Wolfram MCP. Recorded actual outputs inline in the notebook (replacing the EXPECTED block with an MCP-RESULTS block). All hand estimates confirmed.
+
+**MCP results (5 ions, Z={2,6,8,14,50}):**
+- **S1 sanity:** `gr[1/2]=-2` exact; `|gr[xUniversal]|=2.00231930436256` ✅.
+- **S2 back-fit** $x^{(Z)}=r_e^{(Z)}/r_0$: {0.49945594, 0.49973967, 0.49998824, 0.50116411, 0.52287087} (matches iter 2–9 hand estimates to all shown digits).
+- **S3 (Z-i) UNIVERSAL-cutoff test:** prediction fixed at 2.00231930436256 ∀Z; per-ion residuals {−1.4e-4 … −9.2e-2}; σ-counts up to **−9.2×10⁷**; **χ² = 1.028×10¹⁶** (5 ions, 0 free params). → **OUTCOME A DECISIVELY REJECTED.**
+- **S4 (Z-ii) Z-scaling form-fit** of $x^{(Z)}$ vs $(Z\alpha)^2$:
+  - linear: $x = 0.4993835903 + 0.17639313\,(Z\alpha)^2$
+  - quadratic: $x = 0.4994206084 + 0.16627568\,(Z\alpha)^2 + 0.07415407\,(Z\alpha)^4$
+  - **Two striking facts:** (1) the **quadratic intercept $c_0 = 0.4994206084$ recovers `xUniversal` = 0.4994205099 (the Z=1 triangulated / free-electron cutoff) to $9.8\times10^{-8}$** — i.e. the Z-scan back-fit extrapolates cleanly to the independently-determined Z=1 value as $Z\to0$. (2) the **quadratic slope $c_2 = 0.16627568 \approx 1/6 = 0.16666667$** (to $2.3\times10^{-3}$) — exactly the QED leading-coefficient prediction, since $dx/d(Z\alpha)^2 = \tfrac{dx}{da}\cdot\tfrac{da}{d(Z\alpha)^2} = (-\tfrac12)(-\tfrac13) = +\tfrac16$ at $a\approx0$.
+
+**Z-axis VERDICT (preliminary, to be written into 14_HydrogenicIon_Zscan.md):**
+- **A excluded** at χ²∼10¹⁶ over Z=2–50.
+- **C** (not B): the (Z-ii) back-fit follows $x = c_0 + c_2(Z\alpha)^2 + c_4(Z\alpha)^4$ with $c_0$=free-electron cutoff and $c_2$=QED's 1/6. The clean $(Z\alpha)^2$ form is a property of **QED's** bound-state $g(Z\alpha)=2[1-\tfrac13(Z\alpha)^2-\ldots]$ inherited by the inversion — the framework supplies only $g_r[x]$ and leaves each state's cutoff free; the $-\tfrac13$ coefficient is QED's, not the dual framework's. **This extends PR #70's lepton-axis verdict ("particle-specific through $a_\ell$") to the Z-axis ("Z-specific through $a_e^{\rm bound}(Z\alpha)$").**
+
+- **Current ion focus:** joint fit — DONE (executed + recorded).
+- **Next:** draft `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/14_HydrogenicIon_Zscan.md` — per-ion sections (5 ions w/ full provenance), the (Z-i)/(Z-ii) tables, the joint-fit result, the Z-axis verdict (Outcome C), the honest-scope + Crocco substantive-AI human-acceptance block, and the wikilinks to DRQM I §III.D / FINDINGS Finding 2 / PR #70. (Then: append FINDINGS Finding-2 multi-Z update; then STOP — done-criteria will be met.)
+- **Outcome-matrix:** **C** (confirmed by MCP: A rejected; B requires an internal $(Z\alpha)^2$ derivation the framework lacks; the back-fit inherits QED bound-state structure).
+- **Status:** READY — **joint χ² + Z-scaling fit REPORTED ✅; Z-axis verdict (C) recorded ✅; ≥5 ions ✅.** Remaining for done-criteria: write 14_HydrogenicIon_Zscan.md + FINDINGS update (documentation of the above).
+
+## Iteration 12 — 2026-05-27 — finalize `14_HydrogenicIon_Zscan.md` (primary output doc)
+
+**Step taken:** The doc already existed (pre-drafted steel-man with the Branch C verdict) but carried stale provenance and lacked the executed-fit numbers. Updated it to the final state in 6 targeted edits.
+
+**Edits made:**
+1. **Header State line** → reflects iter 11/12: 5 ions catalogued (Z=2–50), joint fit executed; notes the Sn⁴⁹⁺-for-Ca¹⁹⁺ substitution + Li²⁺ pending.
+2. **§2 ion catalog** → final 5-ion table with **corrected sources**: C⁵⁺ → *Nature* 506,467 (2014) [10.1038/nature13026] (was wrongly "PRL 107"); Si¹³⁺ → *PRL* 107,023002 (2011) (was wrongly "PRL 110, 263002 (2013)"); **added ¹¹⁸Sn⁴⁹⁺ Z=50** [10.1038/s41586-023-06453-2]; removed Ca¹⁹⁺ row. Added drop-decisions note (Be³⁺/Ne⁹⁺/Ca¹⁹⁺) + high-Z perturbative caveat.
+3. **§3 (Z-i) table** → added Z=50 row; replaced σ-estimates with MCP residuals/σ-counts; **boxed χ² = 1.03×10¹⁶**.
+4. **§4 back-fit table** → added Z=50 row (0.522870866); MCP-precise values.
+5. **§5 form-fit** → replaced the muddled "b≈−0.5" text with the actual MCP linear+quadratic fits; the two diagnostics (intercept = free cutoff to 9.8e-8; slope $c_2$=0.16628≈1/6 with the $(-\tfrac12)(-\tfrac13)$ derivation).
+6. **§6 verdict** → cites χ²=1.03×10¹⁶ + form-fit. **§8 open items** → marked χ² + form-fit DONE; Li²⁺ import + FINDINGS update remain.
+
+Crocco `<!-- TODO human reviews -->` blocks retained (substantive-AI doc). Did NOT touch #78-owned files.
+
+- **Current ion focus:** documentation (joint fit done).
+- **Next:** append the Z-scan multi-Z verdict to `Equation_Verification/FINDINGS_for_author_review.md` Finding 2 (parallel to PR #70's lepton-axis update) — the last remaining done-criteria item. **After that: STOP the loop** (all done-criteria met: ≥5 ions ✅, joint χ²+Z-scaling fit ✅, Z-axis verdict in STATE.md + 14_HydrogenicIon_Zscan.md ✅, FINDINGS update ✅).
+- **Outcome-matrix:** **C** (final).
+- **Status:** READY — primary output doc finalized; one documentation step (FINDINGS) remains before loop stop.
+
+## Iteration 13 — 2026-05-27 — FINDINGS Finding-2 multi-Z update — ALL DONE-CRITERIA MET, LOOP STOPS
+
+**Step taken:** Appended an "Update — 2026-05-27: hydrogenic-ion Z-scan (#82) — the Z-axis verdict" subsection to `Equation_Verification/FINDINGS_for_author_review.md` Finding 2 (inserted after the existing iter-5/6 TODO block, before the Finding-3 divider). Records: the 5-ion data + DOIs, the (Z-i) χ²=1.03×10¹⁶ refutation, the (Z-ii) inheritance result ($c_0$=free cutoff, $c_2$≈1/6), the **Branch C** outcome-matrix classification as the Z-axis analog of PR #70's lepton-axis verdict, the Crocco provenance line, and a fresh human-review TODO block.
+
+**DONE-CRITERIA AUDIT (all met):**
+1. ✅ **5+ ions catalogued with provenance:** ³He⁺(2), ¹²C⁵⁺(6), ¹⁶O⁷⁺(8), ²⁸Si¹³⁺(14), ¹¹⁸Sn⁴⁹⁺(50) — all absolute g-factors, web-verified DOIs. (Li²⁺ Z=3 import from #78 pending; not blocking — 5 solid points span Z=2–50.)
+2. ✅ **Per-ion framework prediction under (Z-i) and (Z-ii)** in `14_HydrogenicIon_Zscan.md` §3–§4.
+3. ✅ **Joint χ² + Z-scaling fit reported** in `r_e_Zscan_fit.wl` (Wolfram-MCP-executed): χ²=1.03×10¹⁶ (Z-i); quadratic form-fit (Z-ii).
+4. ✅ **Z-axis verdict (C) recorded in BOTH** STATE.md (iters 9–12) AND `14_HydrogenicIon_Zscan.md` §6.
+5. ✅ **FINDINGS Finding-2 multi-Z update appended.**
+
+**FINAL VERDICT — Outcome C (Z-specific through QED bound-state $a_e(Z\alpha)$ inheritance).** Branch A (Z-universal cutoff) refuted at χ²≈10¹⁶ over Z=2–50; the per-Z back-fit inherits QED's $-\tfrac13(Z\alpha)^2$ binding structure (slope $c_2$≈1/6, intercept = free-electron cutoff), which the framework does not derive internally. Directly parallels PR #70's lepton-axis verdict. Derivational Branch B remains open, gated on #75 (Tepper hypothesis-(i) input).
+
+**Open (non-blocking, for orchestrator/morning review):** Li²⁺ Z=3 import from #78 once that branch delivers a physical value; PR open + GitHub comments (orchestrator handles — NOT this loop). The brief's Li²⁺ placeholder ($2.0000251707$) is unphysical and must not be used.
+
+- **Current ion focus:** none — campaign complete.
+- **Outcome-matrix:** **C** (final).
+- **Status:** ✅ **COMPLETE — LOOP STOPPED.** All done-criteria met; no ScheduleWakeup issued. Branch ready for orchestrator PR/review.

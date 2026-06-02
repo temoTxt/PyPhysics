@@ -1,0 +1,98 @@
+\section{Z=1 empirical triangulation of \texorpdfstring{$r_e/r_0$}{r\_e/r\_0}}
+\label{sec:z1-triangulation}
+
+\paragraph{Result.}
+\[
+\boxed{\;
+  \frac{r_e}{r_0} \;=\; 0.4994205099128317 \;\pm\; 2.50\times 10^{-13}
+\;}\qquad \text{(PR \#62, joint best-fit across six observables).}
+\]
+
+\paragraph{Method (full derivation: \S\ref{sec:eq-triangulation}).}
+Per \texttt{10\_CrossComparison.md}~\S2, the six $g_s$-dependent observables
+each enter as $\mathrm{anchor}_i \cdot (g_r(x)/g_s^{\rm meas})^{n_i}$ with
+$n_i \in \{1, 2\}$. Two weighting passes are reported:
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item \textbf{Pass~A} (measurement-$\sigma$ only): $r_{\rm opt} =
+        0.4994061257148855$ at $\chi^2 \approx 2.97\times 10^{16}$.
+        Unphysical: pulls $g_e(r_{\rm opt})$ off measured by
+        $5.76\times 10^{-5}$ to compensate the hyperfine residual that the
+        leading-$(g_s/{-2})^n$ model cannot fit by any choice of $r$ alone.
+  \item \textbf{Pass~B} (measurement-$\sigma$ + framework-floor noise):
+        $r_{\rm opt} = \mathbf{0.4994205099128317}$ at
+        $\chi^2 \approx 3.99958 \approx 4$ (the number of framework-floor
+        residuals at $\sim$one-floor). Matches branch~(c) to 16 sig figs.
+\end{itemize}
+Pass~B is the honest weighting. Stretched-fit flag: \textbf{none}.
+
+\paragraph{Closed-form algebraic inversion (the \S III.D-extension).}
+\texttt{Roadmapping/Equation\_Verification/Dual\_Relativistic\_Quantum\_Mechanics\_I.md}
+\S III.D-extension establishes the closed-form
+\[
+\boxed{\;
+  \frac{r_e}{r_0} \;=\; \frac{2 - a_e}{2(2 + a_e)}
+\;}
+\]
+obtained by inverting $g_r(r_e/r_0) = -2(1 + a_e)$. With CODATA-full
+$a_e^{\rm expt}$, this gives $r_e/r_0 = 0.499\,420\,509\,913\,18$, matching
+the triangulated optimum to $3.45\times 10^{-13}$ (within precision floor
+$\sigma_r = 2.5\times 10^{-13}$).
+
+\paragraph{Honest framing (verbatim from DRQM~I~\S III.D-extension).}
+This is \emph{reproduction-by-inheritance under hypothesis~(ii)}: QED supplies
+$a_e(\alpha)$; the framework supplies the (III.22) cutoff--anomaly
+identification and the algebraic inversion. It is \textbf{not} an independent
+dual-framework derivation of $a_e$. The \S III.D Schwinger identification
+subsection (PR~\#70) characterises the same algebraic operation as the
+back-fit identity from the Candidate-3 perspective; both subsections together
+give the full picture.
+
+\paragraph{Finding 2 verdict trajectory (verbatim from
+\texttt{FINDINGS\_for\_author\_review.md}:209).}
+\[
+\mathbin{\hbox{\color{red}\(\bullet\)}}\,\text{(was)}
+\;\longrightarrow\;
+\mathbin{\hbox{\color{yellow!90!black}\(\bullet\)}}\,\text{characterised (\#61)}
+\;\longrightarrow\;
+\mathbin{\hbox{\color{yellow!90!black}\(\bullet\)}}/
+\mathbin{\hbox{\color{green!60!black}\(\bullet\)}}\,
+\text{at hypothesis-(ii) framework precision (\#64)}
+\]
+\textbf{Unconditional} $\mathbin{\hbox{\color{green!60!black}\(\bullet\)}}$
+requires hypothesis-(i) re-derivation (proper-time photon propagator +
+bound-state propagator in the (II.3) Pauli kernel + mass-renormalisation
+prescription at the cutoff), tracked in
+\textbf{\href{https://github.com/temoTxt/PyPhysics/issues/75}{issue \#75}}.
+
+\paragraph{Hypothesis split (the load-bearing question).}
+\begin{enumerate}[topsep=2pt,itemsep=0pt,label=(\roman*)]
+  \item the dual-framework proper-time one-loop vertex (with the dual photon
+        propagator and bound-state structure) is computed \emph{independently}
+        and shown to reproduce $a_e^{(1)} = \alpha/(2\pi)$;
+  \item the dual-framework one-loop vertex correction \emph{reproduces} the
+        standard-QED Schwinger anomaly identically by inheritance, with all
+        dual structure absorbed into the matter-side (II.3) kernel which at
+        one-loop is formulation-independent.
+\end{enumerate}
+The closed-form inversion + CODATA-$a_e$ chain delivers the triangulated value
+under either reading; only (i) constitutes a derivation \emph{within} the
+framework.
+
+\paragraph{Variational / operator-coefficient route (Candidate~2).}
+Route~Z's framework-internal closure (closure 7c on the spin-magnetic operator
+coefficient, tree-level target $g = -2$) yields
+$r_e/r_0 = 1/2$ exactly, matching FoundationsII-Classical \S2.2's
+critical-point identification. The discrepancy with the triangulated value
+$0.4994205099128317$ is $5.79\times 10^{-4}$ --- exactly the size of the
+Schwinger one-loop QED correction $\alpha/(2\pi) \approx 1.16\times 10^{-3}/2
+\approx 5.8\times 10^{-4}$. The Schwinger 1-loop refinement reproduces the
+triangulated value to $\sim 10^{-7}$ (Karplus--Kroll-level), but requires QED
+input \emph{external} to the framework. Full derivation:
+\S\ref{sec:eq-variational} and \S\ref{sec:eq-schwinger-residual}.
+
+\authorreview{(1)~Does the Pass~B weighting match your intent? (2)~Is
+``reproduction-by-inheritance under hypothesis~(ii)'' the framework's
+intended position for the closed-form result, or is hypothesis~(i)
+(issue~\#75) required? (3)~Does framing the triangulated value as a
+\emph{refinement} of the published initial-value $r_e$ --- rather than as a
+result the published derivation must reproduce --- match your reading?}
