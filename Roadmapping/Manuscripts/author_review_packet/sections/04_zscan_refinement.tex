@@ -1,0 +1,90 @@
+\section{Z-scan empirical refinement}
+\label{sec:zscan-refinement}
+
+\paragraph{Headline result (PR \#87, full derivation: \S\ref{sec:eq-zscan-fit}).}
+The multi-$Z$ scan across $Z = 2, 6, 8, 14, 50$ supplies the
+cross-$Z$ comparison the Li$^{2+}$ branches (\S\ref{sec:eq-li2plus-joint-fit}--\ref{sec:eq-li2plus-hyperfine}) could not run.
+\[
+\boxed{\;
+  \chi^2_{\rm (Z\text{-}i)\;universal\;cutoff} \;=\; 1.0282\times 10^{16}
+  \quad\Longrightarrow\quad \text{OUTCOME A DECISIVELY REJECTED.}
+\;}
+\]
+
+\paragraph{Ion set + measurement provenance.}
+$^3$He$^+$ (Schneider 2022 \emph{Nature} 606, 878);
+$^{12}$C$^{5+}$ (Sturm 2014 \emph{Nature} 506, 467);
+$^{16}$O$^{7+}$ (Verd\'u 2004 \emph{PRL} 92, 093002);
+$^{28}$Si$^{13+}$ (Sturm 2011 \emph{PRL} 107, 023002);
+$^{118}$Sn$^{49+}$ (Morgner 2023 \emph{Nature} 622, 53). Combined absolute
+$1\sigma$ on $g$: ranges $10^{-11}$ to $10^{-9}$.
+
+\paragraph{Per-$Z$ back-fit cutoff $x^{(Z)} = r_e^{(Z)}/r_0$.}
+Inverting $g_r(x) = -2(1 + a)$ at each measured $g$:
+\[
+x^{(Z)} = \frac{2 - a_{\rm bound}^{(Z)}}{2(2 + a_{\rm bound}^{(Z)})}.
+\]
+Numerical results (Wolfram-MCP 2026-05-27, STATE.md iter~11):
+\begin{center}
+\begin{tabular}{rrr}
+\toprule
+$Z$ & $a_{\rm bound}$       & $x^{(Z)}$ \\
+\midrule
+1  & $a_e^{\rm CODATA}$    & $0.4994205099128317$ (= $x_{\rm univ}$) \\
+2  & $+0.00108870790$      & $0.49945594221$ \\
+6  & $+0.00052079510$      & $0.49973967024$ \\
+8  & $+0.00002351270$      & $0.49998824379$ \\
+14 & $-0.00232552065$      & $0.50116411391$ \\
+50 & $-0.04471897050$      & $0.52287086604$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Z-scaling fit (reading (Z-ii)).}
+Fitting $x^{(Z)}$ vs.~$(Z\alpha)^2$:
+\begin{align*}
+\text{linear:}\quad     & x = 0.499\,383\,5903 + 0.176\,393\,13\,(Z\alpha)^2 \\
+\text{quadratic:}\quad  & x = 0.499\,420\,6084 + 0.166\,275\,68\,(Z\alpha)^2
+                          + 0.074\,154\,07\,(Z\alpha)^4
+\end{align*}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item Quadratic intercept $c_0 = 0.4994206084$ matches $x_{\rm univ} =
+        0.4994205099$ to $9.8\times 10^{-8}$.
+  \item Quadratic slope $c_2 = 0.166276$ matches QED's $1/6 = 0.166667$
+        to $2.3\times 10^{-3}$.
+\end{itemize}
+The clean $(Z\alpha)^2$ form is a property of QED's bound-state
+$g(Z\alpha) = 2[1 - (1/3)(Z\alpha)^2 - \dots]$, \emph{inherited} by the
+back-fit --- not derived from the framework apparatus.
+
+\paragraph{Outcome C (per PR \#87 conclusion, verbatim).}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item Outcome~A (single universal cutoff) excluded at $\chi^2 \sim 10^{16}$
+        over 5 ions.
+  \item The (Z-ii) back-fit $x^{(Z)}$ is well-described by
+        $x = c_0 + c_2(Z\alpha)^2 + c_4(Z\alpha)^4$ with $c_0 = x_{\rm univ}$
+        recovered as $Z\to 0$ to $10^{-7}$, and $c_2 \approx 1/6$ ---
+        the QED bound-state leading coefficient.
+  \item The clean $(Z\alpha)^2$ form is QED-inherited, not framework-derived.
+        Therefore \textbf{Outcome~C: $Z$-specific cutoff through QED-inheritance},
+        extending PR~\#70's lepton-axis verdict (``particle-specific through
+        $a_\ell$'') to the $Z$-axis (``$Z$-specific through
+        $a_e^{\rm bound}(Z\alpha)$'').
+\end{itemize}
+
+\paragraph{Reading.}
+The Z-scan does not contradict the algebra of PRs~\#84/\#85/\#86 (the
+(III.22) formula indeed has no explicit $Z$). What it shows is that the
+framework's apparatus cannot \emph{derive} a Z-dependent inheritance curve ---
+the framework supplies $g_r(x)$ and leaves each state's cutoff free
+(per~(III.23)); the per-$Z$ back-fit lands on the QED bound-state curve
+because that's the empirical content of $a_e^{\rm bound}(Z\alpha)$, supplied
+to the inversion as input. The Branch~A vs.~Branch~C tension reduces to
+which reading of (III.22)/(III.23) the senior author intends ---
+\S\ref{sec:branch-a-vs-c}.
+
+\authorreview{The PR \#87 numerical findings are reproduced verbatim from
+the notebook. The interpretive move from ``Outcome~A excluded'' to
+``Outcome~C = QED-inheritance'' is substantive AI: please confirm whether the
+Z-scan empirical exclusion of Outcome~A and the identification of the
+back-fit slope with the QED $1/6$ matches your reading of (III.23).}

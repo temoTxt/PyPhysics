@@ -227,6 +227,22 @@ A *distinct* dual-framework prediction would test **hypothesis (i)** (proper-tim
 
 <!-- TODO: human reviews and fills in — confirms (a) the Z-universal (Branch A) verdict with Branch B structurally excluded, (b) the finding that Li²⁺ adds no new cutoff constraint because the cutoff has no Z-dependence to constrain, and (c) the meta-finding that three of the brief's four measurement values need re-sourcing. -->
 
+### Update — 2026-05-27: hydrogenic-ion Z-scan ([#82](https://github.com/temoTxt/PyPhysics/issues/82)) — the Z-axis verdict
+
+The lepton-axis cross-particle test (Candidate 3 / [PR #70](https://github.com/temoTxt/PyPhysics/pull/70)) showed the cutoff $r_e/r_0$ is **not universal across leptons** — it is particle-specific through $a_\ell$. Issue #82 runs the analogous test along the **nuclear-charge axis**: does the single triangulated $r_e/r_0 = 0.4994205099\ldots$ reproduce the bound-electron g-factor across hydrogen-like ions, or does it inherit QED's bound-state $a_e(Z\alpha)$ per Z? Full write-up: [`../Quantum_Mechanics/Bethe_Salpeter/14_HydrogenicIon_Zscan.md`](../Quantum_Mechanics/Bethe_Salpeter/14_HydrogenicIon_Zscan.md); companion notebook [`../Mathematica_Notebooks/Quantum_Mechanics/r_e_Zscan_fit.wl`](../Mathematica_Notebooks/Quantum_Mechanics/r_e_Zscan_fit.wl) (Wolfram-MCP-executed).
+
+**Data (5 hydrogenic ions, absolute g-factors, web-verified DOIs):** ³He⁺ Z=2 (Schneider 2022, *Nature* 606,878), ¹²C⁵⁺ Z=6 (Sturm 2014, *Nature* 506,467), ¹⁶O⁷⁺ Z=8 (Verdú 2004, *PRL* 92,093002), ²⁸Si¹³⁺ Z=14 (Sturm 2011, *PRL* 107,023002), ¹¹⁸Sn⁴⁹⁺ Z=50 (Morgner 2023, *Nature* 622,53). (⁷Li²⁺ Z=3 import from #78 pending; Be³⁺/Ne⁹⁺/Ca¹⁹⁺ dropped — no usable absolute hydrogenic measurement.)
+
+**Result.**
+- **(Z-i) universal cutoff REFUTED:** with $r_e/r_0$ fixed at the Z=1 triangulated value the framework predicts the *same* $|g| = 2.00231930$ at every Z, giving $\chi^2 = 1.03\times10^{16}$ over 5 ions (0 free params); residuals grow monotonically from $1.4\times10^{-4}$ (He⁺) to $9.2\times10^{-2}$ (Sn⁴⁹⁺), i.e. up to $9\times10^7\,\sigma$.
+- **(Z-ii) per-Z back-fit INHERITS QED:** $r_e^{(Z)}/r_0 = (2-a)/(2(2+a))$ with $a=(|g|-2)/2$ sweeps monotonically through $1/2$ (the tree-Dirac value, reached near Z≈8 where the $-\tfrac13(Z\alpha)^2$ binding correction cancels the free anomaly). A quadratic form-fit $r_e^{(Z)}/r_0 = c_0 + c_2(Z\alpha)^2 + c_4(Z\alpha)^4$ gives $c_0 = 0.4994206$ (= free-electron cutoff, recovered to $10^{-7}$) and $c_2 = 0.16628 \approx 1/6$ — exactly QED's leading coefficient via $\tfrac{d(r_e/r_0)}{d(Z\alpha)^2} = (-\tfrac12)(-\tfrac13) = \tfrac16$.
+
+**Outcome-matrix classification (per master [#67](https://github.com/temoTxt/PyPhysics/issues/67)): Branch C on the Z-axis.** The clean $(Z\alpha)^2$ form is a property of **QED's** bound-state $g(Z\alpha)=2[1-\tfrac13(Z\alpha)^2-\ldots]$ inherited through the algebraic inversion; the framework supplies only the $g_r[x]$ formula and leaves each state's cutoff free — it does not derive the $-\tfrac13$ Breit/Dirac coefficient internally. This is the **direct Z-axis analog of PR #70's lepton-axis verdict**: "particle-specific through $a_\ell$" becomes "Z-specific through $a_e^{\rm bound}(Z\alpha)$". Branch A (Z-universal cutoff) is empirically dead; derivational Branch B would require the framework to produce the $(Z\alpha)^2$ coefficient from its own apparatus (open, gated on [#75](https://github.com/temoTxt/PyPhysics/issues/75)).
+
+**Provenance (Crocco rule #4):** iteration record in `.dev/research/STATE.md` on branch `82-hydrogenic-z-scan-g-factor` (iters 0–13, 2026-05-27); prompt-of-record `.dev/research/brief.md`. Substantive-AI on the Z-scaling functional-form choice; human-acceptance TODO blocks in `14_HydrogenicIon_Zscan.md` remain unchecked pending author review.
+
+<!-- TODO: human reviews and fills in — confirms (a) the 5-ion catalog + DOIs, (b) the chi^2 = 1.03e16 refutation of the Z-universal cutoff, (c) the Branch C classification and its parallel to PR #70's lepton-axis verdict, and (d) the Li²⁺ import + Be³⁺/Ne⁹⁺/Ca¹⁹⁺ drop decisions. -->
+
 ---
 
 ## Finding 3 — TCEP Eq. (4.16): sign typo in the group-velocity relation

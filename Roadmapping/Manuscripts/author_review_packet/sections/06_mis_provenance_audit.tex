@@ -1,0 +1,76 @@
+\section{Mis-provenance audit log (Li$^{2+}$ brief)}
+\label{sec:mis-provenance-audit}
+
+Three of four Li$^{2+}$ ``measurements'' in the original brief for
+issue~\#78 turned out to be mis-provenanced. The audit log below is
+transcribed from the bodies of PRs \#84, \#85, and \#86, and is the
+load-bearing reason those PRs' \emph{cross-$Z$ residual} computations
+are blocked (predictions are not blocked --- they are computed in
+\S\ref{sec:eq-li2plus-joint-fit}--\ref{sec:eq-li2plus-hyperfine}).
+
+\paragraph{Mis-provenance \#1 (Observable \#1, bound $g$-factor of $^7$Li$^{2+}$).}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item \textbf{Brief citation:} ``Sturm 2014 \emph{Nature} 506, 467''
+        for $g_{\rm bound}(^7$Li$^{2+}) = 2.0000251707$.
+  \item \textbf{What that paper actually measured:} the
+        $^{12}$C$^{5+}$ electron mass (i.e.~$Z = 6$, not $Z = 3$).
+  \item \textbf{Cross-check:} the cited value $2.0000251707$ Wolfram-inverts
+        to $Z \approx 8.04$, not $Z = 3$.
+  \item \textbf{Framework prediction at $Z = 3$:} $g_{\rm bound} \approx
+        2.00200$ (\S\ref{sec:eq-li2plus-joint-fit}).
+\end{itemize}
+
+\paragraph{Mis-provenance \#2 (Observable \#3, $2P_{3/2}{-}2P_{1/2}$ FS in $^7$Li$^{2+}$).}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item \textbf{Brief citation:} $\sim 7{,}367$ MHz ($\sim 7.4$ GHz).
+  \item \textbf{What that value actually is:} helium-like Li$^+$ ($1s2s$--$1s2p$,
+        two-electron) fine structure, \emph{not} hydrogenic Li$^{2+}$.
+  \item \textbf{Cross-check:} hydrogenic Li$^{2+}$ FS scales as
+        $Z^4 \cdot 10{,}949\;\text{MHz} = 886{,}892$ MHz $\approx 887$~GHz
+        (\S\ref{sec:eq-li2plus-spectroscopy}), $\sim 2$ orders of magnitude
+        above the brief's value.
+  \item \textbf{Riis et al.~1994 attribution} (also in the brief) is
+        He-like Li$^+$ 2-electron Lamb shift, not hydrogenic Li$^{2+}$ either.
+  \item \textbf{Framework prediction:} $887{,}920$ MHz $\approx 887.92$ GHz
+        ($Z^4$-scaled leading Dirac $+$ anomalous offset $+1028$~MHz).
+\end{itemize}
+
+\paragraph{Mis-provenance \#3 (Observable \#4, $^7$Li 1s hyperfine).}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item \textbf{Brief citation:} ``Beckmann 1974 \emph{Z.~Phys.} 270, 173''
+        for $\sim 12.7$ GHz.
+  \item \textbf{What that paper actually is:} a nuclear-moment measurement,
+        \emph{not} a Li$^{2+}$ hyperfine measurement.
+  \item \textbf{Cross-check:} the framework prediction (29.85~GHz,
+        $^3$He$^+$-method-validated to 0.1\%) is off the brief's value by
+        $2.35\times$.
+  \item \textbf{Framework prediction:} 29\,846 MHz $\approx 29.85$ GHz
+        (\S\ref{sec:eq-li2plus-hyperfine}). No direct experimental
+        $^7$Li$^{2+}$ HFS was located in targeted search; the QED-theory
+        comparator is Pachucki, Patkos, Yerokhin 2023, arXiv:2309.00436,
+        Table~VII (which uses experimental Li$^+$ HFS as input).
+\end{itemize}
+
+\paragraph{Mis-provenance \#4 (none --- Observable \#2 is valid).}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item \textbf{Brief citation:} Schiffer 1995 \emph{PRL} 74, 2188 for the
+        $2S_{1/2}{-}2P_{1/2}$ Lamb shift in $^7$Li$^{2+}$ at $62{,}765(21)$ MHz.
+  \item \textbf{Status:} valid hydrogenic Li$^{2+}$ Lamb shift measurement.
+  \item \textbf{Framework prediction:} $\sim 61.1$--$62.7$ GHz Bethe-estimate
+        (\S\ref{sec:eq-li2plus-spectroscopy}); agreement at framework
+        precision, $r_e$-independent (weak discriminator).
+\end{itemize}
+
+\paragraph{Implication for the Li$^{2+}$ verdict.}
+Because \#1, \#3, \#4 all carry valid framework predictions but lack valid
+measurements, the four-observable joint $\chi^2$ at $Z = 3$ is not
+computable. The Li$^{2+}$ branches' ``Branch~A by construction'' verdict is
+reached \emph{in the absence of valid cross-$Z$ residuals}. PR~\#87's
+$Z$-scan supplies the cross-$Z$ residual table the Li$^{2+}$ branches could
+not run (\S\ref{sec:zscan-refinement}).
+
+\authorreview{The audit log above is transcribed verbatim from PR bodies
+\#84/\#85/\#86. Two questions: (a)~do you have access to valid published
+$^7$Li$^{2+}$ measurements for \#1, \#3, \#4 that the targeted searches in
+this campaign missed? (b)~is the Schiffer~1995 attribution for the
+Li$^{2+}$ Lamb shift the citation you would carry forward in the manuscript?}

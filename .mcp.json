@@ -2,6 +2,9 @@
   "mcpServers": {
     "pyphysics": {
       "command": "pyphysics-mcp"
+    },
+    "precision_data": {
+      "command": "precision-data-mcp"
     }
   }
 }

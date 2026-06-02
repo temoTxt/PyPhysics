@@ -1,0 +1,100 @@
+\section{First-principles derivation candidate: variational / operator-coefficient (Routes X and Z)}
+\label{sec:eq-variational}
+
+Source:
+\texttt{Mathematica\_Notebooks/Quantum\_Mechanics/r\_e\_derivation\_variational.wl}
+(238 lines, scaffold for issue~\#65; Candidate-2 arc).
+
+\paragraph{Route X --- variational closure on $K_D$ (BLOCKED).}
+Trial wavefunction $\psi_1(r;a) = e^{-r/a}$ on the radial domain $[r_e,\infty)$.
+Compute $\langle K_D - mc^2 \rangle$ symbolically and impose closure
+condition~\#7 (mass-renormalisation):
+\[
+\langle T\rangle = \frac{\hbar^2}{2 m a^2},\qquad
+\langle V_0\rangle = -e^2\,\frac{a + 2 r_e}{a^2 + 2 a r_e + 2 r_e^2},\qquad
+\langle V_0^2/(2mc^2)\rangle = \frac{e^4/(2 m c^2)}{a^2 + 2 a r_e + 2 r_e^2}.
+\]
+\wolframcheck{Closed-form integrals confirmed; $r_e \to 0$ recovers standard 1s
+normalisation $a^3/4$.}
+
+\paragraph{Route X structural diagnosis.}
+\begin{itemize}[topsep=2pt,itemsep=0pt]
+  \item Electron-radius scale ($\hat a \sim 1$, $\hat r \sim 0.5$):
+        $\langle T\rangle/(mc^2) \sim 1/(2\alpha^2) \sim 9400$. The
+        non-relativistic kinetic-energy expression is invalid here;
+        DRQM~I~(III.4) is an expansion valid for $r \gg \hbar/(mc)$ and
+        $V_0/(mc^2) \ll 1$, both of which fail at $r \sim r_e$.
+  \item Bohr scale ($\hat a \sim 1/\alpha^2$, $\hat r \sim 0.5$): cutoff is
+        invisible (cutoff $\sim r_0$, trial concentrated at
+        $a_B = r_0/\alpha^2$, ratio $\sim \alpha^2 \sim 5\times 10^{-5}$).
+        $dE/d\hat r \sim \alpha^6 \sim 10^{-13}$ --- closure cannot pin
+        $\hat r$.
+\end{itemize}
+\textbf{Conclusion (Route X).} Closure condition~\#7 with the published
+expanded $K_D$ and an exponential NR trial \emph{cannot} determine $\hat r$
+first-principles. Resolution requires either (i) the framework supplying an
+explicit $\Delta E_{\rm SE}^{\rm framework}(r_e)$ (currently unspecified in
+DRQM~I) or (ii) re-deriving from the un-expanded full Dirac equation under a
+radial cutoff regulator.
+
+\paragraph{Route Z --- full-Dirac, closure 7c (operator-coefficient).}
+The radius $r_e$ is identified as the value at which the spin-magnetic
+operator coefficient equals the target $g$-factor.
+\[
+g_r(x) = 2\!\left(1 - \frac{4}{2x+1}\right)
+\]
+At tree-level target $g = -2$ (standard Dirac, no anomalous moment):
+\[
+\boxed{\;
+  \left.\frac{r_e}{r_0}\right|_{\rm tree,\,framework-internal}
+  \;=\; \tfrac{1}{2} \quad\text{exactly.}
+\;}
+\]
+\wolframcheck{\texttt{Solve}[$g_r(x) = -2, x$] $\Rightarrow$ $1/2$.}
+
+At Schwinger one-loop target $g = -2 - \alpha/\pi$:
+\[
+\frac{r_e}{r_0} = \frac{2 - \alpha/(2\pi)}{4 + \alpha/\pi}
+\;=\; 0.499419632159\dots
+\]
+
+\paragraph{Numerical comparison (Outcome C).}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Reading                                & $r_e/r_0$              & residual vs.~triangulated \\
+\midrule
+Framework-internal tree ($g = -2$)     & $0.5$                  & $+5.79\times 10^{-4}$ \\
+Schwinger 1-loop ($g = -2 - \alpha/\pi$)& $0.499419632159865\,6$ & $-8.78\times 10^{-7}$ (Karplus--Kroll) \\
+Triangulated (PR~\#62)                 & $0.4994205099128317$   & --- \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Crucial framing.}
+The Schwinger 1-loop value is \emph{not} first-principles \emph{within} the
+dual-theory framework as published --- it requires the QED Schwinger anomaly
+$\alpha/\pi$ as external input. The framework's algebra (Route~Z with
+closure~7c) can only produce the tree-level $r_e/r_0 = 1/2$. The
+$\alpha/(2\pi)$ shift needed to match the triangulated value comes from QED
+radiative corrections the framework's published apparatus does not internally
+generate. \textbf{Outcome~C} (per master~\#67): the framework-internal
+first-principles cutoff is the tree-level $r_0/2$, with the $\alpha/(2\pi)$
+shift identified as a QED-radiative requirement the framework does not
+internally produce.
+
+\paragraph{Crocco compliance.}
+Trial-wavefunction choice, closure-condition reading
+($\langle \Delta E_{\rm bind}\rangle$ as $\langle V_0\rangle$), and the
+identification of ``framework tree-level target'' with $g = -2$ are
+substantive AI. The arithmetic is pragmatic.
+
+\authorreview{(1) Is the Route~X structural impasse genuine, or does an
+alternative trial (hard-wall $\psi(r_e) = 0$, or soft regulator
+$1/r \to r/(r^2 + r_e^2)$) circumvent it? (2)~Is Outcome~C ---
+framework-internal $r_e/r_0 = 1/2$ exactly --- the correct reading of the
+framework's published apparatus, with the $\alpha/(2\pi)$ shift identified as
+a QED-radiative requirement \emph{external} to the framework? (3)~Is
+``framework tree-level target $g = -2$'' the right identification, or does
+the renormalised dual-Dirac equation internally encode a different
+target~$g$?}
