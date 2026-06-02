@@ -1,44 +1,60 @@
-# Research brief — Li²⁺ spectroscopy (Lamb shift + fine structure) — issue #78
+# Research brief — Hydrogenic Z-scan g-factor (issue #82)
 
-**Branch:** `78-li2plus-spectroscopy`
-**Issue:** https://github.com/temoTxt/PyPhysics/issues/78
-**Parent campaign:** [#50](https://github.com/temoTxt/PyPhysics/issues/50) Bethe–Salpeter (closed; #78 extends it)
-**Parallel branches (do not overlap with these):**
-- `78-bethe-salpeter-z-extension-li2plus` (running; owns observable #1 g-factor + integration / joint χ² + `r_e_Li2plus_joint_fit.wl`)
-- `78-li2plus-hyperfine` (running; owns observable #4 hyperfine)
-**This branch owns:** observables #2 (2S–2P Lamb shift) and #3 (2P₃/₂–2P₁/₂ fine structure)
-**Output file (distinct):** `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/12_Li2plus_Spectroscopy.md`
+**Branch:** `82-hydrogenic-z-scan-g-factor`
+**Issue:** https://github.com/temoTxt/PyPhysics/issues/82
+**Sibling:** #78 (Li²⁺ four-observable spot-check; this ticket extends to multi-Z g-factor only)
+**Parallel branches under #78 (do not overlap):**
+- `78-bethe-salpeter-z-extension-li2plus` (owns Li²⁺ g-factor + joint χ²)
+- `78-li2plus-spectroscopy` (owns Li²⁺ Lamb shift + fine structure)
+- `78-li2plus-hyperfine` (owns Li²⁺ hyperfine)
+**This branch owns:** bound-electron g-factor at multiple Z's (He⁺, Be³⁺, C⁵⁺, Si¹³⁺, Ca¹⁹⁺ — Li²⁺ comes from #78's parallel work, not re-computed here).
+**Output files (distinct):** `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/14_HydrogenicIon_Zscan.md` + `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Zscan_fit.wl`
 
 ## What this branch is doing
 
-Predict the Li²⁺ Lamb shift and fine structure under the dual-theory framework, compare to measurement, and contribute Z=3 prediction values to the joint χ² fit owned by the parallel Self-Energy branch.
+Turn the Z=3 spot-check (running on #78's three branches) into a **Z-scan curve fit**: collect bound-electron g-factor measurements at 4–6 Z values, compute framework predictions under (Z-i) universal-cutoff and (Z-ii) Z-scaled-cutoff readings, and fit $r_e^{(Z)}/r_0$ to the data. Verdict A/B/C/D classifies the Z-dependence.
 
-**Priority signal from Self-Energy iter-1** (recorded 2026-05-27): the **2S–2P Lamb shift is a weak discriminator** of the cutoff-universality question — $r_e$ enters only at sub-leading order via the anomalous-moment piece (per `Bethe_Salpeter/05_LambShift.md` BS-§20 line 114), so (Z-i) and (Z-ii) readings give identical predictions at the Bethe-estimate precision floor. **Therefore prioritize observable #3 fine structure** (which engages $r_e$ through the anomalous-g mechanism and is a real Z-axis discriminator) over observable #2 Lamb shift (which can be reported as ✅-by-inheritance trivially, no Z-axis-test value).
+See issue #82 for full goal, method, acceptance criteria — this brief does not duplicate them.
 
-## Observable scope
+## Z-scan ion list (target — refine per-iteration with DOI/year provenance)
 
-### #2 — 2S₁/₂–2P₁/₂ Lamb shift in Li²⁺ *(weak discriminator; document briefly, do not over-invest)*
+| Ion | $Z$ | Best $g_e^{\rm bound}$ value | Primary reference |
+|---|---|---|---|
+| ³He⁺ | 2 | $2.000\,008\,021(15)$ | Hoffmann 1989 / Köhler 2015 update |
+| ⁹Be³⁺ | 4 | (verify in iter 1) | various Penning-trap groups |
+| ¹²C⁵⁺ | 6 | $2.001\,041\,590\,18(3)$ | Sturm 2011 *PRL* **107**, 023002 |
+| ²⁸Si¹³⁺ | 14 | $1.995\,348\,958\,7(5)$ | Sturm 2013 *PRL* **110**, 263002; Köhler 2016 *Nat. Comm.* **7**, 10246 |
+| ⁴⁰Ca¹⁹⁺ | 20 | sub-ppb | Glazov 2019 / Köhler-Langes 2018 |
 
-- **Measurement:** Schiffer 1995 *PRL* **74**, 2188: $\Delta E_{2S-2P}({}^7\text{Li}^{2+}) = 62\,765(21)$ MHz.
-- **Z-scaling:** leading $\propto (Z\alpha)^4 m_e c^2 / n^3$; Bethe-log $\log(K/|E_m-E_n|)$ shrinks with Z (≈9.83 at Z=1 → ≈7.64 at Z=3). Net Z=3 prediction ≈ 59.3 × 1057.845 ≈ 62,729 MHz at framework's Bethe-estimate precision floor.
-- **Framework apparatus:** apply BS-§19 / BS-§20 formula at Z=3 with the Z-scaled Bethe log; verdict will be ✅-by-inheritance at the framework's precision floor (which is ~250 MHz at Z=3, vs the 21 MHz measurement uncertainty — so the framework's precision is worse than measurement, meaning "agreement at framework precision" is the honest verdict).
-
-### #3 — Fine structure 2P₃/₂–2P₁/₂ in Li²⁺ *(real Z-axis discriminator; primary focus)*
-
-- **Measurement:** Riis et al. (1994) and earlier Bayfield era; current value $\approx 7\,367$ MHz with kHz–MHz precision depending on source.
-- **Z-scaling:** Sommerfeld–Dirac leading term $\propto (Z\alpha)^4 m_e c^2$; Z=3 gives $81 \times$ the H value of 10,969 MHz divided by Bohr-scaling factors → ~7.4 GHz. Apply BS-§14 formula.
-- **Anomalous-g coupling to $r_e$:** the fine structure splitting depends on $g_s$ (Thomas-precession reduction); under the framework's $(g_s/-2)^n \cdot \text{textbook}$ scaling with $n=1$ for fine structure (per `Bethe_Salpeter/10_CrossComparison.md §2`), $r_e$ enters the prediction through $g_s = g_r(r_e/r_0)$. **This is the Z-axis discriminator we want.**
-- **Framework prediction under both readings:**
-  - **(Z-i) Universal cutoff:** $r_e/r_0 = 0.499\,420\,509\,912\,831\,7$ (Z=1 triangulated). Predicts Z=3 FS using the universal cutoff with Z=3 anchor formula.
-  - **(Z-ii) Z-scaled cutoff:** if a framework-internal Z-scaling emerges from §III.D-extension reasoning, apply it; otherwise report as not derivable.
+Li²⁺ (Z=3) value $g_e^{\rm bound}({}^7\text{Li}^{2+}) = 2.000\,025\,170\,7(10)$ (Sturm 2014 *Nature* **506**, 467) — already being worked on `78-bethe-salpeter-z-extension-li2plus`; this branch *imports* that value for the joint fit, does not re-derive.
 
 ## Source-of-record (read in order)
 
-1. `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/03_FineStructure.md` — BS-§14 (Z=1 baseline + Z⁴ scaling identification) **← PRIMARY focus**
-2. `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/05_LambShift.md` — BS-§19/§20 (Z=1 baseline). Already partly read by Self-Energy iter-1; pull key Z-scaling identities only.
-3. `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/10_CrossComparison.md` §2 — the $(g_s/-2)^n \cdot \text{textbook}$ scaling pattern; confirm $n_{\rm FS} = 1$ for fine structure.
-4. `Roadmapping/Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md` §III.D Eqs. (III.22)/(III.23) — anomalous-g formula + muon/proton analogue (the framework's only published Z-precedent).
-5. `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_triangulation.wl` — Z=1 joint-fit notebook for pattern reference (Self-Energy owns the Z=3 analogue, do not duplicate the notebook here).
+1. `Roadmapping/Equation_Verification/Dual_Relativistic_Quantum_Mechanics_I.md` §III.D Eqs. (III.22)/(III.23) — anomalous-g formula + muon/proton analogue (framework's published precedent for particle/scale variation)
+2. `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_triangulation.wl` — Z=1 joint-fit pattern to mirror at multi-Z
+3. `Roadmapping/Equation_Verification/FINDINGS_for_author_review.md` Finding 2 — recently-updated verdict structure (this branch will append a multi-Z update)
+4. `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/10_CrossComparison.md` §2 — the $(g_s/-2)^n \cdot \text{textbook}$ scaling; for g-factor itself the prediction is $g_r(r_e/r_0)$ directly
+
+## Per-ion deliverable shape
+
+For each ion in the Z-scan:
+
+- **As measured:** value, uncertainty, source (paper + year + DOI).
+- **QED prediction:** standard textbook bound-state QED expansion $g_e^{\rm bound}(Z) = g_e^{\rm free} \cdot [1 - (Z\alpha)^2/3 - (Z\alpha)^4/12 + \ldots] + \text{QED corrections}$.
+- **Framework prediction under both readings:**
+  - **(Z-i) Universal cutoff:** $r_e/r_0 = 0.499\,420\,509\,912\,831\,7$ (Z=1 triangulated value, universal). Predict $g_r(r_e/r_0) = -2.00231930\ldots$ — *the same value at every Z*. Residual = measured $g_e^{\rm bound}(Z) - (-2.00231930)$.
+  - **(Z-ii) Z-scaled cutoff:** invert the g-formula at each measured $g_e^{\rm bound}(Z)$ to get $r_e^{(Z)}/r_0 = (2 - a_e^{\rm bound}(Z))/(2(2 + a_e^{\rm bound}(Z)))$. Tabulate the resulting per-Z back-fit values; check for systematic Z-dependence (linear in $Z\alpha$? quadratic? log? Or random scatter consistent with measurement noise + framework precision?).
+- **Per-ion verdict:** ✅ at framework precision / ⚠ at framework precision floor / 🔴.
+
+## Joint χ² + Z-scaling fit (the headline deliverable)
+
+After per-ion values are recorded, the Wolfram MCP notebook `r_e_Zscan_fit.wl` performs:
+
+1. **(Z-i) test:** with $r_e/r_0$ fixed at the Z=1 triangulated value, compute $\chi^2$ across all Z's. If $\chi^2 \ll N_{\rm ions}$ → Z-universal cutoff confirmed; **outcome A.**
+2. **(Z-ii) per-Z back-fit:** report the per-Z back-fit values $r_e^{(Z)}/r_0$ for each ion. Plot or tabulate vs $Z\alpha$. Two sub-cases:
+   - Systematic Z-dependence with a clean functional form (e.g., $r_e^{(Z)}/r_0 = a + b(Z\alpha)^2 + \ldots$ with $\chi^2_{\rm fit} \ll N_{\rm ions}$): **outcome B** with the derived form.
+   - No clean form; per-Z back-fit values scatter or follow QED's bound-state $a_e(Z\alpha)$ inheritance: **outcome C** (framework's cutoff inherits QED bound-state structure per-Z, not derivable from framework's own apparatus).
+3. **Cross-check with PR #70's lepton-axis verdict:** PR #70 showed the cutoff is particle-specific via $a_\ell$. The Z-axis result should be consistent with that: $r_e^{(Z)}/r_0 = (2 - a_e^{\rm bound}(Z\alpha))/(2(2 + a_e^{\rm bound}(Z\alpha)))$ would inherit QED's bound-state $a_e(Z\alpha)$ identically — extending PR #70's "particle-specific through $a_\ell$" verdict to "particle-and-Z-specific through $a_\ell^{\rm bound}(Z\alpha)$".
 
 ## Iteration protocol
 
@@ -46,39 +62,41 @@ Each `/loop` iteration:
 
 1. Read `STATE.md` to find the last iteration's pending-next.
 2. Execute **one** substantive step. Step shapes:
-   - Read a source-of-record document not yet read; record key Z=1 formulas + Z-scaling identities in STATE.md.
-   - Set up or extend a Wolfram MCP cell in `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Li2plus_spectroscopy.wl` (new notebook this branch creates, distinct from Self-Energy's `r_e_Li2plus_joint_fit.wl`).
-   - Execute / debug a Wolfram cell to compute Z=3 framework prediction for #3 or #2.
-   - Draft a per-observable section in `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/12_Li2plus_Spectroscopy.md` (new doc this branch creates).
-   - Report (Z-i)/(Z-ii) reading differences explicitly when they exist.
-3. Append a dated entry to `STATE.md` (ISO timestamp) recording: what advanced, what's queued next, current observable focus (#2 or #3), the current outcome-matrix branch (A/B/C/D), and any BLOCKED state with full measurement provenance for any value added.
-4. `git add` changed files explicitly. New commit only (no `--amend`). Commit message starting with `li2plus-spec:`. Push to this branch.
+   - Read a source-of-record document not yet read; record key formulas + Z-scaling in STATE.md.
+   - Look up + record the precise measurement value + DOI/year for one ion in the Z-scan table (one ion per iter to keep steps small).
+   - Set up or extend `r_e_Zscan_fit.wl` (per-Z prediction cell or joint-fit cell).
+   - Draft a per-ion section in `14_HydrogenicIon_Zscan.md`.
+   - Once all ions are catalogued, execute the joint χ² + Z-scaling fit.
+3. Append a dated entry to `STATE.md`: what advanced, what's queued next, current ion focus (He⁺/Be³⁺/C⁵⁺/Si¹³⁺/Ca¹⁹⁺ or "joint fit"), outcome-matrix branch tentative, any BLOCKED state.
+4. `git add` changed files explicitly. New commit only. Commit message starting with `zscan:`. Push to this branch.
 5. Self-pace next iteration via ScheduleWakeup — **aggressive cadence: 60–180s** (cache-warm; favor 60s the runtime floor unless the next step is explicitly idle-pending; the user has requested fastest viable iteration).
-6. Stop the loop (omit ScheduleWakeup) only when:
-   - Both observables (#2 + #3) have framework predictions documented in `12_Li2plus_Spectroscopy.md` with verdicts, **or**
-   - A hard BLOCKED state requiring Tepper input is recorded.
+6. Stop the loop only when:
+   - All ions in the Z-scan have measured values + framework predictions documented + joint χ² + Z-scaling fit reported, **or**
+   - A hard BLOCKED state is recorded.
 
 ## Guardrails
 
-- **Wolfram MCP gotchas** per CLAUDE.md: single-line cells; avoid `V` / `e` as symbols; non-commutative `Dot` handled.
-- **Crocco compliance:** substantive AI; `<!-- TODO: human reviews and fills in -->` blocks in every interpretation paragraph + the Wolfram notebook header + the per-observable doc updates.
+- **Wolfram MCP gotchas** per CLAUDE.md: single-line cells; avoid `V` / `e` as symbols (use `potV` / `ee`); non-commutative `Dot` handled.
+- **Crocco compliance:** substantive AI; `<!-- TODO -->` blocks throughout. Substantive-AI tag on the Z-scaling functional-form choice (if Outcome B emerges).
 - **Python via `uv run`** only.
-- **Commit hygiene:** new commits only; clear one-line messages starting with `li2plus-spec:`.
-- **Push to this branch only** (`78-li2plus-spectroscopy`); never to `main` or another branch.
-- **Never run destructive git ops.** Halt and record `BLOCKED` if a step would require one.
-- **Do not edit files owned by other branches.** Specifically: do **not** create or edit `Bethe_Salpeter/11_Li2plus_HydrogenicIon.md`, `Bethe_Salpeter/13_Li2plus_Hyperfine.md`, or `r_e_Li2plus_joint_fit.wl` — those are owned by Self-Energy / Hyperfine branches respectively. If you need to modify shared files (`Dual_Relativistic_Quantum_Mechanics_I.md`, `FINDINGS_for_author_review.md`), make scoped additions only; the orchestrator will reconcile at merge time.
-- **Measurement provenance:** every measured value added must record its source (paper + year + DOI/journal) in STATE.md and in `12_Li2plus_Spectroscopy.md`.
-- **(Z-i)/(Z-ii) honesty:** report both readings where they differ; do not silently pick one.
+- **Commit hygiene:** new commits only; `zscan:` prefix.
+- **Push to this branch only** (`82-hydrogenic-z-scan-g-factor`); never to `main` or another branch.
+- **Never run destructive git ops.** Halt and record `BLOCKED` if needed.
+- **Do not edit files owned by #78 branches:** `11_Li2plus_HydrogenicIon.md`, `12_Li2plus_Spectroscopy.md`, `13_Li2plus_Hyperfine.md`, `r_e_Li2plus_joint_fit.wl`, `r_e_Li2plus_spectroscopy.wl`, `r_e_Li2plus_hyperfine.wl` all belong to parallel branches.
+- **Measurement provenance is non-negotiable** for every ion: paper + year + DOI/journal in both STATE.md and `14_HydrogenicIon_Zscan.md`. No bare values.
+- **Li²⁺ value is imported, not re-derived:** use the value Self-Energy branch's work produces; do not duplicate that work.
 
 ## Done criteria
 
-- `Roadmapping/Quantum_Mechanics/Bethe_Salpeter/12_Li2plus_Spectroscopy.md` contains per-observable result sections for #2 + #3, each with measurement + framework prediction + verdict.
-- `Roadmapping/Mathematica_Notebooks/Quantum_Mechanics/r_e_Li2plus_spectroscopy.wl` exists with Wolfram-MCP-verified cells for both observables.
-- STATE.md records the outcome-matrix branch for each observable separately + an overall verdict for this branch's two observables.
+- 5+ ions catalogued with measurement provenance (target: He⁺ Z=2, Li²⁺ Z=3 imported, Be³⁺ Z=4, C⁵⁺ Z=6, Si¹³⁺ Z=14; bonus Ca¹⁹⁺ Z=20 if precision data lookup is fast).
+- Per-ion framework prediction under (Z-i) and (Z-ii) readings in `14_HydrogenicIon_Zscan.md`.
+- Joint χ² + Z-scaling fit reported in `r_e_Zscan_fit.wl` with Wolfram-MCP-verified numerics.
+- Z-axis verdict (A/B/C/D) recorded in both STATE.md and `14_HydrogenicIon_Zscan.md`.
+- FINDINGS Finding 2 multi-Z update appended.
 
-## Outcome-matrix (per observable, recorded in STATE.md)
+## Outcome-matrix
 
-- **A** — Framework prediction matches measurement under the Z=1 triangulated universal cutoff.
-- **B** — Match under a Z-scaled cutoff with framework-internal derivation.
-- **C** — Match only under per-Z back-fit.
-- **D** — Intractable; BLOCKED on Tepper input.
+- **A** — Z-universal cutoff fits all 4–6 ions at framework precision (single $r_e/r_0$).
+- **B** — Z-scaled cutoff $r_e^{(Z)}/r_0 = f(Z\alpha)$ with a framework-internally derivable form fits the data; Z-dependence characterised.
+- **C** — Per-Z back-fit values follow QED's bound-state $a_e(Z\alpha)$ inheritance (no framework-internal Z-derivation; analogous to PR #70's lepton-axis verdict on the Z-axis).
+- **D** — Predictions cannot be made tractably under either reading. BLOCKED on Tepper input.

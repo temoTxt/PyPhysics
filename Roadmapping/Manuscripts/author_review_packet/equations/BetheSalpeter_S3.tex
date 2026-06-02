@@ -1,0 +1,39 @@
+\section{Proper-time canonical Hamiltonian $K$ reduces to non-relativistic kinetic energy}
+\label{sec:eq-bs-s3}
+
+Source: \texttt{Mathematica\_Notebooks/Quantum\_Mechanics/BetheSalpeter\_S3.wl}
+(38 lines). Companion to \texttt{Bethe\_Salpeter/01\_NonRelHydrogen.md}.
+This is the PR~A scaffold result.
+
+\paragraph{Statement.}
+The proper-time canonical Hamiltonian
+\[
+K \;=\; \frac{H_0^2}{2 m c^2} \;+\; \frac{m c^2}{2}, \qquad H_0^2 \;=\; c^2 p^2 + m^2 c^4
+\]
+satisfies the algebraic identity
+\[
+\boxed{\,K \;\equiv\; m c^2 \;+\; \frac{p^2}{2 m}\,}
+\qquad \wolframcheck{\texttt{FullSimplify} returns $0$.}
+\]
+
+\paragraph{Honest scope of this check.}
+The identity is an \emph{algebraic} simplification by construction. $K$ is
+defined as $(c^2 p^2 + m^2 c^4)/(2 m c^2) + m c^2 / 2$; elementary arithmetic
+gives $= p^2/(2m) + m c^2$. Wolfram confirms the arithmetic; it does
+\textbf{not} verify physical content.
+
+In particular this notebook does \textbf{not} verify that $K$ reproduces the
+relativistic hydrogen spectrum. The actual relativistic kinetic energy
+$\sqrt{c^2 p^2 + m^2 c^4} = m c^2 + p^2/(2m) - p^4/(8 m^3 c^2) + \dots$ does
+\textbf{not} match $K = m c^2 + p^2/(2m)$ starting at $p^4/(8 m^3 c^2)$. The
+framework's relativistic content lives in the dual-Dirac equation
+(\,PR~C onward), not in $K$.
+
+The campaign's ``$K$ reduces exactly to non-relativistic kinetic'' claim is
+true as algebra and is the load-bearing scaffold for PRs~A--B (which exercise
+observables at non-relativistic order only). It is \emph{not} a claim about
+relativistic, fine-structure, or higher-order content.
+
+\authorreview{Please confirm the algebraic identity is the intended
+load-bearing statement for PR~A, and that the explicit ``not a claim about
+relativistic content'' framing matches your reading of the campaign scope.}
