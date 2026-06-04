@@ -39,6 +39,20 @@ in which $\theta$ is the angle between the source velocity and its acceleration.
 
 The research questions follow directly. First, what kinematic quantities of the driven Cooper-pair condensate play the role of $\mathbf{u}$ and $\mathbf{a}$ in Eq. (2.2)? Second, does the term contribute a dephasing rate large enough to measure at present $T_2$ values? Third, can the contribution's angular and shape dependence be separated experimentally from the standard radiation-reaction term, which depends on $\dot{\mathbf{a}}$ rather than on $\theta$? These three questions define the three phases of the program.
 
+The symbols used throughout are collected below.
+
+| Symbol | Meaning |
+|---|---|
+| $b$ | proper-time speed parameter; $b\approx c$ in vacuum. |
+| $\tau$ | proper time, the evolution parameter of the dual formulation. |
+| $\mathbf{u},\,\mathbf{a}$ | source velocity and acceleration of the driven condensate. |
+| $\theta$ | angle between $\mathbf{u}$ and $\mathbf{a}$. |
+| $\Gamma_d$ | dissipative coefficient $(\mathbf{u}\!\cdot\!\mathbf{a})/b^4$ of Eq. (2.2). |
+| $A(\tau)$ | microwave drive envelope; $t_g$ the gate time. |
+| $\Gamma_\varphi^{(d)}$ | proposed dual contribution to the pure-dephasing rate. |
+| $\kappa$ | coupling constant of Eq. (3.1), fixed in Phase A. |
+| $T_2$ | transverse coherence time of the qubit. |
+
 ## 3. Hypotheses and predictions
 
 We advance one principal hypothesis and one falsifier. The principal hypothesis is that the dissipative term of Eq. (2.2) contributes an additional pure-dephasing channel to the transmon master equation during gate operations. Written as a Lindblad dephasing rate, the proposed contribution is
@@ -69,15 +83,25 @@ $$
 
 where $\varphi$ is the macroscopic condensate phase[^5]. The second is the AC-Josephson velocity at the drive frequency, fixed by the Josephson relation $\partial_t\varphi = 2eV/\hbar$ and therefore tunable through the drive amplitude. The third is the time derivative of the Cooper-pair dipole moment in the transmon charge basis.
 
-The three identifications give different effect sizes. We summarise the order-of-magnitude estimates, all taken at $b\approx c$ so that $\beta=|\mathbf{u}|/b$:
+The three identifications give different effect sizes. The dimensionless kinematic suppression carried by the term is the fourth power of the velocity ratio,
 
-| Identification | $\beta^4$ scale | Status against present $T_2$ floor |
+$$
+\beta^4 \;=\; \left(\frac{|\mathbf{u}|}{b}\right)^{\!4}, \qquad (4.2)
+$$
+
+evaluated at $b\approx c$. We summarise Eq. (4.2) for each candidate, computed explicitly rather than quoted:
+
+| Identification | velocity $|\mathbf{u}|$ | $\beta^4$ from Eq. (4.2) |
 |---|---|---|
-| Cooper-pair drift velocity | $\lesssim 10^{-30}$ | Unmeasurable. |
-| Fermi velocity | $\sim 10^{-12}$ | Below floor by roughly six orders. |
-| AC-Josephson velocity | drive-amplitude dependent | The only candidate that may reach the floor. |
+| Cooper-pair drift velocity | $\sim 1~\text{m s}^{-1}$ | $\sim 1\times 10^{-34}$ |
+| Fermi velocity (aluminium) | $\sim 2\times 10^{6}~\text{m s}^{-1}$ | $\sim 2\times 10^{-9}$ |
+| AC-Josephson velocity | drive-amplitude dependent | set by the drive |
 
-We observe that only the AC-Josephson identification offers a route to a measurable effect, and then only at large drive amplitude. This observation already constrains the program. The honest reading is that two of the three candidates are excluded by their own effect-size estimates before any derivation begins.
+We are careful about what Eq. (4.2) does and does not say. It is the kinematic suppression of the source term, not the suppression of the measured dephasing rate. The map from $\beta^4$ to a contribution to $T_2$ runs through the coupling $\kappa$ of Eq. (3.1), which Phase A must supply. No feasibility conclusion follows from $\beta^4$ alone. What does follow is a relative ordering: the drift-velocity identification is suppressed by twenty-five orders of magnitude relative to the Fermi-velocity one, so the latter and the amplitude-dependent AC-Josephson case are the only candidates worth carrying into Phase A.
+
+<!-- TODO: human reviews and fills in — the Fermi-velocity suppression computed here, beta^4 ~ 2e-9, is about three orders of magnitude larger than the figure quoted in the seed white paper (~1e-12). The discrepancy is a pure-arithmetic point on (v_F/c)^4 and should be reconciled in Phase A; it may reflect an additional suppression the white paper folded into its figure, or a slip in the white paper's estimate. Either way, no T2-floor claim should rest on beta^4 until kappa is derived. -->
+
+We observe that only the AC-Josephson identification offers a route in which the drive amplitude sets the velocity, and it is the identification on which Phase A should concentrate. The drift-velocity candidate is excluded by Eq. (4.2) before any derivation begins.
 
 <!-- TODO: human reviews and fills in — the three candidate identifications and the order-of-magnitude table are carried over from the white paper (issue #103) and are substantive AI moves. The table assumes b ~ c; if the framework prescribes a different b in a superconducting medium, the estimates shift. A condensed-matter theorist should vet which condensate velocity is the correct kinematic variable in the transmon charge basis. -->
 
