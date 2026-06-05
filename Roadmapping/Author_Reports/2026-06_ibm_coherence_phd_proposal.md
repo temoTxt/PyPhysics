@@ -176,6 +176,104 @@ The program is modest in physical resources and concentrated in analytical effor
 
 <!-- TODO: human reviews and fills in — Trey to confirm the resource scope, in particular whether IBM Quantum Network access is already available through an existing affiliation, and which superconducting-qubit theorist is the intended Phase-A collaborator. -->
 
+## Appendix A — Phase-A derivation scaffold (for review)
+
+This appendix sets out the algebra of Phase A as far as standard open-quantum-systems theory carries it, and it marks the points at which the framework supplies an input that the standard theory does not. It is a scaffold, not a result. The standard steps, A.1 and A.4, are written out. The framework-specific steps, A.2, A.3, and A.5, carry the substantive assumptions; the coupling $\kappa$ is left symbolic throughout, because fixing it is precisely the work of Phase A. We write the appendix in this form so that the framework's authors can check the framework-specific steps directly, independently of the standard machinery around them.
+
+### A.1 The driven transmon (standard)
+
+We treat the transmon as a weakly anharmonic oscillator, in the manner of Koch and co-workers[^2]. The bare Hamiltonian is
+
+$$
+H_0/\hbar \;=\; \omega_q\,a^\dagger a \;+\; \tfrac{\alpha}{2}\,a^\dagger a^\dagger a\,a, \qquad (A.1)
+$$
+
+with $\omega_q$ the qubit frequency and $\alpha$ the anharmonicity. A shaped microwave drive couples through the charge operator,
+
+$$
+H_{\rm drive}(t)/\hbar \;=\; \Omega(t)\,\big[\cos\phi\,(a+a^\dagger) + \sin\phi\;i(a^\dagger-a)\big]\cos\omega_d t, \qquad (A.2)
+$$
+
+where $\Omega(t)\propto A(\tau)$ is the envelope and $\phi$ is the phase in the in-phase/quadrature plane. The phase $\phi$ is the experimentally controlled quantity. It is the handle through which the drive angle of Section 3 is varied, and the derivative-removal shaping of Motzoi and co-workers operates on $\Omega(t)$ at fixed $\phi$[^15].
+
+### A.2 The dual term as a friction on the field mode (framework)
+
+We expand the field in modes $\mathbf{E}(\mathbf{x},\tau)=\sum_{\mathbf k}E_{\mathbf k}(\tau)\,e^{i\mathbf{k}\cdot\mathbf{x}}$ and substitute into the dual wave equation (2.1). Each mode then obeys
+
+$$
+\partial_\tau^2 E_{\mathbf k} \;+\; \Gamma_{\rm mode}\,\partial_\tau E_{\mathbf k} \;+\; (b\,|\mathbf{k}|)^2 E_{\mathbf k} \;=\; -\,b^2\,\mathcal{S}_{\mathbf k}, \qquad \Gamma_{\rm mode}=\frac{\mathbf{u}\!\cdot\!\mathbf{a}}{b^2}. \qquad (A.3)
+$$
+
+We observe that the dual term enters Eq. (A.3) as a damping of the field mode. The modal damping rate $\Gamma_{\rm mode}$ has dimensions of inverse time, and it is nonzero only while the source accelerates. This is the structural content of the framework at this order: the proper-time formulation makes the electromagnetic mode lossy in proportion to $\mathbf{u}\!\cdot\!\mathbf{a}$, where the textbook formulation makes it lossless.
+
+### A.3 The condensate kinematics under drive (framework, gated)
+
+We adopt the AC-Josephson identification of Section 4, in which the junction phase obeys the Josephson relation $\partial_\tau\varphi = 2eV(\tau)/\hbar$ with $V(\tau)\propto A(\tau)$. The condensate velocity is then set by the drive, and its acceleration is the proper-time derivative of that velocity. Writing $u(\tau)=|\mathbf{u}(\tau)|$ and $a(\tau)=|\mathbf{a}(\tau)|$, Eq. (A.3) becomes
+
+$$
+\Gamma_{\rm mode}(\tau) \;=\; \frac{u(\tau)\,a(\tau)\,\cos\theta}{b^2}. \qquad (A.4)
+$$
+
+The angle $\theta$ enters through $\mathbf{u}\!\cdot\!\mathbf{a}$. Its relation to the experimentally controlled phase $\phi$ of Eq. (A.2) is the mapping that Phase A must establish; we do not assume $\theta=\phi$.
+
+<!-- TODO: human reviews and fills in — A.3 carries two framework-specific assumptions for Tepper's review: (i) that the AC-Josephson velocity is the correct identification of u in the transmon charge basis, and (ii) the map from the IQ drive phase phi to the geometric angle theta between u and a. Neither is derived here; both are required before A.4 is meaningful. -->
+
+### A.4 System–bath reduction (standard)
+
+We write the qubit coupled to the electromagnetic modes as $H = H_q + H_B + H_{\rm int}$, with a linear coupling $H_{\rm int}=\hbar\,(a+a^\dagger)\otimes B$ to a bath operator $B$ built from the mode amplitudes $E_{\mathbf k}$. The standard Born–Markov–secular reduction then yields a master equation of Lindblad form[^16],
+
+$$
+\dot\rho \;=\; -\tfrac{i}{\hbar}[H_q,\rho] \;+\; \gamma_\downarrow\,\mathcal{D}[a]\rho \;+\; \gamma_\uparrow\,\mathcal{D}[a^\dagger]\rho \;+\; \gamma_\varphi\,\mathcal{D}[a^\dagger a]\rho, \qquad (A.5)
+$$
+
+with the dissipator $\mathcal{D}[L]\rho = L\rho L^\dagger - \tfrac12\{L^\dagger L,\rho\}$. Pure dephasing is the $\mathcal{D}[a^\dagger a]$ channel, and its rate is fixed by the bath spectral density at zero frequency,
+
+$$
+\gamma_\varphi \;=\; \tfrac12\,S_B(\omega\to 0), \qquad S_B(\omega)=\int_{-\infty}^{\infty}\!\langle B(\tau)B(0)\rangle\,e^{i\omega\tau}\,d\tau. \qquad (A.6)
+$$
+
+Equation (A.6) is the slot into which the framework's contribution must be inserted. A drive-induced, angle-dependent modification of the bath correlation $\langle B(\tau)B(0)\rangle$ produces a corresponding modification of $\gamma_\varphi$.
+
+### A.5 The framework's contribution to the dephasing rate (the key step, gated)
+
+The modal friction of Eq. (A.3) modifies the field correlations that the qubit samples. The bath operator $B$ inherits the loss $\Gamma_{\rm mode}$, so the dephasing spectral density acquires an extra piece. Carrying that piece through Eq. (A.6) and averaging over the gate gives the proposed contribution,
+
+$$
+\gamma_\varphi^{(d)}(\theta,A) \;=\; \kappa \int_0^{t_g} \frac{u(\tau)\,a(\tau)\,\cos\theta}{b^4}\,\big|A(\tau)\big|^2\,d\tau, \qquad (A.7)
+$$
+
+which is Eq. (3.1) of the body. The constant $\kappa$ collects the qubit–mode coupling, the mode density of states at $\omega_q$, and the powers of $b$ that convert the field-equation coefficient of Eq. (2.2) into a rate. We note one bookkeeping point for the reviewer. The modal rate of Eq. (A.3) carries $1/b^2$, while Eq. (A.7) is written with $1/b^4$ to match the body; the difference is absorbed into $\kappa$, and the explicit powers of $b$ must be tracked through the reduction rather than assumed. The value of $\kappa$ is the principal output of Phase A and is not fixed by this scaffold.
+
+<!-- TODO: human reviews and fills in — A.5 is the load-bearing framework step. It asserts that the modal friction Gamma_mode propagates into the dephasing bath spectral density S_B(0) and so into gamma_phi. The propagation, and with it the value and even the sign of kappa, requires the framework's prescription for how the dual loss couples to the qubit. This is the step on which the whole program turns; it should be derived with Tepper, not taken from this scaffold. -->
+
+### A.6 Limits and the falsifier
+
+Two checks constrain any completed derivation. The slow-source limit is
+
+$$
+\beta\to 0 \;\Rightarrow\; u\to 0 \;\Rightarrow\; \Gamma_{\rm mode}\to 0 \;\Rightarrow\; \gamma_\varphi^{(d)}\to 0, \qquad (A.8)
+$$
+
+so the framework contribution vanishes and the standard account is recovered. The textbook limit $b\to c$ leaves Eq. (A.7) finite and is the regime of the experiment. The falsifier of Section 3 follows from the angular structure of Eq. (A.7). Standard radiation reaction contributes a rate proportional to $\dot{\mathbf a}$ with no explicit $\cos\theta$ at fixed $\dot{\mathbf a}$. Holding $|\dot{\mathbf a}|$, the amplitude, and the gate time fixed while varying $\theta$ therefore isolates the framework term,
+
+$$
+\frac{1}{T_2(\theta)} \;=\; \frac{1}{T_2^{(0)}} \;+\; C\,\cos\theta, \qquad C=\frac{\kappa}{b^4}\Big\langle u\,a\,|A|^2\Big\rangle t_g, \qquad (A.9)
+$$
+
+which is Eq. (3.2) with $C$ now expressed through the same $\kappa$ as Eq. (A.7). A measured $\cos\theta$ residual fixes the magnitude and sign of $C$, and through it tests the framework's prediction for $\kappa$.
+
+### A.7 Open points for review
+
+The scaffold leaves five points open. We list them so that the review can target them directly.
+
+1. The identification of $\mathbf{u}$ and $\mathbf{a}$ for the condensate (A.3), and in particular whether the AC-Josephson velocity is the correct choice in the transmon charge basis.
+2. The map from the experimentally controlled IQ phase $\phi$ of Eq. (A.2) to the geometric angle $\theta$ of Eq. (A.4).
+3. The propagation of the modal friction $\Gamma_{\rm mode}$ into the dephasing spectral density of Eq. (A.6), which is the load-bearing framework step.
+4. The value and sign of $\kappa$, and the explicit powers of $b$ that the reduction carries.
+5. The reconciliation of the kinematic suppression $\beta^4$ of Eq. (4.2) with the rate-level bookkeeping of Eqs. (A.3) and (A.7).
+
+We regard points 3 and 4 as the ones requiring the framework's authors. Points 1, 2, and 5 can be settled with a superconducting-qubit theorist and the campaign's verification tooling.
+
 ## References
 
 [^1]: `Roadmapping/Equation_Verification/Two_Mathematically_Equivalent_Versions_of_Maxwells_Equations.md`. Verification of Gill's dual Maxwell formulation; the dissipative third term with coefficient $(\mathbf{u}\!\cdot\!\mathbf{a})/b^4$ is recorded as Eq. (4) and recurs in the modified Liénard–Wiechert fields.
